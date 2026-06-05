@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python --version)",
+      "PowerShell(python -c \"import pandas; print\\('pandas', pandas.__version__\\)\" 2>&1)",
+      "PowerShell(python -c \"import openpyxl; print\\('openpyxl', openpyxl.__version__\\)\" 2>&1)",
+      "Bash(python scripts/build_vocab.py)",
+      "Bash(python -c ' *)",
+      "Bash(node --check js/__TRACKED_VAR__.js)",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell($w = \\(Get-Command winget -ErrorAction SilentlyContinue\\); if \\($w\\) { \"winget: 可用 \" + \\(winget --version\\) } else { \"winget: 不可用\" })"
+    ]
+  }
+}

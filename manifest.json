@@ -1,0 +1,26 @@
+{
+  "name": "英文單字記憶系統",
+  "short_name": "背單字",
+  "description": "間隔重複＋主動回憶的英文單字記憶 PWA，離線可用、查單字自動記錄、每日報告可貼 LINE。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f6fb",
+  "theme_color": "#2563eb",
+  "lang": "zh-Hant",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

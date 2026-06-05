@@ -1,0 +1,13 @@
+# 原始來源檔不上傳（vocab.json 由它產生後即可離線使用）
+學測6000字.xlsx
+
+# 建置報告
+build_report.txt
+
+# 系統/編輯器雜項
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+
+# 注意：data/vocab.json 必須保留上傳，故「不」忽略 data/
