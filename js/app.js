@@ -313,11 +313,18 @@ async function renderCalendar() {
     const ds = `${Cal.year}-${String(Cal.month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
     const st = dayStatus(planMap.get(ds));
     const isToday = ds === todayS;
-    cells += `
+    const isPast = ds < todayS;
+    const hasPlan = planMap.has(ds);
+    // 過去且無紀錄 → 不可點（不補排）
+    if (isPast && !hasPlan) {
+      cells += `<div class="cal-cell noplan"><span class="cal-d">${d}</span></div>`;
+    } else {
+      cells += `
       <button class="cal-cell ${st.cls} ${isToday ? 'today' : ''}" data-date="${ds}">
         <span class="cal-d">${d}</span>
         ${st.badge ? `<span class="cal-badge">${st.badge}</span>` : ''}
       </button>`;
+    }
   }
 
   $main().innerHTML = `
@@ -381,11 +388,24 @@ function wordDayDone(plan, wid) {
 // ============================================================
 const Daily = { date: null, plan: null, spellSession: null, sentQueue: null, sentIdx: 0, answered: false, usedHint: false };
 
+// 蒐集「其他日期」已排定的字（供去重，避免相鄰日期大量重複）
+async function scheduledWordIds(exceptDate) {
+  const days = await getDaysByProfile(State.profile.id);
+  const set = new Set();
+  for (const d of days) {
+    if (d.date === exceptDate) continue;
+    (d.group.wordIds || []).forEach((id) => set.add(id));
+  }
+  return set;
+}
+
+// 產生並鎖定某日的單字組（僅用於今天/未來）
 async function ensureDayPlan(dateStr) {
   let plan = await getDayPlan(State.profile.id, dateStr);
   if (!plan) {
     const records = await getRecordsByProfile(State.profile.id);
-    const group = formDailyGroup(State.profile, records, State.profile.settings.dailyNewLimit);
+    const excludeWordIds = await scheduledWordIds(dateStr);
+    const group = formDailyGroup(State.profile, records, State.profile.settings.dailyNewLimit, { excludeWordIds });
     plan = {
       key: dayKey(State.profile.id, dateStr), profileId: State.profile.id, date: dateStr,
       group, readDone: false, progress: {}, createdAt: Date.now(), updatedAt: Date.now(),
@@ -396,10 +416,23 @@ async function ensureDayPlan(dateStr) {
 }
 
 async function openDay(dateStr) {
-  const plan = await ensureDayPlan(dateStr);
+  if (location.hash !== '#calendar') location.hash = '#calendar';
+  let plan = await getDayPlan(State.profile.id, dateStr);
+  if (!plan) {
+    // 過去且無紀錄 → 不補排、不即時生成
+    if (dateStr < todayStr()) {
+      $main().innerHTML = `<div class="card center">
+        <h2>${prettyDate(dateStr)}</h2>
+        <p>這天沒有學習紀錄。</p>
+        <button class="btn" id="back-cal">回日曆</button></div>`;
+      document.getElementById('back-cal').onclick = () => renderCalendar();
+      return;
+    }
+    // 今天 / 未來 → 生成並鎖定
+    plan = await ensureDayPlan(dateStr);
+  }
   Daily.date = dateStr; Daily.plan = plan;
   Daily.spellSession = null; Daily.sentQueue = null; Daily.sentIdx = 0;
-  if (location.hash !== '#calendar') location.hash = '#calendar';
   dispatchDaily();
 }
 
@@ -486,7 +519,9 @@ function renderReadList() {
   document.getElementById('regroup').onclick = async () => {
     const records = await getRecordsByProfile(State.profile.id);
     const exclude = Daily.plan.group.groupKey ? [Daily.plan.group.groupKey] : [];
-    const group = formDailyGroup(State.profile, records, State.profile.settings.dailyNewLimit, exclude);
+    const excludeWordIds = await scheduledWordIds(Daily.date);
+    const group = formDailyGroup(State.profile, records, State.profile.settings.dailyNewLimit,
+      { excludeKeys: exclude, excludeWordIds });
     if (!group.wordIds.length) { alert('沒有其他可用的分組了'); return; }
     Daily.plan.group = group;
     Daily.plan.progress = {};
@@ -531,11 +566,13 @@ function dailySpellingShow() {
         <button class="btn" id="say">🔊 聽發音<small>(算提示)</small></button>
       </div>
       <div id="hint-area" class="hint-area"></div>
+      <button class="btn save-exit" id="save-exit">💾 儲存並離開</button>
     </div>`;
   const input = document.getElementById('ans');
   input.focus();
   input.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') dailySpellingSubmit(); });
   document.getElementById('submit').onclick = dailySpellingSubmit;
+  document.getElementById('save-exit').onclick = () => saveAndExitDaily();
   document.getElementById('hint').onclick = () => {
     Daily.usedHint = true;
     const w = e.answerKeys[0];
@@ -602,11 +639,13 @@ function dailySentenceShow() {
       </div>
       <textarea id="sent" class="answer-input sent-input" rows="2" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="輸入完整英文句子…"></textarea>
       <div class="btn-row"><button class="btn primary" id="submit">送出</button></div>
+      <button class="btn save-exit" id="save-exit">💾 儲存並離開</button>
     </div>`;
   const ta = document.getElementById('sent');
   ta.focus();
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
   document.getElementById('submit').onclick = dailySentenceSubmit;
+  document.getElementById('save-exit').onclick = () => saveAndExitDaily();
 }
 
 async function dailySentenceSubmit() {
@@ -640,6 +679,12 @@ async function dailySentenceSubmit() {
     <div class="btn-row"><button class="btn primary" id="next">下一句 →</button></div>`;
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
   document.getElementById('next').onclick = () => { Daily.sentIdx++; dailySentenceShow(); };
+}
+
+// 儲存並離開（進度已逐題保存，這裡只回日曆）
+async function saveAndExitDaily() {
+  if (Daily.plan) { Daily.plan.updatedAt = Date.now(); await putDayPlan(Daily.plan); }
+  renderCalendar();
 }
 
 // ---- 完成 ----

@@ -169,6 +169,7 @@ label .answer-input { text-align: left; margin-top: 6px; }
   align-items: center; justify-content: center; cursor: pointer; padding: 0; font-size: 15px;
 }
 .cal-cell.empty { border: none; background: none; cursor: default; }
+.cal-cell.noplan { color: var(--muted); opacity: .45; cursor: default; }
 .cal-cell.today { border-color: var(--primary); border-width: 2px; }
 .cal-cell.new { background: rgba(107, 114, 128, .12); }
 .cal-cell.doing { background: rgba(37, 99, 235, .15); }
@@ -193,6 +194,7 @@ label .answer-input { text-align: left; margin-top: 6px; }
 .ex-zh { font-size: 14px; color: var(--muted); margin-top: 2px; }
 .sent-zh { font-size: 22px; }
 .sent-input { text-align: left; min-height: 60px; resize: vertical; font-size: 17px; }
+.save-exit { width: 100%; margin-top: 12px; color: var(--muted); }
 .sent-block { margin-bottom: 12px; }
 .sent-line { font-size: 17px; line-height: 1.7; margin-top: 4px; }
 .diff-bad { color: var(--no); text-decoration: underline wavy; font-weight: 700; }

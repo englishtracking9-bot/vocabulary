@@ -23,9 +23,10 @@ const PRIORITY = { root: 1, prefix: 1, suffix: 1, compound: 3, confuse: 4, theme
 // 形成當日單字組。
 // records: 該使用者既有紀錄陣列（用來排除已熟記、優先未熟的字）
 // 回傳 { wordIds, memo, memos, label, groupKey }
-export function formDailyGroup(profile, records, n, excludeKeys = []) {
+export function formDailyGroup(profile, records, n, options = {}) {
   const N = n || (profile.settings && profile.settings.dailyNewLimit) || 15;
-  const exclude = new Set(excludeKeys);
+  const exclude = new Set(options.excludeKeys || []);
+  const excludeWords = new Set(options.excludeWordIds || []);
   const levels = (profile.settings && profile.settings.levels && profile.settings.levels.length)
     ? profile.settings.levels : [4, 5, 6];
 
@@ -36,11 +37,12 @@ export function formDailyGroup(profile, records, n, excludeKeys = []) {
   const hasEx = (e) => e.example && e.example.trim();
   const notMastered = (e) => !mastered.has(e.id);
 
-  const inRange = allWords().filter((e) => levels.includes(e.level) && hasEx(e) && notMastered(e));
+  const avail = (e) => !excludeWords.has(e.id); // 排除其他日期已排的字（去重）
+  const inRange = allWords().filter((e) => levels.includes(e.level) && hasEx(e) && notMastered(e) && avail(e));
   // 若級別範圍內有例句的字不足（例如目前只有 L1 有例句），退而用「全部有例句」的字
   let pool = inRange;
   if (pool.length < N) {
-    const anyLevel = allWords().filter((e) => hasEx(e) && notMastered(e));
+    const anyLevel = allWords().filter((e) => hasEx(e) && notMastered(e) && avail(e));
     // 合併、去重，範圍內優先在前
     const seen = new Set(pool.map((e) => e.id));
     pool = pool.concat(anyLevel.filter((e) => !seen.has(e.id)));
