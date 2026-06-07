@@ -9,7 +9,8 @@
       "Bash(node --check js/__TRACKED_VAR__.js)",
       "mcp__Claude_Preview__preview_start",
       "PowerShell($w = \\(Get-Command winget -ErrorAction SilentlyContinue\\); if \\($w\\) { \"winget: 可用 \" + \\(winget --version\\) } else { \"winget: 不可用\" })",
-      "Bash(python scripts/tag_roots.py)"
+      "Bash(python scripts/tag_roots.py)",
+      "Bash(python scripts/gen_examples.py)"
     ]
   }
 }
