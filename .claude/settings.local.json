@@ -21,7 +21,10 @@
       "Bash(curl -s -o /dev/null -w \"index:%{http_code}\\\\n\" http://localhost:8141/index.html)",
       "Bash(curl -s -o /dev/null -w \"8142 index:%{http_code}\\\\n\" http://localhost:8142/index.html)",
       "Bash(curl -s -o /dev/null -w \"8143:%{http_code}\\\\n\" http://localhost:8143/index.html)",
-      "Bash(curl -sI http://localhost:8143/js/app.js)"
+      "Bash(curl -sI http://localhost:8143/js/app.js)",
+      "Bash(cd \"D:/vocabulary\")",
+      "Bash(echo 'OK __TRACKED_VAR__')",
+      "Bash(echo 'FAIL __TRACKED_VAR__')"
     ]
   }
 }

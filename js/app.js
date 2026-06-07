@@ -2,7 +2,7 @@
 import {
   openDB, getAllProfiles, putProfile, getProfile, setMeta, getMeta,
   getRecordsByProfile, getRecord, putRecord, deleteRecord, deleteProfileFully,
-  getDayPlan, putDayPlan, getDaysByProfile, dayKey,
+  getDayPlan, putDayPlan, getDaysByProfile, dayKey, getDailyLog,
 } from './db.js';
 import {
   loadVocab, getById, allWords, registerCustomWord, checkAnswer,
@@ -224,7 +224,8 @@ async function doSubmit() {
   const correct = checkAnswer(entry, val);
   const secondTry = State.session.wasWrongBefore(entry.id);
 
-  await recordAnswer(State.profile, entry, correct, State.usedHint, secondTry);
+  await recordAnswer(State.profile, entry, correct, State.usedHint, secondTry, Date.now(),
+    { input: val, answer: entry.answerKeys[0], kind: 'spelling' });
 
   if (correct) State.session.advance();
   else State.session.requeueCurrent();
@@ -426,8 +427,9 @@ async function persistPlan() {
 
 // 當日學習/群組測驗的「返回」目的地
 function dailyBack() {
-  if (Daily.plan && Daily.plan.isGroup) renderGroups();
-  else renderCalendar();
+  if (Daily.plan && Daily.plan.backTo === 'mywords') return renderMyWords();
+  if (Daily.plan && Daily.plan.isGroup) return renderGroups();
+  renderCalendar();
 }
 
 // 蒐集「其他日期」已排定的字（供去重，避免相鄰日期大量重複）
@@ -553,15 +555,21 @@ function dispatchDaily() {
   }
   if (!plan.readDone) return renderReadList();
 
-  const needSpelling = plan.group.wordIds.filter((id) => (plan.progress[id] || {}).spelling !== 'correct');
-  if (needSpelling.length) return startSpelling(needSpelling);
+  const types = plan.testTypes || { spelling: true, sentence: true };
 
-  const needSentence = plan.group.wordIds.filter((id) => {
-    const e = getById(id);
-    const p = plan.progress[id] || {};
-    return e && e.example && e.example.trim() && !p.sentence;
-  });
-  if (needSentence.length) return startSentence(needSentence);
+  if (types.spelling) {
+    const needSpelling = plan.group.wordIds.filter((id) => (plan.progress[id] || {}).spelling !== 'correct');
+    if (needSpelling.length) return startSpelling(needSpelling);
+  }
+
+  if (types.sentence) {
+    const needSentence = plan.group.wordIds.filter((id) => {
+      const e = getById(id);
+      const p = plan.progress[id] || {};
+      return e && e.example && e.example.trim() && !p.sentence;
+    });
+    if (needSentence.length) return startSentence(needSentence);
+  }
 
   return renderDayDone();
 }
@@ -700,7 +708,8 @@ async function dailySpellingSubmit() {
   const e = getById(item.wordId);
   const correct = checkAnswer(e, input.value);
   const secondTry = Daily.spellSession.wasWrongBefore(e.id);
-  await recordAnswer(State.profile, e, correct, Daily.usedHint, secondTry);
+  await recordAnswer(State.profile, e, correct, Daily.usedHint, secondTry, Date.now(),
+    { input: input.value, answer: e.answerKeys[0], kind: 'spelling' });
 
   // 記錄當日拼字結果
   Daily.plan.progress[e.id] = Daily.plan.progress[e.id] || {};
@@ -768,7 +777,8 @@ async function dailySentenceSubmit() {
   const res = compareSentence(val, e.example);
 
   // 回寫 SM-2（造句也是一次提取練習）
-  await recordAnswer(State.profile, e, res.correct, false, false);
+  await recordAnswer(State.profile, e, res.correct, false, false, Date.now(),
+    { input: val, answer: e.example, kind: 'sentence' });
   Daily.plan.progress[e.id] = Daily.plan.progress[e.id] || {};
   Daily.plan.progress[e.id].sentence = res.correct ? 'correct' : 'wrong';
   Daily.plan.updatedAt = Date.now();
@@ -808,16 +818,30 @@ function renderDayDone() {
   const stTotal = plan.group.wordIds.filter((id) => { const e = getById(id); return e && e.example; }).length;
   archiveSnapshot(State.profile); // 存檔當下整體進度，供歷史報告
   const doneTitle = plan.isGroup ? `${esc(plan.groupName)} 完成 🎉` : `${prettyDate(Daily.date)} 完成 🎉`;
+  const types = plan.testTypes || { spelling: true, sentence: true };
+  const cells = [`<div><b>${total}</b><span>本組單字</span></div>`];
+  if (types.spelling) cells.push(`<div><b>${sp}/${total}</b><span>拼字過關</span></div>`);
+  if (types.sentence) cells.push(`<div><b>${st}/${stTotal}</b><span>造句正確</span></div>`);
+  const detailRows = plan.group.wordIds.map((id) => {
+    const e = getById(id); if (!e) return '';
+    const p = plan.progress[id] || {};
+    const sp = p.spelling === 'correct' ? '✅' : (p.spelling === 'wrong' ? '❌' : '—');
+    const se = !(e.example && e.example.trim()) ? '（無例句）'
+      : (p.sentence === 'correct' ? '✅' : (p.sentence === 'wrong' ? '❌' : '—'));
+    return `<div class="row"><div class="row-main">
+      <span class="row-word">${esc(e.word)}</span><span class="row-zh">${esc(e.zh)}</span></div>
+      <div class="row-meta">${types.spelling ? `<span>拼字 ${sp}</span>` : ''}${types.sentence ? `<span>造句 ${se}</span>` : ''}</div></div>`;
+  }).join('');
+
   $main().innerHTML = `
     <div class="card center">
       <h2>${doneTitle}</h2>
-      <div class="stat-grid">
-        <div><b>${total}</b><span>本組單字</span></div>
-        <div><b>${sp}/${total}</b><span>拼字過關</span></div>
-        <div><b>${st}/${stTotal}</b><span>造句正確</span></div>
-      </div>
-      <button class="btn primary" id="back-cal">${plan.isGroup ? '回群組' : '回日曆'}</button>
+      <div class="stat-grid">${cells.join('')}</div>
+      <button class="btn primary" id="back-cal">${plan.backTo === 'mywords' ? '回我的單字' : (plan.isGroup ? '回群組' : '回日曆')}</button>
       <a class="btn" href="#report">看每日報告</a>
+    </div>
+    <div class="card">
+      <details><summary>📋 本組明細（${total} 字）</summary><div class="detail-list">${detailRows}</div></details>
     </div>`;
   document.getElementById('back-cal').onclick = () => dailyBack();
 }
@@ -926,13 +950,59 @@ async function startGroupTest(tag) {
   const wordIds = await wordsInTag(State.profile.id, tag.id);
   if (!wordIds.length) { alert('這個群組還沒有字'); return; }
   Daily.plan = {
-    isGroup: true, groupName: tag.name, tagId: tag.id,
+    isGroup: true, groupName: tag.name, tagId: tag.id, backTo: 'groups',
     group: { wordIds, memo: `群組：${tag.name}`, memos: [], label: tag.name, groupKey: null },
     readDone: false, progress: {},
   };
   Daily.date = todayStr();
   Daily.spellSession = null; Daily.sentQueue = null; Daily.sentIdx = 0;
   renderDayList();
+}
+
+// 測驗方式選擇器：拼字／造句／兩者都測
+function openTestTypePicker(wordIds, name, backTo) {
+  if (!wordIds.length) { alert('沒有可測的字'); return; }
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box">
+      <h3>測驗 ${wordIds.length} 個字</h3>
+      <p class="hint-area">要測什麼？（造句測驗只測有例句的字）</p>
+      <div class="btn-row"><button class="btn primary big-copy" data-t="both">📝 兩者都測（拼字＋造句）</button></div>
+      <div class="btn-row">
+        <button class="btn" data-t="spelling">✏️ 只測拼字</button>
+        <button class="btn" data-t="sentence">🧩 只測造句</button>
+      </div>
+      <button class="btn" id="tp-close">取消</button>
+    </div>`;
+  m.classList.add('show');
+  m.querySelectorAll('[data-t]').forEach((b) => {
+    b.onclick = () => {
+      m.classList.remove('show');
+      const t = b.dataset.t;
+      const types = t === 'both' ? { spelling: true, sentence: true }
+        : t === 'spelling' ? { spelling: true, sentence: false }
+          : { spelling: false, sentence: true };
+      startWordsTest(wordIds, name, types, backTo);
+    };
+  });
+  document.getElementById('tp-close').onclick = () => m.classList.remove('show');
+}
+
+// 把一批字轉成連續測驗（虛擬計畫、不寫日曆、不先讀，直接考）
+function startWordsTest(wordIds, name, types, backTo) {
+  if (!wordIds.length) { alert('沒有可測的字'); return; }
+  if (types.sentence && !types.spelling) {
+    const anyEx = wordIds.some((id) => { const e = getById(id); return e && e.example && e.example.trim(); });
+    if (!anyEx) { alert('這些字目前還沒有例句，無法造句測驗'); return; }
+  }
+  Daily.plan = {
+    isGroup: true, groupName: name, backTo: backTo || 'mywords', testTypes: types,
+    group: { wordIds: wordIds.slice(), memo: '', memos: [], label: name, groupKey: null },
+    readDone: true, progress: {}, // 跳過先讀，直接測
+  };
+  Daily.date = todayStr();
+  Daily.spellSession = null; Daily.sentQueue = null; Daily.sentIdx = 0;
+  dispatchDaily();
 }
 
 // ============================================================
@@ -1080,6 +1150,7 @@ function quizSingle(entry) {
 // ============================================================
 const MyWordsFilter = { status: 'all', level: 'all', group: 'all', q: '', sort: 'recent' };
 const MyWordsSel = { on: false, ids: new Set() };
+const MyWordsView = { ids: [] }; // 目前篩選出的全部字（供「測這些字」）
 
 async function renderMyWords() {
   const recs = await getRecordsByProfile(State.profile.id);
@@ -1114,7 +1185,8 @@ async function renderMyWords() {
       </div>
       <input id="f-q" class="answer-input" placeholder="關鍵字搜尋（英文或中文）" />
       <div class="btn-row">
-        <button class="btn" id="mw-select">${MyWordsSel.on ? '✕ 取消多選' : '☑ 多選批次加入群組'}</button>
+        <button class="btn primary" id="mw-test">▶️ 測這些字</button>
+        <button class="btn" id="mw-select">${MyWordsSel.on ? '✕ 取消多選' : '☑ 多選'}</button>
       </div>
       <div id="mw-selbar" class="${MyWordsSel.on ? '' : 'hidden'}">
         <div class="btn-row">
@@ -1147,6 +1219,18 @@ async function renderMyWords() {
   document.getElementById('mw-select').onclick = () => {
     MyWordsSel.on = !MyWordsSel.on; MyWordsSel.ids.clear(); renderMyWords();
   };
+  document.getElementById('mw-test').onclick = () => {
+    const useSel = MyWordsSel.on && MyWordsSel.ids.size > 0;
+    const ids = useSel ? [...MyWordsSel.ids] : MyWordsView.ids.slice();
+    if (!ids.length) { alert('沒有可測的字'); return; }
+    let name;
+    if (useSel) name = `選取的 ${ids.length} 字`;
+    else if (MyWordsFilter.group !== 'all') {
+      const tagSel = document.getElementById('f-group');
+      name = (tagSel.options[tagSel.selectedIndex].text || '群組').replace('🏷 ', '');
+    } else name = `我的單字（${ids.length}）`;
+    openTestTypePicker(ids, name, 'mywords');
+  };
   const batchBtn = document.getElementById('mw-batch');
   if (batchBtn) batchBtn.onclick = () => {
     if (!MyWordsSel.ids.size) { alert('請先勾選單字'); return; }
@@ -1174,6 +1258,8 @@ function drawMyWords(recs) {
   else if (MyWordsFilter.sort === 'errors')
     rows.sort((a, b) => (b.rec.attempts - b.rec.correct) - (a.rec.attempts - a.rec.correct));
   else if (MyWordsFilter.sort === 'due') rows.sort((a, b) => a.rec.due - b.rec.due);
+
+  MyWordsView.ids = rows.map((x) => x.entry.id); // 目前篩選出的全部字（供「測這些字」）
 
   const list = document.getElementById('mw-list');
   if (!rows.length) { list.innerHTML = `<div class="card center">沒有符合的單字</div>`; return; }
@@ -1419,7 +1505,9 @@ async function renderReport() {
         <button class="btn" id="copy-week">複製本週彙整</button>
       </div>
       <p id="copy-status" class="hint-area"></p>
-    </div>`;
+    </div>
+    <div id="report-detail"></div>`;
+  renderReportDetail(ReportDate);
   const status = document.getElementById('copy-status');
   const doCopy = async (getter) => {
     const t = await getter();
@@ -1439,6 +1527,45 @@ async function renderReport() {
     const n = shiftDate(ReportDate, 1);
     if (n <= today) { ReportDate = n; renderReport(); }
   };
+}
+
+// 報告明細：點數字展開清單（新學 / 複習 / 答錯）
+async function renderReportDetail(dateStr) {
+  const box = document.getElementById('report-detail');
+  if (!box) return;
+  const log = await getDailyLog(State.profile.id, dateStr);
+  if (!log) { box.innerHTML = ''; return; }
+  const recs = await getRecordsByProfile(State.profile.id);
+  const recMap = new Map(recs.map((r) => [r.wordId, r]));
+
+  const wordLine = (id) => {
+    const e = getById(id); if (!e) return '';
+    const r = recMap.get(id);
+    return `<div class="row"><div class="row-main">
+      <span class="row-word">${esc(e.word)}</span>
+      <span class="row-zh">${esc(e.zh)}</span></div>
+      <div class="row-meta"><span>${r ? statusBadge(r.status) : ''}</span></div></div>`;
+  };
+  const wrongLine = (w) => {
+    const e = getById(w.wordId);
+    return `<div class="row"><div class="row-main">
+      <span class="row-word">${e ? esc(e.word) : esc(w.wordId)}</span>
+      <span class="row-zh">${w.kind === 'sentence' ? '造句' : '拼字'}</span></div>
+      <div class="row-meta"><span>你寫：${esc(w.input) || '(空白)'}</span><span>正解：${esc(w.answer)}</span></div></div>`;
+  };
+
+  const newList = (log.newWords || []).map(wordLine).join('') || '<p class="hint-area">無</p>';
+  const revList = (log.reviewWords || []).map(wordLine).join('') || '<p class="hint-area">無</p>';
+  const wrongList = (log.wrong || []).map(wrongLine).join('') || '<p class="hint-area">這天沒有答錯 🎉</p>';
+  const acc = log.answerCount ? Math.round(log.correctCount / log.answerCount * 100) : 0;
+
+  box.innerHTML = `
+    <div class="card">
+      <h3>明細（點開看清單）</h3>
+      <details><summary>🆕 新學 ${(log.newWords || []).length} 字</summary><div class="detail-list">${newList}</div></details>
+      <details><summary>🔁 複習 ${(log.reviewWords || []).length} 字</summary><div class="detail-list">${revList}</div></details>
+      <details><summary>📊 答對率 ${acc}%（❌ 答錯 ${(log.wrong || []).length} 題）</summary><div class="detail-list">${wrongList}</div></details>
+    </div>`;
 }
 
 function shiftDate(dateStr, delta) {

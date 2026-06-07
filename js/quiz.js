@@ -107,7 +107,8 @@ export class Session {
 }
 
 // 記錄一次作答，更新 SM-2 紀錄與每日紀錄。回傳更新後的 rec。
-export async function recordAnswer(profile, entry, correct, usedHint, secondTry, now = Date.now()) {
+// logMeta（可選）：{ input, answer, kind } 供每日報告明細顯示（答錯內容、正確答案）。
+export async function recordAnswer(profile, entry, correct, usedHint, secondTry, now = Date.now(), logMeta = null) {
   let quality;
   if (!correct) quality = 'again';
   else if (usedHint || secondTry) quality = 'hard';
@@ -120,25 +121,38 @@ export async function recordAnswer(profile, entry, correct, usedHint, secondTry,
   applyAnswer(rec, quality, now);
   await putRecord(rec);
 
-  await updateDailyLog(profile.id, entry.id, wasNew, correct, now);
+  await updateDailyLog(profile.id, entry.id, wasNew, correct, now, logMeta);
   return rec;
 }
 
-async function updateDailyLog(pid, wordId, wasNew, correct, now) {
+async function updateDailyLog(pid, wordId, wasNew, correct, now, logMeta) {
   const date = todayStr(new Date(now));
   let log = await getDailyLog(pid, date);
   if (!log) {
     log = {
       key: dailyKey(pid, date), profileId: pid, date,
       newWords: [], reviewCount: 0, answerCount: 0, correctCount: 0,
+      reviewWords: [], wrong: [],
     };
   }
+  if (!log.reviewWords) log.reviewWords = [];
+  if (!log.wrong) log.wrong = [];
+
   log.answerCount += 1;
   if (correct) log.correctCount += 1;
   if (wasNew) {
     if (!log.newWords.includes(wordId)) log.newWords.push(wordId);
   } else {
     log.reviewCount += 1;
+    if (!log.reviewWords.includes(wordId)) log.reviewWords.push(wordId);
+  }
+  if (!correct) {
+    log.wrong.push({
+      wordId,
+      input: logMeta && logMeta.input != null ? logMeta.input : '',
+      answer: logMeta && logMeta.answer != null ? logMeta.answer : '',
+      kind: logMeta && logMeta.kind ? logMeta.kind : 'spelling',
+    });
   }
   await putDailyLog(log);
 }

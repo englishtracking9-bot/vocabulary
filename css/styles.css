@@ -162,6 +162,15 @@ label .answer-input { text-align: left; margin-top: 6px; }
 .level-checks { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 14px; }
 .chk { display: inline-flex; align-items: center; gap: 4px; margin: 0; color: var(--text); font-size: 16px; }
 
+/* Report detail (expandable) */
+details { border: 1px solid var(--border); border-radius: 12px; padding: 8px 12px; margin-bottom: 8px; background: var(--bg); }
+details summary { cursor: pointer; font-size: 16px; font-weight: 600; padding: 4px 0; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: '▸ '; color: var(--muted); }
+details[open] summary::before { content: '▾ '; }
+.detail-list { margin-top: 8px; }
+.detail-list .row { cursor: default; }
+
 /* Report */
 .report-datebar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .report-datebar input[type=date] {

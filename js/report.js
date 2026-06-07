@@ -34,7 +34,8 @@ export async function buildDailyReport(profile, dateStr = null, now = Date.now()
   }
 
   const newIds = log ? log.newWords : [];
-  const reviewCount = log ? log.reviewCount : 0;
+  // 複習以「不重複字數」計（與明細清單一致）；舊資料沒有 reviewWords 時退回 reviewCount
+  const reviewCount = log ? (log.reviewWords ? log.reviewWords.length : log.reviewCount) : 0;
   const accuracy = log && log.answerCount ? Math.round(log.correctCount / log.answerCount * 100) : 0;
 
   // 整體進度：今天用即時統計；過去用當天快照（沒有快照才退而用即時）
