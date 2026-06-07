@@ -2,7 +2,7 @@
 // 規格：禁用 localStorage 存學習進度，一律存 IndexedDB。
 
 const DB_NAME = 'vocabApp';
-const DB_VERSION = 3;
+const DB_VERSION = 4;
 
 let _dbPromise = null;
 
@@ -55,6 +55,13 @@ export function openDB() {
       if (!db.objectStoreNames.contains('tags')) {
         const s = db.createObjectStore('tags', { keyPath: 'id' });
         s.createIndex('by_profile', 'profileId', { unique: false });
+      }
+
+      // 手動出題單字組：{id, profileId, date, name, group, readDone, progress, ...}
+      if (!db.objectStoreNames.contains('manualGroups')) {
+        const s = db.createObjectStore('manualGroups', { keyPath: 'id' });
+        s.createIndex('by_profile', 'profileId', { unique: false });
+        s.createIndex('by_profile_date', ['profileId', 'date'], { unique: false });
       }
     };
 
@@ -274,4 +281,30 @@ export function putTag(tag) {
 
 export function deleteTagRecord(tagId) {
   return tx('tags', 'readwrite', (t) => { t.objectStore('tags').delete(tagId); });
+}
+
+// ---------- manualGroups（手動出題） ----------
+export async function getManualGroup(id) {
+  const db = await openDB();
+  return reqPromise(db.transaction('manualGroups').objectStore('manualGroups').get(id));
+}
+
+export function putManualGroup(g) {
+  return tx('manualGroups', 'readwrite', (t) => { t.objectStore('manualGroups').put(g); });
+}
+
+export function deleteManualGroup(id) {
+  return tx('manualGroups', 'readwrite', (t) => { t.objectStore('manualGroups').delete(id); });
+}
+
+export async function getManualGroupsByProfile(profileId) {
+  const db = await openDB();
+  const idx = db.transaction('manualGroups').objectStore('manualGroups').index('by_profile');
+  return reqPromise(idx.getAll(IDBKeyRange.only(profileId)));
+}
+
+export async function getManualGroupsByDate(profileId, dateStr) {
+  const db = await openDB();
+  const idx = db.transaction('manualGroups').objectStore('manualGroups').index('by_profile_date');
+  return reqPromise(idx.getAll(IDBKeyRange.only([profileId, dateStr])));
 }

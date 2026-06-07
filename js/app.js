@@ -3,9 +3,10 @@ import {
   openDB, getAllProfiles, putProfile, getProfile, setMeta, getMeta,
   getRecordsByProfile, getRecord, putRecord, deleteRecord, deleteProfileFully,
   getDayPlan, putDayPlan, getDaysByProfile, dayKey, getDailyLog,
+  putManualGroup, deleteManualGroup, getManualGroupsByProfile, getManualGroupsByDate,
 } from './db.js';
 import {
-  loadVocab, getById, allWords, registerCustomWord, checkAnswer,
+  loadVocab, getById, allWords, registerCustomWord, checkAnswer, searchWords,
 } from './vocab.js';
 import { buildQueue, Session, recordAnswer } from './quiz.js';
 import { lookupWord, fetchDict, speak, addToReview, createCustomWord, updateCustomZh, deleteCustomWord } from './lookup.js';
@@ -109,6 +110,7 @@ const ROUTES = {
   '#lookup': renderLookup,
   '#mywords': renderMyWords,
   '#groups': renderGroups,
+  '#manual': renderManualBuilder,
   '#roots': renderRoots,
   '#report': renderReport,
   '#settings': renderSettings,
@@ -333,6 +335,8 @@ async function renderCalendar() {
 
   const days = await getDaysByProfile(State.profile.id);
   const planMap = new Map(days.map((d) => [d.date, d]));
+  const manuals = await getManualGroupsByProfile(State.profile.id);
+  const manualDates = new Set(manuals.map((m) => m.date));
 
   const first = new Date(Cal.year, Cal.month, 1);
   const startDow = first.getDay(); // 0=Sun
@@ -347,13 +351,15 @@ async function renderCalendar() {
     const isToday = ds === todayS;
     const isPast = ds < todayS;
     const hasPlan = planMap.has(ds);
-    // 過去且無紀錄 → 不可點（不補排）
-    if (isPast && !hasPlan) {
+    const hasManual = manualDates.has(ds);
+    // 過去且無任何紀錄 → 不可點（不補排）
+    if (isPast && !hasPlan && !hasManual) {
       cells += `<div class="cal-cell noplan"><span class="cal-d">${d}</span></div>`;
     } else {
       cells += `
       <button class="cal-cell ${st.cls} ${isToday ? 'today' : ''}" data-date="${ds}">
         <span class="cal-d">${d}</span>
+        ${hasManual ? '<span class="cal-manual">✋</span>' : ''}
         ${st.badge ? `<span class="cal-badge">${st.badge}</span>` : ''}
       </button>`;
     }
@@ -374,11 +380,13 @@ async function renderCalendar() {
         <span><i class="dot new"></i>未開始</span>
         <span><i class="dot doing"></i>進行中</span>
         <span><i class="dot done"></i>已完成</span>
+        <span>✋ 手動組</span>
       </div>
     </div>
     <div class="card center">
       <button class="btn primary" id="cal-today">📚 開始今天的單字組</button>
-      <p class="hint-area">點任一天，進入「當日學習」：先讀一組字 → 拼字測驗 ＋ 造句測驗。</p>
+      <div class="btn-row"><a class="btn" href="#manual" id="cal-manual">✋ 手動出題（排字到某天）</a></div>
+      <p class="hint-area">點任一天進入「當日學習」；標 ✋ 的日子有你手動排的單字組。</p>
     </div>`;
 
   document.getElementById('cal-prev').onclick = () => { shiftMonth(-1); renderCalendar(); };
@@ -420,15 +428,31 @@ function wordDayDone(plan, wid) {
 // ============================================================
 const Daily = { date: null, plan: null, spellSession: null, sentQueue: null, sentIdx: 0, answered: false, usedHint: false };
 
-// 群組測驗用的虛擬計畫不寫入日曆（不污染月曆）；日曆計畫照常存。
+// 持久化：手動組存 manualGroups；日曆自動組存 dayPlans；標籤群組測驗(虛擬)不存。
 async function persistPlan() {
-  if (Daily.plan && !Daily.plan.isGroup) await putDayPlan(Daily.plan);
+  const p = Daily.plan;
+  if (!p) return;
+  if (p.manual) await putManualGroup(p);
+  else if (p.isGroup) { /* 標籤群組測驗：不寫入，避免污染月曆 */ }
+  else await putDayPlan(p);
 }
 
 // 當日學習/群組測驗的「返回」目的地
 function dailyBack() {
-  if (Daily.plan && Daily.plan.backTo === 'mywords') return renderMyWords();
-  if (Daily.plan && Daily.plan.isGroup) return renderGroups();
+  const p = Daily.plan;
+  if (!p) return renderCalendar();
+  if (p.backTo === 'mywords') return renderMyWords();
+  if (p.isGroup && !p.manual && !p.date) return renderGroups(); // 標籤群組測驗
+  if (p.date) return openDay(p.date); // 日曆自動組 / 手動組 → 回該日總覽
+  renderCalendar();
+}
+
+// 從「當天單字清單」(hub) 的返回：若該日有多組則回總覽，否則回月曆
+async function backFromDayList() {
+  const auto = await getDayPlan(State.profile.id, Daily.date);
+  const manuals = await getManualGroupsByDate(State.profile.id, Daily.date);
+  const count = manuals.length + (auto && auto.group.wordIds.length ? 1 : 0);
+  if (count > 1) return openDay(Daily.date);
   renderCalendar();
 }
 
@@ -461,32 +485,87 @@ async function ensureDayPlan(dateStr) {
 
 async function openDay(dateStr) {
   if (location.hash !== '#calendar') location.hash = '#calendar';
-  let plan = await getDayPlan(State.profile.id, dateStr);
-  if (!plan) {
-    // 過去且無紀錄 → 不補排、不即時生成
-    if (dateStr < todayStr()) {
-      $main().innerHTML = `<div class="card center">
-        <h2>${prettyDate(dateStr)}</h2>
-        <p>這天沒有學習紀錄。</p>
-        <button class="btn" id="back-cal">回日曆</button></div>`;
-      document.getElementById('back-cal').onclick = () => renderCalendar();
-      return;
-    }
-    // 今天 / 未來 → 生成並鎖定
-    plan = await ensureDayPlan(dateStr);
+  const isPast = dateStr < todayStr();
+  let autoPlan = await getDayPlan(State.profile.id, dateStr);
+  const manuals = await getManualGroupsByDate(State.profile.id, dateStr);
+
+  // 過去且完全無紀錄 → 不補排
+  if (!autoPlan && !manuals.length && isPast) {
+    $main().innerHTML = `<div class="card center">
+      <h2>${prettyDate(dateStr)}</h2>
+      <p>這天沒有學習紀錄。</p>
+      <button class="btn" id="back-cal">回日曆</button></div>`;
+    document.getElementById('back-cal').onclick = () => renderCalendar();
+    return;
   }
-  Daily.date = dateStr; Daily.plan = plan;
+  // 今天 / 未來：若無自動組則生成並鎖定
+  if (!autoPlan && !isPast) autoPlan = await ensureDayPlan(dateStr);
+
+  const groups = [];
+  if (autoPlan && autoPlan.group.wordIds.length) groups.push(autoPlan);
+  manuals.forEach((m) => groups.push(m));
+
+  if (!groups.length) { renderCalendar(); return; }
+  if (groups.length === 1) return enterGroupStudy(groups[0]);
+  renderDayMenu(dateStr, groups);
+}
+
+// 進入某一組（自動組或手動組）的學習
+function enterGroupStudy(plan) {
+  Daily.date = plan.date; Daily.plan = plan;
   Daily.spellSession = null; Daily.sentQueue = null; Daily.sentIdx = 0;
-  renderDayList(); // C-1：先顯示「當天單字清單」
+  renderDayList();
+}
+
+// 一天有多個單字組時的總覽（自動組＋手動組）
+async function renderDayMenu(dateStr, groups) {
+  const card = (g, idx) => {
+    const total = g.group.wordIds.length;
+    const done = g.group.wordIds.filter((id) => wordDayDone(g, id)).length;
+    const isManual = !!g.manual;
+    const title = isManual ? `✋ ${esc(g.name)}` : '📅 系統每日單字組';
+    const preview = g.group.wordIds.slice(0, 5).map((id) => {
+      const e = getById(id); return e ? esc(e.word) : '';
+    }).filter(Boolean).join('、');
+    return `<div class="card grp-card daymenu" data-idx="${idx}">
+      <div class="grp-head"><b>${title}</b><span class="row-meta">${done}/${total} 完成</span></div>
+      <div class="row-meta">${esc(preview)}${total > 5 ? '…' : ''}</div>
+      ${isManual ? `<div class="btn-row"><button class="btn danger" data-del="${g.id}">🗑 刪除此手動組</button></div>` : ''}
+    </div>`;
+  };
+  $main().innerHTML = `
+    <div class="card memo-card">
+      <div class="daily-top"><button class="btn" id="back-cal">‹ 日曆</button>
+        <b>${prettyDate(dateStr)}・共 ${groups.length} 組</b></div>
+      <p class="hint-area">這天有系統自動組與你手動排的單字組，點一組開始學習。</p>
+    </div>
+    ${groups.map(card).join('')}`;
+  document.getElementById('back-cal').onclick = () => renderCalendar();
+  document.querySelectorAll('.daymenu').forEach((c) => {
+    c.onclick = (ev) => {
+      if (ev.target.closest('[data-del]')) return;
+      enterGroupStudy(groups[Number(c.dataset.idx)]);
+    };
+  });
+  document.querySelectorAll('[data-del]').forEach((b) => {
+    b.onclick = async (ev) => {
+      ev.stopPropagation();
+      if (!confirm('刪除這個手動單字組？（不會刪掉單字本身）')) return;
+      await deleteManualGroup(b.dataset.del);
+      openDay(dateStr);
+    };
+  });
 }
 
 // C-1：當天單字清單（一眼看到那天學了哪些字）
 async function renderDayList() {
   const plan = Daily.plan;
-  const isGroup = !!plan.isGroup;
+  const isGroup = !!plan.isGroup;        // 標籤群組測驗
+  const isManual = !!plan.manual;        // 手動出題組
+  const isDate = !isGroup;               // 日曆相關（自動或手動）
   const records = await getRecordsByProfile(State.profile.id);
   const recMap = new Map(records.map((r) => [r.wordId, r]));
-  const isPast = !isGroup && Daily.date < todayStr();
+  const isPast = isDate && !isManual && Daily.date < todayStr();
   const total = plan.group.wordIds.length;
   const doneCount = plan.group.wordIds.filter((id) => wordDayDone(plan, id)).length;
   const allDone = total > 0 && doneCount >= total;
@@ -516,22 +595,26 @@ async function renderDayList() {
     actionBtn = `<button class="btn primary big-copy" id="day-start">${label}</button>`;
   }
 
-  const title = isGroup ? `${esc(plan.groupName)}・單字清單（${total} 字）`
-    : `${prettyDate(Daily.date)}・單字清單（${total} 字）`;
+  const namePart = isGroup ? esc(plan.groupName)
+    : isManual ? `✋ ${esc(plan.name)}` : prettyDate(Daily.date);
+  const title = `${namePart}・單字清單（${total} 字）`;
+  const memoText = isGroup ? '群組測驗：先讀一遍，再拼字＋造句'
+    : isManual ? `手動單字組（${prettyDate(plan.date)}）：先讀一遍，再拼字＋造句`
+      : '本組共同記憶點：' + esc(plan.group.memo);
   $main().innerHTML = `
     <div class="card memo-card">
       <div class="daily-top">
         <button class="btn" id="back-cal">${isGroup ? '‹ 群組' : '‹ 日曆'}</button>
         <b>${title}</b>
       </div>
-      <div class="memo">💡 ${isGroup ? '群組測驗：先讀一遍，再拼字＋造句' : '本組共同記憶點：' + esc(plan.group.memo)}</div>
+      <div class="memo">💡 ${memoText}</div>
       <div class="row-meta">進度：${doneCount}/${total} 字完成${isPast ? '（純查看，可重練）' : ''}</div>
     </div>
     ${rows || '<div class="card center">這組沒有單字</div>'}
     <div class="card center">${actionBtn}</div>`;
 
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
-  document.getElementById('back-cal').onclick = () => dailyBack();
+  document.getElementById('back-cal').onclick = () => (isGroup ? renderGroups() : backFromDayList());
   document.getElementById('day-start').onclick = async () => {
     if (allDone) {
       // 重新練習：清掉當日作答、跳過先讀，直接重測（SM-2 與統計照記）
@@ -598,18 +681,23 @@ function renderReadList() {
   }).join('');
 
   const isGroup = !!plan.isGroup;
-  const readTitle = isGroup ? `${esc(plan.groupName)}・先讀（${plan.group.wordIds.length} 字）`
-    : `${prettyDate(Daily.date)}・先讀（${plan.group.wordIds.length} 字）`;
+  const isManual = !!plan.manual;
+  const isDailyAuto = !isGroup && !isManual; // 只有日曆自動組才有「換一組」
+  const namePart = isGroup ? esc(plan.groupName)
+    : isManual ? `✋ ${esc(plan.name)}` : prettyDate(Daily.date);
+  const readTitle = `${namePart}・先讀（${plan.group.wordIds.length} 字）`;
+  const memoText = isDailyAuto ? '本組共同記憶點：' + esc(plan.group.memo)
+    : '讀完一遍，接著拼字＋造句';
   $main().innerHTML = `
     <div class="card memo-card">
       <div class="daily-top">
         <button class="btn" id="back-cal">${isGroup ? '‹ 群組' : '‹ 日曆'}</button>
         <b>${readTitle}</b>
       </div>
-      <div class="memo">💡 ${isGroup ? '群組測驗：讀完進入拼字＋造句' : '本組共同記憶點：' + esc(plan.group.memo)}</div>
-      ${isGroup ? '' : `<div class="btn-row">
+      <div class="memo">💡 ${memoText}</div>
+      ${isDailyAuto ? `<div class="btn-row">
         <button class="btn" id="regroup">🔄 換一組</button>
-      </div>`}
+      </div>` : ''}
     </div>
     ${cards}
     <div class="card center">
@@ -817,7 +905,8 @@ function renderDayDone() {
   }).length;
   const stTotal = plan.group.wordIds.filter((id) => { const e = getById(id); return e && e.example; }).length;
   archiveSnapshot(State.profile); // 存檔當下整體進度，供歷史報告
-  const doneTitle = plan.isGroup ? `${esc(plan.groupName)} 完成 🎉` : `${prettyDate(Daily.date)} 完成 🎉`;
+  const doneTitle = plan.isGroup ? `${esc(plan.groupName)} 完成 🎉`
+    : plan.manual ? `✋ ${esc(plan.name)} 完成 🎉` : `${prettyDate(Daily.date)} 完成 🎉`;
   const types = plan.testTypes || { spelling: true, sentence: true };
   const cells = [`<div><b>${total}</b><span>本組單字</span></div>`];
   if (types.spelling) cells.push(`<div><b>${sp}/${total}</b><span>拼字過關</span></div>`);
@@ -943,6 +1032,131 @@ async function openGroupPicker(wordIds, mode, onDone) {
     m.classList.remove('show');
     if (onDone) onDone();
   };
+}
+
+// ============================================================
+// 手動出題（把自選單字排到某一天）
+// ============================================================
+async function createManualGroup(date, name, wordIds) {
+  const id = 'mg-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6);
+  const g = {
+    id, profileId: State.profile.id, date, name: name.trim() || '手動單字組', manual: true,
+    group: { wordIds: [...new Set(wordIds)], memo: '', memos: [], label: name, groupKey: null },
+    readDone: false, progress: {}, createdAt: Date.now(), updatedAt: Date.now(),
+  };
+  await putManualGroup(g);
+  return g;
+}
+
+// 排程 modal：把一批字排到某天（供「我的單字」批次使用）
+function openScheduleModal(wordIds, onDone) {
+  const today = todayStr();
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box">
+      <h3>把 ${wordIds.length} 個字排到某天</h3>
+      <label>日期
+        <input type="date" id="sch-date" class="answer-input" value="${today}" min="${today}" />
+      </label>
+      <input id="sch-name" class="answer-input" placeholder="單字組名稱（如：段考第3課）" />
+      <div class="btn-row">
+        <button class="btn primary" id="sch-ok">建立手動組</button>
+        <button class="btn" id="sch-cancel">取消</button>
+      </div>
+    </div>`;
+  m.classList.add('show');
+  document.getElementById('sch-cancel').onclick = () => m.classList.remove('show');
+  document.getElementById('sch-ok').onclick = async () => {
+    const date = document.getElementById('sch-date').value;
+    const name = document.getElementById('sch-name').value.trim();
+    if (!date) { alert('請選日期'); return; }
+    await createManualGroup(date, name || '手動單字組', wordIds);
+    m.classList.remove('show');
+    alert(`✅ 已把 ${wordIds.length} 個字排到 ${prettyDate(date)}`);
+    if (onDone) onDone();
+  };
+}
+
+// 手動出題建立頁（搜尋挑字）
+const ManualBuilder = { date: null, wordIds: [] };
+
+function renderManualBuilder() {
+  if (!ManualBuilder.date) ManualBuilder.date = todayStr();
+  const today = todayStr();
+  $main().innerHTML = `
+    <div class="card">
+      <div class="daily-top"><button class="btn" id="mb-back">‹ 日曆</button><b>✋ 手動出題</b></div>
+      <p class="hint-area">自選一批單字排到某天，當天會多一個「手動單字組」，走「先讀→拼字＋造句」。</p>
+      <label>排到哪一天
+        <input type="date" id="mb-date" class="answer-input" value="${ManualBuilder.date}" min="${today}" />
+      </label>
+      <input id="mb-name" class="answer-input" placeholder="單字組名稱（如：第二次段考）" />
+      <input id="mb-search" class="answer-input" placeholder="搜尋單字加入（英文或中文）" />
+      <div id="mb-results"></div>
+    </div>
+    <div class="card">
+      <div class="row-meta">已選 <b id="mb-count">${ManualBuilder.wordIds.length}</b> 字</div>
+      <div id="mb-selected" class="fam-chips"></div>
+      <button class="btn primary big-copy" id="mb-create">建立手動單字組</button>
+      <p id="mb-status" class="hint-area"></p>
+    </div>`;
+  document.getElementById('mb-back').onclick = () => renderCalendar();
+  document.getElementById('mb-date').onchange = (e) => { ManualBuilder.date = e.target.value; };
+  const searchEl = document.getElementById('mb-search');
+  searchEl.oninput = () => drawManualResults(searchEl.value);
+  document.getElementById('mb-create').onclick = async () => {
+    if (!ManualBuilder.wordIds.length) { alert('請先加入至少一個字'); return; }
+    const name = document.getElementById('mb-name').value.trim();
+    const g = await createManualGroup(ManualBuilder.date, name || '手動單字組', ManualBuilder.wordIds);
+    const d = g.date;
+    ManualBuilder.wordIds = [];
+    document.getElementById('mb-status').textContent = `✅ 已建立並排到 ${prettyDate(d)}，可在日曆點該天開始。`;
+    drawManualSelected();
+    document.getElementById('mb-count').textContent = '0';
+  };
+  drawManualSelected();
+  drawManualResults('');
+}
+
+function drawManualResults(q) {
+  const box = document.getElementById('mb-results');
+  if (!box) return;
+  const matches = searchWords(q, 20);
+  if (!q.trim()) { box.innerHTML = ''; return; }
+  if (!matches.length) { box.innerHTML = `<p class="hint-area">查無「${esc(q)}」，可在「查單字」自動上網查後再排。</p>`; return; }
+  box.innerHTML = matches.map((e) => {
+    const added = ManualBuilder.wordIds.includes(e.id);
+    return `<div class="row" data-add="${e.id}">
+      <div class="row-main"><span class="row-word">${esc(e.word)}</span><span class="row-zh">${esc(e.zh)}</span></div>
+      <div class="row-meta"><span>${e.level === 0 ? '我查的字' : 'Lv' + e.level}</span><span>${added ? '✓ 已加入' : '＋ 加入'}</span></div>
+    </div>`;
+  }).join('');
+  box.querySelectorAll('[data-add]').forEach((r) => {
+    r.onclick = () => {
+      const id = r.dataset.add;
+      if (!ManualBuilder.wordIds.includes(id)) ManualBuilder.wordIds.push(id);
+      drawManualResults(document.getElementById('mb-search').value);
+      drawManualSelected();
+      document.getElementById('mb-count').textContent = ManualBuilder.wordIds.length;
+    };
+  });
+}
+
+function drawManualSelected() {
+  const box = document.getElementById('mb-selected');
+  if (!box) return;
+  box.innerHTML = ManualBuilder.wordIds.map((id) => {
+    const e = getById(id);
+    return e ? `<span class="fam-chip" data-rm="${id}">${esc(e.word)} ✕</span>` : '';
+  }).join('') || '<span class="hint-area">尚未選字</span>';
+  box.querySelectorAll('[data-rm]').forEach((c) => {
+    c.onclick = () => {
+      ManualBuilder.wordIds = ManualBuilder.wordIds.filter((w) => w !== c.dataset.rm);
+      drawManualSelected();
+      drawManualResults(document.getElementById('mb-search').value);
+      document.getElementById('mb-count').textContent = ManualBuilder.wordIds.length;
+    };
+  });
 }
 
 // 對某群組進行「先讀＋拼字＋造句」測驗（虛擬計畫，不寫入日曆）
@@ -1192,6 +1406,7 @@ async function renderMyWords() {
         <div class="btn-row">
           <span class="row-meta">已選 <b id="mw-selcount">${MyWordsSel.ids.size}</b> 字</span>
           <button class="btn primary" id="mw-batch">加入群組</button>
+          <button class="btn" id="mw-schedule">📅 排到某天</button>
         </div>
       </div>
     </div>
@@ -1235,6 +1450,11 @@ async function renderMyWords() {
   if (batchBtn) batchBtn.onclick = () => {
     if (!MyWordsSel.ids.size) { alert('請先勾選單字'); return; }
     openGroupPicker([...MyWordsSel.ids], 'add', () => { MyWordsSel.on = false; MyWordsSel.ids.clear(); renderMyWords(); });
+  };
+  const schedBtn = document.getElementById('mw-schedule');
+  if (schedBtn) schedBtn.onclick = () => {
+    if (!MyWordsSel.ids.size) { alert('請先勾選單字'); return; }
+    openScheduleModal([...MyWordsSel.ids], () => { MyWordsSel.on = false; MyWordsSel.ids.clear(); renderMyWords(); });
   };
 
   drawMyWords(recs);

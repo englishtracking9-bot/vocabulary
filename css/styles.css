@@ -210,6 +210,7 @@ details[open] summary::before { content: '▾ '; }
 .cal-cell.done { background: rgba(22, 163, 74, .18); }
 .cal-d { font-weight: 600; }
 .cal-badge { font-size: 10px; color: var(--muted); }
+.cal-manual { position: absolute; top: 2px; right: 3px; font-size: 10px; }
 .cal-cell.done .cal-badge { color: var(--ok); font-size: 13px; }
 .cal-legend { display: flex; gap: 14px; justify-content: center; margin-top: 12px; font-size: 13px; color: var(--muted); }
 .cal-legend .dot { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }

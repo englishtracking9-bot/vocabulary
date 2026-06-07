@@ -49,6 +49,20 @@ export function findByWord(input) {
   return _byKey.get(k) || null;
 }
 
+// 關鍵字搜尋（英文或中文 contains），供手動出題挑字
+export function searchWords(query, limit = 25) {
+  const q = (query || '').toLowerCase().trim();
+  if (!q) return [];
+  const out = [];
+  for (const e of _list) {
+    if (e.word.toLowerCase().includes(q) || (e.zh || '').includes(q)) {
+      out.push(e);
+      if (out.length >= limit) break;
+    }
+  }
+  return out;
+}
+
 // 依級別取得單字（用於每日新字候選）
 export function wordsByLevels(levels) {
   const set = new Set(levels);
