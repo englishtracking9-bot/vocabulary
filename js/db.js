@@ -2,7 +2,7 @@
 // 規格：禁用 localStorage 存學習進度，一律存 IndexedDB。
 
 const DB_NAME = 'vocabApp';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 let _dbPromise = null;
 
@@ -43,6 +43,12 @@ export function openDB() {
       // 雜項設定：key-value（例：activeProfile）
       if (!db.objectStoreNames.contains('meta')) {
         db.createObjectStore('meta', { keyPath: 'key' });
+      }
+
+      // 學習日曆：每日學習計畫（含自動組與手動組）key = `${profileId}::${date}`
+      if (!db.objectStoreNames.contains('dayPlans')) {
+        const s = db.createObjectStore('dayPlans', { keyPath: 'key' });
+        s.createIndex('by_profile', 'profileId', { unique: false });
       }
     };
 
@@ -177,6 +183,18 @@ export async function clearProfileData(profileId) {
   });
 }
 
+// 刪除某身分的 profile 本體（連同紀錄、每日紀錄、學習日曆）
+export async function deleteProfileFully(profileId) {
+  await clearProfileData(profileId);
+  // 刪除該身分的日曆計畫
+  const days = await getDaysByProfile(profileId);
+  await tx(['profiles', 'dayPlans'], 'readwrite', (t) => {
+    t.objectStore('profiles').delete(profileId);
+    const ds = t.objectStore('dayPlans');
+    days.forEach((d) => ds.delete(d.key));
+  });
+}
+
 // ---------- dictCache ----------
 export async function getDictCache(word) {
   const db = await openDB();
@@ -210,5 +228,29 @@ export function putDailyLog(log) {
 export async function getDailyLogsByProfile(profileId) {
   const db = await openDB();
   const idx = db.transaction('dailyLog').objectStore('dailyLog').index('by_profile');
+  return reqPromise(idx.getAll(IDBKeyRange.only(profileId)));
+}
+
+// ---------- dayPlans（學習日曆） ----------
+export function dayKey(profileId, dateStr) {
+  return `${profileId}::${dateStr}`;
+}
+
+export async function getDayPlan(profileId, dateStr) {
+  const db = await openDB();
+  return reqPromise(
+    db.transaction('dayPlans').objectStore('dayPlans').get(dayKey(profileId, dateStr))
+  );
+}
+
+export function putDayPlan(plan) {
+  return tx('dayPlans', 'readwrite', (t) => {
+    t.objectStore('dayPlans').put(plan);
+  });
+}
+
+export async function getDaysByProfile(profileId) {
+  const db = await openDB();
+  const idx = db.transaction('dayPlans').objectStore('dayPlans').index('by_profile');
   return reqPromise(idx.getAll(IDBKeyRange.only(profileId)));
 }

@@ -1,0 +1,1390 @@
+{
+ "root:port": {
+  "type": "root",
+  "label": "字根 port（攜帶、運送）",
+  "memo": "這組字都含字根 port＝攜帶、運送。想到 airport 機場＝運送旅客的地方；port 就是搬運",
+  "members": [
+   "transport",
+   "export",
+   "import",
+   "portable",
+   "support",
+   "report"
+  ]
+ },
+ "root:spect": {
+  "type": "root",
+  "label": "字根 spect（看）",
+  "memo": "這組字都含字根 spect＝看。spect = 看：inspect 檢查（仔細看）、spectator 觀眾",
+  "members": [
+   "respect",
+   "inspect",
+   "expect",
+   "spectator",
+   "perspective"
+  ]
+ },
+ "root:dict": {
+  "type": "root",
+  "label": "字根 dict（說）",
+  "memo": "這組字都含字根 dict＝說。dict = 說：dictionary 字典（教你怎麼說）、predict 預言",
+  "members": [
+   "predict",
+   "dictionary",
+   "dictation",
+   "contradict"
+  ]
+ },
+ "root:scrib": {
+  "type": "root",
+  "label": "字根 scrib（寫）",
+  "memo": "這組字都含字根 scrib＝寫。scrib/script = 寫：describe 描述、subscribe 訂閱（在下面簽名）",
+  "members": [
+   "describe",
+   "subscribe",
+   "prescribe"
+  ]
+ },
+ "root:script": {
+  "type": "root",
+  "label": "字根 script（寫）",
+  "memo": "這組字都含字根 script＝寫。script = 寫成的文字：manuscript 手稿",
+  "members": [
+   "describe",
+   "subscribe",
+   "manuscript"
+  ]
+ },
+ "root:form": {
+  "type": "root",
+  "label": "字根 form（形狀、形成）",
+  "memo": "這組字都含字根 form＝形狀、形成。form = 形：transform 變形、uniform 制服（同一形狀）",
+  "members": [
+   "uniform",
+   "transform",
+   "inform",
+   "reform",
+   "formula"
+  ]
+ },
+ "root:struct": {
+  "type": "root",
+  "label": "字根 struct（建造）",
+  "memo": "這組字都含字根 struct＝建造。struct = 建：construct 建造、structure 結構",
+  "members": [
+   "construct",
+   "structure",
+   "instruct",
+   "destruction"
+  ]
+ },
+ "root:vert": {
+  "type": "root",
+  "label": "字根 vert（轉）",
+  "memo": "這組字都含字根 vert＝轉。vert = 轉：convert 轉換",
+  "members": [
+   "convert",
+   "advertise"
+  ]
+ },
+ "root:ject": {
+  "type": "root",
+  "label": "字根 ject（丟、投）",
+  "memo": "這組字都含字根 ject＝丟、投。ject = 丟：reject 拒絕（丟回去）、inject 注射（丟進去）",
+  "members": [
+   "project",
+   "reject",
+   "inject",
+   "object"
+  ]
+ },
+ "root:tract": {
+  "type": "root",
+  "label": "字根 tract（拉）",
+  "memo": "這組字都含字根 tract＝拉。tract = 拉：attract 吸引（拉過來）、tractor 拖拉機",
+  "members": [
+   "attract",
+   "subtract",
+   "extract"
+  ]
+ },
+ "root:duct": {
+  "type": "root",
+  "label": "字根 duct（引導）",
+  "memo": "這組字都含字根 duct＝引導。duc/duct = 引導：introduce 介紹（引進來）、produce 生產",
+  "members": [
+   "produce",
+   "reduce",
+   "introduce",
+   "conduct",
+   "educate"
+  ]
+ },
+ "root:mit": {
+  "type": "root",
+  "label": "字根 mit（送、放）",
+  "memo": "這組字都含字根 mit＝送、放。mit/miss = 送：submit 提交（送上去）、permit 允許",
+  "members": [
+   "admit",
+   "permit",
+   "submit",
+   "transmit"
+  ]
+ },
+ "root:miss": {
+  "type": "root",
+  "label": "字根 miss（送、放）",
+  "memo": "這組字都含字根 miss＝送、放。miss = 送：mission 任務（被送去做的事）、dismiss 解散",
+  "members": [
+   "mission",
+   "permission",
+   "dismiss",
+   "missile"
+  ]
+ },
+ "root:pos": {
+  "type": "root",
+  "label": "字根 pos（放置）",
+  "memo": "這組字都含字根 pos＝放置。pos = 放：position 位置（放的地方）、compose 組成（放在一起）",
+  "members": [
+   "position",
+   "compose",
+   "expose",
+   "purpose",
+   "deposit"
+  ]
+ },
+ "root:tain": {
+  "type": "root",
+  "label": "字根 tain（握住、保持）",
+  "memo": "這組字都含字根 tain＝握住、保持。tain/ten = 握：contain 包含（握住裡面）、maintain 維持",
+  "members": [
+   "contain",
+   "maintain",
+   "obtain",
+   "retain"
+  ]
+ },
+ "root:fer": {
+  "type": "root",
+  "label": "字根 fer（帶、拿）",
+  "memo": "這組字都含字根 fer＝帶、拿。fer = 帶：transfer 轉移、prefer 較喜歡（帶在前面）",
+  "members": [
+   "transfer",
+   "offer",
+   "prefer",
+   "differ",
+   "suffer"
+  ]
+ },
+ "root:vis": {
+  "type": "root",
+  "label": "字根 vis（看）",
+  "memo": "這組字都含字根 vis＝看。vis/vid = 看：visible 看得見的、vision 視力",
+  "members": [
+   "visible",
+   "vision",
+   "visit",
+   "supervise"
+  ]
+ },
+ "root:vid": {
+  "type": "root",
+  "label": "字根 vid（看）",
+  "memo": "這組字都含字根 vid＝看。vid = 看：video 影像、evidence 證據（看得到的東西）",
+  "members": [
+   "video",
+   "evidence",
+   "provide"
+  ]
+ },
+ "root:aud": {
+  "type": "root",
+  "label": "字根 aud（聽）",
+  "memo": "這組字都含字根 aud＝聽。aud = 聽：audience 觀眾/聽眾、audio 音訊",
+  "members": [
+   "audio",
+   "audience",
+   "auditorium"
+  ]
+ },
+ "root:graph": {
+  "type": "root",
+  "label": "字根 graph（寫、畫、記錄）",
+  "memo": "這組字都含字根 graph＝寫、畫、記錄。graph = 記錄：photograph 照片（用光記錄）、geography 地理",
+  "members": [
+   "geography",
+   "autograph",
+   "paragraph"
+  ]
+ },
+ "root:log": {
+  "type": "root",
+  "label": "字根 log（話語、學問）",
+  "memo": "這組字都含字根 log＝話語、學問。log = 學問：biology 生物學、dialogue 對話",
+  "members": [
+   "dialogue",
+   "biology",
+   "apology",
+   "logic"
+  ]
+ },
+ "root:bio": {
+  "type": "root",
+  "label": "字根 bio（生命）",
+  "memo": "這組字都含字根 bio＝生命。bio = 生命：biology 生物學、biography 傳記（寫人的一生）",
+  "members": [
+   "biology",
+   "biography"
+  ]
+ },
+ "root:manu": {
+  "type": "root",
+  "label": "字根 manu（手）",
+  "memo": "這組字都含字根 manu＝手。manu = 手：manual 手冊/手動的、manufacture 製造（原意手工做）",
+  "members": [
+   "manual",
+   "manufacture",
+   "manuscript"
+  ]
+ },
+ "root:ped": {
+  "type": "root",
+  "label": "字根 ped（腳）",
+  "memo": "這組字都含字根 ped＝腳。ped = 腳：pedal 踏板、pedestrian 行人",
+  "members": [
+   "pedal",
+   "pedestrian"
+  ]
+ },
+ "root:cent": {
+  "type": "root",
+  "label": "字根 cent（百）",
+  "memo": "這組字都含字根 cent＝百。cent = 百：century 世紀（一百年）、percent 百分比",
+  "members": [
+   "century",
+   "percent",
+   "centimeter"
+  ]
+ },
+ "prefix:un": {
+  "type": "prefix",
+  "label": "字首 un-（不、相反）",
+  "memo": "這組字都用字首 un-＝不、相反。最常見的否定字首，un + 形容詞＝相反意思",
+  "members": [
+   "unlock",
+   "unless",
+   "uncover",
+   "unemployment",
+   "unfold",
+   "unveil"
+  ]
+ },
+ "prefix:in": {
+  "type": "prefix",
+  "label": "字首 in-（不、向內）",
+  "memo": "這組字都用字首 in-＝不、向內。可表否定(incorrect)或向內(income 收入)",
+  "members": [
+   "income",
+   "indoor",
+   "inside",
+   "indeed",
+   "independent",
+   "instance",
+   "inform",
+   "information",
+   "injury",
+   "incredible",
+   "input",
+   "install",
+   "intend",
+   "intense",
+   "intuition",
+   "invest",
+   "incorporate",
+   "indifferent",
+   "indispensable",
+   "infinite",
+   "insight",
+   "intent",
+   "indifference",
+   "inhabit",
+   "injustice",
+   "inland",
+   "intake",
+   "invaluable"
+  ]
+ },
+ "prefix:im": {
+  "type": "prefix",
+  "label": "字首 im-（不（用在 m/p/b 前））",
+  "memo": "這組字都用字首 im-＝不（用在 m/p/b 前）。in- 在 m/p/b 前會變 im-，較好發音",
+  "members": [
+   "import",
+   "image",
+   "improve",
+   "immediate",
+   "impress",
+   "immigrant",
+   "immigration",
+   "impose",
+   "impulse",
+   "imprison"
+  ]
+ },
+ "prefix:dis": {
+  "type": "prefix",
+  "label": "字首 dis-（不、相反、分開）",
+  "memo": "這組字都用字首 dis-＝不、相反、分開。dis + 動詞/形容詞＝相反，如 disagree 不同意",
+  "members": [
+   "disagree",
+   "disappear",
+   "dishonest",
+   "disconnect",
+   "dislike",
+   "discover",
+   "disease",
+   "display",
+   "discount",
+   "disability",
+   "disadvantage",
+   "disappoint",
+   "discourage",
+   "dismiss",
+   "disorder",
+   "distribute",
+   "disapprove",
+   "disclose",
+   "discourse",
+   "dissolve",
+   "disable",
+   "disbelief",
+   "discard",
+   "discharge",
+   "disclosure",
+   "discomfort",
+   "disgrace",
+   "dismay",
+   "dispose"
+  ]
+ },
+ "prefix:non": {
+  "type": "prefix",
+  "label": "字首 non-（非、無）",
+  "memo": "這組字都用字首 non-＝非、無。non = 沒有：nonstop 不停的",
+  "members": [
+   "nonsense",
+   "nonprofit"
+  ]
+ },
+ "prefix:mis": {
+  "type": "prefix",
+  "label": "字首 mis-（錯誤地）",
+  "memo": "這組字都用字首 mis-＝錯誤地。mis = 弄錯：mistake 錯誤、misunderstand 誤會",
+  "members": [
+   "mistake",
+   "misunderstand",
+   "mislead",
+   "missing",
+   "mischief",
+   "misfortune"
+  ]
+ },
+ "prefix:re": {
+  "type": "prefix",
+  "label": "字首 re-（再一次、回）",
+  "memo": "這組字都用字首 re-＝再一次、回。re = 再/回：return 返回、repeat 重複",
+  "members": [
+   "return",
+   "repeat",
+   "review",
+   "really",
+   "remember",
+   "report",
+   "reporter",
+   "recent",
+   "record",
+   "recover",
+   "refuse",
+   "relate",
+   "remove",
+   "repair",
+   "react",
+   "reaction",
+   "release",
+   "reliable",
+   "remain",
+   "remind",
+   "replace",
+   "represent",
+   "republic",
+   "request",
+   "reserve",
+   "resource",
+   "restrict",
+   "recall",
+   "recreation",
+   "recycle",
+   "reform",
+   "refund",
+   "remark",
+   "renew",
+   "repetition",
+   "representation",
+   "research",
+   "resign",
+   "resolution",
+   "resolve",
+   "restore",
+   "retire",
+   "retreat",
+   "reunion",
+   "revision",
+   "reward",
+   "reassure",
+   "recite",
+   "repay",
+   "resort",
+   "retail",
+   "revenue",
+   "reverse",
+   "refine",
+   "refresh",
+   "relay",
+   "reproduce",
+   "reside",
+   "restrain"
+  ]
+ },
+ "prefix:pre": {
+  "type": "prefix",
+  "label": "字首 pre-（在…之前）",
+  "memo": "這組字都用字首 pre-＝在…之前。pre = 前：preview 預習、predict 預測",
+  "members": [
+   "prepare",
+   "preview",
+   "predict",
+   "prevent",
+   "pretend",
+   "preserve",
+   "precaution",
+   "premature",
+   "prehistoric",
+   "preside"
+  ]
+ },
+ "prefix:post": {
+  "type": "prefix",
+  "label": "字首 post-（在…之後）",
+  "memo": "這組字都用字首 post-＝在…之後。post = 後：postpone 延後",
+  "members": [
+   "postpone",
+   "postcard",
+   "postage"
+  ]
+ },
+ "prefix:ex": {
+  "type": "prefix",
+  "label": "字首 ex-（向外、出）",
+  "memo": "這組字都用字首 ex-＝向外、出。ex = 外：export 出口、exit 出口",
+  "members": [
+   "export",
+   "exit",
+   "expand",
+   "explode",
+   "external",
+   "example",
+   "explain",
+   "exact",
+   "excite",
+   "express",
+   "exchange",
+   "expose",
+   "extend",
+   "extent",
+   "exclaim",
+   "extension"
+  ]
+ },
+ "prefix:trans": {
+  "type": "prefix",
+  "label": "字首 trans-（橫越、轉換）",
+  "memo": "這組字都用字首 trans-＝橫越、轉換。trans = 跨越：transport 運輸、translate 翻譯（轉換語言）",
+  "members": [
+   "transport",
+   "transfer",
+   "translate",
+   "transform",
+   "transaction",
+   "transformation",
+   "transmission",
+   "transparent",
+   "transplant"
+  ]
+ },
+ "prefix:inter": {
+  "type": "prefix",
+  "label": "字首 inter-（在…之間、互相）",
+  "memo": "這組字都用字首 inter-＝在…之間、互相。inter = 之間：international 國際的（國與國之間）",
+  "members": [
+   "international",
+   "interview",
+   "interact",
+   "interaction",
+   "intermediate",
+   "intersection"
+  ]
+ },
+ "prefix:sub": {
+  "type": "prefix",
+  "label": "字首 sub-（在…之下、次）",
+  "memo": "這組字都用字首 sub-＝在…之下、次。sub = 下：subway 地下鐵、submarine 潛水艇",
+  "members": [
+   "submarine",
+   "subject",
+   "subtract",
+   "substance",
+   "suburban"
+  ]
+ },
+ "prefix:super": {
+  "type": "prefix",
+  "label": "字首 super-（超越、在上）",
+  "memo": "這組字都用字首 super-＝超越、在上。super = 超：supermarket 超級市場",
+  "members": [
+   "supermarket",
+   "superior",
+   "supervise",
+   "supervision"
+  ]
+ },
+ "prefix:con": {
+  "type": "prefix",
+  "label": "字首 con-（共同、一起）",
+  "memo": "這組字都用字首 con-＝共同、一起。con/com = 一起：connect 連接、combine 結合",
+  "members": [
+   "connect",
+   "contact",
+   "conference",
+   "combine",
+   "company",
+   "confirm",
+   "confuse",
+   "conscience",
+   "consequence",
+   "content",
+   "contest",
+   "context",
+   "contribute",
+   "converse",
+   "confine",
+   "conform",
+   "confront",
+   "contemporary",
+   "contempt",
+   "contend",
+   "conversion",
+   "condense",
+   "conquest",
+   "conserve",
+   "console"
+  ]
+ },
+ "prefix:pro": {
+  "type": "prefix",
+  "label": "字首 pro-（向前、贊成）",
+  "memo": "這組字都用字首 pro-＝向前、贊成。pro = 前：progress 進步（向前走）",
+  "members": [
+   "progress",
+   "produce",
+   "project",
+   "promote",
+   "protect",
+   "program",
+   "proper",
+   "propose",
+   "profit",
+   "promotion",
+   "protest",
+   "proclaim",
+   "profile",
+   "profound",
+   "prolong",
+   "proportion",
+   "provision"
+  ]
+ },
+ "prefix:de": {
+  "type": "prefix",
+  "label": "字首 de-（向下、除去、相反）",
+  "memo": "這組字都用字首 de-＝向下、除去、相反。de = 下/去除：decrease 減少、destroy 破壞",
+  "members": [
+   "decrease",
+   "destroy",
+   "define",
+   "delay",
+   "deliver",
+   "design",
+   "detail",
+   "definite",
+   "delight",
+   "depart",
+   "deserve",
+   "despite",
+   "device",
+   "devote",
+   "debut",
+   "decent",
+   "deliberate",
+   "depress",
+   "default",
+   "descent"
+  ]
+ },
+ "prefix:uni": {
+  "type": "prefix",
+  "label": "字首 uni-（一、單一）",
+  "memo": "這組字都用字首 uni-＝一、單一。uni = 一：uniform 制服（統一形式）、unite 聯合",
+  "members": [
+   "uniform",
+   "unique",
+   "unite",
+   "universe"
+  ]
+ },
+ "prefix:auto": {
+  "type": "prefix",
+  "label": "字首 auto-（自己、自動）",
+  "memo": "這組字都用字首 auto-＝自己、自動。auto = 自己：automatic 自動的",
+  "members": [
+   "automatic",
+   "autograph",
+   "autobiography"
+  ]
+ },
+ "prefix:tele": {
+  "type": "prefix",
+  "label": "字首 tele-（遠距離）",
+  "memo": "這組字都用字首 tele-＝遠距離。tele = 遠：telephone 電話（遠處傳聲）、telescope 望遠鏡",
+  "members": [
+   "telescope",
+   "telegraph"
+  ]
+ },
+ "prefix:micro": {
+  "type": "prefix",
+  "label": "字首 micro-（微小）",
+  "memo": "這組字都用字首 micro-＝微小。micro = 微：microscope 顯微鏡",
+  "members": [
+   "microscope",
+   "microwave"
+  ]
+ },
+ "prefix:over": {
+  "type": "prefix",
+  "label": "字首 over-（過度、上方）",
+  "memo": "這組字都用字首 over-＝過度、上方。over = 過度：overweight 超重、oversleep 睡過頭",
+  "members": [
+   "overcome",
+   "overlook",
+   "overcoat",
+   "overnight",
+   "overthrow",
+   "overall",
+   "overhead",
+   "oversee",
+   "overtake",
+   "overturn",
+   "overflow",
+   "overhear",
+   "overlap",
+   "overwork"
+  ]
+ },
+ "prefix:under": {
+  "type": "prefix",
+  "label": "字首 under-（在…之下、不足）",
+  "memo": "這組字都用字首 under-＝在…之下、不足。under = 下：underground 地下的、underline 畫底線",
+  "members": [
+   "understand",
+   "underline",
+   "underwear",
+   "undergraduate",
+   "undermine",
+   "undertake",
+   "underestimate",
+   "underpass",
+   "underway"
+  ]
+ },
+ "suffix:able": {
+  "type": "suffix",
+  "label": "字尾 -able（可…的、能…的）",
+  "memo": "這組字都用字尾 -able＝可…的、能…的。-able 接動詞變形容詞：comfortable 舒適的、portable 可攜帶的",
+  "members": [
+   "comfortable",
+   "available",
+   "reasonable",
+   "valuable",
+   "portable"
+  ]
+ },
+ "suffix:ible": {
+  "type": "suffix",
+  "label": "字尾 -ible（可…的、能…的）",
+  "memo": "這組字都用字尾 -ible＝可…的、能…的。-ible 同 -able：visible 看得見的",
+  "members": [
+   "possible",
+   "visible",
+   "terrible",
+   "responsible"
+  ]
+ },
+ "suffix:ful": {
+  "type": "suffix",
+  "label": "字尾 -ful（充滿…的）",
+  "memo": "這組字都用字尾 -ful＝充滿…的。-ful = 充滿：helpful 有幫助的、careful 小心的",
+  "members": [
+   "beautiful",
+   "careful",
+   "helpful",
+   "wonderful",
+   "powerful"
+  ]
+ },
+ "suffix:tion": {
+  "type": "suffix",
+  "label": "字尾 -tion（…的行為/狀態（名詞））",
+  "memo": "這組字都用字尾 -tion＝…的行為/狀態（名詞）。-tion/-sion 把動詞變名詞：educate→education 教育",
+  "members": [
+   "education",
+   "information",
+   "action",
+   "attention",
+   "invitation"
+  ]
+ },
+ "suffix:sion": {
+  "type": "suffix",
+  "label": "字尾 -sion（…的行為/狀態（名詞））",
+  "memo": "這組字都用字尾 -sion＝…的行為/狀態（名詞）。-sion：decide→decision 決定",
+  "members": [
+   "decision",
+   "discussion",
+   "permission"
+  ]
+ },
+ "suffix:er": {
+  "type": "suffix",
+  "label": "字尾 -er（做…的人/物）",
+  "memo": "這組字都用字尾 -er＝做…的人/物。-er = 人：teach→teacher 老師",
+  "members": [
+   "teacher",
+   "worker",
+   "singer",
+   "writer",
+   "driver"
+  ]
+ },
+ "suffix:or": {
+  "type": "suffix",
+  "label": "字尾 -or（做…的人/物）",
+  "memo": "這組字都用字尾 -or＝做…的人/物。-or = 人：act→actor 演員",
+  "members": [
+   "visitor",
+   "inventor",
+   "director"
+  ]
+ },
+ "suffix:ist": {
+  "type": "suffix",
+  "label": "字尾 -ist（從事…的人）",
+  "memo": "這組字都用字尾 -ist＝從事…的人。-ist = 專家：art→artist 藝術家",
+  "members": [
+   "artist",
+   "scientist",
+   "tourist",
+   "pianist",
+   "dentist"
+  ]
+ },
+ "suffix:ity": {
+  "type": "suffix",
+  "label": "字尾 -ity（…的性質（名詞））",
+  "memo": "這組字都用字尾 -ity＝…的性質（名詞）。-ity 把形容詞變名詞：able→ability 能力",
+  "members": [
+   "ability",
+   "activity",
+   "reality",
+   "quality",
+   "safety"
+  ]
+ },
+ "suffix:ous": {
+  "type": "suffix",
+  "label": "字尾 -ous（充滿…的（形容詞））",
+  "memo": "這組字都用字尾 -ous＝充滿…的（形容詞）。-ous = 多…的：danger→dangerous 危險的",
+  "members": [
+   "dangerous",
+   "famous",
+   "nervous",
+   "serious",
+   "various"
+  ]
+ },
+ "suffix:ive": {
+  "type": "suffix",
+  "label": "字尾 -ive（有…性質的（形容詞））",
+  "memo": "這組字都用字尾 -ive＝有…性質的（形容詞）。-ive：act→active 活躍的",
+  "members": [
+   "active",
+   "creative",
+   "positive",
+   "expensive",
+   "attractive"
+  ]
+ },
+ "suffix:al": {
+  "type": "suffix",
+  "label": "字尾 -al（…的（形容詞））",
+  "memo": "這組字都用字尾 -al＝…的（形容詞）。-al 把名詞變形容詞：nature→natural 自然的",
+  "members": [
+   "natural",
+   "national",
+   "personal",
+   "musical",
+   "traditional"
+  ]
+ },
+ "suffix:ize": {
+  "type": "suffix",
+  "label": "字尾 -ize（使…化（動詞））",
+  "memo": "這組字都用字尾 -ize＝使…化（動詞）。-ize = 使變成：real→realize 領悟、memorize 背起來",
+  "members": [
+   "realize",
+   "organize",
+   "recognize",
+   "memorize"
+  ]
+ },
+ "suffix:ify": {
+  "type": "suffix",
+  "label": "字尾 -ify（使…（動詞））",
+  "memo": "這組字都用字尾 -ify＝使…（動詞）。-ify = 使：simple→simplify 簡化",
+  "members": [
+   "simplify",
+   "satisfy",
+   "identify"
+  ]
+ },
+ "compound:rain": {
+  "type": "compound",
+  "label": "複合字：含「rain」",
+  "memo": "這組都是含「rain」的複合字，拆開來記更快（例：rainbow＝雨 + 弓形 = 彩虹）",
+  "members": [
+   "rainbow",
+   "raincoat"
+  ]
+ },
+ "compound:ball": {
+  "type": "compound",
+  "label": "複合字：含「ball」",
+  "memo": "這組都是含「ball」的複合字，拆開來記更快（例：basketball＝籃子 + 球 = 籃球）",
+  "members": [
+   "basketball",
+   "football"
+  ]
+ },
+ "compound:room": {
+  "type": "compound",
+  "label": "複合字：含「room」",
+  "memo": "這組都是含「room」的複合字，拆開來記更快（例：bedroom＝床 + 房間 = 臥室）",
+  "members": [
+   "bedroom",
+   "bathroom"
+  ]
+ },
+ "confuse:0": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "quiet 安靜（中間 e-t）；quite 相當（結尾 t-e）。多一個字母位置就差很多！",
+  "members": [
+   "quiet",
+   "quite"
+  ]
+ },
+ "confuse:1": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "affect 是動詞『影響』(A=Action)；effect 是名詞『效果』(E=End result)",
+  "members": [
+   "affect",
+   "effect"
+  ]
+ },
+ "confuse:2": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "desert 沙漠（一個 s）；dessert 甜點（兩個 s，因為甜點想多吃一份）",
+  "members": [
+   "desert",
+   "dessert"
+  ]
+ },
+ "confuse:3": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "accept 接受(ac-)；except 除了(ex-向外排除)",
+  "members": [
+   "accept",
+   "except"
+  ]
+ },
+ "confuse:4": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "principal 校長（你的 pal 好朋友）；principle 原則(le 結尾)",
+  "members": [
+   "principal",
+   "principle"
+  ]
+ },
+ "confuse:5": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "weather 天氣；whether 是否(wh- 疑問)",
+  "members": [
+   "weather",
+   "whether"
+  ]
+ },
+ "confuse:6": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "loose 鬆的（兩個 o 像鬆開）；lose 失去（一個 o）",
+  "members": [
+   "loose",
+   "lose"
+  ]
+ },
+ "confuse:7": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "advice 忠告（名詞，c）；advise 勸告（動詞，s）",
+  "members": [
+   "advice",
+   "advise"
+  ]
+ },
+ "confuse:8": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "quit 放棄、quiet 安靜、quite 相當——三個長很像，看清楚字母順序",
+  "members": [
+   "quit",
+   "quiet",
+   "quite"
+  ]
+ },
+ "confuse:9": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "through 穿過、though 雖然、thought 想法、thorough 徹底——th 開頭一家人，仔細分辨",
+  "members": [
+   "through",
+   "though",
+   "thought",
+   "thorough"
+  ]
+ },
+ "confuse:10": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "dairy 乳製品；diary 日記（i 在前，每天 write）",
+  "members": [
+   "dairy",
+   "diary"
+  ]
+ },
+ "confuse:11": {
+  "type": "confuse",
+  "label": "形近易混字（放一起對比）",
+  "memo": "expand 擴張、expend 花費、expense 費用——a 是變大、e 是花錢",
+  "members": [
+   "expand",
+   "expense"
+  ]
+ },
+ "theme:天氣": {
+  "type": "theme",
+  "label": "主題：天氣",
+  "memo": "這組都是「天氣」主題的字，一起記建立語意網絡",
+  "members": [
+   "weather",
+   "rain",
+   "snow",
+   "wind",
+   "windy",
+   "rainy",
+   "sunny",
+   "cloudy",
+   "storm",
+   "thunder",
+   "lightning",
+   "fog",
+   "temperature",
+   "forecast",
+   "humid"
+  ]
+ },
+ "theme:情緒感受": {
+  "type": "theme",
+  "label": "主題：情緒感受",
+  "memo": "這組都是「情緒感受」主題的字，一起記建立語意網絡",
+  "members": [
+   "happy",
+   "sad",
+   "angry",
+   "afraid",
+   "nervous",
+   "excited",
+   "bored",
+   "lonely",
+   "proud",
+   "shy",
+   "surprised",
+   "joy",
+   "fear",
+   "anger",
+   "emotion"
+  ]
+ },
+ "theme:交通工具": {
+  "type": "theme",
+  "label": "主題：交通工具",
+  "memo": "這組都是「交通工具」主題的字，一起記建立語意網絡",
+  "members": [
+   "car",
+   "bus",
+   "train",
+   "truck",
+   "motorcycle",
+   "ship",
+   "boat",
+   "helicopter",
+   "vehicle",
+   "transport"
+  ]
+ },
+ "theme:家庭成員": {
+  "type": "theme",
+  "label": "主題：家庭成員",
+  "memo": "這組都是「家庭成員」主題的字，一起記建立語意網絡",
+  "members": [
+   "father",
+   "mother",
+   "parent",
+   "brother",
+   "sister",
+   "uncle",
+   "aunt",
+   "cousin",
+   "grandfather",
+   "grandmother",
+   "nephew",
+   "niece",
+   "relative"
+  ]
+ },
+ "theme:身體部位": {
+  "type": "theme",
+  "label": "主題：身體部位",
+  "memo": "這組都是「身體部位」主題的字，一起記建立語意網絡",
+  "members": [
+   "head",
+   "hair",
+   "eye",
+   "ear",
+   "nose",
+   "mouth",
+   "tooth",
+   "neck",
+   "shoulder",
+   "arm",
+   "hand",
+   "finger",
+   "leg",
+   "foot",
+   "knee",
+   "stomach",
+   "heart"
+  ]
+ },
+ "theme:食物飲食": {
+  "type": "theme",
+  "label": "主題：食物飲食",
+  "memo": "這組都是「食物飲食」主題的字，一起記建立語意網絡",
+  "members": [
+   "bread",
+   "rice",
+   "noodle",
+   "meat",
+   "fish",
+   "egg",
+   "milk",
+   "juice",
+   "coffee",
+   "tea",
+   "fruit",
+   "vegetable",
+   "sugar",
+   "salt",
+   "meal",
+   "snack"
+  ]
+ },
+ "theme:顏色": {
+  "type": "theme",
+  "label": "主題：顏色",
+  "memo": "這組都是「顏色」主題的字，一起記建立語意網絡",
+  "members": [
+   "red",
+   "orange",
+   "yellow",
+   "green",
+   "blue",
+   "purple",
+   "pink",
+   "brown",
+   "black",
+   "white",
+   "gray",
+   "color"
+  ]
+ },
+ "theme:學校教育": {
+  "type": "theme",
+  "label": "主題：學校教育",
+  "memo": "這組都是「學校教育」主題的字，一起記建立語意網絡",
+  "members": [
+   "school",
+   "student",
+   "teacher",
+   "class",
+   "lesson",
+   "homework",
+   "test",
+   "grade",
+   "subject",
+   "education",
+   "study",
+   "college"
+  ]
+ },
+ "theme:時間": {
+  "type": "theme",
+  "label": "主題：時間",
+  "memo": "這組都是「時間」主題的字，一起記建立語意網絡",
+  "members": [
+   "second",
+   "minute",
+   "hour",
+   "day",
+   "week",
+   "month",
+   "year",
+   "morning",
+   "afternoon",
+   "evening",
+   "night",
+   "today",
+   "tomorrow",
+   "yesterday",
+   "calendar"
+  ]
+ },
+ "theme:職業": {
+  "type": "theme",
+  "label": "主題：職業",
+  "memo": "這組都是「職業」主題的字，一起記建立語意網絡",
+  "members": [
+   "nurse",
+   "teacher",
+   "engineer",
+   "lawyer",
+   "farmer",
+   "police",
+   "soldier",
+   "cook",
+   "driver",
+   "pilot",
+   "scientist",
+   "artist",
+   "manager"
+  ]
+ },
+ "theme:動物": {
+  "type": "theme",
+  "label": "主題：動物",
+  "memo": "這組都是「動物」主題的字，一起記建立語意網絡",
+  "members": [
+   "dog",
+   "cat",
+   "bird",
+   "fish",
+   "tiger",
+   "lion",
+   "elephant",
+   "monkey",
+   "rabbit",
+   "horse",
+   "cow",
+   "pig",
+   "sheep",
+   "chicken",
+   "duck",
+   "snake",
+   "insect"
+  ]
+ },
+ "theme:金錢經濟": {
+  "type": "theme",
+  "label": "主題：金錢經濟",
+  "memo": "這組都是「金錢經濟」主題的字，一起記建立語意網絡",
+  "members": [
+   "money",
+   "dollar",
+   "cost",
+   "price",
+   "pay",
+   "buy",
+   "sell",
+   "spend",
+   "save",
+   "rich",
+   "poor",
+   "bank",
+   "income",
+   "expense",
+   "budget",
+   "economy"
+  ]
+ },
+ "antonym:0": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "increase 增加 ↔ decrease 減少（in-向上、de-向下）",
+  "members": [
+   "increase",
+   "decrease"
+  ]
+ },
+ "antonym:1": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "accept 接受 ↔ reject 拒絕",
+  "members": [
+   "accept",
+   "reject"
+  ]
+ },
+ "antonym:2": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "arrive 到達 ↔ depart 出發",
+  "members": [
+   "arrive",
+   "depart"
+  ]
+ },
+ "antonym:3": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "import 進口（in 向內）↔ export 出口（ex 向外）",
+  "members": [
+   "import",
+   "export"
+  ]
+ },
+ "antonym:4": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "expand 擴大 ↔ shrink 縮小",
+  "members": [
+   "expand",
+   "shrink"
+  ]
+ },
+ "antonym:5": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "success 成功 ↔ failure 失敗",
+  "members": [
+   "success",
+   "failure"
+  ]
+ },
+ "antonym:6": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "ancient 古代的 ↔ modern 現代的",
+  "members": [
+   "ancient",
+   "modern"
+  ]
+ },
+ "antonym:7": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "public 公共的 ↔ private 私人的",
+  "members": [
+   "public",
+   "private"
+  ]
+ },
+ "antonym:8": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "major 主要的 ↔ minor 次要的",
+  "members": [
+   "major",
+   "minor"
+  ]
+ },
+ "antonym:9": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "positive 正面的 ↔ negative 負面的",
+  "members": [
+   "positive",
+   "negative"
+  ]
+ },
+ "antonym:10": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "temporary 暫時的 ↔ permanent 永久的",
+  "members": [
+   "temporary",
+   "permanent"
+  ]
+ },
+ "antonym:11": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "generous 慷慨的 ↔ selfish 自私的",
+  "members": [
+   "generous",
+   "selfish"
+  ]
+ },
+ "antonym:12": {
+  "type": "antonym",
+  "label": "同反義對照",
+  "memo": "artificial 人造的 ↔ natural 天然的",
+  "members": [
+   "artificial",
+   "natural"
+  ]
+ }
+}

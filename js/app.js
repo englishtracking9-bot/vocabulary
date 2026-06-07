@@ -1,7 +1,7 @@
 // app.js — 啟動、路由、首頁＝測驗、身分切換
 import {
   openDB, getAllProfiles, putProfile, getProfile, setMeta, getMeta,
-  getRecordsByProfile, getRecord, putRecord, deleteRecord,
+  getRecordsByProfile, getRecord, putRecord, deleteRecord, deleteProfileFully,
 } from './db.js';
 import {
   loadVocab, getById, allWords, registerCustomWord, checkAnswer,
@@ -566,14 +566,31 @@ async function renderSettings() {
   const p = State.profile;
   const s = p.settings;
   const stats = await getStats(p.id);
+  const profiles = await getAllProfiles();
   $main().innerHTML = `
     <div class="card">
-      <h2>設定（${esc(p.name)}）</h2>
-      <label>身分名稱
-        <input id="set-name" class="answer-input" value="${esc(p.name)}" />
-      </label>
-      <label>每日新字上限
-        <input id="set-limit" class="answer-input" type="number" min="1" max="100" value="${s.dailyNewLimit}" />
+      <h2>使用者管理</h2>
+      <div id="user-list">
+        ${profiles.map((u) => `
+          <div class="row" data-uid="${u.id}">
+            <div class="row-main">
+              <span class="row-word">${esc(u.name)} ${u.id === p.id ? '（使用中）' : ''}</span>
+            </div>
+            <div class="btn-row">
+              <button class="btn" data-act="switch" data-uid="${u.id}">切換</button>
+              <button class="btn" data-act="rename" data-uid="${u.id}">改名</button>
+              <button class="btn danger" data-act="delete" data-uid="${u.id}" ${profiles.length <= 1 ? 'disabled' : ''}>刪除</button>
+            </div>
+          </div>`).join('')}
+      </div>
+      <button class="btn primary" id="add-user">＋ 新增使用者</button>
+      <p class="hint-area">每個使用者各自獨立的進度、設定、單字佇列與學習日曆。</p>
+    </div>
+
+    <div class="card">
+      <h2>目前使用者設定（${esc(p.name)}）</h2>
+      <label>每日單字數（10–20）
+        <input id="set-limit" class="answer-input" type="number" min="10" max="20" value="${s.dailyNewLimit}" />
       </label>
       <div>出題級別（新字來源）：</div>
       <div class="level-checks">
@@ -613,16 +630,72 @@ async function renderSettings() {
     </div>`;
 
   document.getElementById('set-save').onclick = async () => {
-    const name = document.getElementById('set-name').value.trim() || p.name;
-    const limit = parseInt(document.getElementById('set-limit').value, 10) || s.dailyNewLimit;
+    let limit = parseInt(document.getElementById('set-limit').value, 10) || s.dailyNewLimit;
+    limit = Math.max(10, Math.min(20, limit)); // 限制 10–20
     const levels = [...document.querySelectorAll('.lv:checked')].map((c) => parseInt(c.value, 10));
-    p.name = name;
     p.settings = { ...s, dailyNewLimit: limit, levels: levels.length ? levels : [4, 5, 6] };
     await putProfile(p);
     State.profile = p;
     State.session = null;
     renderHeader();
     document.getElementById('set-status').textContent = '✅ 已儲存';
+  };
+
+  // ---- 使用者管理：切換 / 改名 / 刪除 / 新增 ----
+  document.querySelectorAll('#user-list [data-act]').forEach((btn) => {
+    btn.onclick = async () => {
+      const uid = btn.dataset.uid;
+      const act = btn.dataset.act;
+      const target = profiles.find((u) => u.id === uid);
+      if (!target) return;
+
+      if (act === 'switch') {
+        State.profile = await getProfile(uid);
+        await setMeta('activeProfile', uid);
+        State.session = null;
+        renderHeader();
+        renderSettings();
+      } else if (act === 'rename') {
+        const name = prompt('輸入新的使用者名稱：', target.name);
+        if (name && name.trim()) {
+          target.name = name.trim();
+          await putProfile(target);
+          if (uid === State.profile.id) State.profile = target;
+          renderHeader();
+          renderSettings();
+        }
+      } else if (act === 'delete') {
+        if (profiles.length <= 1) { alert('至少要保留一個使用者'); return; }
+        if (!confirm(`確定要刪除使用者「${target.name}」？\n他的所有單字進度、統計與學習日曆都會永久消失。`)) return;
+        if (!confirm(`再次確認：真的要刪除「${target.name}」嗎？此動作無法復原。`)) return;
+        await deleteProfileFully(uid);
+        // 若刪到使用中身分，切到其餘第一個
+        if (uid === State.profile.id) {
+          const rest = (await getAllProfiles())[0];
+          State.profile = rest;
+          await setMeta('activeProfile', rest.id);
+          State.session = null;
+        }
+        renderHeader();
+        renderSettings();
+      }
+    };
+  });
+
+  document.getElementById('add-user').onclick = async () => {
+    const name = prompt('輸入新使用者的名稱：', '');
+    if (!name || !name.trim()) return;
+    const newProfile = {
+      id: 'user-' + Date.now(),
+      name: name.trim(),
+      settings: { dailyNewLimit: 15, levels: [4, 5, 6], priorityLevels: [4, 5, 6], reminderTime: '19:30', reminderOn: false },
+    };
+    await putProfile(newProfile);
+    State.profile = newProfile;
+    await setMeta('activeProfile', newProfile.id);
+    State.session = null;
+    renderHeader();
+    renderSettings();
   };
 
   document.getElementById('exp').onclick = async () => {
@@ -651,11 +724,24 @@ async function renderSettings() {
   };
 }
 
-// ---------- Service Worker ----------
+// ---------- Service Worker（含自動更新到新版） ----------
 function registerServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js').catch((e) => console.warn('SW 註冊失敗', e));
-  }
+  if (!('serviceWorker' in navigator)) return;
+  const hadController = !!navigator.serviceWorker.controller;
+  let firstInstall = !hadController;
+  let refreshing = false;
+
+  navigator.serviceWorker.register('./service-worker.js')
+    .then((reg) => { reg.update(); })
+    .catch((e) => console.warn('SW 註冊失敗', e));
+
+  // 當新版 SW 接管時自動重整一次（首次安裝不重整，避免無謂刷新）
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (firstInstall) { firstInstall = false; return; }
+    if (refreshing) return;
+    refreshing = true;
+    location.reload();
+  });
 }
 
 window.addEventListener('DOMContentLoaded', init);

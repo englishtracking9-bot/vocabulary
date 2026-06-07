@@ -1,0 +1,83 @@
+{
+  "_comment": "教學分類資料：供『分組出題』使用。tag_roots.py 會把這些與 vocab.json 交集後產生分組標籤與 groups_index.json。",
+
+  "prefixRules": [
+    { "label": "否定字首（變相反意思）", "prefixes": ["un", "in", "im", "il", "ir", "dis", "non", "mis"], "memo": "這組字都用『否定字首』把原本的字變成相反或負面的意思（如 happy→unhappy）" },
+    { "label": "方向／時間字首", "prefixes": ["ex", "trans", "sub", "inter", "pre", "post", "re", "over", "under", "fore", "pro"], "memo": "這組字的字首代表方向或時間（ex-向外、pre-之前、re-再一次…）" },
+    { "label": "數量字首", "prefixes": ["uni", "bi", "tri", "multi", "semi", "cent"], "memo": "這組字的字首代表數量（uni-一、bi-二、tri-三…）" }
+  ],
+
+  "compounds": [
+    { "word": "watermelon", "parts": ["water", "melon"], "memo": "水 + 瓜 = 西瓜" },
+    { "word": "sunflower", "parts": ["sun", "flower"], "memo": "太陽 + 花 = 向日葵" },
+    { "word": "sunrise", "parts": ["sun", "rise"], "memo": "太陽 + 升起 = 日出" },
+    { "word": "sunset", "parts": ["sun", "set"], "memo": "太陽 + 落下 = 日落" },
+    { "word": "sunshine", "parts": ["sun", "shine"], "memo": "太陽 + 照耀 = 陽光" },
+    { "word": "rainbow", "parts": ["rain", "bow"], "memo": "雨 + 弓形 = 彩虹" },
+    { "word": "raincoat", "parts": ["rain", "coat"], "memo": "雨 + 外套 = 雨衣" },
+    { "word": "weekend", "parts": ["week", "end"], "memo": "週 + 結束 = 週末" },
+    { "word": "birthday", "parts": ["birth", "day"], "memo": "出生 + 日 = 生日" },
+    { "word": "homework", "parts": ["home", "work"], "memo": "家 + 工作 = 家庭作業" },
+    { "word": "classroom", "parts": ["class", "room"], "memo": "班級 + 房間 = 教室" },
+    { "word": "blackboard", "parts": ["black", "board"], "memo": "黑 + 板 = 黑板" },
+    { "word": "basketball", "parts": ["basket", "ball"], "memo": "籃子 + 球 = 籃球" },
+    { "word": "football", "parts": ["foot", "ball"], "memo": "腳 + 球 = 足球" },
+    { "word": "newspaper", "parts": ["news", "paper"], "memo": "新聞 + 紙 = 報紙" },
+    { "word": "airport", "parts": ["air", "port"], "memo": "空中 + 港口 = 機場" },
+    { "word": "seafood", "parts": ["sea", "food"], "memo": "海 + 食物 = 海鮮" },
+    { "word": "toothbrush", "parts": ["tooth", "brush"], "memo": "牙齒 + 刷子 = 牙刷" },
+    { "word": "bedroom", "parts": ["bed", "room"], "memo": "床 + 房間 = 臥室" },
+    { "word": "bathroom", "parts": ["bath", "room"], "memo": "洗澡 + 房間 = 浴室" },
+    { "word": "playground", "parts": ["play", "ground"], "memo": "玩 + 場地 = 操場" },
+    { "word": "underground", "parts": ["under", "ground"], "memo": "在下面 + 地 = 地下的" },
+    { "word": "afternoon", "parts": ["after", "noon"], "memo": "之後 + 中午 = 下午" },
+    { "word": "everyone", "parts": ["every", "one"], "memo": "每一 + 個人 = 每個人" },
+    { "word": "something", "parts": ["some", "thing"], "memo": "一些 + 東西 = 某物" }
+  ],
+
+  "confusables": [
+    { "words": ["quiet", "quite"], "memo": "quiet 安靜（中間 e-t）；quite 相當（結尾 t-e）。多一個字母位置就差很多！" },
+    { "words": ["affect", "effect"], "memo": "affect 是動詞『影響』(A=Action)；effect 是名詞『效果』(E=End result)" },
+    { "words": ["desert", "dessert"], "memo": "desert 沙漠（一個 s）；dessert 甜點（兩個 s，因為甜點想多吃一份）" },
+    { "words": ["accept", "except"], "memo": "accept 接受(ac-)；except 除了(ex-向外排除)" },
+    { "words": ["principal", "principle"], "memo": "principal 校長（你的 pal 好朋友）；principle 原則(le 結尾)" },
+    { "words": ["weather", "whether"], "memo": "weather 天氣；whether 是否(wh- 疑問)" },
+    { "words": ["loose", "lose"], "memo": "loose 鬆的（兩個 o 像鬆開）；lose 失去（一個 o）" },
+    { "words": ["advice", "advise"], "memo": "advice 忠告（名詞，c）；advise 勸告（動詞，s）" },
+    { "words": ["quit", "quiet", "quite"], "memo": "quit 放棄、quiet 安靜、quite 相當——三個長很像，看清楚字母順序" },
+    { "words": ["through", "though", "thought", "thorough"], "memo": "through 穿過、though 雖然、thought 想法、thorough 徹底——th 開頭一家人，仔細分辨" },
+    { "words": ["dairy", "diary"], "memo": "dairy 乳製品；diary 日記（i 在前，每天 write）" },
+    { "words": ["expand", "expend", "expense"], "memo": "expand 擴張、expend 花費、expense 費用——a 是變大、e 是花錢" }
+  ],
+
+  "themes": {
+    "天氣": ["weather", "rain", "snow", "wind", "windy", "rainy", "sunny", "cloudy", "storm", "thunder", "lightning", "fog", "temperature", "forecast", "humid"],
+    "情緒感受": ["happy", "sad", "angry", "afraid", "nervous", "excited", "bored", "lonely", "proud", "shy", "surprised", "worried", "joy", "fear", "anger", "emotion"],
+    "交通工具": ["car", "bus", "train", "subway", "taxi", "truck", "bicycle", "motorcycle", "airplane", "ship", "boat", "helicopter", "vehicle", "transport"],
+    "家庭成員": ["father", "mother", "parent", "brother", "sister", "uncle", "aunt", "cousin", "grandfather", "grandmother", "nephew", "niece", "relative"],
+    "身體部位": ["head", "hair", "eye", "ear", "nose", "mouth", "tooth", "neck", "shoulder", "arm", "hand", "finger", "leg", "foot", "knee", "stomach", "heart"],
+    "食物飲食": ["bread", "rice", "noodle", "meat", "fish", "egg", "milk", "juice", "coffee", "tea", "fruit", "vegetable", "sugar", "salt", "meal", "snack"],
+    "顏色": ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown", "black", "white", "gray", "color"],
+    "學校教育": ["school", "student", "teacher", "class", "lesson", "homework", "exam", "test", "grade", "subject", "education", "study", "knowledge", "college"],
+    "時間": ["second", "minute", "hour", "day", "week", "month", "year", "morning", "afternoon", "evening", "night", "today", "tomorrow", "yesterday", "calendar"],
+    "職業": ["doctor", "nurse", "teacher", "engineer", "lawyer", "farmer", "police", "soldier", "cook", "waiter", "driver", "pilot", "scientist", "artist", "manager"],
+    "動物": ["dog", "cat", "bird", "fish", "tiger", "lion", "elephant", "monkey", "rabbit", "horse", "cow", "pig", "sheep", "chicken", "duck", "snake", "insect"],
+    "金錢經濟": ["money", "dollar", "cost", "price", "pay", "buy", "sell", "spend", "save", "rich", "poor", "bank", "income", "expense", "budget", "economy"]
+  },
+
+  "antonyms": [
+    { "words": ["increase", "decrease"], "memo": "increase 增加 ↔ decrease 減少（in-向上、de-向下）" },
+    { "words": ["accept", "reject"], "memo": "accept 接受 ↔ reject 拒絕" },
+    { "words": ["arrive", "depart"], "memo": "arrive 到達 ↔ depart 出發" },
+    { "words": ["import", "export"], "memo": "import 進口（in 向內）↔ export 出口（ex 向外）" },
+    { "words": ["expand", "shrink"], "memo": "expand 擴大 ↔ shrink 縮小" },
+    { "words": ["success", "failure"], "memo": "success 成功 ↔ failure 失敗" },
+    { "words": ["ancient", "modern"], "memo": "ancient 古代的 ↔ modern 現代的" },
+    { "words": ["public", "private"], "memo": "public 公共的 ↔ private 私人的" },
+    { "words": ["major", "minor"], "memo": "major 主要的 ↔ minor 次要的" },
+    { "words": ["positive", "negative"], "memo": "positive 正面的 ↔ negative 負面的" },
+    { "words": ["temporary", "permanent"], "memo": "temporary 暫時的 ↔ permanent 永久的" },
+    { "words": ["generous", "selfish"], "memo": "generous 慷慨的 ↔ selfish 自私的" },
+    { "words": ["artificial", "natural"], "memo": "artificial 人造的 ↔ natural 天然的" }
+  ]
+}
