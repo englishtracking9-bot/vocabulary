@@ -2,6 +2,7 @@
 import {
   openDB, getAllProfiles, putProfile, getProfile, setMeta, getMeta,
   getRecordsByProfile, getRecord, putRecord, deleteRecord, deleteProfileFully,
+  getDayPlan, putDayPlan, getDaysByProfile, dayKey,
 } from './db.js';
 import {
   loadVocab, getById, allWords, registerCustomWord, checkAnswer,
@@ -11,6 +12,8 @@ import { lookupWord, fetchDict, speak, addToReview } from './lookup.js';
 import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard } from './report.js';
 import { getStats, exportProfile, importProfile } from './stats.js';
 import { displayCategory, statusBadge, computeStatus } from './srs.js';
+import { loadGroupsIndex, formDailyGroup, familyOf } from './grouping.js';
+import { compareSentence } from './sentence.js';
 import { esc, todayStr, prettyDate } from './util.js';
 
 // ---------- 預設身分 ----------
@@ -36,6 +39,7 @@ async function init() {
   try {
     await openDB();
     await loadVocab();
+    await loadGroupsIndex();
     await loadCustomWords();
     await ensureProfiles();
 
@@ -44,6 +48,10 @@ async function init() {
 
     renderHeader();
     window.addEventListener('hashchange', route);
+    // 導覽列：即使 hash 沒變也要重繪（例如在日曆子頁點「日曆」要回到月曆）
+    document.querySelectorAll('.nav-btn').forEach((b) => {
+      b.addEventListener('click', () => go(b.dataset.route));
+    });
     if (!location.hash) location.hash = '#quiz';
     route();
 
@@ -91,6 +99,7 @@ function renderHeader() {
 // ---------- 路由 ----------
 const ROUTES = {
   '#quiz': renderQuiz,
+  '#calendar': renderCalendar,
   '#lookup': renderLookup,
   '#mywords': renderMyWords,
   '#roots': renderRoots,
@@ -105,6 +114,12 @@ function route() {
     b.classList.toggle('active', b.dataset.route === hash);
   });
   fn();
+}
+
+// 導覽：設定 hash 並強制重繪（即使 hash 未變）
+function go(hash) {
+  if (location.hash === hash) route();
+  else location.hash = hash;
 }
 
 // ============================================================
@@ -237,13 +252,23 @@ function kindLabel(kind) {
 // ============================================================
 function cardHTML(entry, dict) {
   const phon = (dict && dict.phonetic) ? `<span class="phon">${esc(dict.phonetic)}</span>` : '';
-  const examples = (dict && dict.examples && dict.examples.length)
-    ? `<div class="examples"><b>例句</b><ul>${dict.examples.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`
-    : (entry.example ? `<div class="examples"><b>例句</b><p>${esc(entry.example)}</p></div>` : '');
+  let examples = '';
+  if (entry.example && entry.example.trim()) {
+    // 優先用已存的標準例句（含中文翻譯，離線可用）
+    examples = `<div class="examples"><b>例句</b>
+      <div class="ex-en">${esc(entry.example)} <button class="btn icon" data-say="${esc(entry.example)}">🔊</button></div>
+      ${entry.example_zh ? `<div class="ex-zh">${esc(entry.example_zh)}</div>` : ''}</div>`;
+  } else if (dict && dict.examples && dict.examples.length) {
+    examples = `<div class="examples"><b>例句</b><ul>${dict.examples.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+  }
   const note = entry.note ? `<div class="note">補充（相關詞）：${esc(entry.note)}</div>` : '';
-  const root = entry.root
-    ? `<div class="root"><b>字根拆解</b>：${esc(typeof entry.root === 'string' ? entry.root : JSON.stringify(entry.root))}</div>`
-    : '';
+  let root = '';
+  if (Array.isArray(entry.root) && entry.root.length) {
+    const seg = entry.root.map((p) => `<b>${esc(p.part)}</b>(${esc(p.mean)})`).join(' + ');
+    root = `<div class="root">🔧 字根拆解：${seg}</div>`;
+  } else if (typeof entry.root === 'string' && entry.root) {
+    root = `<div class="root">🔧 字根拆解：${esc(entry.root)}</div>`;
+  }
   return `
     <div class="card word-card">
       <div class="word-head">
@@ -263,6 +288,381 @@ function attachCardHandlers(entry) {
   document.querySelectorAll('[data-say]').forEach((b) => {
     b.onclick = () => speak(b.dataset.say);
   });
+}
+
+// ============================================================
+// 學習日曆
+// ============================================================
+const Cal = { year: null, month: null }; // month: 0-11
+
+async function renderCalendar() {
+  const now = new Date();
+  if (Cal.year == null) { Cal.year = now.getFullYear(); Cal.month = now.getMonth(); }
+
+  const days = await getDaysByProfile(State.profile.id);
+  const planMap = new Map(days.map((d) => [d.date, d]));
+
+  const first = new Date(Cal.year, Cal.month, 1);
+  const startDow = first.getDay(); // 0=Sun
+  const daysInMonth = new Date(Cal.year, Cal.month + 1, 0).getDate();
+  const todayS = todayStr(now);
+
+  let cells = '';
+  for (let i = 0; i < startDow; i++) cells += `<div class="cal-cell empty"></div>`;
+  for (let d = 1; d <= daysInMonth; d++) {
+    const ds = `${Cal.year}-${String(Cal.month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const st = dayStatus(planMap.get(ds));
+    const isToday = ds === todayS;
+    cells += `
+      <button class="cal-cell ${st.cls} ${isToday ? 'today' : ''}" data-date="${ds}">
+        <span class="cal-d">${d}</span>
+        ${st.badge ? `<span class="cal-badge">${st.badge}</span>` : ''}
+      </button>`;
+  }
+
+  $main().innerHTML = `
+    <div class="card">
+      <div class="cal-head">
+        <button class="btn" id="cal-prev">‹</button>
+        <h2>${Cal.year} 年 ${Cal.month + 1} 月</h2>
+        <button class="btn" id="cal-next">›</button>
+      </div>
+      <div class="cal-grid cal-dow">
+        ${['日','一','二','三','四','五','六'].map((w) => `<div class="cal-dow-cell">${w}</div>`).join('')}
+      </div>
+      <div class="cal-grid" id="cal-body">${cells}</div>
+      <div class="cal-legend">
+        <span><i class="dot new"></i>未開始</span>
+        <span><i class="dot doing"></i>進行中</span>
+        <span><i class="dot done"></i>已完成</span>
+      </div>
+    </div>
+    <div class="card center">
+      <button class="btn primary" id="cal-today">📚 開始今天的單字組</button>
+      <p class="hint-area">點任一天，進入「當日學習」：先讀一組字 → 拼字測驗 ＋ 造句測驗。</p>
+    </div>`;
+
+  document.getElementById('cal-prev').onclick = () => { shiftMonth(-1); renderCalendar(); };
+  document.getElementById('cal-next').onclick = () => { shiftMonth(1); renderCalendar(); };
+  document.getElementById('cal-today').onclick = () => openDay(todayS);
+  document.querySelectorAll('#cal-body .cal-cell[data-date]').forEach((c) => {
+    c.onclick = () => openDay(c.dataset.date);
+  });
+}
+
+function shiftMonth(delta) {
+  Cal.month += delta;
+  if (Cal.month < 0) { Cal.month = 11; Cal.year--; }
+  if (Cal.month > 11) { Cal.month = 0; Cal.year++; }
+}
+
+function dayStatus(plan) {
+  if (!plan) return { cls: '', badge: '' };
+  const total = plan.group.wordIds.length;
+  if (!total) return { cls: '', badge: '' };
+  const done = plan.group.wordIds.filter((id) => wordDayDone(plan, id)).length;
+  if (done >= total) return { cls: 'done', badge: '✓' };
+  if (plan.readDone || done > 0) return { cls: 'doing', badge: `${Math.round(done / total * 100)}%` };
+  return { cls: 'new', badge: '•' };
+}
+
+function wordDayDone(plan, wid) {
+  const p = plan.progress[wid] || {};
+  const e = getById(wid);
+  const needSentence = e && e.example && e.example.trim();
+  // 拼字答對；造句（若該字有例句）已作答過即算完成該字（正確率另計）
+  const spellingOk = p.spelling === 'correct';
+  const sentenceDone = !needSentence || p.sentence === 'correct' || p.sentence === 'wrong' || p.sentence === 'skip';
+  return spellingOk && sentenceDone;
+}
+
+// ============================================================
+// 當日學習
+// ============================================================
+const Daily = { date: null, plan: null, spellSession: null, sentQueue: null, sentIdx: 0, answered: false, usedHint: false };
+
+async function ensureDayPlan(dateStr) {
+  let plan = await getDayPlan(State.profile.id, dateStr);
+  if (!plan) {
+    const records = await getRecordsByProfile(State.profile.id);
+    const group = formDailyGroup(State.profile, records, State.profile.settings.dailyNewLimit);
+    plan = {
+      key: dayKey(State.profile.id, dateStr), profileId: State.profile.id, date: dateStr,
+      group, readDone: false, progress: {}, createdAt: Date.now(), updatedAt: Date.now(),
+    };
+    await putDayPlan(plan);
+  }
+  return plan;
+}
+
+async function openDay(dateStr) {
+  const plan = await ensureDayPlan(dateStr);
+  Daily.date = dateStr; Daily.plan = plan;
+  Daily.spellSession = null; Daily.sentQueue = null; Daily.sentIdx = 0;
+  if (location.hash !== '#calendar') location.hash = '#calendar';
+  dispatchDaily();
+}
+
+function dispatchDaily() {
+  const plan = Daily.plan;
+  if (!plan.group.wordIds.length) {
+    $main().innerHTML = `<div class="card center"><h2>今天沒有可學的新字 👍</h2>
+      <p>可能你的範圍內的字都已熟記。到「設定」調整級別，或到「查單字」加字。</p>
+      <button class="btn" id="back-cal">回日曆</button></div>`;
+    document.getElementById('back-cal').onclick = () => renderCalendar();
+    return;
+  }
+  if (!plan.readDone) return renderReadList();
+
+  const needSpelling = plan.group.wordIds.filter((id) => (plan.progress[id] || {}).spelling !== 'correct');
+  if (needSpelling.length) return startSpelling(needSpelling);
+
+  const needSentence = plan.group.wordIds.filter((id) => {
+    const e = getById(id);
+    const p = plan.progress[id] || {};
+    return e && e.example && e.example.trim() && !p.sentence;
+  });
+  if (needSentence.length) return startSentence(needSentence);
+
+  return renderDayDone();
+}
+
+// ---- 第一段：先讀 ----
+function renderReadList() {
+  const plan = Daily.plan;
+  const cards = plan.group.wordIds.map((id) => {
+    const e = getById(id);
+    if (!e) return '';
+    return `
+      <div class="read-card">
+        <div class="word-head">
+          <span class="word-en">${esc(e.word)}</span>
+          <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button>
+          <button class="btn icon remove-word" data-rm="${e.id}" title="從今天移除">✕</button>
+        </div>
+        <div class="pos">${esc(e.pos)}・Lv${e.level}</div>
+        <div class="zh">${esc(e.zh)}</div>
+        ${e.root ? `<div class="root">🔧 ${e.root.map((p) => `${esc(p.part)}(${esc(p.mean)})`).join(' + ')}</div>` : ''}
+        ${e.example ? `<div class="examples">
+          <div class="ex-en">${esc(e.example)} <button class="btn icon" data-say="${esc(e.example)}">🔊</button></div>
+          <div class="ex-zh">${esc(e.example_zh || '')}</div>
+        </div>` : ''}
+      </div>`;
+  }).join('');
+
+  $main().innerHTML = `
+    <div class="card memo-card">
+      <div class="daily-top">
+        <button class="btn" id="back-cal">‹ 日曆</button>
+        <b>${prettyDate(Daily.date)}・先讀（${plan.group.wordIds.length} 字）</b>
+      </div>
+      <div class="memo">💡 本組共同記憶點：${esc(plan.group.memo)}</div>
+      <div class="btn-row">
+        <button class="btn" id="regroup">🔄 換一組</button>
+      </div>
+    </div>
+    ${cards}
+    <div class="card center">
+      <button class="btn primary big-copy" id="read-done">✅ 讀完了，開始測驗 →</button>
+    </div>`;
+
+  document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
+  document.getElementById('back-cal').onclick = () => renderCalendar();
+
+  // 移除某字
+  document.querySelectorAll('.remove-word').forEach((b) => {
+    b.onclick = async (ev) => {
+      ev.stopPropagation();
+      const id = b.dataset.rm;
+      Daily.plan.group.wordIds = Daily.plan.group.wordIds.filter((w) => w !== id);
+      delete Daily.plan.progress[id];
+      Daily.plan.updatedAt = Date.now();
+      await putDayPlan(Daily.plan);
+      renderReadList();
+    };
+  });
+
+  // 換一組（排除目前分組，重新湊一組）
+  document.getElementById('regroup').onclick = async () => {
+    const records = await getRecordsByProfile(State.profile.id);
+    const exclude = Daily.plan.group.groupKey ? [Daily.plan.group.groupKey] : [];
+    const group = formDailyGroup(State.profile, records, State.profile.settings.dailyNewLimit, exclude);
+    if (!group.wordIds.length) { alert('沒有其他可用的分組了'); return; }
+    Daily.plan.group = group;
+    Daily.plan.progress = {};
+    Daily.plan.readDone = false;
+    Daily.plan.updatedAt = Date.now();
+    await putDayPlan(Daily.plan);
+    renderReadList();
+  };
+  document.getElementById('read-done').onclick = async () => {
+    Daily.plan.readDone = true;
+    Daily.plan.updatedAt = Date.now();
+    await putDayPlan(Daily.plan);
+    dispatchDaily();
+  };
+}
+
+// ---- 第二段①：拼字測驗 ----
+function startSpelling(wordIds) {
+  Daily.spellSession = new Session(wordIds.map((id) => {
+    const e = getById(id); return { wordId: id, level: e ? e.level : 0, kind: 'review' };
+  }));
+  dailySpellingShow();
+}
+
+function dailySpellingShow() {
+  const item = Daily.spellSession.current();
+  if (!item) return dispatchDaily();
+  Daily.answered = false; Daily.usedHint = false;
+  const e = getById(item.wordId);
+  const s = Daily.spellSession;
+  $main().innerHTML = `
+    <div class="quiz-progress">
+      <span>✏️ 拼字測驗</span><span>剩餘 ${s.remaining}</span><span>Lv${e.level}</span>
+    </div>
+    <div class="card quiz-card">
+      <div class="zh-prompt">${esc(e.zh) || '（無中文）'}</div>
+      <div class="pos">${esc(e.pos)}</div>
+      <input id="ans" class="answer-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="輸入英文拼字…" />
+      <div class="btn-row">
+        <button class="btn primary" id="submit">送出</button>
+        <button class="btn" id="hint">💡 提示</button>
+        <button class="btn" id="say">🔊 聽發音<small>(算提示)</small></button>
+      </div>
+      <div id="hint-area" class="hint-area"></div>
+    </div>`;
+  const input = document.getElementById('ans');
+  input.focus();
+  input.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') dailySpellingSubmit(); });
+  document.getElementById('submit').onclick = dailySpellingSubmit;
+  document.getElementById('hint').onclick = () => {
+    Daily.usedHint = true;
+    const w = e.answerKeys[0];
+    document.getElementById('hint-area').textContent = `提示：首字母「${w[0]}」，共 ${w.length} 個字母`;
+  };
+  document.getElementById('say').onclick = () => { Daily.usedHint = true; speak(e.answerKeys[0]); };
+}
+
+async function dailySpellingSubmit() {
+  if (Daily.answered) return;
+  const input = document.getElementById('ans');
+  if (!input.value.trim()) { input.focus(); return; }
+  Daily.answered = true;
+  const item = Daily.spellSession.current();
+  const e = getById(item.wordId);
+  const correct = checkAnswer(e, input.value);
+  const secondTry = Daily.spellSession.wasWrongBefore(e.id);
+  await recordAnswer(State.profile, e, correct, Daily.usedHint, secondTry);
+
+  // 記錄當日拼字結果
+  Daily.plan.progress[e.id] = Daily.plan.progress[e.id] || {};
+  if (correct) {
+    Daily.plan.progress[e.id].spelling = 'correct';
+    Daily.spellSession.advance();
+  } else if (Daily.plan.progress[e.id].spelling !== 'correct') {
+    Daily.plan.progress[e.id].spelling = 'wrong';
+    Daily.spellSession.requeueCurrent();
+  }
+  Daily.plan.updatedAt = Date.now();
+  await putDayPlan(Daily.plan);
+
+  // 當日流程已有存好的例句，直接用本機資料呈現（不打網路，純離線、快）
+  const banner = correct ? `<div class="result ok">✅ 答對了！</div>`
+    : `<div class="result no">❌ 答錯了，你輸入了「${esc(input.value)}」，稍後會再出現直到答對</div>`;
+  $main().innerHTML = `${banner}${cardHTML(e, null)}
+    <div class="btn-row"><button class="btn primary" id="next">下一題 →</button></div>`;
+  attachCardHandlers(e);
+  document.getElementById('next').onclick = () => {
+    if (Daily.spellSession.remaining === 0) dispatchDaily();
+    else dailySpellingShow();
+  };
+}
+
+// ---- 第二段②：造句測驗（例句默寫比對）----
+function startSentence(wordIds) {
+  Daily.sentQueue = wordIds.slice();
+  Daily.sentIdx = 0;
+  dailySentenceShow();
+}
+
+function dailySentenceShow() {
+  if (Daily.sentIdx >= Daily.sentQueue.length) return dispatchDaily();
+  Daily.answered = false;
+  const e = getById(Daily.sentQueue[Daily.sentIdx]);
+  $main().innerHTML = `
+    <div class="quiz-progress">
+      <span>📝 造句測驗（默寫）</span><span>${Daily.sentIdx + 1} / ${Daily.sentQueue.length}</span>
+    </div>
+    <div class="card quiz-card">
+      <p class="hint-area">看著中文翻譯，把這個單字的英文例句完整默寫出來（含 <b>${esc(e.word)}</b>）：</p>
+      <div class="zh-prompt sent-zh">${esc(e.example_zh || '')}</div>
+      <div class="pos">關鍵字：${esc(e.word)}（${esc(e.zh)}）
+        <button class="btn icon" data-say="${esc(e.example)}">🔊 聽例句</button>
+      </div>
+      <textarea id="sent" class="answer-input sent-input" rows="2" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="輸入完整英文句子…"></textarea>
+      <div class="btn-row"><button class="btn primary" id="submit">送出</button></div>
+    </div>`;
+  const ta = document.getElementById('sent');
+  ta.focus();
+  document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
+  document.getElementById('submit').onclick = dailySentenceSubmit;
+}
+
+async function dailySentenceSubmit() {
+  if (Daily.answered) return;
+  const ta = document.getElementById('sent');
+  const val = ta.value;
+  if (!val.trim()) { ta.focus(); return; }
+  Daily.answered = true;
+  const e = getById(Daily.sentQueue[Daily.sentIdx]);
+  const res = compareSentence(val, e.example);
+
+  // 回寫 SM-2（造句也是一次提取練習）
+  await recordAnswer(State.profile, e, res.correct, false, false);
+  Daily.plan.progress[e.id] = Daily.plan.progress[e.id] || {};
+  Daily.plan.progress[e.id].sentence = res.correct ? 'correct' : 'wrong';
+  Daily.plan.updatedAt = Date.now();
+  await putDayPlan(Daily.plan);
+
+  const banner = res.correct ? `<div class="result ok">✅ 完全正確！</div>`
+    : `<div class="result no">❌ 有些地方不一樣，看看下面的對照</div>`;
+  const missing = res.missing.length ? `<p class="hint-area">缺少的字：${res.missing.map(esc).join('、')}</p>` : '';
+  $main().innerHTML = `
+    ${banner}
+    <div class="card">
+      <div class="sent-block"><b>你的句子</b><div class="sent-line">${res.userHtml}</div></div>
+      <div class="sent-block"><b>正確例句</b><div class="sent-line">${res.standardHtml}
+        <button class="btn icon" data-say="${esc(e.example)}">🔊</button></div>
+        <div class="ex-zh">${esc(e.example_zh || '')}</div></div>
+      ${missing}
+    </div>
+    <div class="btn-row"><button class="btn primary" id="next">下一句 →</button></div>`;
+  document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
+  document.getElementById('next').onclick = () => { Daily.sentIdx++; dailySentenceShow(); };
+}
+
+// ---- 完成 ----
+function renderDayDone() {
+  const plan = Daily.plan;
+  const total = plan.group.wordIds.length;
+  const sp = plan.group.wordIds.filter((id) => (plan.progress[id] || {}).spelling === 'correct').length;
+  const st = plan.group.wordIds.filter((id) => {
+    const p = plan.progress[id] || {}; return p.sentence === 'correct';
+  }).length;
+  const stTotal = plan.group.wordIds.filter((id) => { const e = getById(id); return e && e.example; }).length;
+  $main().innerHTML = `
+    <div class="card center">
+      <h2>${prettyDate(Daily.date)} 完成 🎉</h2>
+      <div class="stat-grid">
+        <div><b>${total}</b><span>本組單字</span></div>
+        <div><b>${sp}/${total}</b><span>拼字過關</span></div>
+        <div><b>${st}/${stTotal}</b><span>造句正確</span></div>
+      </div>
+      <button class="btn primary" id="back-cal">回日曆</button>
+      <a class="btn" href="#report">看每日報告</a>
+    </div>`;
+  document.getElementById('back-cal').onclick = () => renderCalendar();
 }
 
 // ============================================================
