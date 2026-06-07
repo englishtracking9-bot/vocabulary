@@ -13,7 +13,15 @@
       "Bash(python scripts/gen_examples.py)",
       "Bash(node --check js/app.js)",
       "Bash(node --check js/grouping.js)",
-      "Bash(node --check js/report.js)"
+      "Bash(node --check js/report.js)",
+      "Bash(node --check js/lookup.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8141/index.html)",
+      "Bash(curl -sI http://localhost:8141/js/app.js)",
+      "Bash(python scripts/devserver.py)",
+      "Bash(curl -s -o /dev/null -w \"index:%{http_code}\\\\n\" http://localhost:8141/index.html)",
+      "Bash(curl -s -o /dev/null -w \"8142 index:%{http_code}\\\\n\" http://localhost:8142/index.html)",
+      "Bash(curl -s -o /dev/null -w \"8143:%{http_code}\\\\n\" http://localhost:8143/index.html)",
+      "Bash(curl -sI http://localhost:8143/js/app.js)"
     ]
   }
 }

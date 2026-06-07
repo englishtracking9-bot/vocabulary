@@ -8,7 +8,7 @@ import {
   loadVocab, getById, allWords, registerCustomWord, checkAnswer,
 } from './vocab.js';
 import { buildQueue, Session, recordAnswer } from './quiz.js';
-import { lookupWord, fetchDict, speak, addToReview } from './lookup.js';
+import { lookupWord, fetchDict, speak, addToReview, createCustomWord, updateCustomZh, deleteCustomWord } from './lookup.js';
 import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard, archiveSnapshot } from './report.js';
 import { getStats, exportProfile, importProfile } from './stats.js';
 import { displayCategory, statusBadge, computeStatus } from './srs.js';
@@ -223,7 +223,9 @@ async function doSubmit() {
   if (correct) State.session.advance();
   else State.session.requeueCurrent();
 
-  const dict = await fetchDict(entry.word.replace(/\(.*?\)/g, '').trim());
+  // 自訂字/已有例句者用本機資料即可，不打網路（避免片語查詢卡住）
+  const dict = (entry.custom || (entry.example && entry.example.trim()))
+    ? null : await fetchDict(entry.word.replace(/\(.*?\)/g, '').trim());
   showAnswerCard(entry, dict, correct, val);
 }
 
@@ -263,6 +265,9 @@ function cardHTML(entry, dict) {
     examples = `<div class="examples"><b>例句</b><ul>${dict.examples.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
   }
   const note = entry.note ? `<div class="note">補充（相關詞）：${esc(entry.note)}</div>` : '';
+  const customTag = entry.custom ? `<span class="tag-custom">🔖 我查的字</span>` : '';
+  const definition = (entry.custom && entry.definition)
+    ? `<div class="def">釋義：${esc(entry.definition)}</div>` : '';
   let root = '';
   if (Array.isArray(entry.root) && entry.root.length) {
     const seg = entry.root.map((p) => `<b>${esc(p.part)}</b>(${esc(p.mean)})`).join(' + ');
@@ -270,15 +275,18 @@ function cardHTML(entry, dict) {
   } else if (typeof entry.root === 'string' && entry.root) {
     root = `<div class="root">🔧 字根拆解：${esc(entry.root)}</div>`;
   }
+  const levelLabel = entry.level === 0 ? '我查的字' : `Level ${entry.level}`;
   return `
     <div class="card word-card">
       <div class="word-head">
         <span class="word-en">${esc(entry.word)}</span>
         <button class="btn icon" data-say="${esc(entry.answerKeys[0])}">🔊</button>
+        ${customTag}
       </div>
       ${phon}
-      <div class="pos">${esc(entry.pos)}・Level ${entry.level}</div>
-      <div class="zh">${esc(entry.zh) || '（無中文）'}</div>
+      <div class="pos">${esc(entry.pos) || ''}${entry.pos ? '・' : ''}${levelLabel}</div>
+      <div class="zh">${esc(entry.zh) || '（尚無中文，可在下方補上）'}</div>
+      ${definition}
       ${note}
       ${examples}
       ${root}
@@ -781,11 +789,11 @@ function renderLookup() {
     <div class="card">
       <h2>查單字</h2>
       <div class="btn-row">
-        <input id="lk-input" class="answer-input" type="text" placeholder="輸入英文單字…"
+        <input id="lk-input" class="answer-input" type="text" placeholder="輸入單字或片語（如 electricity bill）"
           autocapitalize="off" autocorrect="off" spellcheck="false" />
         <button class="btn primary" id="lk-go">查詢</button>
       </div>
-      <p class="hint-area">查詢成功會自動加入「我的單字」待學清單（免按鈕）。</p>
+      <p class="hint-area">支援詞組／片語。本機查無會自動上網查；查詢成功自動加入待學清單（免按鈕）。</p>
     </div>
     <div id="lk-result"></div>`;
   const input = document.getElementById('lk-input');
@@ -803,70 +811,99 @@ async function doLookup() {
 
   try {
     const { entry, dict, recordStatus, autoAdded } = await lookupWord(State.profile, term);
-    if (!entry) {
-      return renderLookupNotFound(term, dict);
-    }
-    let banner = '';
-    if (autoAdded) banner = `<div class="result ok">✅ 已自動加入待學清單</div>`;
-    else if (displayCategory(recordStatus) === 'mastered')
-      banner = `<div class="result ok">你已學會這個字 ✅（不重複加入）</div>`;
-    else banner = `<div class="result info">已在你的清單中（${statusBadge(recordStatus)}）</div>`;
-
-    out.innerHTML = `${banner}${cardHTML(entry, dict)}
-      <div class="btn-row">
-        <button class="btn" id="quiz-this">立即測這個字</button>
-        ${displayCategory(recordStatus) === 'mastered'
-          ? `<button class="btn" id="readd">再次加入複習</button>`
-          : `<button class="btn danger" id="remove">我其實已會 → 移除</button>`}
-      </div>`;
-    attachCardHandlers(entry);
-    const qt = document.getElementById('quiz-this');
-    if (qt) qt.onclick = () => quizSingle(entry);
-    const rm = document.getElementById('remove');
-    if (rm) rm.onclick = async () => { await deleteRecord(State.profile.id, entry.id); doLookup(); };
-    const ra = document.getElementById('readd');
-    if (ra) ra.onclick = async () => { await addToReview(State.profile, entry); doLookup(); };
+    if (entry) return renderEntryResult(entry, dict, { autoAdded, recordStatus });
+    // 本機 6000 字查無 → 處理上網查 / 片語 / 自訂單字
+    return renderNotFound(term, dict);
   } catch (e) {
-    out.innerHTML = `<div class="card"><p>⚠️ 查詢發生問題：${esc(e.message)}</p></div>`;
+    out.innerHTML = `<div class="card"><p>⚠️ 查詢發生問題：${esc(e.message)}</p>
+      <p class="hint-area">已避免崩潰；可稍後再試或手動補中文加入。</p></div>`;
   }
 }
 
-function renderLookupNotFound(term, dict) {
+// 本機查無：線上查到→自動建為自訂單字；查不到/離線→手動補中文加入
+async function renderNotFound(term, dict) {
   const out = document.getElementById('lk-result');
-  const dictBox = dict ? cardHTMLFromDict(term, dict) : '';
+  // 線上字典查到（有釋義或例句）→ 自動建立「自訂單字」並記錄
+  if (dict && (dict.definition || (dict.examples && dict.examples.length))) {
+    const { entry } = await createCustomWord(State.profile, term, { dict });
+    return renderEntryResult(entry, dict, { recordStatus: 'new', justCreated: true });
+  }
+  // 查不到（片語常見）或離線 → 手動補中文
+  const offline = !navigator.onLine;
   out.innerHTML = `
     <div class="card">
-      <p>本機 6000 字表查無「${esc(term)}」。</p>
-      ${dict ? '<p>以下為線上字典資料：</p>' : '<p>（離線或字典也查無）</p>'}
-      ${dictBox}
-      <h3>手動加入</h3>
+      <div class="result info">${offline ? '📴 目前離線，無法上網查新字'
+        : `線上字典也查不到「${esc(term)}」`}</div>
+      <p class="hint-area">${offline ? '連網後可查片語/新字。你仍可先手動補中文後加入待學。'
+        : '片語或新字字典常查不到，請手動補上中文意思後加入：'}</p>
       <div class="btn-row">
-        <input id="m-zh" class="answer-input" placeholder="輸入中文意思" />
+        <input id="m-zh" class="answer-input" placeholder="輸入中文意思（如「電費帳單」）" />
         <button class="btn primary" id="m-add">加入待學</button>
       </div>
     </div>`;
   document.getElementById('m-add').onclick = async () => {
     const zh = document.getElementById('m-zh').value.trim();
-    const id = 'custom-' + term.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    const entry = {
-      id, word: term.toLowerCase(), pos: '', zh, level: 0,
-      answerKeys: [term.toLowerCase()], example: '', root: null, custom: true,
-    };
-    registerCustomWord(entry);
-    const custom = (await getMeta('customWords')) || [];
-    if (!custom.find((c) => c.id === id)) { custom.push(entry); await setMeta('customWords', custom); }
-    await addToReview(State.profile, entry);
-    doLookupTerm(term);
+    const { entry } = await createCustomWord(State.profile, term, { zh, dict });
+    renderEntryResult(entry, dict, { recordStatus: 'new', justCreated: true });
   };
 }
 
-function cardHTMLFromDict(word, dict) {
-  return `<div class="card word-card">
-    <div class="word-head"><span class="word-en">${esc(word)}</span>
-      <button class="btn icon" data-say="${esc(word)}">🔊</button></div>
-    ${dict.phonetic ? `<span class="phon">${esc(dict.phonetic)}</span>` : ''}
-    ${dict.examples && dict.examples.length ? `<ul>${dict.examples.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
-  </div>`;
+// 顯示查詢結果卡片（本機字與自訂字共用）
+function renderEntryResult(entry, dict, { autoAdded, recordStatus, justCreated } = {}) {
+  const out = document.getElementById('lk-result');
+  const cat = displayCategory(recordStatus || 'new');
+  let banner;
+  if (justCreated) {
+    banner = `<div class="result ok">✅ 已加入「我查的字」清單${entry.zh ? '' : '（記得補上中文意思）'}</div>`;
+  } else if (autoAdded) {
+    banner = `<div class="result ok">✅ 已自動加入待學清單</div>`;
+  } else if (cat === 'mastered') {
+    banner = `<div class="result ok">你已學會這個字 ✅（不重複加入）</div>`;
+  } else {
+    banner = `<div class="result info">已在你的清單中（${statusBadge(recordStatus)}）</div>`;
+  }
+
+  let controls;
+  if (entry.custom) {
+    controls = `
+      <div class="btn-row">
+        <input id="edit-zh" class="answer-input" placeholder="補／改中文意思" value="${esc(entry.zh || '')}" />
+        <button class="btn primary" id="save-zh">儲存中文</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="quiz-this">立即測這個字</button>
+        <button class="btn danger" id="del-custom">🗑 刪除這個字</button>
+      </div>`;
+  } else {
+    controls = `
+      <div class="btn-row">
+        <button class="btn" id="quiz-this">立即測這個字</button>
+        ${cat === 'mastered'
+          ? `<button class="btn" id="readd">再次加入複習</button>`
+          : `<button class="btn danger" id="remove">我其實已會 → 移除</button>`}
+      </div>`;
+  }
+
+  out.innerHTML = `${banner}${cardHTML(entry, dict)}${controls}`;
+  attachCardHandlers(entry);
+  const qt = document.getElementById('quiz-this');
+  if (qt) qt.onclick = () => quizSingle(entry);
+  const rm = document.getElementById('remove');
+  if (rm) rm.onclick = async () => { await deleteRecord(State.profile.id, entry.id); doLookup(); };
+  const ra = document.getElementById('readd');
+  if (ra) ra.onclick = async () => { await addToReview(State.profile, entry); doLookup(); };
+  const sz = document.getElementById('save-zh');
+  if (sz) sz.onclick = async () => {
+    await updateCustomZh(entry, document.getElementById('edit-zh').value.trim());
+    renderEntryResult(entry, dict, { recordStatus });
+    const st = document.getElementById('lk-result');
+  };
+  const dc = document.getElementById('del-custom');
+  if (dc) dc.onclick = async () => {
+    if (!confirm(`確定刪除自訂單字「${entry.word}」？`)) return;
+    await deleteCustomWord(State.profile, entry);
+    out.innerHTML = `<div class="card center">已刪除「${esc(entry.word)}」</div>`;
+  };
 }
 
 function doLookupTerm(term) {
@@ -957,11 +994,11 @@ function drawMyWords(recs) {
     const dueStr = r.attempts ? prettyDate(todayStr(new Date(r.due))) : '—';
     return `<div class="row" data-id="${e.id}">
       <div class="row-main">
-        <span class="row-word">${esc(e.word)}</span>
+        <span class="row-word">${esc(e.word)}${e.custom ? ' <span class="tag-custom sm">🔖我查的</span>' : ''}</span>
         <span class="row-zh">${esc(e.zh)}</span>
       </div>
       <div class="row-meta">
-        <span>Lv${e.level}</span>
+        <span>${e.level === 0 ? '我查的字' : 'Lv' + e.level}</span>
         <span>${statusBadge(r.status)}</span>
         <span>到期 ${dueStr}</span>
         <span>答對率 ${acc}%</span>
@@ -976,17 +1013,24 @@ function drawMyWords(recs) {
 
 async function openWordDetail(wordId) {
   const entry = getById(wordId);
-  const dict = await fetchDict(entry.word.replace(/\(.*?\)/g, '').trim());
+  const dict = (entry.custom || (entry.example && entry.example.trim()))
+    ? null : await fetchDict(entry.word.replace(/\(.*?\)/g, '').trim());
   const rec = await getRecord(State.profile.id, wordId);
   const m = document.getElementById('modal');
   m.innerHTML = `
     <div class="modal-box">
       ${cardHTML(entry, dict)}
       <div class="row-meta">狀態：${rec ? statusBadge(rec.status) : '未加入'}　答對率：${rec && rec.attempts ? Math.round(rec.correct / rec.attempts * 100) : 0}%</div>
+      ${entry.custom ? `
+      <div class="btn-row">
+        <input id="md-zh" class="answer-input" placeholder="補／改中文意思" value="${esc(entry.zh || '')}" />
+        <button class="btn" id="md-savezh">儲存中文</button>
+      </div>` : ''}
       <div class="btn-row">
         <button class="btn primary" id="md-quiz">立即測這個字</button>
         <button class="btn" id="md-weak">標記需重練</button>
         <button class="btn" id="md-known">標記我已會</button>
+        ${entry.custom ? `<button class="btn danger" id="md-del">🗑 刪除自訂字</button>` : ''}
       </div>
       <button class="btn" id="md-close">關閉</button>
     </div>`;
@@ -999,6 +1043,16 @@ async function openWordDetail(wordId) {
   };
   document.getElementById('md-known').onclick = async () => {
     await markKnown(entry); m.classList.remove('show'); renderMyWords();
+  };
+  const mdSaveZh = document.getElementById('md-savezh');
+  if (mdSaveZh) mdSaveZh.onclick = async () => {
+    await updateCustomZh(entry, document.getElementById('md-zh').value.trim());
+    m.classList.remove('show'); renderMyWords();
+  };
+  const mdDel = document.getElementById('md-del');
+  if (mdDel) mdDel.onclick = async () => {
+    if (!confirm(`確定刪除自訂單字「${entry.word}」？`)) return;
+    await deleteCustomWord(State.profile, entry); m.classList.remove('show'); renderMyWords();
   };
 }
 

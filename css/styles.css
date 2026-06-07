@@ -109,6 +109,10 @@ body {
 .phon { color: var(--muted); font-style: italic; }
 .word-card .zh { font-size: 20px; margin: 6px 0; }
 .word-card .note { color: var(--muted); font-size: 14px; margin: 6px 0; }
+.word-card .def { font-size: 15px; margin: 6px 0; color: var(--text); }
+.tag-custom { display: inline-block; background: rgba(245, 158, 11, .18); color: #b45309; border-radius: 999px; padding: 2px 8px; font-size: 12px; font-weight: 600; }
+@media (prefers-color-scheme: dark) { .tag-custom { color: #fbbf24; } }
+.tag-custom.sm { font-size: 11px; padding: 1px 6px; margin-left: 4px; }
 .examples { margin-top: 10px; font-size: 15px; }
 .examples ul { margin: 6px 0; padding-left: 20px; }
 .examples li { margin-bottom: 4px; }

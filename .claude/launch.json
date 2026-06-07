@@ -4,8 +4,8 @@
     {
       "name": "vocab",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8137"],
-      "port": 8137
+      "runtimeArgs": ["scripts/devserver.py", "8143"],
+      "port": 8143
     }
   ]
 }

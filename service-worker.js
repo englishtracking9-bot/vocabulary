@@ -4,7 +4,7 @@
 // ★ 改版方式：每次 push 新版前，把下面的 APP_VERSION 改成新值即可。
 //   （cache 名稱會跟著變 → 舊快取自動清除 → 使用者連網開啟會拿到新版程式與新版 vocab.json）
 
-const APP_VERSION = '2026-06-07-p3-C-daylist-reporthistory';
+const APP_VERSION = '2026-06-07-p3-B-lookup-custom';
 const CACHE = 'vocab-' + APP_VERSION;
 
 // 預先快取的核心檔案（相對於 SW 所在目錄）

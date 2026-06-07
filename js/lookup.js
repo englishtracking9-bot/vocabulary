@@ -1,7 +1,7 @@
 // lookup.js — 查單字＝自動記錄、字典 API（dictionaryapi.dev）、發音（Web Speech API）
 
-import { findByWord } from './vocab.js';
-import { getRecord, putRecord, getDictCache, putDictCache } from './db.js';
+import { findByWord, registerCustomWord, getById } from './vocab.js';
+import { getRecord, putRecord, getDictCache, putDictCache, getMeta, setMeta, deleteRecord } from './db.js';
 import { newRecord } from './srs.js';
 
 // ---------- 發音 ----------
@@ -45,21 +45,25 @@ export async function fetchDict(word) {
   if (!navigator.onLine) return null;
 
   try {
-    const res = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(key));
+    // 加逾時保護，避免慢速網路讓畫面卡住
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 6000);
+    const res = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(key), { signal: ctrl.signal });
+    clearTimeout(timer);
     if (!res.ok) return null;
     const json = await res.json();
     const parsed = parseDict(json);
     if (parsed) await putDictCache(key, parsed);
     return parsed;
   } catch (e) {
-    console.warn('字典 API 失敗', e);
+    console.warn('字典 API 失敗或逾時', e);
     return null;
   }
 }
 
 function parseDict(json) {
   if (!Array.isArray(json) || !json.length) return null;
-  const out = { phonetic: '', examples: [], audio: '' };
+  const out = { phonetic: '', examples: [], audio: '', definition: '', pos: '', defs: [] };
   for (const entry of json) {
     if (!out.phonetic && entry.phonetic) out.phonetic = entry.phonetic;
     for (const ph of entry.phonetics || []) {
@@ -67,12 +71,19 @@ function parseDict(json) {
       if (!out.audio && ph.audio) out.audio = ph.audio;
     }
     for (const m of entry.meanings || []) {
+      const part = m.partOfSpeech || '';
       for (const d of m.definitions || []) {
+        if (d.definition) out.defs.push({ pos: part, def: d.definition });
         if (d.example) out.examples.push(d.example);
       }
     }
   }
+  if (out.defs.length) {
+    out.definition = out.defs[0].def;
+    out.pos = out.defs[0].pos;
+  }
   out.examples = out.examples.slice(0, 3);
+  out.defs = out.defs.slice(0, 3);
   return out;
 }
 
@@ -98,6 +109,59 @@ export async function lookupWord(profile, input) {
     autoAdded = true;
   }
   return { entry, dict, recordStatus: rec.status, autoAdded };
+}
+
+// ---------- 自訂單字（custom / 我查的字） ----------
+function customId(word) {
+  return 'custom-' + word.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+// 建立/更新自訂單字並自動記錄。回傳 { entry, autoAdded }
+export async function createCustomWord(profile, word, opts = {}) {
+  const w = word.trim();
+  const id = customId(w);
+  let entry = getById(id);
+  if (!entry) {
+    entry = {
+      id, word: w, pos: (opts.dict && opts.dict.pos) || '', zh: opts.zh || '',
+      level: 0, answerKeys: [w.toLowerCase()], example: (opts.dict && opts.dict.examples && opts.dict.examples[0]) || '',
+      example_zh: '', root: null, groupKeys: [], custom: true, source: 'custom',
+      definition: (opts.dict && opts.dict.definition) || '',
+    };
+    registerCustomWord(entry);
+  } else if (opts.zh) {
+    entry.zh = opts.zh;
+  }
+  await persistCustom(entry);
+
+  let autoAdded = false;
+  let rec = await getRecord(profile.id, id);
+  if (!rec) {
+    rec = newRecord(profile.id, id, 0);
+    await putRecord(rec);
+    autoAdded = true;
+  }
+  return { entry, autoAdded, recordStatus: rec.status };
+}
+
+async function persistCustom(entry) {
+  const list = (await getMeta('customWords')) || [];
+  const i = list.findIndex((c) => c.id === entry.id);
+  if (i >= 0) list[i] = entry; else list.push(entry);
+  await setMeta('customWords', list);
+}
+
+// 編輯自訂單字中文
+export async function updateCustomZh(entry, zh) {
+  entry.zh = zh;
+  await persistCustom(entry);
+}
+
+// 刪除自訂單字（移除該身分紀錄 + 從自訂清單移除）
+export async function deleteCustomWord(profile, entry) {
+  await deleteRecord(profile.id, entry.id);
+  const list = (await getMeta('customWords')) || [];
+  await setMeta('customWords', list.filter((c) => c.id !== entry.id));
 }
 
 // 反向操作：把某字加入複習（已熟記者由使用者手動觸發）
