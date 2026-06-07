@@ -2,7 +2,7 @@
 // 規格：禁用 localStorage 存學習進度，一律存 IndexedDB。
 
 const DB_NAME = 'vocabApp';
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
 let _dbPromise = null;
 
@@ -48,6 +48,12 @@ export function openDB() {
       // 學習日曆：每日學習計畫（含自動組與手動組）key = `${profileId}::${date}`
       if (!db.objectStoreNames.contains('dayPlans')) {
         const s = db.createObjectStore('dayPlans', { keyPath: 'key' });
+        s.createIndex('by_profile', 'profileId', { unique: false });
+      }
+
+      // 自訂群組（標籤）：{id, profileId, name, createdAt}
+      if (!db.objectStoreNames.contains('tags')) {
+        const s = db.createObjectStore('tags', { keyPath: 'id' });
         s.createIndex('by_profile', 'profileId', { unique: false });
       }
     };
@@ -253,4 +259,19 @@ export async function getDaysByProfile(profileId) {
   const db = await openDB();
   const idx = db.transaction('dayPlans').objectStore('dayPlans').index('by_profile');
   return reqPromise(idx.getAll(IDBKeyRange.only(profileId)));
+}
+
+// ---------- tags（自訂群組） ----------
+export async function getTagsByProfile(profileId) {
+  const db = await openDB();
+  const idx = db.transaction('tags').objectStore('tags').index('by_profile');
+  return reqPromise(idx.getAll(IDBKeyRange.only(profileId)));
+}
+
+export function putTag(tag) {
+  return tx('tags', 'readwrite', (t) => { t.objectStore('tags').put(tag); });
+}
+
+export function deleteTagRecord(tagId) {
+  return tx('tags', 'readwrite', (t) => { t.objectStore('tags').delete(tagId); });
 }

@@ -145,6 +145,17 @@ body {
 .row-zh { color: var(--muted); font-size: 15px; text-align: right; }
 .row-meta { display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 13px; margin-top: 6px; }
 
+/* Groups / tags */
+.hidden { display: none; }
+.mw-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.mw-head h2 { margin: 0; }
+.grp-card .grp-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.grp-card .grp-head b { font-size: 18px; }
+.gp-row { display: flex; align-items: center; gap: 8px; padding: 8px 4px; border-bottom: 1px solid var(--border); font-size: 16px; }
+#gp-list { max-height: 40vh; overflow: auto; margin-bottom: 10px; }
+.selrow { border-color: var(--primary); }
+.mw-chk { transform: scale(1.3); margin-right: 6px; }
+
 /* Settings */
 label { display: block; margin: 10px 0; font-size: 15px; color: var(--muted); }
 label .answer-input { text-align: left; margin-top: 6px; }

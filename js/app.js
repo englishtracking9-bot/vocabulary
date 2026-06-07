@@ -13,6 +13,10 @@ import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard
 import { getStats, exportProfile, importProfile } from './stats.js';
 import { displayCategory, statusBadge, computeStatus } from './srs.js';
 import { loadGroupsIndex, loadRoots, allRoots, membersOfAffix, formDailyGroup, familyOf, rootFamilyOf } from './grouping.js';
+import {
+  getTags, createTag, renameTag, deleteTag, setWordTags, addWordToTag, addWordsToTag,
+  wordsInTag, tagsOfWord, tagCounts,
+} from './tags.js';
 import { compareSentence } from './sentence.js';
 import { esc, todayStr, prettyDate } from './util.js';
 
@@ -104,6 +108,7 @@ const ROUTES = {
   '#calendar': renderCalendar,
   '#lookup': renderLookup,
   '#mywords': renderMyWords,
+  '#groups': renderGroups,
   '#roots': renderRoots,
   '#report': renderReport,
   '#settings': renderSettings,
@@ -414,6 +419,17 @@ function wordDayDone(plan, wid) {
 // ============================================================
 const Daily = { date: null, plan: null, spellSession: null, sentQueue: null, sentIdx: 0, answered: false, usedHint: false };
 
+// 群組測驗用的虛擬計畫不寫入日曆（不污染月曆）；日曆計畫照常存。
+async function persistPlan() {
+  if (Daily.plan && !Daily.plan.isGroup) await putDayPlan(Daily.plan);
+}
+
+// 當日學習/群組測驗的「返回」目的地
+function dailyBack() {
+  if (Daily.plan && Daily.plan.isGroup) renderGroups();
+  else renderCalendar();
+}
+
 // 蒐集「其他日期」已排定的字（供去重，避免相鄰日期大量重複）
 async function scheduledWordIds(exceptDate) {
   const days = await getDaysByProfile(State.profile.id);
@@ -465,9 +481,10 @@ async function openDay(dateStr) {
 // C-1：當天單字清單（一眼看到那天學了哪些字）
 async function renderDayList() {
   const plan = Daily.plan;
+  const isGroup = !!plan.isGroup;
   const records = await getRecordsByProfile(State.profile.id);
   const recMap = new Map(records.map((r) => [r.wordId, r]));
-  const isPast = Daily.date < todayStr();
+  const isPast = !isGroup && Daily.date < todayStr();
   const total = plan.group.wordIds.length;
   const doneCount = plan.group.wordIds.filter((id) => wordDayDone(plan, id)).length;
   const allDone = total > 0 && doneCount >= total;
@@ -497,27 +514,29 @@ async function renderDayList() {
     actionBtn = `<button class="btn primary big-copy" id="day-start">${label}</button>`;
   }
 
+  const title = isGroup ? `${esc(plan.groupName)}・單字清單（${total} 字）`
+    : `${prettyDate(Daily.date)}・單字清單（${total} 字）`;
   $main().innerHTML = `
     <div class="card memo-card">
       <div class="daily-top">
-        <button class="btn" id="back-cal">‹ 日曆</button>
-        <b>${prettyDate(Daily.date)}・單字清單（${total} 字）</b>
+        <button class="btn" id="back-cal">${isGroup ? '‹ 群組' : '‹ 日曆'}</button>
+        <b>${title}</b>
       </div>
-      <div class="memo">💡 本組共同記憶點：${esc(plan.group.memo)}</div>
+      <div class="memo">💡 ${isGroup ? '群組測驗：先讀一遍，再拼字＋造句' : '本組共同記憶點：' + esc(plan.group.memo)}</div>
       <div class="row-meta">進度：${doneCount}/${total} 字完成${isPast ? '（純查看，可重練）' : ''}</div>
     </div>
-    ${rows || '<div class="card center">這天沒有單字</div>'}
+    ${rows || '<div class="card center">這組沒有單字</div>'}
     <div class="card center">${actionBtn}</div>`;
 
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
-  document.getElementById('back-cal').onclick = () => renderCalendar();
+  document.getElementById('back-cal').onclick = () => dailyBack();
   document.getElementById('day-start').onclick = async () => {
     if (allDone) {
       // 重新練習：清掉當日作答、跳過先讀，直接重測（SM-2 與統計照記）
       Daily.plan.progress = {};
       Daily.plan.readDone = true;
       Daily.plan.updatedAt = Date.now();
-      await putDayPlan(Daily.plan);
+      await persistPlan();
     }
     dispatchDaily();
   };
@@ -528,8 +547,8 @@ function dispatchDaily() {
   if (!plan.group.wordIds.length) {
     $main().innerHTML = `<div class="card center"><h2>今天沒有可學的新字 👍</h2>
       <p>可能你的範圍內的字都已熟記。到「設定」調整級別，或到「查單字」加字。</p>
-      <button class="btn" id="back-cal">回日曆</button></div>`;
-    document.getElementById('back-cal').onclick = () => renderCalendar();
+      <button class="btn" id="back-cal">返回</button></div>`;
+    document.getElementById('back-cal').onclick = () => dailyBack();
     return;
   }
   if (!plan.readDone) return renderReadList();
@@ -570,16 +589,19 @@ function renderReadList() {
       </div>`;
   }).join('');
 
+  const isGroup = !!plan.isGroup;
+  const readTitle = isGroup ? `${esc(plan.groupName)}・先讀（${plan.group.wordIds.length} 字）`
+    : `${prettyDate(Daily.date)}・先讀（${plan.group.wordIds.length} 字）`;
   $main().innerHTML = `
     <div class="card memo-card">
       <div class="daily-top">
-        <button class="btn" id="back-cal">‹ 日曆</button>
-        <b>${prettyDate(Daily.date)}・先讀（${plan.group.wordIds.length} 字）</b>
+        <button class="btn" id="back-cal">${isGroup ? '‹ 群組' : '‹ 日曆'}</button>
+        <b>${readTitle}</b>
       </div>
-      <div class="memo">💡 本組共同記憶點：${esc(plan.group.memo)}</div>
-      <div class="btn-row">
+      <div class="memo">💡 ${isGroup ? '群組測驗：讀完進入拼字＋造句' : '本組共同記憶點：' + esc(plan.group.memo)}</div>
+      ${isGroup ? '' : `<div class="btn-row">
         <button class="btn" id="regroup">🔄 換一組</button>
-      </div>
+      </div>`}
     </div>
     ${cards}
     <div class="card center">
@@ -587,7 +609,7 @@ function renderReadList() {
     </div>`;
 
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
-  document.getElementById('back-cal').onclick = () => renderCalendar();
+  document.getElementById('back-cal').onclick = () => dailyBack();
 
   // 移除某字
   document.querySelectorAll('.remove-word').forEach((b) => {
@@ -597,13 +619,14 @@ function renderReadList() {
       Daily.plan.group.wordIds = Daily.plan.group.wordIds.filter((w) => w !== id);
       delete Daily.plan.progress[id];
       Daily.plan.updatedAt = Date.now();
-      await putDayPlan(Daily.plan);
+      await persistPlan();
       renderReadList();
     };
   });
 
-  // 換一組（排除目前分組，重新湊一組）
-  document.getElementById('regroup').onclick = async () => {
+  // 換一組（僅日曆當日學習；群組測驗無此功能）
+  const regroupBtn = document.getElementById('regroup');
+  if (regroupBtn) regroupBtn.onclick = async () => {
     const records = await getRecordsByProfile(State.profile.id);
     const exclude = Daily.plan.group.groupKey ? [Daily.plan.group.groupKey] : [];
     const excludeWordIds = await scheduledWordIds(Daily.date);
@@ -614,13 +637,13 @@ function renderReadList() {
     Daily.plan.progress = {};
     Daily.plan.readDone = false;
     Daily.plan.updatedAt = Date.now();
-    await putDayPlan(Daily.plan);
+    await persistPlan();
     renderReadList();
   };
   document.getElementById('read-done').onclick = async () => {
     Daily.plan.readDone = true;
     Daily.plan.updatedAt = Date.now();
-    await putDayPlan(Daily.plan);
+    await persistPlan();
     dispatchDaily();
   };
 }
@@ -689,7 +712,7 @@ async function dailySpellingSubmit() {
     Daily.spellSession.requeueCurrent();
   }
   Daily.plan.updatedAt = Date.now();
-  await putDayPlan(Daily.plan);
+  await persistPlan();
 
   // 當日流程已有存好的例句，直接用本機資料呈現（不打網路，純離線、快）
   const banner = correct ? `<div class="result ok">✅ 答對了！</div>`
@@ -749,7 +772,7 @@ async function dailySentenceSubmit() {
   Daily.plan.progress[e.id] = Daily.plan.progress[e.id] || {};
   Daily.plan.progress[e.id].sentence = res.correct ? 'correct' : 'wrong';
   Daily.plan.updatedAt = Date.now();
-  await putDayPlan(Daily.plan);
+  await persistPlan();
 
   const banner = res.correct ? `<div class="result ok">✅ 完全正確！</div>`
     : `<div class="result no">❌ 有些地方不一樣，看看下面的對照</div>`;
@@ -768,10 +791,10 @@ async function dailySentenceSubmit() {
   document.getElementById('next').onclick = () => { Daily.sentIdx++; dailySentenceShow(); };
 }
 
-// 儲存並離開（進度已逐題保存，這裡只回日曆）
+// 儲存並離開（進度已逐題保存，這裡只返回）
 async function saveAndExitDaily() {
-  if (Daily.plan) { Daily.plan.updatedAt = Date.now(); await putDayPlan(Daily.plan); }
-  renderCalendar();
+  if (Daily.plan) { Daily.plan.updatedAt = Date.now(); await persistPlan(); }
+  dailyBack();
 }
 
 // ---- 完成 ----
@@ -784,18 +807,132 @@ function renderDayDone() {
   }).length;
   const stTotal = plan.group.wordIds.filter((id) => { const e = getById(id); return e && e.example; }).length;
   archiveSnapshot(State.profile); // 存檔當下整體進度，供歷史報告
+  const doneTitle = plan.isGroup ? `${esc(plan.groupName)} 完成 🎉` : `${prettyDate(Daily.date)} 完成 🎉`;
   $main().innerHTML = `
     <div class="card center">
-      <h2>${prettyDate(Daily.date)} 完成 🎉</h2>
+      <h2>${doneTitle}</h2>
       <div class="stat-grid">
         <div><b>${total}</b><span>本組單字</span></div>
         <div><b>${sp}/${total}</b><span>拼字過關</span></div>
         <div><b>${st}/${stTotal}</b><span>造句正確</span></div>
       </div>
-      <button class="btn primary" id="back-cal">回日曆</button>
+      <button class="btn primary" id="back-cal">${plan.isGroup ? '回群組' : '回日曆'}</button>
       <a class="btn" href="#report">看每日報告</a>
     </div>`;
-  document.getElementById('back-cal').onclick = () => renderCalendar();
+  document.getElementById('back-cal').onclick = () => dailyBack();
+}
+
+// ============================================================
+// 自訂群組（標籤）
+// ============================================================
+async function renderGroups() {
+  const tags = await getTags(State.profile.id);
+  const counts = await tagCounts(State.profile.id);
+  $main().innerHTML = `
+    <div class="card">
+      <h2>我的群組</h2>
+      <p class="hint-area">把字分到自訂群組（如「二次段考」），段考前可一鍵測整組。一個字可屬多個群組。</p>
+      <div class="btn-row">
+        <input id="grp-new" class="answer-input" placeholder="新群組名稱（如：二次段考單字）" />
+        <button class="btn primary" id="grp-add">＋ 新增</button>
+      </div>
+    </div>
+    <div id="grp-list">${tags.length ? '' : '<div class="card center">還沒有群組，先新增一個吧</div>'}</div>`;
+
+  const listBox = document.getElementById('grp-list');
+  listBox.innerHTML += tags.map((t) => `
+    <div class="card grp-card">
+      <div class="grp-head">
+        <b>${esc(t.name)}</b><span class="row-meta">${counts[t.id] || 0} 字</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn primary" data-act="test" data-id="${t.id}" ${(counts[t.id] || 0) ? '' : 'disabled'}>▶️ 測這個群組</button>
+        <button class="btn" data-act="rename" data-id="${t.id}">改名</button>
+        <button class="btn danger" data-act="del" data-id="${t.id}">刪除</button>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('grp-add').onclick = async () => {
+    const name = document.getElementById('grp-new').value.trim();
+    if (!name) return;
+    await createTag(State.profile.id, name);
+    renderGroups();
+  };
+  listBox.querySelectorAll('[data-act]').forEach((b) => {
+    b.onclick = async () => {
+      const tag = tags.find((x) => x.id === b.dataset.id);
+      if (!tag) return;
+      if (b.dataset.act === 'test') return startGroupTest(tag);
+      if (b.dataset.act === 'rename') {
+        const name = prompt('群組新名稱：', tag.name);
+        if (name && name.trim()) { await renameTag(tag, name.trim()); renderGroups(); }
+      } else if (b.dataset.act === 'del') {
+        if (!confirm(`刪除群組「${tag.name}」？\n（只移除標籤，不會刪掉單字本身）`)) return;
+        await deleteTag(State.profile.id, tag.id);
+        renderGroups();
+      }
+    };
+  });
+}
+
+// 通用「群組選擇器」modal。
+// mode 'set'：單字，覆蓋所屬群組（取消勾選＝移除）；mode 'add'：批次，只把勾選的群組加上。
+async function openGroupPicker(wordIds, mode, onDone) {
+  const tags = await getTags(State.profile.id);
+  let preset = new Set();
+  if (mode === 'set' && wordIds.length === 1) {
+    preset = new Set(await tagsOfWord(State.profile, wordIds[0]));
+  }
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box">
+      <h3>${mode === 'add' ? `把 ${wordIds.length} 個字加入群組` : '設定所屬群組'}</h3>
+      <div id="gp-list">
+        ${tags.length ? tags.map((t) => `
+          <label class="chk gp-row"><input type="checkbox" value="${t.id}" ${preset.has(t.id) ? 'checked' : ''}/> ${esc(t.name)}</label>`).join('')
+          : '<p class="hint-area">還沒有群組，先在下面新建。</p>'}
+      </div>
+      <div class="btn-row">
+        <input id="gp-new" class="answer-input" placeholder="或新建群組名稱" />
+        <button class="btn" id="gp-create">新建</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn primary" id="gp-save">儲存</button>
+        <button class="btn" id="gp-close">取消</button>
+      </div>
+    </div>`;
+  m.classList.add('show');
+  document.getElementById('gp-close').onclick = () => m.classList.remove('show');
+  document.getElementById('gp-create').onclick = async () => {
+    const name = document.getElementById('gp-new').value.trim();
+    if (!name) return;
+    await createTag(State.profile.id, name);
+    openGroupPicker(wordIds, mode, onDone); // 重新開啟以顯示新群組
+  };
+  document.getElementById('gp-save').onclick = async () => {
+    const checked = [...document.querySelectorAll('#gp-list input:checked')].map((c) => c.value);
+    if (mode === 'set') {
+      await setWordTags(State.profile, wordIds[0], checked);
+    } else {
+      for (const tid of checked) await addWordsToTag(State.profile, wordIds, tid);
+    }
+    m.classList.remove('show');
+    if (onDone) onDone();
+  };
+}
+
+// 對某群組進行「先讀＋拼字＋造句」測驗（虛擬計畫，不寫入日曆）
+async function startGroupTest(tag) {
+  const wordIds = await wordsInTag(State.profile.id, tag.id);
+  if (!wordIds.length) { alert('這個群組還沒有字'); return; }
+  Daily.plan = {
+    isGroup: true, groupName: tag.name, tagId: tag.id,
+    group: { wordIds, memo: `群組：${tag.name}`, memos: [], label: tag.name, groupKey: null },
+    readDone: false, progress: {},
+  };
+  Daily.date = todayStr();
+  Daily.spellSession = null; Daily.sentQueue = null; Daily.sentIdx = 0;
+  renderDayList();
 }
 
 // ============================================================
@@ -901,8 +1038,11 @@ function renderEntryResult(entry, dict, { autoAdded, recordStatus, justCreated }
       </div>`;
   }
 
-  out.innerHTML = `${banner}${cardHTML(entry, dict)}${controls}`;
+  const groupBtn = `<div class="btn-row"><button class="btn" id="add-group">🏷 加入群組</button></div>`;
+  out.innerHTML = `${banner}${cardHTML(entry, dict)}${controls}${groupBtn}`;
   attachCardHandlers(entry);
+  document.getElementById('add-group').onclick = () =>
+    openGroupPicker([entry.id], 'set', () => renderEntryResult(entry, dict, { recordStatus }));
   const qt = document.getElementById('quiz-this');
   if (qt) qt.onclick = () => quizSingle(entry);
   const rm = document.getElementById('remove');
@@ -938,13 +1078,18 @@ function quizSingle(entry) {
 // ============================================================
 // 我的單字（總表）
 // ============================================================
-const MyWordsFilter = { status: 'all', level: 'all', q: '', sort: 'recent' };
+const MyWordsFilter = { status: 'all', level: 'all', group: 'all', q: '', sort: 'recent' };
+const MyWordsSel = { on: false, ids: new Set() };
 
 async function renderMyWords() {
   const recs = await getRecordsByProfile(State.profile.id);
+  const tags = await getTags(State.profile.id);
   $main().innerHTML = `
     <div class="card">
-      <h2>我的單字（${recs.length}）</h2>
+      <div class="mw-head">
+        <h2>我的單字（${recs.length}）</h2>
+        <a class="btn" href="#groups" id="mw-groups">🏷 群組</a>
+      </div>
       <div class="filters">
         <select id="f-status">
           <option value="all">全部狀態</option>
@@ -955,6 +1100,11 @@ async function renderMyWords() {
         <select id="f-level">
           <option value="all">全部級別</option>
           ${[1, 2, 3, 4, 5, 6].map((l) => `<option value="${l}">Level ${l}</option>`).join('')}
+          <option value="0">我查的字</option>
+        </select>
+        <select id="f-group">
+          <option value="all">全部群組</option>
+          ${tags.map((t) => `<option value="${t.id}">🏷 ${esc(t.name)}</option>`).join('')}
         </select>
         <select id="f-sort">
           <option value="recent">最近新增</option>
@@ -963,25 +1113,46 @@ async function renderMyWords() {
         </select>
       </div>
       <input id="f-q" class="answer-input" placeholder="關鍵字搜尋（英文或中文）" />
+      <div class="btn-row">
+        <button class="btn" id="mw-select">${MyWordsSel.on ? '✕ 取消多選' : '☑ 多選批次加入群組'}</button>
+      </div>
+      <div id="mw-selbar" class="${MyWordsSel.on ? '' : 'hidden'}">
+        <div class="btn-row">
+          <span class="row-meta">已選 <b id="mw-selcount">${MyWordsSel.ids.size}</b> 字</span>
+          <button class="btn primary" id="mw-batch">加入群組</button>
+        </div>
+      </div>
     </div>
     <div id="mw-list"></div>`;
 
   const sEl = document.getElementById('f-status');
   const lEl = document.getElementById('f-level');
+  const gEl = document.getElementById('f-group');
   const sortEl = document.getElementById('f-sort');
   const qEl = document.getElementById('f-q');
   sEl.value = MyWordsFilter.status; lEl.value = MyWordsFilter.level;
-  sortEl.value = MyWordsFilter.sort; qEl.value = MyWordsFilter.q;
+  gEl.value = MyWordsFilter.group; sortEl.value = MyWordsFilter.sort; qEl.value = MyWordsFilter.q;
 
   const update = () => {
     MyWordsFilter.status = sEl.value;
     MyWordsFilter.level = lEl.value;
+    MyWordsFilter.group = gEl.value;
     MyWordsFilter.sort = sortEl.value;
     MyWordsFilter.q = qEl.value.trim().toLowerCase();
     drawMyWords(recs);
   };
-  [sEl, lEl, sortEl].forEach((e) => e.onchange = update);
+  [sEl, lEl, gEl, sortEl].forEach((e) => e.onchange = update);
   qEl.oninput = update;
+
+  document.getElementById('mw-select').onclick = () => {
+    MyWordsSel.on = !MyWordsSel.on; MyWordsSel.ids.clear(); renderMyWords();
+  };
+  const batchBtn = document.getElementById('mw-batch');
+  if (batchBtn) batchBtn.onclick = () => {
+    if (!MyWordsSel.ids.size) { alert('請先勾選單字'); return; }
+    openGroupPicker([...MyWordsSel.ids], 'add', () => { MyWordsSel.on = false; MyWordsSel.ids.clear(); renderMyWords(); });
+  };
+
   drawMyWords(recs);
 }
 
@@ -992,6 +1163,8 @@ function drawMyWords(recs) {
     rows = rows.filter((x) => displayCategory(x.rec.status) === MyWordsFilter.status);
   if (MyWordsFilter.level !== 'all')
     rows = rows.filter((x) => String(x.entry.level) === MyWordsFilter.level);
+  if (MyWordsFilter.group !== 'all')
+    rows = rows.filter((x) => x.rec.tags && x.rec.tags.includes(MyWordsFilter.group));
   if (MyWordsFilter.q) {
     const q = MyWordsFilter.q;
     rows = rows.filter((x) => x.entry.word.toLowerCase().includes(q) || (x.entry.zh || '').includes(q));
@@ -1005,13 +1178,15 @@ function drawMyWords(recs) {
   const list = document.getElementById('mw-list');
   if (!rows.length) { list.innerHTML = `<div class="card center">沒有符合的單字</div>`; return; }
 
+  const sel = MyWordsSel.on;
   list.innerHTML = rows.slice(0, 300).map((x) => {
     const r = x.rec, e = x.entry;
     const acc = r.attempts ? Math.round((r.correct / r.attempts) * 100) : 0;
     const dueStr = r.attempts ? prettyDate(todayStr(new Date(r.due))) : '—';
-    return `<div class="row" data-id="${e.id}">
+    const check = sel ? `<input type="checkbox" class="mw-chk" ${MyWordsSel.ids.has(e.id) ? 'checked' : ''}/> ` : '';
+    return `<div class="row ${sel ? 'selrow' : ''}" data-id="${e.id}">
       <div class="row-main">
-        <span class="row-word">${esc(e.word)}${e.custom ? ' <span class="tag-custom sm">🔖我查的</span>' : ''}</span>
+        <span class="row-word">${check}${esc(e.word)}${e.custom ? ' <span class="tag-custom sm">🔖我查的</span>' : ''}</span>
         <span class="row-zh">${esc(e.zh)}</span>
       </div>
       <div class="row-meta">
@@ -1024,7 +1199,16 @@ function drawMyWords(recs) {
   }).join('') + (rows.length > 300 ? `<div class="card center">（僅顯示前 300 筆，請用篩選縮小範圍）</div>` : '');
 
   list.querySelectorAll('.row').forEach((row) => {
-    row.onclick = () => openWordDetail(row.dataset.id);
+    row.onclick = () => {
+      const id = row.dataset.id;
+      if (MyWordsSel.on) {
+        if (MyWordsSel.ids.has(id)) MyWordsSel.ids.delete(id); else MyWordsSel.ids.add(id);
+        const chk = row.querySelector('.mw-chk'); if (chk) chk.checked = MyWordsSel.ids.has(id);
+        const c = document.getElementById('mw-selcount'); if (c) c.textContent = MyWordsSel.ids.size;
+      } else {
+        openWordDetail(id);
+      }
+    };
   });
 }
 
@@ -1045,6 +1229,9 @@ async function openWordDetail(wordId) {
       </div>` : ''}
       <div class="btn-row">
         <button class="btn primary" id="md-quiz">立即測這個字</button>
+        <button class="btn" id="md-group">🏷 群組</button>
+      </div>
+      <div class="btn-row">
         <button class="btn" id="md-weak">標記需重練</button>
         <button class="btn" id="md-known">標記我已會</button>
         ${entry.custom ? `<button class="btn danger" id="md-del">🗑 刪除自訂字</button>` : ''}
@@ -1054,6 +1241,8 @@ async function openWordDetail(wordId) {
   m.classList.add('show');
   attachCardHandlers(entry);
   document.getElementById('md-close').onclick = () => m.classList.remove('show');
+  document.getElementById('md-group').onclick = () =>
+    openGroupPicker([wordId], 'set', () => { renderMyWords(); });
   document.getElementById('md-quiz').onclick = () => { m.classList.remove('show'); quizSingle(entry); };
   document.getElementById('md-weak').onclick = async () => {
     await addToReview(State.profile, entry); m.classList.remove('show'); renderMyWords();
