@@ -1,30 +1,67 @@
 // report.js — 每日學習報告（純文字、可一鍵複製貼到 LINE）
 
 import { getStats } from './stats.js';
-import { getDailyLog } from './db.js';
+import { getDailyLog, putDailyLog, dailyKey } from './db.js';
 import { getById } from './vocab.js';
 import { todayStr, prettyDate } from './util.js';
 
-// 產生今日報告純文字
-export async function buildDailyReport(profile, now = Date.now()) {
+// 把「當下的整體進度」存檔進當天的 dailyLog（供日後查歷史報告）
+export async function archiveSnapshot(profile, now = Date.now()) {
   const date = todayStr(new Date(now));
   const stats = await getStats(profile.id, now);
+  let log = await getDailyLog(profile.id, date);
+  if (!log) {
+    log = { key: dailyKey(profile.id, date), profileId: profile.id, date,
+      newWords: [], reviewCount: 0, answerCount: 0, correctCount: 0 };
+  }
+  log.snapshot = {
+    tracked: stats.tracked, mastered: stats.mastered, masteredPct: stats.masteredPct,
+    weak: stats.weak, newCount: stats.newCount, newPct: stats.newPct, streak: stats.streak,
+  };
+  await putDailyLog(log);
+}
+
+// 產生某日報告純文字（dateStr 省略＝今天）。過去日期用當天存檔的快照。
+export async function buildDailyReport(profile, dateStr = null, now = Date.now()) {
+  const today = todayStr(new Date(now));
+  const date = dateStr || today;
+  const isToday = date === today;
   const log = await getDailyLog(profile.id, date);
 
+  // 過去日期且完全無紀錄
+  if (!isToday && !log) {
+    return `📚 [${profile.name}] ${prettyDate(date)}\n這天沒有學習紀錄。`;
+  }
+
   const newIds = log ? log.newWords : [];
-  const newWordsText = formatNewWords(newIds);
+  const reviewCount = log ? log.reviewCount : 0;
+  const accuracy = log && log.answerCount ? Math.round(log.correctCount / log.answerCount * 100) : 0;
+
+  // 整體進度：今天用即時統計；過去用當天快照（沒有快照才退而用即時）
+  let prog;
+  if (isToday) {
+    const s = await getStats(profile.id, now);
+    prog = { tracked: s.tracked, mastered: s.mastered, masteredPct: s.masteredPct,
+      weak: s.weak, newCount: s.newCount, newPct: s.newPct, streak: s.streak };
+  } else if (log && log.snapshot) {
+    prog = log.snapshot;
+  } else {
+    const s = await getStats(profile.id, now);
+    prog = { tracked: s.tracked, mastered: s.mastered, masteredPct: s.masteredPct,
+      weak: s.weak, newCount: s.newCount, newPct: s.newPct, streak: s.streak, approx: true };
+  }
 
   const lines = [];
   lines.push(`📚 [${profile.name}] 英文單字學習報告`);
   lines.push(`📅 ${prettyDate(date)}`);
-  lines.push(`今日新學 ${newIds.length} 字：`);
-  lines.push(newWordsText || '（今日尚未新學單字）');
-  lines.push(`今日複習 ${stats.todayReview} 字，答對率 ${stats.todayAccuracy}%`);
-  lines.push(`目前進度（共 ${stats.tracked} 字）：`);
-  lines.push(`✅ 已熟記 ${stats.mastered} 字（${stats.masteredPct}%）`);
-  lines.push(`📖 需加強 ${stats.weak} 字`);
-  lines.push(`🆕 未學習 ${stats.newCount} 字（${stats.newPct}%）`);
-  lines.push(`🔥 連續學習 ${stats.streak} 天`);
+  lines.push(`${isToday ? '今日' : '當日'}新學 ${newIds.length} 字：`);
+  lines.push(formatNewWords(newIds) || '（這天沒有新學單字）');
+  lines.push(`${isToday ? '今日' : '當日'}複習 ${reviewCount} 字，答對率 ${accuracy}%`);
+  lines.push(`${prog.approx ? '目前進度' : '當時進度'}（共 ${prog.tracked} 字）：`);
+  lines.push(`✅ 已熟記 ${prog.mastered} 字（${prog.masteredPct}%）`);
+  lines.push(`📖 需加強 ${prog.weak} 字`);
+  lines.push(`🆕 未學習 ${prog.newCount} 字（${prog.newPct}%）`);
+  lines.push(`🔥 連續學習 ${prog.streak} 天`);
   lines.push('（由英文單字記憶系統自動產生）');
   return lines.join('\n');
 }

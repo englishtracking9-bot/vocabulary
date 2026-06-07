@@ -9,7 +9,7 @@ import {
 } from './vocab.js';
 import { buildQueue, Session, recordAnswer } from './quiz.js';
 import { lookupWord, fetchDict, speak, addToReview } from './lookup.js';
-import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard } from './report.js';
+import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard, archiveSnapshot } from './report.js';
 import { getStats, exportProfile, importProfile } from './stats.js';
 import { displayCategory, statusBadge, computeStatus } from './srs.js';
 import { loadGroupsIndex, formDailyGroup, familyOf } from './grouping.js';
@@ -89,6 +89,7 @@ function renderHeader() {
         State.profile = await getProfile(b.dataset.pid);
         await setMeta('activeProfile', State.profile.id);
         State.session = null;
+        ReportDate = null; // 報告日期回到今天
         renderHeader();
         route();
       });
@@ -433,7 +434,68 @@ async function openDay(dateStr) {
   }
   Daily.date = dateStr; Daily.plan = plan;
   Daily.spellSession = null; Daily.sentQueue = null; Daily.sentIdx = 0;
-  dispatchDaily();
+  renderDayList(); // C-1：先顯示「當天單字清單」
+}
+
+// C-1：當天單字清單（一眼看到那天學了哪些字）
+async function renderDayList() {
+  const plan = Daily.plan;
+  const records = await getRecordsByProfile(State.profile.id);
+  const recMap = new Map(records.map((r) => [r.wordId, r]));
+  const isPast = Daily.date < todayStr();
+  const total = plan.group.wordIds.length;
+  const doneCount = plan.group.wordIds.filter((id) => wordDayDone(plan, id)).length;
+  const allDone = total > 0 && doneCount >= total;
+
+  const rows = plan.group.wordIds.map((id) => {
+    const e = getById(id);
+    if (!e) return '';
+    const rec = recMap.get(id);
+    const badge = rec ? statusBadge(rec.status) : '🆕 未測驗';
+    return `<div class="row">
+      <div class="row-main">
+        <span class="row-word">${esc(e.word)}
+          <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button></span>
+        <span class="row-zh">${esc(e.zh)}</span>
+      </div>
+      <div class="row-meta"><span>${esc(e.pos)}・Lv${e.level}</span><span>${badge}</span></div>
+    </div>`;
+  }).join('');
+
+  let actionBtn;
+  if (allDone) {
+    actionBtn = `<button class="btn primary big-copy" id="day-start">🔁 重新練習這組</button>`;
+  } else if (isPast) {
+    actionBtn = `<button class="btn primary big-copy" id="day-start">繼續測驗（先讀→拼字＋造句）</button>`;
+  } else {
+    const label = plan.readDone ? '▶️ 繼續測驗' : '▶️ 開始（先讀 → 拼字 ＋ 造句）';
+    actionBtn = `<button class="btn primary big-copy" id="day-start">${label}</button>`;
+  }
+
+  $main().innerHTML = `
+    <div class="card memo-card">
+      <div class="daily-top">
+        <button class="btn" id="back-cal">‹ 日曆</button>
+        <b>${prettyDate(Daily.date)}・單字清單（${total} 字）</b>
+      </div>
+      <div class="memo">💡 本組共同記憶點：${esc(plan.group.memo)}</div>
+      <div class="row-meta">進度：${doneCount}/${total} 字完成${isPast ? '（純查看，可重練）' : ''}</div>
+    </div>
+    ${rows || '<div class="card center">這天沒有單字</div>'}
+    <div class="card center">${actionBtn}</div>`;
+
+  document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
+  document.getElementById('back-cal').onclick = () => renderCalendar();
+  document.getElementById('day-start').onclick = async () => {
+    if (allDone) {
+      // 重新練習：清掉當日作答、跳過先讀，直接重測（SM-2 與統計照記）
+      Daily.plan.progress = {};
+      Daily.plan.readDone = true;
+      Daily.plan.updatedAt = Date.now();
+      await putDayPlan(Daily.plan);
+    }
+    dispatchDaily();
+  };
 }
 
 function dispatchDaily() {
@@ -696,6 +758,7 @@ function renderDayDone() {
     const p = plan.progress[id] || {}; return p.sentence === 'correct';
   }).length;
   const stTotal = plan.group.wordIds.filter((id) => { const e = getById(id); return e && e.example; }).length;
+  archiveSnapshot(State.profile); // 存檔當下整體進度，供歷史報告
   $main().innerHTML = `
     <div class="card center">
       <h2>${prettyDate(Daily.date)} 完成 🎉</h2>
@@ -978,14 +1041,25 @@ function renderRoots() {
 // ============================================================
 // 每日報告
 // ============================================================
+let ReportDate = null; // 目前檢視的報告日期（null=今天）
+
 async function renderReport() {
+  const today = todayStr();
+  await archiveSnapshot(State.profile); // 更新今天的進度快照
+  if (!ReportDate) ReportDate = today;
   $main().innerHTML = `<div class="card center">產生報告中…</div>`;
-  const text = await buildDailyReport(State.profile);
+  const text = await buildDailyReport(State.profile, ReportDate);
   $main().innerHTML = `
     <div class="card">
       <h2>每日報告</h2>
+      <div class="report-datebar">
+        <button class="btn" id="rep-prev">‹ 前一天</button>
+        <input type="date" id="rep-date" value="${ReportDate}" max="${today}" />
+        <button class="btn" id="rep-next" ${ReportDate >= today ? 'disabled' : ''}>後一天 ›</button>
+      </div>
+      <div class="btn-row"><button class="btn" id="rep-today">回到今天</button></div>
       <pre id="report-text" class="report-text">${esc(text)}</pre>
-      <button class="btn primary big-copy" id="copy-main">📋 複製報告</button>
+      <button class="btn primary big-copy" id="copy-main">📋 複製這天的報告</button>
       <div class="btn-row">
         <button class="btn" id="copy-new">只複製今日新字</button>
         <button class="btn" id="copy-week">複製本週彙整</button>
@@ -999,9 +1073,24 @@ async function renderReport() {
     const ok = await copyToClipboard(t);
     status.textContent = ok ? '✅ 已複製，貼到 LINE 傳給家長吧！' : '⚠️ 複製失敗，請長按上方文字手動複製';
   };
-  document.getElementById('copy-main').onclick = () => doCopy(() => buildDailyReport(State.profile));
+  document.getElementById('copy-main').onclick = () => doCopy(() => buildDailyReport(State.profile, ReportDate));
   document.getElementById('copy-new').onclick = () => doCopy(() => buildNewWordsOnly(State.profile));
   document.getElementById('copy-week').onclick = () => doCopy(() => buildWeeklyReport(State.profile));
+
+  // 日期切換
+  document.getElementById('rep-date').onchange = (e) => { ReportDate = e.target.value; renderReport(); };
+  document.getElementById('rep-today').onclick = () => { ReportDate = today; renderReport(); };
+  document.getElementById('rep-prev').onclick = () => { ReportDate = shiftDate(ReportDate, -1); renderReport(); };
+  document.getElementById('rep-next').onclick = () => {
+    const n = shiftDate(ReportDate, 1);
+    if (n <= today) { ReportDate = n; renderReport(); }
+  };
+}
+
+function shiftDate(dateStr, delta) {
+  const d = new Date(dateStr + 'T00:00:00');
+  d.setDate(d.getDate() + delta);
+  return todayStr(d);
 }
 
 // ============================================================

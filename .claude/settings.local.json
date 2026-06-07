@@ -12,7 +12,8 @@
       "Bash(python scripts/tag_roots.py)",
       "Bash(python scripts/gen_examples.py)",
       "Bash(node --check js/app.js)",
-      "Bash(node --check js/grouping.js)"
+      "Bash(node --check js/grouping.js)",
+      "Bash(node --check js/report.js)"
     ]
   }
 }
