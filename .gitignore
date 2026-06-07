@@ -4,6 +4,7 @@
 # 建置報告
 build_report.txt
 tag_roots_report.txt
+gen_examples_report.txt
 
 # 系統/編輯器雜項
 .DS_Store
