@@ -4,7 +4,7 @@
 // ★ 改版方式：每次 push 新版前，把下面的 APP_VERSION 改成新值即可。
 //   （cache 名稱會跟著變 → 舊快取自動清除 → 使用者連網開啟會拿到新版程式與新版 vocab.json）
 
-const APP_VERSION = '2026-06-07-step4-manual-scheduling';
+const APP_VERSION = '2026-06-07-daily-reminder';
 const CACHE = 'vocab-' + APP_VERSION;
 
 // 預先快取的核心檔案（相對於 SW 所在目錄）
@@ -25,6 +25,7 @@ const PRECACHE = [
   './js/grouping.js',
   './js/sentence.js',
   './js/tags.js',
+  './js/notify.js',
   './data/vocab.json',
   './data/roots.json',
   './data/groups.json',
@@ -51,6 +52,79 @@ self.addEventListener('activate', (e) => {
 // 允許頁面要求 SW 立即接管
 self.addEventListener('message', (e) => {
   if (e.data === 'skipWaiting') self.skipWaiting();
+});
+
+// ---------- 每日提醒（Periodic Background Sync，盡力而為） ----------
+function idbOpen() {
+  return new Promise((resolve, reject) => {
+    const r = indexedDB.open('vocabApp');
+    r.onsuccess = () => resolve(r.result);
+    r.onerror = () => reject(r.error);
+  });
+}
+function idbGet(db, store, key) {
+  return new Promise((resolve) => {
+    try {
+      const r = db.transaction(store).objectStore(store).get(key);
+      r.onsuccess = () => resolve(r.result);
+      r.onerror = () => resolve(null);
+    } catch (e) { resolve(null); }
+  });
+}
+function idbPut(db, store, value) {
+  return new Promise((resolve) => {
+    try {
+      const t = db.transaction(store, 'readwrite');
+      t.objectStore(store).put(value);
+      t.oncomplete = () => resolve(true);
+      t.onerror = () => resolve(false);
+    } catch (e) { resolve(false); }
+  });
+}
+function todayStrSW() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+async function maybeRemind() {
+  try {
+    const db = await idbOpen();
+    const meta = await idbGet(db, 'meta', 'reminder');
+    const r = meta && meta.value;
+    if (!r || !r.on) return;
+    // 已過今日提醒時間？
+    const m = /^(\d{1,2}):(\d{2})$/.exec(r.time || '19:30');
+    const now = new Date();
+    const target = new Date(); target.setHours(m ? +m[1] : 19, m ? +m[2] : 30, 0, 0);
+    if (now < target) return;
+    // 今天是否已提醒過？
+    const shown = await idbGet(db, 'meta', 'reminderShown');
+    if (shown && shown.value === todayStrSW()) return;
+    await idbPut(db, 'meta', { key: 'reminderShown', value: todayStrSW() });
+    await self.registration.showNotification('📚 今天的英文單字還沒練喔！', {
+      body: '點開練 5 分鐘 💪',
+      tag: 'vocab-daily-reminder',
+      icon: './icons/icon-192.png',
+      badge: './icons/icon-192.png',
+      data: { url: './index.html#quiz' },
+    });
+  } catch (e) { /* 忽略 */ }
+}
+
+self.addEventListener('periodicsync', (e) => {
+  if (e.tag === 'daily-reminder') e.waitUntil(maybeRemind());
+});
+
+// 點通知 → 開到測驗畫面
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close();
+  const url = (e.notification.data && e.notification.data.url) || './index.html#quiz';
+  e.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((list) => {
+      for (const c of list) { if ('focus' in c) { c.navigate(url); return c.focus(); } }
+      if (self.clients.openWindow) return self.clients.openWindow(url);
+    })
+  );
 });
 
 function isContent(url) {

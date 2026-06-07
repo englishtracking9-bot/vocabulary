@@ -20,6 +20,10 @@ import {
 } from './tags.js';
 import { compareSentence } from './sentence.js';
 import { esc, todayStr, prettyDate } from './util.js';
+import {
+  notifySupported, notifyPermission, requestNotifyPermission, showReminderNow,
+  scheduleForegroundReminder, registerPeriodicReminder, syncReminderMeta, downloadICS,
+} from './notify.js';
 
 // ---------- 預設身分 ----------
 const DEFAULT_PROFILES = [
@@ -62,6 +66,9 @@ async function init() {
     route();
 
     registerServiceWorker();
+    // 每日提醒：同步設定到 meta 供 SW 背景讀取，並在前景排程
+    syncReminderMeta(State.profile);
+    scheduleForegroundReminder(State.profile);
   } catch (e) {
     console.error(e);
     $main().innerHTML = `<div class="card"><p>⚠️ 啟動失敗：${esc(e.message)}</p>
@@ -96,6 +103,8 @@ function renderHeader() {
         await setMeta('activeProfile', State.profile.id);
         State.session = null;
         ReportDate = null; // 報告日期回到今天
+        syncReminderMeta(State.profile);
+        scheduleForegroundReminder(State.profile);
         renderHeader();
         route();
       });
@@ -1860,9 +1869,55 @@ async function renderSettings() {
     </div>
 
     <div class="card">
-      <h2>每日提醒</h2>
-      <p class="hint-area">裝置通知與「加入行事曆(.ics)」備援將於 <b>Phase 2</b> 提供。</p>
+      <h2>每日練習提醒</h2>
+      <label class="chk"><input type="checkbox" id="rm-on" ${s.reminderOn ? 'checked' : ''}/> 開啟每日提醒</label>
+      <label>提醒時間
+        <input type="time" id="rm-time" class="answer-input" value="${s.reminderTime || '19:30'}" />
+      </label>
+      <div class="btn-row">
+        <button class="btn primary" id="rm-cal">📅 加入到手機行事曆（最穩定）</button>
+      </div>
+      <p class="hint-area">行事曆最可靠：匯入後每天到點一定跳，跨 iPhone／Android、不靠 App 開著。</p>
+      <div class="btn-row">
+        <button class="btn" id="rm-notify">🔔 開啟裝置通知</button>
+        <button class="btn" id="rm-test">測試通知</button>
+      </div>
+      <p id="rm-status" class="hint-area"></p>
     </div>`;
+
+  // 每日提醒控制
+  const rmStatus = document.getElementById('rm-status');
+  const saveReminder = async () => {
+    p.settings = { ...p.settings, reminderOn: document.getElementById('rm-on').checked, reminderTime: document.getElementById('rm-time').value || '19:30' };
+    await putProfile(p);
+    State.profile = p;
+    await syncReminderMeta(p);
+    scheduleForegroundReminder(p);
+  };
+  document.getElementById('rm-on').onchange = saveReminder;
+  document.getElementById('rm-time').onchange = saveReminder;
+  document.getElementById('rm-cal').onclick = async () => {
+    await saveReminder();
+    downloadICS(p);
+    rmStatus.textContent = '✅ 已下載 .ics，請點開檔案匯入手機行事曆（每天會重複提醒）。';
+  };
+  document.getElementById('rm-notify').onclick = async () => {
+    if (!notifySupported()) { rmStatus.textContent = '⚠️ 此瀏覽器不支援通知，請用「加入行事曆」。'; return; }
+    const perm = await requestNotifyPermission();
+    if (perm === 'granted') {
+      await saveReminder();
+      const periodic = await registerPeriodicReminder();
+      scheduleForegroundReminder(p);
+      rmStatus.textContent = '✅ 已開啟裝置通知' + (periodic ? '（含背景提醒）' : '（App 開著時最準；背景提醒不一定支援，建議也加行事曆）');
+    } else {
+      rmStatus.textContent = '⚠️ 通知權限未開啟，請改用「加入行事曆」最穩定。';
+    }
+  };
+  document.getElementById('rm-test').onclick = async () => {
+    if (notifyPermission() !== 'granted') { rmStatus.textContent = '請先按「開啟裝置通知」。'; return; }
+    const ok = await showReminderNow('📚 測試通知', '這就是每天會看到的提醒，點我開到測驗。');
+    rmStatus.textContent = ok ? '✅ 已送出測試通知' : '⚠️ 無法顯示通知';
+  };
 
   document.getElementById('set-save').onclick = async () => {
     let limit = parseInt(document.getElementById('set-limit').value, 10) || s.dailyNewLimit;
