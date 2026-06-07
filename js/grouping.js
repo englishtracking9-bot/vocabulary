@@ -3,9 +3,10 @@
 // 優先序：root/prefix/suffix(1) → prefix規律(2,以prefix體現) → compound(3)
 //          → confuse(4) → theme(5) → antonym(6)
 
-import { allWords, getById } from './vocab.js';
+import { allWords, getById, findByWord } from './vocab.js';
 
 let _index = null;
+let _roots = null;
 
 export async function loadGroupsIndex() {
   if (_index) return _index;
@@ -16,6 +17,37 @@ export async function loadGroupsIndex() {
     _index = {};
   }
   return _index;
+}
+
+// 載入字根字首字尾原始資料（roots.json）
+export async function loadRoots() {
+  if (_roots) return _roots;
+  try {
+    const res = await fetch('./data/roots.json', { cache: 'force-cache' });
+    _roots = res.ok ? await res.json() : [];
+  } catch (e) {
+    _roots = [];
+  }
+  return _roots;
+}
+
+export function allRoots() {
+  return _roots || [];
+}
+
+// 取某字首/字根/字尾的衍生單字（優先用 groups_index，否則用 examples ∩ vocab）
+export function membersOfAffix(affix, type) {
+  const key = `${type}:${affix}`;
+  if (_index && _index[key]) return _index[key].members.slice();
+  // fallback：用 roots.json 的 examples 與本機字表交集
+  const r = (_roots || []).find((x) => x.affix === affix && x.type === type);
+  if (!r) return [];
+  const ids = [];
+  for (const w of r.examples || []) {
+    const e = findByWord(w);
+    if (e && !ids.includes(e.id)) ids.push(e.id);
+  }
+  return ids;
 }
 
 const PRIORITY = { root: 1, prefix: 1, suffix: 1, compound: 3, confuse: 4, theme: 5, antonym: 6 };
@@ -106,4 +138,21 @@ export function familyOf(wordId) {
     if (g) g.members.forEach((id) => { if (id !== wordId) fam.add(id); });
   }
   return [...fam];
+}
+
+// 只取「同字根/字首/字尾」家族（給單字卡顯示）。回傳 [{id, label}]
+export function rootFamilyOf(wordId) {
+  const e = getById(wordId);
+  if (!e || !e.groupKeys || !_index) return [];
+  const seen = new Set();
+  const out = [];
+  for (const k of e.groupKeys) {
+    if (!/^(root|prefix|suffix):/.test(k)) continue;
+    const g = _index[k];
+    if (!g) continue;
+    for (const id of g.members) {
+      if (id !== wordId && !seen.has(id)) { seen.add(id); out.push(id); }
+    }
+  }
+  return out;
 }
