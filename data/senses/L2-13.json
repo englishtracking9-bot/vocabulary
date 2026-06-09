@@ -1,0 +1,240 @@
+{
+  "regard": [
+    { "pos": "v.", "zh": "把⋯視為、看待", "example": "I regard him as a good friend.", "example_zh": "我把他視為好朋友。" },
+    { "pos": "n.", "zh": "尊重、敬重", "example": "She has high regard for her teacher.", "example_zh": "她很敬重她的老師。" }
+  ],
+  "region": [
+    { "pos": "n.", "zh": "地區、區域", "example": "This region is famous for its tea.", "example_zh": "這個地區以茶聞名。" }
+  ],
+  "regular": [
+    { "pos": "adj.", "zh": "規律的、定期的", "example": "He is a regular customer at the cafe.", "example_zh": "他是這家咖啡館的常客。" },
+    { "pos": "adj.", "zh": "一般的、普通的", "example": "I'll have a regular coffee, please.", "example_zh": "請給我一杯普通咖啡。" }
+  ],
+  "reject": [
+    { "pos": "v.", "zh": "拒絕、否決", "example": "They rejected his idea.", "example_zh": "他們否決了他的想法。" }
+  ],
+  "relate": [
+    { "pos": "v.", "zh": "有關聯、相關（relate to）", "example": "This story relates to my own life.", "example_zh": "這個故事和我自己的生活有關。" },
+    { "pos": "v.", "zh": "理解、有同感（relate to）", "example": "I can relate to how you feel.", "example_zh": "我能體會你的感受。" }
+  ],
+  "relation": [
+    { "pos": "n.", "zh": "關係", "example": "There is a close relation between the two.", "example_zh": "這兩者之間關係密切。" }
+  ],
+  "relationship": [
+    { "pos": "n.", "zh": "關係", "example": "They have a good relationship.", "example_zh": "他們關係很好。" }
+  ],
+  "religion": [
+    { "pos": "n.", "zh": "宗教", "example": "People of every religion are welcome.", "example_zh": "各種宗教信仰的人都歡迎。" }
+  ],
+  "remove": [
+    { "pos": "v.", "zh": "移除、去除", "example": "Please remove your shoes at the door.", "example_zh": "請在門口脫鞋。" }
+  ],
+  "rent": [
+    { "pos": "v.", "zh": "租、出租", "example": "They rent a small apartment downtown.", "example_zh": "他們在市中心租了一間小公寓。" },
+    { "pos": "n.", "zh": "租金", "example": "The rent is due at the end of the month.", "example_zh": "房租月底要繳。" }
+  ],
+  "repair": [
+    { "pos": "v.", "zh": "修理", "example": "He repaired the broken clock.", "example_zh": "他修好了壞掉的時鐘。" },
+    { "pos": "n.", "zh": "修理、維修", "example": "The road is closed for repairs.", "example_zh": "這條路因維修而封閉。" }
+  ],
+  "reply": [
+    { "pos": "v.", "zh": "回覆、回答", "example": "Please reply to my email soon.", "example_zh": "請盡快回覆我的郵件。" },
+    { "pos": "n.", "zh": "回答、答覆", "example": "I am still waiting for her reply.", "example_zh": "我還在等她的回覆。" }
+  ],
+  "require": [
+    { "pos": "v.", "zh": "需要、要求", "example": "This job requires a lot of patience.", "example_zh": "這份工作需要很大的耐心。" }
+  ],
+  "respect": [
+    { "pos": "v.", "zh": "尊重、尊敬", "example": "We should respect our teachers.", "example_zh": "我們應該尊敬老師。" },
+    { "pos": "n.", "zh": "尊重、敬意", "example": "She earned the respect of her team.", "example_zh": "她贏得了團隊的尊重。" }
+  ],
+  "respond": [
+    { "pos": "v.", "zh": "回應、回答", "example": "She responded to my question quickly.", "example_zh": "她很快回答了我的問題。" }
+  ],
+  "responsible": [
+    { "pos": "adj.", "zh": "負責任的", "example": "He is responsible for cleaning the room.", "example_zh": "他負責打掃房間。" }
+  ],
+  "restroom": [
+    { "pos": "n.", "zh": "洗手間、廁所", "example": "The restroom is on the second floor.", "example_zh": "洗手間在二樓。" }
+  ],
+  "result": [
+    { "pos": "n.", "zh": "結果", "example": "We are happy with the test results.", "example_zh": "我們對測驗結果很滿意。" },
+    { "pos": "v.", "zh": "導致（result in）", "example": "Hard work resulted in success.", "example_zh": "努力帶來了成功。" }
+  ],
+  "return": [
+    { "pos": "v.", "zh": "返回、歸還", "example": "Please return the book to the library.", "example_zh": "請把書還給圖書館。" },
+    { "pos": "n.", "zh": "返回、回來", "example": "We look forward to your return.", "example_zh": "我們期待你回來。" }
+  ],
+  "review": [
+    { "pos": "v.", "zh": "複習、回顧", "example": "We review the lesson before the test.", "example_zh": "我們在考試前複習功課。" },
+    { "pos": "n.", "zh": "評論、評價", "example": "The movie got good reviews.", "example_zh": "這部電影獲得好評。" }
+  ],
+  "riches": [
+    { "pos": "n.", "zh": "財富", "example": "Health is more valuable than riches.", "example_zh": "健康比財富更可貴。" }
+  ],
+  "rocky": [
+    { "pos": "adj.", "zh": "多岩石的", "example": "The path up the hill was rocky.", "example_zh": "上山的路滿是岩石。" }
+  ],
+  "role": [
+    { "pos": "n.", "zh": "角色", "example": "She played the role of the queen.", "example_zh": "她飾演王后這個角色。" },
+    { "pos": "n.", "zh": "作用、職責", "example": "Parents play an important role in education.", "example_zh": "父母在教育中扮演重要的角色。" }
+  ],
+  "roof": [
+    { "pos": "n.", "zh": "屋頂", "example": "Rain leaked through the roof.", "example_zh": "雨水從屋頂漏進來。" }
+  ],
+  "rooster": [
+    { "pos": "n.", "zh": "公雞", "example": "The rooster crows early in the morning.", "example_zh": "公雞一大早就啼叫。" }
+  ],
+  "royal": [
+    { "pos": "adj.", "zh": "皇家的、王室的", "example": "We visited the royal palace.", "example_zh": "我們參觀了皇宮。" }
+  ],
+  "rub": [
+    { "pos": "v.", "zh": "摩擦、揉", "example": "She rubbed her eyes when she woke up.", "example_zh": "她醒來時揉了揉眼睛。" },
+    { "pos": "v.", "zh": "塗抹（rub on）", "example": "He rubbed cream on his hands.", "example_zh": "他在手上抹乳液。" }
+  ],
+  "rubber": [
+    { "pos": "n.", "zh": "橡膠", "example": "The boots are made of rubber.", "example_zh": "這雙靴子是橡膠做的。" },
+    { "pos": "n.", "zh": "橡皮擦", "example": "May I borrow your rubber?", "example_zh": "我可以借你的橡皮擦嗎？" }
+  ],
+  "rude": [
+    { "pos": "adj.", "zh": "無禮的、粗魯的", "example": "It is rude to interrupt people.", "example_zh": "打斷別人說話很沒禮貌。" }
+  ],
+  "runner": [
+    { "pos": "n.", "zh": "跑者", "example": "The runner won the race.", "example_zh": "那名跑者贏得了比賽。" }
+  ],
+  "safety": [
+    { "pos": "n.", "zh": "安全", "example": "Wear a seatbelt for your safety.", "example_zh": "為了安全請繫上安全帶。" }
+  ],
+  "sail": [
+    { "pos": "v.", "zh": "航行、開船", "example": "The boat sailed across the lake.", "example_zh": "船橫越湖面。" },
+    { "pos": "n.", "zh": "帆", "example": "The white sail caught the wind.", "example_zh": "白色的帆兜住了風。" }
+  ],
+  "sailor": [
+    { "pos": "n.", "zh": "水手、船員", "example": "The sailor worked hard on the ship.", "example_zh": "水手在船上努力工作。" }
+  ],
+  "salesperson-salesman-saleswoman": [
+    { "pos": "n.", "zh": "售貨員、推銷員", "example": "The salesperson showed us many shoes.", "example_zh": "售貨員拿了許多鞋子給我們看。" }
+  ],
+  "salty": [
+    { "pos": "adj.", "zh": "鹹的", "example": "The soup is too salty for me.", "example_zh": "這湯對我來說太鹹了。" }
+  ],
+  "sample": [
+    { "pos": "n.", "zh": "樣本、樣品", "example": "She gave me a free sample of cheese.", "example_zh": "她給了我一份免費的起司試吃品。" },
+    { "pos": "v.", "zh": "試吃、抽樣", "example": "We sampled several cakes at the shop.", "example_zh": "我們在店裡試吃了好幾種蛋糕。" }
+  ],
+  "sand": [
+    { "pos": "n.", "zh": "沙子", "example": "The children played in the sand.", "example_zh": "孩子們在沙子裡玩。" }
+  ],
+  "sandwich": [
+    { "pos": "n.", "zh": "三明治", "example": "I made a ham sandwich for lunch.", "example_zh": "我做了火腿三明治當午餐。" }
+  ],
+  "satisfy": [
+    { "pos": "v.", "zh": "滿足、使滿意", "example": "The meal did not satisfy his hunger.", "example_zh": "這頓飯沒能填飽他的肚子。" }
+  ],
+  "saw": [
+    { "pos": "n.", "zh": "鋸子", "example": "He cut the wood with a saw.", "example_zh": "他用鋸子鋸木頭。" },
+    { "pos": "v.", "zh": "鋸", "example": "She sawed the board in half.", "example_zh": "她把木板鋸成兩半。" }
+  ],
+  "scare": [
+    { "pos": "v.", "zh": "驚嚇、使害怕", "example": "The loud noise scared the baby.", "example_zh": "巨大的聲響嚇到了寶寶。" },
+    { "pos": "n.", "zh": "驚嚇、恐慌", "example": "The news gave us a scare.", "example_zh": "這消息讓我們嚇了一跳。" }
+  ],
+  "scared": [
+    { "pos": "adj.", "zh": "害怕的", "example": "She was scared of the dark.", "example_zh": "她怕黑。" }
+  ],
+  "scene": [
+    { "pos": "n.", "zh": "（戲劇、電影的）場景", "example": "The first scene of the play was funny.", "example_zh": "這齣戲的第一場很有趣。" },
+    { "pos": "n.", "zh": "景象、現場", "example": "The accident scene was crowded.", "example_zh": "事故現場擠滿了人。" }
+  ],
+  "schedule": [
+    { "pos": "n.", "zh": "行程表、時間表", "example": "My schedule is full this week.", "example_zh": "我這週的行程滿檔。" },
+    { "pos": "v.", "zh": "安排、預定", "example": "The meeting is scheduled for Monday.", "example_zh": "會議排在星期一。" }
+  ],
+  "scooter": [
+    { "pos": "n.", "zh": "速克達、小型機車", "example": "She rides a scooter to school.", "example_zh": "她騎機車上學。" }
+  ],
+  "score": [
+    { "pos": "n.", "zh": "分數、得分", "example": "He got a high score on the test.", "example_zh": "他考試得了高分。" },
+    { "pos": "v.", "zh": "得分", "example": "She scored two goals in the game.", "example_zh": "她在比賽中踢進兩球。" }
+  ],
+  "screen": [
+    { "pos": "n.", "zh": "螢幕、銀幕", "example": "The movie screen is very big.", "example_zh": "這電影銀幕非常大。" },
+    { "pos": "n.", "zh": "紗窗、屏風", "example": "There is a screen on the window to keep bugs out.", "example_zh": "窗戶上有紗窗擋蟲。" }
+  ],
+  "seafood": [
+    { "pos": "n.", "zh": "海鮮", "example": "We ordered fresh seafood at the restaurant.", "example_zh": "我們在餐廳點了新鮮的海鮮。" }
+  ],
+  "search": [
+    { "pos": "v.", "zh": "搜尋、尋找", "example": "They searched everywhere for the lost dog.", "example_zh": "他們到處尋找走失的狗。" },
+    { "pos": "n.", "zh": "搜尋、搜查", "example": "The search for the keys took an hour.", "example_zh": "找鑰匙花了一個小時。" }
+  ],
+  "secondary": [
+    { "pos": "adj.", "zh": "中學的、中等教育的", "example": "She teaches at a secondary school.", "example_zh": "她在中學教書。" },
+    { "pos": "adj.", "zh": "次要的、第二的", "example": "Money is secondary to happiness.", "example_zh": "比起快樂，錢是次要的。" }
+  ],
+  "secret": [
+    { "pos": "n.", "zh": "秘密", "example": "Can you keep a secret?", "example_zh": "你能保守秘密嗎？" },
+    { "pos": "adj.", "zh": "秘密的、機密的", "example": "They met in a secret place.", "example_zh": "他們在一個秘密的地方碰面。" }
+  ],
+  "section": [
+    { "pos": "n.", "zh": "部分、區段", "example": "This section of the book is about animals.", "example_zh": "這本書的這一部分是關於動物的。" }
+  ],
+  "seek": [
+    { "pos": "v.", "zh": "尋找、尋求", "example": "They seek help from the teacher.", "example_zh": "他們向老師尋求幫助。" }
+  ],
+  "seem": [
+    { "pos": "v.", "zh": "似乎、好像", "example": "You seem tired today.", "example_zh": "你今天看起來很累。" }
+  ],
+  "seesaw": [
+    { "pos": "n.", "zh": "蹺蹺板", "example": "The children played on the seesaw.", "example_zh": "孩子們玩蹺蹺板。" }
+  ],
+  "seldom": [
+    { "pos": "adv.", "zh": "很少、難得", "example": "He seldom eats fast food.", "example_zh": "他很少吃速食。" }
+  ],
+  "select": [
+    { "pos": "v.", "zh": "選擇、挑選", "example": "Please select your favorite book.", "example_zh": "請挑選你最喜歡的書。" }
+  ],
+  "selection": [
+    { "pos": "n.", "zh": "挑選、選擇", "example": "The selection of a leader takes time.", "example_zh": "選出領袖需要時間。" },
+    { "pos": "n.", "zh": "可供選擇的種類", "example": "The store has a good selection of toys.", "example_zh": "這家店的玩具種類很多。" }
+  ],
+  "self": [
+    { "pos": "n.", "zh": "自我、自己", "example": "Believe in your true self.", "example_zh": "相信真實的自己。" }
+  ],
+  "selfish": [
+    { "pos": "adj.", "zh": "自私的", "example": "Don't be selfish; share with others.", "example_zh": "別自私，要和別人分享。" }
+  ],
+  "sense": [
+    { "pos": "n.", "zh": "感官、感覺", "example": "Dogs have a strong sense of smell.", "example_zh": "狗的嗅覺很靈敏。" },
+    { "pos": "v.", "zh": "感覺到、察覺", "example": "She sensed that something was wrong.", "example_zh": "她察覺到不對勁。" }
+  ],
+  "sensitive": [
+    { "pos": "adj.", "zh": "敏感的、易受影響的", "example": "Her skin is very sensitive to the sun.", "example_zh": "她的皮膚對陽光很敏感。" },
+    { "pos": "adj.", "zh": "體貼的、善解人意的", "example": "He is sensitive to others' feelings.", "example_zh": "他很在意別人的感受。" }
+  ],
+  "separate": [
+    { "pos": "v.", "zh": "分開、隔開", "example": "Please separate the trash from the paper.", "example_zh": "請把垃圾和紙分開。" },
+    { "pos": "adj.", "zh": "分開的、各自的", "example": "They sleep in separate rooms.", "example_zh": "他們睡在不同的房間。" }
+  ],
+  "servant": [
+    { "pos": "n.", "zh": "僕人", "example": "The servant brought tea to the guests.", "example_zh": "僕人為客人端來茶。" }
+  ],
+  "serve": [
+    { "pos": "v.", "zh": "供應、端上", "example": "The restaurant serves breakfast all day.", "example_zh": "這家餐廳全天供應早餐。" },
+    { "pos": "v.", "zh": "服務、擔任", "example": "He served as a teacher for ten years.", "example_zh": "他擔任教師十年。" }
+  ],
+  "settle": [
+    { "pos": "v.", "zh": "定居、安頓", "example": "They settled in a small town by the sea.", "example_zh": "他們在海邊的小鎮定居。" },
+    { "pos": "v.", "zh": "解決、平息", "example": "They settled the argument peacefully.", "example_zh": "他們和平地解決了爭執。" }
+  ],
+  "sex": [
+    { "pos": "n.", "zh": "性別", "example": "The form asks for your name and sex.", "example_zh": "表格上要填姓名和性別。" }
+  ],
+  "shame": [
+    { "pos": "n.", "zh": "可惜的事、遺憾", "example": "What a shame that you missed the show.", "example_zh": "你錯過了表演真可惜。" },
+    { "pos": "n.", "zh": "羞愧、恥辱", "example": "He felt shame for telling a lie.", "example_zh": "他為說謊感到羞愧。" }
+  ],
+  "shark": [
+    { "pos": "n.", "zh": "鯊魚", "example": "A shark has very sharp teeth.", "example_zh": "鯊魚有非常鋒利的牙齒。" }
+  ]
+}

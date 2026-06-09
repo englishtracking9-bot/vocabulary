@@ -1,0 +1,176 @@
+{
+  "press": [
+    { "pos": "v.", "zh": "按、壓", "example": "Press the button to ring the bell.", "example_zh": "按下按鈕就會響鈴。" },
+    { "pos": "n.", "zh": "新聞界、媒體", "example": "The story was reported by the press.", "example_zh": "這則消息被媒體報導了。" }
+  ],
+  "pressure": [
+    { "pos": "n.", "zh": "壓力", "example": "She felt pressure before the exam.", "example_zh": "考試前她感到壓力。" },
+    { "pos": "v.", "zh": "對⋯施壓", "example": "Don't pressure him to decide now.", "example_zh": "別逼他現在做決定。" }
+  ],
+  "pride": [
+    { "pos": "n.", "zh": "自豪、驕傲", "example": "He looked at his work with pride.", "example_zh": "他驕傲地看著自己的作品。" }
+  ],
+  "priest": [
+    { "pos": "n.", "zh": "神父、牧師", "example": "The priest spoke kindly to the people.", "example_zh": "神父和藹地對眾人說話。" }
+  ],
+  "primary": [
+    { "pos": "adj.", "zh": "主要的、首要的", "example": "Her primary goal is to pass the exam.", "example_zh": "她的首要目標是通過考試。" },
+    { "pos": "adj.", "zh": "初級的、小學的", "example": "He teaches at a primary school.", "example_zh": "他在小學教書。" }
+  ],
+  "prince-princess": [
+    { "pos": "n.", "zh": "王子、公主", "example": "The prince lived in a great castle.", "example_zh": "王子住在一座宏偉的城堡裡。" }
+  ],
+  "principal": [
+    { "pos": "n.", "zh": "校長", "example": "The principal welcomed the new students.", "example_zh": "校長歡迎新生。" },
+    { "pos": "adj.", "zh": "主要的、首要的", "example": "Rice is the principal food here.", "example_zh": "米是這裡的主食。" }
+  ],
+  "principle": [
+    { "pos": "n.", "zh": "原則、原理", "example": "Honesty is an important principle.", "example_zh": "誠實是一項重要的原則。" }
+  ],
+  "print": [
+    { "pos": "v.", "zh": "列印、印刷", "example": "Please print the report for me.", "example_zh": "請幫我把報告印出來。" },
+    { "pos": "n.", "zh": "印刷品、版畫", "example": "She bought a print of a famous painting.", "example_zh": "她買了一幅名畫的複製品。" }
+  ],
+  "printer": [
+    { "pos": "n.", "zh": "印表機", "example": "The printer is out of paper.", "example_zh": "印表機沒紙了。" }
+  ],
+  "prison": [
+    { "pos": "n.", "zh": "監獄", "example": "The thief was sent to prison.", "example_zh": "那個小偷被送進監獄。" }
+  ],
+  "prisoner": [
+    { "pos": "n.", "zh": "囚犯", "example": "The prisoner waited for his trial.", "example_zh": "囚犯等待著審判。" }
+  ],
+  "private": [
+    { "pos": "adj.", "zh": "私人的、私有的", "example": "This is a private room; please knock.", "example_zh": "這是私人房間，請先敲門。" },
+    { "pos": "adj.", "zh": "私下的、秘密的", "example": "They had a private talk.", "example_zh": "他們私下談了話。" }
+  ],
+  "prize": [
+    { "pos": "n.", "zh": "獎、獎品", "example": "She won first prize in the contest.", "example_zh": "她在比賽中得了第一名。" },
+    { "pos": "v.", "zh": "珍視、重視", "example": "He prizes his old watch.", "example_zh": "他很珍惜他的舊錶。" }
+  ],
+  "produce": [
+    { "pos": "v.", "zh": "生產、製造", "example": "The factory produces toys.", "example_zh": "這家工廠生產玩具。" },
+    { "pos": "v.", "zh": "產生、引起", "example": "Hard work produces good results.", "example_zh": "努力會帶來好結果。" }
+  ],
+  "production": [
+    { "pos": "n.", "zh": "生產、製作", "example": "The production of the movie took two years.", "example_zh": "這部電影的製作花了兩年。" }
+  ],
+  "progress": [
+    { "pos": "n.", "zh": "進步、進展", "example": "She is making good progress in English.", "example_zh": "她的英文進步很多。" },
+    { "pos": "v.", "zh": "進展、前進", "example": "The work is progressing well.", "example_zh": "工作進展順利。" }
+  ],
+  "project": [
+    { "pos": "n.", "zh": "專案、計畫", "example": "We finished the science project together.", "example_zh": "我們一起完成了科學專題。" },
+    { "pos": "v.", "zh": "投射、放映", "example": "They projected the movie onto a wall.", "example_zh": "他們把電影投影到牆上。" }
+  ],
+  "promise": [
+    { "pos": "v.", "zh": "承諾、答應", "example": "He kept his promise to help me.", "example_zh": "他遵守了幫我的承諾。" },
+    { "pos": "n.", "zh": "承諾、諾言", "example": "She made a promise to study harder.", "example_zh": "她承諾會更用功。" }
+  ],
+  "proper": [
+    { "pos": "adj.", "zh": "適當的、正確的", "example": "Wear proper shoes for the hike.", "example_zh": "健行要穿合適的鞋子。" }
+  ],
+  "propose": [
+    { "pos": "v.", "zh": "提議、提出", "example": "She proposed a new plan to the class.", "example_zh": "她向全班提出一個新計畫。" },
+    { "pos": "v.", "zh": "求婚", "example": "He proposed to her on the beach.", "example_zh": "他在海灘上向她求婚。" }
+  ],
+  "protect": [
+    { "pos": "v.", "zh": "保護", "example": "Wear a helmet to protect your head.", "example_zh": "戴安全帽保護頭部。" }
+  ],
+  "protective": [
+    { "pos": "adj.", "zh": "保護的", "example": "A mother bird is protective of her eggs.", "example_zh": "母鳥會保護牠的蛋。" }
+  ],
+  "prove": [
+    { "pos": "v.", "zh": "證明", "example": "He worked hard to prove he could do it.", "example_zh": "他努力證明自己做得到。" }
+  ],
+  "provide": [
+    { "pos": "v.", "zh": "提供", "example": "The school provides free lunch.", "example_zh": "學校提供免費午餐。" }
+  ],
+  "pudding": [
+    { "pos": "n.", "zh": "布丁", "example": "We had chocolate pudding for dessert.", "example_zh": "我們的甜點是巧克力布丁。" }
+  ],
+  "pumpkin": [
+    { "pos": "n.", "zh": "南瓜", "example": "We carved a face on the pumpkin.", "example_zh": "我們在南瓜上刻了一張臉。" }
+  ],
+  "punish": [
+    { "pos": "v.", "zh": "處罰、懲罰", "example": "The teacher punished the student for cheating.", "example_zh": "老師因作弊而處罰那名學生。" }
+  ],
+  "pupil": [
+    { "pos": "n.", "zh": "學生（尤指小學）", "example": "Every pupil in the class passed the exam.", "example_zh": "班上每個學生都通過了考試。" },
+    { "pos": "n.", "zh": "瞳孔", "example": "Our pupils get bigger in the dark.", "example_zh": "我們的瞳孔在黑暗中會變大。" }
+  ],
+  "puppy": [
+    { "pos": "n.", "zh": "小狗", "example": "The puppy wagged its tail happily.", "example_zh": "小狗開心地搖尾巴。" }
+  ],
+  "purple": [
+    { "pos": "adj.", "zh": "紫色的", "example": "She painted the wall purple.", "example_zh": "她把牆漆成紫色。" },
+    { "pos": "n.", "zh": "紫色", "example": "Purple is a mix of red and blue.", "example_zh": "紫色是紅色和藍色的混合。" }
+  ],
+  "purpose": [
+    { "pos": "n.", "zh": "目的", "example": "What is the purpose of this meeting?", "example_zh": "這場會議的目的是什麼？" }
+  ],
+  "puzzle": [
+    { "pos": "n.", "zh": "謎、難題、拼圖", "example": "He solved the difficult puzzle.", "example_zh": "他解開了那個困難的謎題。" },
+    { "pos": "v.", "zh": "使困惑", "example": "Her strange answer puzzled me.", "example_zh": "她奇怪的回答讓我困惑。" }
+  ],
+  "quality": [
+    { "pos": "n.", "zh": "品質、質量", "example": "This shop sells high quality clothes.", "example_zh": "這家店賣高品質的衣服。" },
+    { "pos": "n.", "zh": "特質、特點", "example": "Kindness is a good quality.", "example_zh": "善良是一種好的特質。" }
+  ],
+  "quantity": [
+    { "pos": "n.", "zh": "數量、量", "example": "We need a large quantity of paper.", "example_zh": "我們需要大量的紙。" }
+  ],
+  "quiz": [
+    { "pos": "n.", "zh": "小考、測驗", "example": "We had a short English quiz today.", "example_zh": "我們今天有個簡短的英文小考。" }
+  ],
+  "railroad-railway": [
+    { "pos": "n.", "zh": "鐵路", "example": "The railroad connects the two cities.", "example_zh": "這條鐵路連接兩座城市。" }
+  ],
+  "raincoat": [
+    { "pos": "n.", "zh": "雨衣", "example": "Wear a raincoat; it's pouring outside.", "example_zh": "穿上雨衣，外面下大雨。" }
+  ],
+  "range": [
+    { "pos": "n.", "zh": "範圍、幅度", "example": "The shop sells a wide range of toys.", "example_zh": "這家店賣各式各樣的玩具。" },
+    { "pos": "v.", "zh": "（範圍）從⋯到", "example": "Prices range from ten to fifty dollars.", "example_zh": "價格從十元到五十元不等。" }
+  ],
+  "rapid": [
+    { "pos": "adj.", "zh": "迅速的、快速的", "example": "There was a rapid change in the weather.", "example_zh": "天氣發生了快速的變化。" }
+  ],
+  "rare": [
+    { "pos": "adj.", "zh": "稀有的、珍貴的", "example": "Pandas are rare animals.", "example_zh": "貓熊是稀有的動物。" },
+    { "pos": "adj.", "zh": "罕見的、難得的", "example": "It is rare for him to be late.", "example_zh": "他很少遲到。" }
+  ],
+  "rat": [
+    { "pos": "n.", "zh": "老鼠", "example": "A rat ran across the kitchen.", "example_zh": "一隻老鼠跑過廚房。" }
+  ],
+  "rather": [
+    { "pos": "adv.", "zh": "寧願、寧可（would rather）", "example": "I would rather stay home tonight.", "example_zh": "今晚我寧願待在家。" },
+    { "pos": "adv.", "zh": "相當、頗", "example": "The test was rather difficult.", "example_zh": "這次考試相當難。" }
+  ],
+  "reality": [
+    { "pos": "n.", "zh": "現實、實際", "example": "Her dream finally became reality.", "example_zh": "她的夢想終於成真。" }
+  ],
+  "realize": [
+    { "pos": "v.", "zh": "意識到、領悟", "example": "I didn't realize how late it was.", "example_zh": "我沒意識到已經這麼晚了。" },
+    { "pos": "v.", "zh": "實現", "example": "She realized her dream of becoming a doctor.", "example_zh": "她實現了當醫生的夢想。" }
+  ],
+  "receive": [
+    { "pos": "v.", "zh": "收到", "example": "I received a gift from my friend.", "example_zh": "我收到朋友送的禮物。" }
+  ],
+  "recent": [
+    { "pos": "adj.", "zh": "最近的", "example": "In recent years, prices have risen.", "example_zh": "近幾年物價上漲。" }
+  ],
+  "record": [
+    { "pos": "n.", "zh": "紀錄", "example": "She broke the school running record.", "example_zh": "她打破了學校的跑步紀錄。" },
+    { "pos": "v.", "zh": "記錄、錄音", "example": "He recorded the song on his phone.", "example_zh": "他用手機錄下這首歌。" }
+  ],
+  "recover": [
+    { "pos": "v.", "zh": "恢復、康復", "example": "He is recovering from his illness.", "example_zh": "他正從病中康復。" }
+  ],
+  "refrigerator-fridge": [
+    { "pos": "n.", "zh": "冰箱", "example": "Put the milk in the refrigerator.", "example_zh": "把牛奶放進冰箱。" }
+  ],
+  "refuse": [
+    { "pos": "v.", "zh": "拒絕", "example": "She refused to give up.", "example_zh": "她拒絕放棄。" }
+  ]
+}
