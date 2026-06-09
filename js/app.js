@@ -521,7 +521,7 @@ function wordDayDone(plan, wid) {
 // ============================================================
 // 當日學習
 // ============================================================
-const Daily = { date: null, plan: null, spellSession: null, sentQueue: null, sentIdx: 0, answered: false, usedHint: false };
+const Daily = { date: null, plan: null, spellSession: null, sentQueue: null, sentIdx: 0, answered: false, usedHint: false, browse: false };
 
 // 持久化：手動組存 manualGroups；日曆自動組存 dayPlans；標籤群組測驗(虛擬)不存。
 async function persistPlan() {
@@ -654,6 +654,7 @@ async function renderDayMenu(dateStr, groups) {
 
 // C-1：當天單字清單（一眼看到那天學了哪些字）
 async function renderDayList() {
+  Daily.browse = false; // 回到清單即離開「再讀一次」瀏覽模式
   const plan = Daily.plan;
   const isGroup = !!plan.isGroup;        // 標籤群組測驗
   const isManual = !!plan.manual;        // 手動出題組
@@ -706,11 +707,17 @@ async function renderDayList() {
       <div class="row-meta">進度：${doneCount}/${total} 字完成${isPast ? '（純查看，可重練）' : ''}</div>
     </div>
     ${rows || '<div class="card center">這組沒有單字</div>'}
-    <div class="card center">${actionBtn}</div>`;
+    <div class="card center">
+      ${actionBtn}
+      <div class="btn-row" style="justify-content:center"><button class="btn" id="day-read">📖 再讀一次（只瀏覽）</button></div>
+    </div>`;
 
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
   document.getElementById('back-cal').onclick = () => (isGroup ? renderGroups() : backFromDayList());
+  // 📖 再讀一次：純瀏覽（英文/中文/詞性/發音/例句/記憶聯想），不動進度、讀完回清單
+  document.getElementById('day-read').onclick = () => { Daily.browse = true; renderReadList(); };
   document.getElementById('day-start').onclick = async () => {
+    Daily.browse = false;
     if (allDone) {
       // 重新練習：清掉當日作答、跳過先讀，直接重測（SM-2 與統計照記）
       Daily.plan.progress = {};
@@ -752,9 +759,10 @@ function dispatchDaily() {
   return renderDayDone();
 }
 
-// ---- 第一段：先讀 ----
+// ---- 第一段：先讀（也用於「📖 再讀一次」純瀏覽，Daily.browse=true）----
 function renderReadList() {
   const plan = Daily.plan;
+  const browse = !!Daily.browse;
   const cards = plan.group.wordIds.map((id) => {
     const e = getById(id);
     if (!e) return '';
@@ -763,7 +771,7 @@ function renderReadList() {
         <div class="word-head">
           <span class="word-en">${esc(e.word)}</span>
           <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button>
-          <button class="btn icon remove-word" data-rm="${e.id}" title="從今天移除">✕</button>
+          ${browse ? '' : `<button class="btn icon remove-word" data-rm="${e.id}" title="從今天移除">✕</button>`}
         </div>
         <div class="pos">${esc(e.pos)}・Lv${e.level}</div>
         <div class="zh">${esc(e.zh)}</div>
@@ -782,27 +790,31 @@ function renderReadList() {
   const isDailyAuto = !isGroup && !isManual; // 只有日曆自動組才有「換一組」
   const namePart = isGroup ? esc(plan.groupName)
     : isManual ? `✋ ${esc(plan.name)}` : prettyDate(Daily.date);
-  const readTitle = `${namePart}・先讀（${plan.group.wordIds.length} 字）`;
-  const memoText = isDailyAuto ? '本組共同記憶點：' + esc(plan.group.memo)
-    : '讀完一遍，接著拼字＋造句';
+  const readTitle = browse
+    ? `${namePart}・📖 再讀一次（${plan.group.wordIds.length} 字）`
+    : `${namePart}・先讀（${plan.group.wordIds.length} 字）`;
+  const memoText = browse ? '重新瀏覽：英文／中文／詞性／發音／例句／記憶聯想'
+    : (isDailyAuto ? '本組共同記憶點：' + esc(plan.group.memo) : '讀完一遍，接著拼字＋造句');
   $main().innerHTML = `
     <div class="card memo-card">
       <div class="daily-top">
-        <button class="btn" id="back-cal">${isGroup ? '‹ 群組' : '‹ 日曆'}</button>
+        <button class="btn" id="back-cal">${browse ? '‹ 單字清單' : (isGroup ? '‹ 群組' : '‹ 日曆')}</button>
         <b>${readTitle}</b>
       </div>
       <div class="memo">💡 ${memoText}</div>
-      ${isDailyAuto ? `<div class="btn-row">
+      ${(isDailyAuto && !browse) ? `<div class="btn-row">
         <button class="btn" id="regroup">🔄 換一組</button>
       </div>` : ''}
     </div>
     ${cards}
     <div class="card center">
-      <button class="btn primary big-copy" id="read-done">✅ 讀完了，開始測驗 →</button>
+      ${browse
+        ? `<button class="btn primary big-copy" id="read-done">✅ 讀完，回單字清單</button>`
+        : `<button class="btn primary big-copy" id="read-done">✅ 讀完了，開始測驗 →</button>`}
     </div>`;
 
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
-  document.getElementById('back-cal').onclick = () => dailyBack();
+  document.getElementById('back-cal').onclick = () => (browse ? renderDayList() : dailyBack());
 
   // 移除某字
   document.querySelectorAll('.remove-word').forEach((b) => {
@@ -834,6 +846,7 @@ function renderReadList() {
     renderReadList();
   };
   document.getElementById('read-done').onclick = async () => {
+    if (browse) { Daily.browse = false; return renderDayList(); } // 純瀏覽：回清單，不動進度
     Daily.plan.readDone = true;
     Daily.plan.updatedAt = Date.now();
     await persistPlan();
