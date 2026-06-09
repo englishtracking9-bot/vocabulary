@@ -1,7 +1,7 @@
-// app.js — 啟動、路由、首頁＝測驗、身分切換
+// app.js — 啟動、路由、首頁(落點)＋測驗(到期複習)、身分切換
 import {
   openDB, getAllProfiles, putProfile, getProfile, setMeta, getMeta,
-  getRecordsByProfile, getRecord, putRecord, deleteRecord, deleteProfileFully,
+  getRecordsByProfile, getRecord, putRecord, deleteRecord, deleteProfileFully, getDueRecords,
   getDayPlan, putDayPlan, getDaysByProfile, dayKey, getDailyLog,
   putManualGroup, deleteManualGroup, getManualGroupsByProfile, getManualGroupsByDate,
 } from './db.js';
@@ -62,7 +62,7 @@ async function init() {
     document.querySelectorAll('.nav-btn').forEach((b) => {
       b.addEventListener('click', () => go(b.dataset.route));
     });
-    if (!location.hash) location.hash = '#quiz';
+    if (!location.hash) location.hash = '#home';
     route();
 
     registerServiceWorker();
@@ -114,6 +114,7 @@ function renderHeader() {
 
 // ---------- 路由 ----------
 const ROUTES = {
+  '#home': renderHome,
   '#quiz': renderQuiz,
   '#calendar': renderCalendar,
   '#lookup': renderLookup,
@@ -126,8 +127,8 @@ const ROUTES = {
 };
 
 function route() {
-  const hash = location.hash || '#quiz';
-  const fn = ROUTES[hash] || renderQuiz;
+  const hash = location.hash || '#home';
+  const fn = ROUTES[hash] || renderHome;
   document.querySelectorAll('.nav-btn').forEach((b) => {
     b.classList.toggle('active', b.dataset.route === hash);
   });
@@ -141,17 +142,77 @@ function go(hash) {
 }
 
 // ============================================================
-// 測驗（首頁）
+// 首頁（預設落點）— 今日進度 + 快捷，不強迫測驗
+// ============================================================
+async function renderHome() {
+  const stats = await getStats(State.profile.id);
+  const today = todayStr();
+  const due = await getDueRecords(State.profile.id, Date.now());
+  const dueCount = due.length;
+
+  // 今天的單字組進度（若已生成）
+  const autoPlan = await getDayPlan(State.profile.id, today);
+  let groupLabel = '今天的單字組';
+  if (autoPlan && autoPlan.group.wordIds.length) {
+    const total = autoPlan.group.wordIds.length;
+    const done = autoPlan.group.wordIds.filter((id) => wordDayDone(autoPlan, id)).length;
+    groupLabel = (total > 0 && done >= total) ? '今天的單字組（已完成 ✓）'
+      : `今天的單字組（${done}/${total}）`;
+  }
+
+  $main().innerHTML = `
+    <div class="card">
+      <h2>嗨，${esc(State.profile.name)} 👋</h2>
+      <div class="stat-grid">
+        <div><b>${stats.todayNew}</b><span>今日新學</span></div>
+        <div><b>${stats.todayReview}</b><span>今日複習</span></div>
+        <div><b>${stats.todayAccuracy}%</b><span>今日答對率</span></div>
+        <div><b>🔥 ${stats.streak}</b><span>連續天數</span></div>
+      </div>
+    </div>
+    <div class="card home-actions">
+      <p class="hint-area">想去哪就點哪，今天慢慢來 😊</p>
+      <button class="btn primary big-copy" id="h-group">▶️ ${esc(groupLabel)}</button>
+      <button class="btn big-copy" id="h-review">🔁 今天該複習的到期字（${dueCount}）</button>
+      <div class="btn-row">
+        <button class="btn" id="h-lookup">🔎 查單字</button>
+        <button class="btn" id="h-mywords">📋 我的單字</button>
+      </div>
+    </div>`;
+  document.getElementById('h-group').onclick = () => openDay(today);
+  document.getElementById('h-review').onclick = () => go('#quiz');
+  document.getElementById('h-lookup').onclick = () => go('#lookup');
+  document.getElementById('h-mywords').onclick = () => go('#mywords');
+}
+
+// ============================================================
+// 測驗（只出「今天到期該複習」的字；學新字走日曆）
 // ============================================================
 async function renderQuiz() {
   if (!State.session || State.session.remaining === 0) {
-    const items = await buildQueue(State.profile);
+    const items = await buildQueue(State.profile, Date.now(), { reviewOnly: true });
     State.session = new Session(items);
   }
   if (State.session.remaining === 0) {
-    return renderQuizDone();
+    return renderReviewEmpty();
   }
   showQuestion();
+}
+
+// 沒有到期複習字時的友善畫面
+function renderReviewEmpty() {
+  $main().innerHTML = `
+    <div class="card center">
+      <h2>今天沒有要複習的字 🎉</h2>
+      <p>SM-2 算過了，今天到期的字都複習完了。</p>
+      <p class="hint-area">想多練？去學今天的新字組，或練自己的單字。</p>
+      <div class="btn-row" style="justify-content:center">
+        <button class="btn primary" id="go-cal">📚 去學今天的新字組</button>
+        <button class="btn" id="go-my">📋 我的單字</button>
+      </div>
+    </div>`;
+  document.getElementById('go-cal').onclick = () => openDay(todayStr());
+  document.getElementById('go-my').onclick = () => go('#mywords');
 }
 
 async function renderQuizDone() {
@@ -170,12 +231,10 @@ async function renderQuizDone() {
       <a class="btn" href="#report">看每日報告</a>
     </div>`;
   document.getElementById('again').onclick = async () => {
-    const items = await buildQueue(State.profile);
+    const items = await buildQueue(State.profile, Date.now(), { reviewOnly: true });
     State.session = new Session(items);
-    if (State.session.remaining === 0) {
-      $main().innerHTML = `<div class="card center"><h2>目前沒有到期複習或新字了 👍</h2>
-        <p>可到「查單字」加入想學的字，或到設定調整每日新字數／級別。</p></div>`;
-    } else showQuestion();
+    if (State.session.remaining === 0) renderReviewEmpty();
+    else showQuestion();
   };
 }
 

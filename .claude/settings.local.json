@@ -29,7 +29,9 @@
       "Bash(node --check service-worker.js)",
       "Bash(cd /d D:\\\\vocabulary)",
       "Bash(node -c js/notify.js)",
-      "Bash(node -c service-worker.js)"
+      "Bash(node -c service-worker.js)",
+      "Bash(python scripts/devserver.py 8143)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8143/index.html)"
     ]
   }
 }

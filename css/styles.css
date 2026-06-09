@@ -243,8 +243,8 @@ details[open] summary::before { content: '▾ '; }
 }
 .nav-btn {
   flex: 1; border: none; background: none; color: var(--muted);
-  font-size: 20px; padding: 8px 2px; display: flex; flex-direction: column; align-items: center; gap: 2px;
-  cursor: pointer;
+  font-size: 18px; padding: 8px 1px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  cursor: pointer; min-width: 0;
 }
-.nav-btn span { font-size: 11px; }
+.nav-btn span { font-size: 10px; white-space: nowrap; }
 .nav-btn.active { color: var(--primary); }

@@ -11,7 +11,7 @@ import { shuffle, interleave, todayStr } from './util.js';
 
 // 建立今日出題佇列。回傳 [{wordId, level, kind}]
 // kind: 'review' | 'new-lookup' | 'new-fresh'
-export async function buildQueue(profile, now = Date.now()) {
+export async function buildQueue(profile, now = Date.now(), opts = {}) {
   const pid = profile.id;
   const s = profile.settings || {};
   const dailyNewLimit = s.dailyNewLimit || 20;
@@ -22,6 +22,9 @@ export async function buildQueue(profile, now = Date.now()) {
     due.map((r) => ({ wordId: r.wordId, level: r.level, kind: 'review' })),
     (it) => String(it.level)
   );
+
+  // 「測驗」分頁：只出今日到期該複習的字（學新字走日曆）
+  if (opts.reviewOnly) return reviewItems;
 
   // 今日已新學數量 → 計算剩餘新字配額
   const today = todayStr(new Date(now));
