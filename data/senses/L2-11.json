@@ -1,0 +1,206 @@
+{
+  "origin": [
+    { "pos": "n.", "zh": "起源、由來", "example": "No one knows the origin of this custom.", "example_zh": "沒有人知道這個習俗的由來。" }
+  ],
+  "owner": [
+    { "pos": "n.", "zh": "擁有者、主人", "example": "The owner of the dog is very kind.", "example_zh": "這隻狗的主人非常仁慈。" }
+  ],
+  "pain": [
+    { "pos": "n.", "zh": "疼痛", "example": "He felt a sharp pain in his arm.", "example_zh": "他感到手臂一陣劇痛。" },
+    { "pos": "n.", "zh": "痛苦、辛苦", "example": "No pain, no gain.", "example_zh": "沒有付出就沒有收穫。" }
+  ],
+  "painful": [
+    { "pos": "adj.", "zh": "疼痛的、痛苦的", "example": "The injury was very painful.", "example_zh": "這個傷非常痛。" }
+  ],
+  "painting": [
+    { "pos": "n.", "zh": "畫作、繪畫", "example": "The painting hangs on the wall.", "example_zh": "這幅畫掛在牆上。" }
+  ],
+  "pajamas": [
+    { "pos": "n.", "zh": "睡衣", "example": "He put on his pajamas before bed.", "example_zh": "他睡前穿上睡衣。" }
+  ],
+  "pale": [
+    { "pos": "adj.", "zh": "蒼白的", "example": "She looked pale after the long trip.", "example_zh": "長途旅行後她臉色蒼白。" },
+    { "pos": "adj.", "zh": "（顏色）淡的", "example": "The walls are painted pale blue.", "example_zh": "牆壁漆成淡藍色。" }
+  ],
+  "pan": [
+    { "pos": "n.", "zh": "平底鍋", "example": "Heat the oil in a pan.", "example_zh": "在平底鍋裡把油加熱。" }
+  ],
+  "panda": [
+    { "pos": "n.", "zh": "貓熊", "example": "The panda is eating bamboo.", "example_zh": "貓熊正在吃竹子。" }
+  ],
+  "papaya": [
+    { "pos": "n.", "zh": "木瓜", "example": "Papaya is good for your stomach.", "example_zh": "木瓜對腸胃很好。" }
+  ],
+  "pardon": [
+    { "pos": "v.", "zh": "原諒、寬恕", "example": "Pardon me, could you say that again?", "example_zh": "抱歉，你能再說一次嗎？" },
+    { "pos": "n.", "zh": "赦免、原諒", "example": "He begged the king's pardon.", "example_zh": "他懇求國王的赦免。" }
+  ],
+  "participate": [
+    { "pos": "v.", "zh": "參加", "example": "Many students participated in the contest.", "example_zh": "許多學生參加了這場比賽。" }
+  ],
+  "particular": [
+    { "pos": "adj.", "zh": "特定的、特別的", "example": "Is there a particular book you want?", "example_zh": "有沒有你特別想要的書？" },
+    { "pos": "adj.", "zh": "講究的、挑剔的", "example": "She is particular about food.", "example_zh": "她對食物很挑剔。" }
+  ],
+  "partner": [
+    { "pos": "n.", "zh": "夥伴、搭檔", "example": "Find a partner for this activity.", "example_zh": "為這個活動找一個搭檔。" }
+  ],
+  "password": [
+    { "pos": "n.", "zh": "密碼", "example": "Don't share your password with others.", "example_zh": "不要把密碼告訴別人。" }
+  ],
+  "paste": [
+    { "pos": "v.", "zh": "貼上、黏", "example": "Cut the picture and paste it here.", "example_zh": "把圖片剪下貼在這裡。" },
+    { "pos": "n.", "zh": "糊狀物、醬", "example": "Mix the powder into a paste.", "example_zh": "把粉末調成糊狀。" }
+  ],
+  "path": [
+    { "pos": "n.", "zh": "小路、路徑", "example": "We followed the path through the woods.", "example_zh": "我們沿著小路穿過樹林。" }
+  ],
+  "patient": [
+    { "pos": "n.", "zh": "病人、患者", "example": "The nurse cared for the patient.", "example_zh": "護理師照顧病人。" },
+    { "pos": "adj.", "zh": "有耐心的", "example": "Be patient; we will get there soon.", "example_zh": "耐心點，我們快到了。" }
+  ],
+  "pattern": [
+    { "pos": "n.", "zh": "圖案、花樣", "example": "The shirt has a flower pattern.", "example_zh": "這件襯衫有花朵圖案。" },
+    { "pos": "n.", "zh": "模式、規律", "example": "Her sleep follows a regular pattern.", "example_zh": "她的睡眠有規律的模式。" }
+  ],
+  "peace": [
+    { "pos": "n.", "zh": "和平", "example": "Everyone wishes for world peace.", "example_zh": "每個人都希望世界和平。" },
+    { "pos": "n.", "zh": "平靜、安寧", "example": "She enjoys the peace of the countryside.", "example_zh": "她享受鄉間的寧靜。" }
+  ],
+  "peaceful": [
+    { "pos": "adj.", "zh": "和平的、寧靜的", "example": "The village is quiet and peaceful.", "example_zh": "這個村子安靜又祥和。" }
+  ],
+  "peach": [
+    { "pos": "n.", "zh": "桃子", "example": "This peach is soft and sweet.", "example_zh": "這顆桃子又軟又甜。" }
+  ],
+  "peak": [
+    { "pos": "n.", "zh": "山頂、頂峰", "example": "They reached the peak of the mountain.", "example_zh": "他們到達了山頂。" },
+    { "pos": "n.", "zh": "高峰、巔峰", "example": "Traffic is heavy at peak hours.", "example_zh": "尖峰時段車流量很大。" }
+  ],
+  "pear": [
+    { "pos": "n.", "zh": "梨子", "example": "I ate a juicy pear after lunch.", "example_zh": "我午餐後吃了一顆多汁的梨子。" }
+  ],
+  "per": [
+    { "pos": "prep.", "zh": "每", "example": "The car runs at sixty miles per hour.", "example_zh": "這輛車時速六十英里。" }
+  ],
+  "perfect": [
+    { "pos": "adj.", "zh": "完美的、完全的", "example": "She got a perfect score on the test.", "example_zh": "她考試得了滿分。" },
+    { "pos": "v.", "zh": "使完美、使精熟", "example": "He practiced to perfect his skills.", "example_zh": "他練習以精進技巧。" }
+  ],
+  "period": [
+    { "pos": "n.", "zh": "時期、期間", "example": "This was a happy period of her life.", "example_zh": "這是她人生中快樂的一段時期。" },
+    { "pos": "n.", "zh": "（上課的）一節", "example": "We have a short break between periods.", "example_zh": "兩節課之間有短暫的休息。" }
+  ],
+  "personal": [
+    { "pos": "adj.", "zh": "個人的、私人的", "example": "This is my personal diary.", "example_zh": "這是我私人的日記。" }
+  ],
+  "personality": [
+    { "pos": "n.", "zh": "個性、人格", "example": "She has a cheerful personality.", "example_zh": "她個性開朗。" }
+  ],
+  "phrase": [
+    { "pos": "n.", "zh": "片語、短語", "example": "Write a sentence using this phrase.", "example_zh": "用這個片語造一個句子。" },
+    { "pos": "v.", "zh": "措辭、表達", "example": "He phrased his question politely.", "example_zh": "他用禮貌的措辭提問。" }
+  ],
+  "pillow": [
+    { "pos": "n.", "zh": "枕頭", "example": "The pillow is soft and comfortable.", "example_zh": "這個枕頭又軟又舒服。" }
+  ],
+  "pizza": [
+    { "pos": "n.", "zh": "披薩", "example": "We ordered a large cheese pizza.", "example_zh": "我們點了一個大的起司披薩。" }
+  ],
+  "plain": [
+    { "pos": "adj.", "zh": "樸素的、簡單的", "example": "She wore a plain white shirt.", "example_zh": "她穿著一件樸素的白襯衫。" },
+    { "pos": "adj.", "zh": "清楚的、明白的", "example": "He made his meaning plain.", "example_zh": "他把意思講得很清楚。" }
+  ],
+  "platform": [
+    { "pos": "n.", "zh": "（車站）月台", "example": "The train arrived at platform two.", "example_zh": "火車停在第二月台。" },
+    { "pos": "n.", "zh": "平台、講台", "example": "The speaker stood on a platform.", "example_zh": "講者站在一個平台上。" }
+  ],
+  "playground": [
+    { "pos": "n.", "zh": "遊樂場、操場", "example": "Children are playing on the playground.", "example_zh": "孩子們在遊樂場玩。" }
+  ],
+  "pleasant": [
+    { "pos": "adj.", "zh": "令人愉快的", "example": "We had a pleasant afternoon together.", "example_zh": "我們一起度過了愉快的下午。" }
+  ],
+  "plus": [
+    { "pos": "prep.", "zh": "加", "example": "Two plus three equals five.", "example_zh": "二加三等於五。" },
+    { "pos": "adj.", "zh": "外加的、有利的", "example": "Good pay is a plus point of this job.", "example_zh": "高薪是這份工作的一個優點。" }
+  ],
+  "poem": [
+    { "pos": "n.", "zh": "詩", "example": "She wrote a poem about spring.", "example_zh": "她寫了一首關於春天的詩。" }
+  ],
+  "poet": [
+    { "pos": "n.", "zh": "詩人", "example": "The poet read his work aloud.", "example_zh": "詩人大聲朗讀他的作品。" }
+  ],
+  "poetry": [
+    { "pos": "n.", "zh": "詩（總稱）", "example": "I enjoy reading poetry.", "example_zh": "我喜歡讀詩。" }
+  ],
+  "poison": [
+    { "pos": "n.", "zh": "毒、毒藥", "example": "Some mushrooms contain poison.", "example_zh": "有些菇類含有毒素。" },
+    { "pos": "v.", "zh": "下毒、毒害", "example": "Pollution can poison the river.", "example_zh": "汙染會毒害河流。" }
+  ],
+  "policeman-cop": [
+    { "pos": "n.", "zh": "警察", "example": "The policeman directed the traffic.", "example_zh": "警察指揮交通。" }
+  ],
+  "policy": [
+    { "pos": "n.", "zh": "政策、方針", "example": "The school has a strict policy on bullying.", "example_zh": "學校對霸凌有嚴格的規定。" }
+  ],
+  "pop": [
+    { "pos": "adj.", "zh": "流行的（pop music）", "example": "She likes to listen to pop music.", "example_zh": "她喜歡聽流行音樂。" },
+    { "pos": "v.", "zh": "突然出現、發出啪聲", "example": "A balloon popped behind me.", "example_zh": "我身後有個氣球啪一聲爆掉。" }
+  ],
+  "population": [
+    { "pos": "n.", "zh": "人口", "example": "The city has a large population.", "example_zh": "這座城市人口眾多。" }
+  ],
+  "pork": [
+    { "pos": "n.", "zh": "豬肉", "example": "We had pork and rice for dinner.", "example_zh": "我們晚餐吃豬肉飯。" }
+  ],
+  "port": [
+    { "pos": "n.", "zh": "港口", "example": "The ship sailed into the port.", "example_zh": "船駛進了港口。" }
+  ],
+  "pose": [
+    { "pos": "v.", "zh": "擺姿勢", "example": "Everyone posed for the photo.", "example_zh": "大家擺好姿勢拍照。" },
+    { "pos": "v.", "zh": "造成、構成", "example": "The fire posed a danger to the town.", "example_zh": "這場火對城鎮構成危險。" }
+  ],
+  "position": [
+    { "pos": "n.", "zh": "位置", "example": "Put the chair back in its position.", "example_zh": "把椅子放回原位。" },
+    { "pos": "n.", "zh": "職位、立場", "example": "She holds an important position in the company.", "example_zh": "她在公司擔任重要職位。" }
+  ],
+  "positive": [
+    { "pos": "adj.", "zh": "正面的、積極的", "example": "She always keeps a positive attitude.", "example_zh": "她總是保持積極的態度。" },
+    { "pos": "adj.", "zh": "確定的、肯定的", "example": "Are you positive you locked the door?", "example_zh": "你確定你鎖門了嗎？" }
+  ],
+  "possibility": [
+    { "pos": "n.", "zh": "可能性", "example": "There is a possibility of rain today.", "example_zh": "今天有可能下雨。" }
+  ],
+  "post": [
+    { "pos": "v.", "zh": "張貼、發布", "example": "She posted a photo online.", "example_zh": "她在網路上貼了一張照片。" },
+    { "pos": "v.", "zh": "郵寄", "example": "I will post the letter tomorrow.", "example_zh": "我明天會把信寄出。" }
+  ],
+  "postcard": [
+    { "pos": "n.", "zh": "明信片", "example": "She sent me a postcard from Paris.", "example_zh": "她從巴黎寄給我一張明信片。" }
+  ],
+  "pound": [
+    { "pos": "n.", "zh": "磅（重量）", "example": "The baby weighs seven pounds.", "example_zh": "這個寶寶重七磅。" },
+    { "pos": "n.", "zh": "英鎊（貨幣）", "example": "The book costs ten pounds.", "example_zh": "這本書要十英鎊。" }
+  ],
+  "powerful": [
+    { "pos": "adj.", "zh": "強大的、強有力的", "example": "The engine is very powerful.", "example_zh": "這個引擎馬力強大。" }
+  ],
+  "praise": [
+    { "pos": "v.", "zh": "稱讚、表揚", "example": "The teacher praised her hard work.", "example_zh": "老師稱讚她的努力。" },
+    { "pos": "n.", "zh": "讚美、稱讚", "example": "The book received high praise.", "example_zh": "這本書獲得高度讚賞。" }
+  ],
+  "pray": [
+    { "pos": "v.", "zh": "祈禱", "example": "They pray for peace every day.", "example_zh": "他們每天為和平祈禱。" }
+  ],
+  "prayer": [
+    { "pos": "n.", "zh": "禱告、祈禱", "example": "She said a quiet prayer.", "example_zh": "她默默地做了禱告。" }
+  ],
+  "prefer": [
+    { "pos": "v.", "zh": "比較喜歡、偏好", "example": "I prefer tea to coffee.", "example_zh": "比起咖啡我更喜歡茶。" }
+  ],
+  "president": [
+    { "pos": "n.", "zh": "總統", "example": "The president gave a speech.", "example_zh": "總統發表了演說。" },
+    { "pos": "n.", "zh": "董事長、會長", "example": "She is the president of the club.", "example_zh": "她是社團的會長。" }
+  ]
+}
