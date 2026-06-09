@@ -1,0 +1,211 @@
+{
+  "state": [
+    { "pos": "v.", "zh": "陳述、聲明", "example": "He stated his opinion clearly.", "example_zh": "他清楚地陳述了自己的意見。" },
+    { "pos": "n.", "zh": "狀態、狀況", "example": "The house was in a poor state.", "example_zh": "這房子狀況很差。" },
+    { "pos": "n.", "zh": "州、邦", "example": "Texas is a large state in America.", "example_zh": "德州是美國的一個大州。" }
+  ],
+  "steak": [
+    { "pos": "n.", "zh": "牛排", "example": "He ordered a steak for dinner.", "example_zh": "他晚餐點了牛排。" }
+  ],
+  "steel": [
+    { "pos": "n.", "zh": "鋼、鋼鐵", "example": "The bridge is made of steel.", "example_zh": "這座橋是鋼造的。" }
+  ],
+  "step": [
+    { "pos": "n.", "zh": "腳步、台階", "example": "Watch your step on the stairs.", "example_zh": "上樓梯小心腳步。" },
+    { "pos": "n.", "zh": "步驟", "example": "Follow these steps to make a cake.", "example_zh": "按照這些步驟做蛋糕。" },
+    { "pos": "v.", "zh": "踏、走", "example": "She stepped onto the bus.", "example_zh": "她踏上公車。" }
+  ],
+  "stick": [
+    { "pos": "n.", "zh": "棍子、枝條", "example": "The dog brought back the stick.", "example_zh": "那隻狗把樹枝叼了回來。" },
+    { "pos": "v.", "zh": "黏住、卡住", "example": "The stamp stuck to my finger.", "example_zh": "郵票黏在我手指上。" }
+  ],
+  "stomachache": [
+    { "pos": "n.", "zh": "胃痛、肚子痛", "example": "I have a stomachache after eating too much.", "example_zh": "吃太多後我肚子痛。" }
+  ],
+  "stone": [
+    { "pos": "n.", "zh": "石頭", "example": "He threw a stone into the river.", "example_zh": "他把一顆石頭丟進河裡。" },
+    { "pos": "n.", "zh": "寶石", "example": "The ring has a blue stone.", "example_zh": "這枚戒指上有一顆藍寶石。" }
+  ],
+  "storm": [
+    { "pos": "n.", "zh": "暴風雨", "example": "The storm knocked down many trees.", "example_zh": "暴風雨吹倒了許多樹。" },
+    { "pos": "v.", "zh": "怒氣沖沖地衝", "example": "He stormed out of the room.", "example_zh": "他怒氣沖沖地衝出房間。" }
+  ],
+  "stranger": [
+    { "pos": "n.", "zh": "陌生人", "example": "Don't talk to strangers.", "example_zh": "不要和陌生人說話。" }
+  ],
+  "strawberry": [
+    { "pos": "n.", "zh": "草莓", "example": "She picked fresh strawberries from the farm.", "example_zh": "她從農場摘了新鮮草莓。" }
+  ],
+  "stream": [
+    { "pos": "n.", "zh": "小溪、溪流", "example": "A clear stream runs through the forest.", "example_zh": "一條清澈的小溪流過森林。" },
+    { "pos": "n.", "zh": "（人、車）流", "example": "A stream of cars passed by.", "example_zh": "一連串的車子經過。" }
+  ],
+  "stress": [
+    { "pos": "n.", "zh": "壓力、緊張", "example": "Too much work causes stress.", "example_zh": "工作太多會造成壓力。" },
+    { "pos": "v.", "zh": "強調", "example": "She stressed the importance of sleep.", "example_zh": "她強調睡眠的重要性。" }
+  ],
+  "stretch": [
+    { "pos": "v.", "zh": "伸展、拉長", "example": "Stretch your arms before you exercise.", "example_zh": "運動前先伸展手臂。" },
+    { "pos": "v.", "zh": "延伸、綿延", "example": "The beach stretches for miles.", "example_zh": "海灘綿延數英里。" }
+  ],
+  "strict": [
+    { "pos": "adj.", "zh": "嚴格的", "example": "Our teacher is strict but fair.", "example_zh": "我們老師嚴格但公正。" }
+  ],
+  "strike": [
+    { "pos": "n.", "zh": "罷工", "example": "The workers went on strike for better pay.", "example_zh": "工人為了加薪而罷工。" },
+    { "pos": "v.", "zh": "打、擊中", "example": "Lightning struck the old tree.", "example_zh": "閃電擊中了那棵老樹。" }
+  ],
+  "struggle": [
+    { "pos": "v.", "zh": "掙扎、奮力", "example": "She struggled to lift the heavy bag.", "example_zh": "她奮力想抬起那個重袋子。" },
+    { "pos": "n.", "zh": "鬥爭、奮鬥", "example": "Life was a struggle for the poor family.", "example_zh": "對這個窮苦家庭而言，生活是一場奮鬥。" }
+  ],
+  "style": [
+    { "pos": "n.", "zh": "風格、樣式", "example": "I like her style of dressing.", "example_zh": "我喜歡她的穿衣風格。" }
+  ],
+  "subway-underground-metro": [
+    { "pos": "n.", "zh": "地鐵、捷運", "example": "We took the subway to the museum.", "example_zh": "我們搭地鐵去博物館。" }
+  ],
+  "succeed": [
+    { "pos": "v.", "zh": "成功", "example": "If you keep trying, you will succeed.", "example_zh": "如果你持續嘗試，就會成功。" },
+    { "pos": "v.", "zh": "接替、繼任", "example": "The prince succeeded his father as king.", "example_zh": "王子繼承父位成為國王。" }
+  ],
+  "success": [
+    { "pos": "n.", "zh": "成功", "example": "Hard work leads to success.", "example_zh": "努力帶來成功。" }
+  ],
+  "such": [
+    { "pos": "adj.", "zh": "這樣的、如此的", "example": "I have never seen such a big dog.", "example_zh": "我從沒看過這麼大的狗。" }
+  ],
+  "sudden": [
+    { "pos": "adj.", "zh": "突然的", "example": "There was a sudden change in the weather.", "example_zh": "天氣突然變了。" }
+  ],
+  "suggest": [
+    { "pos": "v.", "zh": "建議、提議", "example": "She suggested going to the park.", "example_zh": "她建議去公園。" },
+    { "pos": "v.", "zh": "暗示、表明", "example": "His smile suggested he was happy.", "example_zh": "他的微笑顯示他很開心。" }
+  ],
+  "suit": [
+    { "pos": "n.", "zh": "套裝、西裝", "example": "He wore a black suit to the meeting.", "example_zh": "他穿了黑色西裝去開會。" },
+    { "pos": "v.", "zh": "適合、相稱", "example": "This color suits you well.", "example_zh": "這個顏色很適合你。" }
+  ],
+  "suitable": [
+    { "pos": "adj.", "zh": "合適的、適當的", "example": "This movie is suitable for children.", "example_zh": "這部電影適合兒童觀賞。" }
+  ],
+  "super": [
+    { "pos": "adj.", "zh": "極好的、超棒的", "example": "We had a super time at the beach.", "example_zh": "我們在海灘玩得超開心。" },
+    { "pos": "adv.", "zh": "非常、超級", "example": "The food was super delicious.", "example_zh": "這食物超級好吃。" }
+  ],
+  "supper": [
+    { "pos": "n.", "zh": "晚餐", "example": "We had soup and bread for supper.", "example_zh": "我們晚餐吃湯和麵包。" }
+  ],
+  "supply": [
+    { "pos": "n.", "zh": "供應、存貨", "example": "The store has a good supply of water.", "example_zh": "這家店有充足的水可供應。" },
+    { "pos": "v.", "zh": "供應、提供", "example": "The farm supplies milk to the town.", "example_zh": "這座農場供應牛奶給鎮上。" }
+  ],
+  "support": [
+    { "pos": "v.", "zh": "支持、贊成", "example": "My family supports my dream.", "example_zh": "我的家人支持我的夢想。" },
+    { "pos": "v.", "zh": "支撐、承受", "example": "These poles support the roof.", "example_zh": "這些柱子支撐著屋頂。" }
+  ],
+  "suppose": [
+    { "pos": "v.", "zh": "認為、假設", "example": "I suppose you are right.", "example_zh": "我想你是對的。" }
+  ],
+  "surf": [
+    { "pos": "v.", "zh": "衝浪", "example": "They went to the beach to surf.", "example_zh": "他們去海邊衝浪。" },
+    { "pos": "v.", "zh": "瀏覽（網路）", "example": "He surfs the Internet every night.", "example_zh": "他每晚都上網瀏覽。" }
+  ],
+  "surface": [
+    { "pos": "n.", "zh": "表面", "example": "The surface of the table is smooth.", "example_zh": "桌子的表面很光滑。" }
+  ],
+  "survival": [
+    { "pos": "n.", "zh": "生存、倖存", "example": "Water is necessary for survival.", "example_zh": "水是生存所必需的。" }
+  ],
+  "survive": [
+    { "pos": "v.", "zh": "存活、倖存", "example": "The plant can survive without much water.", "example_zh": "這種植物不用太多水也能存活。" }
+  ],
+  "swallow": [
+    { "pos": "v.", "zh": "吞、嚥", "example": "Chew your food before you swallow.", "example_zh": "吞下去之前先把食物嚼碎。" },
+    { "pos": "n.", "zh": "燕子", "example": "Swallows fly south in winter.", "example_zh": "燕子在冬天飛往南方。" }
+  ],
+  "sweater": [
+    { "pos": "n.", "zh": "毛衣", "example": "She put on a warm sweater.", "example_zh": "她穿上一件溫暖的毛衣。" }
+  ],
+  "sweep": [
+    { "pos": "v.", "zh": "打掃、清掃", "example": "He swept the floor with a broom.", "example_zh": "他用掃把掃地。" }
+  ],
+  "swim": [
+    { "pos": "v.", "zh": "游泳", "example": "We swim in the pool every summer.", "example_zh": "我們每年夏天在泳池游泳。" },
+    { "pos": "n.", "zh": "游泳", "example": "Let's go for a swim.", "example_zh": "我們去游個泳吧。" }
+  ],
+  "swimsuit": [
+    { "pos": "n.", "zh": "泳裝", "example": "Don't forget your swimsuit for the trip.", "example_zh": "別忘了帶泳裝去旅行。" }
+  ],
+  "swing": [
+    { "pos": "n.", "zh": "鞦韆", "example": "The child sat on the swing.", "example_zh": "那孩子坐在鞦韆上。" },
+    { "pos": "v.", "zh": "搖擺、擺動", "example": "The monkey swung from branch to branch.", "example_zh": "猴子在樹枝間擺盪。" }
+  ],
+  "switch": [
+    { "pos": "v.", "zh": "切換、轉換", "example": "Please switch off the light.", "example_zh": "請把燈關掉。" },
+    { "pos": "n.", "zh": "開關", "example": "The light switch is by the door.", "example_zh": "電燈開關在門邊。" }
+  ],
+  "symbol": [
+    { "pos": "n.", "zh": "象徵、符號", "example": "The dove is a symbol of peace.", "example_zh": "鴿子是和平的象徵。" }
+  ],
+  "system": [
+    { "pos": "n.", "zh": "系統、制度", "example": "Our school has a new computer system.", "example_zh": "我們學校有新的電腦系統。" }
+  ],
+  "tale": [
+    { "pos": "n.", "zh": "故事、傳說", "example": "Grandma told us a fairy tale.", "example_zh": "奶奶給我們講了一個童話故事。" }
+  ],
+  "target": [
+    { "pos": "n.", "zh": "目標、靶子", "example": "The arrow hit the center of the target.", "example_zh": "箭射中了靶心。" },
+    { "pos": "v.", "zh": "以⋯為目標、針對", "example": "The ad targets young people.", "example_zh": "這則廣告針對年輕人。" }
+  ],
+  "task": [
+    { "pos": "n.", "zh": "任務、工作", "example": "Cleaning the room was an easy task.", "example_zh": "打掃房間是件輕鬆的工作。" }
+  ],
+  "tax": [
+    { "pos": "n.", "zh": "稅、稅金", "example": "People pay tax to the government.", "example_zh": "人民向政府繳稅。" },
+    { "pos": "v.", "zh": "對⋯課稅", "example": "The government taxes cigarettes heavily.", "example_zh": "政府對香菸課重稅。" }
+  ],
+  "teapot": [
+    { "pos": "n.", "zh": "茶壺", "example": "She poured tea from the teapot.", "example_zh": "她從茶壺裡倒茶。" }
+  ],
+  "tear": [
+    { "pos": "v.", "zh": "撕、扯破", "example": "He tore the paper into small pieces.", "example_zh": "他把紙撕成小片。" },
+    { "pos": "n.", "zh": "眼淚", "example": "Tears ran down her face.", "example_zh": "淚水從她臉上流下。" }
+  ],
+  "technology": [
+    { "pos": "n.", "zh": "科技、技術", "example": "Technology changes our lives.", "example_zh": "科技改變我們的生活。" }
+  ],
+  "teens": [
+    { "pos": "n.", "zh": "青少年", "example": "Many teens enjoy playing video games.", "example_zh": "許多青少年喜歡打電動。" },
+    { "pos": "n.", "zh": "十幾歲（年齡）", "example": "She learned to drive in her teens.", "example_zh": "她十幾歲時學會開車。" }
+  ],
+  "temperature": [
+    { "pos": "n.", "zh": "溫度、氣溫", "example": "The temperature dropped at night.", "example_zh": "夜裡氣溫下降了。" }
+  ],
+  "term": [
+    { "pos": "n.", "zh": "學期", "example": "We have exams at the end of the term.", "example_zh": "我們在學期末考試。" },
+    { "pos": "n.", "zh": "用語、術語", "example": "She explained the science term.", "example_zh": "她解釋了那個科學術語。" }
+  ],
+  "terrorism": [
+    { "pos": "n.", "zh": "恐怖主義", "example": "Countries work together to fight terrorism.", "example_zh": "各國合作對抗恐怖主義。" }
+  ],
+  "terrorist": [
+    { "pos": "n.", "zh": "恐怖分子", "example": "The police caught the terrorist.", "example_zh": "警察抓到了那名恐怖分子。" }
+  ],
+  "text": [
+    { "pos": "n.", "zh": "文字、本文", "example": "Read the text and answer the questions.", "example_zh": "閱讀本文並回答問題。" },
+    { "pos": "n./v.", "zh": "簡訊；傳簡訊", "example": "She sent me a text this morning.", "example_zh": "她今天早上傳了簡訊給我。" }
+  ],
+  "textbook": [
+    { "pos": "n.", "zh": "教科書、課本", "example": "Open your textbook to page ten.", "example_zh": "把課本翻到第十頁。" }
+  ],
+  "therefore": [
+    { "pos": "adv.", "zh": "因此、所以", "example": "It was raining; therefore, we stayed home.", "example_zh": "那時在下雨，所以我們待在家。" }
+  ],
+  "thief": [
+    { "pos": "n.", "zh": "小偷、賊", "example": "The thief stole her wallet.", "example_zh": "小偷偷了她的錢包。" }
+  ],
+  "thirsty": [
+    { "pos": "adj.", "zh": "口渴的", "example": "After running, I felt very thirsty.", "example_zh": "跑步後我覺得非常口渴。" }
+  ]
+}
