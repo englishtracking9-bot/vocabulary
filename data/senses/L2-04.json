@@ -1,0 +1,206 @@
+{
+  "compare": [
+    { "pos": "v.", "zh": "比較", "example": "Let's compare these two phones.", "example_zh": "我們來比較這兩支手機。" },
+    { "pos": "v.", "zh": "把⋯比作（compare to）", "example": "Life is often compared to a journey.", "example_zh": "人生常被比作一場旅程。" }
+  ],
+  "complete": [
+    { "pos": "adj.", "zh": "完整的、完全的", "example": "I have the complete set of books.", "example_zh": "我有這整套書。" },
+    { "pos": "v.", "zh": "完成", "example": "Please complete the form and sign it.", "example_zh": "請填好表格並簽名。" }
+  ],
+  "complex": [
+    { "pos": "adj.", "zh": "複雜的", "example": "This is a complex math problem.", "example_zh": "這是一道複雜的數學題。" },
+    { "pos": "n.", "zh": "綜合建築群", "example": "They built a new sports complex.", "example_zh": "他們蓋了一座新的綜合體育館。" }
+  ],
+  "concern": [
+    { "pos": "n.", "zh": "憂慮、關心的事", "example": "Her health is my main concern.", "example_zh": "她的健康是我最擔心的事。" },
+    { "pos": "v.", "zh": "使擔心、關係到", "example": "The news concerns us all.", "example_zh": "這則消息和我們所有人都有關。" }
+  ],
+  "conclude": [
+    { "pos": "v.", "zh": "斷定、得出結論", "example": "We concluded that the plan would work.", "example_zh": "我們斷定這個計畫行得通。" },
+    { "pos": "v.", "zh": "結束", "example": "She concluded her speech with a joke.", "example_zh": "她以一個笑話結束演講。" }
+  ],
+  "condition": [
+    { "pos": "n.", "zh": "狀態、狀況", "example": "The car is in good condition.", "example_zh": "這輛車狀況良好。" },
+    { "pos": "n.", "zh": "條件", "example": "You can go on one condition.", "example_zh": "你要去可以，但有一個條件。" }
+  ],
+  "confident": [
+    { "pos": "adj.", "zh": "自信的", "example": "She felt confident before the test.", "example_zh": "考試前她很有自信。" }
+  ],
+  "conflict": [
+    { "pos": "n.", "zh": "衝突、爭執", "example": "The two brothers had a conflict.", "example_zh": "兩兄弟發生了衝突。" },
+    { "pos": "v.", "zh": "抵觸、相矛盾", "example": "His story conflicts with hers.", "example_zh": "他的說法和她的相矛盾。" }
+  ],
+  "congratulation": [
+    { "pos": "n.", "zh": "恭喜、祝賀", "example": "Congratulations on your new job!", "example_zh": "恭喜你找到新工作！" }
+  ],
+  "connection": [
+    { "pos": "n.", "zh": "連接、關係", "example": "There is a strong connection between them.", "example_zh": "他們之間有很深的關係。" }
+  ],
+  "consider": [
+    { "pos": "v.", "zh": "考慮", "example": "Please consider my idea carefully.", "example_zh": "請仔細考慮我的提議。" },
+    { "pos": "v.", "zh": "認為、看作", "example": "We consider him a good friend.", "example_zh": "我們把他當成好朋友。" }
+  ],
+  "consideration": [
+    { "pos": "n.", "zh": "考慮、體諒", "example": "We took your needs into consideration.", "example_zh": "我們把你的需求列入考量。" }
+  ],
+  "contact": [
+    { "pos": "v.", "zh": "聯絡", "example": "Please contact me if you have questions.", "example_zh": "有問題請聯絡我。" },
+    { "pos": "n.", "zh": "接觸、聯繫", "example": "Keep in contact with your friends.", "example_zh": "和朋友保持聯繫。" }
+  ],
+  "contain": [
+    { "pos": "v.", "zh": "包含、容納", "example": "This box contains old photos.", "example_zh": "這個盒子裡裝著舊照片。" }
+  ],
+  "continue": [
+    { "pos": "v.", "zh": "繼續", "example": "Please continue with your story.", "example_zh": "請繼續講你的故事。" }
+  ],
+  "contract": [
+    { "pos": "n.", "zh": "合約、契約", "example": "They signed a one-year contract.", "example_zh": "他們簽了一年的合約。" },
+    { "pos": "v.", "zh": "收縮", "example": "Metal contracts in the cold.", "example_zh": "金屬遇冷會收縮。" }
+  ],
+  "control": [
+    { "pos": "v.", "zh": "控制", "example": "He couldn't control his anger.", "example_zh": "他無法控制自己的怒氣。" },
+    { "pos": "n.", "zh": "控制、操控", "example": "The pilot is in control of the plane.", "example_zh": "飛行員掌控著飛機。" }
+  ],
+  "conversation": [
+    { "pos": "n.", "zh": "對話、交談", "example": "We had a long conversation on the phone.", "example_zh": "我們在電話裡聊了很久。" }
+  ],
+  "corn": [
+    { "pos": "n.", "zh": "玉米", "example": "The farmer grows corn in the field.", "example_zh": "農夫在田裡種玉米。" }
+  ],
+  "countryside": [
+    { "pos": "n.", "zh": "鄉下、農村", "example": "We spent the weekend in the countryside.", "example_zh": "我們在鄉下度過週末。" }
+  ],
+  "couple": [
+    { "pos": "n.", "zh": "一對、夫妻", "example": "The young couple just got married.", "example_zh": "這對年輕情侶剛結婚。" },
+    { "pos": "n.", "zh": "幾個、兩三個（a couple of）", "example": "I'll be back in a couple of days.", "example_zh": "我過幾天就回來。" }
+  ],
+  "courage": [
+    { "pos": "n.", "zh": "勇氣", "example": "It took courage to tell the truth.", "example_zh": "說出真相需要勇氣。" }
+  ],
+  "court": [
+    { "pos": "n.", "zh": "法庭、法院", "example": "The judge spoke in the court.", "example_zh": "法官在法庭上發言。" },
+    { "pos": "n.", "zh": "球場", "example": "They played tennis on the court.", "example_zh": "他們在球場上打網球。" }
+  ],
+  "cowboy": [
+    { "pos": "n.", "zh": "牛仔", "example": "The cowboy rode his horse across the field.", "example_zh": "牛仔騎馬越過田野。" }
+  ],
+  "crayon": [
+    { "pos": "n.", "zh": "蠟筆", "example": "The child drew a sun with a yellow crayon.", "example_zh": "那孩子用黃色蠟筆畫了一個太陽。" }
+  ],
+  "cream": [
+    { "pos": "n.", "zh": "奶油、鮮奶油", "example": "She put cream on top of the cake.", "example_zh": "她在蛋糕上加了鮮奶油。" },
+    { "pos": "n.", "zh": "乳霜、護膚霜", "example": "He put some cream on his dry hands.", "example_zh": "他在乾燥的手上抹了乳霜。" }
+  ],
+  "create": [
+    { "pos": "v.", "zh": "創造、創作", "example": "Artists create beautiful things.", "example_zh": "藝術家創造美麗的事物。" }
+  ],
+  "crime": [
+    { "pos": "n.", "zh": "犯罪、罪行", "example": "Stealing is a serious crime.", "example_zh": "偷竊是嚴重的罪行。" }
+  ],
+  "crisis": [
+    { "pos": "n.", "zh": "危機", "example": "The country faced an economic crisis.", "example_zh": "這個國家面臨經濟危機。" }
+  ],
+  "crow": [
+    { "pos": "n.", "zh": "烏鴉", "example": "A black crow sat on the wire.", "example_zh": "一隻黑烏鴉停在電線上。" }
+  ],
+  "crowd": [
+    { "pos": "n.", "zh": "人群", "example": "A large crowd gathered in the square.", "example_zh": "一大群人聚集在廣場上。" },
+    { "pos": "v.", "zh": "擠滿、聚集", "example": "Fans crowded around the singer.", "example_zh": "歌迷擠在歌手身邊。" }
+  ],
+  "cultural": [
+    { "pos": "adj.", "zh": "文化的", "example": "The festival is a cultural event.", "example_zh": "這個節慶是文化活動。" }
+  ],
+  "culture": [
+    { "pos": "n.", "zh": "文化", "example": "I am interested in Japanese culture.", "example_zh": "我對日本文化有興趣。" }
+  ],
+  "cure": [
+    { "pos": "v.", "zh": "治癒、治好", "example": "This medicine can cure the illness.", "example_zh": "這種藥能治好這種病。" },
+    { "pos": "n.", "zh": "療法、解決辦法", "example": "Doctors are looking for a cure.", "example_zh": "醫生們正在尋找療法。" }
+  ],
+  "curious": [
+    { "pos": "adj.", "zh": "好奇的", "example": "The curious cat looked into the box.", "example_zh": "好奇的貓往盒子裡看。" }
+  ],
+  "current": [
+    { "pos": "adj.", "zh": "目前的、現今的", "example": "What is the current time in London?", "example_zh": "倫敦現在幾點？" },
+    { "pos": "n.", "zh": "水流、電流", "example": "The river current is strong here.", "example_zh": "這裡的水流很強。" }
+  ],
+  "curtain": [
+    { "pos": "n.", "zh": "窗簾、布幕", "example": "She opened the curtains to let in light.", "example_zh": "她拉開窗簾讓光線進來。" }
+  ],
+  "custom": [
+    { "pos": "n.", "zh": "風俗、習俗", "example": "Taking off shoes indoors is a custom here.", "example_zh": "在室內脫鞋是這裡的習俗。" }
+  ],
+  "customer": [
+    { "pos": "n.", "zh": "顧客", "example": "The shop was full of customers.", "example_zh": "店裡擠滿了顧客。" }
+  ],
+  "cycle": [
+    { "pos": "n.", "zh": "循環、週期", "example": "The water cycle includes rain and clouds.", "example_zh": "水循環包含降雨和雲。" },
+    { "pos": "v.", "zh": "騎腳踏車", "example": "He cycles to work every day.", "example_zh": "他每天騎腳踏車上班。" }
+  ],
+  "daily": [
+    { "pos": "adj.", "zh": "每日的、日常的", "example": "Brushing teeth is a daily habit.", "example_zh": "刷牙是每天的習慣。" },
+    { "pos": "adv.", "zh": "每天", "example": "The store opens daily at nine.", "example_zh": "這家店每天九點開門。" }
+  ],
+  "damage": [
+    { "pos": "n.", "zh": "損害、損壞", "example": "The storm caused great damage.", "example_zh": "暴風雨造成了嚴重的損害。" },
+    { "pos": "v.", "zh": "損壞、傷害", "example": "Smoking can damage your lungs.", "example_zh": "抽菸會傷害你的肺。" }
+  ],
+  "dancer": [
+    { "pos": "n.", "zh": "舞者", "example": "She is a graceful dancer.", "example_zh": "她是個優雅的舞者。" }
+  ],
+  "danger": [
+    { "pos": "n.", "zh": "危險", "example": "The sign warns of danger ahead.", "example_zh": "標誌警告前方有危險。" }
+  ],
+  "data": [
+    { "pos": "n.", "zh": "資料、數據", "example": "The scientist collected a lot of data.", "example_zh": "科學家收集了大量數據。" }
+  ],
+  "deaf": [
+    { "pos": "adj.", "zh": "聾的", "example": "She is deaf and uses sign language.", "example_zh": "她聽不見，使用手語。" }
+  ],
+  "debate": [
+    { "pos": "n.", "zh": "辯論、爭論", "example": "The students had a debate about pollution.", "example_zh": "學生們針對汙染進行辯論。" },
+    { "pos": "v.", "zh": "辯論、思考", "example": "They debated which plan was better.", "example_zh": "他們爭論哪個計畫比較好。" }
+  ],
+  "debt": [
+    { "pos": "n.", "zh": "債務、欠款", "example": "He worked hard to pay off his debt.", "example_zh": "他努力工作還清債務。" }
+  ],
+  "decision": [
+    { "pos": "n.", "zh": "決定", "example": "It was a difficult decision to make.", "example_zh": "這是個難下的決定。" }
+  ],
+  "deer": [
+    { "pos": "n.", "zh": "鹿", "example": "A deer ran across the road.", "example_zh": "一隻鹿跑過馬路。" }
+  ],
+  "degree": [
+    { "pos": "n.", "zh": "度（溫度、角度）", "example": "The water is ninety degrees hot.", "example_zh": "水溫高達九十度。" },
+    { "pos": "n.", "zh": "學位", "example": "She has a degree in law.", "example_zh": "她有法律學位。" }
+  ],
+  "delay": [
+    { "pos": "v.", "zh": "延遲、耽擱", "example": "The flight was delayed by two hours.", "example_zh": "班機延誤了兩個小時。" },
+    { "pos": "n.", "zh": "延遲、耽擱", "example": "There was a long delay at the airport.", "example_zh": "機場有很長的延誤。" }
+  ],
+  "delicious": [
+    { "pos": "adj.", "zh": "美味的、可口的", "example": "The soup smells delicious.", "example_zh": "這湯聞起來很香。" }
+  ],
+  "deliver": [
+    { "pos": "v.", "zh": "遞送、運送", "example": "They deliver the newspaper every morning.", "example_zh": "他們每天早上送報。" },
+    { "pos": "v.", "zh": "發表、講（演說）", "example": "She delivered a speech to the class.", "example_zh": "她對全班發表演說。" }
+  ],
+  "delivery": [
+    { "pos": "n.", "zh": "遞送、送貨", "example": "The delivery will arrive tomorrow.", "example_zh": "貨物明天會送到。" }
+  ],
+  "dentist": [
+    { "pos": "n.", "zh": "牙醫", "example": "I visit the dentist twice a year.", "example_zh": "我一年看兩次牙醫。" }
+  ],
+  "deny": [
+    { "pos": "v.", "zh": "否認", "example": "He denied breaking the window.", "example_zh": "他否認打破了窗戶。" }
+  ],
+  "department": [
+    { "pos": "n.", "zh": "部門、系", "example": "She works in the sales department.", "example_zh": "她在業務部門工作。" }
+  ],
+  "depend": [
+    { "pos": "v.", "zh": "依賴、取決於", "example": "Children depend on their parents.", "example_zh": "孩子依賴父母。" }
+  ],
+  "depth": [
+    { "pos": "n.", "zh": "深度", "example": "The depth of the lake is ten meters.", "example_zh": "這座湖深十公尺。" }
+  ]
+}
