@@ -231,6 +231,9 @@ details[open] summary::before { content: '▾ '; }
 .read-card .zh { font-size: 18px; margin: 4px 0; }
 .ex-en { font-size: 15px; margin-top: 6px; }
 .ex-zh { font-size: 14px; color: var(--muted); margin-top: 2px; }
+.ex-word { cursor: pointer; border-bottom: 1px dotted var(--border); border-radius: 3px; }
+.ex-word:active { background: var(--primary); color: #fff; }
+.row.tap { cursor: pointer; }
 .sent-zh { font-size: 22px; }
 .sent-input { text-align: left; min-height: 60px; resize: vertical; font-size: 17px; }
 .save-exit { width: 100%; margin-top: 12px; color: var(--muted); }

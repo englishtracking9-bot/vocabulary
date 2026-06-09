@@ -344,16 +344,46 @@ function kindLabel(kind) {
 // ============================================================
 // 單字卡（共用）
 // ============================================================
+// 把英文句子拆成「可點的單字 + 原樣標點空白」。點字會去掉標點與大小寫再查。
+function exampleHTML(sentence) {
+  const s = sentence || '';
+  let out = '';
+  let last = 0;
+  const re = /[A-Za-z][A-Za-z'’-]*/g;
+  let m;
+  while ((m = re.exec(s)) !== null) {
+    out += esc(s.slice(last, m.index)); // 中間的標點／空白原樣保留
+    const word = m[0];
+    const clean = word.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '');
+    out += clean
+      ? `<span class="ex-word" data-look="${esc(clean)}">${esc(word)}</span>`
+      : esc(word);
+    last = m.index + word.length;
+  }
+  out += esc(s.slice(last));
+  return out;
+}
+
+// 點任意文字中的單字 → 導到「查單字」並自動查詢（完全複用查單字流程）
+let PendingLookup = null;
+function lookupTermNavigate(term) {
+  if (!term) return;
+  PendingLookup = term;
+  const modal = document.getElementById('modal');
+  if (modal) modal.classList.remove('show'); // 若從單字卡 modal 點出，先關閉
+  if (location.hash === '#lookup') route(); else location.hash = '#lookup';
+}
+
 function cardHTML(entry, dict) {
   const phon = (dict && dict.phonetic) ? `<span class="phon">${esc(dict.phonetic)}</span>` : '';
   let examples = '';
   if (entry.example && entry.example.trim()) {
-    // 優先用已存的標準例句（含中文翻譯，離線可用）
+    // 優先用已存的標準例句（含中文翻譯，離線可用）；例句裡每個字可點
     examples = `<div class="examples"><b>例句</b>
-      <div class="ex-en">${esc(entry.example)} <button class="btn icon" data-say="${esc(entry.example)}">🔊</button></div>
+      <div class="ex-en">${exampleHTML(entry.example)} <button class="btn icon" data-say="${esc(entry.example)}">🔊</button></div>
       ${entry.example_zh ? `<div class="ex-zh">${esc(entry.example_zh)}</div>` : ''}</div>`;
   } else if (dict && dict.examples && dict.examples.length) {
-    examples = `<div class="examples"><b>例句</b><ul>${dict.examples.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+    examples = `<div class="examples"><b>例句</b><ul>${dict.examples.map((x) => `<li>${exampleHTML(x)}</li>`).join('')}</ul></div>`;
   }
   const note = entry.note ? `<div class="note">補充（相關詞）：${esc(entry.note)}</div>` : '';
   const customTag = entry.custom ? `<span class="tag-custom">🔖 我查的字</span>` : '';
@@ -416,6 +446,10 @@ function attachCardHandlers(entry) {
   // 同字根家族：點一個字 → 開該字卡
   document.querySelectorAll('[data-fam]').forEach((c) => {
     c.onclick = () => openWordDetail(c.dataset.fam);
+  });
+  // 例句裡的單字：點 → 走查單字流程
+  document.querySelectorAll('[data-look]').forEach((w) => {
+    w.onclick = () => lookupTermNavigate(w.dataset.look);
   });
 }
 
@@ -671,7 +705,7 @@ async function renderDayList() {
     if (!e) return '';
     const rec = recMap.get(id);
     const badge = rec ? statusBadge(rec.status) : '🆕 未測驗';
-    return `<div class="row">
+    return `<div class="row tap" data-id="${id}">
       <div class="row-main">
         <span class="row-word">${esc(e.word)}
           <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button></span>
@@ -713,6 +747,10 @@ async function renderDayList() {
     </div>`;
 
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
+  // 清單中的字可點 → 開單字卡
+  document.querySelectorAll('#main .row.tap[data-id]').forEach((row) => {
+    row.onclick = (ev) => { if (ev.target.closest('[data-say]')) return; openWordDetail(row.dataset.id); };
+  });
   document.getElementById('back-cal').onclick = () => (isGroup ? renderGroups() : backFromDayList());
   // 📖 再讀一次：純瀏覽（英文/中文/詞性/發音/例句/記憶聯想），不動進度、讀完回清單
   document.getElementById('day-read').onclick = () => { Daily.browse = true; renderReadList(); };
@@ -779,7 +817,7 @@ function renderReadList() {
         ${e.syllable ? `<div class="syllable">🔡 照音節拼：<b>${esc(e.syllable)}</b></div>` : ''}
         ${e.mnemonic ? `<div class="mnemonic">🧠 ${esc(e.mnemonic)}</div>` : ''}
         ${e.example ? `<div class="examples">
-          <div class="ex-en">${esc(e.example)} <button class="btn icon" data-say="${esc(e.example)}">🔊</button></div>
+          <div class="ex-en">${exampleHTML(e.example)} <button class="btn icon" data-say="${esc(e.example)}">🔊</button></div>
           <div class="ex-zh">${esc(e.example_zh || '')}</div>
         </div>` : ''}
       </div>`;
@@ -814,6 +852,7 @@ function renderReadList() {
     </div>`;
 
   document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
+  document.querySelectorAll('[data-look]').forEach((w) => { w.onclick = () => lookupTermNavigate(w.dataset.look); });
   document.getElementById('back-cal').onclick = () => (browse ? renderDayList() : dailyBack());
 
   // 移除某字
@@ -1349,6 +1388,12 @@ function renderLookup() {
   input.focus();
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') doLookup(); });
   document.getElementById('lk-go').onclick = doLookup;
+  // 從其他畫面點字進來：自動帶入並查詢
+  if (PendingLookup) {
+    const t = PendingLookup; PendingLookup = null;
+    input.value = t;
+    doLookup();
+  }
 }
 
 async function doLookup() {
