@@ -246,6 +246,8 @@ details[open] summary::before { content: '▾ '; }
 .sense-zh { font-size: 18px; font-weight: 600; color: var(--text); }
 .more-senses { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); }
 .more-title { font-weight: 600; margin-bottom: 4px; }
+.sense-tag { margin: 6px 0; font-size: 15px; color: var(--primary); }
+.sense-tag b { font-size: 17px; }
 .sent-zh { font-size: 22px; }
 .sent-input { text-align: left; min-height: 60px; resize: vertical; font-size: 17px; }
 .save-exit { width: 100%; margin-top: 12px; color: var(--muted); }

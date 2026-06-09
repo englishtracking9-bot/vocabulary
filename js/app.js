@@ -917,6 +917,11 @@ function renderReadList() {
     const e = getById(id);
     if (!e) return '';
     return `
+      ${(() => {
+        const sList = (Array.isArray(e.senses) && e.senses.length)
+          ? e.senses : [{ pos: e.pos, zh: e.zh, example: e.example, example_zh: e.example_zh }];
+        const multi = sList.length > 1;
+        return `
       <div class="read-card">
         <div class="word-head">
           <span class="word-en">${esc(e.word)}</span>
@@ -924,15 +929,12 @@ function renderReadList() {
           ${browse ? '' : `<button class="btn icon remove-word" data-rm="${e.id}" title="從今天移除">✕</button>`}
         </div>
         <div class="pos">${esc(e.pos)}・Lv${e.level}</div>
-        <div class="zh">${esc(e.zh)}</div>
         ${Array.isArray(e.root) && e.root.length ? `<div class="root">🔧 ${e.root.map((p) => `${esc(p.part)}(${esc(p.mean)})`).join(' + ')}</div>` : ''}
         ${e.syllable ? `<div class="syllable">🔡 照音節拼：<b>${esc(e.syllable)}</b></div>` : ''}
         ${e.mnemonic ? `<div class="mnemonic">🧠 ${esc(e.mnemonic)}</div>` : ''}
-        ${e.example ? `<div class="examples">
-          <div class="ex-en">${exampleHTML(e.example)} <button class="btn icon" data-say="${esc(e.example)}">🔊</button></div>
-          <div class="ex-zh">${esc(e.example_zh || '')}</div>
-        </div>` : ''}
+        <div class="senses">${sList.slice(0, 3).map((s, i) => senseBlockHTML(s, i, multi)).join('')}</div>
       </div>`;
+      })()}`;
   }).join('');
 
   const isGroup = !!plan.isGroup;
@@ -1086,8 +1088,29 @@ async function dailySpellingSubmit() {
 }
 
 // ---- 第二段②：造句測驗（例句默寫比對）----
-function startSentence(wordIds) {
-  Daily.sentQueue = wordIds.slice();
+// 取出某字「有例句」的義項；沒有 senses 就退回頂層例句
+function sensesWithExample(entry) {
+  const ss = Array.isArray(entry.senses)
+    ? entry.senses.filter((s) => s && s.example && s.example.trim())
+    : [];
+  if (ss.length) return ss;
+  if (entry.example && entry.example.trim()) {
+    return [{ pos: entry.pos, zh: entry.zh, example: entry.example, example_zh: entry.example_zh }];
+  }
+  return [];
+}
+
+// J-3：造句測驗針對「某一個義項」出題；多義字依複習次數輪流用不同義項
+async function startSentence(wordIds) {
+  const recs = await getRecordsByProfile(State.profile.id);
+  const repsMap = new Map(recs.map((r) => [r.wordId, r.reps || 0]));
+  Daily.sentQueue = wordIds.map((id) => {
+    const e = getById(id);
+    const ss = e ? sensesWithExample(e) : [];
+    if (!ss.length) return null;
+    const sense = ss[(repsMap.get(id) || 0) % ss.length]; // 輪流不同義項
+    return { id, sense };
+  }).filter(Boolean);
   Daily.sentIdx = 0;
   dailySentenceShow();
 }
@@ -1095,16 +1118,20 @@ function startSentence(wordIds) {
 function dailySentenceShow() {
   if (Daily.sentIdx >= Daily.sentQueue.length) return dispatchDaily();
   Daily.answered = false;
-  const e = getById(Daily.sentQueue[Daily.sentIdx]);
+  const item = Daily.sentQueue[Daily.sentIdx];
+  const e = getById(item.id);
+  const sense = item.sense;
+  const senseTag = `${sense.pos ? esc(sense.pos) + ' ' : ''}${esc(sense.zh || '')}`;
   $main().innerHTML = `
     <div class="quiz-progress">
       <span>📝 造句測驗（默寫）</span><span>${Daily.sentIdx + 1} / ${Daily.sentQueue.length}</span>
     </div>
     <div class="card quiz-card">
-      <p class="hint-area">看著中文翻譯，把這個單字的英文例句完整默寫出來（含 <b>${esc(e.word)}</b>）：</p>
-      <div class="zh-prompt sent-zh">${esc(e.example_zh || '')}</div>
-      <div class="pos">關鍵字：${esc(e.word)}（${esc(e.zh)}）
-        <button class="btn icon" data-say="${esc(e.example)}">🔊 聽例句</button>
+      <p class="hint-area">看著中文翻譯，把這個單字「這個義項」的英文例句完整默寫出來（含 <b>${esc(e.word)}</b>）：</p>
+      <div class="sense-tag">這題考：<b>${senseTag}</b></div>
+      <div class="zh-prompt sent-zh">${esc(sense.example_zh || '')}</div>
+      <div class="pos">關鍵字：${esc(e.word)}（${senseTag}）
+        <button class="btn icon" data-say="${esc(sense.example)}">🔊 聽例句</button>
       </div>
       <textarea id="sent" class="answer-input sent-input" rows="2" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="輸入完整英文句子…"></textarea>
       <div class="btn-row"><button class="btn primary" id="submit">送出</button></div>
@@ -1123,12 +1150,14 @@ async function dailySentenceSubmit() {
   const val = ta.value;
   if (!val.trim()) { ta.focus(); return; }
   Daily.answered = true;
-  const e = getById(Daily.sentQueue[Daily.sentIdx]);
-  const res = compareSentence(val, e.example);
+  const item = Daily.sentQueue[Daily.sentIdx];
+  const e = getById(item.id);
+  const sense = item.sense;
+  const res = compareSentence(val, sense.example);
 
   // 回寫 SM-2（造句也是一次提取練習）
   await recordAnswer(State.profile, e, res.correct, false, false, Date.now(),
-    { input: val, answer: e.example, kind: 'sentence' });
+    { input: val, answer: sense.example, kind: 'sentence' });
   Daily.plan.progress[e.id] = Daily.plan.progress[e.id] || {};
   Daily.plan.progress[e.id].sentence = res.correct ? 'correct' : 'wrong';
   Daily.plan.updatedAt = Date.now();
@@ -1141,9 +1170,9 @@ async function dailySentenceSubmit() {
     ${banner}
     <div class="card">
       <div class="sent-block"><b>你的句子</b><div class="sent-line">${res.userHtml}</div></div>
-      <div class="sent-block"><b>正確例句</b><div class="sent-line">${res.standardHtml}
-        <button class="btn icon" data-say="${esc(e.example)}">🔊</button></div>
-        <div class="ex-zh">${esc(e.example_zh || '')}</div></div>
+      <div class="sent-block"><b>正確例句</b>（${sense.pos ? esc(sense.pos) + ' ' : ''}${esc(sense.zh || '')}）<div class="sent-line">${res.standardHtml}
+        <button class="btn icon" data-say="${esc(sense.example)}">🔊</button></div>
+        <div class="ex-zh">${esc(sense.example_zh || '')}</div></div>
       ${missing}
     </div>
     <div class="btn-row"><button class="btn primary" id="next">下一句 →</button></div>`;
