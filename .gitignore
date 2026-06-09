@@ -13,3 +13,5 @@ __pycache__/
 *.pyc
 
 # 注意：data/vocab.json 必須保留上傳，故「不」忽略 data/
+
+data/_L*_list.txt

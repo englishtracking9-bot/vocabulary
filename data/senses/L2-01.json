@@ -1,0 +1,222 @@
+{
+  "absence": [
+    { "pos": "n.", "zh": "缺席、不在", "example": "Her absence from class worried the teacher.", "example_zh": "她沒來上課讓老師很擔心。" },
+    { "pos": "n.", "zh": "缺乏", "example": "In the absence of water, the plants died.", "example_zh": "在缺水的情況下，植物枯死了。" }
+  ],
+  "absent": [
+    { "pos": "adj.", "zh": "缺席的", "example": "Three students were absent today.", "example_zh": "今天有三個學生缺席。" },
+    { "pos": "adj.", "zh": "心不在焉的", "example": "He had an absent look during the meeting.", "example_zh": "開會時他一臉心不在焉。" }
+  ],
+  "accept": [
+    { "pos": "v.", "zh": "接受", "example": "She was happy to accept the invitation.", "example_zh": "她很高興接受了邀請。" },
+    { "pos": "v.", "zh": "認可、相信", "example": "Most people accept that exercise is good for health.", "example_zh": "大多數人都認同運動有益健康。" }
+  ],
+  "accident": [
+    { "pos": "n.", "zh": "意外事故", "example": "He was hurt in a car accident.", "example_zh": "他在一場車禍中受傷。" },
+    { "pos": "n.", "zh": "偶然", "example": "We met by accident at the station.", "example_zh": "我們在車站偶然相遇。" }
+  ],
+  "account": [
+    { "pos": "n.", "zh": "帳戶", "example": "I opened a bank account last week.", "example_zh": "我上週開了一個銀行帳戶。" },
+    { "pos": "v.", "zh": "說明、解釋（account for）", "example": "He could not account for the missing money.", "example_zh": "他無法解釋那筆遺失的錢。" },
+    { "pos": "n.", "zh": "描述、敘述", "example": "She gave a clear account of the event.", "example_zh": "她對這件事做了清楚的敘述。" }
+  ],
+  "active": [
+    { "pos": "adj.", "zh": "積極的、主動的", "example": "She is active in many school clubs.", "example_zh": "她積極參加許多學校社團。" },
+    { "pos": "adj.", "zh": "活躍的、活動的", "example": "The volcano is still active.", "example_zh": "這座火山仍然活躍。" }
+  ],
+  "activity": [
+    { "pos": "n.", "zh": "活動", "example": "Swimming is my favorite activity.", "example_zh": "游泳是我最喜歡的活動。" }
+  ],
+  "actual": [
+    { "pos": "adj.", "zh": "實際的、真實的", "example": "The actual cost was higher than we thought.", "example_zh": "實際花費比我們想的還高。" }
+  ],
+  "addition": [
+    { "pos": "n.", "zh": "加法", "example": "Children learn addition before subtraction.", "example_zh": "孩子先學加法再學減法。" },
+    { "pos": "n.", "zh": "附加、增加（in addition）", "example": "In addition to math, he teaches science.", "example_zh": "除了數學，他還教自然科學。" }
+  ],
+  "address": [
+    { "pos": "n.", "zh": "地址", "example": "Please write your address on the form.", "example_zh": "請在表格上寫下你的地址。" },
+    { "pos": "v.", "zh": "處理、應付", "example": "We must address this problem now.", "example_zh": "我們必須現在處理這個問題。" },
+    { "pos": "v.", "zh": "對⋯演說", "example": "The president addressed the whole nation.", "example_zh": "總統對全國人民發表演說。" }
+  ],
+  "admit": [
+    { "pos": "v.", "zh": "承認", "example": "He admitted that he was wrong.", "example_zh": "他承認自己錯了。" },
+    { "pos": "v.", "zh": "准許進入、收容", "example": "Only members are admitted to the club.", "example_zh": "只有會員才能進入這個俱樂部。" }
+  ],
+  "adult": [
+    { "pos": "n.", "zh": "成人", "example": "Children must come with an adult.", "example_zh": "孩童必須由成人陪同。" },
+    { "pos": "adj.", "zh": "成年的", "example": "This movie is for adult viewers.", "example_zh": "這部電影適合成年觀眾。" }
+  ],
+  "advance": [
+    { "pos": "v.", "zh": "前進、進步", "example": "Technology advances very quickly.", "example_zh": "科技進步得非常快。" },
+    { "pos": "n.", "zh": "預先（in advance）", "example": "Please book the tickets in advance.", "example_zh": "請事先預訂票。" }
+  ],
+  "advice": [
+    { "pos": "n.", "zh": "建議、忠告", "example": "My teacher gave me good advice.", "example_zh": "老師給了我很好的建議。" }
+  ],
+  "affair": [
+    { "pos": "n.", "zh": "事務、事情", "example": "It is a family affair, not yours.", "example_zh": "這是家務事，不關你的事。" },
+    { "pos": "n.", "zh": "外遇、緋聞", "example": "The news reported the actor's affair.", "example_zh": "新聞報導了那位演員的緋聞。" }
+  ],
+  "affect": [
+    { "pos": "v.", "zh": "影響", "example": "The cold weather affects my mood.", "example_zh": "寒冷的天氣影響我的心情。" },
+    { "pos": "v.", "zh": "（使）感動", "example": "The sad story deeply affected her.", "example_zh": "這個悲傷的故事深深感動了她。" }
+  ],
+  "against": [
+    { "pos": "prep.", "zh": "反對、對抗", "example": "Our team played against theirs.", "example_zh": "我們這隊和他們那隊比賽。" },
+    { "pos": "prep.", "zh": "倚靠、緊貼", "example": "He leaned against the wall.", "example_zh": "他靠在牆上。" }
+  ],
+  "ahead": [
+    { "pos": "adv.", "zh": "在前面", "example": "Go straight ahead and you'll see it.", "example_zh": "直直往前走你就會看到。" },
+    { "pos": "adv.", "zh": "提前、預先（ahead of）", "example": "She finished the work ahead of time.", "example_zh": "她提前完成了工作。" }
+  ],
+  "aid": [
+    { "pos": "n.", "zh": "援助", "example": "They sent aid to the flood victims.", "example_zh": "他們把援助送給水災災民。" },
+    { "pos": "v.", "zh": "幫助、協助", "example": "Good light can aid reading.", "example_zh": "良好的光線有助於閱讀。" }
+  ],
+  "aim": [
+    { "pos": "n.", "zh": "目標、目的", "example": "Her aim is to become a doctor.", "example_zh": "她的目標是當醫生。" },
+    { "pos": "v.", "zh": "瞄準、打算", "example": "He aimed the arrow at the target.", "example_zh": "他把箭瞄準靶心。" }
+  ],
+  "aircraft": [
+    { "pos": "n.", "zh": "飛機、航空器", "example": "The aircraft landed safely.", "example_zh": "飛機安全降落了。" }
+  ],
+  "alarm": [
+    { "pos": "n.", "zh": "警報、鬧鐘", "example": "The fire alarm woke everyone up.", "example_zh": "火災警報把大家吵醒了。" },
+    { "pos": "v.", "zh": "使驚慌", "example": "The loud noise alarmed the children.", "example_zh": "巨大的聲響使孩子們驚慌。" }
+  ],
+  "album": [
+    { "pos": "n.", "zh": "專輯", "example": "The band released a new album.", "example_zh": "這個樂團發行了一張新專輯。" },
+    { "pos": "n.", "zh": "相簿", "example": "She keeps her photos in an album.", "example_zh": "她把照片放在相簿裡。" }
+  ],
+  "alike": [
+    { "pos": "adj.", "zh": "相像的", "example": "The twins look very much alike.", "example_zh": "這對雙胞胎長得非常像。" },
+    { "pos": "adv.", "zh": "同樣地", "example": "The rule treats everyone alike.", "example_zh": "這條規則對每個人一視同仁。" }
+  ],
+  "alive": [
+    { "pos": "adj.", "zh": "活著的", "example": "The fish is still alive.", "example_zh": "這條魚還活著。" },
+    { "pos": "adj.", "zh": "有活力的、熱鬧的", "example": "The street comes alive at night.", "example_zh": "這條街在晚上變得熱鬧起來。" }
+  ],
+  "alone": [
+    { "pos": "adj./adv.", "zh": "獨自的、單獨地", "example": "He likes to study alone.", "example_zh": "他喜歡獨自讀書。" },
+    { "pos": "adv.", "zh": "僅僅、只有", "example": "Money alone cannot bring happiness.", "example_zh": "光有錢無法帶來快樂。" }
+  ],
+  "aloud": [
+    { "pos": "adv.", "zh": "大聲地、出聲地", "example": "Please read the sentence aloud.", "example_zh": "請大聲把句子唸出來。" }
+  ],
+  "altogether": [
+    { "pos": "adv.", "zh": "總共", "example": "Altogether, it cost two hundred dollars.", "example_zh": "總共花了兩百元。" },
+    { "pos": "adv.", "zh": "完全地", "example": "The two plans are altogether different.", "example_zh": "這兩個計畫完全不同。" }
+  ],
+  "among": [
+    { "pos": "prep.", "zh": "在⋯之中", "example": "She is the tallest among her friends.", "example_zh": "她是朋友當中最高的。" }
+  ],
+  "amount": [
+    { "pos": "n.", "zh": "數量、總額", "example": "A large amount of water was wasted.", "example_zh": "大量的水被浪費掉了。" },
+    { "pos": "v.", "zh": "總計、等於（amount to）", "example": "The bill amounts to one thousand dollars.", "example_zh": "帳單總計一千元。" }
+  ],
+  "ancient": [
+    { "pos": "adj.", "zh": "古老的、古代的", "example": "We learned about ancient Egypt.", "example_zh": "我們學了古埃及的歷史。" }
+  ],
+  "anger": [
+    { "pos": "n.", "zh": "憤怒", "example": "He could not hide his anger.", "example_zh": "他無法掩飾自己的憤怒。" },
+    { "pos": "v.", "zh": "使生氣", "example": "His rude words angered the teacher.", "example_zh": "他無禮的話惹怒了老師。" }
+  ],
+  "angle": [
+    { "pos": "n.", "zh": "角度", "example": "A square has four right angles.", "example_zh": "正方形有四個直角。" },
+    { "pos": "n.", "zh": "觀點、角度", "example": "Let's look at the problem from another angle.", "example_zh": "我們從另一個角度來看這個問題。" }
+  ],
+  "ankle": [
+    { "pos": "n.", "zh": "腳踝", "example": "She hurt her ankle while running.", "example_zh": "她跑步時扭傷了腳踝。" }
+  ],
+  "anytime": [
+    { "pos": "adv.", "zh": "隨時", "example": "You can call me anytime.", "example_zh": "你隨時都可以打給我。" }
+  ],
+  "anyway": [
+    { "pos": "adv.", "zh": "反正、無論如何", "example": "It was raining, but we went anyway.", "example_zh": "雖然下著雨，我們還是去了。" }
+  ],
+  "anywhere-anyplace": [
+    { "pos": "adv.", "zh": "任何地方", "example": "I can't find my keys anywhere.", "example_zh": "我到處都找不到鑰匙。" }
+  ],
+  "ape": [
+    { "pos": "n.", "zh": "猿", "example": "An ape is similar to a monkey.", "example_zh": "猿和猴子很相似。" }
+  ],
+  "appearance": [
+    { "pos": "n.", "zh": "外貌、外表", "example": "Don't judge people by their appearance.", "example_zh": "不要以外表評斷別人。" },
+    { "pos": "n.", "zh": "出現、露面", "example": "The singer made a surprise appearance.", "example_zh": "那位歌手意外現身。" }
+  ],
+  "appetite": [
+    { "pos": "n.", "zh": "食慾", "example": "Exercise gives me a good appetite.", "example_zh": "運動讓我胃口很好。" }
+  ],
+  "apply": [
+    { "pos": "v.", "zh": "申請", "example": "She applied for a summer job.", "example_zh": "她申請了一份暑期工作。" },
+    { "pos": "v.", "zh": "應用、運用", "example": "We can apply this rule to many cases.", "example_zh": "我們可以把這條規則運用到許多情況。" }
+  ],
+  "appreciate": [
+    { "pos": "v.", "zh": "感激", "example": "I really appreciate your help.", "example_zh": "我非常感激你的幫忙。" },
+    { "pos": "v.", "zh": "欣賞、賞識", "example": "She appreciates good music.", "example_zh": "她很懂得欣賞好音樂。" }
+  ],
+  "approach": [
+    { "pos": "n.", "zh": "方法、途徑", "example": "We need a new approach to this problem.", "example_zh": "我們需要解決這個問題的新方法。" },
+    { "pos": "v.", "zh": "接近、靠近", "example": "Winter is approaching.", "example_zh": "冬天即將到來。" }
+  ],
+  "argue": [
+    { "pos": "v.", "zh": "爭論、吵架", "example": "They often argue about small things.", "example_zh": "他們常為小事爭吵。" },
+    { "pos": "v.", "zh": "主張、論證", "example": "She argued that the plan would work.", "example_zh": "她主張這個計畫會成功。" }
+  ],
+  "army": [
+    { "pos": "n.", "zh": "軍隊、陸軍", "example": "Her brother joined the army.", "example_zh": "她哥哥從軍了。" }
+  ],
+  "arrange": [
+    { "pos": "v.", "zh": "安排", "example": "I will arrange a meeting for tomorrow.", "example_zh": "我會安排明天的會議。" },
+    { "pos": "v.", "zh": "排列、整理", "example": "She arranged the flowers in a vase.", "example_zh": "她把花插進花瓶裡擺好。" }
+  ],
+  "arrival": [
+    { "pos": "n.", "zh": "到達、抵達", "example": "We waited for the arrival of the train.", "example_zh": "我們等著火車到站。" }
+  ],
+  "arrow": [
+    { "pos": "n.", "zh": "箭", "example": "He shot an arrow at the target.", "example_zh": "他朝靶子射了一箭。" },
+    { "pos": "n.", "zh": "箭頭（符號）", "example": "Follow the arrow to the exit.", "example_zh": "順著箭頭走到出口。" }
+  ],
+  "article": [
+    { "pos": "n.", "zh": "文章", "example": "I read an interesting article today.", "example_zh": "我今天讀了一篇有趣的文章。" },
+    { "pos": "n.", "zh": "物品、商品", "example": "Each article in the shop has a price tag.", "example_zh": "店裡每件商品都有標價。" }
+  ],
+  "artist": [
+    { "pos": "n.", "zh": "藝術家、畫家", "example": "The artist painted a beautiful picture.", "example_zh": "這位藝術家畫了一幅美麗的畫。" }
+  ],
+  "asleep": [
+    { "pos": "adj.", "zh": "睡著的", "example": "The baby is fast asleep.", "example_zh": "寶寶睡得很熟。" }
+  ],
+  "attempt": [
+    { "pos": "n.", "zh": "嘗試、企圖", "example": "She made an attempt to climb the wall.", "example_zh": "她試著要爬上那道牆。" },
+    { "pos": "v.", "zh": "試圖、嘗試", "example": "He attempted to fix the bike himself.", "example_zh": "他試著自己修腳踏車。" }
+  ],
+  "attend": [
+    { "pos": "v.", "zh": "出席、參加", "example": "All students must attend the meeting.", "example_zh": "所有學生都必須出席會議。" },
+    { "pos": "v.", "zh": "照顧、處理（attend to）", "example": "Nurses attend to the sick.", "example_zh": "護理師照顧病人。" }
+  ],
+  "attention": [
+    { "pos": "n.", "zh": "注意力、關注", "example": "Please pay attention to the teacher.", "example_zh": "請注意聽老師講課。" }
+  ],
+  "author": [
+    { "pos": "n.", "zh": "作者", "example": "She is the author of many books.", "example_zh": "她是許多書的作者。" }
+  ],
+  "available": [
+    { "pos": "adj.", "zh": "可獲得的、可用的", "example": "Tickets are available at the door.", "example_zh": "現場可購票。" },
+    { "pos": "adj.", "zh": "有空的", "example": "The doctor is not available now.", "example_zh": "醫生現在沒空。" }
+  ],
+  "average": [
+    { "pos": "n./adj.", "zh": "平均（的）", "example": "The average score was eighty.", "example_zh": "平均分數是八十分。" },
+    { "pos": "adj.", "zh": "普通的、一般的", "example": "He is just an average student.", "example_zh": "他只是個成績普通的學生。" }
+  ],
+  "avoid": [
+    { "pos": "v.", "zh": "避免、避開", "example": "Try to avoid sugar to stay healthy.", "example_zh": "為了健康盡量少吃糖。" }
+  ],
+  "backpack": [
+    { "pos": "n.", "zh": "背包", "example": "He carried his books in a backpack.", "example_zh": "他把書裝在背包裡。" }
+  ],
+  "backward": [
+    { "pos": "adj./adv.", "zh": "向後的、向後地", "example": "He took a backward step.", "example_zh": "他向後退了一步。" }
+  ]
+}
