@@ -1924,6 +1924,15 @@ async function renderSettings() {
     </div>
 
     <div class="card">
+      <h2>外觀</h2>
+      <p class="hint-area">預設白底淺色。深色為手動開啟，不會自動跟隨系統。</p>
+      <div class="btn-row">
+        <button class="btn theme-opt" data-theme="light">☀️ 淺色（白底）</button>
+        <button class="btn theme-opt" data-theme="dark">🌙 深色</button>
+      </div>
+    </div>
+
+    <div class="card">
       <h2>目前使用者設定（${esc(p.name)}）</h2>
       <label>每日單字數（10–20）
         <input id="set-limit" class="answer-input" type="number" min="10" max="20" value="${s.dailyNewLimit}" />
@@ -1976,6 +1985,19 @@ async function renderSettings() {
       </div>
       <p id="rm-status" class="hint-area"></p>
     </div>`;
+
+  // 外觀（淺色／深色）— 全裝置共用，存 localStorage
+  const curTheme = (() => { try { return localStorage.getItem('vocabTheme') === 'dark' ? 'dark' : 'light'; } catch (e) { return 'light'; } })();
+  document.querySelectorAll('.theme-opt').forEach((b) => {
+    if (b.dataset.theme === curTheme) b.classList.add('primary');
+    b.onclick = () => {
+      const t = b.dataset.theme;
+      try { localStorage.setItem('vocabTheme', t); } catch (e) { /* ignore */ }
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+      document.querySelectorAll('.theme-opt').forEach((x) => x.classList.toggle('primary', x.dataset.theme === t));
+    };
+  });
 
   // 每日提醒控制
   const rmStatus = document.getElementById('rm-status');

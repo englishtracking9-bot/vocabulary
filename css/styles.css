@@ -1,9 +1,9 @@
-/* styles.css — 手機優先、大字級、深淺色自動切換 */
+/* styles.css — 手機優先、大字級。預設白底淺色；深色需在設定手動開啟（不自動跟隨系統） */
 :root {
   --bg: #f4f6fb;
   --card: #ffffff;
   --text: #1a2230;
-  --muted: #6b7280;
+  --muted: #5b6675;
   --primary: #2563eb;
   --primary-d: #1d4ed8;
   --ok: #16a34a;
@@ -11,17 +11,15 @@
   --border: #e5e7eb;
   --shadow: 0 2px 8px rgba(0, 0, 0, .08);
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f141c;
-    --card: #1a2230;
-    --text: #e8edf5;
-    --muted: #9aa6b8;
-    --primary: #3b82f6;
-    --primary-d: #2563eb;
-    --border: #2c3748;
-    --shadow: 0 2px 10px rgba(0, 0, 0, .4);
-  }
+:root[data-theme="dark"] {
+  --bg: #0f141c;
+  --card: #1a2230;
+  --text: #e8edf5;
+  --muted: #9aa6b8;
+  --primary: #3b82f6;
+  --primary-d: #2563eb;
+  --border: #2c3748;
+  --shadow: 0 2px 10px rgba(0, 0, 0, .4);
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
