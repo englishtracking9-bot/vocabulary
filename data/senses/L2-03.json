@@ -1,0 +1,212 @@
+{
+  "cage": [
+    { "pos": "n.", "zh": "籠子", "example": "The bird sang inside its cage.", "example_zh": "那隻鳥在籠子裡唱歌。" },
+    { "pos": "v.", "zh": "關進籠中", "example": "Wild animals should not be caged.", "example_zh": "野生動物不該被關進籠子。" }
+  ],
+  "calendar": [
+    { "pos": "n.", "zh": "日曆、月曆", "example": "I marked the date on my calendar.", "example_zh": "我在日曆上標記了那個日期。" }
+  ],
+  "calm": [
+    { "pos": "adj.", "zh": "冷靜的、平靜的", "example": "Stay calm and don't panic.", "example_zh": "保持冷靜，不要慌。" },
+    { "pos": "v.", "zh": "使平靜（calm down）", "example": "She tried to calm the crying baby.", "example_zh": "她試著安撫哭鬧的寶寶。" }
+  ],
+  "camel": [
+    { "pos": "n.", "zh": "駱駝", "example": "A camel can live in the desert.", "example_zh": "駱駝能在沙漠中生存。" }
+  ],
+  "cancel": [
+    { "pos": "v.", "zh": "取消", "example": "They had to cancel the trip.", "example_zh": "他們不得不取消這趟旅行。" }
+  ],
+  "cancer": [
+    { "pos": "n.", "zh": "癌症", "example": "Smoking can cause cancer.", "example_zh": "抽菸會導致癌症。" }
+  ],
+  "candle": [
+    { "pos": "n.", "zh": "蠟燭", "example": "She lit a candle on the cake.", "example_zh": "她點燃蛋糕上的蠟燭。" }
+  ],
+  "capital": [
+    { "pos": "n.", "zh": "首都", "example": "Tokyo is the capital of Japan.", "example_zh": "東京是日本的首都。" },
+    { "pos": "n.", "zh": "資金、資本", "example": "They need more capital to start the business.", "example_zh": "他們需要更多資金來創業。" },
+    { "pos": "adj.", "zh": "大寫的", "example": "Begin a sentence with a capital letter.", "example_zh": "句子開頭要用大寫字母。" }
+  ],
+  "cartoon": [
+    { "pos": "n.", "zh": "卡通、漫畫", "example": "Children love to watch cartoons.", "example_zh": "孩子們愛看卡通。" }
+  ],
+  "cash": [
+    { "pos": "n.", "zh": "現金", "example": "I paid for the meal in cash.", "example_zh": "我用現金付餐費。" },
+    { "pos": "v.", "zh": "兌現（支票）", "example": "He cashed the check at the bank.", "example_zh": "他在銀行把支票兌現。" }
+  ],
+  "castle": [
+    { "pos": "n.", "zh": "城堡", "example": "The king lived in a huge castle.", "example_zh": "國王住在一座巨大的城堡裡。" }
+  ],
+  "cause": [
+    { "pos": "n.", "zh": "原因、起因", "example": "What was the cause of the fire?", "example_zh": "這場火災的起因是什麼？" },
+    { "pos": "v.", "zh": "造成、導致", "example": "Careless driving can cause accidents.", "example_zh": "開車不小心會造成意外。" }
+  ],
+  "ceiling": [
+    { "pos": "n.", "zh": "天花板", "example": "A lamp hangs from the ceiling.", "example_zh": "一盞燈從天花板垂下。" }
+  ],
+  "cell": [
+    { "pos": "n.", "zh": "細胞", "example": "The body is made of tiny cells.", "example_zh": "人體是由微小的細胞構成的。" },
+    { "pos": "n.", "zh": "手機（cell phone）", "example": "Please turn off your cell phone.", "example_zh": "請關掉你的手機。" }
+  ],
+  "centimeter": [
+    { "pos": "n.", "zh": "公分、釐米", "example": "The pencil is fifteen centimeters long.", "example_zh": "這支鉛筆長十五公分。" }
+  ],
+  "central": [
+    { "pos": "adj.", "zh": "中央的、主要的", "example": "The hotel is in the central part of town.", "example_zh": "這家飯店在市中心。" }
+  ],
+  "century": [
+    { "pos": "n.", "zh": "世紀", "example": "The castle was built in the last century.", "example_zh": "這座城堡建於上個世紀。" }
+  ],
+  "cereal": [
+    { "pos": "n.", "zh": "穀類食品、麥片", "example": "I eat cereal with milk every morning.", "example_zh": "我每天早上吃加牛奶的麥片。" }
+  ],
+  "chain": [
+    { "pos": "n.", "zh": "鏈子、項鍊", "example": "She wore a gold chain around her neck.", "example_zh": "她脖子上戴著一條金鍊子。" },
+    { "pos": "n.", "zh": "連鎖（店）", "example": "It is a famous chain of coffee shops.", "example_zh": "這是一家有名的連鎖咖啡店。" }
+  ],
+  "chalk": [
+    { "pos": "n.", "zh": "粉筆", "example": "The teacher wrote with white chalk.", "example_zh": "老師用白粉筆寫字。" }
+  ],
+  "challenge": [
+    { "pos": "n.", "zh": "挑戰", "example": "Learning English is a fun challenge.", "example_zh": "學英文是個有趣的挑戰。" },
+    { "pos": "v.", "zh": "向⋯挑戰、質疑", "example": "She challenged him to a chess game.", "example_zh": "她向他下戰帖比一場棋。" }
+  ],
+  "channel": [
+    { "pos": "n.", "zh": "（電視）頻道", "example": "Please change to another TV channel.", "example_zh": "請轉到別的電視頻道。" },
+    { "pos": "n.", "zh": "管道、途徑", "example": "We solved it through official channels.", "example_zh": "我們透過正式管道解決。" }
+  ],
+  "chapter": [
+    { "pos": "n.", "zh": "（書的）章", "example": "I read the first chapter of the book.", "example_zh": "我讀了這本書的第一章。" }
+  ],
+  "character": [
+    { "pos": "n.", "zh": "性格、品格", "example": "Honesty is part of her character.", "example_zh": "誠實是她性格的一部分。" },
+    { "pos": "n.", "zh": "（故事中的）角色", "example": "My favorite character in the story is brave.", "example_zh": "我最喜歡故事裡那個勇敢的角色。" },
+    { "pos": "n.", "zh": "文字、字元", "example": "Chinese has thousands of characters.", "example_zh": "中文有數千個字。" }
+  ],
+  "charge": [
+    { "pos": "v.", "zh": "收費", "example": "They charge ten dollars for the ticket.", "example_zh": "他們的門票收費十元。" },
+    { "pos": "n.", "zh": "費用", "example": "There is no charge for children.", "example_zh": "兒童免費。" },
+    { "pos": "v.", "zh": "充電", "example": "I need to charge my phone.", "example_zh": "我需要替手機充電。" }
+  ],
+  "chart": [
+    { "pos": "n.", "zh": "圖表", "example": "The chart shows our monthly sales.", "example_zh": "這張圖表顯示我們的每月銷售。" },
+    { "pos": "n.", "zh": "排行榜", "example": "Her new song topped the charts.", "example_zh": "她的新歌登上排行榜冠軍。" }
+  ],
+  "chase": [
+    { "pos": "v.", "zh": "追趕、追逐", "example": "The cat likes to chase mice.", "example_zh": "貓喜歡追老鼠。" },
+    { "pos": "n.", "zh": "追逐、追捕", "example": "The movie has an exciting car chase.", "example_zh": "這部電影有刺激的飛車追逐。" }
+  ],
+  "cheat": [
+    { "pos": "v.", "zh": "作弊、欺騙", "example": "It is wrong to cheat on a test.", "example_zh": "考試作弊是不對的。" },
+    { "pos": "n.", "zh": "騙子、作弊者", "example": "Nobody likes a cheat.", "example_zh": "沒有人喜歡騙子。" }
+  ],
+  "cheer": [
+    { "pos": "v.", "zh": "歡呼、為⋯加油", "example": "The fans cheered for their team.", "example_zh": "球迷為他們的隊伍加油。" },
+    { "pos": "v.", "zh": "使振作（cheer up）", "example": "Her smile cheered me up.", "example_zh": "她的微笑讓我打起精神。" }
+  ],
+  "chemical": [
+    { "pos": "n.", "zh": "化學物質", "example": "Some chemicals are dangerous.", "example_zh": "有些化學物質很危險。" },
+    { "pos": "adj.", "zh": "化學的", "example": "We did a chemical experiment in class.", "example_zh": "我們在課堂上做了化學實驗。" }
+  ],
+  "chess": [
+    { "pos": "n.", "zh": "西洋棋", "example": "My father taught me how to play chess.", "example_zh": "我爸教我下西洋棋。" }
+  ],
+  "chief": [
+    { "pos": "n.", "zh": "首長、首領", "example": "He is the chief of the fire station.", "example_zh": "他是消防隊的隊長。" },
+    { "pos": "adj.", "zh": "主要的、首要的", "example": "Health is my chief concern.", "example_zh": "健康是我最關心的事。" }
+  ],
+  "childhood": [
+    { "pos": "n.", "zh": "童年", "example": "She had a happy childhood.", "example_zh": "她有個快樂的童年。" }
+  ],
+  "childish": [
+    { "pos": "adj.", "zh": "幼稚的、孩子氣的", "example": "His childish behavior annoyed everyone.", "example_zh": "他幼稚的行為惹惱了大家。" }
+  ],
+  "china": [
+    { "pos": "n.", "zh": "中國", "example": "The Great Wall is in China.", "example_zh": "長城在中國。" },
+    { "pos": "n.", "zh": "瓷器", "example": "These cups are made of fine china.", "example_zh": "這些杯子是用上等瓷器做的。" }
+  ],
+  "chopstick": [
+    { "pos": "n.", "zh": "筷子", "example": "I learned to eat with chopsticks.", "example_zh": "我學會用筷子吃飯。" }
+  ],
+  "claim": [
+    { "pos": "v.", "zh": "宣稱、聲稱", "example": "He claimed that he saw a ghost.", "example_zh": "他聲稱他看到鬼。" },
+    { "pos": "v.", "zh": "索取、認領", "example": "She went to claim her lost bag.", "example_zh": "她去認領遺失的包包。" }
+  ],
+  "clap": [
+    { "pos": "v.", "zh": "鼓掌、拍手", "example": "The audience clapped after the show.", "example_zh": "表演結束後觀眾鼓掌。" },
+    { "pos": "n.", "zh": "（突然的）響聲", "example": "We heard a clap of thunder.", "example_zh": "我們聽到一聲雷響。" }
+  ],
+  "classic": [
+    { "pos": "adj.", "zh": "經典的、典型的", "example": "This movie is a classic.", "example_zh": "這部電影是經典之作。" },
+    { "pos": "n.", "zh": "經典作品", "example": "The novel is a classic of world literature.", "example_zh": "這本小說是世界文學的經典。" }
+  ],
+  "classical": [
+    { "pos": "adj.", "zh": "古典的", "example": "She enjoys listening to classical music.", "example_zh": "她喜歡聽古典音樂。" }
+  ],
+  "classmate": [
+    { "pos": "n.", "zh": "同學", "example": "My classmate lent me a pencil.", "example_zh": "我同學借我一支鉛筆。" }
+  ],
+  "clever": [
+    { "pos": "adj.", "zh": "聰明的、機靈的", "example": "The clever fox tricked the crow.", "example_zh": "聰明的狐狸騙了烏鴉。" }
+  ],
+  "click": [
+    { "pos": "v.", "zh": "（用滑鼠）點選、按", "example": "Click the button to start the game.", "example_zh": "點按鈕開始遊戲。" },
+    { "pos": "n.", "zh": "喀嚓聲", "example": "The door shut with a click.", "example_zh": "門喀嚓一聲關上了。" }
+  ],
+  "climate": [
+    { "pos": "n.", "zh": "氣候", "example": "This area has a warm climate.", "example_zh": "這個地區氣候溫暖。" }
+  ],
+  "cloth": [
+    { "pos": "n.", "zh": "布、布料", "example": "She wiped the table with a cloth.", "example_zh": "她用抹布擦桌子。" }
+  ],
+  "clothing": [
+    { "pos": "n.", "zh": "衣服（總稱）", "example": "We donated clothing to the poor.", "example_zh": "我們捐衣服給窮人。" }
+  ],
+  "cloudy": [
+    { "pos": "adj.", "zh": "多雲的、陰的", "example": "It is cloudy and might rain soon.", "example_zh": "天色多雲，可能快下雨了。" }
+  ],
+  "coal": [
+    { "pos": "n.", "zh": "煤、煤炭", "example": "They burn coal to keep warm.", "example_zh": "他們燒煤取暖。" }
+  ],
+  "coast": [
+    { "pos": "n.", "zh": "海岸", "example": "We drove along the coast.", "example_zh": "我們沿著海岸開車。" }
+  ],
+  "cockroach-roach": [
+    { "pos": "n.", "zh": "蟑螂", "example": "A cockroach ran across the kitchen floor.", "example_zh": "一隻蟑螂從廚房地板上跑過。" }
+  ],
+  "cocoa": [
+    { "pos": "n.", "zh": "可可", "example": "She drank a warm cup of cocoa.", "example_zh": "她喝了一杯溫熱的可可。" }
+  ],
+  "coin": [
+    { "pos": "n.", "zh": "硬幣", "example": "He dropped a coin into the box.", "example_zh": "他把一枚硬幣投進箱子。" }
+  ],
+  "cola-coke": [
+    { "pos": "n.", "zh": "可樂", "example": "I would like a glass of cola.", "example_zh": "我想要一杯可樂。" }
+  ],
+  "college": [
+    { "pos": "n.", "zh": "大學、學院", "example": "My sister studies at a college in Taipei.", "example_zh": "我姊姊在台北一所大學念書。" }
+  ],
+  "comb": [
+    { "pos": "n.", "zh": "梳子", "example": "She bought a wooden comb.", "example_zh": "她買了一把木梳。" },
+    { "pos": "v.", "zh": "梳（頭髮）", "example": "She combed her long hair.", "example_zh": "她梳理她的長髮。" }
+  ],
+  "combine": [
+    { "pos": "v.", "zh": "結合、混合", "example": "Combine the eggs and sugar in a bowl.", "example_zh": "把蛋和糖在碗裡混合。" }
+  ],
+  "comic": [
+    { "pos": "n.", "zh": "漫畫（書）", "example": "He likes to read comic books.", "example_zh": "他喜歡看漫畫書。" },
+    { "pos": "adj.", "zh": "滑稽的、喜劇的", "example": "The actor is famous for his comic roles.", "example_zh": "這位演員以喜劇角色聞名。" }
+  ],
+  "command": [
+    { "pos": "n.", "zh": "命令、指令", "example": "The dog obeys its owner's commands.", "example_zh": "那隻狗服從主人的命令。" },
+    { "pos": "v.", "zh": "命令、指揮", "example": "The general commanded the army.", "example_zh": "將軍指揮軍隊。" }
+  ],
+  "commercial": [
+    { "pos": "adj.", "zh": "商業的", "example": "The downtown area is a commercial district.", "example_zh": "市中心是商業區。" },
+    { "pos": "n.", "zh": "（電視、廣播）廣告", "example": "A loud commercial interrupted the show.", "example_zh": "一段大聲的廣告打斷了節目。" }
+  ],
+  "company": [
+    { "pos": "n.", "zh": "公司", "example": "My uncle works for a big company.", "example_zh": "我叔叔在一家大公司上班。" },
+    { "pos": "n.", "zh": "陪伴、同伴", "example": "I enjoy your company.", "example_zh": "我很喜歡有你作伴。" }
+  ]
+}
