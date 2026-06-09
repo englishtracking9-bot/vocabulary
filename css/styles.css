@@ -236,6 +236,16 @@ details[open] summary::before { content: '▾ '; }
 .ex-word { cursor: pointer; border-bottom: 1px dotted var(--border); border-radius: 3px; }
 .ex-word:active { background: var(--primary); color: #fff; }
 .row.tap { cursor: pointer; }
+/* 多義 senses */
+.senses { margin: 6px 0; }
+.sense { padding: 8px 0; border-top: 1px dashed var(--border); }
+.sense:first-child { border-top: none; }
+.sense-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.sense-no { background: var(--primary); color: #fff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; padding: 0 6px; }
+.sense-head .pos { color: var(--muted); font-size: 14px; }
+.sense-zh { font-size: 18px; font-weight: 600; color: var(--text); }
+.more-senses { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); }
+.more-title { font-weight: 600; margin-bottom: 4px; }
 .sent-zh { font-size: 22px; }
 .sent-input { text-align: left; min-height: 60px; resize: vertical; font-size: 17px; }
 .save-exit { width: 100%; margin-top: 12px; color: var(--muted); }

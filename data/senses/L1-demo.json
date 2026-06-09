@@ -1,0 +1,50 @@
+{
+  "book": [
+    { "pos": "n.", "zh": "書", "example": "I read a good book before sleeping.", "example_zh": "我睡前讀了一本好書。" },
+    { "pos": "v.", "zh": "預訂", "example": "I want to book a table for two.", "example_zh": "我想預訂一張兩人桌。" }
+  ],
+  "watch": [
+    { "pos": "v.", "zh": "觀看", "example": "We watch the stars at night.", "example_zh": "我們晚上看星星。" },
+    { "pos": "n.", "zh": "手錶", "example": "My watch shows the wrong time.", "example_zh": "我的手錶時間不對。" }
+  ],
+  "light": [
+    { "pos": "n.", "zh": "光、燈", "example": "Please turn on the light.", "example_zh": "請把燈打開。" },
+    { "pos": "adj.", "zh": "輕的", "example": "This bag is very light.", "example_zh": "這個袋子很輕。" },
+    { "pos": "v.", "zh": "點燃", "example": "They light the candles on the cake.", "example_zh": "他們點燃蛋糕上的蠟燭。" }
+  ],
+  "plant": [
+    { "pos": "n.", "zh": "植物", "example": "I water the plant every day.", "example_zh": "我每天替植物澆水。" },
+    { "pos": "v.", "zh": "種植", "example": "We plant trees in spring.", "example_zh": "我們在春天種樹。" }
+  ],
+  "fall": [
+    { "pos": "v.", "zh": "落下、跌倒", "example": "Leaves fall from the trees in autumn.", "example_zh": "秋天樹葉從樹上落下。" },
+    { "pos": "n.", "zh": "秋天（美式）", "example": "We go hiking in the fall.", "example_zh": "我們在秋天去健行。" }
+  ],
+  "play": [
+    { "pos": "v.", "zh": "玩、遊玩", "example": "The children play in the yard after school.", "example_zh": "孩子們放學後在院子裡玩。" },
+    { "pos": "v.", "zh": "演奏", "example": "She can play the piano.", "example_zh": "她會彈鋼琴。" },
+    { "pos": "n.", "zh": "戲劇", "example": "We watched a play at the theater.", "example_zh": "我們在劇院看了一齣戲。" }
+  ],
+  "fire": [
+    { "pos": "n.", "zh": "火", "example": "We sat around the fire to keep warm.", "example_zh": "我們圍著火取暖。" },
+    { "pos": "v.", "zh": "解僱", "example": "The boss decided to fire him.", "example_zh": "老闆決定解僱他。" }
+  ],
+  "point": [
+    { "pos": "n.", "zh": "重點、要點", "example": "Please get to the point.", "example_zh": "請說重點。" },
+    { "pos": "v.", "zh": "指", "example": "Don't point at people; it's rude.", "example_zh": "不要用手指著別人，這樣很沒禮貌。" },
+    { "pos": "n.", "zh": "分數", "example": "Our team scored three points.", "example_zh": "我們這隊得了三分。" }
+  ],
+  "ring": [
+    { "pos": "n.", "zh": "戒指", "example": "She wears a gold ring.", "example_zh": "她戴著一只金戒指。" },
+    { "pos": "v.", "zh": "（鈴）響、打電話", "example": "The bells ring at noon.", "example_zh": "鐘聲在中午響起。" }
+  ],
+  "kind": [
+    { "pos": "adj.", "zh": "親切的、善良的", "example": "She is kind to everyone.", "example_zh": "她對每個人都很親切。" },
+    { "pos": "n.", "zh": "種類", "example": "What kind of music do you like?", "example_zh": "你喜歡哪一種音樂？" }
+  ],
+  "right": [
+    { "pos": "adj.", "zh": "正確的", "example": "You gave the right answer.", "example_zh": "你給了正確的答案。" },
+    { "pos": "n.", "zh": "權利", "example": "Everyone has the right to vote.", "example_zh": "每個人都有投票的權利。" },
+    { "pos": "adj./adv.", "zh": "右邊（的）", "example": "Turn right at the corner.", "example_zh": "在轉角向右轉。" }
+  ]
+}

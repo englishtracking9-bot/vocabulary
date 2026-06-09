@@ -436,16 +436,33 @@ function lookupTermNavigate(term) {
   if (location.hash === '#lookup') route(); else location.hash = '#lookup';
 }
 
+// 一個義項的顯示：詞性＋中文＋例句（可點字）＋中文翻譯＋🔊
+function senseBlockHTML(s, idx, multi) {
+  const head = `<div class="sense-head">${multi ? `<span class="sense-no">${idx + 1}</span>` : ''}${s.pos ? `<span class="pos">${esc(s.pos)}</span>` : ''}<span class="sense-zh">${esc(s.zh || '')}</span></div>`;
+  const ex = s.example
+    ? `<div class="ex-en">${exampleHTML(s.example)} <button class="btn icon" data-say="${esc(s.example)}">🔊</button></div>${s.example_zh ? `<div class="ex-zh">${esc(s.example_zh)}</div>` : ''}`
+    : '';
+  return `<div class="sense">${head}${ex}</div>`;
+}
+
 function cardHTML(entry, dict) {
   const phon = (dict && dict.phonetic) ? `<span class="phon">${esc(dict.phonetic)}</span>` : '';
-  let examples = '';
-  if (entry.example && entry.example.trim()) {
-    // 優先用已存的標準例句（含中文翻譯，離線可用）；例句裡每個字可點
-    examples = `<div class="examples"><b>例句</b>
-      <div class="ex-en">${exampleHTML(entry.example)} <button class="btn icon" data-say="${esc(entry.example)}">🔊</button></div>
-      ${entry.example_zh ? `<div class="ex-zh">${esc(entry.example_zh)}</div>` : ''}</div>`;
-  } else if (dict && dict.examples && dict.examples.length) {
-    examples = `<div class="examples"><b>例句</b><ul>${dict.examples.map((x) => `<li>${exampleHTML(x)}</li>`).join('')}</ul></div>`;
+  // J-2：多義顯示。本機字用已存的 senses；自訂字/無 senses 退回單一中文＋例句
+  const senses = Array.isArray(entry.senses) ? entry.senses.filter((s) => s && (s.zh || s.example)) : [];
+  let meaningsHTML;
+  if (senses.length) {
+    const multi = senses.length > 1;
+    meaningsHTML = `<div class="senses">${senses.slice(0, 3).map((s, i) => senseBlockHTML(s, i, multi)).join('')}</div>`;
+  } else {
+    let examples = '';
+    if (entry.example && entry.example.trim()) {
+      examples = `<div class="examples"><b>例句</b>
+        <div class="ex-en">${exampleHTML(entry.example)} <button class="btn icon" data-say="${esc(entry.example)}">🔊</button></div>
+        ${entry.example_zh ? `<div class="ex-zh">${esc(entry.example_zh)}</div>` : ''}</div>`;
+    } else if (dict && dict.examples && dict.examples.length) {
+      examples = `<div class="examples"><b>例句</b><ul>${dict.examples.map((x) => `<li>${exampleHTML(x)}</li>`).join('')}</ul></div>`;
+    }
+    meaningsHTML = `<div class="zh">${esc(entry.zh) || '（尚無中文，可在下方補上）'}</div>${examples}`;
   }
   const note = entry.note ? `<div class="note">補充（相關詞）：${esc(entry.note)}</div>` : '';
   const customTag = entry.custom ? `<span class="tag-custom">🔖 我查的字</span>` : '';
@@ -481,6 +498,11 @@ function cardHTML(entry, dict) {
     family = `<div class="family"><b>同字根家族</b><div class="fam-chips">${chips}</div>${hint}</div>`;
   }
   const levelLabel = entry.level === 0 ? '我查的字' : `Level ${entry.level}`;
+  // 多義時上方只顯示級別（詞性已在各義項標出）；單義則沿用「詞性・級別」
+  const posLine = senses.length
+    ? levelLabel
+    : `${esc(entry.pos) || ''}${entry.pos ? '・' : ''}${levelLabel}`;
+  const moreBtn = `<div class="btn-row"><button class="btn" data-more="${esc(entry.word)}">📖 其他意思（上網查）</button></div>`;
   return `
     <div class="card word-card">
       <div class="word-head">
@@ -489,15 +511,15 @@ function cardHTML(entry, dict) {
         ${customTag}
       </div>
       ${phon}
-      <div class="pos">${esc(entry.pos) || ''}${entry.pos ? '・' : ''}${levelLabel}</div>
-      <div class="zh">${esc(entry.zh) || '（尚無中文，可在下方補上）'}</div>
+      <div class="pos">${posLine}</div>
       ${definition}
       ${note}
-      ${examples}
+      ${meaningsHTML}
       ${root}
       ${syllable}
       ${mnemonic}
       ${family}
+      ${moreBtn}
     </div>`;
 }
 
@@ -513,6 +535,34 @@ function attachCardHandlers(entry) {
   document.querySelectorAll('[data-look]').forEach((w) => {
     w.onclick = () => lookupTermNavigate(w.dataset.look);
   });
+  // 📖 其他意思（上網查）
+  document.querySelectorAll('[data-more]').forEach((b) => {
+    b.onclick = () => showMoreSenses(b.dataset.more, b);
+  });
+}
+
+// J-2：點「其他意思」→ 上網查 dictionaryapi.dev 顯示更多義項（不寫進檔案；離線友善提示）
+async function showMoreSenses(word, btn) {
+  btn.disabled = true;
+  const orig = btn.textContent;
+  btn.textContent = '查詢中…';
+  const dict = await fetchDict(word.replace(/\(.*?\)/g, '').trim());
+  const box = document.createElement('div');
+  box.className = 'more-senses';
+  if (!dict || (!(dict.defs && dict.defs.length) && !(dict.examples && dict.examples.length))) {
+    box.innerHTML = navigator.onLine
+      ? '<p class="hint-area">線上字典沒有更多義項。</p>'
+      : '<p class="hint-area">目前離線，無法查更多義項。</p>';
+  } else {
+    const defs = (dict.defs || []).map((d) =>
+      `<div class="sense"><div class="sense-head">${d.pos ? `<span class="pos">${esc(d.pos)}</span>` : ''}<span class="sense-zh">${esc(d.def)}</span></div></div>`).join('');
+    const exs = (dict.examples && dict.examples.length)
+      ? `<div class="hint-area">例句：</div>${dict.examples.map((x) => `<div class="ex-en">${exampleHTML(x)}</div>`).join('')}`
+      : '';
+    box.innerHTML = `<div class="more-title">📖 更多義項（線上字典，英文釋義）</div>${defs}${exs}`;
+  }
+  btn.replaceWith(box);
+  box.querySelectorAll('[data-look]').forEach((w) => { w.onclick = () => lookupTermNavigate(w.dataset.look); });
 }
 
 // ============================================================

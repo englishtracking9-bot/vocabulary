@@ -34,7 +34,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8143/index.html)",
       "Bash(curl -s https://englishtracking9-bot.github.io/vocabulary/data/vocab.json?cb=__TRACKED_VAR__ -o ./_v.json)",
       "Bash(python -c \"import json;v=json.load\\(open\\('_v.json',encoding='utf-8'\\)\\);print\\('total:',len\\(v\\),'withMnem:',sum\\(1 for e in v if e.get\\('mnemonic'\\)\\),'withSyl:',sum\\(1 for e in v if e.get\\('syllable'\\)\\)\\)\")",
-      "Bash(rm -f ./_v.json)"
+      "Bash(rm -f ./_v.json)",
+      "Bash(python scripts/gen_senses.py)"
     ]
   }
 }
