@@ -213,6 +213,78 @@ def main():
             e["root"] = parts
             decomposed += 1
 
+    # ---- 字根拆解擴充：prefix 家族（安全：去字首後仍是表內真單字）----
+    # 例：unhappy = un-(不) + happy(快樂)。only 對已被歸為 prefix 家族的字補拆解。
+    pref_decomposed = 0
+    for e in vocab:
+        if e.get("root"):
+            continue
+        pkeys = [k for k in e.get("groupKeys", []) if k.startswith("prefix:")]
+        if not pkeys:
+            continue
+        word = (e.get("answerKeys") or [e["word"].lower()])[0].lower().strip()
+        if not word.isalpha():
+            continue
+        # 取最長的字首（避免 in- 蓋過 inter-）
+        affixes = sorted((k.split(":", 1)[1] for k in pkeys), key=lambda a: -len(a))
+        for affix in affixes:
+            if not word.startswith(affix):
+                continue
+            remainder = word[len(affix):]
+            if len(remainder) < 3 or remainder not in word_set:
+                continue
+            base = entry_of(remainder)
+            if not base:
+                continue
+            pr = prefixes.get(affix)
+            if not pr:
+                continue
+            e["root"] = [
+                {"part": affix + "-", "mean": pr["meaning"]},
+                {"part": remainder, "mean": base.get("zh", "")},
+            ]
+            pref_decomposed += 1
+            break
+
+    # ---- F-1/F-3：記憶聯想句(mnemonic) 與 可念音節(syllable) ----
+    def clean_zh(z):
+        z = (z or "").strip()
+        # 取第一個語意（避免太長），以常見分隔符切
+        for sep in ["；", ";", "（", "(", "，"]:
+            if sep in z:
+                z = z.split(sep)[0].strip()
+                break
+        return z
+
+    mnem_cnt = 0
+    syl_cnt = 0
+    for e in vocab:
+        parts = e.get("root")
+        if not isinstance(parts, list) or not parts:
+            e["mnemonic"] = None
+            e["syllable"] = None
+            continue
+        means = [p.get("mean", "").strip() for p in parts if p.get("mean", "").strip()]
+        zh = clean_zh(e.get("zh", ""))
+        # 記憶聯想
+        if len(means) >= 2 and zh:
+            e["mnemonic"] = "＋".join(means) + " → " + zh
+            mnem_cnt += 1
+        elif len(means) == 1 and zh:
+            seg = parts[0].get("part", "").strip("-")
+            e["mnemonic"] = f"{seg}＝{means[0]}，聯想「{zh}」"
+            mnem_cnt += 1
+        else:
+            e["mnemonic"] = None
+        # 可念音節：僅當各部位拼起來「剛好」等於拼字才顯示（不亂拆）
+        word = (e.get("answerKeys") or [e["word"].lower()])[0].lower().strip()
+        recon = "".join(p.get("part", "").replace("-", "") for p in parts)
+        if recon == word and len(parts) >= 2:
+            e["syllable"] = "-".join(p.get("part", "").strip("-") for p in parts)
+            syl_cnt += 1
+        else:
+            e["syllable"] = None
+
     # ---- 寫出 ----
     # groups_index：移除成員<2 的組
     final_index = {k: v for k, v in index.items() if len(v["members"]) >= 2}
@@ -239,7 +311,9 @@ def main():
     for t in ["root", "prefix", "suffix", "compound", "confuse", "theme", "antonym"]:
         log(f"   {t}: {by_type.get(t,0)} 組")
     log(f"有分組標籤的單字數：{tagged_words} / {len(vocab)}（{round(tagged_words/len(vocab)*100)}%）")
-    log(f"完成字根拆解的單字數：{decomposed}")
+    total_root = sum(1 for e in vocab if e.get("root"))
+    log(f"完成字根拆解的單字數：{decomposed}（root家族）＋{pref_decomposed}（prefix家族）＝{total_root}")
+    log(f"產生記憶聯想句：{mnem_cnt}；可念音節：{syl_cnt}")
     log("")
     log("—— 分組範例（前 8 組）——")
     shown = 0

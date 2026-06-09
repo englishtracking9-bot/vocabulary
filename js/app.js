@@ -39,7 +39,18 @@ const State = {
   entry: null,        // 當前單字 entry
   usedHint: false,
   answered: false,
+  masteredIds: new Set(), // 目前身分「已熟記」的字（供同字根家族標記錨點字）
 };
+
+// 重新整理「已熟記」集合（F-2：同字根家族錨點字）
+async function refreshMastered() {
+  try {
+    const recs = await getRecordsByProfile(State.profile.id);
+    State.masteredIds = new Set(
+      recs.filter((r) => displayCategory(r.status) === 'mastered').map((r) => r.wordId)
+    );
+  } catch (e) { State.masteredIds = new Set(); }
+}
 
 const $main = () => document.getElementById('main');
 
@@ -55,6 +66,7 @@ async function init() {
 
     const activeId = (await getMeta('activeProfile')) || DEFAULT_PROFILES[0].id;
     State.profile = (await getProfile(activeId)) || (await getProfile(DEFAULT_PROFILES[0].id));
+    await refreshMastered();
 
     renderHeader();
     window.addEventListener('hashchange', route);
@@ -103,6 +115,7 @@ function renderHeader() {
         await setMeta('activeProfile', State.profile.id);
         State.session = null;
         ReportDate = null; // 報告日期回到今天
+        await refreshMastered();
         syncReminderMeta(State.profile);
         scheduleForegroundReminder(State.profile);
         renderHeader();
@@ -299,6 +312,7 @@ async function doSubmit() {
 
   if (correct) State.session.advance();
   else State.session.requeueCurrent();
+  await refreshMastered();
 
   // 自訂字/已有例句者用本機資料即可，不打網路（避免片語查詢卡住）
   const dict = (entry.custom || (entry.example && entry.example.trim()))
@@ -353,15 +367,26 @@ function cardHTML(entry, dict) {
   } else if (typeof entry.root === 'string' && entry.root) {
     root = `<div class="root">🔧 字根拆解：${esc(entry.root)}</div>`;
   }
-  // 同字根家族（最多 8 個，可點）
+  // F-3：可念音節（僅當各部位剛好拼回單字才顯示）
+  const syllable = entry.syllable
+    ? `<div class="syllable">🔡 照音節拼：<b>${esc(entry.syllable)}</b></div>` : '';
+  // F-1：記憶聯想
+  const mnemonic = entry.mnemonic
+    ? `<div class="mnemonic">🧠 記憶聯想：${esc(entry.mnemonic)}</div>` : '';
+  // 同字根家族（最多 8 個，可點）；F-2：已學會的字標成錨點
   let family = '';
   const fam = rootFamilyOf(entry.id).slice(0, 8);
   if (fam.length) {
+    let anyLearned = false;
     const chips = fam.map((id) => {
       const fe = getById(id);
-      return fe ? `<span class="fam-chip" data-fam="${id}">${esc(fe.word)}</span>` : '';
+      if (!fe) return '';
+      const learned = State.masteredIds && State.masteredIds.has(id);
+      if (learned) anyLearned = true;
+      return `<span class="fam-chip ${learned ? 'learned' : ''}" data-fam="${id}">${learned ? '✓ ' : ''}${esc(fe.word)}</span>`;
     }).join('');
-    family = `<div class="family"><b>同字根家族</b><div class="fam-chips">${chips}</div></div>`;
+    const hint = anyLearned ? '<div class="fam-hint">✓ 是你已學會的字，用它來記住同字根的新字</div>' : '';
+    family = `<div class="family"><b>同字根家族</b><div class="fam-chips">${chips}</div>${hint}</div>`;
   }
   const levelLabel = entry.level === 0 ? '我查的字' : `Level ${entry.level}`;
   return `
@@ -378,6 +403,8 @@ function cardHTML(entry, dict) {
       ${note}
       ${examples}
       ${root}
+      ${syllable}
+      ${mnemonic}
       ${family}
     </div>`;
 }
@@ -740,7 +767,9 @@ function renderReadList() {
         </div>
         <div class="pos">${esc(e.pos)}・Lv${e.level}</div>
         <div class="zh">${esc(e.zh)}</div>
-        ${e.root ? `<div class="root">🔧 ${e.root.map((p) => `${esc(p.part)}(${esc(p.mean)})`).join(' + ')}</div>` : ''}
+        ${Array.isArray(e.root) && e.root.length ? `<div class="root">🔧 ${e.root.map((p) => `${esc(p.part)}(${esc(p.mean)})`).join(' + ')}</div>` : ''}
+        ${e.syllable ? `<div class="syllable">🔡 照音節拼：<b>${esc(e.syllable)}</b></div>` : ''}
+        ${e.mnemonic ? `<div class="mnemonic">🧠 ${esc(e.mnemonic)}</div>` : ''}
         ${e.example ? `<div class="examples">
           <div class="ex-en">${esc(e.example)} <button class="btn icon" data-say="${esc(e.example)}">🔊</button></div>
           <div class="ex-zh">${esc(e.example_zh || '')}</div>
@@ -878,6 +907,7 @@ async function dailySpellingSubmit() {
   }
   Daily.plan.updatedAt = Date.now();
   await persistPlan();
+  await refreshMastered();
 
   // 當日流程已有存好的例句，直接用本機資料呈現（不打網路，純離線、快）
   const banner = correct ? `<div class="result ok">✅ 答對了！</div>`
@@ -1314,6 +1344,7 @@ async function doLookup() {
   if (!term) return;
   const out = document.getElementById('lk-result');
   out.innerHTML = `<div class="card center">查詢中…</div>`;
+  await refreshMastered();
 
   try {
     const { entry, dict, recordStatus, autoAdded } = await lookupWord(State.profile, term);
@@ -1587,6 +1618,7 @@ function drawMyWords(recs) {
 }
 
 async function openWordDetail(wordId) {
+  await refreshMastered();
   const entry = getById(wordId);
   const dict = (entry.custom || (entry.example && entry.example.trim()))
     ? null : await fetchDict(entry.word.replace(/\(.*?\)/g, '').trim());
@@ -1729,6 +1761,7 @@ async function openRootDetail(affix, type) {
         <span class="row-word">${esc(e.word)}
           <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button></span>
         <span class="row-zh">${esc(e.zh)}</span>
+        ${e.mnemonic ? `<span class="row-mnem">🧠 ${esc(e.mnemonic)}</span>` : ''}
       </div>
       <div class="row-meta"><span>Lv${e.level}</span><span>${badge}</span></div>
     </div>`;
