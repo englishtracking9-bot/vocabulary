@@ -1,0 +1,215 @@
+{
+  "hall": [
+    { "pos": "n.", "zh": "大廳、禮堂", "example": "The students gathered in the hall.", "example_zh": "學生們聚集在大廳裡。" },
+    { "pos": "n.", "zh": "走廊", "example": "Her office is down the hall.", "example_zh": "她的辦公室在走廊那頭。" }
+  ],
+  "hamburger-burger": [
+    { "pos": "n.", "zh": "漢堡", "example": "I had a hamburger for lunch.", "example_zh": "我午餐吃了漢堡。" }
+  ],
+  "handle": [
+    { "pos": "v.", "zh": "處理、應付", "example": "She handled the problem calmly.", "example_zh": "她冷靜地處理了問題。" },
+    { "pos": "n.", "zh": "把手、手柄", "example": "The handle of the cup is broken.", "example_zh": "杯子的把手破了。" }
+  ],
+  "handsome": [
+    { "pos": "adj.", "zh": "英俊的", "example": "The actor is tall and handsome.", "example_zh": "那位演員又高又帥。" }
+  ],
+  "hardly": [
+    { "pos": "adv.", "zh": "幾乎不", "example": "I can hardly hear you.", "example_zh": "我幾乎聽不到你說話。" }
+  ],
+  "heaven": [
+    { "pos": "n.", "zh": "天堂", "example": "The view from the mountain was like heaven.", "example_zh": "從山上看的景色宛如天堂。" }
+  ],
+  "hero-heroine": [
+    { "pos": "n.", "zh": "英雄、主角", "example": "The hero saved the village.", "example_zh": "英雄拯救了村莊。" }
+  ],
+  "highly": [
+    { "pos": "adv.", "zh": "高度地、非常", "example": "She is a highly skilled doctor.", "example_zh": "她是技術高超的醫生。" }
+  ],
+  "highway": [
+    { "pos": "n.", "zh": "公路、高速公路", "example": "We drove fast on the highway.", "example_zh": "我們在公路上開得很快。" }
+  ],
+  "hike": [
+    { "pos": "n.", "zh": "健行、遠足", "example": "We went on a hike in the mountains.", "example_zh": "我們去山上健行。" },
+    { "pos": "v.", "zh": "健行、徒步旅行", "example": "They hiked up the hill all morning.", "example_zh": "他們健行上山走了一整個早上。" }
+  ],
+  "hip": [
+    { "pos": "n.", "zh": "臀部、髖部", "example": "She put her hands on her hips.", "example_zh": "她雙手叉腰。" }
+  ],
+  "hippopotamus-hippo": [
+    { "pos": "n.", "zh": "河馬", "example": "The hippo stayed cool in the water.", "example_zh": "河馬待在水裡保持涼爽。" }
+  ],
+  "historical": [
+    { "pos": "adj.", "zh": "歷史的", "example": "We visited many historical places.", "example_zh": "我們參觀了許多歷史古蹟。" }
+  ],
+  "hole": [
+    { "pos": "n.", "zh": "洞、孔", "example": "There is a hole in my sock.", "example_zh": "我的襪子破了一個洞。" }
+  ],
+  "hop": [
+    { "pos": "v.", "zh": "跳、單腳跳", "example": "The rabbit hopped across the grass.", "example_zh": "兔子蹦蹦跳跳地越過草地。" },
+    { "pos": "n.", "zh": "跳躍", "example": "The bird moved in small hops.", "example_zh": "鳥兒一蹦一蹦地移動。" }
+  ],
+  "host-hostess": [
+    { "pos": "n.", "zh": "（招待客人的）主人", "example": "The host welcomed all the guests.", "example_zh": "主人歡迎所有賓客。" },
+    { "pos": "n.", "zh": "（節目）主持人", "example": "She is the host of a TV show.", "example_zh": "她是一個電視節目的主持人。" }
+  ],
+  "huge": [
+    { "pos": "adj.", "zh": "巨大的", "example": "An elephant is a huge animal.", "example_zh": "大象是巨大的動物。" }
+  ],
+  "human": [
+    { "pos": "n.", "zh": "人、人類", "example": "Every human needs food and water.", "example_zh": "每個人都需要食物和水。" },
+    { "pos": "adj.", "zh": "人類的、人的", "example": "It is human to make mistakes.", "example_zh": "犯錯是人之常情。" }
+  ],
+  "humble": [
+    { "pos": "adj.", "zh": "謙遜的、謙虛的", "example": "Even though he is famous, he stays humble.", "example_zh": "雖然出名，他依然謙虛。" },
+    { "pos": "adj.", "zh": "卑微的、簡陋的", "example": "She came from a humble family.", "example_zh": "她出身寒微。" }
+  ],
+  "hunt": [
+    { "pos": "v.", "zh": "打獵、獵捕", "example": "Lions hunt at night.", "example_zh": "獅子在夜間獵食。" },
+    { "pos": "v.", "zh": "搜尋、尋找（hunt for）", "example": "She is hunting for a new job.", "example_zh": "她正在找新工作。" }
+  ],
+  "hunter": [
+    { "pos": "n.", "zh": "獵人", "example": "The hunter walked quietly through the woods.", "example_zh": "獵人安靜地穿過樹林。" }
+  ],
+  "hurry": [
+    { "pos": "v.", "zh": "趕快、催促", "example": "Hurry up, or we'll miss the bus.", "example_zh": "快一點，不然會錯過公車。" },
+    { "pos": "n.", "zh": "匆忙（in a hurry）", "example": "She left in a hurry.", "example_zh": "她匆匆忙忙地離開了。" }
+  ],
+  "ideal": [
+    { "pos": "adj.", "zh": "理想的、完美的", "example": "This is an ideal place for a picnic.", "example_zh": "這是野餐的理想地點。" },
+    { "pos": "n.", "zh": "理想、典範", "example": "She always works toward her ideals.", "example_zh": "她總是朝著理想努力。" }
+  ],
+  "identity": [
+    { "pos": "n.", "zh": "身分", "example": "Please show some proof of your identity.", "example_zh": "請出示身分證明。" }
+  ],
+  "ignore": [
+    { "pos": "v.", "zh": "忽略、不理會", "example": "Don't ignore the warning sign.", "example_zh": "別忽視警告標誌。" }
+  ],
+  "ill": [
+    { "pos": "adj.", "zh": "生病的、不舒服的", "example": "He has been ill for a week.", "example_zh": "他病了一個星期。" },
+    { "pos": "adj.", "zh": "壞的、惡意的", "example": "She bears no ill feelings toward you.", "example_zh": "她對你沒有任何惡意。" }
+  ],
+  "image": [
+    { "pos": "n.", "zh": "影像、圖像", "example": "The image on the screen was clear.", "example_zh": "螢幕上的影像很清楚。" },
+    { "pos": "n.", "zh": "形象、印象", "example": "The company wants a friendly image.", "example_zh": "這家公司想塑造親切的形象。" }
+  ],
+  "imagine": [
+    { "pos": "v.", "zh": "想像", "example": "Imagine you could fly like a bird.", "example_zh": "想像你能像鳥一樣飛翔。" }
+  ],
+  "importance": [
+    { "pos": "n.", "zh": "重要性", "example": "We learned the importance of teamwork.", "example_zh": "我們學到了團隊合作的重要性。" }
+  ],
+  "impressive": [
+    { "pos": "adj.", "zh": "令人印象深刻的", "example": "Her performance was very impressive.", "example_zh": "她的表演令人印象深刻。" }
+  ],
+  "improve": [
+    { "pos": "v.", "zh": "改善、進步", "example": "Practice will improve your English.", "example_zh": "練習會讓你的英文進步。" }
+  ],
+  "include": [
+    { "pos": "v.", "zh": "包括、包含", "example": "The price includes breakfast.", "example_zh": "價格含早餐。" }
+  ],
+  "income": [
+    { "pos": "n.", "zh": "收入", "example": "Their family has a small income.", "example_zh": "他們家收入不多。" }
+  ],
+  "increase": [
+    { "pos": "v.", "zh": "增加、增大", "example": "Prices increase every year.", "example_zh": "物價每年上漲。" },
+    { "pos": "n.", "zh": "增長、增加", "example": "There was an increase in sales.", "example_zh": "銷售量有所增加。" }
+  ],
+  "indeed": [
+    { "pos": "adv.", "zh": "的確、確實", "example": "It was indeed a wonderful day.", "example_zh": "那的確是美好的一天。" }
+  ],
+  "independence": [
+    { "pos": "n.", "zh": "獨立", "example": "The country gained its independence in 1947.", "example_zh": "這個國家在一九四七年獲得獨立。" }
+  ],
+  "independent": [
+    { "pos": "adj.", "zh": "獨立的", "example": "She is independent and lives alone.", "example_zh": "她很獨立，一個人住。" }
+  ],
+  "indicate": [
+    { "pos": "v.", "zh": "表明、指出", "example": "The sign indicates the way to the station.", "example_zh": "標誌指出往車站的方向。" }
+  ],
+  "individual": [
+    { "pos": "n.", "zh": "個人", "example": "Each individual has different needs.", "example_zh": "每個人都有不同的需求。" },
+    { "pos": "adj.", "zh": "個別的、單獨的", "example": "Each student gets individual attention.", "example_zh": "每個學生都得到個別的關注。" }
+  ],
+  "industry": [
+    { "pos": "n.", "zh": "產業、工業", "example": "The car industry is growing fast.", "example_zh": "汽車工業正快速成長。" },
+    { "pos": "n.", "zh": "勤勉、努力", "example": "Her success comes from hard industry.", "example_zh": "她的成功來自勤奮努力。" }
+  ],
+  "influence": [
+    { "pos": "n.", "zh": "影響、影響力", "example": "Friends have a big influence on us.", "example_zh": "朋友對我們有很大的影響。" },
+    { "pos": "v.", "zh": "影響", "example": "The weather can influence our mood.", "example_zh": "天氣會影響我們的心情。" }
+  ],
+  "ink": [
+    { "pos": "n.", "zh": "墨水", "example": "The pen ran out of ink.", "example_zh": "這支筆沒墨水了。" }
+  ],
+  "insist": [
+    { "pos": "v.", "zh": "堅持", "example": "She insisted on paying the bill.", "example_zh": "她堅持要付帳。" }
+  ],
+  "instance": [
+    { "pos": "n.", "zh": "例子、實例", "example": "For instance, apples are good for you.", "example_zh": "舉例來說，蘋果對你有益。" }
+  ],
+  "instant": [
+    { "pos": "adj.", "zh": "立即的、即時的", "example": "I made instant noodles for lunch.", "example_zh": "我午餐煮了泡麵。" },
+    { "pos": "n.", "zh": "瞬間、片刻", "example": "For an instant, everything went quiet.", "example_zh": "有那麼一瞬間，一切都安靜了下來。" }
+  ],
+  "instead": [
+    { "pos": "adv.", "zh": "反而、作為替代", "example": "Let's walk instead of taking the bus.", "example_zh": "我們走路吧，別搭公車。" }
+  ],
+  "instruction": [
+    { "pos": "n.", "zh": "指示、說明", "example": "Follow the instructions carefully.", "example_zh": "仔細按照說明操作。" }
+  ],
+  "instrument": [
+    { "pos": "n.", "zh": "樂器", "example": "The violin is a beautiful instrument.", "example_zh": "小提琴是一種美妙的樂器。" },
+    { "pos": "n.", "zh": "儀器、工具", "example": "The doctor used a special instrument.", "example_zh": "醫生使用了一種特殊的儀器。" }
+  ],
+  "internal": [
+    { "pos": "adj.", "zh": "內部的", "example": "The body has many internal organs.", "example_zh": "人體有許多內臟器官。" }
+  ],
+  "international": [
+    { "pos": "adj.", "zh": "國際的", "example": "English is an international language.", "example_zh": "英語是國際語言。" }
+  ],
+  "internet-internet": [
+    { "pos": "n.", "zh": "網際網路", "example": "I look up information on the Internet.", "example_zh": "我在網路上查資料。" }
+  ],
+  "introduce": [
+    { "pos": "v.", "zh": "介紹", "example": "Let me introduce you to my friend.", "example_zh": "讓我把你介紹給我朋友。" },
+    { "pos": "v.", "zh": "引進、推出", "example": "The company introduced a new product.", "example_zh": "這家公司推出了新產品。" }
+  ],
+  "introduction": [
+    { "pos": "n.", "zh": "引言、前言", "example": "The book has a short introduction.", "example_zh": "這本書有一段簡短的前言。" },
+    { "pos": "n.", "zh": "介紹、引進", "example": "Thank you for the introduction.", "example_zh": "謝謝你的介紹。" }
+  ],
+  "iron": [
+    { "pos": "n.", "zh": "鐵", "example": "The gate is made of iron.", "example_zh": "這道門是鐵做的。" },
+    { "pos": "n./v.", "zh": "熨斗；熨燙", "example": "She used an iron to press the shirt.", "example_zh": "她用熨斗燙襯衫。" }
+  ],
+  "jam": [
+    { "pos": "n.", "zh": "果醬", "example": "I spread jam on my toast.", "example_zh": "我在吐司上塗果醬。" },
+    { "pos": "n.", "zh": "堵塞（traffic jam）", "example": "We were stuck in a traffic jam.", "example_zh": "我們被困在塞車中。" }
+  ],
+  "jog": [
+    { "pos": "v.", "zh": "慢跑", "example": "I jog in the park every morning.", "example_zh": "我每天早上在公園慢跑。" },
+    { "pos": "n.", "zh": "慢跑", "example": "She went for a jog before breakfast.", "example_zh": "她早餐前去慢跑。" }
+  ],
+  "joint": [
+    { "pos": "adj.", "zh": "聯合的、共同的", "example": "They made a joint decision together.", "example_zh": "他們一起做了共同的決定。" },
+    { "pos": "n.", "zh": "關節", "example": "My knee joint hurts after running.", "example_zh": "跑步後我的膝關節會痛。" }
+  ],
+  "journal": [
+    { "pos": "n.", "zh": "日誌、日記", "example": "She keeps a journal of her travels.", "example_zh": "她寫旅行日誌。" },
+    { "pos": "n.", "zh": "期刊、學報", "example": "His study appeared in a science journal.", "example_zh": "他的研究刊登在科學期刊上。" }
+  ],
+  "judge": [
+    { "pos": "n.", "zh": "法官、裁判", "example": "The judge listened to both sides.", "example_zh": "法官聽取了雙方的說法。" },
+    { "pos": "v.", "zh": "判斷、評斷", "example": "Don't judge a book by its cover.", "example_zh": "別以封面評斷一本書。" }
+  ],
+  "judgment-judgement": [
+    { "pos": "n.", "zh": "判斷（力）", "example": "I trust your good judgment.", "example_zh": "我相信你的判斷力。" }
+  ],
+  "justice": [
+    { "pos": "n.", "zh": "正義、公正", "example": "Everyone hopes for justice and fairness.", "example_zh": "每個人都希望公平正義。" }
+  ],
+  "keeper": [
+    { "pos": "n.", "zh": "守門員", "example": "The goalkeeper stopped the ball.", "example_zh": "守門員擋下了球。" },
+    { "pos": "n.", "zh": "看守者、飼養員", "example": "The zookeeper feeds the animals.", "example_zh": "動物園管理員餵食動物。" }
+  ]
+}
