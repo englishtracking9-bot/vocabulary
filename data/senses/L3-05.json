@@ -1,0 +1,225 @@
+{
+  "destroy": [
+    { "pos": "v.", "zh": "破壞、摧毀", "example": "The fire destroyed the old house.", "example_zh": "大火摧毀了那棟老房子。" }
+  ],
+  "detect": [
+    { "pos": "v.", "zh": "察覺、偵測", "example": "Dogs can detect smells we cannot.", "example_zh": "狗能聞到我們聞不到的氣味。" }
+  ],
+  "determine": [
+    { "pos": "v.", "zh": "決定、確定", "example": "Hard work can determine your success.", "example_zh": "努力能決定你的成功。" }
+  ],
+  "devil": [
+    { "pos": "n.", "zh": "魔鬼", "example": "In the story, the devil tricked the man.", "example_zh": "在故事裡，魔鬼欺騙了那個人。" }
+  ],
+  "dim": [
+    { "pos": "adj.", "zh": "昏暗的、暗淡的", "example": "The light in the room was dim.", "example_zh": "房間裡的燈光很昏暗。" },
+    { "pos": "v.", "zh": "使變暗、調暗", "example": "Please dim the lights for the movie.", "example_zh": "看電影請把燈調暗。" }
+  ],
+  "dime": [
+    { "pos": "n.", "zh": "一角硬幣", "example": "A dime is worth ten cents.", "example_zh": "一角硬幣值十分。" }
+  ],
+  "dine": [
+    { "pos": "v.", "zh": "用餐、吃飯", "example": "We dined at a nice restaurant.", "example_zh": "我們在一家不錯的餐廳用餐。" }
+  ],
+  "dinosaur": [
+    { "pos": "n.", "zh": "恐龍", "example": "Dinosaurs lived millions of years ago.", "example_zh": "恐龍生活在數百萬年前。" }
+  ],
+  "dip": [
+    { "pos": "v.", "zh": "浸、沾", "example": "She dipped the bread in the soup.", "example_zh": "她把麵包沾進湯裡。" },
+    { "pos": "n.", "zh": "沾醬", "example": "We ate chips with a cheese dip.", "example_zh": "我們配起司沾醬吃洋芋片。" }
+  ],
+  "dirt": [
+    { "pos": "n.", "zh": "汙垢、泥土", "example": "His shoes were covered in dirt.", "example_zh": "他的鞋子沾滿了泥。" }
+  ],
+  "discount": [
+    { "pos": "n.", "zh": "折扣", "example": "The store offers a ten percent discount.", "example_zh": "這家店打九折。" },
+    { "pos": "v.", "zh": "給⋯打折", "example": "They discounted the old models.", "example_zh": "他們把舊款式打折出售。" }
+  ],
+  "dishonest": [
+    { "pos": "adj.", "zh": "不誠實的", "example": "It is dishonest to lie to your friends.", "example_zh": "對朋友說謊是不誠實的。" }
+  ],
+  "disk-disc": [
+    { "pos": "n.", "zh": "磁碟、光碟", "example": "She saved the file on a disk.", "example_zh": "她把檔案存到磁碟上。" }
+  ],
+  "dislike": [
+    { "pos": "v.", "zh": "不喜歡、討厭", "example": "I dislike waking up early.", "example_zh": "我不喜歡早起。" },
+    { "pos": "n.", "zh": "厭惡、反感", "example": "She has a strong dislike of spiders.", "example_zh": "她非常討厭蜘蛛。" }
+  ],
+  "ditch": [
+    { "pos": "n.", "zh": "溝渠", "example": "Water flowed through the ditch.", "example_zh": "水流過水溝。" }
+  ],
+  "dive": [
+    { "pos": "v.", "zh": "潛水、跳水", "example": "He dived into the cool pool.", "example_zh": "他跳進涼爽的泳池。" },
+    { "pos": "n.", "zh": "潛水、俯衝", "example": "The bird made a sudden dive.", "example_zh": "那隻鳥突然俯衝下來。" }
+  ],
+  "dizzy": [
+    { "pos": "adj.", "zh": "暈眩的、頭暈的", "example": "I felt dizzy after spinning around.", "example_zh": "轉了一圈後我覺得頭暈。" }
+  ],
+  "dock": [
+    { "pos": "n.", "zh": "碼頭、船塢", "example": "The boat is tied to the dock.", "example_zh": "船繫在碼頭邊。" },
+    { "pos": "v.", "zh": "靠岸、停泊", "example": "The ship docked at the port.", "example_zh": "船在港口靠岸。" }
+  ],
+  "dolphin": [
+    { "pos": "n.", "zh": "海豚", "example": "Dolphins are smart and friendly.", "example_zh": "海豚既聰明又友善。" }
+  ],
+  "donkey": [
+    { "pos": "n.", "zh": "驢子", "example": "The donkey carried the heavy bags.", "example_zh": "驢子馱著沉重的袋子。" }
+  ],
+  "dose": [
+    { "pos": "n.", "zh": "一劑、劑量", "example": "Take one dose of the medicine each day.", "example_zh": "這藥每天服用一劑。" }
+  ],
+  "doubtful": [
+    { "pos": "adj.", "zh": "懷疑的、不確定的", "example": "It is doubtful that he will come.", "example_zh": "他是否會來還很難說。" }
+  ],
+  "doughnut": [
+    { "pos": "n.", "zh": "甜甜圈", "example": "She ate a sweet doughnut.", "example_zh": "她吃了一個甜甜圈。" }
+  ],
+  "downtown": [
+    { "pos": "adv.", "zh": "在市中心、往市中心", "example": "We went shopping downtown.", "example_zh": "我們去市中心購物。" },
+    { "pos": "adj.", "zh": "市中心的", "example": "She works in a downtown office.", "example_zh": "她在市中心的辦公室上班。" }
+  ],
+  "drag": [
+    { "pos": "v.", "zh": "拖、拉", "example": "He dragged the heavy box across the floor.", "example_zh": "他把那個重箱子拖過地板。" }
+  ],
+  "dragonfly": [
+    { "pos": "n.", "zh": "蜻蜓", "example": "A dragonfly flew over the pond.", "example_zh": "一隻蜻蜓飛過池塘。" }
+  ],
+  "drain": [
+    { "pos": "v.", "zh": "排掉、流光", "example": "The water drained out of the sink.", "example_zh": "水從水槽流掉了。" },
+    { "pos": "n.", "zh": "排水管、下水道", "example": "Leaves blocked the drain.", "example_zh": "樹葉堵住了排水管。" }
+  ],
+  "dramatic": [
+    { "pos": "adj.", "zh": "戲劇性的、劇烈的", "example": "There was a dramatic change in the weather.", "example_zh": "天氣出現了劇烈的變化。" }
+  ],
+  "drip": [
+    { "pos": "v.", "zh": "滴下、滴水", "example": "Water dripped from the broken pipe.", "example_zh": "水從破掉的水管滴下。" },
+    { "pos": "n.", "zh": "滴、滴落聲", "example": "I heard the drip of the tap.", "example_zh": "我聽見水龍頭滴水的聲音。" }
+  ],
+  "drown": [
+    { "pos": "v.", "zh": "溺死、淹死", "example": "Always swim where you can't drown.", "example_zh": "一定要在不會溺水的地方游泳。" }
+  ],
+  "drugstore": [
+    { "pos": "n.", "zh": "藥局、藥妝店", "example": "I bought medicine at the drugstore.", "example_zh": "我在藥局買了藥。" }
+  ],
+  "drunk": [
+    { "pos": "adj.", "zh": "喝醉的", "example": "He never drives when he is drunk.", "example_zh": "他喝醉時從不開車。" }
+  ],
+  "dumb": [
+    { "pos": "adj.", "zh": "啞的、說不出話的", "example": "The shock left him dumb for a moment.", "example_zh": "震驚讓他一時說不出話。" },
+    { "pos": "adj.", "zh": "愚蠢的（口語）", "example": "That was a dumb mistake.", "example_zh": "那是個愚蠢的錯誤。" }
+  ],
+  "dump": [
+    { "pos": "v.", "zh": "傾倒、丟棄", "example": "Don't dump trash in the river.", "example_zh": "別把垃圾倒進河裡。" },
+    { "pos": "n.", "zh": "垃圾場", "example": "They took the old sofa to the dump.", "example_zh": "他們把舊沙發載去垃圾場。" }
+  ],
+  "dumpling": [
+    { "pos": "n.", "zh": "餃子、湯圓", "example": "We eat dumplings during the festival.", "example_zh": "我們在節慶時吃餃子。" }
+  ],
+  "dust": [
+    { "pos": "n.", "zh": "灰塵", "example": "There is dust on the old books.", "example_zh": "舊書上積了灰塵。" },
+    { "pos": "v.", "zh": "撣去灰塵、擦拭", "example": "She dusted the shelves.", "example_zh": "她撣去架子上的灰塵。" }
+  ],
+  "eager": [
+    { "pos": "adj.", "zh": "渴望的、熱切的", "example": "The children are eager to play outside.", "example_zh": "孩子們渴望到外面玩。" }
+  ],
+  "echo": [
+    { "pos": "n.", "zh": "迴音、回聲", "example": "There was an echo in the empty hall.", "example_zh": "空蕩的大廳裡有回音。" },
+    { "pos": "v.", "zh": "發出回聲、迴盪", "example": "Our voices echoed in the cave.", "example_zh": "我們的聲音在洞穴裡迴盪。" }
+  ],
+  "edit": [
+    { "pos": "v.", "zh": "編輯、剪輯", "example": "She edited the report before sending it.", "example_zh": "她在寄出前修改了報告。" }
+  ],
+  "editor": [
+    { "pos": "n.", "zh": "編輯", "example": "The editor checked the article for mistakes.", "example_zh": "編輯檢查文章有沒有錯誤。" }
+  ],
+  "educate": [
+    { "pos": "v.", "zh": "教育", "example": "Schools educate young children.", "example_zh": "學校教育年幼的孩子。" }
+  ],
+  "educational": [
+    { "pos": "adj.", "zh": "教育性的、有教育意義的", "example": "The museum trip was very educational.", "example_zh": "這趟博物館之行很有教育意義。" }
+  ],
+  "efficient": [
+    { "pos": "adj.", "zh": "有效率的", "example": "She found an efficient way to work.", "example_zh": "她找到了有效率的工作方法。" }
+  ],
+  "elbow": [
+    { "pos": "n.", "zh": "手肘", "example": "He hurt his elbow playing tennis.", "example_zh": "他打網球時傷到了手肘。" },
+    { "pos": "v.", "zh": "用肘推擠", "example": "She elbowed her way through the crowd.", "example_zh": "她用手肘擠過人群。" }
+  ],
+  "elderly": [
+    { "pos": "adj.", "zh": "年長的、上了年紀的", "example": "We should help the elderly cross the road.", "example_zh": "我們應該幫年長者過馬路。" }
+  ],
+  "elect": [
+    { "pos": "v.", "zh": "選舉、選出", "example": "The students elected a new class leader.", "example_zh": "學生們選出了新的班長。" }
+  ],
+  "election": [
+    { "pos": "n.", "zh": "選舉", "example": "The election will be held next month.", "example_zh": "選舉將在下個月舉行。" }
+  ],
+  "electricity": [
+    { "pos": "n.", "zh": "電、電力", "example": "The storm cut off our electricity.", "example_zh": "暴風雨切斷了我們的電力。" }
+  ],
+  "electronic": [
+    { "pos": "adj.", "zh": "電子的", "example": "She bought a new electronic device.", "example_zh": "她買了一個新的電子裝置。" }
+  ],
+  "element": [
+    { "pos": "n.", "zh": "元素、要素", "example": "Trust is an important element of friendship.", "example_zh": "信任是友誼的重要元素。" }
+  ],
+  "elevator": [
+    { "pos": "n.", "zh": "電梯", "example": "Take the elevator to the fifth floor.", "example_zh": "搭電梯到五樓。" }
+  ],
+  "emergency": [
+    { "pos": "n.", "zh": "緊急狀況", "example": "Call this number in an emergency.", "example_zh": "緊急時撥打這個號碼。" }
+  ],
+  "emotional": [
+    { "pos": "adj.", "zh": "情緒化的、感人的", "example": "The movie was very emotional.", "example_zh": "這部電影很感人。" }
+  ],
+  "emperor": [
+    { "pos": "n.", "zh": "皇帝", "example": "The emperor ruled a large empire.", "example_zh": "皇帝統治著一個大帝國。" }
+  ],
+  "enable": [
+    { "pos": "v.", "zh": "使能夠", "example": "The new tool enables us to work faster.", "example_zh": "這個新工具讓我們工作更快。" }
+  ],
+  "energetic": [
+    { "pos": "adj.", "zh": "精力充沛的", "example": "The puppy is lively and energetic.", "example_zh": "這隻小狗活潑又有活力。" }
+  ],
+  "engage": [
+    { "pos": "v.", "zh": "使訂婚（get engaged）", "example": "They got engaged last summer.", "example_zh": "他們去年夏天訂婚了。" },
+    { "pos": "v.", "zh": "從事、參與（engage in）", "example": "She engages in many activities.", "example_zh": "她參與許多活動。" }
+  ],
+  "enjoyable": [
+    { "pos": "adj.", "zh": "令人愉快的", "example": "We had an enjoyable trip to the beach.", "example_zh": "我們的海灘之旅很愉快。" }
+  ],
+  "entry": [
+    { "pos": "n.", "zh": "入口", "example": "The main entry is on the left.", "example_zh": "大門入口在左邊。" },
+    { "pos": "n.", "zh": "進入、參賽", "example": "Entry to the museum is free.", "example_zh": "進入博物館是免費的。" }
+  ],
+  "envy": [
+    { "pos": "n.", "zh": "嫉妒、羨慕", "example": "She felt envy when she saw the prize.", "example_zh": "看到那個獎時她滿心羨慕。" },
+    { "pos": "v.", "zh": "羨慕、嫉妒", "example": "I envy your good luck.", "example_zh": "我羨慕你的好運。" }
+  ],
+  "erase": [
+    { "pos": "v.", "zh": "擦掉、刪除", "example": "He erased the wrong word.", "example_zh": "他擦掉了寫錯的字。" }
+  ],
+  "excellence": [
+    { "pos": "n.", "zh": "卓越、傑出", "example": "The school is known for its excellence.", "example_zh": "這所學校以卓越聞名。" }
+  ],
+  "exchange": [
+    { "pos": "v.", "zh": "交換、兌換", "example": "We exchanged gifts at the party.", "example_zh": "我們在派對上交換禮物。" },
+    { "pos": "n.", "zh": "交換、交流", "example": "Students join an exchange program.", "example_zh": "學生參加交換計畫。" }
+  ],
+  "exhibition": [
+    { "pos": "n.", "zh": "展覽", "example": "We visited an art exhibition.", "example_zh": "我們參觀了一場藝術展覽。" }
+  ],
+  "expectation": [
+    { "pos": "n.", "zh": "期望、預期", "example": "The result was beyond our expectation.", "example_zh": "結果超出我們的預期。" }
+  ],
+  "experiment": [
+    { "pos": "n.", "zh": "實驗", "example": "We did a science experiment in class.", "example_zh": "我們在課堂上做了一個科學實驗。" },
+    { "pos": "v.", "zh": "實驗、嘗試", "example": "They experimented with new recipes.", "example_zh": "他們嘗試新的食譜。" }
+  ],
+  "explode": [
+    { "pos": "v.", "zh": "爆炸", "example": "The firework exploded in the sky.", "example_zh": "煙火在空中爆開。" }
+  ],
+  "explore": [
+    { "pos": "v.", "zh": "探索、探險", "example": "They explored the dark cave.", "example_zh": "他們探索了那個黑暗的洞穴。" }
+  ]
+}
