@@ -1,0 +1,203 @@
+{
+  "gossip": [
+    { "pos": "n.", "zh": "閒話、八卦", "example": "Don't spread gossip about others.", "example_zh": "別散播別人的閒話。" },
+    { "pos": "v.", "zh": "說閒話、講八卦", "example": "They gossiped about their neighbors.", "example_zh": "他們講鄰居的八卦。" }
+  ],
+  "governor": [
+    { "pos": "n.", "zh": "州長、總督", "example": "The governor visited our town.", "example_zh": "州長來訪我們的城鎮。" }
+  ],
+  "grab": [
+    { "pos": "v.", "zh": "抓住、攫取", "example": "She grabbed her bag and ran out.", "example_zh": "她抓起包包就跑了出去。" }
+  ],
+  "graduate": [
+    { "pos": "v.", "zh": "畢業", "example": "She will graduate from college next year.", "example_zh": "她明年大學畢業。" },
+    { "pos": "n.", "zh": "畢業生", "example": "He is a graduate of this school.", "example_zh": "他是這所學校的畢業生。" }
+  ],
+  "grasp": [
+    { "pos": "v.", "zh": "抓緊、握住", "example": "He grasped the rope tightly.", "example_zh": "他緊緊抓住繩子。" },
+    { "pos": "v.", "zh": "理解、領會", "example": "She quickly grasped the idea.", "example_zh": "她很快理解了這個概念。" }
+  ],
+  "grasshopper": [
+    { "pos": "n.", "zh": "蚱蜢", "example": "A grasshopper jumped in the grass.", "example_zh": "一隻蚱蜢在草地上跳。" }
+  ],
+  "grassy": [
+    { "pos": "adj.", "zh": "長滿草的、草地的", "example": "We sat on a grassy hill.", "example_zh": "我們坐在長滿草的山丘上。" }
+  ],
+  "greedy": [
+    { "pos": "adj.", "zh": "貪婪的、貪心的", "example": "The greedy man wanted all the gold.", "example_zh": "那個貪心的人想要所有的金子。" }
+  ],
+  "greenhouse": [
+    { "pos": "n.", "zh": "溫室", "example": "They grow tomatoes in a greenhouse.", "example_zh": "他們在溫室裡種番茄。" }
+  ],
+  "grin": [
+    { "pos": "n.", "zh": "咧嘴笑、露齒笑", "example": "He gave me a wide grin.", "example_zh": "他對我咧嘴大笑。" },
+    { "pos": "v.", "zh": "咧嘴笑", "example": "She grinned when she saw the gift.", "example_zh": "看到禮物時她咧嘴笑了。" }
+  ],
+  "grocery": [
+    { "pos": "n.", "zh": "雜貨、食品雜貨店", "example": "Mom went to the grocery store.", "example_zh": "媽媽去了雜貨店。" }
+  ],
+  "guidance": [
+    { "pos": "n.", "zh": "指導、引導", "example": "Students need guidance from teachers.", "example_zh": "學生需要老師的指導。" }
+  ],
+  "gum": [
+    { "pos": "n.", "zh": "口香糖", "example": "He chewed a piece of gum.", "example_zh": "他嚼了一片口香糖。" },
+    { "pos": "n.", "zh": "牙齦", "example": "Brush your teeth and gums well.", "example_zh": "把牙齒和牙齦都好好刷乾淨。" }
+  ],
+  "hairdresser": [
+    { "pos": "n.", "zh": "美髮師", "example": "The hairdresser cut my hair short.", "example_zh": "美髮師把我的頭髮剪短。" }
+  ],
+  "hallway": [
+    { "pos": "n.", "zh": "走廊、玄關", "example": "Don't run in the hallway.", "example_zh": "不要在走廊上奔跑。" }
+  ],
+  "hammer": [
+    { "pos": "n.", "zh": "鎚子、榔頭", "example": "He used a hammer to fix the fence.", "example_zh": "他用鎚子修籬笆。" },
+    { "pos": "v.", "zh": "鎚打、敲打", "example": "She hammered the nail into the wood.", "example_zh": "她把釘子鎚進木頭裡。" }
+  ],
+  "handful": [
+    { "pos": "n.", "zh": "一把（的量）", "example": "She gave the bird a handful of seeds.", "example_zh": "她抓了一把種子餵鳥。" },
+    { "pos": "n.", "zh": "少數、一小撮", "example": "Only a handful of people came.", "example_zh": "只有少數幾個人來了。" }
+  ],
+  "handkerchief": [
+    { "pos": "n.", "zh": "手帕", "example": "He wiped his face with a handkerchief.", "example_zh": "他用手帕擦臉。" }
+  ],
+  "handy": [
+    { "pos": "adj.", "zh": "方便的、好用的", "example": "A small knife is handy when camping.", "example_zh": "露營時帶把小刀很方便。" }
+  ],
+  "hanger": [
+    { "pos": "n.", "zh": "衣架", "example": "Hang your coat on the hanger.", "example_zh": "把你的外套掛在衣架上。" }
+  ],
+  "harbor": [
+    { "pos": "n.", "zh": "港口、海港", "example": "Many boats stayed in the harbor.", "example_zh": "許多船停在港口裡。" },
+    { "pos": "v.", "zh": "心懷、窩藏", "example": "She harbored a secret hope.", "example_zh": "她心中懷著一個秘密的希望。" }
+  ],
+  "harm": [
+    { "pos": "v.", "zh": "傷害、損害", "example": "Too much sun can harm your skin.", "example_zh": "曬太多太陽會傷害皮膚。" },
+    { "pos": "n.", "zh": "傷害、損害", "example": "The storm did little harm.", "example_zh": "這場暴風雨沒造成什麼損害。" }
+  ],
+  "harmful": [
+    { "pos": "adj.", "zh": "有害的", "example": "Smoking is harmful to your health.", "example_zh": "抽菸對健康有害。" }
+  ],
+  "harvest": [
+    { "pos": "n.", "zh": "收成、收穫", "example": "The farmers had a good harvest.", "example_zh": "農夫有了好收成。" },
+    { "pos": "v.", "zh": "收割、收穫", "example": "Farmers harvest rice in autumn.", "example_zh": "農夫在秋天收割稻米。" }
+  ],
+  "hasty": [
+    { "pos": "adj.", "zh": "倉促的、草率的", "example": "Don't make a hasty decision.", "example_zh": "別做倉促的決定。" }
+  ],
+  "hatch": [
+    { "pos": "v.", "zh": "孵化、孵出", "example": "The eggs will hatch in a few days.", "example_zh": "這些蛋幾天後就會孵化。" },
+    { "pos": "v.", "zh": "策劃（計畫）", "example": "They hatched a clever plan.", "example_zh": "他們策劃了一個聰明的計畫。" }
+  ],
+  "hateful": [
+    { "pos": "adj.", "zh": "可恨的、可惡的", "example": "His hateful words hurt her feelings.", "example_zh": "他可惡的話傷了她的心。" }
+  ],
+  "hay": [
+    { "pos": "n.", "zh": "乾草", "example": "The horse ate dry hay.", "example_zh": "馬吃乾草。" }
+  ],
+  "headline": [
+    { "pos": "n.", "zh": "頭條、標題", "example": "The news headline was about the storm.", "example_zh": "新聞頭條是關於那場暴風雨。" }
+  ],
+  "headquarters": [
+    { "pos": "n.", "zh": "總部", "example": "The company's headquarters is in Taipei.", "example_zh": "這家公司的總部在台北。" }
+  ],
+  "heal": [
+    { "pos": "v.", "zh": "痊癒、癒合", "example": "The cut will heal in a week.", "example_zh": "這道傷口一週內會癒合。" }
+  ],
+  "heap": [
+    { "pos": "n.", "zh": "一堆、堆", "example": "There was a heap of leaves in the yard.", "example_zh": "院子裡有一堆落葉。" },
+    { "pos": "v.", "zh": "堆積、堆起", "example": "She heaped food on his plate.", "example_zh": "她在他盤子裡堆滿了食物。" }
+  ],
+  "heater": [
+    { "pos": "n.", "zh": "暖氣機、加熱器", "example": "We turned on the heater in winter.", "example_zh": "冬天我們打開暖氣。" }
+  ],
+  "heel": [
+    { "pos": "n.", "zh": "腳跟、後跟", "example": "Her shoe rubbed against her heel.", "example_zh": "她的鞋子磨到了腳跟。" }
+  ],
+  "hell": [
+    { "pos": "n.", "zh": "地獄", "example": "The story describes heaven and hell.", "example_zh": "這故事描述了天堂與地獄。" },
+    { "pos": "n.", "zh": "苦難、煎熬", "example": "The long wait felt like hell.", "example_zh": "漫長的等待如同煎熬。" }
+  ],
+  "helmet": [
+    { "pos": "n.", "zh": "安全帽、頭盔", "example": "Always wear a helmet when biking.", "example_zh": "騎腳踏車一定要戴安全帽。" }
+  ],
+  "hesitate": [
+    { "pos": "v.", "zh": "猶豫", "example": "Don't hesitate to ask for help.", "example_zh": "需要幫忙別猶豫，儘管開口。" }
+  ],
+  "hint": [
+    { "pos": "n.", "zh": "暗示、提示", "example": "Give me a hint about the answer.", "example_zh": "給我一點答案的提示。" },
+    { "pos": "v.", "zh": "暗示", "example": "She hinted that she might leave.", "example_zh": "她暗示她可能會離開。" }
+  ],
+  "hire": [
+    { "pos": "v.", "zh": "雇用、租用", "example": "The shop hired two new workers.", "example_zh": "這家店雇了兩名新員工。" }
+  ],
+  "historian": [
+    { "pos": "n.", "zh": "歷史學家", "example": "The historian wrote about ancient kings.", "example_zh": "這位歷史學家寫了古代國王的事。" }
+  ],
+  "historic": [
+    { "pos": "adj.", "zh": "有歷史意義的", "example": "It was a historic moment for the country.", "example_zh": "那是這個國家具有歷史意義的一刻。" }
+  ],
+  "holder": [
+    { "pos": "n.", "zh": "持有人、保持者", "example": "She is the holder of the world record.", "example_zh": "她是世界紀錄保持人。" },
+    { "pos": "n.", "zh": "托座、架", "example": "Put your pen in the pen holder.", "example_zh": "把你的筆放進筆筒裡。" }
+  ],
+  "hollow": [
+    { "pos": "adj.", "zh": "中空的、空心的", "example": "The tree had a hollow trunk.", "example_zh": "那棵樹的樹幹是中空的。" },
+    { "pos": "adj.", "zh": "空洞的、虛假的", "example": "His promise sounded hollow.", "example_zh": "他的承諾聽起來很空洞。" }
+  ],
+  "holy": [
+    { "pos": "adj.", "zh": "神聖的", "example": "People visit this holy place to pray.", "example_zh": "人們到這個神聖的地方祈禱。" }
+  ],
+  "homesick": [
+    { "pos": "adj.", "zh": "想家的", "example": "She felt homesick at summer camp.", "example_zh": "她在夏令營時很想家。" }
+  ],
+  "hometown": [
+    { "pos": "n.", "zh": "家鄉、故鄉", "example": "He returned to his hometown for the holiday.", "example_zh": "他回故鄉過節。" }
+  ],
+  "honesty": [
+    { "pos": "n.", "zh": "誠實", "example": "Honesty is the best policy.", "example_zh": "誠實為上策。" }
+  ],
+  "honor": [
+    { "pos": "n.", "zh": "榮譽、光榮", "example": "It is an honor to meet you.", "example_zh": "很榮幸能見到你。" },
+    { "pos": "v.", "zh": "尊敬、給予榮譽", "example": "We honor those who help others.", "example_zh": "我們敬重那些幫助他人的人。" }
+  ],
+  "hopeful": [
+    { "pos": "adj.", "zh": "充滿希望的、樂觀的", "example": "She is hopeful about the future.", "example_zh": "她對未來充滿希望。" }
+  ],
+  "horn": [
+    { "pos": "n.", "zh": "（汽車）喇叭", "example": "The driver honked the car horn.", "example_zh": "駕駛按了汽車喇叭。" },
+    { "pos": "n.", "zh": "（動物）角", "example": "The bull has sharp horns.", "example_zh": "公牛有銳利的角。" }
+  ],
+  "horrible": [
+    { "pos": "adj.", "zh": "可怕的、糟透的", "example": "The food tasted horrible.", "example_zh": "那食物難吃極了。" }
+  ],
+  "horror": [
+    { "pos": "n.", "zh": "恐怖、驚駭", "example": "She screamed in horror.", "example_zh": "她驚恐地尖叫。" }
+  ],
+  "hourly": [
+    { "pos": "adj.", "zh": "每小時的", "example": "The buses run on an hourly schedule.", "example_zh": "公車每小時一班。" },
+    { "pos": "adv.", "zh": "每小時、按鐘點", "example": "The workers are paid hourly.", "example_zh": "工人按鐘點計薪。" }
+  ],
+  "housekeeper": [
+    { "pos": "n.", "zh": "管家、家政員", "example": "The housekeeper cleaned every room.", "example_zh": "管家把每個房間都打掃乾淨。" }
+  ],
+  "hug": [
+    { "pos": "n.", "zh": "擁抱", "example": "She gave her mother a warm hug.", "example_zh": "她給了媽媽一個溫暖的擁抱。" },
+    { "pos": "v.", "zh": "擁抱、緊抱", "example": "They hugged each other goodbye.", "example_zh": "他們互相擁抱道別。" }
+  ],
+  "hum": [
+    { "pos": "v.", "zh": "哼唱、發出嗡嗡聲", "example": "She hummed a song while cooking.", "example_zh": "她邊煮飯邊哼歌。" }
+  ],
+  "humid": [
+    { "pos": "adj.", "zh": "潮濕的", "example": "Summer in Taiwan is hot and humid.", "example_zh": "台灣的夏天又熱又潮濕。" }
+  ],
+  "humor": [
+    { "pos": "n.", "zh": "幽默", "example": "He has a great sense of humor.", "example_zh": "他很有幽默感。" }
+  ],
+  "humorous": [
+    { "pos": "adj.", "zh": "幽默的", "example": "She told a humorous story.", "example_zh": "她講了一個幽默的故事。" }
+  ],
+  "hunger": [
+    { "pos": "n.", "zh": "飢餓", "example": "The poor child cried from hunger.", "example_zh": "那個貧窮的孩子餓得直哭。" },
+    { "pos": "n.", "zh": "渴望、渴求", "example": "She has a hunger for knowledge.", "example_zh": "她對知識充滿渴望。" }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "export": [
+    { "pos": "v.", "zh": "出口、輸出", "example": "The country exports a lot of fruit.", "example_zh": "這個國家出口大量水果。" },
+    { "pos": "n.", "zh": "出口、外銷品", "example": "Tea is one of their main exports.", "example_zh": "茶是他們的主要出口品之一。" }
+  ],
+  "expressive": [
+    { "pos": "adj.", "zh": "富有表現力的", "example": "Her face is very expressive.", "example_zh": "她的表情很豐富。" }
+  ],
+  "extreme": [
+    { "pos": "adj.", "zh": "極端的、極度的", "example": "The desert has extreme heat.", "example_zh": "沙漠有極端的高溫。" },
+    { "pos": "n.", "zh": "極端", "example": "He goes from one extreme to the other.", "example_zh": "他從一個極端走到另一個極端。" }
+  ],
+  "fade": [
+    { "pos": "v.", "zh": "褪色、逐漸消失", "example": "The color of the shirt faded in the sun.", "example_zh": "襯衫的顏色在陽光下褪了。" }
+  ],
+  "faint": [
+    { "pos": "adj.", "zh": "微弱的、模糊的", "example": "We heard a faint sound.", "example_zh": "我們聽見一陣微弱的聲音。" },
+    { "pos": "v.", "zh": "昏倒、暈倒", "example": "She felt faint in the hot room.", "example_zh": "在悶熱的房間裡她覺得快暈倒。" }
+  ],
+  "fairly": [
+    { "pos": "adv.", "zh": "相當、頗", "example": "The test was fairly easy.", "example_zh": "這次考試相當簡單。" },
+    { "pos": "adv.", "zh": "公平地", "example": "Treat everyone fairly.", "example_zh": "公平對待每個人。" }
+  ],
+  "fairy": [
+    { "pos": "n.", "zh": "仙女、精靈", "example": "The story is about a kind fairy.", "example_zh": "這故事是關於一位善良的仙女。" }
+  ],
+  "faith": [
+    { "pos": "n.", "zh": "信任、信心", "example": "She has great faith in her friends.", "example_zh": "她非常信任她的朋友。" },
+    { "pos": "n.", "zh": "信仰、宗教", "example": "People of different faiths live here.", "example_zh": "不同信仰的人住在這裡。" }
+  ],
+  "fake": [
+    { "pos": "adj.", "zh": "假的、偽造的", "example": "The ring turned out to be fake.", "example_zh": "那枚戒指原來是假的。" },
+    { "pos": "v.", "zh": "偽造、假裝", "example": "He faked a smile.", "example_zh": "他擠出一個假笑。" }
+  ],
+  "familiar": [
+    { "pos": "adj.", "zh": "熟悉的", "example": "His face looks familiar to me.", "example_zh": "他的臉看起來很眼熟。" }
+  ],
+  "fancy": [
+    { "pos": "adj.", "zh": "高級的、精緻的", "example": "They ate at a fancy restaurant.", "example_zh": "他們在一家高級餐廳用餐。" },
+    { "pos": "v.", "zh": "想要、喜歡（英式）", "example": "Do you fancy a cup of tea?", "example_zh": "你想來杯茶嗎？" }
+  ],
+  "fare": [
+    { "pos": "n.", "zh": "車費、票價", "example": "The bus fare went up this year.", "example_zh": "公車票價今年漲了。" }
+  ],
+  "farther": [
+    { "pos": "adj.", "zh": "更遠的", "example": "The store is farther than I thought.", "example_zh": "那家店比我想的還遠。" },
+    { "pos": "adv.", "zh": "更遠地", "example": "We can't drive any farther.", "example_zh": "我們再也開不下去了。" }
+  ],
+  "fashionable": [
+    { "pos": "adj.", "zh": "時髦的、流行的", "example": "She always wears fashionable clothes.", "example_zh": "她總是穿著時髦的衣服。" }
+  ],
+  "faucet": [
+    { "pos": "n.", "zh": "水龍頭", "example": "Please turn off the faucet.", "example_zh": "請把水龍頭關掉。" }
+  ],
+  "fearful": [
+    { "pos": "adj.", "zh": "害怕的、可怕的", "example": "The child was fearful of the big dog.", "example_zh": "那孩子很怕那隻大狗。" }
+  ],
+  "feather": [
+    { "pos": "n.", "zh": "羽毛", "example": "A soft feather fell from the bird.", "example_zh": "一根柔軟的羽毛從鳥身上掉下。" }
+  ],
+  "fence": [
+    { "pos": "n.", "zh": "籬笆、柵欄", "example": "A wooden fence surrounds the garden.", "example_zh": "一道木籬笆圍著花園。" }
+  ],
+  "fighter": [
+    { "pos": "n.", "zh": "戰士、鬥士", "example": "The boxer is a strong fighter.", "example_zh": "這名拳擊手是個強壯的鬥士。" },
+    { "pos": "n.", "zh": "戰鬥機", "example": "Fighter planes flew over the city.", "example_zh": "戰鬥機飛過城市上空。" }
+  ],
+  "firework": [
+    { "pos": "n.", "zh": "煙火", "example": "We watched the fireworks on New Year.", "example_zh": "我們在新年看煙火。" }
+  ],
+  "fist": [
+    { "pos": "n.", "zh": "拳頭", "example": "He held the coin tight in his fist.", "example_zh": "他把硬幣緊握在拳頭裡。" }
+  ],
+  "flame": [
+    { "pos": "n.", "zh": "火焰", "example": "The candle's flame danced in the wind.", "example_zh": "燭火在風中搖曳。" }
+  ],
+  "flash": [
+    { "pos": "n.", "zh": "閃光、一瞬間", "example": "A flash of lightning lit the sky.", "example_zh": "一道閃電照亮了天空。" },
+    { "pos": "v.", "zh": "閃爍、閃現", "example": "The lights flashed on and off.", "example_zh": "燈光一閃一閃地亮著。" }
+  ],
+  "flashlight": [
+    { "pos": "n.", "zh": "手電筒", "example": "He used a flashlight in the dark.", "example_zh": "他在黑暗中用手電筒。" }
+  ],
+  "flavor": [
+    { "pos": "n.", "zh": "味道、風味", "example": "This ice cream has a strawberry flavor.", "example_zh": "這冰淇淋是草莓口味。" }
+  ],
+  "flesh": [
+    { "pos": "n.", "zh": "（果）肉、肌肉", "example": "The fruit has sweet, soft flesh.", "example_zh": "這水果的果肉香甜又柔軟。" }
+  ],
+  "float": [
+    { "pos": "v.", "zh": "漂浮", "example": "The leaf floated on the water.", "example_zh": "葉子漂在水面上。" }
+  ],
+  "flock": [
+    { "pos": "n.", "zh": "一群（羊、鳥）", "example": "A flock of birds flew south.", "example_zh": "一群鳥往南飛。" },
+    { "pos": "v.", "zh": "群集、湧向", "example": "Tourists flock to the beach in summer.", "example_zh": "夏天遊客湧向海灘。" }
+  ],
+  "flood": [
+    { "pos": "n.", "zh": "洪水、水災", "example": "The heavy rain caused a flood.", "example_zh": "大雨造成水災。" },
+    { "pos": "v.", "zh": "淹沒、湧入", "example": "Water flooded the streets.", "example_zh": "水淹沒了街道。" }
+  ],
+  "flour": [
+    { "pos": "n.", "zh": "麵粉", "example": "We need flour to make bread.", "example_zh": "我們需要麵粉做麵包。" }
+  ],
+  "flute": [
+    { "pos": "n.", "zh": "長笛", "example": "She plays the flute beautifully.", "example_zh": "她長笛吹得很美。" }
+  ],
+  "foggy": [
+    { "pos": "adj.", "zh": "多霧的", "example": "It was foggy on the mountain road.", "example_zh": "山路上霧很濃。" }
+  ],
+  "fold": [
+    { "pos": "v.", "zh": "摺疊", "example": "Please fold the clean clothes.", "example_zh": "請把乾淨的衣服摺好。" },
+    { "pos": "n.", "zh": "褶、摺痕", "example": "There is a fold in the paper.", "example_zh": "紙上有一道摺痕。" }
+  ],
+  "follower": [
+    { "pos": "n.", "zh": "追隨者、粉絲", "example": "The singer has many followers.", "example_zh": "這位歌手有許多粉絲。" }
+  ],
+  "fond": [
+    { "pos": "adj.", "zh": "喜愛的、深情的", "example": "She is fond of her little brother.", "example_zh": "她很疼愛她的弟弟。" }
+  ],
+  "forever": [
+    { "pos": "adv.", "zh": "永遠", "example": "I will remember this day forever.", "example_zh": "我會永遠記得這一天。" }
+  ],
+  "fortune": [
+    { "pos": "n.", "zh": "財富、一大筆錢", "example": "He made a fortune from his business.", "example_zh": "他靠生意賺了一大筆錢。" },
+    { "pos": "n.", "zh": "運氣、命運", "example": "She had the good fortune to meet him.", "example_zh": "她很幸運地遇見了他。" }
+  ],
+  "fountain": [
+    { "pos": "n.", "zh": "噴泉", "example": "Children played near the fountain.", "example_zh": "孩子們在噴泉旁玩耍。" }
+  ],
+  "frank": [
+    { "pos": "adj.", "zh": "坦白的、率直的", "example": "To be frank, I don't like the plan.", "example_zh": "老實說，我不喜歡這個計畫。" }
+  ],
+  "freeze": [
+    { "pos": "v.", "zh": "結冰、凍結", "example": "Water freezes at zero degrees.", "example_zh": "水在零度時結冰。" }
+  ],
+  "freezer": [
+    { "pos": "n.", "zh": "冷凍庫", "example": "Keep the ice cream in the freezer.", "example_zh": "把冰淇淋放在冷凍庫裡。" }
+  ],
+  "frequent": [
+    { "pos": "adj.", "zh": "頻繁的、經常的", "example": "He is a frequent visitor to the library.", "example_zh": "他是圖書館的常客。" }
+  ],
+  "fright": [
+    { "pos": "n.", "zh": "驚嚇、恐懼", "example": "The loud bang gave me a fright.", "example_zh": "那聲巨響嚇了我一跳。" }
+  ],
+  "frighten": [
+    { "pos": "v.", "zh": "使驚嚇、嚇唬", "example": "The thunder frightened the dog.", "example_zh": "雷聲嚇到了那隻狗。" }
+  ],
+  "fuel": [
+    { "pos": "n.", "zh": "燃料", "example": "Cars need fuel to run.", "example_zh": "車子需要燃料才能行駛。" },
+    { "pos": "v.", "zh": "提供燃料、加劇", "example": "His words fueled the argument.", "example_zh": "他的話加劇了爭執。" }
+  ],
+  "fund": [
+    { "pos": "n.", "zh": "資金、基金", "example": "They raised funds for the school.", "example_zh": "他們為學校募款。" },
+    { "pos": "v.", "zh": "資助、提供資金", "example": "The government funds the project.", "example_zh": "政府資助這個計畫。" }
+  ],
+  "fur": [
+    { "pos": "n.", "zh": "毛皮、毛", "example": "The cat has soft gray fur.", "example_zh": "這隻貓有柔軟的灰色毛。" }
+  ],
+  "gallon": [
+    { "pos": "n.", "zh": "加侖", "example": "He bought a gallon of milk.", "example_zh": "他買了一加侖牛奶。" }
+  ],
+  "gamble": [
+    { "pos": "v.", "zh": "賭博", "example": "It is risky to gamble with money.", "example_zh": "拿錢賭博很危險。" },
+    { "pos": "n.", "zh": "冒險、賭注", "example": "Starting a business is a gamble.", "example_zh": "創業是一場賭注。" }
+  ],
+  "gang": [
+    { "pos": "n.", "zh": "一幫、幫派", "example": "A gang of boys played in the park.", "example_zh": "一群男孩在公園裡玩。" }
+  ],
+  "gap": [
+    { "pos": "n.", "zh": "縫隙、差距", "example": "There is a gap between the two desks.", "example_zh": "兩張桌子之間有空隙。" }
+  ],
+  "garage": [
+    { "pos": "n.", "zh": "車庫", "example": "He parked the car in the garage.", "example_zh": "他把車停在車庫裡。" },
+    { "pos": "n.", "zh": "修車廠", "example": "She took her car to the garage.", "example_zh": "她把車送去修車廠。" }
+  ],
+  "gasoline-gas": [
+    { "pos": "n.", "zh": "汽油", "example": "The car ran out of gasoline.", "example_zh": "車子沒油了。" }
+  ],
+  "geography": [
+    { "pos": "n.", "zh": "地理", "example": "We study mountains and rivers in geography.", "example_zh": "我們在地理課學山脈和河流。" }
+  ],
+  "gesture": [
+    { "pos": "n.", "zh": "手勢、姿態", "example": "He made a friendly gesture with his hand.", "example_zh": "他用手做了個友善的手勢。" },
+    { "pos": "v.", "zh": "做手勢、示意", "example": "She gestured for us to sit down.", "example_zh": "她示意我們坐下。" }
+  ],
+  "glance": [
+    { "pos": "n.", "zh": "一瞥、看一眼", "example": "She took a quick glance at the clock.", "example_zh": "她迅速瞄了時鐘一眼。" },
+    { "pos": "v.", "zh": "瞥、匆匆一看", "example": "He glanced at his phone.", "example_zh": "他瞄了一眼手機。" }
+  ],
+  "global": [
+    { "pos": "adj.", "zh": "全球的、全球性的", "example": "Pollution is a global problem.", "example_zh": "汙染是全球性的問題。" }
+  ],
+  "glory": [
+    { "pos": "n.", "zh": "榮耀、光榮", "example": "The team won glory for the school.", "example_zh": "這支隊伍為學校贏得榮耀。" }
+  ],
+  "glow": [
+    { "pos": "v.", "zh": "發出柔光、發亮", "example": "The candles glowed in the dark.", "example_zh": "蠟燭在黑暗中發著光。" },
+    { "pos": "n.", "zh": "光輝、紅光", "example": "There was a warm glow in the sky.", "example_zh": "天空有一抹溫暖的光輝。" }
+  ],
+  "golf": [
+    { "pos": "n.", "zh": "高爾夫球", "example": "My father plays golf on weekends.", "example_zh": "我爸週末打高爾夫球。" }
+  ]
+}
