@@ -1,0 +1,190 @@
+{
+  "shallow": [
+    { "pos": "adj.", "zh": "淺的、膚淺的", "example": "The water near the shore is shallow.", "example_zh": "靠近岸邊的水很淺。" }
+  ],
+  "shampoo": [
+    { "pos": "n.", "zh": "洗髮精", "example": "She washed her hair with shampoo.", "example_zh": "她用洗髮精洗頭髮。" }
+  ],
+  "shepherd": [
+    { "pos": "n.", "zh": "牧羊人", "example": "The shepherd watched over his sheep.", "example_zh": "牧羊人看顧著他的羊群。" }
+  ],
+  "shiny": [
+    { "pos": "adj.", "zh": "閃亮的、有光澤的", "example": "He drives a shiny new car.", "example_zh": "他開著一輛閃亮的新車。" }
+  ],
+  "shorten": [
+    { "pos": "v.", "zh": "縮短", "example": "She shortened the long dress.", "example_zh": "她把那件長洋裝改短了。" }
+  ],
+  "shortly": [
+    { "pos": "adv.", "zh": "不久、很快", "example": "The bus will arrive shortly.", "example_zh": "公車很快就到。" }
+  ],
+  "shovel": [
+    { "pos": "n.", "zh": "鏟子、鐵鍬", "example": "He dug the hole with a shovel.", "example_zh": "他用鏟子挖洞。" },
+    { "pos": "v.", "zh": "鏟、剷", "example": "They shoveled snow off the path.", "example_zh": "他們把路上的雪鏟掉。" }
+  ],
+  "shrimp": [
+    { "pos": "n.", "zh": "蝦", "example": "We ate fried shrimp at dinner.", "example_zh": "我們晚餐吃了炸蝦。" }
+  ],
+  "shrink": [
+    { "pos": "v.", "zh": "縮小、收縮", "example": "The sweater shrank in the wash.", "example_zh": "這件毛衣洗後縮水了。" }
+  ],
+  "sigh": [
+    { "pos": "n.", "zh": "嘆息、嘆氣", "example": "She let out a deep sigh.", "example_zh": "她深深嘆了一口氣。" },
+    { "pos": "v.", "zh": "嘆氣、嘆息", "example": "He sighed and shook his head.", "example_zh": "他嘆了口氣，搖了搖頭。" }
+  ],
+  "signal": [
+    { "pos": "n.", "zh": "信號、訊號", "example": "The green signal means you can go.", "example_zh": "綠燈代表你可以走。" },
+    { "pos": "v.", "zh": "發信號、示意", "example": "He signaled the car to stop.", "example_zh": "他示意車子停下。" }
+  ],
+  "significant": [
+    { "pos": "adj.", "zh": "重要的、顯著的", "example": "There was a significant change in his grades.", "example_zh": "他的成績有了顯著的變化。" }
+  ],
+  "silk": [
+    { "pos": "n.", "zh": "絲、絲綢", "example": "The scarf is made of soft silk.", "example_zh": "這條圍巾是用柔軟的絲做的。" }
+  ],
+  "similarity": [
+    { "pos": "n.", "zh": "相似、相似處", "example": "There is a similarity between the two stories.", "example_zh": "這兩個故事有相似之處。" }
+  ],
+  "sin": [
+    { "pos": "n.", "zh": "罪、罪惡", "example": "In the story, lying was seen as a sin.", "example_zh": "在故事裡，說謊被視為一種罪。" },
+    { "pos": "v.", "zh": "犯罪、違背道德", "example": "He felt he had sinned.", "example_zh": "他覺得自己犯了錯。" }
+  ],
+  "sincere": [
+    { "pos": "adj.", "zh": "真誠的、誠摯的", "example": "Please accept my sincere thanks.", "example_zh": "請接受我誠摯的感謝。" }
+  ],
+  "sink": [
+    { "pos": "v.", "zh": "下沉、沉沒", "example": "The heavy stone sank to the bottom.", "example_zh": "沉重的石頭沉到了底部。" },
+    { "pos": "n.", "zh": "水槽、洗手槽", "example": "She washed the dishes in the sink.", "example_zh": "她在水槽裡洗碗。" }
+  ],
+  "sip": [
+    { "pos": "v.", "zh": "啜飲、小口喝", "example": "She sipped her hot tea slowly.", "example_zh": "她慢慢地啜飲熱茶。" },
+    { "pos": "n.", "zh": "一小口", "example": "She took a small sip of hot tea.", "example_zh": "她小啜了一口熱茶。" }
+  ],
+  "situation": [
+    { "pos": "n.", "zh": "情況、處境", "example": "We handled the difficult situation calmly.", "example_zh": "我們冷靜地處理了這個困難的情況。" }
+  ],
+  "skate": [
+    { "pos": "v.", "zh": "溜冰、滑冰", "example": "We skate on the ice in winter.", "example_zh": "我們冬天溜冰。" },
+    { "pos": "n.", "zh": "溜冰鞋", "example": "She put on her skates.", "example_zh": "她穿上溜冰鞋。" }
+  ],
+  "ski": [
+    { "pos": "v.", "zh": "滑雪", "example": "They went to the mountains to ski.", "example_zh": "他們去山上滑雪。" },
+    { "pos": "n.", "zh": "滑雪板、雪橇", "example": "He waxed his skis before the trip.", "example_zh": "出發前他替滑雪板上蠟。" }
+  ],
+  "skillful": [
+    { "pos": "adj.", "zh": "熟練的、有技巧的", "example": "She is a skillful cook.", "example_zh": "她是個廚藝高超的廚師。" }
+  ],
+  "skinny": [
+    { "pos": "adj.", "zh": "極瘦的、皮包骨的", "example": "The skinny boy ate a big lunch.", "example_zh": "那個瘦小的男孩吃了一頓豐盛的午餐。" }
+  ],
+  "skip": [
+    { "pos": "v.", "zh": "跳過、省略", "example": "Don't skip breakfast before school.", "example_zh": "上學前別不吃早餐。" },
+    { "pos": "v.", "zh": "蹦蹦跳跳", "example": "The girl skipped down the street.", "example_zh": "那女孩蹦蹦跳跳地走在街上。" }
+  ],
+  "slave": [
+    { "pos": "n.", "zh": "奴隸", "example": "Long ago, slaves had no freedom.", "example_zh": "很久以前，奴隸沒有自由。" }
+  ],
+  "sleeve": [
+    { "pos": "n.", "zh": "袖子", "example": "He rolled up his sleeves to work.", "example_zh": "他捲起袖子工作。" }
+  ],
+  "slender": [
+    { "pos": "adj.", "zh": "苗條的、細長的", "example": "She has long, slender fingers.", "example_zh": "她有細長的手指。" }
+  ],
+  "slice": [
+    { "pos": "n.", "zh": "一片、薄片", "example": "Would you like a slice of cake?", "example_zh": "你想來一片蛋糕嗎？" },
+    { "pos": "v.", "zh": "把⋯切成片", "example": "She sliced the bread thinly.", "example_zh": "她把麵包切成薄片。" }
+  ],
+  "slippery": [
+    { "pos": "adj.", "zh": "滑的、溜的", "example": "The wet floor is slippery.", "example_zh": "濕地板很滑。" }
+  ],
+  "slope": [
+    { "pos": "n.", "zh": "斜坡", "example": "We walked down the steep slope.", "example_zh": "我們走下陡峭的斜坡。" }
+  ],
+  "snap": [
+    { "pos": "v.", "zh": "啪一聲折斷", "example": "The dry branch snapped in two.", "example_zh": "乾枯的樹枝啪一聲斷成兩截。" },
+    { "pos": "v.", "zh": "厲聲說、突然發怒", "example": "She snapped at the children.", "example_zh": "她對孩子們厲聲斥責。" }
+  ],
+  "solid": [
+    { "pos": "adj.", "zh": "固體的、堅固的", "example": "Ice is water in a solid form.", "example_zh": "冰是水的固態形式。" },
+    { "pos": "adj.", "zh": "結實的、可靠的", "example": "They built a solid house.", "example_zh": "他們蓋了一棟堅固的房子。" }
+  ],
+  "someday": [
+    { "pos": "adv.", "zh": "將來有一天", "example": "Someday I will travel around the world.", "example_zh": "將來有一天我要環遊世界。" }
+  ],
+  "somehow": [
+    { "pos": "adv.", "zh": "不知怎地、設法", "example": "Somehow he finished the work on time.", "example_zh": "不知怎地他竟準時完成了工作。" }
+  ],
+  "sometime": [
+    { "pos": "adv.", "zh": "某個時候", "example": "Let's meet sometime next week.", "example_zh": "我們下週找個時間見面吧。" }
+  ],
+  "sorrow": [
+    { "pos": "n.", "zh": "悲傷、哀痛", "example": "Her eyes were full of sorrow.", "example_zh": "她的眼裡滿是悲傷。" }
+  ],
+  "spaghetti": [
+    { "pos": "n.", "zh": "義大利麵", "example": "We had spaghetti with meat sauce.", "example_zh": "我們吃了肉醬義大利麵。" }
+  ],
+  "specific": [
+    { "pos": "adj.", "zh": "具體的、明確的", "example": "Please give me a specific example.", "example_zh": "請給我一個具體的例子。" }
+  ],
+  "spice": [
+    { "pos": "n.", "zh": "香料、調味料", "example": "She added spice to make the dish tasty.", "example_zh": "她加了香料讓這道菜更美味。" }
+  ],
+  "spill": [
+    { "pos": "v.", "zh": "灑出、溢出", "example": "Be careful not to spill the milk.", "example_zh": "小心別把牛奶灑出來。" },
+    { "pos": "n.", "zh": "溢出、灑出物", "example": "There was an oil spill at sea.", "example_zh": "海上發生了漏油事件。" }
+  ],
+  "spin": [
+    { "pos": "v.", "zh": "旋轉、打轉", "example": "The dancer spun around quickly.", "example_zh": "舞者快速地轉圈。" },
+    { "pos": "v.", "zh": "紡（紗）、結（網）", "example": "Spiders spin webs to catch insects.", "example_zh": "蜘蛛結網捕捉昆蟲。" }
+  ],
+  "spinach": [
+    { "pos": "n.", "zh": "菠菜", "example": "Spinach is full of iron.", "example_zh": "菠菜富含鐵質。" }
+  ],
+  "spit": [
+    { "pos": "v.", "zh": "吐（口水）", "example": "Don't spit on the floor.", "example_zh": "不要往地上吐口水。" }
+  ],
+  "spite": [
+    { "pos": "n.", "zh": "儘管、不顧（in spite of）", "example": "In spite of the rain, we went out.", "example_zh": "儘管下著雨，我們還是出門了。" },
+    { "pos": "n.", "zh": "惡意、怨恨", "example": "He broke it out of spite.", "example_zh": "他出於惡意把它弄壞了。" }
+  ],
+  "splash": [
+    { "pos": "v.", "zh": "濺、潑（水）", "example": "The kids splashed water at each other.", "example_zh": "孩子們互相潑水。" },
+    { "pos": "n.", "zh": "潑濺（聲）", "example": "He jumped in with a big splash.", "example_zh": "他撲通一聲跳了進去。" }
+  ],
+  "spoil": [
+    { "pos": "v.", "zh": "破壞、寵壞", "example": "Too much rain can spoil the crops.", "example_zh": "雨太多會毀了農作物。" }
+  ],
+  "spray": [
+    { "pos": "v.", "zh": "噴、噴灑", "example": "She sprayed water on the plants.", "example_zh": "她在植物上噴水。" },
+    { "pos": "n.", "zh": "噴霧、水花", "example": "He used a bug spray.", "example_zh": "他用了殺蟲噴霧。" }
+  ],
+  "spy": [
+    { "pos": "n.", "zh": "間諜、密探", "example": "The spy passed secret information.", "example_zh": "那名間諜傳遞秘密情報。" },
+    { "pos": "v.", "zh": "暗中監視、刺探", "example": "He spied on his neighbors.", "example_zh": "他暗中監視鄰居。" }
+  ],
+  "squeeze": [
+    { "pos": "v.", "zh": "擠壓、緊握", "example": "Squeeze the lemon to get the juice.", "example_zh": "擠檸檬取汁。" }
+  ],
+  "squirrel": [
+    { "pos": "n.", "zh": "松鼠", "example": "A squirrel ran up the tree.", "example_zh": "一隻松鼠跑上樹。" }
+  ],
+  "stable": [
+    { "pos": "adj.", "zh": "穩定的、安穩的", "example": "He has a stable job and a happy family.", "example_zh": "他有一份穩定的工作和幸福的家庭。" },
+    { "pos": "n.", "zh": "馬廄", "example": "The horses sleep in the stable.", "example_zh": "馬兒睡在馬廄裡。" }
+  ],
+  "stadium": [
+    { "pos": "n.", "zh": "體育場、運動場", "example": "The stadium was full of fans.", "example_zh": "體育場裡擠滿了球迷。" }
+  ],
+  "staff": [
+    { "pos": "n.", "zh": "全體員工、職員", "example": "The hotel staff are very helpful.", "example_zh": "飯店的員工非常樂於助人。" }
+  ],
+  "stale": [
+    { "pos": "adj.", "zh": "不新鮮的、走味的", "example": "The bread is stale and hard.", "example_zh": "這麵包又乾又硬。" }
+  ],
+  "stare": [
+    { "pos": "v.", "zh": "盯著看、凝視", "example": "It is rude to stare at people.", "example_zh": "盯著別人看很沒禮貌。" },
+    { "pos": "n.", "zh": "凝視、注視", "example": "She gave him a cold stare.", "example_zh": "她冷冷地瞪了他一眼。" }
+  ],
+  "starve": [
+    { "pos": "v.", "zh": "挨餓、餓死", "example": "Without food, the animals would starve.", "example_zh": "沒有食物，那些動物會餓死。" }
+  ]
+}
