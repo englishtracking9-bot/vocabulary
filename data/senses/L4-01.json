@@ -1,0 +1,194 @@
+{
+  "abandon": [
+    { "pos": "v.", "zh": "拋棄、放棄", "example": "They had to abandon the sinking ship.", "example_zh": "他們不得不棄下正在下沉的船。" }
+  ],
+  "absolute": [
+    { "pos": "adj.", "zh": "絕對的、完全的", "example": "I have absolute trust in my doctor.", "example_zh": "我對我的醫生有絕對的信任。" }
+  ],
+  "absorb": [
+    { "pos": "v.", "zh": "吸收", "example": "A sponge can absorb a lot of water.", "example_zh": "海綿能吸收大量的水。" }
+  ],
+  "abstract": [
+    { "pos": "adj.", "zh": "抽象的", "example": "The painting is abstract and hard to understand.", "example_zh": "這幅畫很抽象，難以理解。" }
+  ],
+  "academic": [
+    { "pos": "adj.", "zh": "學術的、學業的", "example": "She did well in her academic studies.", "example_zh": "她在學業上表現優異。" }
+  ],
+  "accent": [
+    { "pos": "n.", "zh": "口音、腔調", "example": "He speaks English with a French accent.", "example_zh": "他說英語帶有法國口音。" },
+    { "pos": "n.", "zh": "重音、強調", "example": "Put the accent on the first syllable.", "example_zh": "把重音放在第一個音節。" }
+  ],
+  "acceptance": [
+    { "pos": "n.", "zh": "接受、錄取", "example": "She received an acceptance letter from the college.", "example_zh": "她收到了大學的錄取通知書。" }
+  ],
+  "access": [
+    { "pos": "n.", "zh": "使用權、進入", "example": "Students have access to the library.", "example_zh": "學生可以使用圖書館。" },
+    { "pos": "v.", "zh": "存取、進入", "example": "You can access the files online.", "example_zh": "你可以在線上存取這些檔案。" }
+  ],
+  "accidental": [
+    { "pos": "adj.", "zh": "偶然的、意外的", "example": "The fire was accidental, not on purpose.", "example_zh": "這場火是意外，不是故意的。" }
+  ],
+  "accompany": [
+    { "pos": "v.", "zh": "陪伴、伴隨", "example": "Her mother accompanied her to the doctor.", "example_zh": "她媽媽陪她去看醫生。" }
+  ],
+  "accomplish": [
+    { "pos": "v.", "zh": "完成、達成", "example": "She accomplished her goal through hard work.", "example_zh": "她靠努力達成了目標。" }
+  ],
+  "accountant": [
+    { "pos": "n.", "zh": "會計師", "example": "The accountant checked the company's money.", "example_zh": "會計師查核公司的帳目。" }
+  ],
+  "accuracy": [
+    { "pos": "n.", "zh": "準確性、精確度", "example": "The report was written with great accuracy.", "example_zh": "這份報告寫得非常準確。" }
+  ],
+  "accuse": [
+    { "pos": "v.", "zh": "指控、控告", "example": "They accused him of stealing the money.", "example_zh": "他們指控他偷了錢。" }
+  ],
+  "acid": [
+    { "pos": "n.", "zh": "酸、酸性物質", "example": "Lemon juice contains a mild acid.", "example_zh": "檸檬汁含有溫和的酸。" },
+    { "pos": "adj.", "zh": "酸的、酸性的", "example": "The fruit has an acid taste.", "example_zh": "這水果有酸味。" }
+  ],
+  "acquaintance": [
+    { "pos": "n.", "zh": "認識的人、泛泛之交", "example": "He is just an acquaintance, not a close friend.", "example_zh": "他只是個泛泛之交，不是好朋友。" }
+  ],
+  "acquire": [
+    { "pos": "v.", "zh": "獲得、習得", "example": "She acquired new skills at her job.", "example_zh": "她在工作中習得了新技能。" }
+  ],
+  "adapt": [
+    { "pos": "v.", "zh": "適應", "example": "It takes time to adapt to a new school.", "example_zh": "適應新學校需要時間。" },
+    { "pos": "v.", "zh": "改編、改造", "example": "The book was adapted into a movie.", "example_zh": "這本書被改編成電影。" }
+  ],
+  "addict": [
+    { "pos": "n.", "zh": "上癮者、入迷者", "example": "He is a video game addict.", "example_zh": "他是個電玩迷。" },
+    { "pos": "v.", "zh": "使沉迷、使上癮", "example": "He is addicted to coffee.", "example_zh": "他對咖啡上癮。" }
+  ],
+  "adequate": [
+    { "pos": "adj.", "zh": "足夠的、適當的", "example": "We have adequate food for the trip.", "example_zh": "我們有足夠的食物供這趟旅行。" }
+  ],
+  "adjust": [
+    { "pos": "v.", "zh": "調整、調節", "example": "Please adjust your seat before driving.", "example_zh": "開車前請先調整座椅。" }
+  ],
+  "admirable": [
+    { "pos": "adj.", "zh": "令人欽佩的", "example": "Her honesty is truly admirable.", "example_zh": "她的誠實真令人欽佩。" }
+  ],
+  "admiration": [
+    { "pos": "n.", "zh": "欽佩、讚賞", "example": "I have great admiration for my teacher.", "example_zh": "我非常欽佩我的老師。" }
+  ],
+  "admission": [
+    { "pos": "n.", "zh": "入場、入學", "example": "Admission to the museum is free today.", "example_zh": "今天博物館免費入場。" },
+    { "pos": "n.", "zh": "承認、坦承", "example": "It was an admission of his mistake.", "example_zh": "那是他對自己錯誤的承認。" }
+  ],
+  "adopt": [
+    { "pos": "v.", "zh": "採用、採納", "example": "The school adopted a new rule.", "example_zh": "學校採用了一項新規定。" },
+    { "pos": "v.", "zh": "收養", "example": "They decided to adopt a stray dog.", "example_zh": "他們決定收養一隻流浪狗。" }
+  ],
+  "agency": [
+    { "pos": "n.", "zh": "代理機構、仲介", "example": "She booked the trip through a travel agency.", "example_zh": "她透過旅行社訂了這趟旅行。" }
+  ],
+  "agent": [
+    { "pos": "n.", "zh": "代理人、經紀人", "example": "The travel agent helped us plan the tour.", "example_zh": "旅行社人員幫我們規劃行程。" },
+    { "pos": "n.", "zh": "探員、特務", "example": "A secret agent followed the suspect.", "example_zh": "一名密探跟蹤嫌犯。" }
+  ],
+  "aggressive": [
+    { "pos": "adj.", "zh": "好鬥的、有侵略性的", "example": "The dog became aggressive when scared.", "example_zh": "那隻狗受驚時變得有攻擊性。" }
+  ],
+  "agreeable": [
+    { "pos": "adj.", "zh": "令人愉快的、宜人的", "example": "We spent an agreeable afternoon in the garden.", "example_zh": "我們在花園裡度過了愉快的下午。" }
+  ],
+  "alcohol": [
+    { "pos": "n.", "zh": "酒精、含酒精飲料", "example": "Drinking too much alcohol is unhealthy.", "example_zh": "喝太多酒對身體不好。" }
+  ],
+  "alert": [
+    { "pos": "adj.", "zh": "警覺的、機警的", "example": "Stay alert while crossing the busy road.", "example_zh": "過繁忙的馬路時要保持警覺。" },
+    { "pos": "v.", "zh": "使警覺、向⋯示警", "example": "The alarm alerted us to the fire.", "example_zh": "警報讓我們察覺到火災。" }
+  ],
+  "allowance": [
+    { "pos": "n.", "zh": "零用錢、津貼", "example": "He saves part of his weekly allowance.", "example_zh": "他把每週零用錢的一部分存起來。" }
+  ],
+  "alternative": [
+    { "pos": "n.", "zh": "替代方案、選擇", "example": "Is there an alternative to this plan?", "example_zh": "這個計畫有別的替代方案嗎？" },
+    { "pos": "adj.", "zh": "替代的、另類的", "example": "We took an alternative route.", "example_zh": "我們走了另一條路。" }
+  ],
+  "amateur": [
+    { "pos": "n.", "zh": "業餘愛好者", "example": "He is an amateur photographer.", "example_zh": "他是個業餘攝影師。" },
+    { "pos": "adj.", "zh": "業餘的", "example": "It was an amateur performance.", "example_zh": "那是場業餘的演出。" }
+  ],
+  "ambiguous": [
+    { "pos": "adj.", "zh": "模稜兩可的、含糊的", "example": "Her answer was ambiguous and unclear.", "example_zh": "她的回答模稜兩可、不清楚。" }
+  ],
+  "ambitious": [
+    { "pos": "adj.", "zh": "有雄心的、有抱負的", "example": "She is ambitious and works very hard.", "example_zh": "她很有抱負，工作非常努力。" }
+  ],
+  "amuse": [
+    { "pos": "v.", "zh": "逗樂、使開心", "example": "The clown amused the children.", "example_zh": "小丑逗樂了孩子們。" }
+  ],
+  "analysis": [
+    { "pos": "n.", "zh": "分析", "example": "The doctor did a careful analysis of the blood.", "example_zh": "醫生仔細分析了血液。" }
+  ],
+  "analyze": [
+    { "pos": "v.", "zh": "分析", "example": "We need to analyze the data first.", "example_zh": "我們得先分析數據。" }
+  ],
+  "ancestor": [
+    { "pos": "n.", "zh": "祖先、祖宗", "example": "Our ancestors lived in this village.", "example_zh": "我們的祖先住在這個村莊。" }
+  ],
+  "anniversary": [
+    { "pos": "n.", "zh": "週年紀念日", "example": "They celebrated their wedding anniversary.", "example_zh": "他們慶祝結婚週年紀念。" }
+  ],
+  "annoy": [
+    { "pos": "v.", "zh": "使惱怒、打擾", "example": "The loud noise annoyed everyone.", "example_zh": "巨大的噪音惹惱了大家。" }
+  ],
+  "annual": [
+    { "pos": "adj.", "zh": "每年的、年度的", "example": "The school holds an annual sports day.", "example_zh": "學校每年舉辦運動會。" }
+  ],
+  "anxiety": [
+    { "pos": "n.", "zh": "焦慮、憂慮", "example": "She felt anxiety before the big exam.", "example_zh": "大考前她感到焦慮。" }
+  ],
+  "apology": [
+    { "pos": "n.", "zh": "道歉、致歉", "example": "He offered a sincere apology.", "example_zh": "他誠摯地道歉。" }
+  ],
+  "apparent": [
+    { "pos": "adj.", "zh": "明顯的、顯而易見的", "example": "It was apparent that she was tired.", "example_zh": "她顯然很累。" }
+  ],
+  "applicant": [
+    { "pos": "n.", "zh": "申請人", "example": "Each applicant filled out a form.", "example_zh": "每位申請人都填了一張表格。" }
+  ],
+  "application": [
+    { "pos": "n.", "zh": "申請、申請書", "example": "She sent her job application by email.", "example_zh": "她用電子郵件寄出求職申請。" },
+    { "pos": "n.", "zh": "應用、運用", "example": "The theory has many practical applications.", "example_zh": "這個理論有許多實際應用。" }
+  ],
+  "appoint": [
+    { "pos": "v.", "zh": "任命、指派", "example": "They appointed her as the new manager.", "example_zh": "他們任命她為新經理。" }
+  ],
+  "appreciation": [
+    { "pos": "n.", "zh": "欣賞、感激", "example": "She showed appreciation for the gift.", "example_zh": "她對這份禮物表達了感謝。" }
+  ],
+  "appropriate": [
+    { "pos": "adj.", "zh": "適當的、合適的", "example": "Wear appropriate clothes for the interview.", "example_zh": "面試要穿合適的衣服。" }
+  ],
+  "approval": [
+    { "pos": "n.", "zh": "贊同、批准", "example": "The plan needs the principal's approval.", "example_zh": "這個計畫需要校長的批准。" }
+  ],
+  "aquarium": [
+    { "pos": "n.", "zh": "水族館、魚缸", "example": "We saw colorful fish at the aquarium.", "example_zh": "我們在水族館看到色彩繽紛的魚。" }
+  ],
+  "arch": [
+    { "pos": "n.", "zh": "拱門、拱形", "example": "The old bridge has a stone arch.", "example_zh": "這座老橋有個石拱。" }
+  ],
+  "arise": [
+    { "pos": "v.", "zh": "出現、產生", "example": "Problems may arise if we are careless.", "example_zh": "如果我們粗心，問題可能會出現。" }
+  ],
+  "arms": [
+    { "pos": "n.", "zh": "武器、軍備", "example": "The soldiers were trained to use arms.", "example_zh": "士兵受過使用武器的訓練。" }
+  ],
+  "artificial": [
+    { "pos": "adj.", "zh": "人造的、人工的", "example": "The drink has an artificial flavor.", "example_zh": "這飲料有人工香料的味道。" }
+  ],
+  "artistic": [
+    { "pos": "adj.", "zh": "藝術的、有藝術天分的", "example": "She has great artistic talent.", "example_zh": "她很有藝術天分。" }
+  ],
+  "ashamed": [
+    { "pos": "adj.", "zh": "羞愧的、慚愧的", "example": "He felt ashamed of his mistake.", "example_zh": "他對自己的錯誤感到羞愧。" }
+  ],
+  "aspect": [
+    { "pos": "n.", "zh": "方面、層面", "example": "We discussed every aspect of the plan.", "example_zh": "我們討論了這個計畫的各個方面。" }
+  ]
+}
