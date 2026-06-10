@@ -1,0 +1,203 @@
+{
+  "mutual": [
+    { "pos": "adj.", "zh": "相互的、共同的", "example": "They share a mutual respect.", "example_zh": "他們彼此尊重。" }
+  ],
+  "mysterious": [
+    { "pos": "adj.", "zh": "神秘的、難以理解的", "example": "A mysterious light appeared in the sky.", "example_zh": "天空中出現了一道神秘的光。" }
+  ],
+  "namely": [
+    { "pos": "adv.", "zh": "即、也就是", "example": "Two students passed, namely Tom and Amy.", "example_zh": "有兩名學生通過了，也就是湯姆和艾咪。" }
+  ],
+  "nationality": [
+    { "pos": "n.", "zh": "國籍", "example": "What is your nationality?", "example_zh": "你的國籍是什麼？" }
+  ],
+  "needy": [
+    { "pos": "adj.", "zh": "貧困的、有需要的", "example": "They gave food to needy families.", "example_zh": "他們把食物送給貧困的家庭。" }
+  ],
+  "neglect": [
+    { "pos": "v.", "zh": "忽視、疏於照顧", "example": "Don't neglect your homework.", "example_zh": "別忽略你的功課。" },
+    { "pos": "n.", "zh": "疏忽、失修", "example": "The old house showed years of neglect.", "example_zh": "那棟老房子顯露出多年的失修。" }
+  ],
+  "negotiate": [
+    { "pos": "v.", "zh": "談判、協商", "example": "They negotiated a fair price.", "example_zh": "他們談妥了一個公道的價格。" }
+  ],
+  "nevertheless": [
+    { "pos": "adv.", "zh": "儘管如此、然而", "example": "It was hard; nevertheless, she tried.", "example_zh": "雖然很難，她還是試了。" }
+  ],
+  "nightmare": [
+    { "pos": "n.", "zh": "惡夢、夢魘", "example": "She woke up from a bad nightmare.", "example_zh": "她從一場惡夢中醒來。" }
+  ],
+  "noble": [
+    { "pos": "adj.", "zh": "高尚的、崇高的", "example": "Helping the poor is a noble act.", "example_zh": "幫助窮人是高尚的行為。" },
+    { "pos": "n.", "zh": "貴族", "example": "The nobles lived in grand houses.", "example_zh": "貴族們住在豪宅裡。" }
+  ],
+  "nonsense": [
+    { "pos": "n.", "zh": "胡說、廢話", "example": "Stop talking nonsense and be serious.", "example_zh": "別說廢話了，認真點。" }
+  ],
+  "nowadays": [
+    { "pos": "adv.", "zh": "現今、如今", "example": "Nowadays, most people use smartphones.", "example_zh": "如今大多數人都用智慧型手機。" }
+  ],
+  "nuclear": [
+    { "pos": "adj.", "zh": "核能的、原子核的", "example": "The country built a nuclear power plant.", "example_zh": "這個國家建了一座核能發電廠。" }
+  ],
+  "numerous": [
+    { "pos": "adj.", "zh": "許多的、眾多的", "example": "She has numerous books at home.", "example_zh": "她家裡有許多書。" }
+  ],
+  "nursery": [
+    { "pos": "n.", "zh": "苗圃", "example": "Young plants grow in the nursery.", "example_zh": "幼苗在苗圃裡生長。" },
+    { "pos": "n.", "zh": "育嬰室、托兒所", "example": "The baby sleeps in the nursery.", "example_zh": "寶寶睡在育嬰室裡。" }
+  ],
+  "nutritious": [
+    { "pos": "adj.", "zh": "有營養的", "example": "Vegetables are nutritious and healthy.", "example_zh": "蔬菜既營養又健康。" }
+  ],
+  "obedience": [
+    { "pos": "n.", "zh": "服從、順從", "example": "The dog was trained for obedience.", "example_zh": "那隻狗受過服從訓練。" }
+  ],
+  "obedient": [
+    { "pos": "adj.", "zh": "順從的、聽話的", "example": "She is an obedient and polite child.", "example_zh": "她是個聽話又有禮貌的孩子。" }
+  ],
+  "objection": [
+    { "pos": "n.", "zh": "反對、異議", "example": "He raised no objection to the plan.", "example_zh": "他對這個計畫沒有異議。" }
+  ],
+  "objective": [
+    { "pos": "n.", "zh": "目標、目的", "example": "Our main objective is to win.", "example_zh": "我們的主要目標是獲勝。" },
+    { "pos": "adj.", "zh": "客觀的、不偏私的", "example": "Try to give an objective opinion.", "example_zh": "試著給個客觀的意見。" }
+  ],
+  "observation": [
+    { "pos": "n.", "zh": "觀察、評論", "example": "His careful observation led to a discovery.", "example_zh": "他細心的觀察帶來了一項發現。" }
+  ],
+  "obstacle": [
+    { "pos": "n.", "zh": "障礙、阻礙", "example": "She overcame every obstacle in her path.", "example_zh": "她克服了路上的每一個障礙。" }
+  ],
+  "obtain": [
+    { "pos": "v.", "zh": "獲得、取得", "example": "He obtained a ticket for the concert.", "example_zh": "他取得了一張演唱會的票。" }
+  ],
+  "occasional": [
+    { "pos": "adj.", "zh": "偶爾的、不時的", "example": "We take an occasional trip to the sea.", "example_zh": "我們偶爾去海邊旅行。" }
+  ],
+  "occupation": [
+    { "pos": "n.", "zh": "職業", "example": "Please write your occupation on the form.", "example_zh": "請在表格上填寫你的職業。" },
+    { "pos": "n.", "zh": "佔領、佔據", "example": "The occupation of the land lasted years.", "example_zh": "對這塊土地的佔領持續了好幾年。" }
+  ],
+  "occupy": [
+    { "pos": "v.", "zh": "佔據、佔用（空間、時間）", "example": "The big sofa occupies half the room.", "example_zh": "那張大沙發佔了房間的一半。" },
+    { "pos": "v.", "zh": "佔領、攻佔", "example": "Soldiers occupied the city.", "example_zh": "士兵佔領了這座城市。" }
+  ],
+  "offend": [
+    { "pos": "v.", "zh": "冒犯、得罪", "example": "I'm sorry if my words offended you.", "example_zh": "如果我的話冒犯了你，我很抱歉。" }
+  ],
+  "offense": [
+    { "pos": "n.", "zh": "犯法、違規", "example": "Driving too fast is a traffic offense.", "example_zh": "開太快是交通違規。" },
+    { "pos": "n.", "zh": "冒犯、得罪", "example": "No offense, but I disagree.", "example_zh": "無意冒犯，但我不同意。" }
+  ],
+  "offensive": [
+    { "pos": "adj.", "zh": "冒犯的、無禮的", "example": "His offensive remark made her angry.", "example_zh": "他無禮的話讓她生氣。" },
+    { "pos": "adj.", "zh": "進攻的、攻擊性的", "example": "The team played an offensive game.", "example_zh": "這隊打的是進攻型的比賽。" }
+  ],
+  "opera": [
+    { "pos": "n.", "zh": "歌劇", "example": "We watched a famous opera last night.", "example_zh": "我們昨晚看了一齣著名的歌劇。" }
+  ],
+  "oppose": [
+    { "pos": "v.", "zh": "反對、對抗", "example": "Many people opposed the new plan.", "example_zh": "許多人反對這項新計畫。" }
+  ],
+  "option": [
+    { "pos": "n.", "zh": "選擇、選項", "example": "You have two options to choose from.", "example_zh": "你有兩個選項可以選。" }
+  ],
+  "orbit": [
+    { "pos": "n.", "zh": "（天體的）軌道", "example": "The moon moves in orbit around the earth.", "example_zh": "月球沿著軌道繞地球運行。" },
+    { "pos": "v.", "zh": "繞⋯運行", "example": "Satellites orbit the earth.", "example_zh": "衛星繞著地球運行。" }
+  ],
+  "orchestra": [
+    { "pos": "n.", "zh": "管弦樂團", "example": "The orchestra played a lovely song.", "example_zh": "管弦樂團演奏了一首動聽的曲子。" }
+  ],
+  "orientation": [
+    { "pos": "n.", "zh": "新生訓練、迎新", "example": "New students attend an orientation day.", "example_zh": "新生參加迎新日。" },
+    { "pos": "n.", "zh": "方向、定位", "example": "The map helps with orientation.", "example_zh": "這張地圖有助於辨明方向。" }
+  ],
+  "orphan": [
+    { "pos": "n.", "zh": "孤兒", "example": "The kind family adopted an orphan.", "example_zh": "那個善良的家庭收養了一個孤兒。" },
+    { "pos": "v.", "zh": "使成為孤兒", "example": "The war orphaned many children.", "example_zh": "戰爭使許多孩子成為孤兒。" }
+  ],
+  "otherwise": [
+    { "pos": "adv.", "zh": "否則、不然", "example": "Hurry up; otherwise, we'll be late.", "example_zh": "快點，不然我們會遲到。" }
+  ],
+  "outcome": [
+    { "pos": "n.", "zh": "結果、結局", "example": "We were happy with the outcome of the game.", "example_zh": "我們對比賽的結果很滿意。" }
+  ],
+  "outstanding": [
+    { "pos": "adj.", "zh": "傑出的、優秀的", "example": "She gave an outstanding performance.", "example_zh": "她有出色的表現。" }
+  ],
+  "oval": [
+    { "pos": "adj.", "zh": "橢圓形的、卵形的", "example": "The mirror has an oval shape.", "example_zh": "這面鏡子是橢圓形的。" },
+    { "pos": "n.", "zh": "橢圓形", "example": "Draw an oval on the paper.", "example_zh": "在紙上畫一個橢圓。" }
+  ],
+  "overcoat": [
+    { "pos": "n.", "zh": "大衣、外套", "example": "He wore a heavy overcoat in winter.", "example_zh": "他冬天穿著厚重的大衣。" }
+  ],
+  "overcome": [
+    { "pos": "v.", "zh": "克服、戰勝", "example": "She overcame her fear of swimming.", "example_zh": "她克服了對游泳的恐懼。" }
+  ],
+  "overlook": [
+    { "pos": "v.", "zh": "俯瞰、眺望", "example": "Our room overlooks the sea.", "example_zh": "我們的房間可以俯瞰大海。" },
+    { "pos": "v.", "zh": "忽視、看漏", "example": "He overlooked a small mistake.", "example_zh": "他漏看了一個小錯誤。" }
+  ],
+  "overnight": [
+    { "pos": "adv.", "zh": "過夜、整夜", "example": "We stayed overnight at a hotel.", "example_zh": "我們在一家飯店過夜。" },
+    { "pos": "adj.", "zh": "一夜之間的、突然的", "example": "The song was an overnight success.", "example_zh": "這首歌一夜爆紅。" }
+  ],
+  "overthrow": [
+    { "pos": "v.", "zh": "推翻、打倒", "example": "The people tried to overthrow the king.", "example_zh": "人民試圖推翻國王。" }
+  ],
+  "oxygen": [
+    { "pos": "n.", "zh": "氧、氧氣", "example": "Plants give us oxygen to breathe.", "example_zh": "植物提供我們呼吸所需的氧氣。" }
+  ],
+  "pace": [
+    { "pos": "n.", "zh": "步調、速度", "example": "He walked at a slow pace.", "example_zh": "他以緩慢的步調走著。" },
+    { "pos": "v.", "zh": "踱步、來回走", "example": "She paced the room nervously.", "example_zh": "她緊張地在房裡踱步。" }
+  ],
+  "panel": [
+    { "pos": "n.", "zh": "面板、控制板", "example": "She pressed a button on the control panel.", "example_zh": "她按下控制面板上的一個按鈕。" },
+    { "pos": "n.", "zh": "專家小組、評審團", "example": "A panel of judges chose the winner.", "example_zh": "一組評審選出了優勝者。" }
+  ],
+  "parachute": [
+    { "pos": "n.", "zh": "降落傘", "example": "He jumped from the plane with a parachute.", "example_zh": "他背著降落傘從飛機上跳下。" },
+    { "pos": "v.", "zh": "跳傘、空降", "example": "Soldiers parachuted into the area.", "example_zh": "士兵空降到那個地區。" }
+  ],
+  "paragraph": [
+    { "pos": "n.", "zh": "段落", "example": "Each paragraph has one main idea.", "example_zh": "每個段落有一個主旨。" }
+  ],
+  "partial": [
+    { "pos": "adj.", "zh": "部分的、不完全的", "example": "We got a partial refund for the ticket.", "example_zh": "我們的票得到了部分退款。" },
+    { "pos": "adj.", "zh": "偏袒的、偏愛的", "example": "A judge should not be partial.", "example_zh": "法官不該有偏袒。" }
+  ],
+  "participation": [
+    { "pos": "n.", "zh": "參與", "example": "Your participation in class is important.", "example_zh": "你在課堂上的參與很重要。" }
+  ],
+  "partnership": [
+    { "pos": "n.", "zh": "合夥、夥伴關係", "example": "The two companies formed a partnership.", "example_zh": "這兩家公司結成了合作夥伴。" }
+  ],
+  "passive": [
+    { "pos": "adj.", "zh": "被動的、消極的", "example": "He took a passive role in the group.", "example_zh": "他在團體中扮演被動的角色。" }
+  ],
+  "pasta": [
+    { "pos": "n.", "zh": "義大利麵食", "example": "We had pasta with tomato sauce.", "example_zh": "我們吃了番茄醬義大利麵。" }
+  ],
+  "paw": [
+    { "pos": "n.", "zh": "（動物的）腳掌、爪", "example": "The cat hurt its front paw.", "example_zh": "那隻貓傷了前掌。" }
+  ],
+  "peculiar": [
+    { "pos": "adj.", "zh": "奇怪的、獨特的", "example": "The soup had a peculiar taste.", "example_zh": "這湯有股奇怪的味道。" }
+  ],
+  "peep": [
+    { "pos": "v.", "zh": "偷看、窺視", "example": "She peeped through the keyhole.", "example_zh": "她從鑰匙孔偷看。" },
+    { "pos": "n.", "zh": "偷看、一瞥", "example": "He took a peep at the answer.", "example_zh": "他偷瞄了一眼答案。" }
+  ],
+  "peer": [
+    { "pos": "n.", "zh": "同儕、同輩", "example": "Teens often listen to their peers.", "example_zh": "青少年常聽同儕的話。" },
+    { "pos": "v.", "zh": "凝視、盯著看", "example": "She peered into the dark room.", "example_zh": "她盯著那間黑暗的房間看。" }
+  ],
+  "penalty": [
+    { "pos": "n.", "zh": "處罰、刑罰", "example": "The penalty for cheating is severe.", "example_zh": "作弊的處罰很嚴重。" },
+    { "pos": "n.", "zh": "（運動）罰球、點球", "example": "He scored from the penalty.", "example_zh": "他罰球得分。" }
+  ]
+}

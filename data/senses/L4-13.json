@@ -1,0 +1,191 @@
+{
+  "percent": [
+    { "pos": "n.", "zh": "百分之⋯", "example": "Ninety percent of the class passed.", "example_zh": "全班百分之九十的人通過了。" }
+  ],
+  "percentage": [
+    { "pos": "n.", "zh": "百分比、比例", "example": "A high percentage of students like sports.", "example_zh": "很高比例的學生喜歡運動。" }
+  ],
+  "perfection": [
+    { "pos": "n.", "zh": "完美、完善", "example": "She practices the piece to perfection.", "example_zh": "她把這首曲子練到完美。" }
+  ],
+  "perfume": [
+    { "pos": "n.", "zh": "香水、香味", "example": "The flowers gave off a sweet perfume.", "example_zh": "那些花散發出甜美的香味。" }
+  ],
+  "permanent": [
+    { "pos": "adj.", "zh": "永久的、長期的", "example": "They found a permanent home at last.", "example_zh": "他們終於找到了永久的家。" }
+  ],
+  "persuasion": [
+    { "pos": "n.", "zh": "說服、勸說", "example": "After much persuasion, he agreed.", "example_zh": "經過再三勸說，他同意了。" }
+  ],
+  "persuasive": [
+    { "pos": "adj.", "zh": "有說服力的", "example": "Her speech was clear and persuasive.", "example_zh": "她的演講清楚又有說服力。" }
+  ],
+  "pessimistic": [
+    { "pos": "adj.", "zh": "悲觀的", "example": "Don't be so pessimistic about the future.", "example_zh": "別對未來這麼悲觀。" }
+  ],
+  "pest": [
+    { "pos": "n.", "zh": "害蟲、討厭的人事物", "example": "Farmers protect crops from pests.", "example_zh": "農夫保護作物免受害蟲侵害。" }
+  ],
+  "phenomenon": [
+    { "pos": "n.", "zh": "現象", "example": "A rainbow is a natural phenomenon.", "example_zh": "彩虹是一種自然現象。" }
+  ],
+  "philosopher": [
+    { "pos": "n.", "zh": "哲學家", "example": "The philosopher asked deep questions.", "example_zh": "那位哲學家提出深刻的問題。" }
+  ],
+  "philosophical": [
+    { "pos": "adj.", "zh": "哲學的、達觀的", "example": "They had a philosophical discussion.", "example_zh": "他們進行了一場哲學性的討論。" }
+  ],
+  "philosophy": [
+    { "pos": "n.", "zh": "哲學、人生觀", "example": "He studies philosophy at university.", "example_zh": "他在大學讀哲學。" }
+  ],
+  "photography": [
+    { "pos": "n.", "zh": "攝影", "example": "Photography is her favorite hobby.", "example_zh": "攝影是她最愛的嗜好。" }
+  ],
+  "physical": [
+    { "pos": "adj.", "zh": "身體的、物理的", "example": "Exercise keeps your physical health good.", "example_zh": "運動讓你的身體保持健康。" }
+  ],
+  "physician": [
+    { "pos": "n.", "zh": "醫師、內科醫生", "example": "The physician checked the patient's heart.", "example_zh": "醫生檢查了病人的心臟。" }
+  ],
+  "physicist": [
+    { "pos": "n.", "zh": "物理學家", "example": "The physicist studied light and energy.", "example_zh": "那位物理學家研究光與能量。" }
+  ],
+  "physics": [
+    { "pos": "n.", "zh": "物理學", "example": "We learned about gravity in physics.", "example_zh": "我們在物理課學了重力。" }
+  ],
+  "pickle": [
+    { "pos": "n.", "zh": "醃菜、酸黃瓜", "example": "She added a pickle to the sandwich.", "example_zh": "她在三明治裡加了一片酸黃瓜。" }
+  ],
+  "pioneer": [
+    { "pos": "n.", "zh": "先驅、開拓者", "example": "She was a pioneer in computer science.", "example_zh": "她是電腦科學的先驅。" },
+    { "pos": "v.", "zh": "開創、倡導", "example": "They pioneered a new way of teaching.", "example_zh": "他們開創了一種新的教學方式。" }
+  ],
+  "plentiful": [
+    { "pos": "adj.", "zh": "豐富的、大量的", "example": "Food was plentiful after the harvest.", "example_zh": "收成後食物很充裕。" }
+  ],
+  "plot": [
+    { "pos": "n.", "zh": "（故事的）情節", "example": "The plot of the movie was exciting.", "example_zh": "這部電影的情節很刺激。" },
+    { "pos": "n.", "zh": "陰謀、密謀", "example": "They uncovered a plot to steal the gold.", "example_zh": "他們揭發了一個偷金子的陰謀。" }
+  ],
+  "plum": [
+    { "pos": "n.", "zh": "李子、梅子", "example": "She picked a ripe plum from the tree.", "example_zh": "她從樹上摘了一顆熟李子。" }
+  ],
+  "plumber": [
+    { "pos": "n.", "zh": "水管工", "example": "The plumber fixed the leaking pipe.", "example_zh": "水管工修好了漏水的管子。" }
+  ],
+  "poisonous": [
+    { "pos": "adj.", "zh": "有毒的", "example": "Some snakes are poisonous.", "example_zh": "有些蛇是有毒的。" }
+  ],
+  "polish": [
+    { "pos": "v.", "zh": "擦亮、磨光", "example": "He polished his shoes until they shone.", "example_zh": "他把鞋子擦得發亮。" },
+    { "pos": "n.", "zh": "亮光劑、磨光", "example": "She used nail polish.", "example_zh": "她用了指甲油。" }
+  ],
+  "popularity": [
+    { "pos": "n.", "zh": "受歡迎、人氣", "example": "The song gained popularity quickly.", "example_zh": "這首歌很快走紅。" }
+  ],
+  "portable": [
+    { "pos": "adj.", "zh": "手提的、可攜帶的", "example": "She brought a portable speaker to the park.", "example_zh": "她帶了一個攜帶式喇叭去公園。" }
+  ],
+  "portray": [
+    { "pos": "v.", "zh": "描繪、飾演", "example": "The actor portrayed a brave hero.", "example_zh": "那名演員飾演了一位勇敢的英雄。" }
+  ],
+  "possess": [
+    { "pos": "v.", "zh": "擁有、具有", "example": "He possesses great talent.", "example_zh": "他擁有極大的天賦。" }
+  ],
+  "possession": [
+    { "pos": "n.", "zh": "擁有、持有", "example": "The land came into his possession.", "example_zh": "這塊地歸他所有了。" },
+    { "pos": "n.", "zh": "所有物、財產", "example": "The old watch is her most valued possession.", "example_zh": "那只舊錶是她最珍貴的財產。" }
+  ],
+  "postage": [
+    { "pos": "n.", "zh": "郵資、郵費", "example": "The postage for the parcel was high.", "example_zh": "這個包裹的郵資很高。" }
+  ],
+  "potential": [
+    { "pos": "adj.", "zh": "潛在的、可能的", "example": "We discussed the potential risks.", "example_zh": "我們討論了潛在的風險。" },
+    { "pos": "n.", "zh": "潛力、潛能", "example": "She has the potential to be a great singer.", "example_zh": "她有成為傑出歌手的潛力。" }
+  ],
+  "precise": [
+    { "pos": "adj.", "zh": "精確的、準確的", "example": "Please give me the precise time.", "example_zh": "請給我準確的時間。" }
+  ],
+  "predict": [
+    { "pos": "v.", "zh": "預測、預言", "example": "No one can predict the future.", "example_zh": "沒有人能預測未來。" }
+  ],
+  "prediction": [
+    { "pos": "n.", "zh": "預測、預言", "example": "His prediction about the game was right.", "example_zh": "他對比賽的預測是對的。" }
+  ],
+  "pregnancy": [
+    { "pos": "n.", "zh": "懷孕、孕期", "example": "She rested a lot during her pregnancy.", "example_zh": "她懷孕期間多休息。" }
+  ],
+  "pregnant": [
+    { "pos": "adj.", "zh": "懷孕的", "example": "My aunt is pregnant with twins.", "example_zh": "我阿姨懷了雙胞胎。" }
+  ],
+  "presentation": [
+    { "pos": "n.", "zh": "報告、簡報", "example": "She gave a clear presentation in class.", "example_zh": "她在課堂上做了清楚的簡報。" }
+  ],
+  "preservation": [
+    { "pos": "n.", "zh": "保存、保護", "example": "We support the preservation of forests.", "example_zh": "我們支持保護森林。" }
+  ],
+  "preserve": [
+    { "pos": "v.", "zh": "保存、維護", "example": "Salt is used to preserve food.", "example_zh": "鹽被用來保存食物。" }
+  ],
+  "prevention": [
+    { "pos": "n.", "zh": "預防", "example": "Prevention is better than cure.", "example_zh": "預防勝於治療。" }
+  ],
+  "prime": [
+    { "pos": "adj.", "zh": "主要的、首要的", "example": "Safety is our prime concern.", "example_zh": "安全是我們首要關心的事。" },
+    { "pos": "n.", "zh": "全盛時期、壯年", "example": "She is in the prime of her career.", "example_zh": "她正處於事業的巔峰。" }
+  ],
+  "primitive": [
+    { "pos": "adj.", "zh": "原始的、簡陋的", "example": "Primitive people used stone tools.", "example_zh": "原始人使用石器工具。" }
+  ],
+  "priority": [
+    { "pos": "n.", "zh": "優先、優先事項", "example": "Safety is our top priority.", "example_zh": "安全是我們的第一要務。" }
+  ],
+  "privacy": [
+    { "pos": "n.", "zh": "隱私、私密", "example": "Everyone needs some privacy.", "example_zh": "每個人都需要一些隱私。" }
+  ],
+  "privilege": [
+    { "pos": "n.", "zh": "特權、榮幸", "example": "It is a privilege to study here.", "example_zh": "能在這裡讀書是一種榮幸。" }
+  ],
+  "procedure": [
+    { "pos": "n.", "zh": "程序、步驟", "example": "Follow the safety procedure carefully.", "example_zh": "仔細遵守安全程序。" }
+  ],
+  "proceed": [
+    { "pos": "v.", "zh": "繼續進行、前往", "example": "Please proceed to the next room.", "example_zh": "請前往下一個房間。" }
+  ],
+  "productive": [
+    { "pos": "adj.", "zh": "有生產力的、富有成效的", "example": "I had a productive day at work.", "example_zh": "我今天工作很有成效。" }
+  ],
+  "profession": [
+    { "pos": "n.", "zh": "職業、專業", "example": "Teaching is a respected profession.", "example_zh": "教學是一份受人尊敬的職業。" }
+  ],
+  "professional": [
+    { "pos": "adj.", "zh": "專業的、職業的", "example": "He is a professional basketball player.", "example_zh": "他是個職業籃球員。" },
+    { "pos": "n.", "zh": "專業人士、行家", "example": "She is a true professional.", "example_zh": "她是個真正的專業人士。" }
+  ],
+  "profitable": [
+    { "pos": "adj.", "zh": "有利可圖的、賺錢的", "example": "The small shop became profitable.", "example_zh": "那家小店開始賺錢了。" }
+  ],
+  "prominent": [
+    { "pos": "adj.", "zh": "著名的、突出的", "example": "She is a prominent scientist.", "example_zh": "她是位著名的科學家。" }
+  ],
+  "promising": [
+    { "pos": "adj.", "zh": "有前途的、有希望的", "example": "He is a promising young writer.", "example_zh": "他是個有前途的年輕作家。" }
+  ],
+  "promotion": [
+    { "pos": "n.", "zh": "升遷、晉升", "example": "She got a promotion at work.", "example_zh": "她在工作上獲得了升遷。" },
+    { "pos": "n.", "zh": "促銷、推廣", "example": "The store has a summer promotion.", "example_zh": "這家店有夏季促銷活動。" }
+  ],
+  "prompt": [
+    { "pos": "adj.", "zh": "迅速的、及時的", "example": "Thank you for your prompt reply.", "example_zh": "謝謝你迅速的回覆。" },
+    { "pos": "v.", "zh": "促使、提示", "example": "Her words prompted me to act.", "example_zh": "她的話促使我採取行動。" }
+  ],
+  "pronunciation": [
+    { "pos": "n.", "zh": "發音", "example": "Her English pronunciation is clear.", "example_zh": "她的英語發音很清楚。" }
+  ],
+  "proposal": [
+    { "pos": "n.", "zh": "提議、求婚", "example": "They accepted his business proposal.", "example_zh": "他們接受了他的商業提案。" }
+  ],
+  "prosper": [
+    { "pos": "v.", "zh": "繁榮、興旺", "example": "The town began to prosper.", "example_zh": "這座城鎮開始興旺起來。" }
+  ]
+}
