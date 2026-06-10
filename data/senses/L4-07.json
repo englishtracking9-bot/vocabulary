@@ -1,0 +1,196 @@
+{
+  "estimate": [
+    { "pos": "v.", "zh": "估計、估算", "example": "I estimate the trip will take two hours.", "example_zh": "我估計這趟路要花兩小時。" },
+    { "pos": "n.", "zh": "估計、估價", "example": "The builder gave us an estimate.", "example_zh": "建商給了我們一份估價。" }
+  ],
+  "ethnic": [
+    { "pos": "adj.", "zh": "種族的、民族的", "example": "The country has many ethnic groups.", "example_zh": "這個國家有許多族群。" }
+  ],
+  "evaluate": [
+    { "pos": "v.", "zh": "評估、評價", "example": "The teacher evaluated our work fairly.", "example_zh": "老師公平地評量我們的作業。" }
+  ],
+  "evaluation": [
+    { "pos": "n.", "zh": "評估、評價", "example": "The evaluation showed good results.", "example_zh": "評估顯示了良好的結果。" }
+  ],
+  "eventual": [
+    { "pos": "adj.", "zh": "最終的、最後的", "example": "Hard work led to her eventual success.", "example_zh": "努力帶來她最終的成功。" }
+  ],
+  "evidence": [
+    { "pos": "n.", "zh": "證據、跡象", "example": "The police found strong evidence.", "example_zh": "警方找到了有力的證據。" }
+  ],
+  "evident": [
+    { "pos": "adj.", "zh": "明顯的、顯而易見的", "example": "It was evident that he had lied.", "example_zh": "他顯然說了謊。" }
+  ],
+  "exaggerate": [
+    { "pos": "v.", "zh": "誇大、誇張", "example": "Don't exaggerate; it wasn't that bad.", "example_zh": "別誇大了，沒那麼糟。" }
+  ],
+  "exception": [
+    { "pos": "n.", "zh": "例外", "example": "Everyone was tired, with no exception.", "example_zh": "每個人都累了，無一例外。" }
+  ],
+  "exhaust": [
+    { "pos": "v.", "zh": "使精疲力竭、耗盡", "example": "The long hike exhausted us.", "example_zh": "長途健行讓我們精疲力竭。" },
+    { "pos": "n.", "zh": "廢氣、排氣", "example": "Car exhaust pollutes the air.", "example_zh": "汽車廢氣汙染空氣。" }
+  ],
+  "exhibit": [
+    { "pos": "v.", "zh": "展出、展示", "example": "The museum will exhibit old paintings.", "example_zh": "博物館將展出古畫。" },
+    { "pos": "n.", "zh": "展覽品、展示", "example": "We saw a dinosaur exhibit.", "example_zh": "我們看了恐龍展。" }
+  ],
+  "expand": [
+    { "pos": "v.", "zh": "擴大、擴張", "example": "The company plans to expand overseas.", "example_zh": "這家公司計畫向海外擴張。" }
+  ],
+  "expansion": [
+    { "pos": "n.", "zh": "擴張、擴展", "example": "The expansion of the city took years.", "example_zh": "這座城市的擴張花了好幾年。" }
+  ],
+  "experimental": [
+    { "pos": "adj.", "zh": "實驗性的", "example": "The doctor tried an experimental drug.", "example_zh": "醫生嘗試了一種實驗性藥物。" }
+  ],
+  "explanation": [
+    { "pos": "n.", "zh": "解釋、說明", "example": "She gave a clear explanation.", "example_zh": "她給了清楚的解釋。" }
+  ],
+  "explosion": [
+    { "pos": "n.", "zh": "爆炸", "example": "The explosion shook the whole street.", "example_zh": "爆炸震動了整條街。" },
+    { "pos": "n.", "zh": "激增、爆發", "example": "There was an explosion in the population.", "example_zh": "人口出現了激增。" }
+  ],
+  "explosive": [
+    { "pos": "n.", "zh": "炸藥、爆裂物", "example": "The workers handled explosive materials.", "example_zh": "工人處理爆裂物。" },
+    { "pos": "adj.", "zh": "爆炸性的、易爆的", "example": "Gas is an explosive substance.", "example_zh": "瓦斯是易爆物質。" }
+  ],
+  "expose": [
+    { "pos": "v.", "zh": "暴露、揭發", "example": "Don't expose your skin to too much sun.", "example_zh": "別讓皮膚曬太多太陽。" }
+  ],
+  "exposure": [
+    { "pos": "n.", "zh": "暴露、接觸", "example": "Long exposure to the sun is harmful.", "example_zh": "長時間曝曬陽光有害。" }
+  ],
+  "extend": [
+    { "pos": "v.", "zh": "延長、延伸", "example": "They extended the deadline by a week.", "example_zh": "他們把截止日延後了一週。" }
+  ],
+  "extent": [
+    { "pos": "n.", "zh": "程度、範圍", "example": "To some extent, I agree with you.", "example_zh": "在某種程度上我同意你。" }
+  ],
+  "facial": [
+    { "pos": "adj.", "zh": "面部的、臉部的", "example": "She has gentle facial features.", "example_zh": "她有溫和的五官。" }
+  ],
+  "facility": [
+    { "pos": "n.", "zh": "設施、設備", "example": "The sports facility has a swimming pool.", "example_zh": "這座運動設施有游泳池。" }
+  ],
+  "faithful": [
+    { "pos": "adj.", "zh": "忠實的、忠誠的", "example": "The dog is a faithful friend.", "example_zh": "那隻狗是個忠實的朋友。" }
+  ],
+  "fame": [
+    { "pos": "n.", "zh": "名聲、聲望", "example": "The singer's fame spread quickly.", "example_zh": "那位歌手的名聲迅速傳開。" }
+  ],
+  "fantastic": [
+    { "pos": "adj.", "zh": "極好的、了不起的", "example": "We had a fantastic time at the show.", "example_zh": "我們在表演中玩得非常開心。" }
+  ],
+  "fantasy": [
+    { "pos": "n.", "zh": "幻想、奇幻", "example": "The book is a fantasy about dragons.", "example_zh": "這本書是關於龍的奇幻故事。" }
+  ],
+  "farewell": [
+    { "pos": "n.", "zh": "告別、道別", "example": "We said farewell to our teacher.", "example_zh": "我們向老師道別。" }
+  ],
+  "fasten": [
+    { "pos": "v.", "zh": "繫緊、扣住", "example": "Please fasten your seatbelt.", "example_zh": "請繫好安全帶。" }
+  ],
+  "fatal": [
+    { "pos": "adj.", "zh": "致命的、毀滅性的", "example": "The car crash was fatal.", "example_zh": "這場車禍是致命的。" }
+  ],
+  "favorable": [
+    { "pos": "adj.", "zh": "有利的、贊同的", "example": "The weather was favorable for the trip.", "example_zh": "天氣有利於這趟旅行。" }
+  ],
+  "fax": [
+    { "pos": "n.", "zh": "傳真", "example": "She sent the document by fax.", "example_zh": "她用傳真寄出文件。" },
+    { "pos": "v.", "zh": "傳真、發傳真", "example": "Please fax the form to us.", "example_zh": "請把表格傳真給我們。" }
+  ],
+  "feast": [
+    { "pos": "n.", "zh": "盛宴、宴會", "example": "They enjoyed a feast on the holiday.", "example_zh": "他們在節日享用了一場盛宴。" },
+    { "pos": "v.", "zh": "盡情享用（feast on）", "example": "We feasted on fresh seafood.", "example_zh": "我們大啖新鮮海鮮。" }
+  ],
+  "feedback": [
+    { "pos": "n.", "zh": "回饋、意見", "example": "The teacher gave helpful feedback.", "example_zh": "老師給了有幫助的回饋。" }
+  ],
+  "ferry": [
+    { "pos": "n.", "zh": "渡輪", "example": "We took a ferry to the island.", "example_zh": "我們搭渡輪去那座島。" },
+    { "pos": "v.", "zh": "渡運、運送", "example": "The boat ferries cars across the river.", "example_zh": "這艘船把汽車運過河。" }
+  ],
+  "fertile": [
+    { "pos": "adj.", "zh": "肥沃的、多產的", "example": "Crops grow well in fertile soil.", "example_zh": "農作物在肥沃的土壤裡長得好。" }
+  ],
+  "fetch": [
+    { "pos": "v.", "zh": "去拿來、取來", "example": "The dog fetched the stick.", "example_zh": "那隻狗把棍子叼了回來。" }
+  ],
+  "fiction": [
+    { "pos": "n.", "zh": "小說、虛構", "example": "She enjoys reading science fiction.", "example_zh": "她喜歡讀科幻小說。" }
+  ],
+  "fierce": [
+    { "pos": "adj.", "zh": "兇猛的、激烈的", "example": "A fierce dog guarded the gate.", "example_zh": "一隻兇猛的狗看守著大門。" }
+  ],
+  "finance": [
+    { "pos": "n.", "zh": "財務、金融", "example": "He studies finance and money.", "example_zh": "他研究財務與金錢。" },
+    { "pos": "v.", "zh": "提供資金、籌資", "example": "The bank financed the new factory.", "example_zh": "銀行為新工廠提供資金。" }
+  ],
+  "financial": [
+    { "pos": "adj.", "zh": "財務的、金融的", "example": "The family had financial problems.", "example_zh": "這個家庭有財務問題。" }
+  ],
+  "fireplace": [
+    { "pos": "n.", "zh": "壁爐", "example": "We sat by the warm fireplace.", "example_zh": "我們坐在溫暖的壁爐旁。" }
+  ],
+  "flatter": [
+    { "pos": "v.", "zh": "奉承、諂媚", "example": "He flattered her to get a favor.", "example_zh": "他奉承她以求得幫忙。" }
+  ],
+  "flea": [
+    { "pos": "n.", "zh": "跳蚤", "example": "The dog scratched because of a flea.", "example_zh": "那隻狗因為跳蚤而抓癢。" }
+  ],
+  "flee": [
+    { "pos": "v.", "zh": "逃跑、逃離", "example": "The people fled from the flood.", "example_zh": "人們逃離洪水。" }
+  ],
+  "flexible": [
+    { "pos": "adj.", "zh": "有彈性的、靈活的", "example": "Her schedule is flexible this week.", "example_zh": "她這週的時間安排很有彈性。" }
+  ],
+  "fluent": [
+    { "pos": "adj.", "zh": "流利的、流暢的", "example": "She is fluent in three languages.", "example_zh": "她能流利地說三種語言。" }
+  ],
+  "flush": [
+    { "pos": "v.", "zh": "沖（馬桶）、沖洗", "example": "Please flush the toilet after use.", "example_zh": "用完馬桶請沖水。" },
+    { "pos": "v.", "zh": "（臉）漲紅", "example": "Her face flushed with anger.", "example_zh": "她氣得滿臉通紅。" }
+  ],
+  "foam": [
+    { "pos": "n.", "zh": "泡沫、泡棉", "example": "White foam covered the top of the wave.", "example_zh": "白色的泡沫蓋住浪頭。" },
+    { "pos": "v.", "zh": "起泡沫", "example": "The soap foamed in the water.", "example_zh": "肥皂在水裡起了泡。" }
+  ],
+  "forbid": [
+    { "pos": "v.", "zh": "禁止", "example": "The rules forbid running in the hall.", "example_zh": "規定禁止在大廳奔跑。" }
+  ],
+  "forecast": [
+    { "pos": "n.", "zh": "預報、預測", "example": "The weather forecast says it will rain.", "example_zh": "天氣預報說會下雨。" },
+    { "pos": "v.", "zh": "預報、預測", "example": "They forecast a cold winter.", "example_zh": "他們預測會有個寒冷的冬天。" }
+  ],
+  "formation": [
+    { "pos": "n.", "zh": "形成、構成", "example": "We studied the formation of clouds.", "example_zh": "我們研究了雲的形成。" }
+  ],
+  "formula": [
+    { "pos": "n.", "zh": "公式、配方", "example": "He used a formula to solve the problem.", "example_zh": "他用公式解題。" }
+  ],
+  "fort": [
+    { "pos": "n.", "zh": "堡壘、要塞", "example": "Soldiers defended the old fort.", "example_zh": "士兵們守衛著那座古堡。" }
+  ],
+  "fortunate": [
+    { "pos": "adj.", "zh": "幸運的", "example": "We were fortunate to find a seat.", "example_zh": "我們很幸運地找到了座位。" }
+  ],
+  "fossil": [
+    { "pos": "n.", "zh": "化石", "example": "They discovered a dinosaur fossil.", "example_zh": "他們發現了一塊恐龍化石。" }
+  ],
+  "foundation": [
+    { "pos": "n.", "zh": "基礎、地基", "example": "A house needs a strong foundation.", "example_zh": "房子需要堅固的地基。" },
+    { "pos": "n.", "zh": "基金會", "example": "The foundation helps poor students.", "example_zh": "這個基金會幫助貧困學生。" }
+  ],
+  "founder": [
+    { "pos": "n.", "zh": "創辦人、創始人", "example": "She is the founder of the company.", "example_zh": "她是這家公司的創辦人。" }
+  ],
+  "fragile": [
+    { "pos": "adj.", "zh": "易碎的、脆弱的", "example": "Handle the fragile glass with care.", "example_zh": "小心輕放易碎的玻璃。" }
+  ],
+  "frame": [
+    { "pos": "n.", "zh": "框架、相框", "example": "She put the photo in a wooden frame.", "example_zh": "她把照片裝進木框裡。" },
+    { "pos": "v.", "zh": "給⋯裝框、構陷", "example": "He framed the painting himself.", "example_zh": "他自己替那幅畫裝框。" }
+  ]
+}
