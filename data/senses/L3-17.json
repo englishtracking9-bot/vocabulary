@@ -1,0 +1,135 @@
+{
+  "violent": [
+    { "pos": "adj.", "zh": "暴力的、猛烈的", "example": "The violent storm damaged many homes.", "example_zh": "猛烈的暴風雨毀壞了許多房屋。" }
+  ],
+  "violet": [
+    { "pos": "n.", "zh": "紫羅蘭（花）", "example": "She picked a small violet flower.", "example_zh": "她摘了一朵小小的紫羅蘭。" },
+    { "pos": "adj.", "zh": "紫色的", "example": "The sky turned violet at dusk.", "example_zh": "黃昏時天空變成紫色。" }
+  ],
+  "visible": [
+    { "pos": "adj.", "zh": "可見的、看得見的", "example": "The stars are visible on a clear night.", "example_zh": "晴朗的夜晚看得見星星。" }
+  ],
+  "vision": [
+    { "pos": "n.", "zh": "視力", "example": "The doctor checked my vision.", "example_zh": "醫生檢查了我的視力。" },
+    { "pos": "n.", "zh": "願景、遠見", "example": "She has a clear vision for the future.", "example_zh": "她對未來有清楚的願景。" }
+  ],
+  "vitamin": [
+    { "pos": "n.", "zh": "維生素、維他命", "example": "Oranges are rich in vitamin C.", "example_zh": "柳橙富含維他命C。" }
+  ],
+  "vivid": [
+    { "pos": "adj.", "zh": "生動的、鮮明的", "example": "She has vivid memories of that day.", "example_zh": "她對那天的記憶很鮮明。" }
+  ],
+  "vocabulary": [
+    { "pos": "n.", "zh": "詞彙、字彙", "example": "Reading helps build your vocabulary.", "example_zh": "閱讀能增加你的字彙量。" }
+  ],
+  "volleyball": [
+    { "pos": "n.", "zh": "排球", "example": "We played volleyball on the beach.", "example_zh": "我們在海灘打排球。" }
+  ],
+  "volume": [
+    { "pos": "n.", "zh": "音量", "example": "Please turn down the volume.", "example_zh": "請把音量調小。" },
+    { "pos": "n.", "zh": "體積、容量", "example": "This bottle has a large volume.", "example_zh": "這個瓶子容量很大。" }
+  ],
+  "voter": [
+    { "pos": "n.", "zh": "選民、投票人", "example": "Every voter lined up at the station.", "example_zh": "每位選民在投票站排隊。" }
+  ],
+  "wage": [
+    { "pos": "n.", "zh": "工資、薪資", "example": "Workers asked for a higher wage.", "example_zh": "工人要求更高的工資。" }
+  ],
+  "wagon": [
+    { "pos": "n.", "zh": "四輪馬車、貨車", "example": "The horse pulled a heavy wagon.", "example_zh": "馬拉著一輛沉重的馬車。" }
+  ],
+  "wander": [
+    { "pos": "v.", "zh": "漫步、閒逛", "example": "We wandered around the old town.", "example_zh": "我們在老城裡閒逛。" }
+  ],
+  "warmth": [
+    { "pos": "n.", "zh": "溫暖、暖意", "example": "We enjoyed the warmth of the fire.", "example_zh": "我們享受著火爐的溫暖。" }
+  ],
+  "warn": [
+    { "pos": "v.", "zh": "警告、提醒", "example": "The sign warns us of the danger.", "example_zh": "這個標誌警告我們有危險。" }
+  ],
+  "waterfall": [
+    { "pos": "n.", "zh": "瀑布", "example": "The waterfall fell from a high cliff.", "example_zh": "瀑布從高高的懸崖傾瀉而下。" }
+  ],
+  "wax": [
+    { "pos": "n.", "zh": "蠟", "example": "Candles are made of wax.", "example_zh": "蠟燭是用蠟做的。" }
+  ],
+  "weaken": [
+    { "pos": "v.", "zh": "削弱、使虛弱", "example": "The long illness weakened him.", "example_zh": "久病讓他變得虛弱。" }
+  ],
+  "wealthy": [
+    { "pos": "adj.", "zh": "富裕的、有錢的", "example": "The wealthy man gave money to the poor.", "example_zh": "那位富翁捐錢給窮人。" }
+  ],
+  "weapon": [
+    { "pos": "n.", "zh": "武器", "example": "The soldiers carried weapons.", "example_zh": "士兵們攜帶武器。" }
+  ],
+  "weave": [
+    { "pos": "v.", "zh": "編織、織", "example": "She weaves baskets from bamboo.", "example_zh": "她用竹子編籃子。" }
+  ],
+  "web": [
+    { "pos": "n.", "zh": "網際網路（the Web）", "example": "I found the answer on the web.", "example_zh": "我在網路上找到答案。" },
+    { "pos": "n.", "zh": "蜘蛛網", "example": "A spider spun a web in the corner.", "example_zh": "蜘蛛在角落結網。" }
+  ],
+  "wed": [
+    { "pos": "v.", "zh": "與⋯結婚", "example": "They will wed in the spring.", "example_zh": "他們將在春天結婚。" }
+  ],
+  "weed": [
+    { "pos": "n.", "zh": "雜草", "example": "He pulled the weeds from the garden.", "example_zh": "他把花園裡的雜草拔掉。" },
+    { "pos": "v.", "zh": "除草、清除", "example": "She weeded the flower bed.", "example_zh": "她替花圃除草。" }
+  ],
+  "weekly": [
+    { "pos": "adj.", "zh": "每週的", "example": "We have a weekly meeting on Monday.", "example_zh": "我們每週一開會。" },
+    { "pos": "adv.", "zh": "每週、按週", "example": "The magazine comes out weekly.", "example_zh": "這本雜誌每週出刊。" }
+  ],
+  "weep": [
+    { "pos": "v.", "zh": "哭泣、流淚", "example": "She began to weep at the sad news.", "example_zh": "聽到悲傷的消息她開始哭泣。" }
+  ],
+  "wheat": [
+    { "pos": "n.", "zh": "小麥", "example": "Bread is made from wheat.", "example_zh": "麵包是用小麥做的。" }
+  ],
+  "whip": [
+    { "pos": "n.", "zh": "鞭子", "example": "The rider used a whip on the horse.", "example_zh": "騎士對馬揮鞭。" },
+    { "pos": "v.", "zh": "攪打（奶油等）", "example": "Whip the cream until it is thick.", "example_zh": "把鮮奶油打到濃稠。" }
+  ],
+  "whistle": [
+    { "pos": "n.", "zh": "哨子、哨聲", "example": "The referee blew the whistle.", "example_zh": "裁判吹了哨子。" },
+    { "pos": "v.", "zh": "吹口哨、鳴笛", "example": "He whistled a tune as he walked.", "example_zh": "他邊走邊吹著口哨。" }
+  ],
+  "wicked": [
+    { "pos": "adj.", "zh": "邪惡的、缺德的", "example": "The wicked witch scared the children.", "example_zh": "邪惡的女巫嚇壞了孩子們。" }
+  ],
+  "widen": [
+    { "pos": "v.", "zh": "加寬、擴大", "example": "They plan to widen the narrow road.", "example_zh": "他們打算把這條窄路拓寬。" }
+  ],
+  "wipe": [
+    { "pos": "v.", "zh": "擦、抹", "example": "Please wipe the table after lunch.", "example_zh": "午餐後請把桌子擦乾淨。" }
+  ],
+  "wisdom": [
+    { "pos": "n.", "zh": "智慧", "example": "We learn wisdom from experience.", "example_zh": "我們從經驗中學得智慧。" }
+  ],
+  "wrap": [
+    { "pos": "v.", "zh": "包、裹", "example": "She wrapped the gift in pretty paper.", "example_zh": "她用漂亮的紙包禮物。" }
+  ],
+  "wrist": [
+    { "pos": "n.", "zh": "手腕", "example": "He wears a watch on his wrist.", "example_zh": "他手腕上戴著一支錶。" }
+  ],
+  "yearly": [
+    { "pos": "adj.", "zh": "每年的、年度的", "example": "We take a yearly trip to the sea.", "example_zh": "我們每年都去一趟海邊。" },
+    { "pos": "adv.", "zh": "每年、按年", "example": "The festival is held yearly.", "example_zh": "這個節慶每年舉辦一次。" }
+  ],
+  "yell": [
+    { "pos": "v.", "zh": "大叫、吼叫", "example": "Don't yell; I can hear you.", "example_zh": "別吼，我聽得到。" },
+    { "pos": "n.", "zh": "喊叫聲", "example": "We heard a loud yell outside.", "example_zh": "我們聽見外面一聲大叫。" }
+  ],
+  "yolk": [
+    { "pos": "n.", "zh": "蛋黃", "example": "The yolk of the egg is yellow.", "example_zh": "蛋的蛋黃是黃色的。" }
+  ],
+  "youngster": [
+    { "pos": "n.", "zh": "年輕人、孩子", "example": "The youngsters played in the park.", "example_zh": "那些年輕人在公園裡玩。" }
+  ],
+  "zipper": [
+    { "pos": "n.", "zh": "拉鍊", "example": "The zipper on my jacket is stuck.", "example_zh": "我外套的拉鍊卡住了。" }
+  ],
+  "zone": [
+    { "pos": "n.", "zh": "地帶、區域", "example": "This is a no-parking zone.", "example_zh": "這裡是禁止停車區。" }
+  ]
+}

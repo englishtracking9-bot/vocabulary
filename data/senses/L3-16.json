@@ -1,0 +1,195 @@
+{
+  "territory": [
+    { "pos": "n.", "zh": "領土、領域", "example": "The lion guards its territory.", "example_zh": "獅子守衛牠的領地。" }
+  ],
+  "thankful": [
+    { "pos": "adj.", "zh": "感激的、感恩的", "example": "I am thankful for my family.", "example_zh": "我很感激有我的家人。" }
+  ],
+  "theory": [
+    { "pos": "n.", "zh": "理論、學說", "example": "He has an interesting theory about it.", "example_zh": "他對此有個有趣的理論。" }
+  ],
+  "thirst": [
+    { "pos": "n.", "zh": "口渴", "example": "She drank water to quench her thirst.", "example_zh": "她喝水解渴。" },
+    { "pos": "n.", "zh": "渴望、渴求", "example": "He has a thirst for adventure.", "example_zh": "他渴望冒險。" }
+  ],
+  "thread": [
+    { "pos": "n.", "zh": "線、細線", "example": "She sewed the button with a thread.", "example_zh": "她用線把鈕扣縫上。" },
+    { "pos": "v.", "zh": "穿（線、針）", "example": "He threaded the needle carefully.", "example_zh": "他小心地把線穿過針孔。" }
+  ],
+  "threat": [
+    { "pos": "n.", "zh": "威脅、恐嚇", "example": "Pollution is a threat to the ocean.", "example_zh": "汙染是海洋的一大威脅。" }
+  ],
+  "threaten": [
+    { "pos": "v.", "zh": "威脅、恐嚇", "example": "The dark clouds threatened rain.", "example_zh": "烏雲預示著快下雨了。" }
+  ],
+  "thumb": [
+    { "pos": "n.", "zh": "大拇指", "example": "She hurt her thumb while cooking.", "example_zh": "她煮飯時弄傷了拇指。" }
+  ],
+  "tide": [
+    { "pos": "n.", "zh": "潮汐", "example": "We left the beach when the tide came in.", "example_zh": "漲潮時我們離開了海灘。" }
+  ],
+  "tight": [
+    { "pos": "adj.", "zh": "緊的、牢的", "example": "These shoes are too tight for me.", "example_zh": "這雙鞋我穿太緊了。" }
+  ],
+  "tighten": [
+    { "pos": "v.", "zh": "弄緊、收緊", "example": "He tightened the screw with a tool.", "example_zh": "他用工具把螺絲鎖緊。" }
+  ],
+  "timber": [
+    { "pos": "n.", "zh": "木材、木料", "example": "The house was built with timber.", "example_zh": "這房子是用木材蓋的。" }
+  ],
+  "tobacco": [
+    { "pos": "n.", "zh": "菸草", "example": "Tobacco is harmful to health.", "example_zh": "菸草對健康有害。" }
+  ],
+  "ton": [
+    { "pos": "n.", "zh": "噸", "example": "The truck can carry ten tons of goods.", "example_zh": "這輛卡車可載十噸貨物。" }
+  ],
+  "toss": [
+    { "pos": "v.", "zh": "投擲、拋", "example": "He tossed the ball to his friend.", "example_zh": "他把球拋給朋友。" }
+  ],
+  "tough": [
+    { "pos": "adj.", "zh": "艱難的、棘手的", "example": "It was a tough decision to make.", "example_zh": "那是個難下的決定。" },
+    { "pos": "adj.", "zh": "堅韌的、硬的", "example": "The meat was tough and hard to chew.", "example_zh": "那肉很韌，很難嚼。" }
+  ],
+  "tourism": [
+    { "pos": "n.", "zh": "旅遊業、觀光", "example": "Tourism brings money to the town.", "example_zh": "觀光為這座城鎮帶來收入。" }
+  ],
+  "tourist": [
+    { "pos": "n.", "zh": "遊客、觀光客", "example": "Many tourists visit the old temple.", "example_zh": "許多遊客參觀這座古廟。" }
+  ],
+  "tow": [
+    { "pos": "v.", "zh": "拖、牽引", "example": "A truck towed the broken car away.", "example_zh": "一輛拖車把故障的車拖走了。" },
+    { "pos": "n.", "zh": "拖、牽引", "example": "They gave the boat a tow to shore.", "example_zh": "他們把船拖到岸邊。" }
+  ],
+  "tower": [
+    { "pos": "n.", "zh": "塔、高樓", "example": "We climbed the tall tower for the view.", "example_zh": "我們爬上高塔欣賞風景。" }
+  ],
+  "trace": [
+    { "pos": "n.", "zh": "痕跡、蹤跡", "example": "There was no trace of the missing dog.", "example_zh": "那隻走失的狗毫無蹤跡。" },
+    { "pos": "v.", "zh": "追溯、追蹤", "example": "She traced her family history.", "example_zh": "她追溯自己的家族史。" }
+  ],
+  "trader": [
+    { "pos": "n.", "zh": "商人、貿易商", "example": "The trader sold goods at the market.", "example_zh": "那名商人在市場賣貨。" }
+  ],
+  "trail": [
+    { "pos": "n.", "zh": "小徑、足跡", "example": "We followed the trail up the mountain.", "example_zh": "我們沿著小徑上山。" },
+    { "pos": "v.", "zh": "拖、落後", "example": "The dog's leash trailed on the ground.", "example_zh": "狗繩拖在地上。" }
+  ],
+  "transport": [
+    { "pos": "v.", "zh": "運輸、運送", "example": "Buses transport people across the city.", "example_zh": "公車把人們運送到城市各處。" },
+    { "pos": "n.", "zh": "運輸、交通工具", "example": "Public transport is cheap here.", "example_zh": "這裡的大眾運輸很便宜。" }
+  ],
+  "traveler": [
+    { "pos": "n.", "zh": "旅人、旅客", "example": "The tired traveler rested at the inn.", "example_zh": "疲憊的旅人在客棧休息。" }
+  ],
+  "tray": [
+    { "pos": "n.", "zh": "托盤、盤子", "example": "She carried the cups on a tray.", "example_zh": "她用托盤端著杯子。" }
+  ],
+  "trend": [
+    { "pos": "n.", "zh": "趨勢、潮流", "example": "Short hair is the latest trend.", "example_zh": "短髮是最新的潮流。" }
+  ],
+  "tribe": [
+    { "pos": "n.", "zh": "部落、種族", "example": "The tribe lives deep in the forest.", "example_zh": "這個部落住在森林深處。" }
+  ],
+  "tricky": [
+    { "pos": "adj.", "zh": "棘手的、難辦的", "example": "That was a tricky question.", "example_zh": "那是個棘手的問題。" }
+  ],
+  "troop": [
+    { "pos": "n.", "zh": "軍隊、部隊", "example": "The troops marched into the city.", "example_zh": "軍隊開進了城市。" }
+  ],
+  "tropical": [
+    { "pos": "adj.", "zh": "熱帶的", "example": "Bananas grow in tropical countries.", "example_zh": "香蕉生長在熱帶國家。" }
+  ],
+  "trumpet": [
+    { "pos": "n.", "zh": "小號、喇叭", "example": "He plays the trumpet in the band.", "example_zh": "他在樂團裡吹小號。" }
+  ],
+  "trunk": [
+    { "pos": "n.", "zh": "樹幹", "example": "The tree has a thick trunk.", "example_zh": "這棵樹的樹幹很粗。" },
+    { "pos": "n.", "zh": "象鼻", "example": "The elephant lifted the log with its trunk.", "example_zh": "大象用鼻子舉起木頭。" }
+  ],
+  "truthful": [
+    { "pos": "adj.", "zh": "誠實的、真實的", "example": "She gave a truthful answer.", "example_zh": "她給了一個誠實的回答。" }
+  ],
+  "tub": [
+    { "pos": "n.", "zh": "浴缸、桶", "example": "He filled the tub with warm water.", "example_zh": "他在浴缸裡放滿溫水。" }
+  ],
+  "tug": [
+    { "pos": "v.", "zh": "用力拉、拖", "example": "The child tugged at his mother's sleeve.", "example_zh": "那孩子拉著媽媽的袖子。" },
+    { "pos": "n.", "zh": "用力一拉", "example": "She gave the rope a tug.", "example_zh": "她用力拉了一下繩子。" }
+  ],
+  "tune": [
+    { "pos": "n.", "zh": "曲調、旋律", "example": "She hummed a happy tune.", "example_zh": "她哼著一首歡快的曲子。" },
+    { "pos": "v.", "zh": "調（音）、調整", "example": "He tuned his guitar before playing.", "example_zh": "他彈奏前先替吉他調音。" }
+  ],
+  "tunnel": [
+    { "pos": "n.", "zh": "隧道", "example": "The train went through a long tunnel.", "example_zh": "火車穿過一條長隧道。" }
+  ],
+  "tutor": [
+    { "pos": "n.", "zh": "家教、導師", "example": "A tutor helps him with math.", "example_zh": "一位家教幫他補數學。" },
+    { "pos": "v.", "zh": "輔導、教導", "example": "She tutors children after school.", "example_zh": "她放學後輔導孩子。" }
+  ],
+  "twin": [
+    { "pos": "n.", "zh": "雙胞胎（之一）", "example": "She has a twin sister.", "example_zh": "她有一個雙胞胎妹妹。" },
+    { "pos": "adj.", "zh": "成對的、雙的", "example": "The room has twin beds.", "example_zh": "這房間有兩張單人床。" }
+  ],
+  "twist": [
+    { "pos": "v.", "zh": "扭轉、旋轉", "example": "Twist the lid to open the jar.", "example_zh": "轉開蓋子打開罐子。" },
+    { "pos": "n.", "zh": "轉折、曲折", "example": "The story has a surprising twist.", "example_zh": "這故事有個出人意料的轉折。" }
+  ],
+  "underlying": [
+    { "pos": "adj.", "zh": "潛在的、根本的", "example": "We must find the underlying cause.", "example_zh": "我們必須找出根本原因。" }
+  ],
+  "underwear": [
+    { "pos": "n.", "zh": "內衣褲", "example": "She packed clean underwear for the trip.", "example_zh": "她為旅行收拾了乾淨的內衣褲。" }
+  ],
+  "union": [
+    { "pos": "n.", "zh": "工會、聯盟", "example": "The workers formed a union.", "example_zh": "工人們組成了工會。" }
+  ],
+  "unique": [
+    { "pos": "adj.", "zh": "獨特的、唯一的", "example": "Each snowflake has a unique shape.", "example_zh": "每片雪花都有獨一無二的形狀。" }
+  ],
+  "unite": [
+    { "pos": "v.", "zh": "團結、聯合", "example": "The team united to win the game.", "example_zh": "全隊團結一致以贏得比賽。" }
+  ],
+  "unity": [
+    { "pos": "n.", "zh": "團結、一致", "example": "Unity makes a team strong.", "example_zh": "團結使隊伍強大。" }
+  ],
+  "urban": [
+    { "pos": "adj.", "zh": "城市的、都市的", "example": "Urban life is busy and fast.", "example_zh": "都市生活忙碌又快速。" }
+  ],
+  "vacant": [
+    { "pos": "adj.", "zh": "空的、空缺的", "example": "There is a vacant seat at the back.", "example_zh": "後面有個空位。" }
+  ],
+  "van": [
+    { "pos": "n.", "zh": "廂型車、貨車", "example": "They moved the boxes in a van.", "example_zh": "他們用廂型車搬箱子。" }
+  ],
+  "vanish": [
+    { "pos": "v.", "zh": "消失、突然不見", "example": "The magician made the coin vanish.", "example_zh": "魔術師讓硬幣消失。" }
+  ],
+  "variety": [
+    { "pos": "n.", "zh": "多樣、種類", "example": "The shop sells a variety of bread.", "example_zh": "這家店賣各式各樣的麵包。" }
+  ],
+  "various": [
+    { "pos": "adj.", "zh": "各種各樣的、不同的", "example": "The store has clothes in various colors.", "example_zh": "這家店有各種顏色的衣服。" }
+  ],
+  "vary": [
+    { "pos": "v.", "zh": "不同、變化", "example": "Prices vary from shop to shop.", "example_zh": "價格各家店不一。" }
+  ],
+  "vase": [
+    { "pos": "n.", "zh": "花瓶", "example": "She put the flowers in a vase.", "example_zh": "她把花插進花瓶裡。" }
+  ],
+  "vehicle": [
+    { "pos": "n.", "zh": "車輛、交通工具", "example": "No vehicles are allowed in the park.", "example_zh": "公園內禁止車輛進入。" }
+  ],
+  "verse": [
+    { "pos": "n.", "zh": "詩、詩節", "example": "She read a verse from the poem.", "example_zh": "她朗讀了詩中的一節。" }
+  ],
+  "vest": [
+    { "pos": "n.", "zh": "背心、馬甲", "example": "He wore a warm vest over his shirt.", "example_zh": "他在襯衫外穿了件溫暖的背心。" }
+  ],
+  "victim": [
+    { "pos": "n.", "zh": "受害者、罹難者", "example": "They sent help to the flood victims.", "example_zh": "他們派人援助水災災民。" }
+  ],
+  "violence": [
+    { "pos": "n.", "zh": "暴力", "example": "We should solve problems without violence.", "example_zh": "我們應該不靠暴力解決問題。" }
+  ]
+}
