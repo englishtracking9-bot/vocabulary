@@ -1,0 +1,191 @@
+{
+  "guideline": [
+    { "pos": "n.", "zh": "指引、準則", "example": "Follow the safety guidelines carefully.", "example_zh": "請仔細遵守安全準則。" }
+  ],
+  "gut": [
+    { "pos": "n.", "zh": "腸道、內臟", "example": "Good bacteria live in your gut.", "example_zh": "好菌住在你的腸道裡。" },
+    { "pos": "n.", "zh": "膽量、勇氣", "example": "It takes guts to speak in front of a crowd.", "example_zh": "在眾人面前說話需要膽量。" }
+  ],
+  "habitat": [
+    { "pos": "n.", "zh": "棲息地", "example": "Pollution destroys animal habitats.", "example_zh": "汙染破壞了動物的棲息地。" }
+  ],
+  "haul": [
+    { "pos": "v.", "zh": "拖、搬運", "example": "They hauled the boxes up the stairs.", "example_zh": "他們把箱子搬上樓梯。" },
+    { "pos": "n.", "zh": "搬運、收穫量", "example": "The fishermen had a big haul today.", "example_zh": "漁夫今天的漁獲量很大。" }
+  ],
+  "hazard": [
+    { "pos": "n.", "zh": "危險、危害", "example": "Wet floors are a slipping hazard.", "example_zh": "濕滑的地板有滑倒的危險。" }
+  ],
+  "heir": [
+    { "pos": "n.", "zh": "繼承人", "example": "The prince is the heir to the throne.", "example_zh": "王子是王位的繼承人。" }
+  ],
+  "hence": [
+    { "pos": "adv.", "zh": "因此、所以", "example": "He was late; hence, he missed the bus.", "example_zh": "他遲到了，因此錯過了公車。" }
+  ],
+  "herb": [
+    { "pos": "n.", "zh": "草本植物、香草", "example": "She grows herbs in her garden.", "example_zh": "她在花園裡種香草植物。" }
+  ],
+  "heritage": [
+    { "pos": "n.", "zh": "遺產、傳統", "example": "The old castle is part of our heritage.", "example_zh": "這座古堡是我們文化遺產的一部分。" }
+  ],
+  "highlight": [
+    { "pos": "v.", "zh": "強調、突顯", "example": "Let me highlight the main points.", "example_zh": "讓我強調一下重點。" },
+    { "pos": "n.", "zh": "最精彩的部分", "example": "The trip to the zoo was the highlight of the day.", "example_zh": "去動物園是今天最精彩的部分。" }
+  ],
+  "hockey": [
+    { "pos": "n.", "zh": "曲棍球", "example": "They play ice hockey in winter.", "example_zh": "他們冬天打冰上曲棍球。" }
+  ],
+  "honorable": [
+    { "pos": "adj.", "zh": "光榮的、可敬的", "example": "Helping the weak is an honorable act.", "example_zh": "幫助弱者是件光榮的事。" }
+  ],
+  "horizontal": [
+    { "pos": "adj.", "zh": "水平的、橫的", "example": "Draw a horizontal line across the page.", "example_zh": "在紙上畫一條水平線。" }
+  ],
+  "hormone": [
+    { "pos": "n.", "zh": "荷爾蒙、激素", "example": "Hormones affect how we grow.", "example_zh": "荷爾蒙影響我們的成長。" }
+  ],
+  "hostage": [
+    { "pos": "n.", "zh": "人質", "example": "The robbers held two people hostage.", "example_zh": "搶匪挾持了兩名人質。" }
+  ],
+  "hostile": [
+    { "pos": "adj.", "zh": "敵對的、不友善的", "example": "The dog seemed hostile to strangers.", "example_zh": "那隻狗對陌生人顯得不友善。" }
+  ],
+  "hostility": [
+    { "pos": "n.", "zh": "敵意、敵對", "example": "There was hostility between the two groups.", "example_zh": "兩派人馬之間存在敵意。" }
+  ],
+  "housing": [
+    { "pos": "n.", "zh": "住房、住宅", "example": "The city needs more affordable housing.", "example_zh": "這座城市需要更多平價住宅。" }
+  ],
+  "howl": [
+    { "pos": "n.", "zh": "嗥叫、嚎叫", "example": "The wolf let out a long howl.", "example_zh": "狼發出一聲長長的嗥叫。" },
+    { "pos": "v.", "zh": "嗥叫、怒號", "example": "The wind howled all night.", "example_zh": "風整夜怒號。" }
+  ],
+  "hypothesis": [
+    { "pos": "n.", "zh": "假設、假說", "example": "The experiment tested her hypothesis.", "example_zh": "這個實驗驗證了她的假設。" }
+  ],
+  "icon": [
+    { "pos": "n.", "zh": "圖示、圖標", "example": "Tap the icon to open the app.", "example_zh": "點圖示就能打開應用程式。" },
+    { "pos": "n.", "zh": "偶像、象徵", "example": "She is a fashion icon.", "example_zh": "她是時尚偶像。" }
+  ],
+  "ideology": [
+    { "pos": "n.", "zh": "意識形態、思想體系", "example": "The two parties have different ideologies.", "example_zh": "這兩個政黨有不同的意識形態。" }
+  ],
+  "idiot": [
+    { "pos": "n.", "zh": "笨蛋、傻瓜", "example": "I felt like an idiot for forgetting her name.", "example_zh": "忘了她的名字讓我覺得自己像個笨蛋。" }
+  ],
+  "illusion": [
+    { "pos": "n.", "zh": "錯覺、幻覺", "example": "The mirror created an illusion of space.", "example_zh": "鏡子製造出空間變大的錯覺。" }
+  ],
+  "immense": [
+    { "pos": "adj.", "zh": "巨大的、極大的", "example": "The project took an immense amount of work.", "example_zh": "這個專案花了極大的工夫。" }
+  ],
+  "immune": [
+    { "pos": "adj.", "zh": "免疫的、有抵抗力的", "example": "A healthy diet keeps your immune system strong.", "example_zh": "健康飲食能維持免疫系統強健。" }
+  ],
+  "implement": [
+    { "pos": "v.", "zh": "實施、執行", "example": "The school will implement the new rule.", "example_zh": "學校將實施這項新規定。" },
+    { "pos": "n.", "zh": "工具、器具", "example": "Farmers use many implements.", "example_zh": "農夫使用許多農具。" }
+  ],
+  "implication": [
+    { "pos": "n.", "zh": "影響、可能的後果", "example": "Consider the implications of your choice.", "example_zh": "想想你的選擇會帶來的後果。" }
+  ],
+  "impulse": [
+    { "pos": "n.", "zh": "衝動、一時念頭", "example": "She bought the dress on impulse.", "example_zh": "她一時衝動買了那件洋裝。" }
+  ],
+  "incentive": [
+    { "pos": "n.", "zh": "激勵、誘因", "example": "A prize is a good incentive to study.", "example_zh": "獎品是個讓人念書的好誘因。" }
+  ],
+  "incorporate": [
+    { "pos": "v.", "zh": "納入、包含", "example": "We incorporated her ideas into the plan.", "example_zh": "我們把她的想法納入了計畫。" }
+  ],
+  "index": [
+    { "pos": "n.", "zh": "索引、目錄", "example": "Use the index to find the topic.", "example_zh": "用索引來找這個主題。" },
+    { "pos": "n.", "zh": "指數", "example": "The price index rose this month.", "example_zh": "這個月物價指數上升了。" }
+  ],
+  "indifferent": [
+    { "pos": "adj.", "zh": "冷漠的、不感興趣的", "example": "He was indifferent to the result.", "example_zh": "他對結果漠不關心。" }
+  ],
+  "indigenous": [
+    { "pos": "adj.", "zh": "原生的、原住民的", "example": "We learned about indigenous people of the island.", "example_zh": "我們認識了這座島的原住民。" }
+  ],
+  "indispensable": [
+    { "pos": "adj.", "zh": "不可或缺的、必不可少的", "example": "Water is indispensable to life.", "example_zh": "水對生命不可或缺。" }
+  ],
+  "indulge": [
+    { "pos": "v.", "zh": "放縱、沉溺", "example": "She indulged in a slice of cake.", "example_zh": "她放縱自己吃了一塊蛋糕。" }
+  ],
+  "inevitable": [
+    { "pos": "adj.", "zh": "不可避免的、必然的", "example": "Change is inevitable in life.", "example_zh": "改變在人生中是不可避免的。" }
+  ],
+  "infect": [
+    { "pos": "v.", "zh": "感染、傳染", "example": "The virus can infect many people.", "example_zh": "這種病毒會傳染給許多人。" }
+  ],
+  "infinite": [
+    { "pos": "adj.", "zh": "無限的、無窮的", "example": "Space seems almost infinite.", "example_zh": "太空看起來幾乎是無限的。" }
+  ],
+  "infrastructure": [
+    { "pos": "n.", "zh": "基礎設施", "example": "Roads and bridges are part of infrastructure.", "example_zh": "道路和橋梁是基礎設施的一部分。" }
+  ],
+  "inherent": [
+    { "pos": "adj.", "zh": "固有的、天生的", "example": "Curiosity is inherent in children.", "example_zh": "好奇心是孩子與生俱來的。" }
+  ],
+  "inherit": [
+    { "pos": "v.", "zh": "繼承、遺傳得到", "example": "She inherited her mother's blue eyes.", "example_zh": "她遺傳了母親的藍眼睛。" }
+  ],
+  "initiate": [
+    { "pos": "v.", "zh": "發起、開始", "example": "They initiated a project to help the poor.", "example_zh": "他們發起了一項幫助窮人的計畫。" }
+  ],
+  "initiative": [
+    { "pos": "n.", "zh": "主動、進取心", "example": "She showed initiative by starting early.", "example_zh": "她提早開始，展現了主動性。" },
+    { "pos": "n.", "zh": "倡議、新方案", "example": "The city launched a green initiative.", "example_zh": "市府推出了一項環保倡議。" }
+  ],
+  "inject": [
+    { "pos": "v.", "zh": "注射、注入", "example": "The nurse injected the medicine.", "example_zh": "護理師注射了藥物。" }
+  ],
+  "injection": [
+    { "pos": "n.", "zh": "注射、針劑", "example": "He got an injection at the clinic.", "example_zh": "他在診所打了一針。" }
+  ],
+  "inning": [
+    { "pos": "n.", "zh": "（棒球）局", "example": "Our team scored in the last inning.", "example_zh": "我們隊在最後一局得分。" }
+  ],
+  "innovation": [
+    { "pos": "n.", "zh": "創新、革新", "example": "The phone is full of clever innovation.", "example_zh": "這支手機充滿了巧妙的創新。" }
+  ],
+  "innovative": [
+    { "pos": "adj.", "zh": "創新的、革新的", "example": "She found an innovative way to recycle.", "example_zh": "她想出一種創新的回收方法。" }
+  ],
+  "inquiry": [
+    { "pos": "n.", "zh": "詢問、查詢", "example": "They made an inquiry about the cost.", "example_zh": "他們詢問了費用。" }
+  ],
+  "insane": [
+    { "pos": "adj.", "zh": "瘋狂的、精神錯亂的", "example": "Driving so fast is simply insane.", "example_zh": "開那麼快簡直瘋了。" }
+  ],
+  "insight": [
+    { "pos": "n.", "zh": "洞察力、深刻理解", "example": "The book gave me insight into history.", "example_zh": "這本書讓我對歷史有了深刻的理解。" }
+  ],
+  "installation": [
+    { "pos": "n.", "zh": "安裝、裝設", "example": "The installation of the software took time.", "example_zh": "軟體的安裝花了一些時間。" }
+  ],
+  "institute": [
+    { "pos": "n.", "zh": "機構、研究所", "example": "She works at a research institute.", "example_zh": "她在一家研究機構工作。" },
+    { "pos": "v.", "zh": "建立、制定", "example": "The school instituted a new policy.", "example_zh": "學校制定了一項新政策。" }
+  ],
+  "institution": [
+    { "pos": "n.", "zh": "機構、團體", "example": "The school is a respected institution.", "example_zh": "這所學校是個受人尊敬的機構。" }
+  ],
+  "intact": [
+    { "pos": "adj.", "zh": "完好無損的", "example": "The package arrived intact.", "example_zh": "包裹完好無損地送達。" }
+  ],
+  "integrate": [
+    { "pos": "v.", "zh": "整合、融入", "example": "They integrated the new students into the class.", "example_zh": "他們讓新生融入了班級。" }
+  ],
+  "integration": [
+    { "pos": "n.", "zh": "整合、結合", "example": "The integration of the two teams went well.", "example_zh": "兩個團隊的整合很順利。" }
+  ],
+  "integrity": [
+    { "pos": "n.", "zh": "正直、誠信", "example": "People trust her for her integrity.", "example_zh": "人們因她的正直而信任她。" }
+  ],
+  "intensify": [
+    { "pos": "v.", "zh": "加強、加劇", "example": "The storm intensified at night.", "example_zh": "暴風雨在夜裡加劇了。" }
+  ]
+}

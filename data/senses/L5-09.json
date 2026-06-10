@@ -1,0 +1,189 @@
+{
+  "intent": [
+    { "pos": "n.", "zh": "意圖、目的", "example": "His intent was to help, not to harm.", "example_zh": "他的本意是幫忙，不是傷害。" },
+    { "pos": "adj.", "zh": "專注的、堅決的", "example": "She was intent on winning the race.", "example_zh": "她一心想贏得比賽。" }
+  ],
+  "interference": [
+    { "pos": "n.", "zh": "干涉、干擾", "example": "There was interference on the radio.", "example_zh": "收音機出現了干擾。" }
+  ],
+  "interior": [
+    { "pos": "n.", "zh": "內部、室內", "example": "The interior of the car is clean.", "example_zh": "車子的內部很乾淨。" },
+    { "pos": "adj.", "zh": "內部的、室內的", "example": "She studies interior design.", "example_zh": "她學室內設計。" }
+  ],
+  "interpretation": [
+    { "pos": "n.", "zh": "解釋、詮釋", "example": "Her interpretation of the poem was unique.", "example_zh": "她對這首詩的詮釋很獨特。" }
+  ],
+  "interval": [
+    { "pos": "n.", "zh": "間隔、間歇", "example": "There was a short interval between songs.", "example_zh": "歌曲之間有短暫的間隔。" }
+  ],
+  "intervention": [
+    { "pos": "n.", "zh": "干預、介入", "example": "The doctor's quick intervention saved him.", "example_zh": "醫生迅速的介入救了他。" }
+  ],
+  "investigator": [
+    { "pos": "n.", "zh": "調查員、研究者", "example": "The investigator searched for clues.", "example_zh": "調查員尋找線索。" }
+  ],
+  "irony": [
+    { "pos": "n.", "zh": "諷刺、反諷", "example": "The irony is that he hates the job he chose.", "example_zh": "諷刺的是，他討厭自己選的工作。" }
+  ],
+  "journalism": [
+    { "pos": "n.", "zh": "新聞業、新聞學", "example": "She studies journalism at college.", "example_zh": "她在大學讀新聞學。" }
+  ],
+  "journalist": [
+    { "pos": "n.", "zh": "記者、新聞工作者", "example": "The journalist wrote about the flood.", "example_zh": "記者報導了那場洪水。" }
+  ],
+  "judicial": [
+    { "pos": "adj.", "zh": "司法的", "example": "The judicial system protects our rights.", "example_zh": "司法制度保護我們的權利。" }
+  ],
+  "jug": [
+    { "pos": "n.", "zh": "壺、水罐", "example": "She filled the jug with cold water.", "example_zh": "她把水罐裝滿了冷水。" }
+  ],
+  "jury": [
+    { "pos": "n.", "zh": "陪審團", "example": "The jury found the man not guilty.", "example_zh": "陪審團判定那名男子無罪。" }
+  ],
+  "justify": [
+    { "pos": "v.", "zh": "證明…正當、辯解", "example": "Nothing can justify cheating.", "example_zh": "沒有什麼能為作弊辯解。" }
+  ],
+  "juvenile": [
+    { "pos": "adj.", "zh": "少年的、青少年的", "example": "The book is written for a juvenile audience.", "example_zh": "這本書是為青少年讀者寫的。" },
+    { "pos": "n.", "zh": "青少年、未成年人", "example": "The court treats juveniles differently.", "example_zh": "法院對待未成年人有所不同。" }
+  ],
+  "kidnap": [
+    { "pos": "v.", "zh": "綁架、誘拐", "example": "In the story, robbers kidnap the prince.", "example_zh": "在故事裡，盜匪綁架了王子。" }
+  ],
+  "landlord": [
+    { "pos": "n.", "zh": "房東、地主", "example": "The landlord fixed the broken window.", "example_zh": "房東修好了破掉的窗戶。" }
+  ],
+  "laser": [
+    { "pos": "n.", "zh": "雷射、激光", "example": "The doctor used a laser in the operation.", "example_zh": "醫生在手術中使用了雷射。" }
+  ],
+  "lawmaker": [
+    { "pos": "n.", "zh": "立法者、議員", "example": "Lawmakers debated the new bill.", "example_zh": "議員們辯論這項新法案。" }
+  ],
+  "lawsuit": [
+    { "pos": "n.", "zh": "訴訟、官司", "example": "The company faced a costly lawsuit.", "example_zh": "這家公司面臨一場代價高昂的訴訟。" }
+  ],
+  "layer": [
+    { "pos": "n.", "zh": "層、層次", "example": "There is a thin layer of dust on the shelf.", "example_zh": "架子上有一層薄薄的灰塵。" },
+    { "pos": "v.", "zh": "分層、層疊", "example": "She layered the cake with cream.", "example_zh": "她在蛋糕裡一層層抹上奶油。" }
+  ],
+  "league": [
+    { "pos": "n.", "zh": "聯盟、聯賽", "example": "Our team plays in the local league.", "example_zh": "我們隊在地方聯賽出賽。" }
+  ],
+  "legacy": [
+    { "pos": "n.", "zh": "遺產、遺留", "example": "His kindness left a lasting legacy.", "example_zh": "他的善良留下了長久的影響。" }
+  ],
+  "legendary": [
+    { "pos": "adj.", "zh": "傳奇的、著名的", "example": "He is a legendary basketball player.", "example_zh": "他是位傳奇的籃球員。" }
+  ],
+  "legislation": [
+    { "pos": "n.", "zh": "立法、法規", "example": "New legislation protects the forest.", "example_zh": "新的法規保護了這片森林。" }
+  ],
+  "legislative": [
+    { "pos": "adj.", "zh": "立法的", "example": "The legislative body passed the law.", "example_zh": "立法機關通過了這項法律。" }
+  ],
+  "legitimate": [
+    { "pos": "adj.", "zh": "合法的、正當的", "example": "She had a legitimate reason for being late.", "example_zh": "她遲到有正當的理由。" }
+  ],
+  "lest": [
+    { "pos": "conj.", "zh": "免得、以免", "example": "Write it down lest you forget.", "example_zh": "把它寫下來，免得忘記。" }
+  ],
+  "liability": [
+    { "pos": "n.", "zh": "責任、累贅", "example": "The old car became a liability.", "example_zh": "那輛舊車成了負擔。" }
+  ],
+  "likelihood": [
+    { "pos": "n.", "zh": "可能性", "example": "There is a high likelihood of rain.", "example_zh": "下雨的可能性很高。" }
+  ],
+  "likewise": [
+    { "pos": "adv.", "zh": "同樣地、也", "example": "He works hard, and you should do likewise.", "example_zh": "他很努力，你也該這麼做。" }
+  ],
+  "loop": [
+    { "pos": "n.", "zh": "環形、圈", "example": "She tied the rope in a loop.", "example_zh": "她把繩子打成一個圈。" }
+  ],
+  "lounge": [
+    { "pos": "n.", "zh": "休息室、交誼廳", "example": "We waited in the airport lounge.", "example_zh": "我們在機場休息室等候。" },
+    { "pos": "v.", "zh": "懶散地靠著、閒躺", "example": "He lounged on the sofa all day.", "example_zh": "他整天懶洋洋地躺在沙發上。" }
+  ],
+  "lump": [
+    { "pos": "n.", "zh": "塊、腫塊", "example": "There was a lump of clay on the table.", "example_zh": "桌上有一塊黏土。" }
+  ],
+  "mainstream": [
+    { "pos": "n.", "zh": "主流", "example": "The song entered the mainstream of pop music.", "example_zh": "這首歌進入了流行音樂的主流。" }
+  ],
+  "maintenance": [
+    { "pos": "n.", "zh": "維護、保養", "example": "The machine needs regular maintenance.", "example_zh": "這台機器需要定期保養。" }
+  ],
+  "mammal": [
+    { "pos": "n.", "zh": "哺乳動物", "example": "A whale is a mammal, not a fish.", "example_zh": "鯨魚是哺乳動物，不是魚。" }
+  ],
+  "mandate": [
+    { "pos": "n.", "zh": "授權、委任", "example": "The new leader has a strong mandate.", "example_zh": "新領袖獲得了強力的授權。" }
+  ],
+  "manifest": [
+    { "pos": "v.", "zh": "顯現、表明", "example": "Her joy was manifest on her face.", "example_zh": "她臉上顯露出喜悅。" },
+    { "pos": "adj.", "zh": "明顯的、顯而易見的", "example": "His talent is manifest to everyone.", "example_zh": "他的才華對所有人都顯而易見。" }
+  ],
+  "manipulate": [
+    { "pos": "v.", "zh": "操縱、操控", "example": "He tried to manipulate his friends.", "example_zh": "他試圖操控他的朋友。" }
+  ],
+  "mansion": [
+    { "pos": "n.", "zh": "豪宅、大宅", "example": "The rich family lives in a huge mansion.", "example_zh": "那個富裕的家庭住在一棟大豪宅裡。" }
+  ],
+  "marine": [
+    { "pos": "adj.", "zh": "海洋的、海生的", "example": "We learned about marine life in the sea.", "example_zh": "我們認識了海洋生物。" }
+  ],
+  "masculine": [
+    { "pos": "adj.", "zh": "男性的、陽剛的", "example": "The deep voice sounded very masculine.", "example_zh": "那低沉的嗓音聽起來很陽剛。" }
+  ],
+  "massage": [
+    { "pos": "n.", "zh": "按摩", "example": "A back massage helped him relax.", "example_zh": "背部按摩幫他放鬆。" },
+    { "pos": "v.", "zh": "按摩、揉", "example": "She massaged her sore shoulders.", "example_zh": "她揉了揉痠痛的肩膀。" }
+  ],
+  "massive": [
+    { "pos": "adj.", "zh": "巨大的、大量的", "example": "A massive crowd filled the square.", "example_zh": "大批人群擠滿了廣場。" }
+  ],
+  "masterpiece": [
+    { "pos": "n.", "zh": "傑作、名作", "example": "The painting is a true masterpiece.", "example_zh": "這幅畫是真正的傑作。" }
+  ],
+  "mattress": [
+    { "pos": "n.", "zh": "床墊", "example": "The new mattress is soft and comfortable.", "example_zh": "新床墊又軟又舒服。" }
+  ],
+  "meantime": [
+    { "pos": "n.", "zh": "其間、同時", "example": "In the meantime, let's clean the room.", "example_zh": "在這段期間，我們先把房間打掃乾淨。" }
+  ],
+  "mechanism": [
+    { "pos": "n.", "zh": "機制、機械裝置", "example": "The clock has a complex mechanism.", "example_zh": "這座時鐘有複雜的機械裝置。" }
+  ],
+  "medication": [
+    { "pos": "n.", "zh": "藥物、藥劑", "example": "Take your medication after meals.", "example_zh": "飯後服用你的藥。" }
+  ],
+  "mentor": [
+    { "pos": "n.", "zh": "導師、良師", "example": "Her teacher was a kind mentor.", "example_zh": "她的老師是位親切的良師。" }
+  ],
+  "merge": [
+    { "pos": "v.", "zh": "合併、融合", "example": "The two companies merged into one.", "example_zh": "兩家公司合併成一家。" }
+  ],
+  "metaphor": [
+    { "pos": "n.", "zh": "隱喻、比喻", "example": "'Time is money' is a common metaphor.", "example_zh": "「時間就是金錢」是常見的隱喻。" }
+  ],
+  "metropolitan": [
+    { "pos": "adj.", "zh": "大都會的、大都市的", "example": "Tokyo is a busy metropolitan city.", "example_zh": "東京是個繁忙的大都會城市。" }
+  ],
+  "midst": [
+    { "pos": "n.", "zh": "當中、中間", "example": "She stayed calm in the midst of the chaos.", "example_zh": "在一片混亂之中她仍保持冷靜。" }
+  ],
+  "migration": [
+    { "pos": "n.", "zh": "遷移、遷徙", "example": "Bird migration happens every autumn.", "example_zh": "鳥類每年秋天遷徙。" }
+  ],
+  "milestone": [
+    { "pos": "n.", "zh": "里程碑、重要階段", "example": "Her first book was a major milestone.", "example_zh": "她的第一本書是個重要的里程碑。" }
+  ],
+  "miniature": [
+    { "pos": "adj.", "zh": "微型的、小型的", "example": "He builds miniature model trains.", "example_zh": "他組裝微型模型火車。" }
+  ],
+  "minimal": [
+    { "pos": "adj.", "zh": "最小的、極少的", "example": "The damage from the storm was minimal.", "example_zh": "暴風雨造成的損害極小。" }
+  ],
+  "minimize": [
+    { "pos": "v.", "zh": "使減到最小、最小化", "example": "We should minimize food waste.", "example_zh": "我們應該把食物浪費減到最低。" }
+  ]
+}
