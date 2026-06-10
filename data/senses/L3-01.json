@@ -1,0 +1,192 @@
+{
+  "aboard": [
+    { "pos": "prep./adv.", "zh": "在（船、車、飛機）上", "example": "All the passengers are aboard the ship.", "example_zh": "所有乘客都在船上。" }
+  ],
+  "acceptable": [
+    { "pos": "adj.", "zh": "可接受的", "example": "Your work is good and acceptable.", "example_zh": "你的作品很好，可以接受。" }
+  ],
+  "accurate": [
+    { "pos": "adj.", "zh": "準確的、精確的", "example": "Her answer was quick and accurate.", "example_zh": "她的回答又快又準。" }
+  ],
+  "ache": [
+    { "pos": "v.", "zh": "（持續地）疼痛", "example": "My head aches after a long day.", "example_zh": "忙了一整天後我頭痛。" },
+    { "pos": "n.", "zh": "疼痛", "example": "She has an ache in her back.", "example_zh": "她背部疼痛。" }
+  ],
+  "achieve": [
+    { "pos": "v.", "zh": "達成、實現", "example": "She worked hard to achieve her goal.", "example_zh": "她努力達成目標。" }
+  ],
+  "additional-adj-admire": [
+    { "pos": "adj.", "zh": "額外的、附加的", "example": "We need additional chairs for the guests.", "example_zh": "我們需要為客人多準備椅子。" }
+  ],
+  "advanced": [
+    { "pos": "adj.", "zh": "先進的、進步的", "example": "They use advanced technology.", "example_zh": "他們使用先進的科技。" },
+    { "pos": "adj.", "zh": "高級的、進階的", "example": "He is taking an advanced English class.", "example_zh": "他在上進階英文課。" }
+  ],
+  "advantage": [
+    { "pos": "n.", "zh": "優勢、好處", "example": "Being tall is an advantage in basketball.", "example_zh": "在籃球場上長得高是個優勢。" }
+  ],
+  "adventure": [
+    { "pos": "n.", "zh": "冒險", "example": "They went on an exciting adventure.", "example_zh": "他們展開了一場刺激的冒險。" }
+  ],
+  "advertise": [
+    { "pos": "v.", "zh": "宣傳、登廣告", "example": "The company advertised its new phone on TV.", "example_zh": "這家公司在電視上為新手機打廣告。" }
+  ],
+  "advise": [
+    { "pos": "v.", "zh": "建議、勸告", "example": "The doctor advised me to rest.", "example_zh": "醫生建議我休息。" }
+  ],
+  "adviser-advisor": [
+    { "pos": "n.", "zh": "顧問、指導者", "example": "My teacher is also my adviser.", "example_zh": "我的老師也是我的指導老師。" }
+  ],
+  "afford": [
+    { "pos": "v.", "zh": "買得起、負擔得起", "example": "I can't afford such an expensive car.", "example_zh": "我買不起這麼貴的車。" }
+  ],
+  "afterward-afterwards": [
+    { "pos": "adv.", "zh": "之後、後來", "example": "We had dinner and went home afterward.", "example_zh": "我們吃完晚餐後就回家了。" }
+  ],
+  "agriculture": [
+    { "pos": "n.", "zh": "農業", "example": "Agriculture is important for the country.", "example_zh": "農業對這個國家很重要。" }
+  ],
+  "airline": [
+    { "pos": "n.", "zh": "航空公司", "example": "This airline flies to many countries.", "example_zh": "這家航空公司飛往許多國家。" }
+  ],
+  "alley": [
+    { "pos": "n.", "zh": "小巷、巷弄", "example": "The cat ran into a dark alley.", "example_zh": "那隻貓跑進一條黑暗的小巷。" }
+  ],
+  "almond": [
+    { "pos": "n.", "zh": "杏仁", "example": "She added almonds to the cake.", "example_zh": "她在蛋糕裡加了杏仁。" }
+  ],
+  "alphabet": [
+    { "pos": "n.", "zh": "字母系統", "example": "The English alphabet has 26 letters.", "example_zh": "英文字母共有二十六個。" }
+  ],
+  "amaze": [
+    { "pos": "v.", "zh": "使驚奇、使驚嘆", "example": "The magic show amazed the children.", "example_zh": "魔術表演讓孩子們驚嘆不已。" }
+  ],
+  "ambassador": [
+    { "pos": "n.", "zh": "大使", "example": "The ambassador met the president.", "example_zh": "大使會見了總統。" }
+  ],
+  "ambition": [
+    { "pos": "n.", "zh": "抱負、志向", "example": "Her ambition is to become a scientist.", "example_zh": "她的志向是成為科學家。" }
+  ],
+  "ambulance": [
+    { "pos": "n.", "zh": "救護車", "example": "The ambulance rushed to the hospital.", "example_zh": "救護車急忙趕往醫院。" }
+  ],
+  "angel": [
+    { "pos": "n.", "zh": "天使", "example": "The kind nurse was like an angel.", "example_zh": "那位親切的護理師宛如天使。" }
+  ],
+  "announce": [
+    { "pos": "v.", "zh": "宣布、公布", "example": "The teacher announced the test results.", "example_zh": "老師公布了考試成績。" }
+  ],
+  "anxious": [
+    { "pos": "adj.", "zh": "焦慮的、擔心的", "example": "She felt anxious before the interview.", "example_zh": "面試前她感到焦慮。" },
+    { "pos": "adj.", "zh": "渴望的、急切的", "example": "He was anxious to start the trip.", "example_zh": "他急著想出發去旅行。" }
+  ],
+  "anyhow": [
+    { "pos": "adv.", "zh": "無論如何、總之", "example": "It was hard, but we finished anyhow.", "example_zh": "雖然很難，但我們還是完成了。" }
+  ],
+  "apart": [
+    { "pos": "adv.", "zh": "分開、相隔", "example": "The two houses are far apart.", "example_zh": "這兩棟房子相隔很遠。" }
+  ],
+  "apologize": [
+    { "pos": "v.", "zh": "道歉", "example": "He apologized for being late.", "example_zh": "他為遲到道歉。" }
+  ],
+  "appeal": [
+    { "pos": "v.", "zh": "有吸引力、引起興趣", "example": "The bright colors appeal to children.", "example_zh": "鮮豔的顏色吸引孩子。" },
+    { "pos": "n.", "zh": "吸引力、魅力", "example": "The town has a special appeal.", "example_zh": "這座小鎮有種特別的魅力。" }
+  ],
+  "approve": [
+    { "pos": "v.", "zh": "贊成、核准", "example": "My parents approved of my plan.", "example_zh": "我父母贊成我的計畫。" }
+  ],
+  "apron": [
+    { "pos": "n.", "zh": "圍裙", "example": "The cook wore a white apron.", "example_zh": "廚師穿著白色圍裙。" }
+  ],
+  "armed": [
+    { "pos": "adj.", "zh": "武裝的、持武器的", "example": "An armed guard stood at the door.", "example_zh": "一名武裝警衛站在門口。" }
+  ],
+  "arrest": [
+    { "pos": "v.", "zh": "逮捕", "example": "The police arrested the thief.", "example_zh": "警察逮捕了小偷。" },
+    { "pos": "n.", "zh": "逮捕", "example": "The police made an arrest last night.", "example_zh": "警方昨晚逮捕了一人。" }
+  ],
+  "ash": [
+    { "pos": "n.", "zh": "灰、灰燼", "example": "Only ash was left after the fire.", "example_zh": "火災後只剩下灰燼。" }
+  ],
+  "aside": [
+    { "pos": "adv.", "zh": "在一邊、到旁邊", "example": "She set the book aside and stood up.", "example_zh": "她把書放到一邊站了起來。" }
+  ],
+  "assist": [
+    { "pos": "v.", "zh": "協助、幫助", "example": "A nurse assisted the doctor.", "example_zh": "一名護理師協助醫生。" }
+  ],
+  "assistant": [
+    { "pos": "n.", "zh": "助理、助手", "example": "The shop assistant helped me choose.", "example_zh": "店員幫我挑選。" }
+  ],
+  "assume": [
+    { "pos": "v.", "zh": "假定、認為", "example": "I assume you have finished your homework.", "example_zh": "我猜你已經寫完功課了。" }
+  ],
+  "athlete": [
+    { "pos": "n.", "zh": "運動員", "example": "The athlete trains every day.", "example_zh": "那名運動員每天訓練。" }
+  ],
+  "attitude": [
+    { "pos": "n.", "zh": "態度", "example": "She has a positive attitude toward life.", "example_zh": "她對人生抱持積極的態度。" }
+  ],
+  "attract": [
+    { "pos": "v.", "zh": "吸引", "example": "Flowers attract bees.", "example_zh": "花朵吸引蜜蜂。" }
+  ],
+  "attractive": [
+    { "pos": "adj.", "zh": "有吸引力的、迷人的", "example": "The store window was very attractive.", "example_zh": "那家店的櫥窗很吸引人。" }
+  ],
+  "audience": [
+    { "pos": "n.", "zh": "觀眾、聽眾", "example": "The audience clapped after the show.", "example_zh": "表演結束後觀眾鼓掌。" }
+  ],
+  "automatic": [
+    { "pos": "adj.", "zh": "自動的", "example": "The door is automatic and opens by itself.", "example_zh": "這扇門是自動的，會自己打開。" }
+  ],
+  "automobile-auto": [
+    { "pos": "n.", "zh": "汽車", "example": "He works in an automobile factory.", "example_zh": "他在一家汽車工廠工作。" }
+  ],
+  "avenue": [
+    { "pos": "n.", "zh": "大道、大街", "example": "The shop is on a busy avenue.", "example_zh": "那家店在一條繁忙的大街上。" }
+  ],
+  "awake": [
+    { "pos": "adj.", "zh": "醒著的", "example": "The baby is still awake.", "example_zh": "寶寶還醒著。" },
+    { "pos": "v.", "zh": "醒來、喚醒", "example": "I awoke to the sound of birds.", "example_zh": "我被鳥叫聲喚醒。" }
+  ],
+  "awaken": [
+    { "pos": "v.", "zh": "喚醒、使覺醒", "example": "The loud bell awakened the students.", "example_zh": "響亮的鈴聲喚醒了學生。" }
+  ],
+  "award": [
+    { "pos": "n.", "zh": "獎、獎項", "example": "She won an award for her painting.", "example_zh": "她的畫作得了獎。" },
+    { "pos": "v.", "zh": "頒發、授予", "example": "The school awarded him a prize.", "example_zh": "學校頒給他一個獎。" }
+  ],
+  "aware": [
+    { "pos": "adj.", "zh": "意識到的、察覺的", "example": "Are you aware of the danger?", "example_zh": "你意識到危險了嗎？" }
+  ],
+  "awful": [
+    { "pos": "adj.", "zh": "糟糕的、可怕的", "example": "The weather was awful all week.", "example_zh": "整週的天氣都很糟。" }
+  ],
+  "awkward": [
+    { "pos": "adj.", "zh": "尷尬的、令人難堪的", "example": "There was an awkward silence in the room.", "example_zh": "房間裡出現尷尬的沉默。" },
+    { "pos": "adj.", "zh": "笨拙的、不靈巧的", "example": "He felt awkward holding the baby.", "example_zh": "他抱著寶寶時顯得很笨拙。" }
+  ],
+  "background": [
+    { "pos": "n.", "zh": "背景", "example": "There are mountains in the background of the photo.", "example_zh": "照片的背景裡有山。" }
+  ],
+  "bacon": [
+    { "pos": "n.", "zh": "培根", "example": "I had eggs and bacon for breakfast.", "example_zh": "我早餐吃了蛋和培根。" }
+  ],
+  "bacteria": [
+    { "pos": "n.", "zh": "細菌", "example": "Washing hands kills bacteria.", "example_zh": "洗手能殺死細菌。" }
+  ],
+  "badly": [
+    { "pos": "adv.", "zh": "嚴重地", "example": "He was badly hurt in the fall.", "example_zh": "他跌倒傷得很重。" },
+    { "pos": "adv.", "zh": "拙劣地、差勁地", "example": "The team played badly today.", "example_zh": "這隊今天表現很差。" }
+  ],
+  "baggage": [
+    { "pos": "n.", "zh": "行李", "example": "We checked our baggage at the airport.", "example_zh": "我們在機場託運行李。" }
+  ],
+  "bait": [
+    { "pos": "n.", "zh": "餌、誘餌", "example": "He used a worm as bait.", "example_zh": "他用蟲當魚餌。" },
+    { "pos": "v.", "zh": "在⋯上裝餌", "example": "She baited the hook with bread.", "example_zh": "她在魚鉤上裝了麵包當餌。" }
+  ],
+  "bamboo": [
+    { "pos": "n.", "zh": "竹子", "example": "Pandas eat bamboo all day.", "example_zh": "貓熊整天吃竹子。" }
+  ]
+}
