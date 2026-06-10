@@ -1,0 +1,203 @@
+{
+  "bang": [
+    { "pos": "n.", "zh": "砰的巨響", "example": "The door shut with a loud bang.", "example_zh": "門砰一聲關上了。" },
+    { "pos": "v.", "zh": "猛敲、撞", "example": "He banged on the door loudly.", "example_zh": "他用力敲門。" }
+  ],
+  "banker": [
+    { "pos": "n.", "zh": "銀行家", "example": "Her father is a banker.", "example_zh": "她父親是銀行家。" }
+  ],
+  "bare": [
+    { "pos": "adj.", "zh": "赤裸的、光禿的", "example": "He walked on the grass with bare feet.", "example_zh": "他赤腳走在草地上。" }
+  ],
+  "barely": [
+    { "pos": "adv.", "zh": "僅僅、勉強", "example": "I can barely see in the dark.", "example_zh": "在黑暗中我幾乎看不見。" }
+  ],
+  "barn": [
+    { "pos": "n.", "zh": "穀倉、畜舍", "example": "The cows sleep in the barn at night.", "example_zh": "牛群晚上睡在穀倉裡。" }
+  ],
+  "barrel": [
+    { "pos": "n.", "zh": "桶", "example": "They stored water in a large barrel.", "example_zh": "他們把水儲存在一個大桶裡。" }
+  ],
+  "basement": [
+    { "pos": "n.", "zh": "地下室", "example": "We keep old boxes in the basement.", "example_zh": "我們把舊箱子放在地下室。" }
+  ],
+  "bay": [
+    { "pos": "n.", "zh": "海灣", "example": "Boats rested quietly in the bay.", "example_zh": "船隻靜靜地停在海灣裡。" }
+  ],
+  "bead": [
+    { "pos": "n.", "zh": "珠子", "example": "She made a necklace with colorful beads.", "example_zh": "她用彩色珠子做了一條項鍊。" }
+  ],
+  "beam": [
+    { "pos": "n.", "zh": "光束", "example": "A beam of light came through the window.", "example_zh": "一道光束從窗戶照進來。" },
+    { "pos": "n.", "zh": "樑、橫樑", "example": "Wooden beams support the roof.", "example_zh": "木樑撐住屋頂。" }
+  ],
+  "beast": [
+    { "pos": "n.", "zh": "野獸", "example": "The story is about a kind beast.", "example_zh": "這故事是關於一頭善良的野獸。" }
+  ],
+  "beetle": [
+    { "pos": "n.", "zh": "甲蟲", "example": "A black beetle crawled on the ground.", "example_zh": "一隻黑甲蟲在地上爬。" }
+  ],
+  "beneath": [
+    { "pos": "prep.", "zh": "在⋯下面", "example": "The cat hid beneath the table.", "example_zh": "貓躲在桌子底下。" }
+  ],
+  "benefit": [
+    { "pos": "n.", "zh": "益處、好處", "example": "Exercise has many health benefits.", "example_zh": "運動對健康有許多好處。" },
+    { "pos": "v.", "zh": "受益、有益於", "example": "We all benefit from clean air.", "example_zh": "我們都因乾淨的空氣而受益。" }
+  ],
+  "berry": [
+    { "pos": "n.", "zh": "莓果、漿果", "example": "Birds love to eat sweet berries.", "example_zh": "鳥兒愛吃甜甜的莓果。" }
+  ],
+  "besides": [
+    { "pos": "prep.", "zh": "除⋯之外（還有）", "example": "Besides English, she speaks French.", "example_zh": "除了英文，她還會說法文。" },
+    { "pos": "adv.", "zh": "此外、再說", "example": "It's late; besides, I'm tired.", "example_zh": "很晚了，再說我也累了。" }
+  ],
+  "bet": [
+    { "pos": "v.", "zh": "打賭、敢說", "example": "I bet you can't catch me.", "example_zh": "我打賭你抓不到我。" },
+    { "pos": "n.", "zh": "賭注、打賭", "example": "He made a bet with his friend.", "example_zh": "他和朋友打了個賭。" }
+  ],
+  "bind": [
+    { "pos": "v.", "zh": "綁、捆", "example": "She bound the papers together with string.", "example_zh": "她用繩子把文件捆在一起。" },
+    { "pos": "v.", "zh": "使結合、約束", "example": "A promise binds you to act.", "example_zh": "承諾使你必須行動。" }
+  ],
+  "bitter": [
+    { "pos": "adj.", "zh": "苦的", "example": "The medicine has a bitter taste.", "example_zh": "這藥嚐起來很苦。" },
+    { "pos": "adj.", "zh": "痛苦的、怨恨的", "example": "She felt bitter about losing.", "example_zh": "她對失敗感到怨恨。" }
+  ],
+  "bleed": [
+    { "pos": "v.", "zh": "流血", "example": "His finger started to bleed.", "example_zh": "他的手指開始流血。" }
+  ],
+  "bless": [
+    { "pos": "v.", "zh": "祝福、保佑", "example": "Grandma blessed us before the trip.", "example_zh": "奶奶在旅行前祝福我們。" }
+  ],
+  "bloody": [
+    { "pos": "adj.", "zh": "血腥的、血淋淋的", "example": "There was a bloody scene in the movie.", "example_zh": "電影裡有個血腥的場面。" }
+  ],
+  "blouse": [
+    { "pos": "n.", "zh": "女襯衫", "example": "She wore a white blouse to work.", "example_zh": "她穿了一件白色女襯衫去上班。" }
+  ],
+  "bold": [
+    { "pos": "adj.", "zh": "大膽的、勇敢的", "example": "It was a bold plan, but it worked.", "example_zh": "那是個大膽的計畫，但成功了。" },
+    { "pos": "adj.", "zh": "醒目的、粗體的", "example": "The title is printed in bold letters.", "example_zh": "標題用粗體字印刷。" }
+  ],
+  "bomb": [
+    { "pos": "n.", "zh": "炸彈", "example": "The old bomb was found underground.", "example_zh": "那枚舊炸彈在地下被發現。" },
+    { "pos": "v.", "zh": "轟炸", "example": "Planes bombed the bridge during the war.", "example_zh": "戰爭期間飛機轟炸了那座橋。" }
+  ],
+  "bookcase": [
+    { "pos": "n.", "zh": "書櫃", "example": "The bookcase is full of novels.", "example_zh": "書櫃裡擺滿了小說。" }
+  ],
+  "boot": [
+    { "pos": "n.", "zh": "靴子", "example": "She wore rubber boots in the rain.", "example_zh": "她下雨天穿著雨靴。" },
+    { "pos": "v.", "zh": "啟動（電腦，boot up）", "example": "Wait for the computer to boot up.", "example_zh": "等電腦開機。" }
+  ],
+  "bore": [
+    { "pos": "v.", "zh": "使厭煩、使無聊", "example": "The long speech bored the students.", "example_zh": "冗長的演講讓學生覺得無聊。" },
+    { "pos": "v.", "zh": "鑽（孔）", "example": "The workers bored a hole in the wall.", "example_zh": "工人在牆上鑽了個洞。" }
+  ],
+  "bowling": [
+    { "pos": "n.", "zh": "保齡球", "example": "We went bowling on Friday night.", "example_zh": "我們週五晚上去打保齡球。" }
+  ],
+  "brake": [
+    { "pos": "n.", "zh": "煞車", "example": "He pressed the brake to stop the car.", "example_zh": "他踩煞車讓車停下。" },
+    { "pos": "v.", "zh": "煞車、減速", "example": "She braked hard to avoid the dog.", "example_zh": "她緊急煞車以閃避那隻狗。" }
+  ],
+  "brass": [
+    { "pos": "n.", "zh": "黃銅", "example": "The lamp is made of shiny brass.", "example_zh": "這盞燈是用閃亮的黃銅做的。" }
+  ],
+  "bravery": [
+    { "pos": "n.", "zh": "勇敢、勇氣", "example": "The firefighter showed great bravery.", "example_zh": "消防員展現了極大的勇氣。" }
+  ],
+  "breast": [
+    { "pos": "n.", "zh": "胸部、胸膛", "example": "She held the baby to her breast.", "example_zh": "她把寶寶抱在胸前。" },
+    { "pos": "n.", "zh": "（家禽）胸肉", "example": "She likes to eat chicken breast.", "example_zh": "她喜歡吃雞胸肉。" }
+  ],
+  "breath": [
+    { "pos": "n.", "zh": "呼吸、氣息", "example": "Take a deep breath and relax.", "example_zh": "深呼吸，放輕鬆。" }
+  ],
+  "breathe": [
+    { "pos": "v.", "zh": "呼吸", "example": "It is hard to breathe in thin air.", "example_zh": "在稀薄的空氣中很難呼吸。" }
+  ],
+  "breeze": [
+    { "pos": "n.", "zh": "微風", "example": "A cool breeze blew from the sea.", "example_zh": "一陣涼爽的微風從海上吹來。" }
+  ],
+  "brick": [
+    { "pos": "n.", "zh": "磚塊", "example": "The house is built of red brick.", "example_zh": "這房子是用紅磚蓋的。" }
+  ],
+  "bride": [
+    { "pos": "n.", "zh": "新娘", "example": "The bride wore a beautiful white dress.", "example_zh": "新娘穿著美麗的白色禮服。" }
+  ],
+  "broadcast": [
+    { "pos": "v.", "zh": "播送、廣播", "example": "The game was broadcast live on TV.", "example_zh": "這場比賽在電視上現場直播。" },
+    { "pos": "n.", "zh": "廣播節目、播送", "example": "We listened to the news broadcast.", "example_zh": "我們收聽新聞廣播。" }
+  ],
+  "brunch": [
+    { "pos": "n.", "zh": "早午餐", "example": "We had a late brunch on Sunday.", "example_zh": "我們星期天吃了頓晚的早午餐。" }
+  ],
+  "bubble": [
+    { "pos": "n.", "zh": "泡泡、氣泡", "example": "The children blew soap bubbles.", "example_zh": "孩子們吹肥皂泡泡。" },
+    { "pos": "v.", "zh": "冒泡、沸騰", "example": "The water bubbled in the pot.", "example_zh": "鍋裡的水冒著泡。" }
+  ],
+  "bucket": [
+    { "pos": "n.", "zh": "水桶", "example": "She filled the bucket with water.", "example_zh": "她把水桶裝滿水。" }
+  ],
+  "bud": [
+    { "pos": "n.", "zh": "花苞、芽", "example": "The flower buds opened in spring.", "example_zh": "花苞在春天綻放。" }
+  ],
+  "budget": [
+    { "pos": "n.", "zh": "預算", "example": "We made a budget for the trip.", "example_zh": "我們為這趟旅行編了預算。" },
+    { "pos": "v.", "zh": "編列預算、量入為出", "example": "You should budget your money carefully.", "example_zh": "你應該謹慎規劃用錢。" }
+  ],
+  "buffalo": [
+    { "pos": "n.", "zh": "水牛", "example": "A buffalo drank from the river.", "example_zh": "一頭水牛在河邊喝水。" }
+  ],
+  "buffet": [
+    { "pos": "n.", "zh": "自助餐", "example": "The hotel offers a breakfast buffet.", "example_zh": "這家飯店提供自助式早餐。" }
+  ],
+  "bulb": [
+    { "pos": "n.", "zh": "燈泡", "example": "Please change the light bulb.", "example_zh": "請換掉這個燈泡。" },
+    { "pos": "n.", "zh": "（植物）球莖", "example": "Plant the tulip bulbs in autumn.", "example_zh": "在秋天種下鬱金香的球莖。" }
+  ],
+  "bull": [
+    { "pos": "n.", "zh": "公牛", "example": "The angry bull charged at the gate.", "example_zh": "憤怒的公牛朝大門衝去。" }
+  ],
+  "bullet": [
+    { "pos": "n.", "zh": "子彈", "example": "The bullet missed the target.", "example_zh": "子彈沒打中目標。" }
+  ],
+  "bump": [
+    { "pos": "v.", "zh": "碰、撞", "example": "Be careful not to bump your head.", "example_zh": "小心別撞到頭。" },
+    { "pos": "n.", "zh": "腫塊、隆起", "example": "There is a bump on the road.", "example_zh": "路上有個隆起。" }
+  ],
+  "bunch": [
+    { "pos": "n.", "zh": "一串、一群", "example": "He bought a bunch of bananas.", "example_zh": "他買了一串香蕉。" }
+  ],
+  "bundle": [
+    { "pos": "n.", "zh": "一捆、一束", "example": "She tied the letters into a bundle.", "example_zh": "她把信件綁成一捆。" }
+  ],
+  "bury": [
+    { "pos": "v.", "zh": "埋、埋葬", "example": "The dog buried its bone in the yard.", "example_zh": "那隻狗把骨頭埋在院子裡。" }
+  ],
+  "bush": [
+    { "pos": "n.", "zh": "灌木叢", "example": "A small bird hid in the bush.", "example_zh": "一隻小鳥躲在灌木叢裡。" }
+  ],
+  "buzz": [
+    { "pos": "v.", "zh": "發出嗡嗡聲", "example": "A bee buzzed around the flower.", "example_zh": "一隻蜜蜂在花朵旁嗡嗡飛。" },
+    { "pos": "n.", "zh": "嗡嗡聲", "example": "I heard the buzz of insects.", "example_zh": "我聽見昆蟲的嗡嗡聲。" }
+  ],
+  "cabin": [
+    { "pos": "n.", "zh": "小木屋", "example": "They stayed in a wooden cabin in the woods.", "example_zh": "他們住在樹林裡的小木屋。" },
+    { "pos": "n.", "zh": "客艙、船艙", "example": "The flight attendant walked through the cabin.", "example_zh": "空服員走過客艙。" }
+  ],
+  "cable": [
+    { "pos": "n.", "zh": "電纜、纜線", "example": "Connect the cable to the computer.", "example_zh": "把纜線接到電腦上。" },
+    { "pos": "n.", "zh": "有線電視（cable TV）", "example": "We watch movies on cable.", "example_zh": "我們看有線電視的電影。" }
+  ],
+  "cafeteria": [
+    { "pos": "n.", "zh": "自助餐廳", "example": "We have lunch in the school cafeteria.", "example_zh": "我們在學校餐廳吃午餐。" }
+  ],
+  "campus": [
+    { "pos": "n.", "zh": "校園", "example": "The university has a large campus.", "example_zh": "這所大學有很大的校園。" }
+  ],
+  "canyon": [
+    { "pos": "n.", "zh": "峽谷", "example": "The river runs through a deep canyon.", "example_zh": "河流穿過一道深谷。" }
+  ]
+}

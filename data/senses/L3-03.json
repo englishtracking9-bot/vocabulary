@@ -1,0 +1,200 @@
+{
+  "capable": [
+    { "pos": "adj.", "zh": "有能力的", "example": "She is capable of solving hard problems.", "example_zh": "她有能力解決難題。" }
+  ],
+  "captain": [
+    { "pos": "n.", "zh": "隊長、船長", "example": "The captain led the team to victory.", "example_zh": "隊長帶領球隊獲勝。" }
+  ],
+  "capture": [
+    { "pos": "v.", "zh": "捕獲、俘虜", "example": "The hunters captured a wild animal.", "example_zh": "獵人捕獲了一頭野生動物。" },
+    { "pos": "v.", "zh": "捕捉、記錄（畫面）", "example": "The photo captured a happy moment.", "example_zh": "這張照片捕捉了快樂的一刻。" }
+  ],
+  "career": [
+    { "pos": "n.", "zh": "職業、生涯", "example": "She chose teaching as her career.", "example_zh": "她選擇教書作為職業。" }
+  ],
+  "carpenter": [
+    { "pos": "n.", "zh": "木匠", "example": "The carpenter made a wooden chair.", "example_zh": "木匠做了一張木椅。" }
+  ],
+  "carpet": [
+    { "pos": "n.", "zh": "地毯", "example": "There is a soft carpet on the floor.", "example_zh": "地板上鋪著柔軟的地毯。" }
+  ],
+  "carriage": [
+    { "pos": "n.", "zh": "馬車", "example": "A horse pulled the old carriage.", "example_zh": "一匹馬拉著那輛舊馬車。" },
+    { "pos": "n.", "zh": "（火車）車廂", "example": "We sat in the first carriage.", "example_zh": "我們坐在第一節車廂。" }
+  ],
+  "cart": [
+    { "pos": "n.", "zh": "手推車", "example": "She pushed the shopping cart down the aisle.", "example_zh": "她推著購物車走過走道。" },
+    { "pos": "v.", "zh": "用車搬運", "example": "They carted the boxes to the truck.", "example_zh": "他們把箱子搬上卡車。" }
+  ],
+  "cast": [
+    { "pos": "v.", "zh": "投、擲", "example": "He cast his line into the river.", "example_zh": "他把釣線拋進河裡。" },
+    { "pos": "n.", "zh": "全體演員", "example": "The whole cast came on stage.", "example_zh": "全體演員都上了台。" }
+  ],
+  "casual": [
+    { "pos": "adj.", "zh": "隨意的、休閒的", "example": "Wear casual clothes to the picnic.", "example_zh": "穿休閒的衣服來野餐。" }
+  ],
+  "cattle": [
+    { "pos": "n.", "zh": "牛（群）", "example": "The farmer keeps many cattle.", "example_zh": "那個農夫養了很多牛。" }
+  ],
+  "cave": [
+    { "pos": "n.", "zh": "洞穴、山洞", "example": "Bats live in the dark cave.", "example_zh": "蝙蝠住在黑暗的洞穴裡。" }
+  ],
+  "champion": [
+    { "pos": "n.", "zh": "冠軍", "example": "She is the swimming champion this year.", "example_zh": "她是今年的游泳冠軍。" }
+  ],
+  "charm": [
+    { "pos": "n.", "zh": "魅力、迷人之處", "example": "Her smile is full of charm.", "example_zh": "她的微笑充滿魅力。" },
+    { "pos": "v.", "zh": "迷住、吸引", "example": "The singer charmed the audience.", "example_zh": "歌手迷住了觀眾。" }
+  ],
+  "chat": [
+    { "pos": "n.", "zh": "閒聊、聊天", "example": "We had a friendly chat over coffee.", "example_zh": "我們邊喝咖啡邊愉快地聊天。" },
+    { "pos": "v.", "zh": "閒聊、聊天", "example": "They chatted about the weather.", "example_zh": "他們聊起天氣。" }
+  ],
+  "cheek": [
+    { "pos": "n.", "zh": "臉頰", "example": "The baby has soft pink cheeks.", "example_zh": "寶寶有著柔嫩的粉紅臉頰。" }
+  ],
+  "cheerful": [
+    { "pos": "adj.", "zh": "快樂的、開朗的", "example": "She greeted us in a cheerful voice.", "example_zh": "她以開朗的聲音和我們打招呼。" }
+  ],
+  "cherry": [
+    { "pos": "n.", "zh": "櫻桃", "example": "There is a cherry on top of the cake.", "example_zh": "蛋糕上有一顆櫻桃。" }
+  ],
+  "chest": [
+    { "pos": "n.", "zh": "胸部、胸膛", "example": "He felt a pain in his chest.", "example_zh": "他感到胸口疼痛。" },
+    { "pos": "n.", "zh": "箱子、櫃子", "example": "She keeps her toys in a wooden chest.", "example_zh": "她把玩具放在一個木箱裡。" }
+  ],
+  "chill": [
+    { "pos": "n.", "zh": "寒意、涼意", "example": "I felt a chill when the wind blew.", "example_zh": "風一吹我感到一陣寒意。" },
+    { "pos": "v.", "zh": "使變冷、冷藏", "example": "Chill the drinks before the party.", "example_zh": "派對前先把飲料冰鎮。" }
+  ],
+  "chilly": [
+    { "pos": "adj.", "zh": "寒冷的、涼颼颼的", "example": "It is chilly outside this morning.", "example_zh": "今天早上外面很冷。" }
+  ],
+  "chimney": [
+    { "pos": "n.", "zh": "煙囪", "example": "Smoke rose from the chimney.", "example_zh": "煙從煙囪冒出來。" }
+  ],
+  "chin": [
+    { "pos": "n.", "zh": "下巴", "example": "He rested his chin on his hand.", "example_zh": "他用手托著下巴。" }
+  ],
+  "chip": [
+    { "pos": "n.", "zh": "晶片", "example": "There is a tiny chip inside the phone.", "example_zh": "手機裡有一塊微小的晶片。" },
+    { "pos": "n.", "zh": "碎片、缺口", "example": "There is a chip on the edge of the cup.", "example_zh": "杯子邊緣有個缺口。" }
+  ],
+  "chop": [
+    { "pos": "v.", "zh": "砍、剁、切", "example": "She chopped the onions into small pieces.", "example_zh": "她把洋蔥切成小塊。" }
+  ],
+  "cigarette": [
+    { "pos": "n.", "zh": "香菸", "example": "Smoking cigarettes is bad for your health.", "example_zh": "抽菸有害健康。" }
+  ],
+  "cinema": [
+    { "pos": "n.", "zh": "電影院", "example": "We watched a movie at the cinema.", "example_zh": "我們在電影院看了一部電影。" }
+  ],
+  "circus": [
+    { "pos": "n.", "zh": "馬戲團", "example": "The children laughed at the circus.", "example_zh": "孩子們在馬戲團裡開懷大笑。" }
+  ],
+  "citizen": [
+    { "pos": "n.", "zh": "公民、市民", "example": "Every citizen has the right to vote.", "example_zh": "每個公民都有投票權。" }
+  ],
+  "civil": [
+    { "pos": "adj.", "zh": "公民的、民間的", "example": "They fought for their civil rights.", "example_zh": "他們為公民權利奮鬥。" },
+    { "pos": "adj.", "zh": "有禮的、客氣的", "example": "They discussed the problem in a civil way.", "example_zh": "他們以有禮的方式討論問題。" }
+  ],
+  "clay": [
+    { "pos": "n.", "zh": "黏土", "example": "The artist made a bowl from clay.", "example_zh": "藝術家用黏土做了一個碗。" }
+  ],
+  "cleaner": [
+    { "pos": "n.", "zh": "清潔工", "example": "The cleaner mops the office floor.", "example_zh": "清潔工拖辦公室的地板。" },
+    { "pos": "n.", "zh": "清潔劑", "example": "Use a cleaner to remove the stain.", "example_zh": "用清潔劑去除汙漬。" }
+  ],
+  "client": [
+    { "pos": "n.", "zh": "客戶、委託人", "example": "The lawyer met with her client.", "example_zh": "律師與她的客戶會面。" }
+  ],
+  "clinic": [
+    { "pos": "n.", "zh": "診所", "example": "I went to the clinic for a check-up.", "example_zh": "我去診所做健康檢查。" }
+  ],
+  "clip": [
+    { "pos": "n.", "zh": "夾子、迴紋針", "example": "Use a clip to hold the papers together.", "example_zh": "用夾子把文件夾在一起。" },
+    { "pos": "v.", "zh": "夾住、修剪", "example": "She clipped the photo to the board.", "example_zh": "她把照片夾在板子上。" }
+  ],
+  "closet": [
+    { "pos": "n.", "zh": "衣櫥、壁櫥", "example": "Her clothes are hung in the closet.", "example_zh": "她的衣服掛在衣櫥裡。" }
+  ],
+  "clothe": [
+    { "pos": "v.", "zh": "給⋯穿衣、供應衣服", "example": "They worked hard to feed and clothe the family.", "example_zh": "他們努力工作以養活並供給家人衣食。" }
+  ],
+  "clown": [
+    { "pos": "n.", "zh": "小丑", "example": "The clown made everyone laugh.", "example_zh": "小丑逗得大家哈哈大笑。" }
+  ],
+  "clue": [
+    { "pos": "n.", "zh": "線索", "example": "The detective looked for a clue.", "example_zh": "偵探尋找線索。" }
+  ],
+  "coach": [
+    { "pos": "n.", "zh": "教練", "example": "The coach taught us how to swim.", "example_zh": "教練教我們游泳。" },
+    { "pos": "v.", "zh": "訓練、指導", "example": "She coaches the school tennis team.", "example_zh": "她指導學校的網球隊。" }
+  ],
+  "cock": [
+    { "pos": "n.", "zh": "公雞", "example": "The cock crows at dawn.", "example_zh": "公雞在黎明時啼叫。" }
+  ],
+  "cocktail": [
+    { "pos": "n.", "zh": "雞尾酒", "example": "The adults enjoyed a fruit cocktail.", "example_zh": "大人們享用了水果雞尾酒。" }
+  ],
+  "coconut": [
+    { "pos": "n.", "zh": "椰子", "example": "We drank fresh coconut water.", "example_zh": "我們喝了新鮮的椰子水。" }
+  ],
+  "collar": [
+    { "pos": "n.", "zh": "衣領", "example": "The shirt has a clean white collar.", "example_zh": "這件襯衫有乾淨的白領子。" },
+    { "pos": "n.", "zh": "（寵物）項圈", "example": "The dog wears a red collar.", "example_zh": "那隻狗戴著紅色項圈。" }
+  ],
+  "collection": [
+    { "pos": "n.", "zh": "收藏、收集", "example": "He has a large stamp collection.", "example_zh": "他有大量的郵票收藏。" }
+  ],
+  "colony": [
+    { "pos": "n.", "zh": "（昆蟲、動物）群體", "example": "Ants live together in a colony.", "example_zh": "螞蟻群居在一起。" },
+    { "pos": "n.", "zh": "殖民地", "example": "The island was once a colony.", "example_zh": "這座島曾是殖民地。" }
+  ],
+  "colorful": [
+    { "pos": "adj.", "zh": "色彩繽紛的", "example": "The garden is full of colorful flowers.", "example_zh": "花園裡開滿色彩繽紛的花。" }
+  ],
+  "column": [
+    { "pos": "n.", "zh": "圓柱、柱子", "example": "Tall stone columns held up the roof.", "example_zh": "高大的石柱撐起屋頂。" },
+    { "pos": "n.", "zh": "（報刊）專欄", "example": "She writes a weekly column.", "example_zh": "她每週寫一個專欄。" }
+  ],
+  "comfort": [
+    { "pos": "v.", "zh": "安慰、撫慰", "example": "She comforted the crying child.", "example_zh": "她安慰哭泣的孩子。" },
+    { "pos": "n.", "zh": "舒適、安慰", "example": "He lives in comfort.", "example_zh": "他生活舒適。" }
+  ],
+  "comma": [
+    { "pos": "n.", "zh": "逗號", "example": "Put a comma after the first word.", "example_zh": "在第一個字後面加個逗號。" }
+  ],
+  "committee": [
+    { "pos": "n.", "zh": "委員會", "example": "The committee will decide on the plan.", "example_zh": "委員會將就這個計畫做決定。" }
+  ],
+  "communicate": [
+    { "pos": "v.", "zh": "溝通、交流", "example": "We communicate by email every day.", "example_zh": "我們每天用電子郵件聯絡。" }
+  ],
+  "comparison": [
+    { "pos": "n.", "zh": "比較", "example": "There is no comparison between the two.", "example_zh": "這兩者無法相比。" }
+  ],
+  "compete": [
+    { "pos": "v.", "zh": "競爭、比賽", "example": "Many runners competed in the race.", "example_zh": "許多跑者參加這場比賽。" }
+  ],
+  "complain": [
+    { "pos": "v.", "zh": "抱怨", "example": "She complained about the cold soup.", "example_zh": "她抱怨湯冷了。" }
+  ],
+  "complaint": [
+    { "pos": "n.", "zh": "抱怨、投訴", "example": "The customer made a complaint.", "example_zh": "那位顧客提出了投訴。" }
+  ],
+  "concert": [
+    { "pos": "n.", "zh": "音樂會、演唱會", "example": "We went to a rock concert last night.", "example_zh": "我們昨晚去看了一場搖滾演唱會。" }
+  ],
+  "conclusion": [
+    { "pos": "n.", "zh": "結論", "example": "We reached the same conclusion.", "example_zh": "我們得出相同的結論。" }
+  ],
+  "cone": [
+    { "pos": "n.", "zh": "圓錐（體）", "example": "The road workers placed orange cones.", "example_zh": "道路工人擺放了橘色三角錐。" },
+    { "pos": "n.", "zh": "甜筒、蛋捲", "example": "She ate an ice cream cone.", "example_zh": "她吃了一支冰淇淋甜筒。" }
+  ],
+  "confirm": [
+    { "pos": "v.", "zh": "確認、證實", "example": "Please confirm your booking by email.", "example_zh": "請以電子郵件確認你的預訂。" }
+  ]
+}
