@@ -1,0 +1,194 @@
+{
+  "hatred": [
+    { "pos": "n.", "zh": "仇恨、憎恨", "example": "Hatred only causes more pain.", "example_zh": "仇恨只會帶來更多痛苦。" }
+  ],
+  "hawk": [
+    { "pos": "n.", "zh": "鷹、隼", "example": "A hawk circled high above the field.", "example_zh": "一隻鷹在田野上空高高盤旋。" }
+  ],
+  "helicopter": [
+    { "pos": "n.", "zh": "直升機", "example": "A helicopter rescued the lost climbers.", "example_zh": "一架直升機救出了迷路的登山客。" }
+  ],
+  "herd": [
+    { "pos": "n.", "zh": "（牛、羊）群", "example": "A herd of cows crossed the road.", "example_zh": "一群牛橫越馬路。" },
+    { "pos": "v.", "zh": "放牧、驅趕", "example": "The dog herded the sheep.", "example_zh": "那隻狗驅趕著羊群。" }
+  ],
+  "hesitation": [
+    { "pos": "n.", "zh": "猶豫、遲疑", "example": "She agreed without hesitation.", "example_zh": "她毫不猶豫地同意了。" }
+  ],
+  "hive": [
+    { "pos": "n.", "zh": "蜂巢、蜂房", "example": "Bees live together in a hive.", "example_zh": "蜜蜂群居在蜂巢裡。" }
+  ],
+  "homeland": [
+    { "pos": "n.", "zh": "祖國、家園", "example": "He missed his homeland while abroad.", "example_zh": "他在國外時很想念祖國。" }
+  ],
+  "honeymoon": [
+    { "pos": "n.", "zh": "蜜月", "example": "They went to Italy for their honeymoon.", "example_zh": "他們去義大利度蜜月。" }
+  ],
+  "hook": [
+    { "pos": "n.", "zh": "鉤子、掛鉤", "example": "He hung his coat on the hook.", "example_zh": "他把外套掛在掛鉤上。" },
+    { "pos": "v.", "zh": "鉤住、勾住", "example": "She hooked the fish quickly.", "example_zh": "她迅速鉤住了那條魚。" }
+  ],
+  "horizon": [
+    { "pos": "n.", "zh": "地平線、視野", "example": "The sun set below the horizon.", "example_zh": "太陽落到地平線下。" }
+  ],
+  "horrify": [
+    { "pos": "v.", "zh": "使驚駭、使震驚", "example": "The scary movie horrified the children.", "example_zh": "那部恐怖片把孩子們嚇壞了。" }
+  ],
+  "hose": [
+    { "pos": "n.", "zh": "軟管、水管", "example": "He watered the garden with a hose.", "example_zh": "他用水管澆花園。" },
+    { "pos": "v.", "zh": "用水管沖洗（hose down）", "example": "She hosed down the car.", "example_zh": "她用水管把車沖洗乾淨。" }
+  ],
+  "household": [
+    { "pos": "n.", "zh": "家庭、一戶", "example": "Cleaning is a daily household task.", "example_zh": "打掃是每天的家務。" }
+  ],
+  "housework": [
+    { "pos": "n.", "zh": "家事、家務", "example": "We share the housework at home.", "example_zh": "我們在家分擔家務。" }
+  ],
+  "humanity": [
+    { "pos": "n.", "zh": "人類、人類全體", "example": "Clean air matters to all of humanity.", "example_zh": "乾淨的空氣對全人類都重要。" },
+    { "pos": "n.", "zh": "人性、仁慈", "example": "She treated everyone with humanity.", "example_zh": "她以仁慈對待每個人。" }
+  ],
+  "humidity": [
+    { "pos": "n.", "zh": "濕度、潮濕", "example": "The humidity is high in summer.", "example_zh": "夏天濕度很高。" }
+  ],
+  "hurricane": [
+    { "pos": "n.", "zh": "颶風", "example": "The hurricane destroyed many homes.", "example_zh": "颶風摧毀了許多房屋。" }
+  ],
+  "hush": [
+    { "pos": "v.", "zh": "使安靜、別出聲", "example": "Hush, the baby is sleeping.", "example_zh": "噓，寶寶在睡覺。" },
+    { "pos": "n.", "zh": "寂靜、安靜", "example": "A hush fell over the room.", "example_zh": "房間裡頓時安靜下來。" }
+  ],
+  "hydrogen": [
+    { "pos": "n.", "zh": "氫、氫氣", "example": "Water is made of hydrogen and oxygen.", "example_zh": "水由氫和氧組成。" }
+  ],
+  "identical": [
+    { "pos": "adj.", "zh": "完全相同的、一模一樣的", "example": "The two bags are identical.", "example_zh": "這兩個袋子一模一樣。" }
+  ],
+  "identification": [
+    { "pos": "n.", "zh": "身分證明、辨認", "example": "Please show some identification.", "example_zh": "請出示身分證明。" }
+  ],
+  "identify": [
+    { "pos": "v.", "zh": "辨認、確認", "example": "Can you identify this bird?", "example_zh": "你能辨認出這種鳥嗎？" }
+  ],
+  "idiom": [
+    { "pos": "n.", "zh": "慣用語、成語", "example": "'Break a leg' is an English idiom.", "example_zh": "「祝好運」是個英文慣用語。" }
+  ],
+  "idle": [
+    { "pos": "adj.", "zh": "閒置的、未使用的", "example": "The machine sat idle all day.", "example_zh": "那台機器整天閒置著。" },
+    { "pos": "adj.", "zh": "懶散的、無所事事的", "example": "He spent an idle afternoon by the pool.", "example_zh": "他在泳池邊度過了一個慵懶的下午。" }
+  ],
+  "idol": [
+    { "pos": "n.", "zh": "偶像", "example": "The singer is the teen's idol.", "example_zh": "那位歌手是這名青少年的偶像。" }
+  ],
+  "ignorance": [
+    { "pos": "n.", "zh": "無知、不知道", "example": "His mistake came from ignorance, not anger.", "example_zh": "他的錯誤源於無知，而非生氣。" }
+  ],
+  "ignorant": [
+    { "pos": "adj.", "zh": "無知的、不知道的", "example": "He was ignorant of the new rules.", "example_zh": "他不知道有新規定。" }
+  ],
+  "illustrate": [
+    { "pos": "v.", "zh": "說明、舉例闡明", "example": "She used a story to illustrate the point.", "example_zh": "她用一個故事來說明這個論點。" },
+    { "pos": "v.", "zh": "為⋯加插圖", "example": "He illustrated the children's book.", "example_zh": "他為這本童書畫插圖。" }
+  ],
+  "illustration": [
+    { "pos": "n.", "zh": "插圖、圖示", "example": "The book has colorful illustrations.", "example_zh": "這本書有色彩繽紛的插圖。" },
+    { "pos": "n.", "zh": "例證、說明", "example": "This is a good illustration of the rule.", "example_zh": "這是這條規則的好例子。" }
+  ],
+  "imaginary": [
+    { "pos": "adj.", "zh": "想像的、虛構的", "example": "The child has an imaginary friend.", "example_zh": "那孩子有個想像中的朋友。" }
+  ],
+  "imaginative": [
+    { "pos": "adj.", "zh": "富有想像力的", "example": "She wrote an imaginative story about space.", "example_zh": "她寫了一個充滿想像力的太空故事。" }
+  ],
+  "imitate": [
+    { "pos": "v.", "zh": "模仿、仿效", "example": "The parrot can imitate human speech.", "example_zh": "鸚鵡能模仿人說話。" }
+  ],
+  "imitation": [
+    { "pos": "n.", "zh": "仿製品、仿冒品", "example": "The bag is a cheap imitation of a brand.", "example_zh": "這個包是某品牌的廉價仿冒品。" },
+    { "pos": "n.", "zh": "模仿", "example": "He does a funny imitation of his teacher.", "example_zh": "他模仿老師模仿得很好笑。" }
+  ],
+  "immigrant": [
+    { "pos": "n.", "zh": "移民、僑民", "example": "Many immigrants started new lives here.", "example_zh": "許多移民在這裡展開新生活。" }
+  ],
+  "immigrate": [
+    { "pos": "v.", "zh": "移居、移入", "example": "Her family immigrated to Canada.", "example_zh": "她全家移民到加拿大。" }
+  ],
+  "immigration": [
+    { "pos": "n.", "zh": "移民、入境（查驗）", "example": "We waited in line at immigration.", "example_zh": "我們在入境查驗處排隊。" }
+  ],
+  "impact": [
+    { "pos": "n.", "zh": "影響、衝擊", "example": "The news had a big impact on the town.", "example_zh": "這消息對小鎮影響很大。" },
+    { "pos": "v.", "zh": "影響、衝擊", "example": "The change impacted many families.", "example_zh": "這個改變影響了許多家庭。" }
+  ],
+  "imply": [
+    { "pos": "v.", "zh": "暗示、意味著", "example": "Her smile implied that she agreed.", "example_zh": "她的微笑暗示她同意了。" }
+  ],
+  "impose": [
+    { "pos": "v.", "zh": "強加、實施", "example": "The school imposed a new rule.", "example_zh": "學校實施了一項新規定。" }
+  ],
+  "impression": [
+    { "pos": "n.", "zh": "印象、感想", "example": "She made a good first impression.", "example_zh": "她給人很好的第一印象。" }
+  ],
+  "incident": [
+    { "pos": "n.", "zh": "事件、事故", "example": "Nobody was hurt in the small incident.", "example_zh": "這起小事故沒有人受傷。" }
+  ],
+  "including": [
+    { "pos": "prep.", "zh": "包括、包含", "example": "Everyone came, including the teacher.", "example_zh": "大家都來了，包括老師。" }
+  ],
+  "incredible": [
+    { "pos": "adj.", "zh": "難以置信的、極好的", "example": "The view from the top was incredible.", "example_zh": "從頂端看的景色美得令人難以置信。" }
+  ],
+  "indication": [
+    { "pos": "n.", "zh": "跡象、指示", "example": "Dark clouds are an indication of rain.", "example_zh": "烏雲是要下雨的跡象。" }
+  ],
+  "infant": [
+    { "pos": "n.", "zh": "嬰兒、幼兒", "example": "The infant slept in her mother's arms.", "example_zh": "嬰兒在媽媽懷裡睡著了。" }
+  ],
+  "infection": [
+    { "pos": "n.", "zh": "感染、傳染", "example": "Clean the cut to prevent infection.", "example_zh": "清理傷口以防感染。" }
+  ],
+  "inflation": [
+    { "pos": "n.", "zh": "通貨膨脹", "example": "Inflation made everything more expensive.", "example_zh": "通貨膨脹使一切都變貴了。" }
+  ],
+  "influential": [
+    { "pos": "adj.", "zh": "有影響力的", "example": "She is an influential leader.", "example_zh": "她是個有影響力的領袖。" }
+  ],
+  "informative": [
+    { "pos": "adj.", "zh": "提供資訊的、有益的", "example": "The talk was clear and informative.", "example_zh": "這場演講清楚又有料。" }
+  ],
+  "ingredient": [
+    { "pos": "n.", "zh": "原料、成分", "example": "Flour is the main ingredient in bread.", "example_zh": "麵粉是麵包的主要原料。" }
+  ],
+  "initial": [
+    { "pos": "adj.", "zh": "最初的、開始的", "example": "My initial plan was to walk there.", "example_zh": "我原本的計畫是走路去那裡。" },
+    { "pos": "n.", "zh": "（姓名的）首字母", "example": "Sign your initials here.", "example_zh": "在這裡簽上你姓名的首字母。" }
+  ],
+  "injure": [
+    { "pos": "v.", "zh": "使受傷、傷害", "example": "He injured his leg during the game.", "example_zh": "他在比賽中傷了腿。" }
+  ],
+  "innocence": [
+    { "pos": "n.", "zh": "清白、純真", "example": "The lawyer proved his innocence.", "example_zh": "律師證明了他的清白。" }
+  ],
+  "input": [
+    { "pos": "n.", "zh": "投入、意見", "example": "We need your input on the plan.", "example_zh": "這個計畫需要你的意見。" },
+    { "pos": "v.", "zh": "輸入（資料）", "example": "She input the data into the computer.", "example_zh": "她把資料輸入電腦。" }
+  ],
+  "insert": [
+    { "pos": "v.", "zh": "插入、嵌入", "example": "Insert the coin into the machine.", "example_zh": "把硬幣投進機器裡。" }
+  ],
+  "inspection": [
+    { "pos": "n.", "zh": "檢查、視察", "example": "The car passed the safety inspection.", "example_zh": "這輛車通過了安全檢查。" }
+  ],
+  "inspiration": [
+    { "pos": "n.", "zh": "靈感、啟發", "example": "Nature is a source of inspiration.", "example_zh": "大自然是靈感的來源。" }
+  ],
+  "inspire": [
+    { "pos": "v.", "zh": "激勵、啟發", "example": "Her courage inspired us all.", "example_zh": "她的勇氣激勵了我們所有人。" }
+  ],
+  "install": [
+    { "pos": "v.", "zh": "安裝、設置", "example": "They installed a new air conditioner.", "example_zh": "他們裝了一台新冷氣。" }
+  ],
+  "instinct": [
+    { "pos": "n.", "zh": "本能、直覺", "example": "Animals find food by instinct.", "example_zh": "動物憑本能尋找食物。" }
+  ]
+}
