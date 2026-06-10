@@ -1,0 +1,189 @@
+{
+  "cathedral": [
+    { "pos": "n.", "zh": "大教堂", "example": "The old cathedral has tall windows.", "example_zh": "那座古老的大教堂有高高的窗戶。" }
+  ],
+  "caution": [
+    { "pos": "n.", "zh": "謹慎、小心", "example": "Handle the hot pan with caution.", "example_zh": "小心拿那個熱鍋。" },
+    { "pos": "v.", "zh": "警告、告誡", "example": "The sign cautions drivers to slow down.", "example_zh": "標誌警告駕駛減速。" }
+  ],
+  "cautious": [
+    { "pos": "adj.", "zh": "謹慎的、小心的", "example": "She is cautious when crossing the street.", "example_zh": "她過馬路時很小心。" }
+  ],
+  "celebrity": [
+    { "pos": "n.", "zh": "名人、名氣", "example": "The celebrity signed many autographs.", "example_zh": "那位名人簽了許多名。" }
+  ],
+  "cemetery": [
+    { "pos": "n.", "zh": "公墓、墓地", "example": "Flowers were placed in the cemetery.", "example_zh": "公墓裡擺放了鮮花。" }
+  ],
+  "ceremony": [
+    { "pos": "n.", "zh": "典禮、儀式", "example": "The opening ceremony was beautiful.", "example_zh": "開幕典禮很美。" }
+  ],
+  "certainty": [
+    { "pos": "n.", "zh": "確定、必然", "example": "There is no certainty about the weather.", "example_zh": "天氣沒有什麼是確定的。" }
+  ],
+  "certificate": [
+    { "pos": "n.", "zh": "證書、證明", "example": "She received a certificate for the course.", "example_zh": "她拿到了這門課的結業證書。" }
+  ],
+  "chaos": [
+    { "pos": "n.", "zh": "混亂、紊亂", "example": "The room was in complete chaos.", "example_zh": "房間裡一片混亂。" }
+  ],
+  "chapel": [
+    { "pos": "n.", "zh": "小教堂、禮拜堂", "example": "They prayed quietly in the small chapel.", "example_zh": "他們在小教堂裡靜靜地禱告。" }
+  ],
+  "characterize": [
+    { "pos": "v.", "zh": "是⋯的特徵、描述", "example": "Kindness characterizes her actions.", "example_zh": "善良是她行為的特徵。" }
+  ],
+  "chef": [
+    { "pos": "n.", "zh": "主廚、廚師", "example": "The chef prepared a delicious meal.", "example_zh": "主廚準備了一頓美味的餐點。" }
+  ],
+  "choir": [
+    { "pos": "n.", "zh": "唱詩班、合唱團", "example": "She sings in the school choir.", "example_zh": "她在學校合唱團唱歌。" }
+  ],
+  "chord": [
+    { "pos": "n.", "zh": "和弦", "example": "He played a soft chord on the guitar.", "example_zh": "他在吉他上彈了一個柔和的和弦。" }
+  ],
+  "chore": [
+    { "pos": "n.", "zh": "雜務、家事", "example": "Washing dishes is a daily chore.", "example_zh": "洗碗是每天的雜務。" }
+  ],
+  "chronic": [
+    { "pos": "adj.", "zh": "慢性的、長期的", "example": "He suffers from chronic back pain.", "example_zh": "他有慢性背痛。" }
+  ],
+  "chubby": [
+    { "pos": "adj.", "zh": "圓胖的、胖嘟嘟的", "example": "The baby has chubby little cheeks.", "example_zh": "寶寶有胖嘟嘟的小臉頰。" }
+  ],
+  "chunk": [
+    { "pos": "n.", "zh": "大塊、大部分", "example": "She cut a big chunk of cheese.", "example_zh": "她切了一大塊起司。" }
+  ],
+  "circuit": [
+    { "pos": "n.", "zh": "電路、巡迴", "example": "The electric circuit was broken.", "example_zh": "電路斷了。" }
+  ],
+  "cite": [
+    { "pos": "v.", "zh": "引用、舉出", "example": "Please cite the source of your information.", "example_zh": "請註明你資訊的來源。" }
+  ],
+  "citizenship": [
+    { "pos": "n.", "zh": "公民身分、國籍", "example": "He applied for citizenship in his new country.", "example_zh": "他申請了新國家的公民身分。" }
+  ],
+  "civic": [
+    { "pos": "adj.", "zh": "公民的、市民的", "example": "Voting is a civic duty.", "example_zh": "投票是公民的義務。" }
+  ],
+  "clarity": [
+    { "pos": "n.", "zh": "清晰、清楚", "example": "She explained the rule with clarity.", "example_zh": "她把規則解釋得很清楚。" }
+  ],
+  "clause": [
+    { "pos": "n.", "zh": "（合約）條款", "example": "Read every clause of the contract.", "example_zh": "仔細讀合約的每一條款。" },
+    { "pos": "n.", "zh": "（文法）子句", "example": "A sentence can have two clauses.", "example_zh": "一個句子可以有兩個子句。" }
+  ],
+  "cling": [
+    { "pos": "v.", "zh": "緊抓、依附", "example": "The child clung to her mother's hand.", "example_zh": "那孩子緊抓著媽媽的手。" }
+  ],
+  "clinical": [
+    { "pos": "adj.", "zh": "臨床的", "example": "The new drug passed its clinical test.", "example_zh": "這款新藥通過了臨床試驗。" }
+  ],
+  "cluster": [
+    { "pos": "n.", "zh": "一群、一簇", "example": "A cluster of stars shone in the sky.", "example_zh": "一簇星星在天上閃耀。" },
+    { "pos": "v.", "zh": "群集、聚集", "example": "People clustered around the fire.", "example_zh": "人們聚在火堆旁。" }
+  ],
+  "cocaine": [
+    { "pos": "n.", "zh": "古柯鹼", "example": "Cocaine is a dangerous and illegal drug.", "example_zh": "古柯鹼是危險的非法毒品。" }
+  ],
+  "coffin": [
+    { "pos": "n.", "zh": "棺材", "example": "The coffin was made of dark wood.", "example_zh": "那口棺材是用深色木頭做的。" }
+  ],
+  "cognitive": [
+    { "pos": "adj.", "zh": "認知的", "example": "Puzzles can improve cognitive skills.", "example_zh": "益智遊戲能增進認知能力。" }
+  ],
+  "coherent": [
+    { "pos": "adj.", "zh": "連貫的、有條理的", "example": "She gave a clear and coherent answer.", "example_zh": "她給了一個清楚又有條理的回答。" }
+  ],
+  "coincidence": [
+    { "pos": "n.", "zh": "巧合", "example": "Meeting you here is a happy coincidence.", "example_zh": "在這裡遇見你真是個美好的巧合。" }
+  ],
+  "collaboration": [
+    { "pos": "n.", "zh": "合作、協作", "example": "The book was a collaboration of two writers.", "example_zh": "這本書是兩位作家合作的成果。" }
+  ],
+  "collective": [
+    { "pos": "adj.", "zh": "集體的、共同的", "example": "It was a collective effort by the whole team.", "example_zh": "那是全隊共同的努力。" },
+    { "pos": "n.", "zh": "集體、合作團體", "example": "The farm is run by a collective.", "example_zh": "這座農場由一個合作團體經營。" }
+  ],
+  "collector": [
+    { "pos": "n.", "zh": "收藏家、收集者", "example": "He is a collector of old stamps.", "example_zh": "他是個舊郵票收藏家。" }
+  ],
+  "colonial": [
+    { "pos": "adj.", "zh": "殖民（地）的", "example": "The town has many colonial buildings.", "example_zh": "這座城鎮有許多殖民時期的建築。" }
+  ],
+  "columnist-n-combat": [
+    { "pos": "n.", "zh": "專欄作家", "example": "The columnist wrote about city life.", "example_zh": "那位專欄作家寫城市生活。" }
+  ],
+  "comedian": [
+    { "pos": "n.", "zh": "喜劇演員、諧星", "example": "The comedian made the whole room laugh.", "example_zh": "那位諧星把全場逗笑了。" }
+  ],
+  "commentary": [
+    { "pos": "n.", "zh": "實況報導、評論", "example": "He gave a lively commentary on the game.", "example_zh": "他為比賽做了生動的實況報導。" }
+  ],
+  "commentator": [
+    { "pos": "n.", "zh": "評論員、播報員", "example": "The commentator described every play.", "example_zh": "評論員描述了每一個動作。" }
+  ],
+  "commission": [
+    { "pos": "n.", "zh": "佣金、抽成", "example": "The salesman earns a commission on each sale.", "example_zh": "業務員每筆交易都抽佣金。" },
+    { "pos": "n.", "zh": "委員會", "example": "A commission studied the problem.", "example_zh": "一個委員會研究了這個問題。" }
+  ],
+  "commitment": [
+    { "pos": "n.", "zh": "承諾、投入", "example": "Learning a language requires commitment.", "example_zh": "學習語言需要投入。" }
+  ],
+  "commodity": [
+    { "pos": "n.", "zh": "商品、日用品", "example": "Rice is an important commodity.", "example_zh": "稻米是重要的商品。" }
+  ],
+  "communism": [
+    { "pos": "n.", "zh": "共產主義", "example": "Students studied the idea of communism.", "example_zh": "學生研究共產主義的概念。" }
+  ],
+  "communist": [
+    { "pos": "adj.", "zh": "共產主義的", "example": "He read about a communist country in history.", "example_zh": "他讀到歷史上一個共產主義國家。" },
+    { "pos": "n.", "zh": "共產黨員", "example": "Her grandfather was once a communist.", "example_zh": "她祖父曾是共產黨員。" }
+  ],
+  "commute": [
+    { "pos": "v.", "zh": "通勤", "example": "She commutes to work by train.", "example_zh": "她搭火車通勤上班。" }
+  ],
+  "commuter": [
+    { "pos": "n.", "zh": "通勤者", "example": "The train was full of tired commuters.", "example_zh": "火車上擠滿了疲憊的通勤族。" }
+  ],
+  "compact": [
+    { "pos": "adj.", "zh": "小巧的、緊湊的", "example": "The small car is compact and easy to park.", "example_zh": "這輛小車小巧又好停。" }
+  ],
+  "comparable": [
+    { "pos": "adj.", "zh": "可比較的、相當的", "example": "The two phones are comparable in price.", "example_zh": "這兩支手機價格相當。" }
+  ],
+  "compassion": [
+    { "pos": "n.", "zh": "同情、憐憫", "example": "She treats the sick with compassion.", "example_zh": "她以同情心對待病人。" }
+  ],
+  "compassionate": [
+    { "pos": "adj.", "zh": "有同情心的、慈悲的", "example": "The nurse is gentle and compassionate.", "example_zh": "那名護理師溫柔又有同情心。" }
+  ],
+  "compatible": [
+    { "pos": "adj.", "zh": "相容的、合得來的", "example": "This printer is compatible with my computer.", "example_zh": "這台印表機和我的電腦相容。" }
+  ],
+  "compel": [
+    { "pos": "v.", "zh": "強迫、迫使", "example": "Bad weather compelled us to stay home.", "example_zh": "壞天氣迫使我們待在家。" }
+  ],
+  "compensate": [
+    { "pos": "v.", "zh": "補償、賠償", "example": "The company will compensate her for the loss.", "example_zh": "公司會賠償她的損失。" }
+  ],
+  "compensation": [
+    { "pos": "n.", "zh": "賠償、補償（金）", "example": "He received compensation for his injury.", "example_zh": "他因受傷獲得了賠償。" }
+  ],
+  "competence": [
+    { "pos": "n.", "zh": "能力、勝任", "example": "She showed great competence at her job.", "example_zh": "她在工作上展現了很強的能力。" }
+  ],
+  "competent": [
+    { "pos": "adj.", "zh": "能勝任的、有能力的", "example": "He is a competent and reliable worker.", "example_zh": "他是個能幹又可靠的員工。" }
+  ],
+  "complexity": [
+    { "pos": "n.", "zh": "複雜性、複雜", "example": "The complexity of the problem surprised us.", "example_zh": "這問題的複雜程度令我們驚訝。" }
+  ],
+  "compliance": [
+    { "pos": "n.", "zh": "遵守、順從", "example": "Compliance with the rules is required.", "example_zh": "必須遵守規則。" }
+  ],
+  "complication": [
+    { "pos": "n.", "zh": "複雜情況、麻煩", "example": "A small complication delayed the trip.", "example_zh": "一個小狀況耽誤了行程。" },
+    { "pos": "n.", "zh": "併發症", "example": "The illness led to serious complications.", "example_zh": "這個病引發了嚴重的併發症。" }
+  ]
+}

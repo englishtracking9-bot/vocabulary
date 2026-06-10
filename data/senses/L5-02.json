@@ -1,0 +1,196 @@
+{
+  "assess": [
+    { "pos": "v.", "zh": "評估、估價", "example": "The teacher will assess our projects.", "example_zh": "老師會評量我們的專題。" }
+  ],
+  "asset": [
+    { "pos": "n.", "zh": "資產、優點", "example": "Honesty is a great asset.", "example_zh": "誠實是一大優點。" }
+  ],
+  "assumption": [
+    { "pos": "n.", "zh": "假設、假定", "example": "Don't make assumptions without proof.", "example_zh": "沒有證據別妄加假設。" }
+  ],
+  "astonish": [
+    { "pos": "v.", "zh": "使驚訝", "example": "The magic trick astonished the crowd.", "example_zh": "那魔術讓觀眾大為驚訝。" }
+  ],
+  "athletics": [
+    { "pos": "n.", "zh": "體育運動、田徑", "example": "She is good at athletics, especially running.", "example_zh": "她擅長運動，尤其是跑步。" }
+  ],
+  "attendance": [
+    { "pos": "n.", "zh": "出席、出席率", "example": "Attendance at the meeting was high.", "example_zh": "會議的出席率很高。" }
+  ],
+  "attic": [
+    { "pos": "n.", "zh": "閣樓", "example": "Old toys are stored in the attic.", "example_zh": "舊玩具收在閣樓裡。" }
+  ],
+  "attorney": [
+    { "pos": "n.", "zh": "律師", "example": "The attorney defended her client well.", "example_zh": "那位律師為她的當事人辯護得很好。" }
+  ],
+  "attribute": [
+    { "pos": "v.", "zh": "歸因於（attribute to）", "example": "She attributes her success to hard work.", "example_zh": "她把成功歸功於努力。" },
+    { "pos": "n.", "zh": "特質、屬性", "example": "Patience is an important attribute.", "example_zh": "耐心是一項重要的特質。" }
+  ],
+  "auction": [
+    { "pos": "n.", "zh": "拍賣會", "example": "The painting was sold at an auction.", "example_zh": "那幅畫在拍賣會上賣出。" },
+    { "pos": "v.", "zh": "拍賣", "example": "They auctioned the old furniture.", "example_zh": "他們拍賣了那些舊家具。" }
+  ],
+  "authorize": [
+    { "pos": "v.", "zh": "授權、批准", "example": "Only the manager can authorize a refund.", "example_zh": "只有經理能批准退款。" }
+  ],
+  "autonomy": [
+    { "pos": "n.", "zh": "自治、自主", "example": "The region was given more autonomy.", "example_zh": "這個地區被賦予更多自治權。" }
+  ],
+  "awe": [
+    { "pos": "n.", "zh": "敬畏", "example": "We stood in awe of the giant waterfall.", "example_zh": "我們敬畏地望著巨大的瀑布。" }
+  ],
+  "backyard": [
+    { "pos": "n.", "zh": "後院", "example": "The kids played in the backyard.", "example_zh": "孩子們在後院玩。" }
+  ],
+  "ballot": [
+    { "pos": "n.", "zh": "選票、投票", "example": "Each voter placed a ballot in the box.", "example_zh": "每位選民把選票投進箱子。" }
+  ],
+  "ban": [
+    { "pos": "n.", "zh": "禁令", "example": "The park has a ban on littering.", "example_zh": "公園禁止亂丟垃圾。" },
+    { "pos": "v.", "zh": "禁止", "example": "They banned cars from the old town.", "example_zh": "他們禁止汽車進入老城區。" }
+  ],
+  "banner": [
+    { "pos": "n.", "zh": "橫幅、布條", "example": "They hung a welcome banner over the door.", "example_zh": "他們在門上掛了歡迎布條。" }
+  ],
+  "barren": [
+    { "pos": "adj.", "zh": "貧瘠的、荒蕪的", "example": "Nothing grows in the barren land.", "example_zh": "這片貧瘠的土地寸草不生。" }
+  ],
+  "batch": [
+    { "pos": "n.", "zh": "一批、一爐", "example": "She baked a fresh batch of cookies.", "example_zh": "她烤了新的一爐餅乾。" }
+  ],
+  "behalf": [
+    { "pos": "n.", "zh": "代表（on behalf of）", "example": "She spoke on behalf of the whole class.", "example_zh": "她代表全班發言。" }
+  ],
+  "belongings": [
+    { "pos": "n.", "zh": "所有物、財物", "example": "Please keep your belongings with you.", "example_zh": "請隨身保管你的物品。" }
+  ],
+  "beloved": [
+    { "pos": "adj.", "zh": "心愛的、深受愛戴的", "example": "The beloved teacher retired this year.", "example_zh": "那位深受愛戴的老師今年退休。" }
+  ],
+  "beneficial": [
+    { "pos": "adj.", "zh": "有益的、有利的", "example": "Exercise is beneficial to your health.", "example_zh": "運動對你的健康有益。" }
+  ],
+  "betray": [
+    { "pos": "v.", "zh": "背叛、出賣", "example": "He would never betray a friend.", "example_zh": "他絕不會出賣朋友。" }
+  ],
+  "beware": [
+    { "pos": "v.", "zh": "當心、提防", "example": "Beware of the dog at the gate.", "example_zh": "當心門口的狗。" }
+  ],
+  "bias": [
+    { "pos": "n.", "zh": "偏見、偏向", "example": "A good judge has no bias.", "example_zh": "好的法官沒有偏見。" }
+  ],
+  "bid": [
+    { "pos": "n.", "zh": "出價、投標", "example": "He made a high bid at the auction.", "example_zh": "他在拍賣會上出了高價。" },
+    { "pos": "v.", "zh": "出價、投標", "example": "Several firms bid for the project.", "example_zh": "好幾家公司競標這個案子。" }
+  ],
+  "biological": [
+    { "pos": "adj.", "zh": "生物的、生物學的", "example": "We studied biological changes in plants.", "example_zh": "我們研究植物的生物變化。" }
+  ],
+  "bizarre": [
+    { "pos": "adj.", "zh": "奇異的、怪誕的", "example": "She told a bizarre story about a ghost.", "example_zh": "她講了一個離奇的鬼故事。" }
+  ],
+  "blast": [
+    { "pos": "n.", "zh": "爆炸、一陣（風）", "example": "The blast from the firework was loud.", "example_zh": "煙火的爆裂聲很響。" },
+    { "pos": "v.", "zh": "炸毀、猛烈衝擊", "example": "Workers blasted a hole in the rock.", "example_zh": "工人炸開岩石上一個洞。" }
+  ],
+  "blur": [
+    { "pos": "n.", "zh": "模糊不清的東西", "example": "Without my glasses, the words are a blur.", "example_zh": "沒戴眼鏡，字都糊成一片。" },
+    { "pos": "v.", "zh": "使模糊", "example": "Tears blurred her eyes.", "example_zh": "淚水模糊了她的視線。" }
+  ],
+  "blush": [
+    { "pos": "v.", "zh": "臉紅、害羞", "example": "She began to blush when praised.", "example_zh": "受到稱讚時她開始臉紅。" },
+    { "pos": "n.", "zh": "臉紅", "example": "A blush spread across his face.", "example_zh": "他臉上泛起一陣紅暈。" }
+  ],
+  "bodyguard": [
+    { "pos": "n.", "zh": "保鑣", "example": "The star has a tall bodyguard.", "example_zh": "那位明星有個高大的保鑣。" }
+  ],
+  "bolt": [
+    { "pos": "n.", "zh": "螺栓、門閂", "example": "He tightened the bolt with a tool.", "example_zh": "他用工具鎖緊螺栓。" },
+    { "pos": "v.", "zh": "飛奔、突然衝", "example": "The horse bolted in fear.", "example_zh": "那匹馬受驚狂奔。" }
+  ],
+  "bonus": [
+    { "pos": "n.", "zh": "獎金、紅利", "example": "She got a year-end bonus at work.", "example_zh": "她在工作上領到年終獎金。" }
+  ],
+  "boom": [
+    { "pos": "n.", "zh": "繁榮、激增", "example": "The town saw an economic boom.", "example_zh": "這座城鎮迎來經濟繁榮。" },
+    { "pos": "v.", "zh": "興旺、迅速發展", "example": "Business is booming this year.", "example_zh": "今年生意興隆。" }
+  ],
+  "boost": [
+    { "pos": "v.", "zh": "提高、促進", "example": "Winning the game boosted their confidence.", "example_zh": "贏得比賽提升了他們的信心。" },
+    { "pos": "n.", "zh": "激勵、提振", "example": "The good news gave us a boost.", "example_zh": "這好消息讓我們士氣大振。" }
+  ],
+  "booth": [
+    { "pos": "n.", "zh": "攤位、小隔間", "example": "We bought tickets at the booth.", "example_zh": "我們在售票亭買票。" }
+  ],
+  "boredom": [
+    { "pos": "n.", "zh": "無聊、厭煩", "example": "She read a book to escape boredom.", "example_zh": "她讀書以排遣無聊。" }
+  ],
+  "bound": [
+    { "pos": "adj.", "zh": "一定、必然（be bound to）", "example": "She is bound to win.", "example_zh": "她一定會贏。" },
+    { "pos": "adj.", "zh": "前往⋯的（bound for）", "example": "This train is bound for Taipei.", "example_zh": "這班火車開往台北。" }
+  ],
+  "boundary": [
+    { "pos": "n.", "zh": "邊界、界線", "example": "The fence marks the boundary of the yard.", "example_zh": "籬笆標出院子的邊界。" }
+  ],
+  "boxer": [
+    { "pos": "n.", "zh": "拳擊手", "example": "The boxer trained hard for the match.", "example_zh": "拳擊手為比賽努力訓練。" }
+  ],
+  "breakthrough": [
+    { "pos": "n.", "zh": "突破", "example": "The new medicine was a major breakthrough.", "example_zh": "這款新藥是一大突破。" }
+  ],
+  "briefcase": [
+    { "pos": "n.", "zh": "公事包", "example": "He carried a leather briefcase to work.", "example_zh": "他提著皮製公事包去上班。" }
+  ],
+  "bronze": [
+    { "pos": "n.", "zh": "青銅、銅牌", "example": "She won a bronze medal in swimming.", "example_zh": "她在游泳項目贏得銅牌。" }
+  ],
+  "browse": [
+    { "pos": "v.", "zh": "瀏覽、隨意看", "example": "I like to browse books at the store.", "example_zh": "我喜歡在書店隨意翻書。" }
+  ],
+  "bruise": [
+    { "pos": "n.", "zh": "瘀青、瘀傷", "example": "He got a bruise on his arm from the fall.", "example_zh": "他跌倒後手臂瘀青了。" },
+    { "pos": "v.", "zh": "使瘀傷、碰傷", "example": "She bruised her knee on the table.", "example_zh": "她的膝蓋在桌子上撞瘀了。" }
+  ],
+  "bulk": [
+    { "pos": "n.", "zh": "大部分、大量", "example": "The bulk of the work is already done.", "example_zh": "大部分的工作已經完成。" }
+  ],
+  "bully": [
+    { "pos": "v.", "zh": "霸凌、欺負", "example": "We must not let anyone bully others.", "example_zh": "我們絕不能讓任何人欺負別人。" },
+    { "pos": "n.", "zh": "霸凌者、惡霸", "example": "The bully picked on smaller kids.", "example_zh": "那個惡霸欺負比較小的孩子。" }
+  ],
+  "bureau": [
+    { "pos": "n.", "zh": "局、處", "example": "She works at the weather bureau.", "example_zh": "她在氣象局工作。" }
+  ],
+  "bureaucracy": [
+    { "pos": "n.", "zh": "官僚體制、繁文縟節", "example": "Too much bureaucracy slows things down.", "example_zh": "太多官僚程序會拖慢事情。" }
+  ],
+  "burial": [
+    { "pos": "n.", "zh": "埋葬、葬禮", "example": "The burial took place at the cemetery.", "example_zh": "葬禮在公墓舉行。" }
+  ],
+  "butcher": [
+    { "pos": "n.", "zh": "肉販、屠夫", "example": "The butcher cut the meat into pieces.", "example_zh": "肉販把肉切成塊。" },
+    { "pos": "v.", "zh": "屠宰、宰殺", "example": "They butchered a pig for the feast.", "example_zh": "他們宰了一頭豬辦宴席。" }
+  ],
+  "calcium": [
+    { "pos": "n.", "zh": "鈣", "example": "Milk is rich in calcium.", "example_zh": "牛奶富含鈣質。" }
+  ],
+  "canal": [
+    { "pos": "n.", "zh": "運河、水道", "example": "Boats travel through the city's canals.", "example_zh": "船隻在城市的運河中航行。" }
+  ],
+  "canvas": [
+    { "pos": "n.", "zh": "帆布、畫布", "example": "The artist painted on a large canvas.", "example_zh": "藝術家在一塊大畫布上作畫。" }
+  ],
+  "capability": [
+    { "pos": "n.", "zh": "能力、才能", "example": "She has the capability to lead the team.", "example_zh": "她有能力帶領團隊。" }
+  ],
+  "carbon": [
+    { "pos": "n.", "zh": "碳", "example": "Cars produce harmful carbon gases.", "example_zh": "汽車排放有害的碳氣體。" }
+  ],
+  "carnival": [
+    { "pos": "n.", "zh": "嘉年華、狂歡節", "example": "The town held a colorful carnival.", "example_zh": "鎮上舉辦了一場繽紛的嘉年華。" }
+  ],
+  "casino": [
+    { "pos": "n.", "zh": "賭場", "example": "Gambling at a casino can be risky.", "example_zh": "在賭場賭博可能很冒險。" }
+  ]
+}
