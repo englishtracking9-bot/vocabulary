@@ -1,0 +1,184 @@
+{
+  "aspirin": [
+    { "pos": "n.", "zh": "阿斯匹靈", "example": "She took an aspirin for her headache.", "example_zh": "她吃了一顆阿斯匹靈治頭痛。" }
+  ],
+  "assemble": [
+    { "pos": "v.", "zh": "集合、聚集", "example": "The students assembled in the hall.", "example_zh": "學生們在大廳集合。" },
+    { "pos": "v.", "zh": "組裝、裝配", "example": "He assembled the bookshelf himself.", "example_zh": "他自己組裝了書架。" }
+  ],
+  "assembly": [
+    { "pos": "n.", "zh": "集會、朝會", "example": "We have a school assembly every Monday.", "example_zh": "我們每週一有朝會。" },
+    { "pos": "n.", "zh": "裝配、組裝", "example": "The car parts move along the assembly line.", "example_zh": "汽車零件沿著裝配線移動。" }
+  ],
+  "assign": [
+    { "pos": "v.", "zh": "分派、指定", "example": "The teacher assigned us a writing task.", "example_zh": "老師指派我們一項寫作作業。" }
+  ],
+  "assistance": [
+    { "pos": "n.", "zh": "協助、幫助", "example": "She offered assistance to the lost tourist.", "example_zh": "她協助迷路的遊客。" }
+  ],
+  "associate": [
+    { "pos": "v.", "zh": "聯想、聯繫", "example": "We associate summer with the beach.", "example_zh": "我們把夏天和海灘聯想在一起。" },
+    { "pos": "n.", "zh": "同事、夥伴", "example": "He is a business associate of mine.", "example_zh": "他是我的生意夥伴。" }
+  ],
+  "association": [
+    { "pos": "n.", "zh": "協會、聯繫", "example": "He joined a sports association.", "example_zh": "他加入了一個運動協會。" }
+  ],
+  "assurance": [
+    { "pos": "n.", "zh": "保證、把握", "example": "He gave us his assurance that it was safe.", "example_zh": "他向我們保證那是安全的。" }
+  ],
+  "assure": [
+    { "pos": "v.", "zh": "向⋯保證、使確信", "example": "I assure you that everything will be fine.", "example_zh": "我向你保證一切都會沒事。" }
+  ],
+  "athletic": [
+    { "pos": "adj.", "zh": "運動的、體格健壯的", "example": "She has an athletic build from years of sport.", "example_zh": "多年運動讓她有健壯的體格。" }
+  ],
+  "atmosphere": [
+    { "pos": "n.", "zh": "氣氛、氛圍", "example": "The restaurant has a warm atmosphere.", "example_zh": "這家餐廳氣氛溫馨。" },
+    { "pos": "n.", "zh": "大氣、大氣層", "example": "The earth's atmosphere protects us.", "example_zh": "地球的大氣層保護我們。" }
+  ],
+  "atom": [
+    { "pos": "n.", "zh": "原子", "example": "Everything is made of tiny atoms.", "example_zh": "萬物都由微小的原子構成。" }
+  ],
+  "atomic": [
+    { "pos": "adj.", "zh": "原子的、原子能的", "example": "Scientists studied atomic energy.", "example_zh": "科學家研究原子能。" }
+  ],
+  "attach": [
+    { "pos": "v.", "zh": "附上、繫上", "example": "Please attach the file to your email.", "example_zh": "請把檔案附在你的郵件中。" }
+  ],
+  "attraction": [
+    { "pos": "n.", "zh": "吸引力、魅力", "example": "There is a strong attraction between them.", "example_zh": "他們之間有很強的吸引力。" },
+    { "pos": "n.", "zh": "景點、有吸引力的事物", "example": "The waterfall is a popular tourist attraction.", "example_zh": "這座瀑布是熱門的觀光景點。" }
+  ],
+  "audio": [
+    { "pos": "adj.", "zh": "聲音的、音訊的", "example": "The audio quality of the video is poor.", "example_zh": "這部影片的音質很差。" }
+  ],
+  "authentic": [
+    { "pos": "adj.", "zh": "真正的、道地的", "example": "We ate authentic Italian food.", "example_zh": "我們吃了道地的義大利菜。" }
+  ],
+  "authority": [
+    { "pos": "n.", "zh": "權力、職權", "example": "The police have the authority to stop cars.", "example_zh": "警察有權攔下車輛。" },
+    { "pos": "n.", "zh": "當局、權威", "example": "The local authorities built a new park.", "example_zh": "當地當局蓋了一座新公園。" }
+  ],
+  "autobiography": [
+    { "pos": "n.", "zh": "自傳", "example": "She wrote an autobiography about her life.", "example_zh": "她寫了一本關於自己人生的自傳。" }
+  ],
+  "autograph": [
+    { "pos": "n.", "zh": "親筆簽名", "example": "The fans asked the star for an autograph.", "example_zh": "粉絲向明星索取簽名。" }
+  ],
+  "await": [
+    { "pos": "v.", "zh": "等候、等待", "example": "We await your reply.", "example_zh": "我們等候你的回覆。" }
+  ],
+  "baid": [
+    { "pos": "", "zh": "（資料待修正）", "example": "The teacher explained how to use the word in a sentence.", "example_zh": "老師說明了如何在句子中使用這個字。" }
+  ],
+  "ballet": [
+    { "pos": "n.", "zh": "芭蕾舞", "example": "She has studied ballet since she was five.", "example_zh": "她從五歲起就學芭蕾舞。" }
+  ],
+  "bandage": [
+    { "pos": "n.", "zh": "繃帶", "example": "The nurse put a bandage on his cut.", "example_zh": "護理師在他的傷口上包了繃帶。" },
+    { "pos": "v.", "zh": "用繃帶包紮", "example": "She bandaged the boy's knee.", "example_zh": "她替男孩的膝蓋包紮。" }
+  ],
+  "bankrupt": [
+    { "pos": "adj.", "zh": "破產的", "example": "The company went bankrupt last year.", "example_zh": "這家公司去年破產了。" },
+    { "pos": "v.", "zh": "使破產", "example": "The bad deal nearly bankrupted him.", "example_zh": "這筆爛交易差點讓他破產。" }
+  ],
+  "bargain": [
+    { "pos": "n.", "zh": "便宜貨、特價品", "example": "These shoes were a real bargain.", "example_zh": "這雙鞋真的很划算。" },
+    { "pos": "v.", "zh": "討價還價、談判", "example": "She bargained for a lower price.", "example_zh": "她殺價想買便宜一點。" }
+  ],
+  "barrier": [
+    { "pos": "n.", "zh": "障礙、屏障", "example": "Language can be a barrier when traveling.", "example_zh": "旅行時語言可能成為障礙。" }
+  ],
+  "basin": [
+    { "pos": "n.", "zh": "臉盆、盆地", "example": "She washed her face in the basin.", "example_zh": "她在臉盆裡洗臉。" }
+  ],
+  "battery": [
+    { "pos": "n.", "zh": "電池", "example": "My phone battery is almost dead.", "example_zh": "我的手機電池快沒電了。" }
+  ],
+  "beggar": [
+    { "pos": "n.", "zh": "乞丐", "example": "The beggar asked for some coins.", "example_zh": "那名乞丐討幾個銅板。" }
+  ],
+  "behavior": [
+    { "pos": "n.", "zh": "行為、舉止", "example": "His behavior at school improved.", "example_zh": "他在學校的行為有所改善。" }
+  ],
+  "bin": [
+    { "pos": "n.", "zh": "垃圾桶、箱", "example": "Throw the trash in the bin.", "example_zh": "把垃圾丟進垃圾桶。" }
+  ],
+  "biography": [
+    { "pos": "n.", "zh": "傳記", "example": "I read a biography of a famous scientist.", "example_zh": "我讀了一位著名科學家的傳記。" }
+  ],
+  "biology": [
+    { "pos": "n.", "zh": "生物學", "example": "We studied plants in biology class.", "example_zh": "我們在生物課研究植物。" }
+  ],
+  "blade": [
+    { "pos": "n.", "zh": "刀刃、葉片", "example": "The knife has a sharp blade.", "example_zh": "這把刀有鋒利的刀刃。" }
+  ],
+  "blend": [
+    { "pos": "v.", "zh": "混合、調和", "example": "Blend the fruit to make a smoothie.", "example_zh": "把水果打成果昔。" },
+    { "pos": "n.", "zh": "混合物、調配", "example": "This coffee is a blend of two beans.", "example_zh": "這款咖啡是兩種豆子的混合。" }
+  ],
+  "blessing": [
+    { "pos": "n.", "zh": "祝福、恩典", "example": "Good health is a great blessing.", "example_zh": "健康是一大福氣。" }
+  ],
+  "blink": [
+    { "pos": "v.", "zh": "眨眼、閃爍", "example": "She blinked in the bright light.", "example_zh": "她在強光下眨了眨眼。" },
+    { "pos": "n.", "zh": "眨眼、瞬間", "example": "It happened in the blink of an eye.", "example_zh": "一眨眼的功夫就發生了。" }
+  ],
+  "bloom": [
+    { "pos": "v.", "zh": "開花、綻放", "example": "The roses bloom in early summer.", "example_zh": "玫瑰在初夏綻放。" },
+    { "pos": "n.", "zh": "花、盛開", "example": "The garden is in full bloom.", "example_zh": "花園裡百花盛開。" }
+  ],
+  "blossom": [
+    { "pos": "n.", "zh": "（果樹的）花", "example": "The cherry blossoms are beautiful.", "example_zh": "櫻花很美。" },
+    { "pos": "v.", "zh": "開花、興盛", "example": "The cherry trees blossom in spring.", "example_zh": "櫻花樹在春天開花。" }
+  ],
+  "boast": [
+    { "pos": "v.", "zh": "自誇、誇耀", "example": "He likes to boast about his new car.", "example_zh": "他喜歡炫耀他的新車。" }
+  ],
+  "bond": [
+    { "pos": "n.", "zh": "連結、情感紐帶", "example": "There is a strong bond between the sisters.", "example_zh": "這對姊妹之間有很深的情感。" },
+    { "pos": "v.", "zh": "建立感情、黏合", "example": "The two quickly bonded.", "example_zh": "兩人很快建立了感情。" }
+  ],
+  "bounce": [
+    { "pos": "v.", "zh": "彈、彈跳", "example": "The ball bounced off the wall.", "example_zh": "球從牆上彈了回來。" },
+    { "pos": "n.", "zh": "彈跳、彈力", "example": "The ball has a good bounce.", "example_zh": "這顆球彈性很好。" }
+  ],
+  "bracelet": [
+    { "pos": "n.", "zh": "手鐲、手環", "example": "She wore a silver bracelet.", "example_zh": "她戴著一只銀手鐲。" }
+  ],
+  "breed": [
+    { "pos": "v.", "zh": "飼養、繁殖", "example": "This farm breeds horses.", "example_zh": "這座農場飼養馬匹。" },
+    { "pos": "n.", "zh": "品種", "example": "The poodle is a popular breed of dog.", "example_zh": "貴賓犬是很受歡迎的狗品種。" }
+  ],
+  "bridegroom-groom": [
+    { "pos": "n.", "zh": "新郎", "example": "The bridegroom waited for the bride.", "example_zh": "新郎等候著新娘。" }
+  ],
+  "broke": [
+    { "pos": "adj.", "zh": "沒錢的、破產的", "example": "I am broke until I get paid.", "example_zh": "在領薪水之前我身無分文。" }
+  ],
+  "broom": [
+    { "pos": "n.", "zh": "掃帚", "example": "She swept the floor with a broom.", "example_zh": "她用掃帚掃地。" }
+  ],
+  "brutal": [
+    { "pos": "adj.", "zh": "殘暴的、嚴酷的", "example": "The weather was brutal during the storm.", "example_zh": "暴風雨期間天氣十分惡劣。" }
+  ],
+  "bulletin": [
+    { "pos": "n.", "zh": "公告、佈告", "example": "Check the bulletin board for the schedule.", "example_zh": "看佈告欄上的時間表。" }
+  ],
+  "burglar": [
+    { "pos": "n.", "zh": "竊賊、夜賊", "example": "A burglar broke into the house at night.", "example_zh": "一名竊賊在夜裡闖入屋內。" }
+  ],
+  "cabinet": [
+    { "pos": "n.", "zh": "櫥櫃、收納櫃", "example": "The cups are kept in the kitchen cabinet.", "example_zh": "杯子放在廚房櫥櫃裡。" },
+    { "pos": "n.", "zh": "內閣", "example": "The president met with his cabinet.", "example_zh": "總統與他的內閣會面。" }
+  ],
+  "calculate": [
+    { "pos": "v.", "zh": "計算、估算", "example": "Please calculate the total cost.", "example_zh": "請計算總費用。" }
+  ],
+  "calculation": [
+    { "pos": "n.", "zh": "計算", "example": "My calculation showed the right answer.", "example_zh": "我的計算得出正確答案。" }
+  ],
+  "calorie": [
+    { "pos": "n.", "zh": "卡路里、熱量", "example": "This snack is high in calories.", "example_zh": "這個零食熱量很高。" }
+  ]
+}
