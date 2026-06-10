@@ -1,0 +1,191 @@
+{
+  "astray": [
+    { "pos": "adv.", "zh": "迷路地、誤入歧途地", "example": "The hikers went astray in the fog.", "example_zh": "登山客在霧中迷了路。" }
+  ],
+  "astronaut": [
+    { "pos": "n.", "zh": "太空人", "example": "The astronaut walked on the moon.", "example_zh": "太空人在月球上行走。" }
+  ],
+  "astronomer": [
+    { "pos": "n.", "zh": "天文學家", "example": "The astronomer studied a distant star.", "example_zh": "天文學家研究一顆遙遠的星星。" }
+  ],
+  "astronomy": [
+    { "pos": "n.", "zh": "天文學", "example": "She reads books about astronomy and stars.", "example_zh": "她讀關於天文學和星星的書。" }
+  ],
+  "attain": [
+    { "pos": "v.", "zh": "達成、獲得", "example": "Through hard work, she attained her goal.", "example_zh": "透過努力，她達成了目標。" }
+  ],
+  "attendant": [
+    { "pos": "n.", "zh": "服務員、隨從", "example": "The flight attendant served drinks.", "example_zh": "空服員端上飲料。" }
+  ],
+  "audit": [
+    { "pos": "n.", "zh": "審計、查帳", "example": "The company had an audit of its accounts.", "example_zh": "公司接受了帳目的審查。" }
+  ],
+  "auditorium": [
+    { "pos": "n.", "zh": "禮堂、觀眾席", "example": "The concert was held in the auditorium.", "example_zh": "音樂會在禮堂舉行。" }
+  ],
+  "avert": [
+    { "pos": "v.", "zh": "避免、防止、轉移", "example": "Quick action averted a disaster.", "example_zh": "迅速的行動避免了一場災難。" }
+  ],
+  "aviation": [
+    { "pos": "n.", "zh": "航空、航空業", "example": "He works in the aviation industry.", "example_zh": "他在航空業工作。" }
+  ],
+  "awesome": [
+    { "pos": "adj.", "zh": "令人驚嘆的、超棒的", "example": "The view from the top was awesome.", "example_zh": "從頂端看到的景色令人驚嘆。" }
+  ],
+  "awhile": [
+    { "pos": "adv.", "zh": "片刻、一會兒", "example": "Let's rest awhile before we continue.", "example_zh": "我們休息一會兒再繼續吧。" }
+  ],
+  "bachelor": [
+    { "pos": "n.", "zh": "學士、單身漢", "example": "He earned a bachelor's degree in science.", "example_zh": "他取得了理學士學位。" }
+  ],
+  "backbone": [
+    { "pos": "n.", "zh": "骨幹、支柱、脊椎", "example": "Hard workers are the backbone of the team.", "example_zh": "勤奮的人是團隊的中堅。" }
+  ],
+  "badge": [
+    { "pos": "n.", "zh": "徽章、識別證", "example": "The police officer showed his badge.", "example_zh": "警官出示了他的警徽。" }
+  ],
+  "banquet": [
+    { "pos": "n.", "zh": "宴會、盛宴", "example": "The king held a grand banquet.", "example_zh": "國王舉辦了一場盛大的宴會。" }
+  ],
+  "barbarian": [
+    { "pos": "n.", "zh": "野蠻人、未開化者", "example": "The history book described ancient barbarians.", "example_zh": "這本歷史書描述了古代的野蠻人。" }
+  ],
+  "bass": [
+    { "pos": "n.", "zh": "低音、男低音", "example": "He sings in a deep bass voice.", "example_zh": "他用低沉的男低音歌唱。" }
+  ],
+  "batter": [
+    { "pos": "n.", "zh": "（麵糊）麵糊、打擊手", "example": "She mixed the batter for the pancakes.", "example_zh": "她調好了做鬆餅的麵糊。" },
+    { "pos": "v.", "zh": "連續猛擊、搗毀", "example": "Waves battered the old boat.", "example_zh": "海浪不斷拍打著那艘老船。" }
+  ],
+  "beautify": [
+    { "pos": "v.", "zh": "美化、修飾", "example": "They planted flowers to beautify the street.", "example_zh": "他們種花來美化街道。" }
+  ],
+  "beep": [
+    { "pos": "n.", "zh": "嗶嗶聲", "example": "The microwave gave a loud beep.", "example_zh": "微波爐發出響亮的嗶聲。" }
+  ],
+  "beforehand": [
+    { "pos": "adv.", "zh": "預先、事先", "example": "Prepare your bag beforehand.", "example_zh": "事先把你的包包準備好。" }
+  ],
+  "beverage": [
+    { "pos": "n.", "zh": "飲料", "example": "Water is the healthiest beverage.", "example_zh": "水是最健康的飲料。" }
+  ],
+  "bilateral": [
+    { "pos": "adj.", "zh": "雙邊的、兩方的", "example": "The two countries held bilateral talks.", "example_zh": "兩國舉行了雙邊會談。" }
+  ],
+  "blaze": [
+    { "pos": "n.", "zh": "烈火、火焰", "example": "Firefighters fought the blaze for hours.", "example_zh": "消防員與大火搏鬥了好幾個小時。" },
+    { "pos": "v.", "zh": "熊熊燃燒、發強光", "example": "The campfire blazed brightly.", "example_zh": "營火熊熊燃燒，火光明亮。" }
+  ],
+  "bleach": [
+    { "pos": "n.", "zh": "漂白劑", "example": "She used bleach to whiten the shirt.", "example_zh": "她用漂白劑把襯衫漂白。" },
+    { "pos": "v.", "zh": "漂白、使褪色", "example": "The sun bleached the curtains.", "example_zh": "陽光使窗簾褪了色。" }
+  ],
+  "blond-blonde": [
+    { "pos": "adj.", "zh": "金髮的、淡黃色的", "example": "The child has curly blond hair.", "example_zh": "這孩子有一頭金色捲髮。" }
+  ],
+  "blot": [
+    { "pos": "n.", "zh": "墨漬、汙點", "example": "There is an ink blot on the page.", "example_zh": "這頁上有一處墨漬。" }
+  ],
+  "blunt": [
+    { "pos": "adj.", "zh": "鈍的、直率的", "example": "The knife is too blunt to cut.", "example_zh": "這把刀太鈍切不動。" }
+  ],
+  "bodily": [
+    { "pos": "adj.", "zh": "身體的、肉體的", "example": "Sleep is a basic bodily need.", "example_zh": "睡眠是基本的身體需求。" }
+  ],
+  "booklet": [
+    { "pos": "n.", "zh": "小冊子", "example": "The booklet explains how to use the device.", "example_zh": "這本小冊子說明如何使用這個裝置。" }
+  ],
+  "bosom": [
+    { "pos": "n.", "zh": "胸懷、胸前", "example": "She held the baby to her bosom.", "example_zh": "她把寶寶抱在懷裡。" }
+  ],
+  "boulevard": [
+    { "pos": "n.", "zh": "林蔭大道", "example": "Trees line the wide boulevard.", "example_zh": "樹木排列在寬闊的大道兩旁。" }
+  ],
+  "boxing": [
+    { "pos": "n.", "zh": "拳擊", "example": "He trains in boxing every evening.", "example_zh": "他每天晚上練拳擊。" }
+  ],
+  "boycott": [
+    { "pos": "v.", "zh": "聯合抵制、杯葛", "example": "People boycotted the unfair company.", "example_zh": "人們聯合抵制這家不公平的公司。" },
+    { "pos": "n.", "zh": "抵制、杯葛", "example": "The boycott hurt the company's sales.", "example_zh": "這場抵制重創了公司的銷售。" }
+  ],
+  "brace": [
+    { "pos": "n.", "zh": "支架、牙套", "example": "She wears a brace to straighten her teeth.", "example_zh": "她戴牙套來矯正牙齒。" },
+    { "pos": "v.", "zh": "支撐、做好準備", "example": "They braced themselves for the storm.", "example_zh": "他們做好準備迎接暴風雨。" }
+  ],
+  "brassiere-bra": [
+    { "pos": "n.", "zh": "胸罩", "example": "The shop sells women's clothing such as a bra.", "example_zh": "這家店賣女性服飾，例如胸罩。" }
+  ],
+  "breadth": [
+    { "pos": "n.", "zh": "寬度、廣度", "example": "The breadth of the river is impressive.", "example_zh": "這條河的寬度令人印象深刻。" }
+  ],
+  "breakdown": [
+    { "pos": "n.", "zh": "故障、崩潰、分解", "example": "The car had a breakdown on the highway.", "example_zh": "車子在高速公路上故障了。" }
+  ],
+  "breakup": [
+    { "pos": "n.", "zh": "分手、解體", "example": "After the breakup, they stayed friends.", "example_zh": "分手後他們仍是朋友。" }
+  ],
+  "bribe": [
+    { "pos": "n.", "zh": "賄賂、賄款", "example": "He was caught taking a bribe.", "example_zh": "他被抓到收賄。" },
+    { "pos": "v.", "zh": "賄賂、收買", "example": "It is illegal to bribe an official.", "example_zh": "賄賂官員是違法的。" }
+  ],
+  "brink": [
+    { "pos": "n.", "zh": "邊緣、瀕臨", "example": "The company was on the brink of failure.", "example_zh": "這家公司瀕臨倒閉。" }
+  ],
+  "broaden": [
+    { "pos": "v.", "zh": "擴大、拓寬", "example": "Travel can broaden your mind.", "example_zh": "旅行能拓展你的視野。" }
+  ],
+  "brochure": [
+    { "pos": "n.", "zh": "小冊子、宣傳手冊", "example": "She picked up a travel brochure.", "example_zh": "她拿了一本旅遊手冊。" }
+  ],
+  "broil": [
+    { "pos": "v.", "zh": "（用火）烤、炙", "example": "She broiled the fish until golden.", "example_zh": "她把魚烤到金黃。" }
+  ],
+  "brook": [
+    { "pos": "n.", "zh": "小溪", "example": "A small brook ran through the woods.", "example_zh": "一條小溪流過樹林。" }
+  ],
+  "broth": [
+    { "pos": "n.", "zh": "高湯、清湯", "example": "She made a warm chicken broth.", "example_zh": "她煮了一鍋暖呼呼的雞湯。" }
+  ],
+  "brotherhood": [
+    { "pos": "n.", "zh": "兄弟情誼、手足之情", "example": "The team felt a strong brotherhood.", "example_zh": "這支隊伍有著深厚的兄弟情誼。" }
+  ],
+  "bulky": [
+    { "pos": "adj.", "zh": "笨重的、龐大的", "example": "The bulky box was hard to carry.", "example_zh": "那個笨重的箱子很難搬。" }
+  ],
+  "bureaucrat": [
+    { "pos": "n.", "zh": "官僚、政府官員", "example": "A bureaucrat handled the paperwork.", "example_zh": "一名官員處理了這些文件。" }
+  ],
+  "bypass": [
+    { "pos": "n.", "zh": "繞道、外環道", "example": "We took the bypass to avoid the city.", "example_zh": "我們走外環道避開市區。" },
+    { "pos": "v.", "zh": "繞過、避開", "example": "The new road bypasses the town.", "example_zh": "這條新路繞過了小鎮。" }
+  ],
+  "caffeine": [
+    { "pos": "n.", "zh": "咖啡因", "example": "Coffee contains a lot of caffeine.", "example_zh": "咖啡含有大量咖啡因。" }
+  ],
+  "calculator": [
+    { "pos": "n.", "zh": "計算機", "example": "She used a calculator to add the numbers.", "example_zh": "她用計算機把數字加起來。" }
+  ],
+  "calligraphy": [
+    { "pos": "n.", "zh": "書法", "example": "He practices Chinese calligraphy.", "example_zh": "他練習中國書法。" }
+  ],
+  "cape": [
+    { "pos": "n.", "zh": "海角、岬", "example": "The lighthouse stands on a rocky cape.", "example_zh": "燈塔矗立在一處多岩的海角上。" },
+    { "pos": "n.", "zh": "披風、斗篷", "example": "The hero wore a red cape.", "example_zh": "那位英雄披著一件紅色斗篷。" }
+  ],
+  "capsule": [
+    { "pos": "n.", "zh": "膠囊、太空艙", "example": "He swallowed the medicine capsule.", "example_zh": "他吞下了藥膠囊。" }
+  ],
+  "caption": [
+    { "pos": "n.", "zh": "（圖片）說明文字、字幕", "example": "Each photo has a short caption.", "example_zh": "每張照片都有簡短的說明文字。" }
+  ],
+  "captive": [
+    { "pos": "n.", "zh": "俘虜、囚徒", "example": "The captives were finally set free.", "example_zh": "俘虜終於獲釋了。" },
+    { "pos": "adj.", "zh": "被囚禁的、被俘的", "example": "The bird was kept captive in a cage.", "example_zh": "這隻鳥被關在籠子裡。" }
+  ],
+  "captivity": [
+    { "pos": "n.", "zh": "囚禁、被關押", "example": "Some animals do not breed in captivity.", "example_zh": "有些動物在圈養下不會繁殖。" }
+  ],
+  "cardboard": [
+    { "pos": "n.", "zh": "硬紙板、卡紙", "example": "We packed the books in cardboard boxes.", "example_zh": "我們把書裝進紙箱裡。" }
+  ]
+}
