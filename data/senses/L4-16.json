@@ -1,0 +1,193 @@
+{
+  "solar": [
+    { "pos": "adj.", "zh": "太陽的、太陽能的", "example": "The house uses solar energy.", "example_zh": "這房子使用太陽能。" }
+  ],
+  "spade": [
+    { "pos": "n.", "zh": "鏟子、鐵鍬", "example": "He dug the soil with a spade.", "example_zh": "他用鏟子挖土。" }
+  ],
+  "spare": [
+    { "pos": "adj.", "zh": "備用的、多餘的", "example": "Do you have a spare pen?", "example_zh": "你有多的筆嗎？" },
+    { "pos": "v.", "zh": "抽出、騰出（時間）", "example": "Can you spare a few minutes?", "example_zh": "你能抽出幾分鐘嗎？" }
+  ],
+  "spark": [
+    { "pos": "n.", "zh": "火花、火星", "example": "A spark from the fire flew into the air.", "example_zh": "火堆的一點火星飛向空中。" },
+    { "pos": "v.", "zh": "引發、激起", "example": "The news sparked a big debate.", "example_zh": "這消息引發了一場大辯論。" }
+  ],
+  "spear": [
+    { "pos": "n.", "zh": "矛、魚叉", "example": "The hunter threw a spear at the boar.", "example_zh": "獵人朝野豬擲出長矛。" }
+  ],
+  "species": [
+    { "pos": "n.", "zh": "物種、種", "example": "Many species of birds live here.", "example_zh": "許多種鳥類住在這裡。" }
+  ],
+  "spiritual": [
+    { "pos": "adj.", "zh": "精神的、心靈的", "example": "Meditation gives her spiritual peace.", "example_zh": "冥想帶給她心靈的平靜。" }
+  ],
+  "splendid": [
+    { "pos": "adj.", "zh": "燦爛的、極好的", "example": "We had a splendid view from the hill.", "example_zh": "我們從山上看到壯麗的景色。" }
+  ],
+  "split": [
+    { "pos": "v.", "zh": "分開、分攤", "example": "Let's split the bill between us.", "example_zh": "我們把帳分攤吧。" },
+    { "pos": "v.", "zh": "裂開、分裂", "example": "The wood split in two.", "example_zh": "木頭裂成兩半。" }
+  ],
+  "sprinkle": [
+    { "pos": "v.", "zh": "撒、灑", "example": "She sprinkled sugar on the cake.", "example_zh": "她在蛋糕上撒糖。" }
+  ],
+  "stab": [
+    { "pos": "n.", "zh": "一陣（刺痛）", "example": "He felt a stab of pain in his side.", "example_zh": "他感到腰側一陣刺痛。" },
+    { "pos": "v.", "zh": "刺、戳", "example": "She stabbed the meat with a fork.", "example_zh": "她用叉子戳肉。" }
+  ],
+  "statistic": [
+    { "pos": "n.", "zh": "統計數字", "example": "The statistics show a rise in reading.", "example_zh": "統計數字顯示閱讀量上升。" }
+  ],
+  "status": [
+    { "pos": "n.", "zh": "地位、狀態", "example": "Please check the status of your order.", "example_zh": "請查看你訂單的狀態。" }
+  ],
+  "stem": [
+    { "pos": "n.", "zh": "莖、柄", "example": "The flower has a long green stem.", "example_zh": "這朵花有長長的綠莖。" },
+    { "pos": "v.", "zh": "起源於、來自（stem from）", "example": "Her fear stems from a bad memory.", "example_zh": "她的恐懼源於一段不好的記憶。" }
+  ],
+  "stereo": [
+    { "pos": "n.", "zh": "立體聲音響", "example": "He played music on the stereo.", "example_zh": "他用音響播放音樂。" }
+  ],
+  "stingy": [
+    { "pos": "adj.", "zh": "小氣的、吝嗇的", "example": "He is too stingy to buy a gift.", "example_zh": "他太小氣，捨不得買禮物。" }
+  ],
+  "stocking": [
+    { "pos": "n.", "zh": "長襪", "example": "She hung a stocking by the fireplace.", "example_zh": "她在壁爐邊掛了一隻長襪。" }
+  ],
+  "strengthen": [
+    { "pos": "v.", "zh": "加強、增強", "example": "Exercise strengthens your muscles.", "example_zh": "運動能強化你的肌肉。" }
+  ],
+  "stripe": [
+    { "pos": "n.", "zh": "條紋", "example": "The flag has red and white stripes.", "example_zh": "這面旗有紅白條紋。" }
+  ],
+  "strive": [
+    { "pos": "v.", "zh": "努力、奮鬥", "example": "She strives to do her best every day.", "example_zh": "她每天都努力做到最好。" }
+  ],
+  "stroke": [
+    { "pos": "n.", "zh": "划水動作、一筆", "example": "He swam with strong, smooth strokes.", "example_zh": "他游泳時划水有力又流暢。" },
+    { "pos": "n.", "zh": "中風", "example": "Her grandfather had a stroke last year.", "example_zh": "她爺爺去年中風了。" }
+  ],
+  "submarine": [
+    { "pos": "n.", "zh": "潛水艇", "example": "The submarine sailed deep under the sea.", "example_zh": "潛水艇在深海下航行。" }
+  ],
+  "sue": [
+    { "pos": "v.", "zh": "控告、起訴", "example": "They threatened to sue the company.", "example_zh": "他們威脅要控告那家公司。" }
+  ],
+  "suggestion": [
+    { "pos": "n.", "zh": "建議、提議", "example": "Thank you for your helpful suggestion.", "example_zh": "謝謝你有幫助的建議。" }
+  ],
+  "summarize": [
+    { "pos": "v.", "zh": "總結、概述", "example": "Please summarize the story in one sentence.", "example_zh": "請用一句話總結這個故事。" }
+  ],
+  "surgeon": [
+    { "pos": "n.", "zh": "外科醫生", "example": "The surgeon performed the operation.", "example_zh": "外科醫生進行了手術。" }
+  ],
+  "surgery": [
+    { "pos": "n.", "zh": "手術", "example": "She had surgery on her knee.", "example_zh": "她的膝蓋動了手術。" }
+  ],
+  "surrender": [
+    { "pos": "v.", "zh": "投降、屈服", "example": "The soldiers refused to surrender.", "example_zh": "士兵們拒絕投降。" },
+    { "pos": "n.", "zh": "投降、放棄", "example": "The enemy's surrender ended the war.", "example_zh": "敵人的投降結束了戰爭。" }
+  ],
+  "surroundings": [
+    { "pos": "n.", "zh": "周圍環境", "example": "The animals adapt to their surroundings.", "example_zh": "動物會適應周遭的環境。" }
+  ],
+  "suspicious": [
+    { "pos": "adj.", "zh": "可疑的、起疑的", "example": "The guard noticed a suspicious bag.", "example_zh": "警衛注意到一個可疑的袋子。" }
+  ],
+  "sway": [
+    { "pos": "v.", "zh": "搖擺、搖晃", "example": "The trees swayed in the strong wind.", "example_zh": "樹木在強風中搖擺。" },
+    { "pos": "v.", "zh": "影響、左右", "example": "Her speech swayed the crowd.", "example_zh": "她的演說打動了群眾。" }
+  ],
+  "syllable": [
+    { "pos": "n.", "zh": "音節", "example": "The word 'apple' has two syllables.", "example_zh": "「apple」這個字有兩個音節。" }
+  ],
+  "sympathetic": [
+    { "pos": "adj.", "zh": "有同情心的、體諒的", "example": "She was sympathetic to his troubles.", "example_zh": "她對他的困境很同情。" }
+  ],
+  "sympathy": [
+    { "pos": "n.", "zh": "同情、憐憫", "example": "We felt deep sympathy for the victims.", "example_zh": "我們對受害者深感同情。" }
+  ],
+  "systematic": [
+    { "pos": "adj.", "zh": "系統的、有條理的", "example": "She took a systematic approach to study.", "example_zh": "她採用有系統的方法念書。" }
+  ],
+  "technician": [
+    { "pos": "n.", "zh": "技術員、技師", "example": "A technician fixed the broken machine.", "example_zh": "一名技師修好了壞掉的機器。" }
+  ],
+  "technological": [
+    { "pos": "adj.", "zh": "科技的、技術的", "example": "We live in a technological age.", "example_zh": "我們生活在科技時代。" }
+  ],
+  "telegraph": [
+    { "pos": "n.", "zh": "電報", "example": "Long ago, people sent news by telegraph.", "example_zh": "很久以前，人們用電報傳遞消息。" }
+  ],
+  "telescope": [
+    { "pos": "n.", "zh": "望遠鏡", "example": "We watched the moon through a telescope.", "example_zh": "我們用望遠鏡看月亮。" }
+  ],
+  "tendency": [
+    { "pos": "n.", "zh": "傾向、趨勢", "example": "He has a tendency to arrive late.", "example_zh": "他往往會遲到。" }
+  ],
+  "tense": [
+    { "pos": "adj.", "zh": "緊張的、緊繃的", "example": "The room felt tense before the result.", "example_zh": "公布結果前氣氛很緊張。" },
+    { "pos": "n.", "zh": "（文法）時態", "example": "Use the past tense for this sentence.", "example_zh": "這個句子要用過去式。" }
+  ],
+  "tension": [
+    { "pos": "n.", "zh": "緊張、張力", "example": "There was tension between the two teams.", "example_zh": "兩隊之間氣氛緊張。" }
+  ],
+  "terror": [
+    { "pos": "n.", "zh": "恐怖、驚恐", "example": "She screamed in terror at the sight.", "example_zh": "看到那景象她驚恐地尖叫。" }
+  ],
+  "theme": [
+    { "pos": "n.", "zh": "主題、題材", "example": "The theme of the story is friendship.", "example_zh": "這個故事的主題是友誼。" }
+  ],
+  "thorough": [
+    { "pos": "adj.", "zh": "徹底的、完全的", "example": "She did a thorough cleaning of the house.", "example_zh": "她把房子徹底打掃了一遍。" }
+  ],
+  "thoughtful": [
+    { "pos": "adj.", "zh": "體貼的、深思的", "example": "It was thoughtful of you to call.", "example_zh": "你打電話來真貼心。" }
+  ],
+  "tickle": [
+    { "pos": "v.", "zh": "使發癢、搔癢", "example": "The feather tickled her nose.", "example_zh": "那根羽毛弄得她鼻子癢癢的。" }
+  ],
+  "timetable": [
+    { "pos": "n.", "zh": "時刻表、課表", "example": "Check the timetable for the train.", "example_zh": "看一下火車的時刻表。" }
+  ],
+  "timid": [
+    { "pos": "adj.", "zh": "膽小的、羞怯的", "example": "The timid boy was afraid to speak.", "example_zh": "那個膽小的男孩不敢說話。" }
+  ],
+  "tolerable": [
+    { "pos": "adj.", "zh": "可忍受的、尚可的", "example": "The pain was tolerable after the medicine.", "example_zh": "吃藥後疼痛還可以忍受。" }
+  ],
+  "tolerance": [
+    { "pos": "n.", "zh": "寬容、容忍", "example": "We should show tolerance toward others.", "example_zh": "我們應該對他人展現寬容。" }
+  ],
+  "tolerant": [
+    { "pos": "adj.", "zh": "寬容的、容忍的", "example": "She is tolerant of different opinions.", "example_zh": "她能容忍不同的意見。" }
+  ],
+  "tolerate": [
+    { "pos": "v.", "zh": "容忍、忍受", "example": "I can't tolerate rude behavior.", "example_zh": "我無法容忍無禮的行為。" }
+  ],
+  "tomb": [
+    { "pos": "n.", "zh": "墳墓、陵墓", "example": "The king was buried in a great tomb.", "example_zh": "國王被葬在一座宏偉的陵墓裡。" }
+  ],
+  "tortoise": [
+    { "pos": "n.", "zh": "陸龜、烏龜", "example": "The tortoise moves slowly but steadily.", "example_zh": "烏龜走得慢卻很穩。" }
+  ],
+  "torture": [
+    { "pos": "n.", "zh": "折磨、煎熬", "example": "The long wait was real torture.", "example_zh": "漫長的等待真是一種煎熬。" },
+    { "pos": "v.", "zh": "拷打、折磨", "example": "They tortured the prisoners.", "example_zh": "他們拷打囚犯。" }
+  ],
+  "tragedy": [
+    { "pos": "n.", "zh": "悲劇、慘事", "example": "The fire was a terrible tragedy.", "example_zh": "那場火災是一場可怕的悲劇。" }
+  ],
+  "tragic": [
+    { "pos": "adj.", "zh": "悲慘的、悲劇的", "example": "It was a tragic end to the story.", "example_zh": "那是故事悲慘的結局。" }
+  ],
+  "transfer": [
+    { "pos": "v.", "zh": "轉移、調職／轉學", "example": "He transferred to a new school.", "example_zh": "他轉到一所新學校。" },
+    { "pos": "n.", "zh": "轉移、轉帳", "example": "I made a bank transfer.", "example_zh": "我做了一筆銀行轉帳。" }
+  ],
+  "transform": [
+    { "pos": "v.", "zh": "轉變、改造", "example": "The artist transformed the wall into art.", "example_zh": "那位藝術家把牆變成了藝術品。" }
+  ]
+}
