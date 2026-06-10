@@ -1,0 +1,197 @@
+{
+  "missing": [
+    { "pos": "adj.", "zh": "遺失的、失蹤的", "example": "A page is missing from this book.", "example_zh": "這本書少了一頁。" }
+  ],
+  "mission": [
+    { "pos": "n.", "zh": "任務、使命", "example": "Their mission was to save the village.", "example_zh": "他們的任務是拯救村莊。" }
+  ],
+  "mist": [
+    { "pos": "n.", "zh": "薄霧", "example": "Morning mist covered the valley.", "example_zh": "晨霧籠罩著山谷。" }
+  ],
+  "mob": [
+    { "pos": "n.", "zh": "暴民、烏合之眾", "example": "An angry mob gathered in the street.", "example_zh": "一群憤怒的暴民聚集在街上。" }
+  ],
+  "mobile": [
+    { "pos": "adj.", "zh": "行動的、可移動的", "example": "She checked her mobile phone.", "example_zh": "她查看她的手機。" }
+  ],
+  "moist": [
+    { "pos": "adj.", "zh": "潮濕的、濕潤的", "example": "The cake was soft and moist.", "example_zh": "這蛋糕又軟又濕潤。" }
+  ],
+  "moisture": [
+    { "pos": "n.", "zh": "水分、濕氣", "example": "Plants need moisture to grow.", "example_zh": "植物需要水分才能生長。" }
+  ],
+  "monk": [
+    { "pos": "n.", "zh": "僧侶、修士", "example": "The monk lived a quiet life.", "example_zh": "那位僧侶過著平靜的生活。" }
+  ],
+  "monster": [
+    { "pos": "n.", "zh": "怪物", "example": "The child was afraid of the monster.", "example_zh": "那孩子害怕怪物。" }
+  ],
+  "monthly": [
+    { "pos": "adj.", "zh": "每月的", "example": "We have a monthly class meeting.", "example_zh": "我們每月開一次班會。" },
+    { "pos": "adv.", "zh": "每月、按月", "example": "The rent is paid monthly.", "example_zh": "房租按月繳交。" }
+  ],
+  "moral": [
+    { "pos": "adj.", "zh": "道德的", "example": "It was a moral decision.", "example_zh": "那是個關乎道德的決定。" },
+    { "pos": "n.", "zh": "寓意、教訓", "example": "The story teaches a good moral.", "example_zh": "這個故事教導了一個好道理。" }
+  ],
+  "mosquito": [
+    { "pos": "n.", "zh": "蚊子", "example": "A mosquito bit me on the arm.", "example_zh": "一隻蚊子叮了我的手臂。" }
+  ],
+  "mostly": [
+    { "pos": "adv.", "zh": "大多、主要地", "example": "The class is mostly girls.", "example_zh": "這個班大多是女生。" }
+  ],
+  "motel": [
+    { "pos": "n.", "zh": "汽車旅館", "example": "We stayed at a roadside motel.", "example_zh": "我們住在路邊的一家汽車旅館。" }
+  ],
+  "moth": [
+    { "pos": "n.", "zh": "蛾", "example": "A moth flew toward the light.", "example_zh": "一隻蛾朝光飛去。" }
+  ],
+  "motor": [
+    { "pos": "n.", "zh": "馬達、發動機", "example": "The boat's motor stopped working.", "example_zh": "船的馬達故障了。" }
+  ],
+  "multiply": [
+    { "pos": "v.", "zh": "乘（數學）", "example": "Multiply three by four to get twelve.", "example_zh": "三乘以四得十二。" },
+    { "pos": "v.", "zh": "大量增加、繁殖", "example": "Bacteria multiply quickly in warm food.", "example_zh": "細菌在溫熱的食物中迅速繁殖。" }
+  ],
+  "murder": [
+    { "pos": "n.", "zh": "謀殺、兇殺", "example": "The police solved the murder case.", "example_zh": "警方破了那起兇殺案。" },
+    { "pos": "v.", "zh": "謀殺、殺害", "example": "He was charged with murdering a man.", "example_zh": "他被控謀殺一名男子。" }
+  ],
+  "muscle": [
+    { "pos": "n.", "zh": "肌肉", "example": "Lifting weights builds muscle.", "example_zh": "舉重能鍛鍊肌肉。" }
+  ],
+  "mushroom": [
+    { "pos": "n.", "zh": "蘑菇、菇", "example": "We put mushrooms in the soup.", "example_zh": "我們在湯裡加了蘑菇。" }
+  ],
+  "mystery": [
+    { "pos": "n.", "zh": "神秘、謎", "example": "The old house is full of mystery.", "example_zh": "那棟老房子充滿神秘。" }
+  ],
+  "naked": [
+    { "pos": "adj.", "zh": "裸的、赤裸的", "example": "You can't see germs with the naked eye.", "example_zh": "肉眼看不見細菌。" }
+  ],
+  "nap": [
+    { "pos": "n.", "zh": "小睡、午睡", "example": "I take a short nap after lunch.", "example_zh": "我午餐後小睡一下。" },
+    { "pos": "v.", "zh": "打盹、小睡", "example": "The cat napped on the sofa.", "example_zh": "貓在沙發上打盹。" }
+  ],
+  "napkin": [
+    { "pos": "n.", "zh": "餐巾", "example": "She wiped her mouth with a napkin.", "example_zh": "她用餐巾擦嘴。" }
+  ],
+  "native": [
+    { "pos": "adj.", "zh": "本國的、母語的", "example": "English is her native language.", "example_zh": "英語是她的母語。" },
+    { "pos": "n.", "zh": "本地人、當地人", "example": "He is a native of Taipei.", "example_zh": "他是台北本地人。" }
+  ],
+  "navy": [
+    { "pos": "n.", "zh": "海軍", "example": "His brother serves in the navy.", "example_zh": "他哥哥在海軍服役。" }
+  ],
+  "neat": [
+    { "pos": "adj.", "zh": "整潔的、乾淨的", "example": "Her handwriting is very neat.", "example_zh": "她的字寫得很工整。" }
+  ],
+  "necessity": [
+    { "pos": "n.", "zh": "必需品、必要性", "example": "Water is a necessity of life.", "example_zh": "水是生活的必需品。" }
+  ],
+  "necktie": [
+    { "pos": "n.", "zh": "領帶", "example": "He wore a blue necktie to work.", "example_zh": "他打了藍色領帶去上班。" }
+  ],
+  "neighborhood": [
+    { "pos": "n.", "zh": "鄰里、街坊", "example": "We live in a quiet neighborhood.", "example_zh": "我們住在一個安靜的社區。" }
+  ],
+  "nest": [
+    { "pos": "n.", "zh": "巢、窩", "example": "The bird built a nest in the tree.", "example_zh": "那隻鳥在樹上築巢。" },
+    { "pos": "v.", "zh": "築巢", "example": "Birds nest in spring.", "example_zh": "鳥兒在春天築巢。" }
+  ],
+  "nickname": [
+    { "pos": "n.", "zh": "綽號、暱稱", "example": "His nickname is 'Speedy'.", "example_zh": "他的綽號叫「飛毛腿」。" }
+  ],
+  "normal": [
+    { "pos": "adj.", "zh": "正常的、普通的", "example": "It is normal to feel nervous before a test.", "example_zh": "考試前緊張是很正常的。" }
+  ],
+  "novelist": [
+    { "pos": "n.", "zh": "小說家", "example": "The novelist wrote ten books.", "example_zh": "這位小說家寫了十本書。" }
+  ],
+  "nun": [
+    { "pos": "n.", "zh": "修女、尼姑", "example": "The nun helped the poor in the village.", "example_zh": "那位修女幫助村裡的窮人。" }
+  ],
+  "oak": [
+    { "pos": "n.", "zh": "橡樹、橡木", "example": "A tall oak grew in the garden.", "example_zh": "花園裡長著一棵高大的橡樹。" }
+  ],
+  "observe": [
+    { "pos": "v.", "zh": "觀察、注意到", "example": "We observed the stars through a telescope.", "example_zh": "我們用望遠鏡觀察星星。" },
+    { "pos": "v.", "zh": "遵守、奉行", "example": "Everyone must observe the rules.", "example_zh": "每個人都必須遵守規則。" }
+  ],
+  "occasion": [
+    { "pos": "n.", "zh": "場合、時機", "example": "A wedding is a special occasion.", "example_zh": "婚禮是個特別的場合。" }
+  ],
+  "odd": [
+    { "pos": "adj.", "zh": "奇怪的、古怪的", "example": "I heard an odd sound at night.", "example_zh": "我晚上聽到一個奇怪的聲音。" },
+    { "pos": "adj.", "zh": "奇數的", "example": "One, three, and five are odd numbers.", "example_zh": "一、三、五是奇數。" }
+  ],
+  "omit": [
+    { "pos": "v.", "zh": "省略、遺漏", "example": "Don't omit any important details.", "example_zh": "別遺漏任何重要的細節。" }
+  ],
+  "ongoing": [
+    { "pos": "adj.", "zh": "進行中的、持續的", "example": "The project is still ongoing.", "example_zh": "這個專案仍在進行中。" }
+  ],
+  "onion": [
+    { "pos": "n.", "zh": "洋蔥", "example": "Cutting onions makes me cry.", "example_zh": "切洋蔥讓我流淚。" }
+  ],
+  "onto": [
+    { "pos": "prep.", "zh": "到⋯之上", "example": "The cat jumped onto the table.", "example_zh": "貓跳到桌子上。" }
+  ],
+  "operation": [
+    { "pos": "n.", "zh": "手術", "example": "The doctor performed a difficult operation.", "example_zh": "醫生進行了一場困難的手術。" },
+    { "pos": "n.", "zh": "運作、操作", "example": "The factory began operation last year.", "example_zh": "這家工廠去年開始運作。" }
+  ],
+  "opportunity": [
+    { "pos": "n.", "zh": "機會", "example": "This is a great opportunity to learn.", "example_zh": "這是個很好的學習機會。" }
+  ],
+  "opposite": [
+    { "pos": "adj.", "zh": "相反的、對面的", "example": "They walked in opposite directions.", "example_zh": "他們朝相反的方向走去。" },
+    { "pos": "prep.", "zh": "在⋯對面", "example": "The bank is opposite the post office.", "example_zh": "銀行在郵局對面。" }
+  ],
+  "optimistic": [
+    { "pos": "adj.", "zh": "樂觀的", "example": "She is optimistic about the future.", "example_zh": "她對未來很樂觀。" }
+  ],
+  "oral": [
+    { "pos": "adj.", "zh": "口頭的、口的", "example": "We have an oral English test today.", "example_zh": "我們今天有英文口試。" }
+  ],
+  "organic": [
+    { "pos": "adj.", "zh": "有機的", "example": "They grow organic vegetables.", "example_zh": "他們種有機蔬菜。" }
+  ],
+  "organize": [
+    { "pos": "v.", "zh": "組織、籌劃", "example": "She organized a charity event.", "example_zh": "她籌辦了一場慈善活動。" },
+    { "pos": "v.", "zh": "整理、安排", "example": "She organized the books on the shelf.", "example_zh": "她把架子上的書整理好。" }
+  ],
+  "original": [
+    { "pos": "adj.", "zh": "原本的、原版的", "example": "This is the original painting, not a copy.", "example_zh": "這是原畫，不是複製品。" },
+    { "pos": "adj.", "zh": "有創意的、新穎的", "example": "She has many original ideas.", "example_zh": "她有許多新穎的點子。" }
+  ],
+  "outdoor": [
+    { "pos": "adj.", "zh": "戶外的", "example": "We enjoy outdoor activities like hiking.", "example_zh": "我們喜歡像健行這樣的戶外活動。" }
+  ],
+  "outdoors": [
+    { "pos": "adv.", "zh": "在戶外", "example": "The children played outdoors all day.", "example_zh": "孩子們在戶外玩了一整天。" }
+  ],
+  "outer": [
+    { "pos": "adj.", "zh": "外部的、外面的", "example": "The outer wall is painted white.", "example_zh": "外牆漆成白色。" }
+  ],
+  "outline": [
+    { "pos": "n.", "zh": "大綱、概要", "example": "Write an outline before your essay.", "example_zh": "寫作文前先列大綱。" },
+    { "pos": "n.", "zh": "輪廓、外形", "example": "We saw the outline of the mountain.", "example_zh": "我們看見山的輪廓。" }
+  ],
+  "oven": [
+    { "pos": "n.", "zh": "烤箱", "example": "She baked the cake in the oven.", "example_zh": "她用烤箱烤蛋糕。" }
+  ],
+  "overseas": [
+    { "pos": "adv.", "zh": "在海外、往國外", "example": "He studies overseas in England.", "example_zh": "他在英國念書。" },
+    { "pos": "adj.", "zh": "海外的、國外的", "example": "She has an overseas job.", "example_zh": "她有一份國外的工作。" }
+  ],
+  "owe": [
+    { "pos": "v.", "zh": "欠、虧欠", "example": "I owe my friend ten dollars.", "example_zh": "我欠我朋友十元。" }
+  ],
+  "owl": [
+    { "pos": "n.", "zh": "貓頭鷹", "example": "An owl hunts at night.", "example_zh": "貓頭鷹在夜間獵食。" }
+  ],
+  "ownership": [
+    { "pos": "n.", "zh": "所有權", "example": "He has ownership of the small shop.", "example_zh": "他擁有這家小店的所有權。" }
+  ]
+}
