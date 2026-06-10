@@ -1,0 +1,195 @@
+{
+  "confusion": [
+    { "pos": "n.", "zh": "混亂、困惑", "example": "There was confusion about the meeting time.", "example_zh": "大家對開會時間感到困惑。" }
+  ],
+  "congratulate": [
+    { "pos": "v.", "zh": "恭喜、祝賀", "example": "We congratulated her on her success.", "example_zh": "我們恭喜她成功。" }
+  ],
+  "congress": [
+    { "pos": "n.", "zh": "國會、議會", "example": "Congress passed a new law.", "example_zh": "國會通過了一項新法。" }
+  ],
+  "conquer": [
+    { "pos": "v.", "zh": "征服、克服", "example": "He conquered his fear of heights.", "example_zh": "他克服了懼高的恐懼。" }
+  ],
+  "conscience": [
+    { "pos": "n.", "zh": "良心、良知", "example": "His conscience told him to tell the truth.", "example_zh": "他的良心要他說實話。" }
+  ],
+  "consequence": [
+    { "pos": "n.", "zh": "結果、後果", "example": "Every action has a consequence.", "example_zh": "每個行動都有後果。" }
+  ],
+  "consequent": [
+    { "pos": "adj.", "zh": "隨之發生的、因而導致的", "example": "Heavy rain and the consequent floods caused damage.", "example_zh": "大雨及隨之而來的洪水造成了損害。" }
+  ],
+  "conservative": [
+    { "pos": "adj.", "zh": "保守的、守舊的", "example": "He has conservative views on change.", "example_zh": "他對改變抱持保守的看法。" },
+    { "pos": "adj.", "zh": "謹慎的、保守的（估計）", "example": "She made a conservative estimate.", "example_zh": "她做了一個保守的估計。" }
+  ],
+  "consist": [
+    { "pos": "v.", "zh": "由⋯組成（consist of）", "example": "The team consists of five players.", "example_zh": "這支隊伍由五名球員組成。" }
+  ],
+  "consistent": [
+    { "pos": "adj.", "zh": "一致的、始終如一的", "example": "She gives consistent effort every day.", "example_zh": "她每天都付出始終如一的努力。" }
+  ],
+  "constitute": [
+    { "pos": "v.", "zh": "構成、組成", "example": "Twelve months constitute a year.", "example_zh": "十二個月構成一年。" }
+  ],
+  "constitution": [
+    { "pos": "n.", "zh": "憲法", "example": "The constitution protects people's rights.", "example_zh": "憲法保障人民的權利。" },
+    { "pos": "n.", "zh": "體質、構造", "example": "He has a strong constitution.", "example_zh": "他體格強健。" }
+  ],
+  "construct": [
+    { "pos": "v.", "zh": "建造、構築", "example": "They will construct a new bridge.", "example_zh": "他們將建造一座新橋。" }
+  ],
+  "construction": [
+    { "pos": "n.", "zh": "建造、建築", "example": "The construction of the school took two years.", "example_zh": "這所學校的建造花了兩年。" }
+  ],
+  "constructive": [
+    { "pos": "adj.", "zh": "建設性的", "example": "She gave me some constructive advice.", "example_zh": "她給了我一些有建設性的建議。" }
+  ],
+  "consult": [
+    { "pos": "v.", "zh": "諮詢、請教", "example": "You should consult a doctor about the pain.", "example_zh": "你應該就這疼痛去看醫生。" }
+  ],
+  "consultant": [
+    { "pos": "n.", "zh": "顧問", "example": "The company hired a business consultant.", "example_zh": "公司聘請了一位商業顧問。" }
+  ],
+  "consume": [
+    { "pos": "v.", "zh": "消耗、消費", "example": "The car consumes a lot of gas.", "example_zh": "這輛車很耗油。" }
+  ],
+  "consumer": [
+    { "pos": "n.", "zh": "消費者", "example": "Consumers want good products at low prices.", "example_zh": "消費者想要物美價廉的產品。" }
+  ],
+  "container": [
+    { "pos": "n.", "zh": "容器、貨櫃", "example": "She put the soup in a plastic container.", "example_zh": "她把湯裝進塑膠容器裡。" }
+  ],
+  "content": [
+    { "pos": "n.", "zh": "內容、目錄", "example": "The content of the book is interesting.", "example_zh": "這本書的內容很有趣。" },
+    { "pos": "n.", "zh": "含量", "example": "Check the sugar content of the drink.", "example_zh": "看看這飲料的含糖量。" }
+  ],
+  "content-2": [
+    { "pos": "adj.", "zh": "滿足的、滿意的", "example": "She felt content with her simple life.", "example_zh": "她對自己簡單的生活感到滿足。" },
+    { "pos": "v.", "zh": "使滿足（content oneself with）", "example": "He contented himself with a small meal.", "example_zh": "他以一頓簡單的飯就感到滿足。" }
+  ],
+  "contest": [
+    { "pos": "n.", "zh": "競賽、比賽", "example": "He won first place in the writing contest.", "example_zh": "他在寫作比賽中得了第一名。" },
+    { "pos": "v.", "zh": "爭奪、競爭", "example": "Two players contested the title.", "example_zh": "兩名選手爭奪冠軍。" }
+  ],
+  "context": [
+    { "pos": "n.", "zh": "上下文、背景", "example": "Guess the word's meaning from the context.", "example_zh": "從上下文猜這個字的意思。" }
+  ],
+  "continual": [
+    { "pos": "adj.", "zh": "連續的、不斷的", "example": "The continual noise gave me a headache.", "example_zh": "不斷的噪音讓我頭痛。" }
+  ],
+  "continuous": [
+    { "pos": "adj.", "zh": "連續不斷的、持續的", "example": "There was continuous rain for three days.", "example_zh": "連續下了三天的雨。" }
+  ],
+  "contrary": [
+    { "pos": "adj.", "zh": "相反的、對立的", "example": "He holds a contrary opinion.", "example_zh": "他持相反的意見。" },
+    { "pos": "n.", "zh": "相反（on the contrary）", "example": "Contrary to my hopes, it rained.", "example_zh": "與我所希望的相反，下雨了。" }
+  ],
+  "contrast": [
+    { "pos": "n.", "zh": "對比、差異", "example": "There is a sharp contrast between the two cities.", "example_zh": "這兩座城市有著鮮明的對比。" },
+    { "pos": "v.", "zh": "對比、形成對照", "example": "The dark sky contrasted with the white snow.", "example_zh": "漆黑的天空與白雪形成對比。" }
+  ],
+  "contribute": [
+    { "pos": "v.", "zh": "貢獻、捐助", "example": "Everyone contributed money to the gift.", "example_zh": "每個人都為禮物出了錢。" }
+  ],
+  "contribution": [
+    { "pos": "n.", "zh": "貢獻、捐獻", "example": "Her contribution to the team was great.", "example_zh": "她對團隊的貢獻很大。" }
+  ],
+  "convenience": [
+    { "pos": "n.", "zh": "便利、方便", "example": "I shop online for convenience.", "example_zh": "為了方便，我網購。" }
+  ],
+  "convention": [
+    { "pos": "n.", "zh": "慣例、習俗", "example": "Shaking hands is a common convention.", "example_zh": "握手是常見的習俗。" },
+    { "pos": "n.", "zh": "大會、會議", "example": "They met at a science convention.", "example_zh": "他們在一場科學大會上相遇。" }
+  ],
+  "conventional": [
+    { "pos": "adj.", "zh": "傳統的、慣例的", "example": "They chose a conventional wedding.", "example_zh": "他們選擇了傳統的婚禮。" }
+  ],
+  "converse": [
+    { "pos": "v.", "zh": "交談、談話", "example": "They conversed quietly in the corner.", "example_zh": "他們在角落裡輕聲交談。" }
+  ],
+  "convey": [
+    { "pos": "v.", "zh": "傳達、表達", "example": "Her face conveyed deep sadness.", "example_zh": "她的表情流露出深深的悲傷。" }
+  ],
+  "convince": [
+    { "pos": "v.", "zh": "說服、使信服", "example": "He convinced me to try the new dish.", "example_zh": "他說服我嘗試這道新菜。" }
+  ],
+  "cooperate": [
+    { "pos": "v.", "zh": "合作、配合", "example": "The two groups agreed to cooperate.", "example_zh": "兩個團體同意合作。" }
+  ],
+  "cooperation": [
+    { "pos": "n.", "zh": "合作", "example": "The project needs everyone's cooperation.", "example_zh": "這個專案需要大家的合作。" }
+  ],
+  "cooperative": [
+    { "pos": "adj.", "zh": "合作的、樂意配合的", "example": "The students were helpful and cooperative.", "example_zh": "學生們既樂於助人又願意配合。" },
+    { "pos": "n.", "zh": "合作社", "example": "The farmers formed a cooperative.", "example_zh": "農民組成了一個合作社。" }
+  ],
+  "cope": [
+    { "pos": "v.", "zh": "應付、處理", "example": "She learned to cope with stress.", "example_zh": "她學會了應付壓力。" }
+  ],
+  "copper": [
+    { "pos": "n.", "zh": "銅", "example": "The old coins are made of copper.", "example_zh": "那些舊硬幣是用銅做的。" }
+  ],
+  "cord": [
+    { "pos": "n.", "zh": "細繩、電線", "example": "Please tie the box with a cord.", "example_zh": "請用繩子把箱子綁起來。" }
+  ],
+  "correspond": [
+    { "pos": "v.", "zh": "相符、一致", "example": "Her answer corresponds with the facts.", "example_zh": "她的回答與事實相符。" },
+    { "pos": "v.", "zh": "通信", "example": "They corresponded by letter for years.", "example_zh": "他們以書信往來多年。" }
+  ],
+  "costume": [
+    { "pos": "n.", "zh": "服裝、戲服", "example": "She wore a witch costume on Halloween.", "example_zh": "她在萬聖節穿了女巫服裝。" }
+  ],
+  "cottage": [
+    { "pos": "n.", "zh": "小屋、村舍", "example": "They spent the weekend in a country cottage.", "example_zh": "他們在鄉間小屋度過週末。" }
+  ],
+  "council": [
+    { "pos": "n.", "zh": "委員會、議會", "example": "The city council discussed the new park.", "example_zh": "市議會討論了那座新公園。" }
+  ],
+  "counter": [
+    { "pos": "n.", "zh": "櫃檯、計數器", "example": "Please pay at the counter.", "example_zh": "請到櫃檯結帳。" },
+    { "pos": "v.", "zh": "反駁、反制", "example": "He countered her argument.", "example_zh": "他反駁了她的論點。" }
+  ],
+  "courageous": [
+    { "pos": "adj.", "zh": "勇敢的", "example": "It was courageous of her to speak up.", "example_zh": "她勇於發聲，很有勇氣。" }
+  ],
+  "courtesy": [
+    { "pos": "n.", "zh": "禮貌、謙恭", "example": "He always treats others with courtesy.", "example_zh": "他總是彬彬有禮地對待他人。" }
+  ],
+  "coward": [
+    { "pos": "n.", "zh": "懦夫、膽小鬼", "example": "Don't be a coward; try your best.", "example_zh": "別當膽小鬼，盡力一試。" }
+  ],
+  "crack": [
+    { "pos": "n.", "zh": "裂縫、裂痕", "example": "There is a crack in the glass.", "example_zh": "玻璃上有道裂縫。" },
+    { "pos": "v.", "zh": "使破裂、裂開", "example": "The plate cracked when it fell.", "example_zh": "盤子掉落時裂開了。" }
+  ],
+  "craft": [
+    { "pos": "n.", "zh": "工藝、手藝", "example": "Making pottery is a traditional craft.", "example_zh": "製陶是一項傳統工藝。" }
+  ],
+  "creation": [
+    { "pos": "n.", "zh": "創造、創作", "example": "The painting is her best creation.", "example_zh": "這幅畫是她最好的作品。" }
+  ],
+  "creativity": [
+    { "pos": "n.", "zh": "創造力", "example": "Art class encourages creativity.", "example_zh": "美術課鼓勵創造力。" }
+  ],
+  "creep": [
+    { "pos": "v.", "zh": "躡手躡腳地走、爬行", "example": "The cat crept quietly toward the bird.", "example_zh": "貓悄悄地朝鳥靠近。" }
+  ],
+  "critic": [
+    { "pos": "n.", "zh": "評論家、批評者", "example": "A film critic reviewed the new movie.", "example_zh": "一位影評人評論了這部新電影。" }
+  ],
+  "critical": [
+    { "pos": "adj.", "zh": "關鍵的、危急的", "example": "Clean water is critical for health.", "example_zh": "乾淨的水對健康至關重要。" },
+    { "pos": "adj.", "zh": "批評的、挑剔的", "example": "She was critical of the plan.", "example_zh": "她對這個計畫多有批評。" }
+  ],
+  "criticism": [
+    { "pos": "n.", "zh": "批評、評論", "example": "She accepted the criticism politely.", "example_zh": "她有禮貌地接受了批評。" }
+  ],
+  "criticize": [
+    { "pos": "v.", "zh": "批評、評論", "example": "Don't criticize others without thinking.", "example_zh": "別不經思考就批評別人。" }
+  ],
+  "cruelty": [
+    { "pos": "n.", "zh": "殘忍、殘酷", "example": "Cruelty to animals is wrong.", "example_zh": "虐待動物是不對的。" }
+  ]
+}
