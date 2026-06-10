@@ -1,0 +1,190 @@
+{
+  "hut": [
+    { "pos": "n.", "zh": "小屋、茅屋", "example": "They lived in a small wooden hut.", "example_zh": "他們住在一間小木屋裡。" }
+  ],
+  "icy": [
+    { "pos": "adj.", "zh": "結冰的、冰冷的", "example": "Be careful on the icy road.", "example_zh": "在結冰的路上要小心。" }
+  ],
+  "imagination": [
+    { "pos": "n.", "zh": "想像力", "example": "Children have a rich imagination.", "example_zh": "孩子有豐富的想像力。" }
+  ],
+  "immediate": [
+    { "pos": "adj.", "zh": "立即的、即刻的", "example": "The sick man needs immediate help.", "example_zh": "那個病人需要立即的幫助。" }
+  ],
+  "import": [
+    { "pos": "v.", "zh": "進口、輸入", "example": "We import coffee from Brazil.", "example_zh": "我們從巴西進口咖啡。" },
+    { "pos": "n.", "zh": "進口、進口品", "example": "Oil is a major import.", "example_zh": "石油是主要的進口品。" }
+  ],
+  "impress": [
+    { "pos": "v.", "zh": "使印象深刻", "example": "Her speech impressed everyone.", "example_zh": "她的演講讓大家印象深刻。" }
+  ],
+  "indoor": [
+    { "pos": "adj.", "zh": "室內的", "example": "We played an indoor game when it rained.", "example_zh": "下雨時我們玩室內遊戲。" }
+  ],
+  "indoors": [
+    { "pos": "adv.", "zh": "在室內", "example": "Let's stay indoors during the storm.", "example_zh": "暴風雨時我們待在室內吧。" }
+  ],
+  "industrial": [
+    { "pos": "adj.", "zh": "工業的", "example": "This is an industrial area with many factories.", "example_zh": "這是個有許多工廠的工業區。" }
+  ],
+  "inferior": [
+    { "pos": "adj.", "zh": "較差的、次等的", "example": "The cheap shoes are of inferior quality.", "example_zh": "這雙便宜的鞋品質較差。" }
+  ],
+  "inform": [
+    { "pos": "v.", "zh": "通知、告知", "example": "Please inform me of any changes.", "example_zh": "有任何變動請通知我。" }
+  ],
+  "information": [
+    { "pos": "n.", "zh": "資訊、消息", "example": "I found useful information online.", "example_zh": "我在網路上找到有用的資訊。" }
+  ],
+  "injury": [
+    { "pos": "n.", "zh": "傷、受傷", "example": "He missed the game because of an injury.", "example_zh": "他因受傷而錯過比賽。" }
+  ],
+  "inn": [
+    { "pos": "n.", "zh": "客棧、小旅館", "example": "We stayed at a small inn for the night.", "example_zh": "我們在一家小旅館過夜。" }
+  ],
+  "inner": [
+    { "pos": "adj.", "zh": "內部的、內心的", "example": "She felt a sense of inner peace.", "example_zh": "她感到一種內心的平靜。" }
+  ],
+  "innocent": [
+    { "pos": "adj.", "zh": "清白的、無辜的", "example": "The court found him innocent.", "example_zh": "法院判他無罪。" }
+  ],
+  "inspect": [
+    { "pos": "v.", "zh": "檢查、視察", "example": "The officer inspected the bags.", "example_zh": "官員檢查了那些袋子。" }
+  ],
+  "inspector": [
+    { "pos": "n.", "zh": "檢查員、督察", "example": "The inspector checked the building.", "example_zh": "督察檢查了這棟大樓。" }
+  ],
+  "intelligent": [
+    { "pos": "adj.", "zh": "聰明的、有智慧的", "example": "Dolphins are very intelligent animals.", "example_zh": "海豚是非常聰明的動物。" }
+  ],
+  "interrupt": [
+    { "pos": "v.", "zh": "打斷、中斷", "example": "Please don't interrupt while I'm speaking.", "example_zh": "我說話時請別打斷。" }
+  ],
+  "invent": [
+    { "pos": "v.", "zh": "發明", "example": "Edison invented the light bulb.", "example_zh": "愛迪生發明了電燈泡。" }
+  ],
+  "inventor": [
+    { "pos": "n.", "zh": "發明家", "example": "The inventor created a useful tool.", "example_zh": "這位發明家創造了一個有用的工具。" }
+  ],
+  "investigate": [
+    { "pos": "v.", "zh": "調查", "example": "The police investigated the crime.", "example_zh": "警方調查了這起案件。" }
+  ],
+  "invitation": [
+    { "pos": "n.", "zh": "邀請、邀請函", "example": "I received an invitation to the party.", "example_zh": "我收到了派對的邀請函。" }
+  ],
+  "ivory": [
+    { "pos": "n.", "zh": "象牙", "example": "It is illegal to sell ivory.", "example_zh": "販賣象牙是違法的。" }
+  ],
+  "jail": [
+    { "pos": "n.", "zh": "監獄", "example": "The thief was put in jail.", "example_zh": "那個小偷被關進監獄。" },
+    { "pos": "v.", "zh": "監禁、關押", "example": "He was jailed for stealing.", "example_zh": "他因偷竊而被監禁。" }
+  ],
+  "jar": [
+    { "pos": "n.", "zh": "罐子、廣口瓶", "example": "She filled the jar with cookies.", "example_zh": "她把餅乾裝滿罐子。" }
+  ],
+  "jaw": [
+    { "pos": "n.", "zh": "顎、下巴", "example": "He hurt his jaw in the accident.", "example_zh": "他在事故中傷了下巴。" }
+  ],
+  "jazz": [
+    { "pos": "n.", "zh": "爵士樂", "example": "He enjoys listening to jazz music.", "example_zh": "他喜歡聽爵士樂。" }
+  ],
+  "jealous": [
+    { "pos": "adj.", "zh": "嫉妒的、吃醋的", "example": "She was jealous of her sister's new toy.", "example_zh": "她嫉妒姊姊的新玩具。" }
+  ],
+  "jeep": [
+    { "pos": "n.", "zh": "吉普車", "example": "They drove a jeep across the desert.", "example_zh": "他們開著吉普車穿越沙漠。" }
+  ],
+  "jelly": [
+    { "pos": "n.", "zh": "果凍、果醬", "example": "The children ate fruit jelly.", "example_zh": "孩子們吃了水果果凍。" }
+  ],
+  "jet": [
+    { "pos": "n.", "zh": "噴射機", "example": "The jet flew high above the clouds.", "example_zh": "噴射機飛在雲層之上。" },
+    { "pos": "n.", "zh": "（水、氣）噴流", "example": "A jet of water shot from the pipe.", "example_zh": "一股水流從管子噴出。" }
+  ],
+  "jewel": [
+    { "pos": "n.", "zh": "寶石", "example": "The crown was covered with jewels.", "example_zh": "王冠上鑲滿了寶石。" }
+  ],
+  "jewelry": [
+    { "pos": "n.", "zh": "珠寶、首飾", "example": "She keeps her jewelry in a small box.", "example_zh": "她把首飾放在一個小盒子裡。" }
+  ],
+  "journey": [
+    { "pos": "n.", "zh": "旅程、旅行", "example": "Their journey across the country took a week.", "example_zh": "他們橫越全國的旅程花了一週。" }
+  ],
+  "joyful": [
+    { "pos": "adj.", "zh": "充滿喜悅的、歡樂的", "example": "It was a joyful family reunion.", "example_zh": "那是一場歡樂的家庭團聚。" }
+  ],
+  "juicy": [
+    { "pos": "adj.", "zh": "多汁的", "example": "The orange was sweet and juicy.", "example_zh": "那顆柳橙又甜又多汁。" }
+  ],
+  "jungle": [
+    { "pos": "n.", "zh": "叢林", "example": "Tigers live in the thick jungle.", "example_zh": "老虎住在茂密的叢林裡。" }
+  ],
+  "junior": [
+    { "pos": "adj.", "zh": "資淺的、初級的", "example": "He is a junior member of the club.", "example_zh": "他是這個社團的資淺成員。" },
+    { "pos": "adj.", "zh": "較年幼的", "example": "She plays in the junior team.", "example_zh": "她在青少年隊裡打球。" }
+  ],
+  "junk": [
+    { "pos": "n.", "zh": "垃圾、廢物", "example": "The garage is full of old junk.", "example_zh": "車庫裡堆滿了舊雜物。" }
+  ],
+  "kangaroo": [
+    { "pos": "n.", "zh": "袋鼠", "example": "A kangaroo carries its baby in a pouch.", "example_zh": "袋鼠用育兒袋帶著寶寶。" }
+  ],
+  "keyboard": [
+    { "pos": "n.", "zh": "鍵盤", "example": "He types fast on the keyboard.", "example_zh": "他在鍵盤上打字很快。" }
+  ],
+  "kidney": [
+    { "pos": "n.", "zh": "腎臟", "example": "The kidney removes waste from the body.", "example_zh": "腎臟把廢物排出體外。" }
+  ],
+  "kilometer": [
+    { "pos": "n.", "zh": "公里", "example": "The race is ten kilometers long.", "example_zh": "這場比賽長十公里。" }
+  ],
+  "kindergarten": [
+    { "pos": "n.", "zh": "幼稚園", "example": "My little brother goes to kindergarten.", "example_zh": "我弟弟上幼稚園。" }
+  ],
+  "kingdom": [
+    { "pos": "n.", "zh": "王國", "example": "The king ruled a peaceful kingdom.", "example_zh": "國王統治著一個和平的王國。" }
+  ],
+  "kit": [
+    { "pos": "n.", "zh": "成套工具、用具組", "example": "Keep a first-aid kit in the car.", "example_zh": "在車上放一個急救箱。" }
+  ],
+  "knight": [
+    { "pos": "n.", "zh": "騎士", "example": "The brave knight fought the dragon.", "example_zh": "勇敢的騎士與龍搏鬥。" }
+  ],
+  "knit": [
+    { "pos": "v.", "zh": "編織", "example": "Grandma knitted a warm scarf.", "example_zh": "奶奶織了一條溫暖的圍巾。" }
+  ],
+  "knot": [
+    { "pos": "n.", "zh": "結、繩結", "example": "He tied a knot in the rope.", "example_zh": "他在繩子上打了個結。" },
+    { "pos": "v.", "zh": "打結、纏繞", "example": "She knotted the two ends together.", "example_zh": "她把兩端打成一個結。" }
+  ],
+  "koala": [
+    { "pos": "n.", "zh": "無尾熊", "example": "The koala slept in the tree.", "example_zh": "無尾熊在樹上睡覺。" }
+  ],
+  "label": [
+    { "pos": "n.", "zh": "標籤、標示", "example": "Read the label before you buy it.", "example_zh": "買之前先看標籤。" },
+    { "pos": "v.", "zh": "貼標籤、標示", "example": "She labeled each box clearly.", "example_zh": "她在每個箱子上清楚標示。" }
+  ],
+  "lace": [
+    { "pos": "n.", "zh": "蕾絲、花邊", "example": "Her dress was decorated with white lace.", "example_zh": "她的洋裝飾有白色蕾絲。" },
+    { "pos": "n.", "zh": "鞋帶", "example": "Tie your shoe laces before running.", "example_zh": "跑步前先綁好鞋帶。" }
+  ],
+  "ladder": [
+    { "pos": "n.", "zh": "梯子", "example": "He climbed the ladder to fix the roof.", "example_zh": "他爬上梯子修屋頂。" }
+  ],
+  "lately": [
+    { "pos": "adv.", "zh": "最近、近來", "example": "I haven't seen her lately.", "example_zh": "我最近沒見到她。" }
+  ],
+  "laughter": [
+    { "pos": "n.", "zh": "笑聲", "example": "The room was full of laughter.", "example_zh": "房間裡充滿笑聲。" }
+  ],
+  "laundry": [
+    { "pos": "n.", "zh": "待洗衣物、洗衣", "example": "I need to do the laundry today.", "example_zh": "我今天得洗衣服。" }
+  ],
+  "lawn": [
+    { "pos": "n.", "zh": "草坪", "example": "He mows the lawn every weekend.", "example_zh": "他每個週末割草坪。" }
+  ],
+  "leak": [
+    { "pos": "v.", "zh": "漏、滲漏", "example": "The roof leaks when it rains.", "example_zh": "下雨時屋頂會漏水。" },
+    { "pos": "n.", "zh": "漏洞、漏隙", "example": "There is a leak in the water pipe.", "example_zh": "水管有個漏洞。" }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "leap": [
+    { "pos": "v.", "zh": "跳、躍", "example": "The frog leaped over the rock.", "example_zh": "青蛙跳過石頭。" },
+    { "pos": "n.", "zh": "跳躍、躍進", "example": "The frog took a big leap.", "example_zh": "青蛙用力一跳。" }
+  ],
+  "learning": [
+    { "pos": "n.", "zh": "學習、學問", "example": "Reading is an important part of learning.", "example_zh": "閱讀是學習的重要部分。" }
+  ],
+  "leather": [
+    { "pos": "n.", "zh": "皮革", "example": "He bought a brown leather wallet.", "example_zh": "他買了一個棕色皮夾。" }
+  ],
+  "leisure": [
+    { "pos": "n.", "zh": "閒暇、休閒", "example": "She reads books in her leisure time.", "example_zh": "她在閒暇時讀書。" }
+  ],
+  "lemonade": [
+    { "pos": "n.", "zh": "檸檬水", "example": "We drank cold lemonade in the heat.", "example_zh": "大熱天我們喝冰檸檬水。" }
+  ],
+  "leopard": [
+    { "pos": "n.", "zh": "豹", "example": "A leopard can run very fast.", "example_zh": "豹能跑得非常快。" }
+  ],
+  "lettuce": [
+    { "pos": "n.", "zh": "萵苣、生菜", "example": "Add some lettuce to the sandwich.", "example_zh": "在三明治裡加些生菜。" }
+  ],
+  "liberty": [
+    { "pos": "n.", "zh": "自由", "example": "The people fought for liberty.", "example_zh": "人民為自由而奮鬥。" }
+  ],
+  "lick": [
+    { "pos": "v.", "zh": "舔", "example": "The dog licked my hand.", "example_zh": "那隻狗舔了我的手。" },
+    { "pos": "n.", "zh": "舔一下", "example": "She gave the ice cream a lick.", "example_zh": "她舔了一口冰淇淋。" }
+  ],
+  "lifetime": [
+    { "pos": "n.", "zh": "一生、終生", "example": "This is a once-in-a-lifetime chance.", "example_zh": "這是一生一次的機會。" }
+  ],
+  "lighthouse": [
+    { "pos": "n.", "zh": "燈塔", "example": "The lighthouse guided the ships at night.", "example_zh": "燈塔在夜裡引導船隻。" }
+  ],
+  "lightning": [
+    { "pos": "n.", "zh": "閃電", "example": "Lightning lit up the dark sky.", "example_zh": "閃電照亮了漆黑的天空。" }
+  ],
+  "lily": [
+    { "pos": "n.", "zh": "百合花", "example": "A white lily grew by the pond.", "example_zh": "池塘邊長著一朵白百合。" }
+  ],
+  "limb": [
+    { "pos": "n.", "zh": "四肢、肢體", "example": "Stretching keeps your limbs flexible.", "example_zh": "伸展能讓四肢保持靈活。" }
+  ],
+  "litter": [
+    { "pos": "v.", "zh": "亂丟垃圾", "example": "Please don't litter in the park.", "example_zh": "請別在公園亂丟垃圾。" },
+    { "pos": "n.", "zh": "垃圾、廢棄物", "example": "The beach was covered with litter.", "example_zh": "海灘上滿是垃圾。" }
+  ],
+  "lively": [
+    { "pos": "adj.", "zh": "活潑的、熱鬧的", "example": "The party was lively and fun.", "example_zh": "派對既熱鬧又好玩。" }
+  ],
+  "loaf": [
+    { "pos": "n.", "zh": "一條（麵包）", "example": "She baked a loaf of bread.", "example_zh": "她烤了一條麵包。" }
+  ],
+  "lobby": [
+    { "pos": "n.", "zh": "大廳", "example": "We waited in the hotel lobby.", "example_zh": "我們在飯店大廳等候。" }
+  ],
+  "locate": [
+    { "pos": "v.", "zh": "找出位置、坐落於", "example": "The shop is located near the station.", "example_zh": "這家店位於車站附近。" }
+  ],
+  "location": [
+    { "pos": "n.", "zh": "地點、位置", "example": "This is a good location for a store.", "example_zh": "這是開店的好地點。" }
+  ],
+  "lock": [
+    { "pos": "v.", "zh": "鎖上", "example": "Please lock the door when you leave.", "example_zh": "離開時請把門鎖上。" },
+    { "pos": "n.", "zh": "鎖", "example": "The lock on the gate is broken.", "example_zh": "大門上的鎖壞了。" }
+  ],
+  "log": [
+    { "pos": "n.", "zh": "圓木、木頭", "example": "He threw a log onto the fire.", "example_zh": "他往火裡丟了一根木頭。" },
+    { "pos": "v.", "zh": "記錄、登入（log in）", "example": "Please log in with your password.", "example_zh": "請用密碼登入。" }
+  ],
+  "lollipop": [
+    { "pos": "n.", "zh": "棒棒糖", "example": "The child enjoyed a sweet lollipop.", "example_zh": "那孩子吃著一支甜甜的棒棒糖。" }
+  ],
+  "loose": [
+    { "pos": "adj.", "zh": "鬆的、寬鬆的", "example": "The button on my shirt is loose.", "example_zh": "我襯衫上的鈕扣鬆了。" }
+  ],
+  "lord": [
+    { "pos": "n.", "zh": "貴族、領主", "example": "The land belonged to a powerful lord.", "example_zh": "這塊地屬於一位有權勢的領主。" },
+    { "pos": "n.", "zh": "主、上帝（the Lord）", "example": "They prayed to the Lord.", "example_zh": "他們向上帝禱告。" }
+  ],
+  "loser": [
+    { "pos": "n.", "zh": "失敗者、輸家", "example": "He is a good loser and never complains.", "example_zh": "他輸得起，從不抱怨。" }
+  ],
+  "lover": [
+    { "pos": "n.", "zh": "愛好者、喜愛⋯的人", "example": "She is a great lover of music.", "example_zh": "她非常熱愛音樂。" },
+    { "pos": "n.", "zh": "情人、愛人", "example": "The two lovers walked in the park.", "example_zh": "那對戀人在公園裡散步。" }
+  ],
+  "luggage": [
+    { "pos": "n.", "zh": "行李", "example": "We carried our luggage onto the train.", "example_zh": "我們把行李搬上火車。" }
+  ],
+  "lung": [
+    { "pos": "n.", "zh": "肺", "example": "Smoking damages your lungs.", "example_zh": "抽菸會傷害你的肺。" }
+  ],
+  "magical": [
+    { "pos": "adj.", "zh": "神奇的、魔法的", "example": "The night sky looked magical.", "example_zh": "夜空看起來如夢似幻。" }
+  ],
+  "magician": [
+    { "pos": "n.", "zh": "魔術師", "example": "The magician pulled a rabbit from his hat.", "example_zh": "魔術師從帽子裡變出一隻兔子。" }
+  ],
+  "magnet": [
+    { "pos": "n.", "zh": "磁鐵", "example": "A magnet attracts metal objects.", "example_zh": "磁鐵會吸引金屬物品。" }
+  ],
+  "maid": [
+    { "pos": "n.", "zh": "女傭、女僕", "example": "The maid cleaned the guest rooms.", "example_zh": "女傭打掃了客房。" }
+  ],
+  "majority": [
+    { "pos": "n.", "zh": "多數、大多數", "example": "The majority of students agreed.", "example_zh": "大多數學生都同意。" }
+  ],
+  "mall": [
+    { "pos": "n.", "zh": "購物中心", "example": "We spent the afternoon at the mall.", "example_zh": "我們在購物中心待了一下午。" }
+  ],
+  "mankind-humankind": [
+    { "pos": "n.", "zh": "人類", "example": "Clean water is important for all mankind.", "example_zh": "乾淨的水對全人類都很重要。" }
+  ],
+  "marble": [
+    { "pos": "n.", "zh": "大理石", "example": "The floor is made of white marble.", "example_zh": "地板是用白色大理石鋪的。" },
+    { "pos": "n.", "zh": "彈珠", "example": "The children played with glass marbles.", "example_zh": "孩子們玩玻璃彈珠。" }
+  ],
+  "march": [
+    { "pos": "v.", "zh": "行進、遊行", "example": "The soldiers marched down the street.", "example_zh": "士兵們沿街行進。" },
+    { "pos": "n.", "zh": "遊行、進行曲", "example": "They held a peace march.", "example_zh": "他們舉行了一場和平遊行。" }
+  ],
+  "marker": [
+    { "pos": "n.", "zh": "麥克筆", "example": "She wrote the title with a red marker.", "example_zh": "她用紅色麥克筆寫標題。" },
+    { "pos": "n.", "zh": "標記、記號", "example": "A stone marker shows the border.", "example_zh": "一塊石頭標記著邊界。" }
+  ],
+  "marvelous": [
+    { "pos": "adj.", "zh": "極好的、了不起的", "example": "We had a marvelous time at the beach.", "example_zh": "我們在海灘玩得非常開心。" }
+  ],
+  "mathematical": [
+    { "pos": "adj.", "zh": "數學的", "example": "He solved a difficult mathematical problem.", "example_zh": "他解開了一道困難的數學題。" }
+  ],
+  "mayor": [
+    { "pos": "n.", "zh": "市長", "example": "The mayor opened the new library.", "example_zh": "市長為新圖書館揭幕。" }
+  ],
+  "meadow": [
+    { "pos": "n.", "zh": "草地、牧草地", "example": "Cows grazed in the green meadow.", "example_zh": "牛群在綠色的草地上吃草。" }
+  ],
+  "meaningful": [
+    { "pos": "adj.", "zh": "有意義的", "example": "She gave a meaningful answer.", "example_zh": "她給了一個有意義的回答。" }
+  ],
+  "meanwhile": [
+    { "pos": "adv.", "zh": "同時、與此同時", "example": "I cooked dinner; meanwhile, he set the table.", "example_zh": "我煮晚餐，同時他擺好餐桌。" }
+  ],
+  "medal": [
+    { "pos": "n.", "zh": "獎牌、勳章", "example": "She won a gold medal in swimming.", "example_zh": "她在游泳項目贏得一面金牌。" }
+  ],
+  "medium-media": [
+    { "pos": "n.", "zh": "媒體、傳播媒介", "example": "The news spread through social media.", "example_zh": "這消息透過社群媒體傳開。" },
+    { "pos": "n.", "zh": "媒介、方法", "example": "Paint is her favorite medium.", "example_zh": "顏料是她最愛的創作媒材。" }
+  ],
+  "melon": [
+    { "pos": "n.", "zh": "瓜、甜瓜", "example": "This melon is sweet and cool.", "example_zh": "這顆瓜又甜又涼。" }
+  ],
+  "melt": [
+    { "pos": "v.", "zh": "融化", "example": "The ice melted in the warm sun.", "example_zh": "冰在溫暖的陽光下融化了。" }
+  ],
+  "mend": [
+    { "pos": "v.", "zh": "修補、修理", "example": "She mended the torn shirt.", "example_zh": "她補好了破掉的襯衫。" }
+  ],
+  "mental": [
+    { "pos": "adj.", "zh": "精神的、心理的", "example": "Exercise is good for your mental health.", "example_zh": "運動有益心理健康。" }
+  ],
+  "merry": [
+    { "pos": "adj.", "zh": "歡樂的、快樂的", "example": "We wish you a merry Christmas.", "example_zh": "祝你聖誕快樂。" }
+  ],
+  "mess": [
+    { "pos": "n.", "zh": "混亂、髒亂", "example": "Please clean up this mess.", "example_zh": "請把這團亂收拾乾淨。" },
+    { "pos": "v.", "zh": "弄亂、搞砸（mess up）", "example": "Don't mess up your room.", "example_zh": "別把房間弄亂。" }
+  ],
+  "microphone-mike": [
+    { "pos": "n.", "zh": "麥克風", "example": "She spoke into the microphone.", "example_zh": "她對著麥克風說話。" }
+  ],
+  "microwave": [
+    { "pos": "n.", "zh": "微波爐", "example": "Heat the soup in the microwave.", "example_zh": "用微波爐把湯加熱。" },
+    { "pos": "v.", "zh": "微波加熱", "example": "She microwaved the leftovers.", "example_zh": "她把剩菜用微波爐加熱。" }
+  ],
+  "mighty": [
+    { "pos": "adj.", "zh": "強大的、強而有力的", "example": "The mighty river flowed to the sea.", "example_zh": "那條洶湧的大河流向大海。" }
+  ],
+  "minus": [
+    { "pos": "prep.", "zh": "減去", "example": "Ten minus four equals six.", "example_zh": "十減四等於六。" },
+    { "pos": "adj.", "zh": "零下的、負的", "example": "The temperature dropped to minus five.", "example_zh": "氣溫降到零下五度。" }
+  ],
+  "miracle": [
+    { "pos": "n.", "zh": "奇蹟", "example": "It was a miracle that he survived.", "example_zh": "他能生還真是個奇蹟。" }
+  ],
+  "misery": [
+    { "pos": "n.", "zh": "痛苦、苦難", "example": "The war brought misery to many.", "example_zh": "戰爭為許多人帶來苦難。" }
+  ],
+  "missile": [
+    { "pos": "n.", "zh": "飛彈、導彈", "example": "The missile flew across the sky.", "example_zh": "飛彈飛過天空。" }
+  ]
+}
