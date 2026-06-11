@@ -1,0 +1,189 @@
+{
+  "oblige": [
+    { "pos": "v.", "zh": "迫使、使感激", "example": "I feel obliged to help my neighbor.", "example_zh": "我覺得有義務幫助我的鄰居。" }
+  ],
+  "obsess": [
+    { "pos": "v.", "zh": "使著迷、過分擔心", "example": "Don't obsess over small mistakes.", "example_zh": "別為小錯誤鑽牛角尖。" }
+  ],
+  "obstinate": [
+    { "pos": "adj.", "zh": "固執的、頑固的", "example": "The obstinate child refused to move.", "example_zh": "那個固執的孩子就是不肯走。" }
+  ],
+  "occurrence": [
+    { "pos": "n.", "zh": "發生、出現的事件", "example": "Snow is a rare occurrence here.", "example_zh": "在這裡下雪很罕見。" }
+  ],
+  "octopus": [
+    { "pos": "n.", "zh": "章魚", "example": "An octopus has eight long arms.", "example_zh": "章魚有八條長長的腕足。" }
+  ],
+  "odor": [
+    { "pos": "n.", "zh": "氣味、臭味", "example": "A strong odor came from the kitchen.", "example_zh": "廚房傳來一股濃濃的氣味。" }
+  ],
+  "offshore": [
+    { "pos": "adj.", "zh": "離岸的、近海的", "example": "They built offshore wind turbines.", "example_zh": "他們建造了離岸風力發電機。" }
+  ],
+  "offspring": [
+    { "pos": "n.", "zh": "後代、子女", "example": "The bird feeds its offspring.", "example_zh": "這隻鳥餵養牠的幼鳥。" }
+  ],
+  "operative": [
+    { "pos": "adj.", "zh": "運作中的、有效的", "example": "The new rule is now operative.", "example_zh": "這項新規定現已生效。" }
+  ],
+  "oppress": [
+    { "pos": "v.", "zh": "壓迫、壓制", "example": "The cruel ruler oppressed the people.", "example_zh": "殘暴的統治者壓迫人民。" }
+  ],
+  "oppression": [
+    { "pos": "n.", "zh": "壓迫、壓制", "example": "They fought against years of oppression.", "example_zh": "他們對抗多年的壓迫。" }
+  ],
+  "ordeal": [
+    { "pos": "n.", "zh": "嚴峻考驗、折磨", "example": "The long illness was a real ordeal.", "example_zh": "這場久病真是一大折磨。" }
+  ],
+  "orderly": [
+    { "pos": "adj.", "zh": "有秩序的、整齊的", "example": "The students left the room in an orderly way.", "example_zh": "學生們有秩序地離開教室。" }
+  ],
+  "organizer": [
+    { "pos": "n.", "zh": "主辦者、組織者", "example": "The event organizer planned everything.", "example_zh": "活動主辦人規劃了一切。" }
+  ],
+  "orient": [
+    { "pos": "v.", "zh": "確定方向、使適應", "example": "She used a map to orient herself.", "example_zh": "她用地圖辨明自己的方位。" }
+  ],
+  "oriental": [
+    { "pos": "adj.", "zh": "東方的、東方風格的", "example": "The room was decorated in an oriental style.", "example_zh": "這個房間以東方風格裝飾。" }
+  ],
+  "originate": [
+    { "pos": "v.", "zh": "起源、發源", "example": "Tea is said to originate in China.", "example_zh": "據說茶起源於中國。" }
+  ],
+  "ornament": [
+    { "pos": "n.", "zh": "裝飾品、擺飾", "example": "She hung an ornament on the tree.", "example_zh": "她在樹上掛了一個裝飾品。" }
+  ],
+  "orphanage": [
+    { "pos": "n.", "zh": "孤兒院", "example": "They donated toys to the orphanage.", "example_zh": "他們捐玩具給孤兒院。" }
+  ],
+  "orthodox": [
+    { "pos": "adj.", "zh": "正統的、傳統的", "example": "He follows orthodox teaching methods.", "example_zh": "他採用傳統的教學方法。" }
+  ],
+  "ounce": [
+    { "pos": "n.", "zh": "盎司", "example": "Add an ounce of sugar to the mix.", "example_zh": "在混合物裡加一盎司糖。" }
+  ],
+  "outbreak": [
+    { "pos": "n.", "zh": "（疾病、戰爭等）爆發", "example": "There was an outbreak of flu at school.", "example_zh": "學校爆發了流感。" }
+  ],
+  "outgoing": [
+    { "pos": "adj.", "zh": "外向的、即將離任的", "example": "She is friendly and outgoing.", "example_zh": "她友善又外向。" }
+  ],
+  "outing": [
+    { "pos": "n.", "zh": "郊遊、短途旅行", "example": "We went on a family outing to the zoo.", "example_zh": "我們全家去動物園郊遊。" }
+  ],
+  "outlaw": [
+    { "pos": "v.", "zh": "使非法、禁止", "example": "The new law will outlaw smoking indoors.", "example_zh": "這項新法律將禁止室內吸菸。" },
+    { "pos": "n.", "zh": "逃犯、不法之徒", "example": "The story is about a famous outlaw.", "example_zh": "這個故事講的是一名著名的逃犯。" }
+  ],
+  "outlook": [
+    { "pos": "n.", "zh": "看法、前景", "example": "She has a positive outlook on life.", "example_zh": "她對人生抱持正向的態度。" }
+  ],
+  "outnumber": [
+    { "pos": "v.", "zh": "數量上超過", "example": "The girls outnumber the boys in this class.", "example_zh": "這個班的女生人數多於男生。" }
+  ],
+  "outrage": [
+    { "pos": "n.", "zh": "義憤、暴行", "example": "The unfair decision caused public outrage.", "example_zh": "這個不公的決定引起了公憤。" }
+  ],
+  "outrageous": [
+    { "pos": "adj.", "zh": "駭人的、離譜的", "example": "The price of the ticket was outrageous.", "example_zh": "票價貴得離譜。" }
+  ],
+  "outright": [
+    { "pos": "adj.", "zh": "徹底的、直率的", "example": "He gave an outright refusal.", "example_zh": "他斷然拒絕了。" },
+    { "pos": "adv.", "zh": "徹底地、當場", "example": "She rejected the offer outright.", "example_zh": "她當場回絕了這個提議。" }
+  ],
+  "outset": [
+    { "pos": "n.", "zh": "開始、開端", "example": "She knew the risks from the outset.", "example_zh": "她從一開始就知道風險。" }
+  ],
+  "outskirts": [
+    { "pos": "n.", "zh": "市郊、郊區", "example": "They live on the outskirts of the city.", "example_zh": "他們住在城市的郊區。" }
+  ],
+  "outward": [
+    { "pos": "adj.", "zh": "向外的、表面的", "example": "Her outward calm hid her worry.", "example_zh": "她表面的平靜掩蓋了內心的擔憂。" }
+  ],
+  "outward-outwards": [
+    { "pos": "adv.", "zh": "向外地", "example": "The door opens outwards.", "example_zh": "這扇門向外開。" }
+  ],
+  "overdo": [
+    { "pos": "v.", "zh": "做得過度、過火", "example": "Don't overdo the exercise on your first day.", "example_zh": "第一天別運動過度。" }
+  ],
+  "overflow": [
+    { "pos": "v.", "zh": "溢出、氾濫", "example": "The river began to overflow its banks.", "example_zh": "河水開始漫過堤岸。" },
+    { "pos": "n.", "zh": "溢出、過剩", "example": "There was an overflow of water on the floor.", "example_zh": "地板上滿是溢出的水。" }
+  ],
+  "overhear": [
+    { "pos": "v.", "zh": "無意中聽到、偷聽到", "example": "I happened to overhear their plan.", "example_zh": "我碰巧聽到了他們的計畫。" }
+  ],
+  "overlap": [
+    { "pos": "v.", "zh": "重疊、部分相同", "example": "The two meetings overlap in time.", "example_zh": "這兩場會議的時間重疊了。" },
+    { "pos": "n.", "zh": "重疊（部分）", "example": "There is some overlap between the jobs.", "example_zh": "這些工作之間有部分重疊。" }
+  ],
+  "overwork": [
+    { "pos": "n.", "zh": "過度勞累、操勞過度", "example": "He fell ill from overwork.", "example_zh": "他因操勞過度而病倒。" }
+  ],
+  "oyster": [
+    { "pos": "n.", "zh": "牡蠣、蚵", "example": "She found a pearl inside the oyster.", "example_zh": "她在牡蠣裡發現了一顆珍珠。" }
+  ],
+  "ozone": [
+    { "pos": "n.", "zh": "臭氧", "example": "The ozone layer protects us from the sun.", "example_zh": "臭氧層保護我們免受太陽傷害。" }
+  ],
+  "packet": [
+    { "pos": "n.", "zh": "小包、小袋", "example": "She opened a packet of crackers.", "example_zh": "她打開了一包餅乾。" }
+  ],
+  "paddle": [
+    { "pos": "n.", "zh": "槳、球拍", "example": "He used a paddle to move the canoe.", "example_zh": "他用槳划動獨木舟。" },
+    { "pos": "v.", "zh": "划（槳）、戲水", "example": "We paddled the boat across the lake.", "example_zh": "我們划船橫渡湖泊。" }
+  ],
+  "paperback": [
+    { "pos": "n.", "zh": "平裝書", "example": "I bought a cheap paperback at the station.", "example_zh": "我在車站買了一本便宜的平裝書。" }
+  ],
+  "paradox": [
+    { "pos": "n.", "zh": "悖論、矛盾的事物", "example": "It is a paradox that less can be more.", "example_zh": "少即是多是個耐人尋味的悖論。" }
+  ],
+  "paralyze": [
+    { "pos": "v.", "zh": "使癱瘓、使麻痺", "example": "The accident paralyzed his legs.", "example_zh": "這場意外使他雙腿癱瘓。" }
+  ],
+  "parliament": [
+    { "pos": "n.", "zh": "議會、國會", "example": "Parliament debated the new law.", "example_zh": "議會辯論這項新法律。" }
+  ],
+  "pastime": [
+    { "pos": "n.", "zh": "消遣、娛樂", "example": "Fishing is his favorite pastime.", "example_zh": "釣魚是他最愛的消遣。" }
+  ],
+  "patriot": [
+    { "pos": "n.", "zh": "愛國者", "example": "The patriot served his country proudly.", "example_zh": "這名愛國者自豪地為國效力。" }
+  ],
+  "patriotic": [
+    { "pos": "adj.", "zh": "愛國的", "example": "They sang a patriotic song.", "example_zh": "他們唱了一首愛國歌曲。" }
+  ],
+  "peacock": [
+    { "pos": "n.", "zh": "孔雀", "example": "The peacock spread its colorful tail.", "example_zh": "孔雀展開了牠色彩繽紛的尾羽。" }
+  ],
+  "pebble": [
+    { "pos": "n.", "zh": "鵝卵石、小石子", "example": "He skipped a pebble across the pond.", "example_zh": "他讓一顆小石子在池面上彈跳。" }
+  ],
+  "peek": [
+    { "pos": "v.", "zh": "偷看、窺視", "example": "She took a peek inside the box.", "example_zh": "她偷瞄了盒子裡面一眼。" },
+    { "pos": "n.", "zh": "一瞥、偷看", "example": "He had a quick peek at the answer.", "example_zh": "他飛快地偷看了一眼答案。" }
+  ],
+  "pending": [
+    { "pos": "adj.", "zh": "待決的、即將發生的", "example": "Your application is still pending.", "example_zh": "你的申請仍在審核中。" }
+  ],
+  "peninsula": [
+    { "pos": "n.", "zh": "半島", "example": "The town sits on a narrow peninsula.", "example_zh": "這個小鎮位於一個狹長的半島上。" }
+  ],
+  "perch": [
+    { "pos": "v.", "zh": "（鳥）棲息、停留", "example": "A bird perched on the wire.", "example_zh": "一隻鳥停在電線上。" },
+    { "pos": "n.", "zh": "棲木、高處", "example": "The cat watched from its perch.", "example_zh": "貓從牠的高處往下看。" }
+  ],
+  "peril": [
+    { "pos": "n.", "zh": "危險、危難", "example": "The sailors were in great peril during the storm.", "example_zh": "暴風雨中水手們身陷險境。" }
+  ],
+  "perish": [
+    { "pos": "v.", "zh": "死亡、消亡", "example": "Many plants perished in the cold.", "example_zh": "許多植物在寒冷中枯死了。" }
+  ],
+  "permissible": [
+    { "pos": "adj.", "zh": "允許的、可准許的", "example": "It is not permissible to park here.", "example_zh": "這裡不准停車。" }
+  ],
+  "persevere": [
+    { "pos": "v.", "zh": "堅持不懈、不屈不撓", "example": "She persevered despite many failures.", "example_zh": "儘管屢次失敗，她仍堅持不懈。" }
+  ]
+}
