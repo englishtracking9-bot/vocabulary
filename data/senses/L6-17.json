@@ -1,0 +1,134 @@
+{
+  "versatile": [
+    { "pos": "adj.", "zh": "多才多藝的、用途廣的", "example": "She is a versatile player who can play any position.", "example_zh": "她是個能勝任任何位置的全能球員。" }
+  ],
+  "veterinarian-vet": [
+    { "pos": "n.", "zh": "獸醫", "example": "We took our dog to the vet.", "example_zh": "我們帶狗去看獸醫。" }
+  ],
+  "veto": [
+    { "pos": "n.", "zh": "否決權、否決", "example": "The president used his veto on the bill.", "example_zh": "總統對這項法案行使了否決權。" },
+    { "pos": "v.", "zh": "否決", "example": "The committee vetoed the plan.", "example_zh": "委員會否決了這個計畫。" }
+  ],
+  "vibrate": [
+    { "pos": "v.", "zh": "震動、顫動", "example": "The phone began to vibrate on the table.", "example_zh": "手機在桌上震動了起來。" }
+  ],
+  "vibration": [
+    { "pos": "n.", "zh": "震動、顫動", "example": "You can feel the vibration of the engine.", "example_zh": "你能感覺到引擎的震動。" }
+  ],
+  "vice": [
+    { "pos": "n.", "zh": "惡習、壞毛病", "example": "Laziness is his only vice.", "example_zh": "懶惰是他唯一的壞毛病。" }
+  ],
+  "victor": [
+    { "pos": "n.", "zh": "勝利者、優勝者", "example": "The victor raised the trophy high.", "example_zh": "勝利者高舉獎盃。" }
+  ],
+  "vigor": [
+    { "pos": "n.", "zh": "活力、精力", "example": "She tackled the task with vigor.", "example_zh": "她充滿幹勁地處理這項任務。" }
+  ],
+  "vigorous": [
+    { "pos": "adj.", "zh": "精力充沛的、強而有力的", "example": "He took a vigorous morning walk.", "example_zh": "他早上精神奕奕地散了步。" }
+  ],
+  "villa": [
+    { "pos": "n.", "zh": "別墅", "example": "They rented a villa by the sea.", "example_zh": "他們在海邊租了一棟別墅。" }
+  ],
+  "villain": [
+    { "pos": "n.", "zh": "壞蛋、反派角色", "example": "The villain in the story was defeated.", "example_zh": "故事裡的反派被打敗了。" }
+  ],
+  "vine": [
+    { "pos": "n.", "zh": "藤、葡萄藤", "example": "Grapes grow on a vine.", "example_zh": "葡萄長在藤蔓上。" }
+  ],
+  "vineyard": [
+    { "pos": "n.", "zh": "葡萄園", "example": "They make wine from this vineyard.", "example_zh": "他們用這座葡萄園的葡萄釀酒。" }
+  ],
+  "violinist": [
+    { "pos": "n.", "zh": "小提琴家", "example": "The violinist played beautifully.", "example_zh": "小提琴家演奏得很優美。" }
+  ],
+  "virgin": [
+    { "pos": "adj.", "zh": "原始的、未開發的", "example": "They explored the virgin forest.", "example_zh": "他們探索了原始森林。" },
+    { "pos": "n.", "zh": "處女、童貞者", "example": "The painting shows the Virgin Mary.", "example_zh": "這幅畫描繪了聖母瑪利亞。" }
+  ],
+  "vitality": [
+    { "pos": "n.", "zh": "活力、生命力", "example": "The children are full of vitality.", "example_zh": "孩子們充滿活力。" }
+  ],
+  "vocation": [
+    { "pos": "n.", "zh": "職業、天職", "example": "Teaching is her true vocation.", "example_zh": "教書是她真正的天職。" }
+  ],
+  "vocational": [
+    { "pos": "adj.", "zh": "職業的、職業訓練的", "example": "He attends a vocational school.", "example_zh": "他就讀一所職業學校。" }
+  ],
+  "vowel": [
+    { "pos": "n.", "zh": "母音", "example": "The letter 'a' is a vowel.", "example_zh": "字母「a」是母音。" }
+  ],
+  "wag": [
+    { "pos": "v.", "zh": "搖（尾巴）、擺動", "example": "The happy dog wagged its tail.", "example_zh": "那隻開心的狗搖著尾巴。" }
+  ],
+  "walnut": [
+    { "pos": "n.", "zh": "核桃、胡桃", "example": "She added walnuts to the cake.", "example_zh": "她在蛋糕裡加了核桃。" }
+  ],
+  "ward": [
+    { "pos": "n.", "zh": "病房、（市）區", "example": "The nurse works in the children's ward.", "example_zh": "這位護理師在兒童病房工作。" },
+    { "pos": "v.", "zh": "避開、擋住（ward off）", "example": "She wore a hat to ward off the sun.", "example_zh": "她戴帽子來擋太陽。" }
+  ],
+  "wardrobe": [
+    { "pos": "n.", "zh": "衣櫥、全部衣物", "example": "Her clothes hang in the wardrobe.", "example_zh": "她的衣服掛在衣櫥裡。" }
+  ],
+  "warrant": [
+    { "pos": "v.", "zh": "使有正當理由、值得", "example": "His behavior does not warrant such anger.", "example_zh": "他的行為不值得這麼生氣。" },
+    { "pos": "n.", "zh": "授權令、搜索狀", "example": "The police had a warrant to search the house.", "example_zh": "警方持有搜索這間房子的令狀。" }
+  ],
+  "warranty": [
+    { "pos": "n.", "zh": "保固、保修", "example": "The phone comes with a one-year warranty.", "example_zh": "這支手機附帶一年保固。" }
+  ],
+  "waterproof": [
+    { "pos": "adj.", "zh": "防水的", "example": "She wore a waterproof jacket in the rain.", "example_zh": "她在雨中穿著防水外套。" }
+  ],
+  "weary": [
+    { "pos": "adj.", "zh": "疲倦的、厭倦的", "example": "The travelers were weary after the long trip.", "example_zh": "長途旅行後旅人們都很疲憊。" }
+  ],
+  "wharf": [
+    { "pos": "n.", "zh": "碼頭", "example": "The boat was tied to the wharf.", "example_zh": "船被繫在碼頭邊。" }
+  ],
+  "whiskey-whisky": [
+    { "pos": "n.", "zh": "威士忌", "example": "The bar sells whiskey to adults only.", "example_zh": "這家酒吧只賣威士忌給成年人。" }
+  ],
+  "wholesale": [
+    { "pos": "adj.", "zh": "批發的、大規模的", "example": "They buy goods at wholesale prices.", "example_zh": "他們以批發價購買貨物。" }
+  ],
+  "wholesome": [
+    { "pos": "adj.", "zh": "有益健康的、有益身心的", "example": "The meal was simple but wholesome.", "example_zh": "這頓飯雖簡單卻很營養健康。" }
+  ],
+  "widow-widower": [
+    { "pos": "n.", "zh": "寡婦、鰥夫", "example": "The kind widow lived next door.", "example_zh": "那位善良的寡婦住在隔壁。" }
+  ],
+  "withhold": [
+    { "pos": "v.", "zh": "拒絕給予、扣留", "example": "She decided to withhold the bad news.", "example_zh": "她決定暫時不透露這個壞消息。" }
+  ],
+  "woe": [
+    { "pos": "n.", "zh": "悲痛、苦惱", "example": "He told us all his woes.", "example_zh": "他向我們訴說了他所有的煩惱。" }
+  ],
+  "woodpecker": [
+    { "pos": "n.", "zh": "啄木鳥", "example": "A woodpecker tapped on the tree.", "example_zh": "一隻啄木鳥在樹上啄著。" }
+  ],
+  "workforce": [
+    { "pos": "n.", "zh": "勞動力、全體員工", "example": "The factory has a large workforce.", "example_zh": "這間工廠擁有龐大的勞動力。" }
+  ],
+  "wrestle": [
+    { "pos": "v.", "zh": "摔角、搏鬥、努力應付", "example": "The two boys wrestled on the grass.", "example_zh": "兩個男孩在草地上扭打。" }
+  ],
+  "wrinkle": [
+    { "pos": "n.", "zh": "皺紋、皺褶", "example": "She ironed the wrinkles out of the shirt.", "example_zh": "她把襯衫上的皺褶燙平。" },
+    { "pos": "v.", "zh": "起皺、使起皺", "example": "He wrinkled his nose at the smell.", "example_zh": "聞到那味道他皺起了鼻子。" }
+  ],
+  "yearn": [
+    { "pos": "v.", "zh": "渴望、嚮往", "example": "She yearned to see her family again.", "example_zh": "她渴望再見到家人。" }
+  ],
+  "yoga": [
+    { "pos": "n.", "zh": "瑜伽", "example": "She does yoga to stay calm and flexible.", "example_zh": "她做瑜伽來保持平靜與柔軟。" }
+  ],
+  "yogurt": [
+    { "pos": "n.", "zh": "優格、優酪乳", "example": "He eats yogurt with fruit for breakfast.", "example_zh": "他早餐吃優格配水果。" }
+  ],
+  "zoom": [
+    { "pos": "v.", "zh": "（鏡頭）推近、拉近放大", "example": "The camera can zoom in on distant objects.", "example_zh": "這台相機能拉近放大遠處的物體。" },
+    { "pos": "v.", "zh": "飛速移動、急速上升", "example": "Cars zoomed past on the highway.", "example_zh": "汽車在高速公路上飛馳而過。" }
+  ]
+}
