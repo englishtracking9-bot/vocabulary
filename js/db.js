@@ -2,7 +2,7 @@
 // 規格：禁用 localStorage 存學習進度，一律存 IndexedDB。
 
 const DB_NAME = 'vocabApp';
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 let _dbPromise = null;
 
@@ -62,6 +62,13 @@ export function openDB() {
         const s = db.createObjectStore('manualGroups', { keyPath: 'id' });
         s.createIndex('by_profile', 'profileId', { unique: false });
         s.createIndex('by_profile_date', ['profileId', 'date'], { unique: false });
+      }
+
+      // K-2 測驗成績：{id, profileId, type:'weekly'|'monthly'|'custom', name, date, total, correct, scorePct, wrong[], createdAt}
+      if (!db.objectStoreNames.contains('testResults')) {
+        const s = db.createObjectStore('testResults', { keyPath: 'id' });
+        s.createIndex('by_profile', 'profileId', { unique: false });
+        s.createIndex('by_profile_type', ['profileId', 'type'], { unique: false });
       }
     };
 
@@ -307,4 +314,21 @@ export async function getManualGroupsByDate(profileId, dateStr) {
   const db = await openDB();
   const idx = db.transaction('manualGroups').objectStore('manualGroups').index('by_profile_date');
   return reqPromise(idx.getAll(IDBKeyRange.only([profileId, dateStr])));
+}
+
+// ---------- testResults（K-2 周測/月測/自訂測驗成績） ----------
+export function putTestResult(result) {
+  return tx('testResults', 'readwrite', (t) => { t.objectStore('testResults').put(result); });
+}
+
+export async function getTestResultsByProfile(profileId) {
+  const db = await openDB();
+  const idx = db.transaction('testResults').objectStore('testResults').index('by_profile');
+  return reqPromise(idx.getAll(IDBKeyRange.only(profileId)));
+}
+
+export async function getTestResultsByType(profileId, type) {
+  const db = await openDB();
+  const idx = db.transaction('testResults').objectStore('testResults').index('by_profile_type');
+  return reqPromise(idx.getAll(IDBKeyRange.only([profileId, type])));
 }

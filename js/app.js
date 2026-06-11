@@ -19,6 +19,10 @@ import {
   wordsInTag, tagsOfWord, tagCounts,
 } from './tags.js';
 import { compareSentence } from './sentence.js';
+import {
+  recentWordIds, levelWordIds, groupWordIds, allMyWordIds, sample,
+  saveTestResult, previousResult, allResults, TYPE_LABEL as TEST_TYPE_LABEL,
+} from './tests.js';
 import { esc, todayStr, prettyDate } from './util.js';
 import {
   notifySupported, notifyPermission, requestNotifyPermission, showReminderNow,
@@ -39,6 +43,7 @@ const State = {
   entry: null,        // 當前單字 entry
   usedHint: false,
   answered: false,
+  quizMode: null,     // 'active' 表示正在進行複習回合（用於 #quiz 路由判斷顯示題目或測驗中心）
   masteredIds: new Set(), // 目前身分「已熟記」的字（供同字根家族標記錨點字）
 };
 
@@ -271,16 +276,75 @@ async function openStatDetail(kind) {
 }
 
 // ============================================================
-// 測驗（只出「今天到期該複習」的字；學新字走日曆）
+// 測驗中心：上半＝平時每日到期複習（SM-2 主力）；下半＝周測/月測/自訂測驗（檢驗查漏）
 // ============================================================
 async function renderQuiz() {
-  if (!State.session || State.session.remaining === 0) {
-    const items = await buildQueue(State.profile, Date.now(), { reviewOnly: true });
-    State.session = new Session(items);
+  // 進行中的周測/月測/自訂測驗：繼續顯示測驗題
+  if (TestRun.active) return testShow();
+  // 進行中的複習回合（含「立即測這個字」）：繼續顯示題目，不回到中心頁
+  if (State.quizMode === 'active' && State.session && State.session.remaining > 0) {
+    return showQuestion();
   }
-  if (State.session.remaining === 0) {
-    return renderReviewEmpty();
-  }
+  State.quizMode = null;
+  await renderTestHub();
+}
+
+async function renderTestHub() {
+  const due = await getDueRecords(State.profile.id, Date.now());
+  const results = await allResults(State.profile.id);
+  const recent = results.slice(0, 5);
+  const histRows = recent.length ? recent.map((r) => `
+    <div class="row tap" data-rid="${r.id}"><div class="row-main">
+      <span class="row-word">${TEST_TYPE_LABEL[r.type] || r.type}</span>
+      <span class="row-zh">${esc(r.name)}</span></div>
+      <div class="row-meta"><span>${prettyDate(r.date)}</span><span>${r.correct}/${r.total}</span><span><b>${r.scorePct} 分</b></span></div>
+    </div>`).join('') : '<p class="hint-area">還沒有測驗紀錄。先做一次週測看看吧！</p>';
+
+  $main().innerHTML = `
+    <div class="card">
+      <h2>📝 測驗</h2>
+      <p class="hint-area">平時每天的「到期複習」是主力；週測／月測是定期檢驗、找出忘記的字。</p>
+    </div>
+
+    <div class="card section-daily">
+      <h3>🔁 平時複習（每日到期）</h3>
+      <p class="hint-area">SM-2 自動排程，今天該回來複習的字。</p>
+      <button class="btn primary big-copy" id="start-review">▶️ 開始複習（今天到期 ${due.length} 字）</button>
+    </div>
+
+    <div class="card section-test">
+      <h3>🧪 定期測驗（檢驗查漏）</h3>
+      <p class="hint-area">答錯的字會自動降為「需加強」、重排密集複習。</p>
+      <div class="btn-row">
+        <button class="btn" id="test-weekly">📅 週測<small>（近 7 天）</small></button>
+        <button class="btn" id="test-monthly">🗓 月測<small>（近 30 天）</small></button>
+      </div>
+      <button class="btn" id="test-custom">🎯 自訂測驗（自選範圍）</button>
+    </div>
+
+    <div class="card">
+      <div class="mw-head"><h3>📈 最近成績</h3>
+        ${results.length > 5 ? '<button class="btn" id="test-allhist">看全部</button>' : ''}</div>
+      <div class="detail-list">${histRows}</div>
+    </div>`;
+
+  document.getElementById('start-review').onclick = startReview;
+  document.getElementById('test-weekly').onclick = () => openTestSetup('weekly');
+  document.getElementById('test-monthly').onclick = () => openTestSetup('monthly');
+  document.getElementById('test-custom').onclick = () => openTestSetup('custom');
+  const allh = document.getElementById('test-allhist');
+  if (allh) allh.onclick = openTestHistory;
+  $main().querySelectorAll('.row.tap[data-rid]').forEach((row) => {
+    row.onclick = () => { const r = results.find((x) => x.id === row.dataset.rid); if (r) showTestResultDetail(r); };
+  });
+}
+
+// 開始「平時到期複習」回合
+async function startReview() {
+  State.quizMode = 'active';
+  const items = await buildQueue(State.profile, Date.now(), { reviewOnly: true });
+  State.session = new Session(items);
+  if (State.session.remaining === 0) return renderReviewEmpty();
   showQuestion();
 }
 
@@ -313,14 +377,276 @@ async function renderQuizDone() {
         <div><b>🔥 ${stats.streak}</b><span>連續天數</span></div>
       </div>
       <button class="btn primary" id="again">再練一回合</button>
+      <button class="btn" id="to-hub">回測驗中心</button>
       <a class="btn" href="#report">看每日報告</a>
     </div>`;
+  State.quizMode = null;
   document.getElementById('again').onclick = async () => {
+    State.quizMode = 'active';
     const items = await buildQueue(State.profile, Date.now(), { reviewOnly: true });
     State.session = new Session(items);
     if (State.session.remaining === 0) renderReviewEmpty();
     else showQuestion();
   };
+  document.getElementById('to-hub').onclick = () => { State.session = null; renderTestHub(); };
+}
+
+// ============================================================
+// K-2 周測 / 月測 / 自訂測驗（單次計分；結果回寫 SM-2；存檔可回看；與上次比較）
+// ============================================================
+const TestRun = {
+  active: false, type: 'weekly', name: '',
+  items: [], idx: 0, correct: 0, wrong: [], answered: false,
+};
+
+// 測驗設定 modal
+async function openTestSetup(type) {
+  const tags = await getTags(State.profile.id);
+  const isCustom = type === 'custom';
+  const defCount = type === 'weekly' ? 20 : type === 'monthly' ? 30 : 20;
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box">
+      <h3>${TEST_TYPE_LABEL[type]}設定</h3>
+      ${isCustom ? `
+        <label class="ts-row">測驗範圍
+          <select id="ts-scope" class="answer-input">
+            <option value="recent7">最近 7 天學過的字</option>
+            <option value="recent30">最近 30 天學過的字</option>
+            <option value="all">我的全部單字</option>
+            ${[1, 2, 3, 4, 5, 6].map((l) => `<option value="lv${l}">Level ${l}</option>`).join('')}
+            ${tags.map((t) => `<option value="tag:${t.id}">🏷 ${esc(t.name)}</option>`).join('')}
+          </select>
+        </label>`
+      : `<p class="hint-area">範圍：${type === 'weekly' ? '最近 7 天' : '最近 30 天'}學過的字，隨機抽題。</p>`}
+      <label class="ts-row">題數
+        <input id="ts-count" class="answer-input ts-num" type="number" min="1" max="100" value="${defCount}" inputmode="numeric" />
+      </label>
+      <label class="ts-row ts-check"><input type="checkbox" id="ts-sentence" /> 加考造句（只考有例句的字）</label>
+      <div class="btn-row">
+        <button class="btn primary" id="ts-start">開始測驗</button>
+        <button class="btn" id="ts-cancel">取消</button>
+      </div>
+    </div>`;
+  m.classList.add('show');
+  document.getElementById('ts-cancel').onclick = () => m.classList.remove('show');
+  document.getElementById('ts-start').onclick = async () => {
+    const count = Math.max(1, Math.min(100, parseInt(document.getElementById('ts-count').value, 10) || defCount));
+    const withSentence = document.getElementById('ts-sentence').checked;
+    let ids = [], name = '';
+    if (type === 'weekly') { ids = await recentWordIds(State.profile.id, 7); name = '週測（近 7 天）'; }
+    else if (type === 'monthly') { ids = await recentWordIds(State.profile.id, 30); name = '月測（近 30 天）'; }
+    else {
+      const scope = document.getElementById('ts-scope').value;
+      if (scope === 'recent7') { ids = await recentWordIds(State.profile.id, 7); name = '自訂・近 7 天'; }
+      else if (scope === 'recent30') { ids = await recentWordIds(State.profile.id, 30); name = '自訂・近 30 天'; }
+      else if (scope === 'all') { ids = await allMyWordIds(State.profile.id); name = '自訂・全部我的字'; }
+      else if (scope.startsWith('lv')) { const l = scope.slice(2); ids = await levelWordIds(State.profile.id, l); name = `自訂・Level ${l}`; }
+      else if (scope.startsWith('tag:')) { const tid = scope.slice(4); ids = await groupWordIds(State.profile.id, tid); const tg = tags.find((t) => t.id === tid); name = `自訂・${tg ? tg.name : '群組'}`; }
+    }
+    if (!ids.length) {
+      alert(type === 'custom' ? '這個範圍目前沒有可測的字。' : '最近還沒有學過的字可測。\n先去學今天的單字組，過幾天就能做週測囉！');
+      return;
+    }
+    m.classList.remove('show');
+    startTest(type, name, sample(ids, count), withSentence);
+  };
+}
+
+function startTest(type, name, ids, withSentence) {
+  const items = [];
+  for (const id of ids) {
+    const e = getById(id); if (!e) continue;
+    items.push({ wordId: id, kind: 'spelling' });
+    if (withSentence) {
+      const ss = sensesWithExample(e);
+      if (ss.length) items.push({ wordId: id, kind: 'sentence', sense: ss[0] });
+    }
+  }
+  if (!items.length) { alert('沒有可測的題目'); return; }
+  Object.assign(TestRun, { active: true, type, name, items, idx: 0, correct: 0, wrong: [], answered: false });
+  if (location.hash !== '#quiz') location.hash = '#quiz';
+  testShow();
+}
+
+function testShow() {
+  const t = TestRun;
+  if (t.idx >= t.items.length) return testDone();
+  t.answered = false;
+  const item = t.items[t.idx];
+  const e = getById(item.wordId);
+  const head = `<div class="quiz-progress">
+      <span>${TEST_TYPE_LABEL[t.type]}</span><span>第 ${t.idx + 1} / ${t.items.length} 題</span><span>Lv${e.level}</span>
+    </div>`;
+  if (item.kind === 'spelling') {
+    $main().innerHTML = `${head}
+      <div class="card quiz-card">
+        <div class="zh-prompt">${esc(e.zh) || '（無中文）'}</div>
+        <div class="pos">${esc(e.pos)}</div>
+        <input id="ans" class="answer-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="輸入英文拼字…" />
+        <div class="btn-row"><button class="btn primary" id="submit">送出</button></div>
+        <button class="btn save-exit" id="t-quit">✕ 結束測驗</button>
+      </div>`;
+    const input = document.getElementById('ans');
+    input.focus();
+    input.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') testSubmit(); });
+    document.getElementById('submit').onclick = testSubmit;
+  } else {
+    const sense = item.sense;
+    const senseTag = `${sense.pos ? esc(sense.pos) + ' ' : ''}${esc(sense.zh || '')}`;
+    $main().innerHTML = `${head}
+      <div class="card quiz-card">
+        <p class="hint-area">把這個義項的英文例句完整默寫出來（含 <b>${esc(e.word)}</b>）：</p>
+        <div class="sense-tag">這題考：<b>${senseTag}</b></div>
+        <div class="zh-prompt sent-zh">${esc(sense.example_zh || '')}</div>
+        <div class="pos">關鍵字：${esc(e.word)}</div>
+        <textarea id="sent" class="answer-input sent-input" rows="2" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="輸入完整英文句子…"></textarea>
+        <div class="btn-row"><button class="btn primary" id="submit">送出</button></div>
+        <button class="btn save-exit" id="t-quit">✕ 結束測驗</button>
+      </div>`;
+    document.getElementById('sent').focus();
+    document.getElementById('submit').onclick = testSubmit;
+  }
+  document.getElementById('t-quit').onclick = testQuit;
+}
+
+async function testSubmit() {
+  const t = TestRun;
+  if (t.answered) return;
+  const item = t.items[t.idx];
+  const e = getById(item.wordId);
+  let correct, val, answer, banner, detail = '';
+
+  if (item.kind === 'spelling') {
+    const input = document.getElementById('ans');
+    val = input.value;
+    if (!val.trim()) { input.focus(); return; }
+    t.answered = true;
+    correct = checkAnswer(e, val);
+    answer = e.answerKeys[0];
+    await recordAnswer(State.profile, e, correct, false, false, Date.now(),
+      { input: val, answer, kind: 'spelling' });
+    banner = correct ? `<div class="result ok">✅ 答對了！</div>`
+      : `<div class="result no">❌ 答錯，你寫「${esc(val) || '(空白)'}」，正解：<b>${esc(answer)}</b></div>`;
+  } else {
+    const ta = document.getElementById('sent');
+    val = ta.value;
+    if (!val.trim()) { ta.focus(); return; }
+    t.answered = true;
+    const sense = item.sense;
+    const res = compareSentence(val, sense.example);
+    correct = res.correct;
+    answer = sense.example;
+    await recordAnswer(State.profile, e, correct, false, false, Date.now(),
+      { input: val, answer, kind: 'sentence' });
+    banner = correct ? `<div class="result ok">✅ 完全正確！</div>`
+      : `<div class="result no">❌ 有些地方不一樣</div>`;
+    detail = `<div class="card">
+      <div class="sent-block"><b>你的句子</b><div class="sent-line">${res.userHtml}</div></div>
+      <div class="sent-block"><b>正確例句</b><div class="sent-line">${res.standardHtml}</div></div>
+    </div>`;
+  }
+
+  if (correct) t.correct++;
+  else t.wrong.push({ wordId: e.id, input: val, answer, kind: item.kind });
+  await refreshMastered();
+
+  $main().innerHTML = `${banner}${detail || cardHTML(e, null)}
+    <div class="btn-row"><button class="btn primary" id="t-next">${t.idx + 1 >= t.items.length ? '看成績 →' : '下一題 →'}</button></div>`;
+  attachCardHandlers(e);
+  document.getElementById('t-next').onclick = () => { t.idx++; testShow(); };
+}
+
+function testQuit() {
+  if (!confirm('結束這次測驗？（已作答的字仍會回寫複習進度，但不會計分存檔）')) return;
+  TestRun.active = false;
+  State.session = null;
+  renderTestHub();
+}
+
+async function testDone() {
+  const t = TestRun;
+  t.active = false;
+  const result = await saveTestResult({
+    profileId: State.profile.id, type: t.type, name: t.name,
+    total: t.items.length, correct: t.correct, wrong: t.wrong,
+  });
+  const prev = await previousResult(State.profile.id, t.type, result.id);
+
+  let cmp = '<p class="hint-area">這是這類測驗的第一次紀錄，加油！🎯</p>';
+  if (prev) {
+    const d = result.scorePct - prev.scorePct;
+    const arrow = d > 0 ? `📈 進步 ${d} 分` : d < 0 ? `📉 退步 ${-d} 分` : '➖ 與上次持平';
+    cmp = `<p class="hint-area">上次同類測驗（${prettyDate(prev.date)}）：${prev.scorePct} 分　→　這次 ${result.scorePct} 分　<b>${arrow}</b></p>`;
+  }
+  const wrongRows = result.wrong.length
+    ? result.wrong.map((w) => testWrongRow(w)).join('')
+    : '<p class="hint-area">全部答對，太強了！🎉</p>';
+
+  $main().innerHTML = `
+    <div class="card center">
+      <h2>${TEST_TYPE_LABEL[t.type]}完成 🎉</h2>
+      <p class="big">${result.scorePct} 分</p>
+      <p>${result.correct} / ${result.total} 題答對</p>
+      ${cmp}
+      <div class="btn-row" style="justify-content:center">
+        <button class="btn primary" id="t-retest">再測一次</button>
+        <button class="btn" id="t-back">回測驗中心</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>❌ 答錯的字（${result.wrong.length}）— 已自動排入密集複習</h3>
+      <div class="detail-list">${wrongRows}</div>
+    </div>`;
+  document.getElementById('t-retest').onclick = () => openTestSetup(t.type);
+  document.getElementById('t-back').onclick = renderTestHub;
+  $main().querySelectorAll('.row.tap[data-id]').forEach((row) => { row.onclick = () => openWordDetail(row.dataset.id); });
+}
+
+function testWrongRow(w) {
+  const e = getById(w.wordId);
+  return `<div class="row tap" data-id="${w.wordId}"><div class="row-main">
+      <span class="row-word">${e ? esc(e.word) : esc(w.wordId)}</span>
+      <span class="row-zh">${e ? esc(e.zh) : ''}</span></div>
+    <div class="row-meta"><span>${w.kind === 'sentence' ? '造句' : '拼字'}</span>
+      <span>你寫：${esc(w.input) || '(空白)'}</span><span>正解：${esc(w.answer)}</span></div></div>`;
+}
+
+// 測驗成績明細（從歷史點開）
+function showTestResultDetail(r) {
+  const wrongRows = r.wrong && r.wrong.length
+    ? r.wrong.map((w) => testWrongRow(w)).join('')
+    : '<p class="hint-area">這次全部答對 🎉</p>';
+  const m = document.getElementById('modal');
+  m.innerHTML = `<div class="modal-box">
+      <h3>${TEST_TYPE_LABEL[r.type] || r.type}・${esc(r.name)}</h3>
+      <p>${prettyDate(r.date)}　<b>${r.scorePct} 分</b>（${r.correct}/${r.total}）</p>
+      <div class="detail-list">${wrongRows}</div>
+      <button class="btn" id="trd-close">關閉</button>
+    </div>`;
+  m.classList.add('show');
+  document.getElementById('trd-close').onclick = () => m.classList.remove('show');
+  m.querySelectorAll('.row.tap[data-id]').forEach((row) => { row.onclick = () => { m.classList.remove('show'); openWordDetail(row.dataset.id); }; });
+}
+
+// 全部測驗歷史
+async function openTestHistory() {
+  const results = await allResults(State.profile.id);
+  const rows = results.length ? results.map((r) => `
+    <div class="row tap" data-rid="${r.id}"><div class="row-main">
+      <span class="row-word">${TEST_TYPE_LABEL[r.type] || r.type}</span>
+      <span class="row-zh">${esc(r.name)}</span></div>
+      <div class="row-meta"><span>${prettyDate(r.date)}</span><span>${r.correct}/${r.total}</span><span><b>${r.scorePct} 分</b></span></div>
+    </div>`).join('') : '<p class="hint-area">還沒有測驗紀錄。</p>';
+  $main().innerHTML = `
+    <div class="card">
+      <div class="mw-head"><h2>📈 測驗成績紀錄</h2><button class="btn" id="th-back">回測驗</button></div>
+      <div class="detail-list">${rows}</div>
+    </div>`;
+  document.getElementById('th-back').onclick = renderTestHub;
+  $main().querySelectorAll('.row.tap[data-rid]').forEach((row) => {
+    row.onclick = () => { const r = results.find((x) => x.id === row.dataset.rid); if (r) showTestResultDetail(r); };
+  });
 }
 
 function showQuestion() {
@@ -1663,6 +1989,7 @@ function doLookupTerm(term) {
 
 // 單字即時測驗（從清單或查單字觸發）
 function quizSingle(entry) {
+  State.quizMode = 'active';
   State.session = new Session([{ wordId: entry.id, level: entry.level, kind: 'review' }]);
   location.hash = '#quiz';
   if (location.hash === '#quiz') route(); else showQuestion();
