@@ -1,0 +1,191 @@
+{
+  "radiate": [
+    { "pos": "v.", "zh": "散發、輻射", "example": "The fire radiated warmth into the room.", "example_zh": "爐火把暖意散發到房間裡。" }
+  ],
+  "radioactive": [
+    { "pos": "adj.", "zh": "放射性的", "example": "Radioactive waste must be stored safely.", "example_zh": "放射性廢料必須安全儲存。" }
+  ],
+  "radish": [
+    { "pos": "n.", "zh": "蘿蔔", "example": "She added a sliced radish to the salad.", "example_zh": "她在沙拉裡加了切片的蘿蔔。" }
+  ],
+  "radius": [
+    { "pos": "n.", "zh": "半徑、半徑範圍", "example": "The circle has a radius of five centimeters.", "example_zh": "這個圓的半徑是五公分。" }
+  ],
+  "rap": [
+    { "pos": "n.", "zh": "饒舌（音樂）、敲擊聲", "example": "He likes to listen to rap music.", "example_zh": "他喜歡聽饒舌音樂。" }
+  ],
+  "rash": [
+    { "pos": "n.", "zh": "疹子、皮疹", "example": "She got a red rash on her arm.", "example_zh": "她手臂上長了紅疹。" },
+    { "pos": "adj.", "zh": "輕率的、魯莽的", "example": "Don't make a rash decision.", "example_zh": "別做出輕率的決定。" }
+  ],
+  "ratify": [
+    { "pos": "v.", "zh": "正式批准、核准", "example": "The two nations ratified the treaty.", "example_zh": "兩國正式批准了這項條約。" }
+  ],
+  "realization": [
+    { "pos": "n.", "zh": "領悟、實現", "example": "The realization of her dream took years.", "example_zh": "她的夢想花了好幾年才實現。" }
+  ],
+  "reap": [
+    { "pos": "v.", "zh": "收穫、獲得", "example": "You reap what you sow.", "example_zh": "種什麼因，得什麼果。" }
+  ],
+  "reckless": [
+    { "pos": "adj.", "zh": "魯莽的、不顧後果的", "example": "Reckless driving causes accidents.", "example_zh": "魯莽駕駛會造成意外。" }
+  ],
+  "reckon": [
+    { "pos": "v.", "zh": "認為、估計", "example": "I reckon it will rain tomorrow.", "example_zh": "我估計明天會下雨。" }
+  ],
+  "reconcile": [
+    { "pos": "v.", "zh": "和解、調和", "example": "The two friends finally reconciled.", "example_zh": "這兩個朋友終於和好了。" }
+  ],
+  "recreational": [
+    { "pos": "adj.", "zh": "休閒的、娛樂的", "example": "The park has many recreational activities.", "example_zh": "這座公園有許多休閒活動。" }
+  ],
+  "redundancy": [
+    { "pos": "n.", "zh": "多餘、冗贅", "example": "Remove the redundancy from your writing.", "example_zh": "把你文章裡多餘的部分刪掉。" }
+  ],
+  "reef": [
+    { "pos": "n.", "zh": "礁、暗礁", "example": "Colorful fish live near the coral reef.", "example_zh": "色彩繽紛的魚住在珊瑚礁附近。" }
+  ],
+  "referee": [
+    { "pos": "n.", "zh": "裁判", "example": "The referee blew the whistle.", "example_zh": "裁判吹了哨子。" }
+  ],
+  "referendum": [
+    { "pos": "n.", "zh": "公民投票、公投", "example": "The people voted in a referendum.", "example_zh": "人民在公投中投票。" }
+  ],
+  "refine": [
+    { "pos": "v.", "zh": "精煉、改善", "example": "They refine oil at this factory.", "example_zh": "他們在這間工廠提煉石油。" }
+  ],
+  "reflective": [
+    { "pos": "adj.", "zh": "反光的、深思的", "example": "She wears a reflective vest at night.", "example_zh": "她夜間穿著反光背心。" }
+  ],
+  "refresh": [
+    { "pos": "v.", "zh": "使提神、使清爽、刷新", "example": "A cold drink will refresh you.", "example_zh": "一杯冷飲會讓你精神一振。" }
+  ],
+  "refreshment": [
+    { "pos": "n.", "zh": "茶點、點心（常用複數）", "example": "Refreshments will be served after the talk.", "example_zh": "演講後將供應茶點。" }
+  ],
+  "refute": [
+    { "pos": "v.", "zh": "反駁、駁斥", "example": "She refuted his argument with facts.", "example_zh": "她用事實駁斥了他的論點。" }
+  ],
+  "rehabilitate": [
+    { "pos": "v.", "zh": "使康復、使復原", "example": "The program helps to rehabilitate the injured.", "example_zh": "這個計畫幫助傷者復原。" }
+  ],
+  "rehearse": [
+    { "pos": "v.", "zh": "排練、預演", "example": "The actors rehearsed the play all week.", "example_zh": "演員們排練這齣戲排了一整週。" }
+  ],
+  "reign": [
+    { "pos": "n.", "zh": "統治（時期）、在位期", "example": "The queen's reign lasted fifty years.", "example_zh": "女王在位了五十年。" },
+    { "pos": "v.", "zh": "統治、君臨", "example": "The king reigned for many years.", "example_zh": "這位國王統治了許多年。" }
+  ],
+  "rejoice": [
+    { "pos": "v.", "zh": "欣喜、高興", "example": "The whole town rejoiced at the good news.", "example_zh": "全鎮都為這好消息歡欣鼓舞。" }
+  ],
+  "relay": [
+    { "pos": "n.", "zh": "接力（賽）、轉播", "example": "Our team won the relay race.", "example_zh": "我們隊贏得了接力賽。" },
+    { "pos": "v.", "zh": "轉達、傳遞", "example": "Please relay the message to her.", "example_zh": "請把這個口信轉達給她。" }
+  ],
+  "relentless": [
+    { "pos": "adj.", "zh": "無情的、持續不斷的", "example": "The relentless rain flooded the streets.", "example_zh": "下個不停的大雨淹沒了街道。" }
+  ],
+  "reliance": [
+    { "pos": "n.", "zh": "依賴、依靠", "example": "We should reduce our reliance on cars.", "example_zh": "我們應該減少對汽車的依賴。" }
+  ],
+  "reliant": [
+    { "pos": "adj.", "zh": "依賴的、依靠的", "example": "He is too reliant on his phone.", "example_zh": "他太依賴手機了。" }
+  ],
+  "relic": [
+    { "pos": "n.", "zh": "遺物、遺跡", "example": "The museum displays ancient relics.", "example_zh": "博物館展示古代遺物。" }
+  ],
+  "remainder": [
+    { "pos": "n.", "zh": "剩餘部分、餘數", "example": "She gave the remainder of the cake to me.", "example_zh": "她把剩下的蛋糕給了我。" }
+  ],
+  "reminiscent": [
+    { "pos": "adj.", "zh": "使人想起…的、懷舊的", "example": "The smell was reminiscent of my childhood.", "example_zh": "這味道讓我想起童年。" }
+  ],
+  "renowned": [
+    { "pos": "adj.", "zh": "著名的、有名望的", "example": "He is a renowned scientist.", "example_zh": "他是位著名的科學家。" }
+  ],
+  "reproduce": [
+    { "pos": "v.", "zh": "複製、繁殖", "example": "The printer can reproduce the photo exactly.", "example_zh": "這台印表機能精確地複製照片。" }
+  ],
+  "reptile": [
+    { "pos": "n.", "zh": "爬蟲類動物", "example": "A snake is a kind of reptile.", "example_zh": "蛇是一種爬蟲類動物。" }
+  ],
+  "resent": [
+    { "pos": "v.", "zh": "憎惡、怨恨", "example": "She resented being treated unfairly.", "example_zh": "她對受到不公平的對待感到憤恨。" }
+  ],
+  "reside": [
+    { "pos": "v.", "zh": "居住、定居", "example": "They reside in a quiet village.", "example_zh": "他們住在一個寧靜的村莊。" }
+  ],
+  "resistant": [
+    { "pos": "adj.", "zh": "有抵抗力的、抗…的", "example": "The plant is resistant to cold weather.", "example_zh": "這種植物耐寒。" }
+  ],
+  "respective": [
+    { "pos": "adj.", "zh": "各自的、分別的", "example": "They went to their respective homes.", "example_zh": "他們各自回家了。" }
+  ],
+  "restoration": [
+    { "pos": "n.", "zh": "修復、恢復", "example": "The restoration of the old church took years.", "example_zh": "這座老教堂的修復花了好幾年。" }
+  ],
+  "restrain": [
+    { "pos": "v.", "zh": "抑制、克制、阻止", "example": "She could not restrain her laughter.", "example_zh": "她忍不住笑了出來。" }
+  ],
+  "restraint": [
+    { "pos": "n.", "zh": "克制、約束", "example": "He showed great restraint when provoked.", "example_zh": "被激怒時他展現了極大的克制。" }
+  ],
+  "retort": [
+    { "pos": "n.", "zh": "反駁、回嘴", "example": "She gave a sharp retort.", "example_zh": "她尖銳地回了一句嘴。" },
+    { "pos": "v.", "zh": "反駁、回嘴", "example": "He retorted angrily.", "example_zh": "他氣憤地反駁。" }
+  ],
+  "retrieve": [
+    { "pos": "v.", "zh": "取回、找回", "example": "The dog retrieved the ball.", "example_zh": "那隻狗把球叼了回來。" }
+  ],
+  "revelation": [
+    { "pos": "n.", "zh": "揭露、出乎意料的事", "example": "The news came as a complete revelation.", "example_zh": "這則消息完全出乎大家意料。" }
+  ],
+  "revival": [
+    { "pos": "n.", "zh": "復興、復甦", "example": "There has been a revival of old games.", "example_zh": "懷舊遊戲又重新流行起來。" }
+  ],
+  "revive": [
+    { "pos": "v.", "zh": "使甦醒、復活、復興", "example": "The doctor managed to revive the patient.", "example_zh": "醫生成功救活了病人。" }
+  ],
+  "revolt": [
+    { "pos": "n.", "zh": "反叛、起義", "example": "The people rose up in revolt.", "example_zh": "人民起而反抗。" },
+    { "pos": "v.", "zh": "反抗、造反", "example": "The workers revolted against the boss.", "example_zh": "工人們群起反抗老闆。" }
+  ],
+  "revolve": [
+    { "pos": "v.", "zh": "旋轉、圍繞", "example": "The earth revolves around the sun.", "example_zh": "地球繞著太陽轉。" }
+  ],
+  "rigorous": [
+    { "pos": "adj.", "zh": "嚴格的、嚴謹的", "example": "The athletes follow a rigorous training plan.", "example_zh": "運動員遵循嚴格的訓練計畫。" }
+  ],
+  "ripple": [
+    { "pos": "n.", "zh": "漣漪、波紋", "example": "The stone made ripples on the pond.", "example_zh": "石頭在池面激起漣漪。" },
+    { "pos": "v.", "zh": "起漣漪、蕩漾", "example": "The wind rippled the water.", "example_zh": "風吹皺了水面。" }
+  ],
+  "rivalry": [
+    { "pos": "n.", "zh": "競爭、對抗", "example": "There is a friendly rivalry between the teams.", "example_zh": "這兩隊之間有著良性的競爭。" }
+  ],
+  "roam": [
+    { "pos": "v.", "zh": "漫遊、閒逛", "example": "Wild horses roam across the plain.", "example_zh": "野馬在平原上漫遊。" }
+  ],
+  "robust": [
+    { "pos": "adj.", "zh": "強健的、結實的", "example": "He is robust and rarely gets sick.", "example_zh": "他很強健，很少生病。" }
+  ],
+  "rotate": [
+    { "pos": "v.", "zh": "旋轉、輪流", "example": "The wheel rotates quickly.", "example_zh": "輪子快速旋轉。" }
+  ],
+  "rotation": [
+    { "pos": "n.", "zh": "旋轉、輪替", "example": "The rotation of the earth causes day and night.", "example_zh": "地球的自轉造成晝夜。" }
+  ],
+  "royalty": [
+    { "pos": "n.", "zh": "版稅、王室成員", "example": "The writer earns royalty from her books.", "example_zh": "這位作家靠她的書賺取版稅。" }
+  ],
+  "rubbish": [
+    { "pos": "n.", "zh": "垃圾、廢話", "example": "Please put the rubbish in the bin.", "example_zh": "請把垃圾丟進垃圾桶。" }
+  ],
+  "rugged": [
+    { "pos": "adj.", "zh": "崎嶇的、粗獷的", "example": "They hiked across rugged mountains.", "example_zh": "他們翻越崎嶇的群山健行。" }
+  ],
+  "ruthless": [
+    { "pos": "adj.", "zh": "無情的、冷酷的", "example": "The ruthless ruler showed no mercy.", "example_zh": "這位冷酷的統治者毫不留情。" }
+  ]
+}

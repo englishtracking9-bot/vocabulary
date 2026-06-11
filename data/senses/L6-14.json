@@ -1,0 +1,189 @@
+{
+  "salute": [
+    { "pos": "v.", "zh": "敬禮、致敬", "example": "The soldiers saluted the flag.", "example_zh": "士兵向國旗敬禮。" },
+    { "pos": "n.", "zh": "敬禮、致意", "example": "He raised his hand in a salute.", "example_zh": "他舉手敬了個禮。" }
+  ],
+  "salvage": [
+    { "pos": "v.", "zh": "搶救、打撈", "example": "They tried to salvage goods from the wreck.", "example_zh": "他們設法從船難中搶救貨物。" }
+  ],
+  "sanitation": [
+    { "pos": "n.", "zh": "公共衛生、環境衛生", "example": "Good sanitation prevents the spread of disease.", "example_zh": "良好的衛生能防止疾病散播。" }
+  ],
+  "savage": [
+    { "pos": "adj.", "zh": "兇猛的、野蠻的", "example": "The savage storm tore down trees.", "example_zh": "猛烈的暴風雨吹倒了樹木。" }
+  ],
+  "scenic": [
+    { "pos": "adj.", "zh": "風景優美的", "example": "We took the scenic route along the coast.", "example_zh": "我們走沿海風景優美的路線。" }
+  ],
+  "scorn": [
+    { "pos": "n.", "zh": "輕蔑、鄙視", "example": "She looked at the cheater with scorn.", "example_zh": "她輕蔑地看著那個作弊的人。" },
+    { "pos": "v.", "zh": "輕蔑、不屑", "example": "He scorned their offer of help.", "example_zh": "他不屑於他們提供的幫助。" }
+  ],
+  "scrape": [
+    { "pos": "v.", "zh": "刮、擦", "example": "He scraped the mud off his boots.", "example_zh": "他把靴子上的泥刮掉。" },
+    { "pos": "n.", "zh": "刮傷、擦痕", "example": "She got a scrape on her knee.", "example_zh": "她膝蓋擦傷了。" }
+  ],
+  "screwdriver": [
+    { "pos": "n.", "zh": "螺絲起子", "example": "Use a screwdriver to fix the chair.", "example_zh": "用螺絲起子來修椅子。" }
+  ],
+  "scroll": [
+    { "pos": "v.", "zh": "（螢幕）捲動、滾動", "example": "Scroll down to read the rest.", "example_zh": "往下滑就能看完剩下的內容。" },
+    { "pos": "n.", "zh": "卷軸", "example": "The old scroll showed a map.", "example_zh": "那卷古老的卷軸上畫著一張地圖。" }
+  ],
+  "scrutiny": [
+    { "pos": "n.", "zh": "詳細審查、仔細檢查", "example": "The plan came under close scrutiny.", "example_zh": "這個計畫受到了嚴密的審查。" }
+  ],
+  "sculptor": [
+    { "pos": "n.", "zh": "雕塑家", "example": "The sculptor carved a statue from stone.", "example_zh": "雕塑家用石頭雕出一座雕像。" }
+  ],
+  "seagull-gull": [
+    { "pos": "n.", "zh": "海鷗", "example": "A seagull flew over the harbor.", "example_zh": "一隻海鷗飛過港口。" }
+  ],
+  "seduce": [
+    { "pos": "v.", "zh": "誘惑、勾引", "example": "The smell of fresh bread seduced us inside.", "example_zh": "新鮮麵包的香味誘使我們走了進去。" }
+  ],
+  "selective": [
+    { "pos": "adj.", "zh": "有選擇性的、挑剔的", "example": "She is selective about her friends.", "example_zh": "她在交友上很挑。" }
+  ],
+  "serene": [
+    { "pos": "adj.", "zh": "寧靜的、安詳的", "example": "The lake was calm and serene.", "example_zh": "湖面平靜安詳。" }
+  ],
+  "sergeant": [
+    { "pos": "n.", "zh": "中士、警官", "example": "The sergeant trained the new soldiers.", "example_zh": "中士訓練新兵。" }
+  ],
+  "serial": [
+    { "pos": "adj.", "zh": "連續的、連載的、一連串的", "example": "We watched a serial drama on TV.", "example_zh": "我們在電視上看了一齣連續劇。" }
+  ],
+  "sermon": [
+    { "pos": "n.", "zh": "佈道、講道", "example": "The priest gave a moving sermon.", "example_zh": "神父做了一場感人的佈道。" }
+  ],
+  "serving": [
+    { "pos": "n.", "zh": "（食物的）一份、一客", "example": "Each serving has two hundred calories.", "example_zh": "每一份有兩百卡路里。" }
+  ],
+  "setback": [
+    { "pos": "n.", "zh": "挫折、阻礙", "example": "The team suffered a setback but kept going.", "example_zh": "球隊遭遇挫折，但仍堅持下去。" }
+  ],
+  "shabby": [
+    { "pos": "adj.", "zh": "破舊的、襤褸的", "example": "He wore an old, shabby coat.", "example_zh": "他穿著一件破舊的舊外套。" }
+  ],
+  "sharpen": [
+    { "pos": "v.", "zh": "削尖、使鋒利", "example": "Please sharpen your pencil.", "example_zh": "請把你的鉛筆削尖。" }
+  ],
+  "shaver": [
+    { "pos": "n.", "zh": "刮鬍刀、電鬍刀", "example": "He bought an electric shaver.", "example_zh": "他買了一把電動刮鬍刀。" }
+  ],
+  "shortcoming": [
+    { "pos": "n.", "zh": "缺點、短處", "example": "Everyone has their shortcomings.", "example_zh": "每個人都有自己的缺點。" }
+  ],
+  "shortsighted": [
+    { "pos": "adj.", "zh": "短視的、近視的", "example": "It was a shortsighted decision.", "example_zh": "那是個目光短淺的決定。" }
+  ],
+  "shred": [
+    { "pos": "v.", "zh": "撕碎、切碎", "example": "She shredded the old letters.", "example_zh": "她把舊信撕碎了。" },
+    { "pos": "n.", "zh": "碎片、少量", "example": "There isn't a shred of evidence.", "example_zh": "一點證據也沒有。" }
+  ],
+  "shriek": [
+    { "pos": "n.", "zh": "尖叫聲", "example": "She let out a shriek of surprise.", "example_zh": "她驚訝地尖叫了一聲。" },
+    { "pos": "v.", "zh": "尖叫", "example": "The children shrieked with joy.", "example_zh": "孩子們高興得尖叫起來。" }
+  ],
+  "shrub": [
+    { "pos": "n.", "zh": "灌木", "example": "Small shrubs grew along the fence.", "example_zh": "小灌木沿著籬笆生長。" }
+  ],
+  "shuffle": [
+    { "pos": "v.", "zh": "洗（牌）、拖著腳走、重新排序", "example": "He shuffled the cards before the game.", "example_zh": "他在牌局開始前先洗牌。" }
+  ],
+  "shutter": [
+    { "pos": "n.", "zh": "（相機）快門、百葉窗", "example": "The photographer pressed the shutter.", "example_zh": "攝影師按下了快門。" }
+  ],
+  "simplicity": [
+    { "pos": "n.", "zh": "簡單、簡樸", "example": "I admire the simplicity of her design.", "example_zh": "我欣賞她設計的簡潔。" }
+  ],
+  "simplify": [
+    { "pos": "v.", "zh": "簡化、使簡單", "example": "Let me simplify the instructions.", "example_zh": "讓我把說明簡化一下。" }
+  ],
+  "simultaneous": [
+    { "pos": "adj.", "zh": "同時的、同時發生的", "example": "The two events were simultaneous.", "example_zh": "這兩件事是同時發生的。" }
+  ],
+  "skeptical": [
+    { "pos": "adj.", "zh": "懷疑的、存疑的", "example": "She was skeptical about his promise.", "example_zh": "她對他的承諾抱持懷疑。" }
+  ],
+  "skim": [
+    { "pos": "v.", "zh": "瀏覽、略讀、撇去", "example": "He skimmed the article quickly.", "example_zh": "他快速瀏覽了這篇文章。" }
+  ],
+  "slang": [
+    { "pos": "n.", "zh": "俚語、行話", "example": "Teens often use slang with friends.", "example_zh": "青少年和朋友常用俚語。" }
+  ],
+  "slash": [
+    { "pos": "v.", "zh": "大幅削減、猛砍", "example": "The store slashed its prices.", "example_zh": "這家店大幅降價。" },
+    { "pos": "n.", "zh": "斜線、砍痕", "example": "Put a slash between the two words.", "example_zh": "在這兩個字之間加一條斜線。" }
+  ],
+  "slaughter": [
+    { "pos": "n.", "zh": "屠宰、屠殺", "example": "The farmer raises animals for slaughter.", "example_zh": "農夫養動物供屠宰。" },
+    { "pos": "v.", "zh": "屠宰、殘殺", "example": "Many people were slaughtered in the war.", "example_zh": "戰爭中許多人慘遭殺害。" }
+  ],
+  "slay": [
+    { "pos": "v.", "zh": "殺死、宰殺", "example": "In the legend, the knight slew the dragon.", "example_zh": "在傳說中，騎士殺死了惡龍。" }
+  ],
+  "sloppy": [
+    { "pos": "adj.", "zh": "草率的、邋遢的", "example": "His sloppy handwriting is hard to read.", "example_zh": "他潦草的字跡很難辨認。" }
+  ],
+  "slum": [
+    { "pos": "n.", "zh": "貧民窟", "example": "Many families live in the city slum.", "example_zh": "許多家庭住在城市的貧民窟裡。" }
+  ],
+  "slump": [
+    { "pos": "n.", "zh": "（價格、需求）暴跌、低迷", "example": "Sales took a sharp slump this year.", "example_zh": "今年銷售量大幅下滑。" },
+    { "pos": "v.", "zh": "暴跌、頹然倒下", "example": "He slumped into the chair, exhausted.", "example_zh": "他筋疲力盡地癱坐在椅子上。" }
+  ],
+  "sly": [
+    { "pos": "adj.", "zh": "狡猾的、會意的", "example": "He gave a sly grin.", "example_zh": "他露出狡黠的笑容。" }
+  ],
+  "smuggle": [
+    { "pos": "v.", "zh": "走私、偷運", "example": "They were caught trying to smuggle gold.", "example_zh": "他們企圖走私黃金時被逮。" }
+  ],
+  "sneaker": [
+    { "pos": "n.", "zh": "運動鞋、球鞋", "example": "She wore comfortable sneakers to run.", "example_zh": "她穿著舒適的運動鞋去跑步。" }
+  ],
+  "sneaky": [
+    { "pos": "adj.", "zh": "偷偷摸摸的、鬼祟的", "example": "That was a sneaky way to win.", "example_zh": "那是個耍小手段取勝的方法。" }
+  ],
+  "sneeze": [
+    { "pos": "v.", "zh": "打噴嚏", "example": "The dust made him sneeze.", "example_zh": "灰塵讓他打噴嚏。" },
+    { "pos": "n.", "zh": "噴嚏", "example": "She gave a loud sneeze.", "example_zh": "她大聲打了個噴嚏。" }
+  ],
+  "snore": [
+    { "pos": "v.", "zh": "打鼾、打呼", "example": "He snores loudly when he sleeps.", "example_zh": "他睡覺時打呼很大聲。" }
+  ],
+  "sociable": [
+    { "pos": "adj.", "zh": "好交際的、合群的", "example": "She is sociable and makes friends easily.", "example_zh": "她善於交際，很容易交到朋友。" }
+  ],
+  "socialism": [
+    { "pos": "n.", "zh": "社會主義", "example": "The class discussed the idea of socialism.", "example_zh": "這堂課討論了社會主義的概念。" }
+  ],
+  "socialist": [
+    { "pos": "n.", "zh": "社會主義者", "example": "He holds socialist views on the economy.", "example_zh": "他對經濟抱持社會主義的觀點。" }
+  ],
+  "socialize": [
+    { "pos": "v.", "zh": "交際、社交", "example": "We socialize with neighbors at the park.", "example_zh": "我們在公園和鄰居們交流。" }
+  ],
+  "sociology": [
+    { "pos": "n.", "zh": "社會學", "example": "She studies sociology at university.", "example_zh": "她在大學研讀社會學。" }
+  ],
+  "solemn": [
+    { "pos": "adj.", "zh": "莊嚴的、嚴肅的", "example": "The ceremony was quiet and solemn.", "example_zh": "這場典禮安靜而莊嚴。" }
+  ],
+  "solidarity": [
+    { "pos": "n.", "zh": "團結、休戚與共", "example": "The workers showed solidarity.", "example_zh": "工人們展現了團結。" }
+  ],
+  "solitary": [
+    { "pos": "adj.", "zh": "獨自的、孤獨的", "example": "He enjoys solitary walks in the woods.", "example_zh": "他喜歡獨自在林間散步。" }
+  ],
+  "solitude": [
+    { "pos": "n.", "zh": "獨處、孤獨", "example": "She found peace in the solitude of the hills.", "example_zh": "她在山間的獨處中找到了平靜。" }
+  ],
+  "soothe": [
+    { "pos": "v.", "zh": "撫慰、緩和", "example": "Soft music can soothe a crying baby.", "example_zh": "輕柔的音樂能安撫哭鬧的嬰兒。" }
+  ],
+  "sorrowful": [
+    { "pos": "adj.", "zh": "悲傷的、哀傷的", "example": "She gave a sorrowful sigh.", "example_zh": "她哀傷地嘆了口氣。" }
+  ]
+}
