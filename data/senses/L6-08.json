@@ -1,0 +1,187 @@
+{
+  "hospitable": [
+    { "pos": "adj.", "zh": "好客的、殷勤的", "example": "Our hosts were warm and hospitable.", "example_zh": "我們的主人既熱情又好客。" }
+  ],
+  "hospitality": [
+    { "pos": "n.", "zh": "好客、款待", "example": "Thank you for your kind hospitality.", "example_zh": "謝謝你親切的款待。" }
+  ],
+  "hospitalize": [
+    { "pos": "v.", "zh": "使住院（治療）", "example": "He was hospitalized after the accident.", "example_zh": "意外發生後他住院了。" }
+  ],
+  "hostel": [
+    { "pos": "n.", "zh": "（青年）旅舍、招待所", "example": "We stayed at a cheap youth hostel.", "example_zh": "我們住在一家便宜的青年旅舍。" }
+  ],
+  "hover": [
+    { "pos": "v.", "zh": "盤旋、徘徊", "example": "A bee hovered over the flower.", "example_zh": "一隻蜜蜂在花朵上方盤旋。" }
+  ],
+  "humiliate": [
+    { "pos": "v.", "zh": "羞辱、使丟臉", "example": "It is cruel to humiliate someone.", "example_zh": "羞辱別人是很殘忍的。" }
+  ],
+  "hunch": [
+    { "pos": "n.", "zh": "預感、直覺", "example": "I had a hunch that he would win.", "example_zh": "我有種預感他會贏。" }
+  ],
+  "hurdle": [
+    { "pos": "n.", "zh": "跨欄、障礙", "example": "She jumped the last hurdle and won.", "example_zh": "她跨過最後一道欄，贏得了比賽。" }
+  ],
+  "hybrid": [
+    { "pos": "adj.", "zh": "混合的、油電混合的", "example": "The car is a hybrid that uses less gas.", "example_zh": "這輛車是省油的油電混合車。" },
+    { "pos": "n.", "zh": "混合物、雜種", "example": "This plant is a hybrid of two roses.", "example_zh": "這株植物是兩種玫瑰的雜交種。" }
+  ],
+  "hygiene": [
+    { "pos": "n.", "zh": "衛生、保健", "example": "Good hygiene helps prevent disease.", "example_zh": "良好的衛生有助於預防疾病。" }
+  ],
+  "hypocrite": [
+    { "pos": "n.", "zh": "偽君子、偽善者", "example": "He is a hypocrite who says one thing and does another.", "example_zh": "他是個言行不一的偽君子。" }
+  ],
+  "iceberg": [
+    { "pos": "n.", "zh": "冰山", "example": "The ship hit a huge iceberg.", "example_zh": "那艘船撞上了一座巨大的冰山。" }
+  ],
+  "illuminate": [
+    { "pos": "v.", "zh": "照亮、闡明", "example": "Bright lamps illuminate the street.", "example_zh": "明亮的燈照亮了街道。" }
+  ],
+  "imminent": [
+    { "pos": "adj.", "zh": "即將發生的、迫近的", "example": "Dark clouds warned of imminent rain.", "example_zh": "烏雲預示著大雨即將來臨。" }
+  ],
+  "imperative": [
+    { "pos": "adj.", "zh": "至關重要的、必要的", "example": "It is imperative to stay calm.", "example_zh": "保持冷靜是非常重要的。" }
+  ],
+  "imperial": [
+    { "pos": "adj.", "zh": "帝國的、皇帝的", "example": "The imperial palace was huge.", "example_zh": "那座皇宮非常宏偉。" }
+  ],
+  "implicit": [
+    { "pos": "adj.", "zh": "含蓄的、隱含的", "example": "There was an implicit warning in his tone.", "example_zh": "他的語氣中暗含警告。" }
+  ],
+  "imposing": [
+    { "pos": "adj.", "zh": "雄偉的、壯觀的", "example": "The imposing tower stood over the city.", "example_zh": "那座雄偉的塔聳立在城市之上。" }
+  ],
+  "imprison": [
+    { "pos": "v.", "zh": "監禁、關押", "example": "They imprisoned the thief for a year.", "example_zh": "他們把那名小偷關了一年。" }
+  ],
+  "incline": [
+    { "pos": "v.", "zh": "傾斜、傾向", "example": "The road inclines steeply up the hill.", "example_zh": "這條路陡峭地向山上傾斜。" },
+    { "pos": "n.", "zh": "斜坡、坡度", "example": "The bikes struggled up the incline.", "example_zh": "腳踏車吃力地爬上斜坡。" }
+  ],
+  "inclusive": [
+    { "pos": "adj.", "zh": "包含的、包容的", "example": "The price is inclusive of breakfast.", "example_zh": "這個價格包含早餐。" }
+  ],
+  "incur": [
+    { "pos": "v.", "zh": "招致、引起（後果）", "example": "Late payment will incur a fee.", "example_zh": "逾期付款會產生費用。" }
+  ],
+  "indifference": [
+    { "pos": "n.", "zh": "漠不關心、冷淡", "example": "His indifference hurt her feelings.", "example_zh": "他的漠不關心傷了她的心。" }
+  ],
+  "indignant": [
+    { "pos": "adj.", "zh": "憤慨的、義憤的", "example": "She was indignant at the unfair treatment.", "example_zh": "她對這不公平的待遇感到憤慨。" }
+  ],
+  "induce": [
+    { "pos": "v.", "zh": "誘使、引起", "example": "Warm milk can induce sleep.", "example_zh": "溫牛奶能助人入眠。" }
+  ],
+  "industrialize": [
+    { "pos": "v.", "zh": "使工業化", "example": "The country began to industrialize quickly.", "example_zh": "這個國家開始快速工業化。" }
+  ],
+  "infectious": [
+    { "pos": "adj.", "zh": "傳染性的、有感染力的", "example": "Her laughter is infectious.", "example_zh": "她的笑聲很有感染力。" }
+  ],
+  "infer": [
+    { "pos": "v.", "zh": "推論、推斷", "example": "From his smile, I inferred he was happy.", "example_zh": "從他的微笑，我推斷他很開心。" }
+  ],
+  "inflict": [
+    { "pos": "v.", "zh": "使遭受、造成（傷害）", "example": "The storm inflicted great damage.", "example_zh": "這場暴風雨造成了重大損害。" }
+  ],
+  "inhabit": [
+    { "pos": "v.", "zh": "居住於、棲息於", "example": "Many birds inhabit this forest.", "example_zh": "許多鳥棲息在這片森林裡。" }
+  ],
+  "inhabitant": [
+    { "pos": "n.", "zh": "居民、棲息動物", "example": "The town has 5,000 inhabitants.", "example_zh": "這個小鎮有五千名居民。" }
+  ],
+  "injustice": [
+    { "pos": "n.", "zh": "不公正、不公平", "example": "They fought against injustice.", "example_zh": "他們對抗不公不義。" }
+  ],
+  "inland": [
+    { "pos": "adv.", "zh": "向內陸地", "example": "The river flows far inland.", "example_zh": "這條河往內陸流了很遠。" },
+    { "pos": "adj.", "zh": "內陸的", "example": "They live in a small inland town.", "example_zh": "他們住在一個內陸小鎮。" }
+  ],
+  "innumerable": [
+    { "pos": "adj.", "zh": "無數的、數不清的", "example": "There are innumerable stars in the sky.", "example_zh": "天上有數不清的星星。" }
+  ],
+  "inquire": [
+    { "pos": "v.", "zh": "詢問、查詢", "example": "She inquired about the train times.", "example_zh": "她詢問了火車的時刻。" }
+  ],
+  "insistence": [
+    { "pos": "n.", "zh": "堅持、堅決要求", "example": "At his insistence, we left early.", "example_zh": "在他的堅持下，我們提早離開了。" }
+  ],
+  "instinctive": [
+    { "pos": "adj.", "zh": "本能的、天生的", "example": "A baby's cry is an instinctive response.", "example_zh": "嬰兒的哭聲是一種本能反應。" }
+  ],
+  "intake": [
+    { "pos": "n.", "zh": "攝取量、吸入", "example": "You should reduce your sugar intake.", "example_zh": "你應該減少糖的攝取量。" }
+  ],
+  "intellect": [
+    { "pos": "n.", "zh": "智力、才智", "example": "She is admired for her sharp intellect.", "example_zh": "她因敏銳的才智而受人敬佩。" }
+  ],
+  "interpreter": [
+    { "pos": "n.", "zh": "口譯員、翻譯", "example": "The interpreter translated the speech.", "example_zh": "口譯員翻譯了那場演說。" }
+  ],
+  "intersection": [
+    { "pos": "n.", "zh": "十字路口、交叉處", "example": "Turn right at the next intersection.", "example_zh": "在下個十字路口右轉。" }
+  ],
+  "intervene": [
+    { "pos": "v.", "zh": "介入、干預", "example": "A teacher intervened to stop the fight.", "example_zh": "一位老師介入制止了打架。" }
+  ],
+  "intimacy": [
+    { "pos": "n.", "zh": "親密、親近", "example": "The quiet dinner created a sense of intimacy.", "example_zh": "這頓安靜的晚餐營造出親密的感覺。" }
+  ],
+  "intimidate": [
+    { "pos": "v.", "zh": "恐嚇、威嚇", "example": "Don't let big words intimidate you.", "example_zh": "別被艱深的字眼嚇到。" }
+  ],
+  "intonation": [
+    { "pos": "n.", "zh": "語調、聲調", "example": "Her rising intonation showed a question.", "example_zh": "她上揚的語調表示這是個問句。" }
+  ],
+  "intrigue": [
+    { "pos": "n.", "zh": "陰謀、密謀", "example": "The story is full of mystery and intrigue.", "example_zh": "這個故事充滿懸疑與陰謀。" },
+    { "pos": "v.", "zh": "激起興趣、使好奇", "example": "The strange map intrigued her.", "example_zh": "那張奇怪的地圖引起了她的好奇。" }
+  ],
+  "intrude": [
+    { "pos": "v.", "zh": "闖入、打擾", "example": "I'm sorry to intrude on your meeting.", "example_zh": "抱歉打擾了你們的會議。" }
+  ],
+  "intruder": [
+    { "pos": "n.", "zh": "入侵者、闖入者", "example": "The dog barked at the intruder.", "example_zh": "那隻狗對著闖入者吠叫。" }
+  ],
+  "invaluable": [
+    { "pos": "adj.", "zh": "極寶貴的、無價的", "example": "Her advice was invaluable to me.", "example_zh": "她的建議對我來說非常寶貴。" }
+  ],
+  "invariably": [
+    { "pos": "adv.", "zh": "總是、一律", "example": "He is invariably late for class.", "example_zh": "他上課總是遲到。" }
+  ],
+  "inventory": [
+    { "pos": "n.", "zh": "存貨、清單", "example": "The shop checked its inventory.", "example_zh": "這家店清點了存貨。" }
+  ],
+  "ironic": [
+    { "pos": "adj.", "zh": "諷刺的、出人意料的", "example": "It is ironic that the fire station burned down.", "example_zh": "消防局自己燒掉真是諷刺。" }
+  ],
+  "irritable": [
+    { "pos": "adj.", "zh": "易怒的、煩躁的", "example": "He gets irritable when he is hungry.", "example_zh": "他餓的時候會變得煩躁。" }
+  ],
+  "irritate": [
+    { "pos": "v.", "zh": "使惱怒、刺激（使不適）", "example": "The dust irritated her eyes.", "example_zh": "灰塵刺激了她的眼睛。" }
+  ],
+  "isle": [
+    { "pos": "n.", "zh": "小島", "example": "They sailed to a small green isle.", "example_zh": "他們航向一座綠意盎然的小島。" }
+  ],
+  "itch": [
+    { "pos": "v.", "zh": "發癢", "example": "The mosquito bite made my arm itch.", "example_zh": "蚊子叮咬讓我的手臂發癢。" },
+    { "pos": "n.", "zh": "癢、渴望", "example": "She felt an itch on her back.", "example_zh": "她覺得背上癢癢的。" }
+  ],
+  "ivy": [
+    { "pos": "n.", "zh": "常春藤", "example": "Green ivy covered the old wall.", "example_zh": "綠色的常春藤爬滿了舊牆。" }
+  ],
+  "jade": [
+    { "pos": "n.", "zh": "玉、翡翠", "example": "She wore a beautiful jade necklace.", "example_zh": "她戴著一條美麗的玉項鍊。" }
+  ],
+  "janitor": [
+    { "pos": "n.", "zh": "管理員、工友", "example": "The janitor cleaned the hallway.", "example_zh": "工友打掃了走廊。" }
+  ],
+  "jasmine": [
+    { "pos": "n.", "zh": "茉莉（花）", "example": "The night air smelled of jasmine.", "example_zh": "夜晚的空氣中飄著茉莉花香。" }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "fowl": [
+    { "pos": "n.", "zh": "家禽、禽鳥", "example": "Chickens and ducks are kinds of fowl.", "example_zh": "雞和鴨都是家禽。" }
+  ],
+  "fracture": [
+    { "pos": "n.", "zh": "骨折、裂縫", "example": "The X-ray showed a fracture in his arm.", "example_zh": "X 光顯示他的手臂骨折了。" },
+    { "pos": "v.", "zh": "使破裂、使骨折", "example": "She fractured her ankle while skating.", "example_zh": "她溜冰時腳踝骨折了。" }
+  ],
+  "fragrance": [
+    { "pos": "n.", "zh": "香味、香氣", "example": "The flowers gave off a sweet fragrance.", "example_zh": "花朵散發出甜美的香氣。" }
+  ],
+  "fragrant": [
+    { "pos": "adj.", "zh": "芳香的、香的", "example": "The garden was full of fragrant roses.", "example_zh": "花園裡滿是芬芳的玫瑰。" }
+  ],
+  "frantic": [
+    { "pos": "adj.", "zh": "慌亂的、發狂似的", "example": "She made a frantic search for her keys.", "example_zh": "她瘋狂地找鑰匙。" }
+  ],
+  "freak": [
+    { "pos": "n.", "zh": "怪人、怪事", "example": "The sudden snow was a freak event.", "example_zh": "這場突如其來的雪是個反常的現象。" },
+    { "pos": "adj.", "zh": "反常的、怪異的", "example": "A freak storm hit the town.", "example_zh": "一場反常的暴風雨襲擊了小鎮。" }
+  ],
+  "freeway": [
+    { "pos": "n.", "zh": "高速公路", "example": "Traffic was heavy on the freeway.", "example_zh": "高速公路上車流量很大。" }
+  ],
+  "friction": [
+    { "pos": "n.", "zh": "摩擦、摩擦力、不和", "example": "Rubbing your hands creates friction and heat.", "example_zh": "搓手會產生摩擦和熱。" }
+  ],
+  "fume": [
+    { "pos": "n.", "zh": "（難聞的）煙、氣體", "example": "Car fumes pollute the city air.", "example_zh": "汽車廢氣汙染了城市的空氣。" },
+    { "pos": "v.", "zh": "冒煙、發怒", "example": "He fumed when the bus was late.", "example_zh": "公車誤點時他氣得直冒火。" }
+  ],
+  "fury": [
+    { "pos": "n.", "zh": "暴怒、狂怒", "example": "He shook with fury at the news.", "example_zh": "聽到這消息他氣得發抖。" }
+  ],
+  "fuse": [
+    { "pos": "n.", "zh": "保險絲、引信", "example": "The fuse blew and the lights went out.", "example_zh": "保險絲燒斷，燈就熄了。" },
+    { "pos": "v.", "zh": "融合、熔接", "example": "Heat fused the two metals together.", "example_zh": "高溫把兩塊金屬熔接在一起。" }
+  ],
+  "fuss": [
+    { "pos": "n.", "zh": "大驚小怪、忙亂", "example": "Don't make a fuss over a small mistake.", "example_zh": "別為了一個小錯誤大驚小怪。" }
+  ],
+  "gallop": [
+    { "pos": "n.", "zh": "（馬）疾馳、飛奔", "example": "The horse broke into a fast gallop.", "example_zh": "那匹馬奔馳了起來。" },
+    { "pos": "v.", "zh": "（馬）疾馳、飛奔", "example": "The horse galloped across the field.", "example_zh": "那匹馬飛奔過原野。" }
+  ],
+  "gangster": [
+    { "pos": "n.", "zh": "幫派份子、歹徒", "example": "The film is about a famous gangster.", "example_zh": "這部電影講的是一個惡名昭彰的幫派份子。" }
+  ],
+  "garment": [
+    { "pos": "n.", "zh": "（一件）衣服", "example": "Each garment is sewn by hand.", "example_zh": "每件衣服都是手工縫製的。" }
+  ],
+  "gauge": [
+    { "pos": "n.", "zh": "儀表、測量儀", "example": "He checked the fuel gauge.", "example_zh": "他查看了油量表。" },
+    { "pos": "v.", "zh": "測量、判斷", "example": "It's hard to gauge her mood.", "example_zh": "很難判斷她的心情。" }
+  ],
+  "gay": [
+    { "pos": "adj.", "zh": "同性戀的、（舊指）愉快的", "example": "The word 'gay' once meant 'cheerful'.", "example_zh": "「gay」這個字以前是「愉快的」意思。" }
+  ],
+  "geographical": [
+    { "pos": "adj.", "zh": "地理的", "example": "The map shows geographical features.", "example_zh": "這張地圖顯示了地理特徵。" }
+  ],
+  "geometry": [
+    { "pos": "n.", "zh": "幾何學", "example": "We study shapes and angles in geometry.", "example_zh": "我們在幾何學裡研究形狀和角度。" }
+  ],
+  "glacier": [
+    { "pos": "n.", "zh": "冰河、冰川", "example": "A huge glacier slid slowly down the valley.", "example_zh": "一條巨大的冰河緩緩滑下山谷。" }
+  ],
+  "glamorous": [
+    { "pos": "adj.", "zh": "迷人的、富魅力的", "example": "The star looked glamorous on the red carpet.", "example_zh": "那位明星在紅毯上光彩奪目。" }
+  ],
+  "glamour": [
+    { "pos": "n.", "zh": "魅力、迷人的光彩", "example": "The city is full of glamour and lights.", "example_zh": "這座城市充滿魅力與燈火。" }
+  ],
+  "gleam": [
+    { "pos": "n.", "zh": "微光、閃光", "example": "A gleam of hope shone in her eyes.", "example_zh": "她眼中閃過一絲希望的光芒。" },
+    { "pos": "v.", "zh": "閃爍、發微光", "example": "The clean glasses gleamed on the shelf.", "example_zh": "乾淨的玻璃杯在架上閃閃發亮。" }
+  ],
+  "glide": [
+    { "pos": "v.", "zh": "滑行、滑翔", "example": "The bird glided smoothly through the air.", "example_zh": "那隻鳥在空中平穩地滑翔。" }
+  ],
+  "glitter": [
+    { "pos": "v.", "zh": "閃閃發光、閃爍", "example": "The lake seemed to glitter in the sun.", "example_zh": "湖面在陽光下閃閃發光。" }
+  ],
+  "gloom": [
+    { "pos": "n.", "zh": "陰暗、憂鬱", "example": "A sense of gloom filled the room.", "example_zh": "一股憂鬱的氣氛籠罩著房間。" }
+  ],
+  "goalkeeper": [
+    { "pos": "n.", "zh": "守門員", "example": "The goalkeeper blocked the shot.", "example_zh": "守門員擋下了那一球。" }
+  ],
+  "goodwill": [
+    { "pos": "n.", "zh": "善意、友好", "example": "The gift was a sign of goodwill.", "example_zh": "這份禮物是善意的表示。" }
+  ],
+  "gorilla": [
+    { "pos": "n.", "zh": "大猩猩", "example": "The gorilla sat quietly in its enclosure.", "example_zh": "大猩猩安靜地坐在圍欄裡。" }
+  ],
+  "gospel": [
+    { "pos": "n.", "zh": "福音、福音音樂", "example": "The choir sang a joyful gospel song.", "example_zh": "唱詩班唱了一首歡欣的福音歌曲。" }
+  ],
+  "grapefruit": [
+    { "pos": "n.", "zh": "葡萄柚", "example": "She had half a grapefruit for breakfast.", "example_zh": "她早餐吃了半顆葡萄柚。" }
+  ],
+  "graze": [
+    { "pos": "v.", "zh": "吃草、放牧", "example": "Sheep graze on the green hillside.", "example_zh": "羊在綠色的山坡上吃草。" },
+    { "pos": "v.", "zh": "擦傷、輕擦", "example": "He grazed his knee when he fell.", "example_zh": "他跌倒時擦傷了膝蓋。" }
+  ],
+  "grease": [
+    { "pos": "n.", "zh": "油脂、潤滑油", "example": "The pan was covered in grease.", "example_zh": "鍋子上滿是油脂。" }
+  ],
+  "groan": [
+    { "pos": "v.", "zh": "呻吟、抱怨", "example": "He gave a groan as he lifted the box.", "example_zh": "他抬起箱子時呻吟了一聲。" },
+    { "pos": "n.", "zh": "呻吟聲", "example": "She let out a groan of pain.", "example_zh": "她發出一聲痛苦的呻吟。" }
+  ],
+  "growl": [
+    { "pos": "v.", "zh": "（動物）低吼、咆哮", "example": "The dog gave a low growl.", "example_zh": "那隻狗發出低沉的吼聲。" },
+    { "pos": "n.", "zh": "低吼聲", "example": "We heard the growl of a bear.", "example_zh": "我們聽見一頭熊的低吼。" }
+  ],
+  "grumble": [
+    { "pos": "v.", "zh": "抱怨、發牢騷", "example": "He grumbled about the cold weather.", "example_zh": "他抱怨天氣寒冷。" }
+  ],
+  "hacker": [
+    { "pos": "n.", "zh": "駭客", "example": "A hacker tried to break into the system.", "example_zh": "一名駭客試圖入侵這個系統。" }
+  ],
+  "hail": [
+    { "pos": "n.", "zh": "冰雹", "example": "Hail fell during the sudden storm.", "example_zh": "突來的暴風雨中下起了冰雹。" },
+    { "pos": "v.", "zh": "招呼、歡呼、下冰雹", "example": "She hailed a taxi on the street.", "example_zh": "她在街上招了一輛計程車。" }
+  ],
+  "hamper": [
+    { "pos": "v.", "zh": "妨礙、阻礙", "example": "Bad weather hampered the rescue.", "example_zh": "壞天氣阻礙了救援行動。" }
+  ],
+  "handicap": [
+    { "pos": "n.", "zh": "障礙、不利條件", "example": "His injury was a handicap in the race.", "example_zh": "他的傷是比賽中的一大不利因素。" }
+  ],
+  "handicraft": [
+    { "pos": "n.", "zh": "手工藝（品）", "example": "She sells handicrafts at the market.", "example_zh": "她在市場上賣手工藝品。" }
+  ],
+  "harass": [
+    { "pos": "v.", "zh": "騷擾、煩擾", "example": "It is wrong to harass others online.", "example_zh": "在網路上騷擾他人是不對的。" }
+  ],
+  "harden": [
+    { "pos": "v.", "zh": "使變硬、變硬", "example": "The clay hardens as it dries.", "example_zh": "黏土乾掉後會變硬。" }
+  ],
+  "harmonica": [
+    { "pos": "n.", "zh": "口琴", "example": "He played a tune on his harmonica.", "example_zh": "他用口琴吹了一首曲子。" }
+  ],
+  "harness": [
+    { "pos": "n.", "zh": "輓具、安全帶", "example": "They put a harness on the horse.", "example_zh": "他們替馬套上輓具。" },
+    { "pos": "v.", "zh": "利用、駕馭", "example": "We can harness the power of the wind.", "example_zh": "我們可以利用風的力量。" }
+  ],
+  "haunt": [
+    { "pos": "v.", "zh": "（鬼魂）出沒、縈繞", "example": "People say a ghost haunts the old house.", "example_zh": "人們說有鬼魂在這棟老屋出沒。" }
+  ],
+  "headphone": [
+    { "pos": "n.", "zh": "耳機", "example": "She listened to music with headphones.", "example_zh": "她戴著耳機聽音樂。" }
+  ],
+  "healthful": [
+    { "pos": "adj.", "zh": "有益健康的", "example": "Fruit and vegetables are healthful foods.", "example_zh": "蔬果是有益健康的食物。" }
+  ],
+  "hearty": [
+    { "pos": "adj.", "zh": "熱誠的、豐盛的", "example": "They gave us a hearty welcome.", "example_zh": "他們熱誠地歡迎我們。" }
+  ],
+  "hedge": [
+    { "pos": "n.", "zh": "樹籬", "example": "A green hedge surrounds the garden.", "example_zh": "一道綠色的樹籬圍著花園。" }
+  ],
+  "heighten": [
+    { "pos": "v.", "zh": "增強、提高", "example": "The music heightened the suspense.", "example_zh": "音樂加強了懸疑的氣氛。" }
+  ],
+  "hemisphere": [
+    { "pos": "n.", "zh": "半球", "example": "Australia is in the southern hemisphere.", "example_zh": "澳洲位於南半球。" }
+  ],
+  "heroic": [
+    { "pos": "adj.", "zh": "英勇的、英雄的", "example": "The firefighter made a heroic rescue.", "example_zh": "那名消防員進行了一場英勇的救援。" }
+  ],
+  "heroin": [
+    { "pos": "n.", "zh": "海洛因", "example": "Heroin is a dangerous and illegal drug.", "example_zh": "海洛因是危險的非法毒品。" }
+  ],
+  "heterosexual": [
+    { "pos": "adj.", "zh": "異性戀的", "example": "The survey asked about sexual orientation, including heterosexual people.", "example_zh": "這項調查詢問了性傾向，包含異性戀者。" }
+  ],
+  "hierarchy": [
+    { "pos": "n.", "zh": "階級制度、等級體系", "example": "The army has a clear hierarchy.", "example_zh": "軍隊有明確的階級制度。" }
+  ],
+  "hijack": [
+    { "pos": "v.", "zh": "劫持、挾持", "example": "In the film, robbers hijack a train.", "example_zh": "在電影裡，盜匪劫持了一列火車。" }
+  ],
+  "hoarse": [
+    { "pos": "adj.", "zh": "（嗓音）沙啞的", "example": "Her voice was hoarse from cheering.", "example_zh": "她因為歡呼而嗓子沙啞。" }
+  ],
+  "homosexual": [
+    { "pos": "adj.", "zh": "同性戀的", "example": "The law protects homosexual people from discrimination.", "example_zh": "這項法律保護同性戀者不受歧視。" }
+  ],
+  "honorary": [
+    { "pos": "adj.", "zh": "名譽的、榮譽的", "example": "The university gave him an honorary degree.", "example_zh": "這所大學頒給他名譽學位。" }
+  ]
+}
