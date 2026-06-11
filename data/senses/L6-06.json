@@ -1,0 +1,186 @@
+{
+  "encyclopedia": [
+    { "pos": "n.", "zh": "百科全書", "example": "She looked it up in the encyclopedia.", "example_zh": "她在百科全書裡查了這個詞。" }
+  ],
+  "endeavor": [
+    { "pos": "n.", "zh": "努力、盡力", "example": "He made every endeavor to win.", "example_zh": "他竭盡全力想要獲勝。" },
+    { "pos": "v.", "zh": "努力、嘗試", "example": "She endeavored to finish on time.", "example_zh": "她努力想準時完成。" }
+  ],
+  "endowment": [
+    { "pos": "n.", "zh": "捐贈（基金）、天賦", "example": "The school received a large endowment.", "example_zh": "這所學校獲得了一筆龐大的捐贈。" }
+  ],
+  "endurance": [
+    { "pos": "n.", "zh": "耐力、忍耐力", "example": "A marathon tests your endurance.", "example_zh": "馬拉松考驗你的耐力。" }
+  ],
+  "enhance": [
+    { "pos": "v.", "zh": "提高、增強", "example": "Spices enhance the flavor of the dish.", "example_zh": "香料能提升這道菜的風味。" }
+  ],
+  "enlighten": [
+    { "pos": "v.", "zh": "啟發、開導", "example": "The book enlightened me about history.", "example_zh": "這本書讓我對歷史有了新的認識。" }
+  ],
+  "enrich": [
+    { "pos": "v.", "zh": "使豐富、使充實", "example": "Reading enriches your mind.", "example_zh": "閱讀能豐富你的心靈。" }
+  ],
+  "enroll": [
+    { "pos": "v.", "zh": "註冊、報名", "example": "She enrolled in a cooking class.", "example_zh": "她報名了一堂烹飪課。" }
+  ],
+  "equalize": [
+    { "pos": "v.", "zh": "使均等、扳平（比分）", "example": "His goal equalized the score.", "example_zh": "他的進球把比分扳平了。" }
+  ],
+  "equate": [
+    { "pos": "v.", "zh": "將…等同、視為相等", "example": "Don't equate money with happiness.", "example_zh": "別把金錢和幸福劃上等號。" }
+  ],
+  "escort": [
+    { "pos": "v.", "zh": "護送、陪同", "example": "A guard escorted the guests to the hall.", "example_zh": "一名警衛護送賓客到大廳。" },
+    { "pos": "n.", "zh": "護衛、隨行人員", "example": "The truck travelled with a police escort.", "example_zh": "這輛卡車在警車護衛下行駛。" }
+  ],
+  "esteem": [
+    { "pos": "n.", "zh": "尊重、敬重", "example": "She is held in high esteem by her peers.", "example_zh": "她深受同儕敬重。" }
+  ],
+  "eternity": [
+    { "pos": "n.", "zh": "永恆、（似乎）無盡的時間", "example": "The boring meeting felt like an eternity.", "example_zh": "那場無聊的會議感覺像永遠開不完。" }
+  ],
+  "evacuate": [
+    { "pos": "v.", "zh": "疏散、撤離", "example": "They evacuated the building during the fire.", "example_zh": "火災時他們撤離了大樓。" }
+  ],
+  "evergreen": [
+    { "pos": "adj.", "zh": "常綠的", "example": "Pine trees are evergreen.", "example_zh": "松樹是常綠樹。" }
+  ],
+  "evoke": [
+    { "pos": "v.", "zh": "喚起、引起", "example": "The song evoked happy memories.", "example_zh": "這首歌喚起了快樂的回憶。" }
+  ],
+  "examinee": [
+    { "pos": "n.", "zh": "應試者、考生", "example": "Each examinee was given two hours.", "example_zh": "每位考生有兩個小時作答。" }
+  ],
+  "examiner": [
+    { "pos": "n.", "zh": "主考官、審查者", "example": "The examiner checked the answers carefully.", "example_zh": "主考官仔細地批改答案。" }
+  ],
+  "excel": [
+    { "pos": "v.", "zh": "擅長、優於他人", "example": "She excels at math and science.", "example_zh": "她在數學和自然科目上表現出色。" }
+  ],
+  "excerpt": [
+    { "pos": "n.", "zh": "摘錄、選段", "example": "He read an excerpt from the novel.", "example_zh": "他朗讀了小說裡的一段。" }
+  ],
+  "excess": [
+    { "pos": "n.", "zh": "過量、過度", "example": "Excess salt is bad for your health.", "example_zh": "過量的鹽對你的健康有害。" },
+    { "pos": "adj.", "zh": "過多的、額外的", "example": "They charged a fee for excess baggage.", "example_zh": "他們對超重行李收費。" }
+  ],
+  "exclusion": [
+    { "pos": "n.", "zh": "排除、排斥", "example": "Her exclusion from the team upset her.", "example_zh": "被排除在隊伍之外讓她很難過。" }
+  ],
+  "exempt": [
+    { "pos": "adj.", "zh": "被免除的、豁免的", "example": "Children are exempt from the fee.", "example_zh": "兒童可免收這項費用。" }
+  ],
+  "exert": [
+    { "pos": "v.", "zh": "運用、施加（力量）", "example": "He exerted all his strength to push the rock.", "example_zh": "他使盡全力去推那塊石頭。" }
+  ],
+  "expenditure": [
+    { "pos": "n.", "zh": "支出、花費", "example": "They cut their monthly expenditure.", "example_zh": "他們縮減了每月的開支。" }
+  ],
+  "expiration": [
+    { "pos": "n.", "zh": "到期、屆滿", "example": "Check the expiration date on the milk.", "example_zh": "檢查牛奶的有效期限。" }
+  ],
+  "expire": [
+    { "pos": "v.", "zh": "到期、屆滿", "example": "My passport will expire next month.", "example_zh": "我的護照下個月就要到期了。" }
+  ],
+  "extract": [
+    { "pos": "v.", "zh": "提取、拔出", "example": "They extract oil from olives.", "example_zh": "他們從橄欖中提煉油。" },
+    { "pos": "n.", "zh": "萃取物、摘錄", "example": "She added some vanilla extract.", "example_zh": "她加了一些香草精。" }
+  ],
+  "extracurricular": [
+    { "pos": "adj.", "zh": "課外的", "example": "She joins many extracurricular activities.", "example_zh": "她參加許多課外活動。" }
+  ],
+  "eyelash-lash": [
+    { "pos": "n.", "zh": "睫毛", "example": "An eyelash fell into her eye.", "example_zh": "一根睫毛掉進了她的眼睛。" }
+  ],
+  "eyelid": [
+    { "pos": "n.", "zh": "眼皮、眼瞼", "example": "His eyelids grew heavy with sleep.", "example_zh": "他睏得眼皮越來越重。" }
+  ],
+  "eyesight": [
+    { "pos": "n.", "zh": "視力", "example": "Reading in dim light harms your eyesight.", "example_zh": "在昏暗的光線下閱讀會傷害視力。" }
+  ],
+  "fable": [
+    { "pos": "n.", "zh": "寓言（故事）", "example": "The fable teaches a lesson about honesty.", "example_zh": "這則寓言教導關於誠實的道理。" }
+  ],
+  "faction": [
+    { "pos": "n.", "zh": "派系、小集團", "example": "The group split into two factions.", "example_zh": "這個團體分裂成兩個派系。" }
+  ],
+  "fahrenheit": [
+    { "pos": "n.", "zh": "華氏（度）", "example": "Water freezes at 32 degrees Fahrenheit.", "example_zh": "水在華氏三十二度結冰。" }
+  ],
+  "falter": [
+    { "pos": "v.", "zh": "動搖、支吾、蹣跚", "example": "Her voice faltered as she spoke.", "example_zh": "她說話時聲音變得顫抖。" }
+  ],
+  "familiarity": [
+    { "pos": "n.", "zh": "熟悉、熟悉度", "example": "Her familiarity with the city helped us.", "example_zh": "她對這座城市的熟悉幫了我們大忙。" }
+  ],
+  "fascination": [
+    { "pos": "n.", "zh": "著迷、入迷", "example": "He has a fascination with space.", "example_zh": "他對太空十分著迷。" }
+  ],
+  "feasible": [
+    { "pos": "adj.", "zh": "可行的、行得通的", "example": "Is it feasible to finish by Friday?", "example_zh": "週五前完成可行嗎？" }
+  ],
+  "feeble": [
+    { "pos": "adj.", "zh": "虛弱的、無力的", "example": "The old dog was weak and feeble.", "example_zh": "那隻老狗又弱又無力。" }
+  ],
+  "feminine": [
+    { "pos": "adj.", "zh": "女性的、有女人味的", "example": "The dress has a soft, feminine style.", "example_zh": "這件洋裝有種柔美的女性風格。" }
+  ],
+  "fertility": [
+    { "pos": "n.", "zh": "肥沃、生育力", "example": "Good soil increases the land's fertility.", "example_zh": "好的土壤能增加土地的肥沃度。" }
+  ],
+  "fertilizer": [
+    { "pos": "n.", "zh": "肥料", "example": "Farmers spread fertilizer on the fields.", "example_zh": "農夫在田裡施肥。" }
+  ],
+  "fianc-fiance": [
+    { "pos": "n.", "zh": "未婚夫", "example": "She introduced her fiance to her parents.", "example_zh": "她把未婚夫介紹給父母。" }
+  ],
+  "fin": [
+    { "pos": "n.", "zh": "鰭", "example": "A shark's fin cut through the water.", "example_zh": "一片鯊魚鰭劃過水面。" }
+  ],
+  "finite": [
+    { "pos": "adj.", "zh": "有限的", "example": "We have a finite amount of time.", "example_zh": "我們擁有的時間是有限的。" }
+  ],
+  "firecracker": [
+    { "pos": "n.", "zh": "鞭炮", "example": "Children lit firecrackers for the festival.", "example_zh": "孩子們為了節慶點燃鞭炮。" }
+  ],
+  "fireproof": [
+    { "pos": "adj.", "zh": "防火的、耐火的", "example": "The safe is fireproof.", "example_zh": "這個保險箱是防火的。" }
+  ],
+  "fishery": [
+    { "pos": "n.", "zh": "漁業、漁場", "example": "The fishery provides jobs for the town.", "example_zh": "漁業為這個小鎮提供工作。" }
+  ],
+  "flake": [
+    { "pos": "n.", "zh": "薄片、碎片", "example": "Flakes of snow fell on the roof.", "example_zh": "片片雪花落在屋頂上。" }
+  ],
+  "flaw": [
+    { "pos": "n.", "zh": "瑕疵、缺點", "example": "There is a small flaw in the plan.", "example_zh": "這個計畫有個小缺陷。" }
+  ],
+  "flourish": [
+    { "pos": "v.", "zh": "繁榮、茁壯", "example": "The business began to flourish.", "example_zh": "這門生意開始興旺起來。" }
+  ],
+  "flunk": [
+    { "pos": "v.", "zh": "（考試）不及格、當掉", "example": "He was afraid he would flunk the test.", "example_zh": "他擔心自己會考不及格。" }
+  ],
+  "foe": [
+    { "pos": "n.", "zh": "敵人、仇敵", "example": "They were once foes but became friends.", "example_zh": "他們曾是敵人，後來成了朋友。" }
+  ],
+  "folklore": [
+    { "pos": "n.", "zh": "民間傳說、民俗", "example": "The story comes from local folklore.", "example_zh": "這個故事來自當地的民間傳說。" }
+  ],
+  "formidable": [
+    { "pos": "adj.", "zh": "強大的、令人敬畏的", "example": "They faced a formidable opponent.", "example_zh": "他們面對的是個強大的對手。" }
+  ],
+  "formulate": [
+    { "pos": "v.", "zh": "制定、構想", "example": "She formulated a clear plan.", "example_zh": "她制定了一個清楚的計畫。" }
+  ],
+  "forsake": [
+    { "pos": "v.", "zh": "拋棄、遺棄", "example": "A true friend will not forsake you.", "example_zh": "真正的朋友不會拋棄你。" }
+  ],
+  "forthcoming": [
+    { "pos": "adj.", "zh": "即將到來的、即將推出的", "example": "We are excited about the forthcoming concert.", "example_zh": "我們對即將到來的演唱會感到興奮。" }
+  ],
+  "fortify": [
+    { "pos": "v.", "zh": "加強、設防", "example": "They fortified the wall with stone.", "example_zh": "他們用石頭加固了城牆。" }
+  ]
+}
