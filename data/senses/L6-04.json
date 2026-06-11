@@ -1,0 +1,184 @@
+{
+  "conscientious": [
+    { "pos": "adj.", "zh": "盡責的、認真的", "example": "She is a conscientious and careful worker.", "example_zh": "她是個盡責又細心的員工。" }
+  ],
+  "conserve": [
+    { "pos": "v.", "zh": "節省、保護", "example": "We should conserve energy at home.", "example_zh": "我們在家應該節約能源。" }
+  ],
+  "consolation": [
+    { "pos": "n.", "zh": "安慰、慰藉", "example": "Her kind words were a consolation to me.", "example_zh": "她親切的話語給了我安慰。" }
+  ],
+  "console": [
+    { "pos": "v.", "zh": "安慰、撫慰", "example": "She tried to console the crying child.", "example_zh": "她試著安慰哭泣的孩子。" },
+    { "pos": "n.", "zh": "（遊戲）主機、操控台", "example": "He bought a new game console.", "example_zh": "他買了一台新的遊戲主機。" }
+  ],
+  "consonant": [
+    { "pos": "n.", "zh": "子音、輔音", "example": "The letter 'b' is a consonant.", "example_zh": "字母「b」是個子音。" }
+  ],
+  "conspiracy": [
+    { "pos": "n.", "zh": "陰謀、共謀", "example": "The book is about a secret conspiracy.", "example_zh": "這本書講的是一場祕密陰謀。" }
+  ],
+  "contention": [
+    { "pos": "n.", "zh": "爭論、爭執點", "example": "The price was a point of contention.", "example_zh": "價格是爭論的焦點。" }
+  ],
+  "contestant": [
+    { "pos": "n.", "zh": "參賽者、競爭者", "example": "Each contestant answered three questions.", "example_zh": "每位參賽者回答三個問題。" }
+  ],
+  "continuity": [
+    { "pos": "n.", "zh": "連續性、連貫", "example": "The show kept a sense of continuity.", "example_zh": "這齣節目維持了一種連貫感。" }
+  ],
+  "contradict": [
+    { "pos": "v.", "zh": "與…矛盾、反駁", "example": "His actions contradict his words.", "example_zh": "他的行為和他說的話相互矛盾。" }
+  ],
+  "convene": [
+    { "pos": "v.", "zh": "召開、集會", "example": "The committee will convene next week.", "example_zh": "委員會將於下週召開會議。" }
+  ],
+  "coral": [
+    { "pos": "n.", "zh": "珊瑚", "example": "Colorful fish swim around the coral.", "example_zh": "色彩繽紛的魚在珊瑚周圍游動。" }
+  ],
+  "corpse": [
+    { "pos": "n.", "zh": "屍體", "example": "The detective examined the corpse.", "example_zh": "偵探檢查了屍體。" }
+  ],
+  "correspondence": [
+    { "pos": "n.", "zh": "通信、信件、一致", "example": "They kept up a long correspondence by letter.", "example_zh": "他們以書信維持了長久的聯繫。" }
+  ],
+  "cosmetic": [
+    { "pos": "adj.", "zh": "表面的、化妝用的", "example": "The change was only cosmetic, not real.", "example_zh": "這項改變只是表面的，並不實際。" }
+  ],
+  "cosmetics": [
+    { "pos": "n.", "zh": "化妝品", "example": "She sells cosmetics at the store.", "example_zh": "她在店裡賣化妝品。" }
+  ],
+  "counterpart": [
+    { "pos": "n.", "zh": "對應的人（或物）", "example": "Our manager met her counterpart abroad.", "example_zh": "我們的經理在國外會見了對方公司的同職位主管。" }
+  ],
+  "coupon": [
+    { "pos": "n.", "zh": "優惠券、折價券", "example": "I used a coupon to get a discount.", "example_zh": "我用優惠券拿到了折扣。" }
+  ],
+  "courtyard": [
+    { "pos": "n.", "zh": "庭院、天井", "example": "Children played in the school courtyard.", "example_zh": "孩子們在學校的庭院裡玩耍。" }
+  ],
+  "cowardly": [
+    { "pos": "adj.", "zh": "膽小的、怯懦的", "example": "Running away was a cowardly thing to do.", "example_zh": "逃跑是件懦弱的事。" }
+  ],
+  "cozy": [
+    { "pos": "adj.", "zh": "舒適的、溫馨的", "example": "The small cabin was warm and cozy.", "example_zh": "這間小木屋溫暖又舒適。" }
+  ],
+  "crackdown": [
+    { "pos": "n.", "zh": "嚴厲打擊、取締", "example": "There was a crackdown on speeding.", "example_zh": "當局嚴厲取締超速。" }
+  ],
+  "cracker": [
+    { "pos": "n.", "zh": "薄脆餅乾", "example": "She had cheese on a cracker.", "example_zh": "她在餅乾上放了起司。" }
+  ],
+  "cram": [
+    { "pos": "v.", "zh": "臨時抱佛腳、塞滿", "example": "He crammed for the test all night.", "example_zh": "他整晚臨時抱佛腳準備考試。" }
+  ],
+  "cramp": [
+    { "pos": "n.", "zh": "抽筋、痙攣", "example": "She got a cramp in her leg while swimming.", "example_zh": "她游泳時腿抽筋了。" }
+  ],
+  "crater": [
+    { "pos": "n.", "zh": "火山口、坑洞", "example": "The volcano has a deep crater.", "example_zh": "這座火山有個深深的火山口。" }
+  ],
+  "credible": [
+    { "pos": "adj.", "zh": "可信的、可靠的", "example": "She gave a credible explanation.", "example_zh": "她給了一個可信的解釋。" }
+  ],
+  "crocodile": [
+    { "pos": "n.", "zh": "鱷魚", "example": "A crocodile lay still by the river.", "example_zh": "一隻鱷魚靜靜地躺在河邊。" }
+  ],
+  "crossing": [
+    { "pos": "n.", "zh": "行人穿越道、渡口", "example": "Wait for the green light at the crossing.", "example_zh": "在行人穿越道等綠燈。" }
+  ],
+  "crutch": [
+    { "pos": "n.", "zh": "拐杖、支撐物", "example": "He walked with crutches after the injury.", "example_zh": "受傷後他拄著拐杖走路。" }
+  ],
+  "cub": [
+    { "pos": "n.", "zh": "幼獸（幼獅、幼熊等）", "example": "The lion cub played near its mother.", "example_zh": "幼獅在母獅旁邊玩耍。" }
+  ],
+  "cucumber": [
+    { "pos": "n.", "zh": "黃瓜、小黃瓜", "example": "She sliced a cucumber for the salad.", "example_zh": "她切了黃瓜做沙拉。" }
+  ],
+  "cultivate": [
+    { "pos": "v.", "zh": "耕種、培養", "example": "Farmers cultivate rice in these fields.", "example_zh": "農夫在這些田裡種稻。" }
+  ],
+  "cumulative": [
+    { "pos": "adj.", "zh": "累積的、漸增的", "example": "The cumulative effect of practice is great.", "example_zh": "練習的累積效果很驚人。" }
+  ],
+  "curb": [
+    { "pos": "v.", "zh": "抑制、控制", "example": "We must curb our spending this month.", "example_zh": "這個月我們必須控制開銷。" },
+    { "pos": "n.", "zh": "路緣、抑制", "example": "He parked the car by the curb.", "example_zh": "他把車停在路邊。" }
+  ],
+  "curfew": [
+    { "pos": "n.", "zh": "宵禁、門禁時間", "example": "Her parents set a ten o'clock curfew.", "example_zh": "她父母規定十點的門禁。" }
+  ],
+  "curry": [
+    { "pos": "n.", "zh": "咖哩", "example": "We had spicy curry for dinner.", "example_zh": "我們晚餐吃了辣咖哩。" }
+  ],
+  "customary": [
+    { "pos": "adj.", "zh": "習慣的、慣常的", "example": "It is customary to bow as a greeting.", "example_zh": "鞠躬問候是一種習俗。" }
+  ],
+  "cynical": [
+    { "pos": "adj.", "zh": "憤世嫉俗的、懷疑的", "example": "He has a cynical view of politics.", "example_zh": "他對政治抱持憤世嫉俗的看法。" }
+  ],
+  "dazzle": [
+    { "pos": "v.", "zh": "使目眩、使驚豔", "example": "The bright lights dazzled the driver.", "example_zh": "刺眼的燈光使駕駛一時看不清。" }
+  ],
+  "deafen": [
+    { "pos": "v.", "zh": "使聾、震耳欲聾", "example": "The loud music almost deafened us.", "example_zh": "震耳的音樂幾乎把我們震聾。" }
+  ],
+  "decisive": [
+    { "pos": "adj.", "zh": "決定性的、果斷的", "example": "Her decisive action saved the day.", "example_zh": "她果斷的行動挽救了局面。" }
+  ],
+  "dedication": [
+    { "pos": "n.", "zh": "奉獻、投入", "example": "Her dedication to teaching is clear.", "example_zh": "她對教學的投入顯而易見。" }
+  ],
+  "deduct": [
+    { "pos": "v.", "zh": "扣除、減去", "example": "They deducted the cost from his pay.", "example_zh": "他們從他的薪水裡扣除了這筆費用。" }
+  ],
+  "deem": [
+    { "pos": "v.", "zh": "認為、視為", "example": "The plan was deemed too risky.", "example_zh": "這個計畫被認為太冒險。" }
+  ],
+  "default": [
+    { "pos": "n.", "zh": "預設（值）、違約", "example": "The phone uses English as the default.", "example_zh": "這支手機以英文作為預設語言。" }
+  ],
+  "defect": [
+    { "pos": "n.", "zh": "缺陷、瑕疵", "example": "The toy had a small defect.", "example_zh": "這個玩具有個小瑕疵。" }
+  ],
+  "defiance": [
+    { "pos": "n.", "zh": "違抗、反抗", "example": "He crossed his arms in defiance.", "example_zh": "他抱起雙臂表示反抗。" }
+  ],
+  "definitive": [
+    { "pos": "adj.", "zh": "確定的、最終的", "example": "This is the definitive answer to the question.", "example_zh": "這是這個問題的確定答案。" }
+  ],
+  "dental": [
+    { "pos": "adj.", "zh": "牙齒的、牙科的", "example": "She made a dental appointment.", "example_zh": "她預約了牙科。" }
+  ],
+  "deplete": [
+    { "pos": "v.", "zh": "耗盡、使枯竭", "example": "Overfishing can deplete the ocean's fish.", "example_zh": "過度捕撈會使海中的魚枯竭。" }
+  ],
+  "deprive": [
+    { "pos": "v.", "zh": "剝奪、使喪失", "example": "Lack of sleep can deprive you of energy.", "example_zh": "睡眠不足會使你失去精力。" }
+  ],
+  "descent": [
+    { "pos": "n.", "zh": "血統、下降", "example": "She is of Japanese descent.", "example_zh": "她有日本血統。" }
+  ],
+  "despise": [
+    { "pos": "v.", "zh": "鄙視、看不起", "example": "He despises cheating of any kind.", "example_zh": "他鄙視任何形式的作弊。" }
+  ],
+  "destined": [
+    { "pos": "adj.", "zh": "註定的、命中註定的", "example": "She felt destined to become a doctor.", "example_zh": "她覺得自己註定要當醫生。" }
+  ],
+  "detach": [
+    { "pos": "v.", "zh": "拆下、分離", "example": "Detach the coupon along the line.", "example_zh": "沿著線把優惠券撕下來。" }
+  ],
+  "detain": [
+    { "pos": "v.", "zh": "拘留、扣留、耽擱", "example": "The police detained the suspect for questioning.", "example_zh": "警方拘留嫌犯以進行偵訊。" }
+  ],
+  "detention": [
+    { "pos": "n.", "zh": "拘留、（學校）留校處罰", "example": "He got detention for being late again.", "example_zh": "他又遲到，被罰留校。" }
+  ],
+  "deter": [
+    { "pos": "v.", "zh": "阻止、嚇阻", "example": "Bright lights can deter thieves.", "example_zh": "明亮的燈光能嚇阻小偷。" }
+  ],
+  "detergent": [
+    { "pos": "n.", "zh": "洗滌劑、洗衣精", "example": "Add some detergent to wash the clothes.", "example_zh": "加些洗衣精來洗衣服。" }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "cardinal": [
+    { "pos": "adj.", "zh": "最重要的、基本的", "example": "Honesty is a cardinal rule in our home.", "example_zh": "誠實是我們家最重要的規矩。" },
+    { "pos": "n.", "zh": "樞機主教", "example": "The cardinal led the church service.", "example_zh": "樞機主教主持了教會的禮拜。" }
+  ],
+  "carefree": [
+    { "pos": "adj.", "zh": "無憂無慮的", "example": "She enjoyed a carefree summer holiday.", "example_zh": "她享受了一個無憂無慮的暑假。" }
+  ],
+  "caretaker": [
+    { "pos": "n.", "zh": "看守人、管理員", "example": "The caretaker looks after the old building.", "example_zh": "管理員照看著這棟老建築。" }
+  ],
+  "carton": [
+    { "pos": "n.", "zh": "（紙）盒、紙箱", "example": "He drank a carton of milk.", "example_zh": "他喝了一盒牛奶。" }
+  ],
+  "cashier": [
+    { "pos": "n.", "zh": "收銀員、出納員", "example": "The cashier gave me my change.", "example_zh": "收銀員找錢給我。" }
+  ],
+  "casualty": [
+    { "pos": "n.", "zh": "傷亡（人員）、受害者", "example": "There were no casualties in the accident.", "example_zh": "這場意外沒有人員傷亡。" }
+  ],
+  "catastrophe": [
+    { "pos": "n.", "zh": "大災難、慘事", "example": "The flood was a terrible catastrophe.", "example_zh": "這場洪水是一場可怕的災難。" }
+  ],
+  "cater": [
+    { "pos": "v.", "zh": "提供餐飲、迎合（cater to）", "example": "The company catered the wedding dinner.", "example_zh": "這家公司承辦了婚宴的餐飲。" }
+  ],
+  "caterpillar": [
+    { "pos": "n.", "zh": "毛毛蟲", "example": "A caterpillar turns into a butterfly.", "example_zh": "毛毛蟲會變成蝴蝶。" }
+  ],
+  "cavity": [
+    { "pos": "n.", "zh": "蛀牙、洞、腔", "example": "The dentist filled the cavity in my tooth.", "example_zh": "牙醫補好了我牙齒上的蛀洞。" }
+  ],
+  "celery": [
+    { "pos": "n.", "zh": "芹菜", "example": "She added celery to the soup.", "example_zh": "她在湯裡加了芹菜。" }
+  ],
+  "cellular": [
+    { "pos": "adj.", "zh": "細胞的", "example": "The body is made of cellular structures.", "example_zh": "身體是由細胞結構組成的。" }
+  ],
+  "celsius": [
+    { "pos": "n.", "zh": "攝氏（度）", "example": "Water boils at 100 degrees Celsius.", "example_zh": "水在攝氏一百度時沸騰。" }
+  ],
+  "cement": [
+    { "pos": "n.", "zh": "水泥", "example": "They mixed cement to build the wall.", "example_zh": "他們攪拌水泥來砌牆。" },
+    { "pos": "v.", "zh": "鞏固、加強", "example": "The trip cemented their friendship.", "example_zh": "這趟旅行鞏固了他們的友誼。" }
+  ],
+  "census": [
+    { "pos": "n.", "zh": "人口普查", "example": "The census counts the country's people.", "example_zh": "人口普查清點全國的人口。" }
+  ],
+  "ceramic": [
+    { "pos": "adj.", "zh": "陶瓷的", "example": "She makes ceramic bowls by hand.", "example_zh": "她手工製作陶瓷碗。" }
+  ],
+  "certify": [
+    { "pos": "v.", "zh": "證明、證實", "example": "The doctor certified that he was healthy.", "example_zh": "醫生證明他身體健康。" }
+  ],
+  "chairperson-chair-chairman-chairwoman": [
+    { "pos": "n.", "zh": "主席、會議主持人", "example": "The chairperson opened the meeting.", "example_zh": "主席宣布會議開始。" }
+  ],
+  "champagne": [
+    { "pos": "n.", "zh": "香檳酒", "example": "They opened champagne to celebrate.", "example_zh": "他們開香檳慶祝。" }
+  ],
+  "chant": [
+    { "pos": "v.", "zh": "反覆呼喊、吟唱", "example": "The fans chanted the team's name.", "example_zh": "球迷們反覆高喊球隊的名字。" },
+    { "pos": "n.", "zh": "反覆呼喊聲、聖歌", "example": "We heard a soft chant from the temple.", "example_zh": "我們聽見廟裡傳來柔和的誦經聲。" }
+  ],
+  "charitable": [
+    { "pos": "adj.", "zh": "慈善的、寬厚的", "example": "She does charitable work for the poor.", "example_zh": "她為窮人做慈善工作。" }
+  ],
+  "checkup": [
+    { "pos": "n.", "zh": "健康檢查", "example": "He went to the doctor for a checkup.", "example_zh": "他去看醫生做健康檢查。" }
+  ],
+  "chemist": [
+    { "pos": "n.", "zh": "化學家、藥劑師", "example": "The chemist mixed two liquids carefully.", "example_zh": "化學家小心地混合兩種液體。" }
+  ],
+  "chestnut": [
+    { "pos": "n.", "zh": "栗子、栗樹", "example": "We roasted chestnuts in winter.", "example_zh": "我們在冬天烤栗子。" }
+  ],
+  "chili": [
+    { "pos": "n.", "zh": "辣椒", "example": "The dish is hot because of the chili.", "example_zh": "這道菜因為辣椒而很辣。" }
+  ],
+  "chimpanzee": [
+    { "pos": "n.", "zh": "黑猩猩", "example": "A chimpanzee is a clever animal.", "example_zh": "黑猩猩是聰明的動物。" }
+  ],
+  "chirp": [
+    { "pos": "v.", "zh": "（鳥）啁啾、唧唧叫", "example": "Birds chirp happily in the morning.", "example_zh": "鳥兒在早晨快樂地啁啾。" }
+  ],
+  "cholesterol": [
+    { "pos": "n.", "zh": "膽固醇", "example": "Too much fried food raises cholesterol.", "example_zh": "太多油炸食物會升高膽固醇。" }
+  ],
+  "cigar": [
+    { "pos": "n.", "zh": "雪茄", "example": "The old man smoked a cigar after dinner.", "example_zh": "老人在晚餐後抽了一支雪茄。" }
+  ],
+  "civilize": [
+    { "pos": "v.", "zh": "教化、使文明", "example": "Schools help to civilize young people.", "example_zh": "學校有助於教化年輕人。" }
+  ],
+  "clam": [
+    { "pos": "n.", "zh": "蛤蜊", "example": "We dug for clams on the beach.", "example_zh": "我們在海灘上挖蛤蜊。" }
+  ],
+  "clasp": [
+    { "pos": "v.", "zh": "緊握、扣住", "example": "She clasped her hands in joy.", "example_zh": "她開心地把雙手緊握在一起。" },
+    { "pos": "n.", "zh": "釦環、扣子", "example": "The necklace has a tiny clasp.", "example_zh": "這條項鍊有個小小的扣環。" }
+  ],
+  "clearance": [
+    { "pos": "n.", "zh": "清倉、清除、許可", "example": "The store had a clearance sale.", "example_zh": "這家店舉辦了清倉大拍賣。" }
+  ],
+  "climax": [
+    { "pos": "n.", "zh": "高潮、頂點", "example": "The story reaches its climax at the end.", "example_zh": "故事在結尾達到高潮。" }
+  ],
+  "clockwise": [
+    { "pos": "adv.", "zh": "順時針方向地", "example": "Turn the lid clockwise to close it.", "example_zh": "順時針轉蓋子就能關緊。" }
+  ],
+  "clone": [
+    { "pos": "v.", "zh": "複製、無性繁殖", "example": "Scientists cloned a sheep years ago.", "example_zh": "科學家多年前複製了一隻羊。" },
+    { "pos": "n.", "zh": "複製品、克隆生物", "example": "The new phone is almost a clone of the old one.", "example_zh": "這支新手機幾乎是舊款的翻版。" }
+  ],
+  "closure": [
+    { "pos": "n.", "zh": "關閉、封閉", "example": "The road closure caused a long delay.", "example_zh": "道路封閉造成了長時間延誤。" }
+  ],
+  "coalition": [
+    { "pos": "n.", "zh": "聯盟、聯合（政府）", "example": "Several parties formed a coalition.", "example_zh": "幾個政黨組成了聯盟。" }
+  ],
+  "coastline": [
+    { "pos": "n.", "zh": "海岸線", "example": "The coastline stretched for miles.", "example_zh": "海岸線綿延數英里。" }
+  ],
+  "collision": [
+    { "pos": "n.", "zh": "碰撞、衝突", "example": "The collision damaged both cars.", "example_zh": "這場碰撞使兩輛車都受損。" }
+  ],
+  "colloquial": [
+    { "pos": "adj.", "zh": "口語的、會話的", "example": "'Gonna' is a colloquial form of 'going to'.", "example_zh": "「gonna」是「going to」的口語形式。" }
+  ],
+  "comet": [
+    { "pos": "n.", "zh": "彗星", "example": "A bright comet appeared in the sky.", "example_zh": "一顆明亮的彗星出現在天空。" }
+  ],
+  "commonplace": [
+    { "pos": "adj.", "zh": "平凡的、司空見慣的", "example": "Smartphones are now commonplace.", "example_zh": "智慧型手機如今已很普遍。" }
+  ],
+  "commonwealth": [
+    { "pos": "n.", "zh": "聯邦、國協", "example": "The commonwealth includes many nations.", "example_zh": "這個國協包含許多國家。" }
+  ],
+  "communicative": [
+    { "pos": "adj.", "zh": "愛交談的、善溝通的", "example": "She is open and communicative.", "example_zh": "她開朗又善於溝通。" }
+  ],
+  "comparative": [
+    { "pos": "adj.", "zh": "比較的、相對的", "example": "'Better' is the comparative form of 'good'.", "example_zh": "「better」是「good」的比較級。" }
+  ],
+  "compass": [
+    { "pos": "n.", "zh": "羅盤、指南針", "example": "Hikers use a compass to find direction.", "example_zh": "登山客用指南針來辨別方向。" }
+  ],
+  "compile": [
+    { "pos": "v.", "zh": "編輯、彙整", "example": "She compiled a list of useful words.", "example_zh": "她彙整了一份有用的單字清單。" }
+  ],
+  "complement": [
+    { "pos": "v.", "zh": "補足、襯托", "example": "The wine complements the meal nicely.", "example_zh": "這支酒很好地襯托了這頓餐。" },
+    { "pos": "n.", "zh": "補充物、補語", "example": "The sauce is the perfect complement to the fish.", "example_zh": "這醬汁是這道魚的完美搭配。" }
+  ],
+  "complexion": [
+    { "pos": "n.", "zh": "膚色、面色", "example": "She has a clear, healthy complexion.", "example_zh": "她有著乾淨健康的膚色。" }
+  ],
+  "comprehensive": [
+    { "pos": "adj.", "zh": "全面的、廣泛的", "example": "The teacher gave a comprehensive review.", "example_zh": "老師做了一次全面的複習。" }
+  ],
+  "compute": [
+    { "pos": "v.", "zh": "計算、估算", "example": "The machine can compute large numbers fast.", "example_zh": "這台機器能快速計算大數字。" }
+  ],
+  "computerize": [
+    { "pos": "v.", "zh": "使電腦化", "example": "The library computerized its records.", "example_zh": "圖書館把它的紀錄電腦化了。" }
+  ],
+  "comrade": [
+    { "pos": "n.", "zh": "夥伴、同志", "example": "The soldiers stood by their comrades.", "example_zh": "士兵們力挺自己的夥伴。" }
+  ],
+  "concession": [
+    { "pos": "n.", "zh": "讓步、妥協", "example": "Both sides made a concession to agree.", "example_zh": "雙方各退一步以達成協議。" }
+  ],
+  "concise": [
+    { "pos": "adj.", "zh": "簡潔的、扼要的", "example": "Her report was clear and concise.", "example_zh": "她的報告清楚又簡潔。" }
+  ],
+  "condense": [
+    { "pos": "v.", "zh": "凝結、濃縮、精簡", "example": "Steam condenses into water on a cold window.", "example_zh": "蒸氣在冰冷的窗上凝結成水。" }
+  ],
+  "confederation": [
+    { "pos": "n.", "zh": "聯盟、邦聯", "example": "Several states joined the confederation.", "example_zh": "幾個州加入了這個邦聯。" }
+  ],
+  "congressman-congresswoman": [
+    { "pos": "n.", "zh": "國會議員", "example": "The congressman voted for the new law.", "example_zh": "這位國會議員投票支持新法律。" }
+  ],
+  "conquest": [
+    { "pos": "n.", "zh": "征服、佔領", "example": "The history book describes the conquest.", "example_zh": "這本歷史書描述了那場征服。" }
+  ]
+}
