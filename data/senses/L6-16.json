@@ -1,0 +1,192 @@
+{
+  "sympathize": [
+    { "pos": "v.", "zh": "同情、體諒", "example": "I sympathize with your situation.", "example_zh": "我很同情你的處境。" }
+  ],
+  "symphony": [
+    { "pos": "n.", "zh": "交響樂、交響曲", "example": "The orchestra played a famous symphony.", "example_zh": "管弦樂團演奏了一首著名的交響曲。" }
+  ],
+  "synonym": [
+    { "pos": "n.", "zh": "同義詞", "example": "'Happy' and 'glad' are synonyms.", "example_zh": "「happy」和「glad」是同義詞。" }
+  ],
+  "synthetic": [
+    { "pos": "adj.", "zh": "合成的、人造的", "example": "The jacket is made of synthetic material.", "example_zh": "這件外套是用合成材料製成的。" }
+  ],
+  "syrup": [
+    { "pos": "n.", "zh": "糖漿", "example": "She poured syrup over the pancakes.", "example_zh": "她在鬆餅上淋了糖漿。" }
+  ],
+  "tan": [
+    { "pos": "n.", "zh": "曬黑的膚色、棕褐色", "example": "He got a deep tan at the beach.", "example_zh": "他在海灘上曬得很黑。" },
+    { "pos": "v.", "zh": "曬黑、（皮革）鞣製", "example": "Her skin tanned quickly in the sun.", "example_zh": "她的皮膚在陽光下很快就曬黑了。" }
+  ],
+  "tedious": [
+    { "pos": "adj.", "zh": "冗長乏味的、單調的", "example": "Copying the list was a tedious task.", "example_zh": "抄寫這份清單是件枯燥的工作。" }
+  ],
+  "telecommunications": [
+    { "pos": "n.", "zh": "電信、電信業", "example": "She works in the telecommunications industry.", "example_zh": "她在電信業工作。" }
+  ],
+  "teller": [
+    { "pos": "n.", "zh": "（銀行）出納員", "example": "The bank teller counted the money.", "example_zh": "銀行出納員數了數錢。" }
+  ],
+  "tempo": [
+    { "pos": "n.", "zh": "（音樂）速度、節奏", "example": "The song has a fast tempo.", "example_zh": "這首歌的節奏很快。" }
+  ],
+  "tenant": [
+    { "pos": "n.", "zh": "房客、租戶", "example": "The tenant pays rent every month.", "example_zh": "房客每個月繳房租。" }
+  ],
+  "tentative": [
+    { "pos": "adj.", "zh": "暫定的、試探性的", "example": "We made a tentative plan for Sunday.", "example_zh": "我們為星期天訂了一個暫定的計畫。" }
+  ],
+  "terrace": [
+    { "pos": "n.", "zh": "陽台、露台、梯田", "example": "We had dinner on the terrace.", "example_zh": "我們在露台上吃晚餐。" }
+  ],
+  "textile": [
+    { "pos": "n.", "zh": "紡織品、布料", "example": "The town is famous for its textile industry.", "example_zh": "這個小鎮以紡織業聞名。" }
+  ],
+  "thereafter": [
+    { "pos": "adv.", "zh": "此後、之後", "example": "He left school and worked thereafter.", "example_zh": "他離開學校，之後就去工作了。" }
+  ],
+  "thermometer": [
+    { "pos": "n.", "zh": "溫度計、體溫計", "example": "The thermometer showed thirty degrees.", "example_zh": "溫度計顯示三十度。" }
+  ],
+  "tilt": [
+    { "pos": "v.", "zh": "傾斜、使歪斜", "example": "She tilted her head to listen.", "example_zh": "她歪著頭聽。" },
+    { "pos": "n.", "zh": "傾斜", "example": "The table has a slight tilt.", "example_zh": "這張桌子有點傾斜。" }
+  ],
+  "tiptoe": [
+    { "pos": "v.", "zh": "踮腳走、躡手躡腳", "example": "She walked on tiptoe so as not to wake the baby.", "example_zh": "她踮著腳走，以免吵醒寶寶。" }
+  ],
+  "tiresome": [
+    { "pos": "adj.", "zh": "令人厭煩的、煩人的", "example": "The long wait was tiresome.", "example_zh": "漫長的等待令人厭煩。" }
+  ],
+  "token": [
+    { "pos": "n.", "zh": "象徵、紀念品、代幣", "example": "He gave her a flower as a token of thanks.", "example_zh": "他送她一朵花以表謝意。" }
+  ],
+  "tornado": [
+    { "pos": "n.", "zh": "龍捲風", "example": "A tornado tore through the small town.", "example_zh": "一場龍捲風橫掃了這個小鎮。" }
+  ],
+  "torrent": [
+    { "pos": "n.", "zh": "急流、（雨）傾瀉", "example": "Rain fell in a torrent.", "example_zh": "大雨傾盆而下。" }
+  ],
+  "trademark": [
+    { "pos": "n.", "zh": "商標、標誌", "example": "The logo is a registered trademark.", "example_zh": "這個標誌是註冊商標。" }
+  ],
+  "transcript": [
+    { "pos": "n.", "zh": "成績單、抄本", "example": "She sent her transcript to the college.", "example_zh": "她把成績單寄給了大學。" }
+  ],
+  "transmit": [
+    { "pos": "v.", "zh": "傳送、傳播", "example": "The station transmits the signal far away.", "example_zh": "電台把訊號傳送到很遠的地方。" }
+  ],
+  "transplant": [
+    { "pos": "n.", "zh": "移植（手術）", "example": "He had a heart transplant last year.", "example_zh": "他去年做了心臟移植手術。" },
+    { "pos": "v.", "zh": "移植、移種", "example": "They transplanted the young tree.", "example_zh": "他們把小樹移植到別處。" }
+  ],
+  "treasury": [
+    { "pos": "n.", "zh": "國庫、金庫", "example": "The gold was kept in the royal treasury.", "example_zh": "黃金被保存在皇家金庫裡。" }
+  ],
+  "trek": [
+    { "pos": "n.", "zh": "（長途、艱苦的）跋涉", "example": "They made a long trek through the jungle.", "example_zh": "他們在叢林中長途跋涉。" },
+    { "pos": "v.", "zh": "艱難跋涉、徒步旅行", "example": "We trekked up the mountain for hours.", "example_zh": "我們花了好幾個小時徒步上山。" }
+  ],
+  "trifle": [
+    { "pos": "n.", "zh": "瑣事、小事", "example": "Don't waste time on such a trifle.", "example_zh": "別把時間浪費在這種小事上。" }
+  ],
+  "trillion": [
+    { "pos": "n.", "zh": "兆、萬億", "example": "The galaxy has trillions of stars.", "example_zh": "銀河系裡有數兆顆星星。" }
+  ],
+  "tropic": [
+    { "pos": "n.", "zh": "熱帶（地區）、回歸線", "example": "Bananas grow well in the tropics.", "example_zh": "香蕉在熱帶地區長得很好。" }
+  ],
+  "trout": [
+    { "pos": "n.", "zh": "鱒魚", "example": "He caught a trout in the cold stream.", "example_zh": "他在冰冷的溪流裡釣到一條鱒魚。" }
+  ],
+  "trustee": [
+    { "pos": "n.", "zh": "受託人、理事", "example": "The trustee manages the school's money.", "example_zh": "受託人管理學校的資金。" }
+  ],
+  "tuck": [
+    { "pos": "v.", "zh": "塞進、把…蓋好", "example": "She tucked the blanket around the child.", "example_zh": "她把毯子替孩子蓋好掖緊。" }
+  ],
+  "turmoil": [
+    { "pos": "n.", "zh": "混亂、動盪", "example": "The country was in political turmoil.", "example_zh": "這個國家陷入政治動盪。" }
+  ],
+  "twilight": [
+    { "pos": "n.", "zh": "暮光、黃昏", "example": "The birds returned home at twilight.", "example_zh": "鳥兒在黃昏時飛回家。" }
+  ],
+  "twinkle": [
+    { "pos": "v.", "zh": "閃爍、閃耀", "example": "The stars twinkle in the night sky.", "example_zh": "星星在夜空中閃爍。" },
+    { "pos": "n.", "zh": "閃爍、（眼中）光芒", "example": "There was a twinkle in his eye.", "example_zh": "他的眼裡閃著光芒。" }
+  ],
+  "unanimous": [
+    { "pos": "adj.", "zh": "一致同意的、全體一致的", "example": "The vote was unanimous.", "example_zh": "這次投票結果一致通過。" }
+  ],
+  "unconditional": [
+    { "pos": "adj.", "zh": "無條件的、無保留的", "example": "A mother's love is unconditional.", "example_zh": "母愛是無條件的。" }
+  ],
+  "underestimate": [
+    { "pos": "v.", "zh": "低估、看輕", "example": "Don't underestimate your opponent.", "example_zh": "別低估你的對手。" }
+  ],
+  "underneath": [
+    { "pos": "prep.", "zh": "在…下方", "example": "The cat hid underneath the bed.", "example_zh": "貓躲在床底下。" },
+    { "pos": "adv.", "zh": "在下面", "example": "She wore a shirt with a vest underneath.", "example_zh": "她穿了件襯衫，裡面還穿了背心。" }
+  ],
+  "underpass": [
+    { "pos": "n.", "zh": "地下道、地下通道", "example": "We walked through the underpass to cross.", "example_zh": "我們走地下道穿越馬路。" }
+  ],
+  "underway": [
+    { "pos": "adv.", "zh": "進行中、在途中", "example": "The project is already underway.", "example_zh": "這個專案已經在進行中了。" }
+  ],
+  "unification": [
+    { "pos": "n.", "zh": "統一、聯合", "example": "The unification of the two groups took time.", "example_zh": "這兩個團體的統合花了一些時間。" }
+  ],
+  "unify": [
+    { "pos": "v.", "zh": "統一、使聯合", "example": "A common goal can unify a team.", "example_zh": "共同的目標能凝聚一支團隊。" }
+  ],
+  "unveil": [
+    { "pos": "v.", "zh": "揭幕、公開、揭露", "example": "The company unveiled its new phone.", "example_zh": "這家公司發表了新手機。" }
+  ],
+  "upright": [
+    { "pos": "adj.", "zh": "直立的、正直的", "example": "Please sit upright in your chair.", "example_zh": "請在椅子上坐直。" },
+    { "pos": "adv.", "zh": "直立地、筆直地", "example": "Stand upright and tall.", "example_zh": "抬頭挺胸站直。" }
+  ],
+  "uprising": [
+    { "pos": "n.", "zh": "起義、暴動", "example": "The uprising changed the government.", "example_zh": "這場起義改變了政府。" }
+  ],
+  "upward": [
+    { "pos": "adj.", "zh": "向上的、上升的", "example": "Prices showed an upward trend.", "example_zh": "物價呈現上升趨勢。" }
+  ],
+  "upward-upwards": [
+    { "pos": "adv.", "zh": "向上地", "example": "The smoke drifted upwards.", "example_zh": "煙霧向上飄散。" }
+  ],
+  "urgency": [
+    { "pos": "n.", "zh": "緊急、迫切", "example": "Her voice was full of urgency.", "example_zh": "她的聲音充滿急迫感。" }
+  ],
+  "usher": [
+    { "pos": "v.", "zh": "引導、引領", "example": "An usher showed us to our seats.", "example_zh": "一位引座員帶我們入座。" },
+    { "pos": "n.", "zh": "引座員、接待員", "example": "The usher handed out programs.", "example_zh": "引座員發放節目單。" }
+  ],
+  "utensil": [
+    { "pos": "n.", "zh": "器具、用具", "example": "A spoon is a common kitchen utensil.", "example_zh": "湯匙是常見的廚房用具。" }
+  ],
+  "utter": [
+    { "pos": "v.", "zh": "說出、發出（聲音）", "example": "She did not utter a single word.", "example_zh": "她一個字也沒說。" },
+    { "pos": "adj.", "zh": "完全的、徹底的", "example": "The room was in utter darkness.", "example_zh": "房間裡一片漆黑。" }
+  ],
+  "vaccine": [
+    { "pos": "n.", "zh": "疫苗", "example": "The vaccine protects against the virus.", "example_zh": "這種疫苗能預防這種病毒。" }
+  ],
+  "vanilla": [
+    { "pos": "n.", "zh": "香草", "example": "I'd like a scoop of vanilla ice cream.", "example_zh": "我想要一球香草冰淇淋。" }
+  ],
+  "vanity": [
+    { "pos": "n.", "zh": "虛榮、自負", "example": "His vanity made him buy expensive clothes.", "example_zh": "他的虛榮心讓他買昂貴的衣服。" }
+  ],
+  "vapor": [
+    { "pos": "n.", "zh": "蒸氣、水氣", "example": "Water turns to vapor when it boils.", "example_zh": "水沸騰時會變成蒸氣。" }
+  ],
+  "veil": [
+    { "pos": "n.", "zh": "面紗、遮蓋物", "example": "The bride wore a white veil.", "example_zh": "新娘戴著白色面紗。" },
+    { "pos": "v.", "zh": "遮掩、掩飾", "example": "Mist veiled the mountains.", "example_zh": "薄霧籠罩著群山。" }
+  ],
+  "velvet": [
+    { "pos": "n.", "zh": "天鵝絨、絲絨", "example": "The box was lined with soft velvet.", "example_zh": "這個盒子裡襯著柔軟的絲絨。" }
+  ]
+}

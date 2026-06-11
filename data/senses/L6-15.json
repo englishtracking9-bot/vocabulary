@@ -1,0 +1,195 @@
+{
+  "sovereign": [
+    { "pos": "adj.", "zh": "擁有主權的、獨立自主的", "example": "The island is a sovereign nation.", "example_zh": "這座島是個主權國家。" },
+    { "pos": "n.", "zh": "君主、元首", "example": "The sovereign ruled the land for decades.", "example_zh": "這位君主統治這片土地數十年。" }
+  ],
+  "spacecraft-spaceship": [
+    { "pos": "n.", "zh": "太空船", "example": "The spacecraft landed on the moon.", "example_zh": "太空船降落在月球上。" }
+  ],
+  "span": [
+    { "pos": "v.", "zh": "橫跨、持續", "example": "The bridge spans a wide river.", "example_zh": "這座橋橫跨一條寬闊的河。" },
+    { "pos": "n.", "zh": "跨度、期間", "example": "The project took a span of two years.", "example_zh": "這個專案花了兩年的時間。" }
+  ],
+  "sparrow": [
+    { "pos": "n.", "zh": "麻雀", "example": "A small sparrow hopped on the path.", "example_zh": "一隻小麻雀在小徑上蹦跳。" }
+  ],
+  "spectacle": [
+    { "pos": "n.", "zh": "壯觀的場面、奇觀", "example": "The fireworks were a stunning spectacle.", "example_zh": "煙火是一場壯觀的奇景。" }
+  ],
+  "spiral": [
+    { "pos": "n.", "zh": "螺旋、螺旋形", "example": "The staircase curved in a spiral.", "example_zh": "樓梯呈螺旋狀彎曲而上。" },
+    { "pos": "v.", "zh": "螺旋上升、急遽變化", "example": "Prices began to spiral upward.", "example_zh": "物價開始急速攀升。" }
+  ],
+  "splendor": [
+    { "pos": "n.", "zh": "壯麗、輝煌", "example": "We admired the splendor of the palace.", "example_zh": "我們讚嘆宮殿的壯麗。" }
+  ],
+  "spokesperson-spokesman-spokeswoman": [
+    { "pos": "n.", "zh": "發言人", "example": "The spokesperson answered the reporters' questions.", "example_zh": "發言人回答了記者的提問。" }
+  ],
+  "spontaneous": [
+    { "pos": "adj.", "zh": "自發的、自然的", "example": "The crowd broke into spontaneous applause.", "example_zh": "群眾自發地鼓起掌來。" }
+  ],
+  "sportsman-sportswoman": [
+    { "pos": "n.", "zh": "運動員、運動家", "example": "He is a true sportsman who plays fairly.", "example_zh": "他是個比賽公正的真正運動家。" }
+  ],
+  "sportsmanship": [
+    { "pos": "n.", "zh": "運動家精神", "example": "She showed good sportsmanship by congratulating the winner.", "example_zh": "她恭喜贏家，展現了良好的運動家精神。" }
+  ],
+  "spotlight": [
+    { "pos": "n.", "zh": "聚光燈、公眾注目", "example": "The singer stood under the spotlight.", "example_zh": "歌手站在聚光燈下。" }
+  ],
+  "spur": [
+    { "pos": "v.", "zh": "激勵、鞭策", "example": "The prize spurred them to work harder.", "example_zh": "這個獎項激勵他們更加努力。" },
+    { "pos": "n.", "zh": "刺激、激勵", "example": "Her words were a spur to action.", "example_zh": "她的話成了行動的動力。" }
+  ],
+  "stabilize": [
+    { "pos": "v.", "zh": "使穩定", "example": "The medicine helped stabilize his heart.", "example_zh": "藥物幫助穩定了他的心跳。" }
+  ],
+  "stagger": [
+    { "pos": "v.", "zh": "蹣跚、使震驚、使錯開", "example": "He staggered under the heavy load.", "example_zh": "他被沉重的負荷壓得步履蹣跚。" }
+  ],
+  "staple": [
+    { "pos": "n.", "zh": "主食、主要產品、訂書針", "example": "Rice is a staple food in Asia.", "example_zh": "米飯是亞洲的主食。" },
+    { "pos": "adj.", "zh": "主要的、基本的", "example": "Corn is a staple crop here.", "example_zh": "玉米是這裡的主要作物。" }
+  ],
+  "starvation": [
+    { "pos": "n.", "zh": "飢餓、餓死", "example": "The drought caused widespread starvation.", "example_zh": "乾旱造成了大規模的饑荒。" }
+  ],
+  "statesman": [
+    { "pos": "n.", "zh": "政治家、政界要人", "example": "He is remembered as a wise statesman.", "example_zh": "他被人們銘記為一位睿智的政治家。" }
+  ],
+  "stationary": [
+    { "pos": "adj.", "zh": "靜止的、不動的", "example": "The car remained stationary at the red light.", "example_zh": "車子在紅燈前靜止不動。" }
+  ],
+  "stationery": [
+    { "pos": "n.", "zh": "文具", "example": "She bought pens and other stationery.", "example_zh": "她買了筆和其他文具。" }
+  ],
+  "stature": [
+    { "pos": "n.", "zh": "身高、聲望", "example": "He is a man of short stature but great courage.", "example_zh": "他個子不高，但勇氣過人。" }
+  ],
+  "statute": [
+    { "pos": "n.", "zh": "法令、法規", "example": "The new statute protects workers.", "example_zh": "這項新法規保護勞工。" }
+  ],
+  "stepchild": [
+    { "pos": "n.", "zh": "繼子、繼女", "example": "She loves her stepchild as her own.", "example_zh": "她把繼子女當親生的一樣疼愛。" }
+  ],
+  "stepfather": [
+    { "pos": "n.", "zh": "繼父", "example": "His stepfather taught him to fish.", "example_zh": "他的繼父教他釣魚。" }
+  ],
+  "stepmother": [
+    { "pos": "n.", "zh": "繼母", "example": "Her stepmother is kind and caring.", "example_zh": "她的繼母既親切又體貼。" }
+  ],
+  "stimulation": [
+    { "pos": "n.", "zh": "刺激、激勵", "example": "Babies need plenty of stimulation to learn.", "example_zh": "嬰兒需要充分的刺激才能學習。" }
+  ],
+  "strait": [
+    { "pos": "n.", "zh": "海峽", "example": "Ships pass through the narrow strait.", "example_zh": "船隻通過這道狹窄的海峽。" }
+  ],
+  "strangle": [
+    { "pos": "v.", "zh": "勒死、扼殺", "example": "Weeds can strangle young plants.", "example_zh": "雜草會把幼苗扼殺掉。" }
+  ],
+  "stray": [
+    { "pos": "adj.", "zh": "走失的、流浪的", "example": "They took in a stray cat.", "example_zh": "他們收養了一隻流浪貓。" },
+    { "pos": "v.", "zh": "走失、偏離", "example": "The sheep strayed from the flock.", "example_zh": "那隻羊脫離了羊群。" }
+  ],
+  "stride": [
+    { "pos": "n.", "zh": "大步、步伐", "example": "He crossed the room in a few strides.", "example_zh": "他幾大步就跨過了房間。" },
+    { "pos": "v.", "zh": "大步走", "example": "She strode confidently onto the stage.", "example_zh": "她自信地大步走上舞台。" }
+  ],
+  "stroll": [
+    { "pos": "n.", "zh": "散步、閒逛", "example": "We took a stroll along the beach.", "example_zh": "我們沿著海灘散步。" },
+    { "pos": "v.", "zh": "散步、漫步", "example": "They strolled through the park.", "example_zh": "他們在公園裡漫步。" }
+  ],
+  "stun": [
+    { "pos": "v.", "zh": "使震驚、使昏迷", "example": "The news stunned everyone.", "example_zh": "這則消息震驚了所有人。" }
+  ],
+  "stutter": [
+    { "pos": "v.", "zh": "口吃、結巴", "example": "He began to stutter when nervous.", "example_zh": "他一緊張就開始結巴。" }
+  ],
+  "stylish": [
+    { "pos": "adj.", "zh": "時髦的、有型的", "example": "She wore a stylish new coat.", "example_zh": "她穿著一件時髦的新外套。" }
+  ],
+  "subjective": [
+    { "pos": "adj.", "zh": "主觀的", "example": "Beauty is a subjective matter.", "example_zh": "美是很主觀的事。" }
+  ],
+  "subordinate": [
+    { "pos": "n.", "zh": "下屬、部下", "example": "He treated his subordinates with respect.", "example_zh": "他尊重地對待他的下屬。" },
+    { "pos": "adj.", "zh": "次要的、從屬的", "example": "This goal is subordinate to the main one.", "example_zh": "這個目標次於主要目標。" }
+  ],
+  "subscribe": [
+    { "pos": "v.", "zh": "訂閱、訂購", "example": "She subscribes to a science magazine.", "example_zh": "她訂閱一本科學雜誌。" }
+  ],
+  "subscription": [
+    { "pos": "n.", "zh": "訂閱、訂閱費", "example": "My subscription expires next month.", "example_zh": "我的訂閱下個月到期。" }
+  ],
+  "subsidize": [
+    { "pos": "v.", "zh": "資助、補貼", "example": "The government subsidizes public transport.", "example_zh": "政府補貼大眾運輸。" }
+  ],
+  "succession": [
+    { "pos": "n.", "zh": "連續、接替", "example": "She won three games in succession.", "example_zh": "她連贏了三場比賽。" }
+  ],
+  "successive": [
+    { "pos": "adj.", "zh": "連續的、接連的", "example": "It rained for three successive days.", "example_zh": "連續下了三天雨。" }
+  ],
+  "suffocate": [
+    { "pos": "v.", "zh": "（使）窒息", "example": "Plants can suffocate without fresh air.", "example_zh": "植物沒有新鮮空氣會窒息。" }
+  ],
+  "suitcase": [
+    { "pos": "n.", "zh": "行李箱、手提箱", "example": "She packed her suitcase for the trip.", "example_zh": "她為旅行收拾行李箱。" }
+  ],
+  "summon": [
+    { "pos": "v.", "zh": "召喚、傳喚、鼓起", "example": "The king summoned his advisers.", "example_zh": "國王召見了他的顧問。" }
+  ],
+  "superficial": [
+    { "pos": "adj.", "zh": "表面的、膚淺的", "example": "The cut was only superficial.", "example_zh": "這道傷口只是表皮的小傷。" }
+  ],
+  "superintendent": [
+    { "pos": "n.", "zh": "主管、督學", "example": "The superintendent runs all the schools.", "example_zh": "這位督學管理所有學校。" }
+  ],
+  "superiority": [
+    { "pos": "n.", "zh": "優越、優勢", "example": "The team showed their superiority on the field.", "example_zh": "這支隊伍在場上展現了實力上的優勢。" }
+  ],
+  "superstitious": [
+    { "pos": "adj.", "zh": "迷信的", "example": "She is superstitious about the number four.", "example_zh": "她對數字四很迷信。" }
+  ],
+  "supplement": [
+    { "pos": "n.", "zh": "補充（品）、增刊", "example": "He takes a vitamin supplement daily.", "example_zh": "他每天服用維他命補充品。" },
+    { "pos": "v.", "zh": "補充、增補", "example": "She supplements her income with a side job.", "example_zh": "她靠兼差補貼收入。" }
+  ],
+  "suppress": [
+    { "pos": "v.", "zh": "壓制、忍住", "example": "She tried to suppress a yawn.", "example_zh": "她努力忍住呵欠。" }
+  ],
+  "surge": [
+    { "pos": "n.", "zh": "（突然的）湧現、激增", "example": "There was a surge of energy after the rest.", "example_zh": "休息過後湧現了一股活力。" },
+    { "pos": "v.", "zh": "洶湧、激增", "example": "The crowd surged toward the gate.", "example_zh": "人群朝著大門湧去。" }
+  ],
+  "surgical": [
+    { "pos": "adj.", "zh": "外科的、手術的", "example": "The doctor used surgical tools.", "example_zh": "醫生使用了外科手術器械。" }
+  ],
+  "surname": [
+    { "pos": "n.", "zh": "姓、姓氏", "example": "Please write your surname first.", "example_zh": "請先寫你的姓。" }
+  ],
+  "surpass": [
+    { "pos": "v.", "zh": "超越、勝過", "example": "Her score surpassed everyone else's.", "example_zh": "她的分數超越了所有人。" }
+  ],
+  "suspense": [
+    { "pos": "n.", "zh": "懸疑、緊張感", "example": "The movie kept us in suspense.", "example_zh": "這部電影讓我們一直懸著一顆心。" }
+  ],
+  "suspension": [
+    { "pos": "n.", "zh": "暫停、停職、懸吊", "example": "The suspension of the game lasted an hour.", "example_zh": "比賽暫停了一個小時。" }
+  ],
+  "swamp": [
+    { "pos": "n.", "zh": "沼澤、濕地", "example": "Frogs live in the muddy swamp.", "example_zh": "青蛙住在泥濘的沼澤裡。" },
+    { "pos": "v.", "zh": "淹沒、使應接不暇", "example": "She was swamped with work.", "example_zh": "她被工作淹沒了。" }
+  ],
+  "swarm": [
+    { "pos": "n.", "zh": "（昆蟲）一群、蜂群", "example": "A swarm of bees flew past us.", "example_zh": "一群蜜蜂從我們身邊飛過。" },
+    { "pos": "v.", "zh": "成群移動、擠滿", "example": "Tourists swarmed into the square.", "example_zh": "遊客蜂擁進入廣場。" }
+  ],
+  "symbolize": [
+    { "pos": "v.", "zh": "象徵、代表", "example": "A heart symbolizes love.", "example_zh": "愛心象徵愛。" }
+  ],
+  "symmetry": [
+    { "pos": "n.", "zh": "對稱、勻稱", "example": "The building has perfect symmetry.", "example_zh": "這棟建築完全對稱。" }
+  ]
+}
