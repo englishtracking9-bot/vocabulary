@@ -95,6 +95,13 @@ body {
 .answer-input:focus { outline: none; border-color: var(--primary); }
 .hint-area { color: var(--muted); font-size: 14px; min-height: 18px; margin-top: 8px; }
 
+/* 四階段精熟標準說明 */
+.stage-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.stage-legend span {
+  font-size: 12px; color: var(--muted); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 999px; padding: 3px 9px; white-space: nowrap;
+}
+
 /* Result banners */
 .result { border-radius: 12px; padding: 14px; text-align: center; font-weight: 700; margin-bottom: 12px; }
 .result.ok { background: rgba(22, 163, 74, .12); color: var(--ok); }

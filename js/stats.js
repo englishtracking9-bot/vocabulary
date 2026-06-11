@@ -8,16 +8,19 @@ import { displayCategory } from './srs.js';
 import { todayStr, daysBetween } from './util.js';
 import { allWords } from './vocab.js';
 
-// 各身分的狀態統計（涵蓋全六級）
+// 各身分的狀態統計（涵蓋全六級，四階段）
 export async function getStats(profileId, now = Date.now()) {
   const recs = await getRecordsByProfile(profileId);
-  let mastered = 0, weak = 0, newCount = 0;
+  let masteredCore = 0, proficient = 0, weak = 0, newCount = 0;
   for (const r of recs) {
     const c = displayCategory(r.status);
-    if (c === 'mastered') mastered++;
+    if (c === 'mastered') masteredCore++;
+    else if (c === 'proficient') proficient++;
     else if (c === 'new') newCount++;
     else weak++;
   }
+  // 「已熟記比例」依規格＝已熟記(🌳)＋穩固(🌲)
+  const mastered = masteredCore + proficient;
   const tracked = recs.length;
   const totalVocab = allWords().length;
 
@@ -30,7 +33,10 @@ export async function getStats(profileId, now = Date.now()) {
   return {
     tracked,             // 已納入學習（有紀錄）的字數
     totalVocab,          // 全六級總字數
-    mastered, weak, newCount,
+    mastered,            // 已熟記＋穩固（供報告「已熟記」總數）
+    masteredCore,        // 🌳 已熟記（嚴格）
+    proficient,          // 🌲 穩固
+    weak, newCount,
     masteredPct: tracked ? Math.round((mastered / tracked) * 100) : 0,
     newPct: tracked ? Math.round((newCount / tracked) * 100) : 0,
     todayNew: todayLog ? todayLog.newWords.length : 0,

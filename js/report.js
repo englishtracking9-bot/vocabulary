@@ -16,6 +16,7 @@ export async function archiveSnapshot(profile, now = Date.now()) {
   }
   log.snapshot = {
     tracked: stats.tracked, mastered: stats.mastered, masteredPct: stats.masteredPct,
+    proficient: stats.proficient,
     weak: stats.weak, newCount: stats.newCount, newPct: stats.newPct, streak: stats.streak,
   };
   await putDailyLog(log);
@@ -43,13 +44,13 @@ export async function buildDailyReport(profile, dateStr = null, now = Date.now()
   if (isToday) {
     const s = await getStats(profile.id, now);
     prog = { tracked: s.tracked, mastered: s.mastered, masteredPct: s.masteredPct,
-      weak: s.weak, newCount: s.newCount, newPct: s.newPct, streak: s.streak };
+      proficient: s.proficient, weak: s.weak, newCount: s.newCount, newPct: s.newPct, streak: s.streak };
   } else if (log && log.snapshot) {
     prog = log.snapshot;
   } else {
     const s = await getStats(profile.id, now);
     prog = { tracked: s.tracked, mastered: s.mastered, masteredPct: s.masteredPct,
-      weak: s.weak, newCount: s.newCount, newPct: s.newPct, streak: s.streak, approx: true };
+      proficient: s.proficient, weak: s.weak, newCount: s.newCount, newPct: s.newPct, streak: s.streak, approx: true };
   }
 
   const lines = [];
@@ -59,9 +60,9 @@ export async function buildDailyReport(profile, dateStr = null, now = Date.now()
   lines.push(formatNewWords(newIds) || '（這天沒有新學單字）');
   lines.push(`${isToday ? '今日' : '當日'}複習 ${reviewCount} 字，答對率 ${accuracy}%`);
   lines.push(`${prog.approx ? '目前進度' : '當時進度'}（共 ${prog.tracked} 字）：`);
-  lines.push(`✅ 已熟記 ${prog.mastered} 字（${prog.masteredPct}%）`);
-  lines.push(`📖 需加強 ${prog.weak} 字`);
-  lines.push(`🆕 未學習 ${prog.newCount} 字（${prog.newPct}%）`);
+  lines.push(`🌳 已熟記 ${prog.mastered} 字（${prog.masteredPct}%）${prog.proficient ? `，其中 🌲 穩固 ${prog.proficient} 字` : ''}`);
+  lines.push(`🌿 學習中 ${prog.weak} 字`);
+  lines.push(`🌱 未學習 ${prog.newCount} 字（${prog.newPct}%）`);
   lines.push(`🔥 連續學習 ${prog.streak} 天`);
   lines.push('（由英文單字記憶系統自動產生）');
   return lines.join('\n');
@@ -92,9 +93,9 @@ export async function buildWeeklyReport(profile, now = Date.now()) {
   lines.push(`📅 截至 ${prettyDate(todayStr(new Date(now)))}`);
   lines.push(`近 7 日新學 ${weekNew} 字，近 7 日答對率 ${stats.recentAccuracy}%`);
   lines.push(`目前進度（共 ${stats.tracked} 字）：`);
-  lines.push(`✅ 已熟記 ${stats.mastered} 字（${stats.masteredPct}%）`);
-  lines.push(`📖 需加強 ${stats.weak} 字`);
-  lines.push(`🆕 未學習 ${stats.newCount} 字（${stats.newPct}%）`);
+  lines.push(`🌳 已熟記 ${stats.mastered} 字（${stats.masteredPct}%）${stats.proficient ? `，其中 🌲 穩固 ${stats.proficient} 字` : ''}`);
+  lines.push(`🌿 學習中 ${stats.weak} 字`);
+  lines.push(`🌱 未學習 ${stats.newCount} 字（${stats.newPct}%）`);
   lines.push(`🔥 連續學習 ${stats.streak} 天`);
   lines.push('（由英文單字記憶系統自動產生）');
   return lines.join('\n');

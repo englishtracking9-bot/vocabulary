@@ -4,6 +4,7 @@
 //          → confuse(4) → theme(5) → antonym(6)
 
 import { allWords, getById, findByWord } from './vocab.js';
+import { isMasteredFamily } from './srs.js';
 
 let _index = null;
 let _roots = null;
@@ -63,7 +64,7 @@ export function formDailyGroup(profile, records, n, options = {}) {
     ? profile.settings.levels : [4, 5, 6];
 
   const recMap = new Map(records.map((r) => [r.wordId, r]));
-  const mastered = new Set(records.filter((r) => r.status === 'mastered').map((r) => r.wordId));
+  const mastered = new Set(records.filter((r) => isMasteredFamily(r.status)).map((r) => r.wordId));
 
   // 候選：有例句、未熟記
   const hasEx = (e) => e.example && e.example.trim();

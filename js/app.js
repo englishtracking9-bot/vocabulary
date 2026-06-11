@@ -12,7 +12,7 @@ import { buildQueue, Session, recordAnswer } from './quiz.js';
 import { lookupWord, fetchDict, speak, addToReview, createCustomWord, updateCustomZh, deleteCustomWord } from './lookup.js';
 import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard, archiveSnapshot } from './report.js';
 import { getStats, exportProfile, importProfile } from './stats.js';
-import { displayCategory, statusBadge, computeStatus } from './srs.js';
+import { displayCategory, statusBadge, computeStatus, isMasteredFamily, STATUS_LABEL, STATUS_DESC, dayStart, DAY_MS } from './srs.js';
 import { loadGroupsIndex, loadRoots, allRoots, membersOfAffix, formDailyGroup, familyOf, rootFamilyOf } from './grouping.js';
 import {
   getTags, createTag, renameTag, deleteTag, setWordTags, addWordToTag, addWordsToTag,
@@ -47,12 +47,22 @@ async function refreshMastered() {
   try {
     const recs = await getRecordsByProfile(State.profile.id);
     State.masteredIds = new Set(
-      recs.filter((r) => displayCategory(r.status) === 'mastered').map((r) => r.wordId)
+      recs.filter((r) => isMasteredFamily(r.status)).map((r) => r.wordId)
     );
   } catch (e) { State.masteredIds = new Set(); }
 }
 
 const $main = () => document.getElementById('main');
+
+// 四階段精熟標準說明（顯示給孩子看，沿用成長徽章 🌱🌿🌳🌲）
+function stageLegendHTML() {
+  return `<div class="stage-legend">
+    <span title="${STATUS_DESC.new}">${STATUS_LABEL.new}</span>
+    <span title="${STATUS_DESC.weak}">${STATUS_LABEL.weak}</span>
+    <span title="${STATUS_DESC.mastered}">${STATUS_LABEL.mastered}</span>
+    <span title="${STATUS_DESC.proficient}">${STATUS_LABEL.proficient}</span>
+  </div>`;
+}
 
 // ---------- 啟動 ----------
 async function init() {
@@ -1588,12 +1598,13 @@ async function renderNotFound(term, dict) {
 function renderEntryResult(entry, dict, { autoAdded, recordStatus, justCreated } = {}) {
   const out = document.getElementById('lk-result');
   const cat = displayCategory(recordStatus || 'new');
+  const isMastered = cat === 'mastered' || cat === 'proficient';
   let banner;
   if (justCreated) {
     banner = `<div class="result ok">✅ 已加入「我查的字」清單${entry.zh ? '' : '（記得補上中文意思）'}</div>`;
   } else if (autoAdded) {
     banner = `<div class="result ok">✅ 已自動加入待學清單</div>`;
-  } else if (cat === 'mastered') {
+  } else if (isMastered) {
     banner = `<div class="result ok">你已學會這個字 ✅（不重複加入）</div>`;
   } else {
     banner = `<div class="result info">已在你的清單中（${statusBadge(recordStatus)}）</div>`;
@@ -1614,7 +1625,7 @@ function renderEntryResult(entry, dict, { autoAdded, recordStatus, justCreated }
     controls = `
       <div class="btn-row">
         <button class="btn" id="quiz-this">立即測這個字</button>
-        ${cat === 'mastered'
+        ${isMastered
           ? `<button class="btn" id="readd">再次加入複習</button>`
           : `<button class="btn danger" id="remove">我其實已會 → 移除</button>`}
       </div>`;
@@ -1676,9 +1687,10 @@ async function renderMyWords() {
       <div class="filters">
         <select id="f-status">
           <option value="all">全部狀態</option>
-          <option value="new">🆕 未測驗</option>
-          <option value="weak">📖 需加強</option>
-          <option value="mastered">✅ 已熟記</option>
+          <option value="new">🌱 未測驗</option>
+          <option value="weak">🌿 學習中</option>
+          <option value="mastered">🌳 已熟記</option>
+          <option value="proficient">🌲 穩固</option>
         </select>
         <select id="f-level">
           <option value="all">全部級別</option>
@@ -1707,6 +1719,7 @@ async function renderMyWords() {
           <button class="btn" id="mw-schedule">📅 排到某天</button>
         </div>
       </div>
+      ${stageLegendHTML()}
     </div>
     <div id="mw-list"></div>`;
 
@@ -1877,7 +1890,7 @@ async function markKnown(entry) {
   rec.status = 'mastered';
   rec.reps = Math.max(rec.reps || 0, 3);
   rec.interval = Math.max(rec.interval || 0, 7);
-  rec.due = now + 7 * 24 * 60 * 60 * 1000;
+  rec.due = dayStart(now) + rec.interval * DAY_MS;
   rec.lastResult = 'correct';
   rec.attempts = Math.max(rec.attempts || 0, 1);
   rec.correct = Math.max(rec.correct || 0, 1);
@@ -2148,15 +2161,16 @@ async function renderSettings() {
     <div class="card">
       <h2>學習統計</h2>
       <div class="stat-grid">
-        <div><b>${stats.mastered}</b><span>✅ 已熟記</span></div>
-        <div><b>${stats.weak}</b><span>📖 需加強</span></div>
-        <div><b>${stats.newCount}</b><span>🆕 未測驗</span></div>
+        <div><b>${stats.masteredCore}</b><span>🌳 已熟記</span></div>
+        <div><b>${stats.proficient}</b><span>🌲 穩固</span></div>
+        <div><b>${stats.weak}</b><span>🌿 學習中</span></div>
+        <div><b>${stats.newCount}</b><span>🌱 未測驗</span></div>
         <div><b>${stats.tracked}</b><span>已納入學習</span></div>
-        <div><b>${stats.todayNew}</b><span>今日新學</span></div>
         <div><b>🔥 ${stats.streak}</b><span>連續天數</span></div>
         <div><b>${stats.recentAccuracy}%</b><span>近7日答對率</span></div>
         <div><b>${stats.totalVocab}</b><span>全六級總字數</span></div>
       </div>
+      <p class="hint-area">🌳 已熟記＝連續多天答對；🌲 穩固＝隔很多天仍答對。已熟記比例＝🌳＋🌲＝${stats.masteredPct}%。</p>
     </div>
 
     <div class="card">
