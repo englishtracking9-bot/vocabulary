@@ -1,0 +1,187 @@
+{
+  "maple": [
+    { "pos": "n.", "zh": "楓樹、楓", "example": "The maple leaves turn red in autumn.", "example_zh": "楓葉在秋天轉紅。" }
+  ],
+  "mar": [
+    { "pos": "v.", "zh": "損壞、破壞", "example": "A loud argument marred the happy day.", "example_zh": "一場大聲爭吵破壞了這快樂的一天。" }
+  ],
+  "marginal": [
+    { "pos": "adj.", "zh": "微小的、邊緣的", "example": "The change made only a marginal difference.", "example_zh": "這項改變只造成了微小的差別。" }
+  ],
+  "martial": [
+    { "pos": "adj.", "zh": "軍事的、武的", "example": "He practices a martial art called judo.", "example_zh": "他練一種叫柔道的武術。" }
+  ],
+  "marvel": [
+    { "pos": "v.", "zh": "驚嘆、驚奇", "example": "We marveled at the beautiful sunset.", "example_zh": "我們對美麗的夕陽讚嘆不已。" },
+    { "pos": "n.", "zh": "奇蹟、令人驚嘆的事物", "example": "The bridge is a marvel of design.", "example_zh": "這座橋是設計上的奇蹟。" }
+  ],
+  "mastery": [
+    { "pos": "n.", "zh": "精通、掌握", "example": "Mastery of English takes years of practice.", "example_zh": "精通英文需要多年的練習。" }
+  ],
+  "mediate": [
+    { "pos": "v.", "zh": "調解、斡旋", "example": "A teacher mediated between the two students.", "example_zh": "一位老師在兩名學生之間調解。" }
+  ],
+  "medieval": [
+    { "pos": "adj.", "zh": "中世紀的", "example": "We visited a medieval castle.", "example_zh": "我們參觀了一座中世紀的城堡。" }
+  ],
+  "meditate": [
+    { "pos": "v.", "zh": "冥想、沉思", "example": "She meditates for ten minutes each morning.", "example_zh": "她每天早上冥想十分鐘。" }
+  ],
+  "meditation": [
+    { "pos": "n.", "zh": "冥想、沉思", "example": "Meditation helps him stay calm.", "example_zh": "冥想幫助他保持冷靜。" }
+  ],
+  "melancholy": [
+    { "pos": "n.", "zh": "憂鬱、悲傷", "example": "A melancholy mood filled the rainy evening.", "example_zh": "一股憂鬱的情緒籠罩著這個雨夜。" },
+    { "pos": "adj.", "zh": "憂鬱的、令人傷感的", "example": "He played a melancholy tune.", "example_zh": "他彈奏了一首傷感的曲子。" }
+  ],
+  "mentality": [
+    { "pos": "n.", "zh": "心態、思維方式", "example": "He has a never-give-up mentality.", "example_zh": "他有一種永不放棄的心態。" }
+  ],
+  "merchandise": [
+    { "pos": "n.", "zh": "商品、貨物", "example": "The store displays its merchandise neatly.", "example_zh": "這家店把商品陳列得很整齊。" }
+  ],
+  "mermaid": [
+    { "pos": "n.", "zh": "美人魚", "example": "The story is about a kind mermaid.", "example_zh": "這個故事講的是一條善良的美人魚。" }
+  ],
+  "migrant": [
+    { "pos": "n.", "zh": "移居者、候鳥", "example": "Migrant workers came to help with the harvest.", "example_zh": "外來移工前來幫忙收成。" }
+  ],
+  "mimic": [
+    { "pos": "v.", "zh": "模仿、仿效", "example": "The bird can mimic many sounds.", "example_zh": "這隻鳥能模仿許多聲音。" }
+  ],
+  "mingle": [
+    { "pos": "v.", "zh": "混合、交際", "example": "Guests mingled freely at the party.", "example_zh": "賓客在派對上自在地交際。" }
+  ],
+  "miraculous": [
+    { "pos": "adj.", "zh": "奇蹟般的、不可思議的", "example": "His recovery was almost miraculous.", "example_zh": "他的康復簡直是奇蹟。" }
+  ],
+  "miscellaneous": [
+    { "pos": "adj.", "zh": "各式各樣的、雜項的", "example": "The drawer is full of miscellaneous items.", "example_zh": "這個抽屜裡裝滿了各式各樣的雜物。" }
+  ],
+  "mischievous": [
+    { "pos": "adj.", "zh": "頑皮的、惡作劇的", "example": "The mischievous puppy chewed my shoe.", "example_zh": "那隻頑皮的小狗咬了我的鞋。" }
+  ],
+  "mistress": [
+    { "pos": "n.", "zh": "女主人、情婦", "example": "The mistress of the house greeted us warmly.", "example_zh": "這家的女主人熱情地招呼我們。" }
+  ],
+  "mobilize": [
+    { "pos": "v.", "zh": "動員、調動", "example": "They mobilized volunteers to clean the park.", "example_zh": "他們動員志工來清理公園。" }
+  ],
+  "modernization": [
+    { "pos": "n.", "zh": "現代化", "example": "The city went through rapid modernization.", "example_zh": "這座城市經歷了快速的現代化。" }
+  ],
+  "modernize": [
+    { "pos": "v.", "zh": "使現代化", "example": "They plan to modernize the old factory.", "example_zh": "他們打算把舊工廠現代化。" }
+  ],
+  "momentum": [
+    { "pos": "n.", "zh": "氣勢、衝力、動量", "example": "The team gained momentum after the goal.", "example_zh": "進球後球隊氣勢大增。" }
+  ],
+  "monarch": [
+    { "pos": "n.", "zh": "君主、國王", "example": "The monarch ruled the kingdom wisely.", "example_zh": "這位君主明智地治理王國。" }
+  ],
+  "monetary": [
+    { "pos": "adj.", "zh": "貨幣的、金錢的", "example": "They received a monetary reward.", "example_zh": "他們得到了金錢獎勵。" }
+  ],
+  "monotony": [
+    { "pos": "n.", "zh": "單調、千篇一律", "example": "She broke the monotony with a short trip.", "example_zh": "她用一趟小旅行打破了單調的生活。" }
+  ],
+  "monstrous": [
+    { "pos": "adj.", "zh": "可怕的、巨大的", "example": "It was a monstrous lie.", "example_zh": "那是個彌天大謊。" }
+  ],
+  "moody": [
+    { "pos": "adj.", "zh": "情緒多變的、喜怒無常的", "example": "He has been moody all week.", "example_zh": "他整個星期都情緒不定。" }
+  ],
+  "morale": [
+    { "pos": "n.", "zh": "士氣、鬥志", "example": "Winning lifted the team's morale.", "example_zh": "獲勝提振了球隊的士氣。" }
+  ],
+  "mortal": [
+    { "pos": "adj.", "zh": "終將一死的、致命的", "example": "All humans are mortal.", "example_zh": "所有人終將一死。" },
+    { "pos": "n.", "zh": "凡人", "example": "In myths, gods often visit mortals.", "example_zh": "在神話裡，神明常造訪凡人。" }
+  ],
+  "motherhood": [
+    { "pos": "n.", "zh": "母親身分、為人母", "example": "Motherhood changed her life.", "example_zh": "為人母改變了她的人生。" }
+  ],
+  "motto": [
+    { "pos": "n.", "zh": "座右銘、格言", "example": "Her motto is 'never give up'.", "example_zh": "她的座右銘是「永不放棄」。" }
+  ],
+  "mound": [
+    { "pos": "n.", "zh": "土堆、小丘", "example": "The dog dug up a mound of earth.", "example_zh": "那隻狗挖出了一堆泥土。" }
+  ],
+  "mourn": [
+    { "pos": "v.", "zh": "哀悼、悲痛", "example": "The whole town mourned the loss.", "example_zh": "全鎮都為這個損失哀悼。" }
+  ],
+  "mournful": [
+    { "pos": "adj.", "zh": "哀傷的、悲痛的", "example": "She sang a mournful song.", "example_zh": "她唱了一首哀傷的歌。" }
+  ],
+  "mow": [
+    { "pos": "v.", "zh": "割（草）、刈", "example": "He mows the lawn every Sunday.", "example_zh": "他每個星期天都割草坪。" }
+  ],
+  "muse": [
+    { "pos": "v.", "zh": "沉思、冥想", "example": "She sat by the window to muse.", "example_zh": "她坐在窗邊沉思。" }
+  ],
+  "mustache": [
+    { "pos": "n.", "zh": "（上唇的）鬍子、髭", "example": "He grew a thick black mustache.", "example_zh": "他留了濃密的黑色八字鬍。" }
+  ],
+  "mute": [
+    { "pos": "adj.", "zh": "沉默的、無聲的", "example": "He stayed mute during the whole meeting.", "example_zh": "整場會議他都默不作聲。" },
+    { "pos": "v.", "zh": "使靜音、減弱（聲音）", "example": "She pressed mute to silence the phone.", "example_zh": "她按下靜音鍵讓手機安靜下來。" }
+  ],
+  "nag": [
+    { "pos": "v.", "zh": "嘮叨、不停抱怨", "example": "Stop nagging me about my homework.", "example_zh": "別再為功課對我嘮叨了。" }
+  ],
+  "narrate": [
+    { "pos": "v.", "zh": "敘述、講述", "example": "He narrated the story in a calm voice.", "example_zh": "他以平靜的聲音講述這個故事。" }
+  ],
+  "narrator": [
+    { "pos": "n.", "zh": "敘述者、旁白", "example": "The narrator describes the scene clearly.", "example_zh": "旁白清楚地描述了這個場景。" }
+  ],
+  "nationalism": [
+    { "pos": "n.", "zh": "民族主義、國家主義", "example": "The history class discussed nationalism.", "example_zh": "歷史課討論了民族主義。" }
+  ],
+  "navigate": [
+    { "pos": "v.", "zh": "導航、航行、找路", "example": "Sailors navigate by the stars.", "example_zh": "水手靠星星來導航。" }
+  ],
+  "navigation": [
+    { "pos": "n.", "zh": "航行、導航", "example": "The ship used radar for navigation.", "example_zh": "這艘船用雷達來導航。" }
+  ],
+  "nearsighted": [
+    { "pos": "adj.", "zh": "近視的", "example": "She is nearsighted and wears glasses.", "example_zh": "她近視，戴著眼鏡。" }
+  ],
+  "nickel": [
+    { "pos": "n.", "zh": "鎳、（美國）五分硬幣", "example": "A nickel is a small American coin.", "example_zh": "nickel 是一種美國的小面額硬幣。" }
+  ],
+  "nostril": [
+    { "pos": "n.", "zh": "鼻孔", "example": "A strange smell reached his nostrils.", "example_zh": "一股奇怪的味道鑽進他的鼻孔。" }
+  ],
+  "notable": [
+    { "pos": "adj.", "zh": "值得注意的、顯著的", "example": "She made a notable improvement in math.", "example_zh": "她的數學有了顯著的進步。" }
+  ],
+  "notorious": [
+    { "pos": "adj.", "zh": "惡名昭彰的、聲名狼藉的", "example": "The road is notorious for accidents.", "example_zh": "這條路因事故頻傳而惡名昭彰。" }
+  ],
+  "nourish": [
+    { "pos": "v.", "zh": "滋養、養育", "example": "Healthy food nourishes the body.", "example_zh": "健康的食物能滋養身體。" }
+  ],
+  "novice": [
+    { "pos": "n.", "zh": "新手、初學者", "example": "As a novice, she made a few mistakes.", "example_zh": "身為新手，她犯了一些錯。" }
+  ],
+  "nucleus": [
+    { "pos": "n.", "zh": "核、核心", "example": "The nucleus is the center of a cell.", "example_zh": "細胞核是細胞的中心。" }
+  ],
+  "nude": [
+    { "pos": "adj.", "zh": "裸體的", "example": "The art class drew a nude statue.", "example_zh": "美術課畫了一座裸體雕像。" }
+  ],
+  "nurture": [
+    { "pos": "v.", "zh": "培育、養育", "example": "Good teachers nurture young talent.", "example_zh": "好老師能培育年輕的人才。" },
+    { "pos": "n.", "zh": "養育、培育", "example": "Both nature and nurture shape a child.", "example_zh": "先天與後天教養都會塑造一個孩子。" }
+  ],
+  "oasis": [
+    { "pos": "n.", "zh": "綠洲", "example": "The travelers found water at an oasis.", "example_zh": "旅人在綠洲找到了水。" }
+  ],
+  "oath": [
+    { "pos": "n.", "zh": "誓言、宣誓", "example": "The soldier took an oath of loyalty.", "example_zh": "士兵宣誓效忠。" }
+  ],
+  "oatmeal": [
+    { "pos": "n.", "zh": "燕麥片、燕麥粥", "example": "He eats oatmeal for breakfast.", "example_zh": "他早餐吃燕麥粥。" }
+  ]
+}
