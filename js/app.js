@@ -23,6 +23,7 @@ import {
   recentWordIds, levelWordIds, groupWordIds, allMyWordIds, sample,
   saveTestResult, previousResult, allResults, TYPE_LABEL as TEST_TYPE_LABEL,
 } from './tests.js';
+import { getBadges, detectNewBadges } from './badges.js';
 import { esc, todayStr, prettyDate } from './util.js';
 import {
   notifySupported, notifyPermission, requestNotifyPermission, showReminderNow,
@@ -213,6 +214,9 @@ async function renderHome() {
   document.getElementById('h-lookup').onclick = () => go('#lookup');
   document.getElementById('h-mywords').onclick = () => go('#mywords');
   document.querySelectorAll('.stat-cell.tap').forEach((c) => { c.onclick = () => openStatDetail(c.dataset.stat); });
+
+  // K-3：偵測並慶祝新解鎖的里程碑徽章
+  try { const fresh = await detectNewBadges(State.profile.id); celebrateBadges(fresh); } catch (e) { /* 不影響首頁 */ }
 }
 
 // G-4：首頁四格點開看明細（今天、目前身分）
@@ -423,6 +427,7 @@ async function openTestSetup(type) {
         <input id="ts-count" class="answer-input ts-num" type="number" min="1" max="100" value="${defCount}" inputmode="numeric" />
       </label>
       <label class="ts-row ts-check"><input type="checkbox" id="ts-sentence" /> 加考造句（只考有例句的字）</label>
+      <label class="ts-row ts-check"><input type="checkbox" id="ts-gauntlet" ${type === 'weekly' ? 'checked' : ''} /> 🎮 闖關模式（每 10 題一關，全對得 ⭐）</label>
       <div class="btn-row">
         <button class="btn primary" id="ts-start">開始測驗</button>
         <button class="btn" id="ts-cancel">取消</button>
@@ -433,6 +438,7 @@ async function openTestSetup(type) {
   document.getElementById('ts-start').onclick = async () => {
     const count = Math.max(1, Math.min(100, parseInt(document.getElementById('ts-count').value, 10) || defCount));
     const withSentence = document.getElementById('ts-sentence').checked;
+    const gauntlet = document.getElementById('ts-gauntlet').checked;
     let ids = [], name = '';
     if (type === 'weekly') { ids = await recentWordIds(State.profile.id, 7); name = '週測（近 7 天）'; }
     else if (type === 'monthly') { ids = await recentWordIds(State.profile.id, 30); name = '月測（近 30 天）'; }
@@ -449,11 +455,13 @@ async function openTestSetup(type) {
       return;
     }
     m.classList.remove('show');
-    startTest(type, name, sample(ids, count), withSentence);
+    startTest(type, name, sample(ids, count), withSentence, gauntlet);
   };
 }
 
-function startTest(type, name, ids, withSentence) {
+const STAGE_SIZE = 10; // 闖關每關題數
+
+function startTest(type, name, ids, withSentence, gauntlet) {
   const items = [];
   for (const id of ids) {
     const e = getById(id); if (!e) continue;
@@ -464,9 +472,23 @@ function startTest(type, name, ids, withSentence) {
     }
   }
   if (!items.length) { alert('沒有可測的題目'); return; }
-  Object.assign(TestRun, { active: true, type, name, items, idx: 0, correct: 0, wrong: [], answered: false });
+  Object.assign(TestRun, {
+    active: true, type, name, items, idx: 0, correct: 0, wrong: [], answered: false,
+    gauntlet: !!gauntlet && items.length > STAGE_SIZE, qResults: [],
+  });
   if (location.hash !== '#quiz') location.hash = '#quiz';
   testShow();
+}
+
+// 計算闖關星數（每 STAGE_SIZE 題一關，整關全對得 ⭐）
+function gauntletStars(qResults) {
+  let stars = 0, stages = 0;
+  for (let i = 0; i < qResults.length; i += STAGE_SIZE) {
+    const grp = qResults.slice(i, i + STAGE_SIZE);
+    stages++;
+    if (grp.length && grp.every(Boolean)) stars++;
+  }
+  return { stars, stages };
 }
 
 function testShow() {
@@ -475,8 +497,9 @@ function testShow() {
   t.answered = false;
   const item = t.items[t.idx];
   const e = getById(item.wordId);
+  const stageInfo = t.gauntlet ? `<span>🎮 第 ${Math.floor(t.idx / STAGE_SIZE) + 1} 關</span>` : `<span>${TEST_TYPE_LABEL[t.type]}</span>`;
   const head = `<div class="quiz-progress">
-      <span>${TEST_TYPE_LABEL[t.type]}</span><span>第 ${t.idx + 1} / ${t.items.length} 題</span><span>Lv${e.level}</span>
+      ${stageInfo}<span>第 ${t.idx + 1} / ${t.items.length} 題</span><span>Lv${e.level}</span>
     </div>`;
   if (item.kind === 'spelling') {
     $main().innerHTML = `${head}
@@ -549,12 +572,39 @@ async function testSubmit() {
 
   if (correct) t.correct++;
   else t.wrong.push({ wordId: e.id, input: val, answer, kind: item.kind });
+  t.qResults.push(!!correct);
   await refreshMastered();
 
+  const last = t.idx + 1 >= t.items.length;
+  const stageEnd = t.gauntlet && !last && (t.idx + 1) % STAGE_SIZE === 0;
+  const nextLabel = last ? '看成績 →' : stageEnd ? '過關結算 →' : '下一題 →';
   $main().innerHTML = `${banner}${detail || cardHTML(e, null)}
-    <div class="btn-row"><button class="btn primary" id="t-next">${t.idx + 1 >= t.items.length ? '看成績 →' : '下一題 →'}</button></div>`;
+    <div class="btn-row"><button class="btn primary" id="t-next">${nextLabel}</button></div>`;
   attachCardHandlers(e);
-  document.getElementById('t-next').onclick = () => { t.idx++; testShow(); };
+  document.getElementById('t-next').onclick = () => {
+    t.idx++;
+    if (stageEnd) testStageBreak();
+    else testShow();
+  };
+}
+
+// 闖關：每關結束的過場畫面
+function testStageBreak() {
+  const t = TestRun;
+  const stageNo = Math.floor(t.idx / STAGE_SIZE); // 剛完成的關（1-based 因 idx 已 ++ 到下一題起點）
+  const grp = t.qResults.slice((stageNo - 1) * STAGE_SIZE, stageNo * STAGE_SIZE);
+  const right = grp.filter(Boolean).length;
+  const perfect = right === grp.length;
+  const totalStages = Math.ceil(t.items.length / STAGE_SIZE);
+  $main().innerHTML = `
+    <div class="card center">
+      <h2>${perfect ? '⭐ 完美過關！' : `第 ${stageNo} 關完成`}</h2>
+      <p class="big">${right} / ${grp.length}</p>
+      <p>${perfect ? '整關全對，獲得一顆 ⭐！' : '答對的字加分，答錯的字會排進複習。'}</p>
+      <p class="hint-area">進度：第 ${stageNo} / ${totalStages} 關</p>
+      <button class="btn primary" id="t-cont">▶️ 挑戰第 ${stageNo + 1} 關</button>
+    </div>`;
+  document.getElementById('t-cont').onclick = testShow;
 }
 
 function testQuit() {
@@ -583,11 +633,18 @@ async function testDone() {
     ? result.wrong.map((w) => testWrongRow(w)).join('')
     : '<p class="hint-area">全部答對，太強了！🎉</p>';
 
+  let gauntletLine = '';
+  if (t.gauntlet) {
+    const { stars, stages } = gauntletStars(t.qResults);
+    gauntletLine = `<p class="gauntlet-stars">🎮 闖關：${'⭐'.repeat(stars)}${'☆'.repeat(Math.max(0, stages - stars))}　通過 ${stars} / ${stages} 關全對</p>`;
+  }
+
   $main().innerHTML = `
     <div class="card center">
       <h2>${TEST_TYPE_LABEL[t.type]}完成 🎉</h2>
       <p class="big">${result.scorePct} 分</p>
       <p>${result.correct} / ${result.total} 題答對</p>
+      ${gauntletLine}
       ${cmp}
       <div class="btn-row" style="justify-content:center">
         <button class="btn primary" id="t-retest">再測一次</button>
@@ -2366,7 +2423,9 @@ async function renderReport() {
       </div>
       <p id="copy-status" class="hint-area"></p>
     </div>
+    <div id="report-badges"></div>
     <div id="report-detail"></div>`;
+  renderBadgesCard();
   renderReportDetail(ReportDate);
   const status = document.getElementById('copy-status');
   const doCopy = async (getter) => {
@@ -2387,6 +2446,39 @@ async function renderReport() {
     const n = shiftDate(ReportDate, 1);
     if (n <= today) { ReportDate = n; renderReport(); }
   };
+}
+
+// K-3 成就徽章卡（顯示已達成／未達成）
+async function renderBadgesCard() {
+  const box = document.getElementById('report-badges');
+  if (!box) return;
+  const badges = await getBadges(State.profile.id);
+  const earned = badges.filter((b) => b.earned);
+  const locked = badges.filter((b) => !b.earned);
+  const cell = (b) => `<div class="badge-cell ${b.earned ? 'on' : 'off'}" title="${esc(b.desc)}">
+      <span class="badge-ic">${b.earned ? b.icon : '🔒'}</span>
+      <span class="badge-nm">${esc(b.name)}</span>
+      <span class="badge-ds">${esc(b.desc)}</span>
+    </div>`;
+  box.innerHTML = `<div class="card">
+      <div class="mw-head"><h2>🏅 成就徽章</h2><span class="row-meta">${earned.length} / ${badges.length}</span></div>
+      <div class="badge-grid">${earned.map(cell).join('')}${locked.map(cell).join('')}</div>
+    </div>`;
+}
+
+// 慶祝新達成的徽章（首頁載入時偵測）
+function celebrateBadges(fresh) {
+  if (!fresh || !fresh.length) return;
+  const m = document.getElementById('modal');
+  m.innerHTML = `<div class="modal-box center badge-pop">
+      <h3>🎉 解鎖新徽章！</h3>
+      <div class="badge-grid">${fresh.map((b) => `<div class="badge-cell on">
+        <span class="badge-ic">${b.icon}</span><span class="badge-nm">${esc(b.name)}</span>
+        <span class="badge-ds">${esc(b.desc)}</span></div>`).join('')}</div>
+      <button class="btn primary" id="bp-close">太棒了！</button>
+    </div>`;
+  m.classList.add('show');
+  document.getElementById('bp-close').onclick = () => m.classList.remove('show');
 }
 
 // 報告明細：點數字展開清單（新學 / 複習 / 答錯）

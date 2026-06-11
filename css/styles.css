@@ -104,6 +104,22 @@ body {
 .section-daily { border-left: 4px solid var(--primary); }
 .section-test { border-left: 4px solid var(--ok); }
 
+/* K-3 闖關星數 */
+.gauntlet-stars { font-size: 18px; margin: 8px 0; letter-spacing: 2px; }
+
+/* K-3 成就徽章 */
+.badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; margin-top: 10px; }
+.badge-cell {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  border: 1px solid var(--border); border-radius: 12px; padding: 10px 6px; background: var(--bg);
+}
+.badge-cell.on { background: var(--card); border-color: var(--primary); }
+.badge-cell.off { opacity: .5; }
+.badge-ic { font-size: 26px; line-height: 1.2; }
+.badge-nm { font-size: 13px; font-weight: 700; color: var(--text); margin-top: 4px; }
+.badge-ds { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.badge-pop .badge-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+
 /* 四階段精熟標準說明 */
 .stage-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .stage-legend span {
