@@ -104,6 +104,43 @@ body {
 .section-daily { border-left: 4px solid var(--primary); }
 .section-test { border-left: 4px solid var(--ok); }
 
+/* L-3 家長月排程 / 出題碼 / 掃描 */
+.section-parent { border-left: 4px solid #a855f7; }
+.src-opts { display: flex; flex-direction: column; gap: 6px; margin: 6px 0; }
+.sched-day .sched-group { margin: 8px 0; }
+.sched-memo { font-size: 13px; color: var(--primary-d); font-weight: 600; margin-bottom: 4px; }
+.qr-box { display: flex; justify-content: center; margin: 10px 0; }
+.qr-box svg { width: 200px; height: 200px; max-width: 60vw; background: #fff; }
+.code-box { font-family: monospace; font-size: 12px; word-break: break-all; }
+.sc-video { width: 100%; max-width: 360px; border-radius: 12px; background: #000; margin: 8px auto; display: block; }
+
+/* 列印：畫面上隱藏，列印時只顯示 print-root */
+#print-root { display: none; }
+@media print {
+  .app-header, .bottom-nav, #modal, #main { display: none !important; }
+  #print-root { display: block !important; }
+  body { background: #fff; color: #000; }
+}
+.pr-page { page-break-after: always; padding: 8px 4px; }
+.pr-head { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 8px; }
+.pr-head h2 { font-size: 18px; margin: 0; }
+.pr-qr { text-align: center; }
+.pr-qr .qr-box svg { width: 90px; height: 90px; }
+.pr-code { font-family: monospace; font-size: 8px; word-break: break-all; max-width: 110px; }
+.pr-group { border: 1px solid #999; border-radius: 8px; padding: 8px; margin-bottom: 10px; break-inside: avoid; }
+.pr-memo { font-weight: 700; background: #eee; padding: 4px 8px; border-radius: 6px; margin-bottom: 6px; }
+.pr-word { margin: 6px 0; padding-left: 6px; border-left: 3px solid #ccc; break-inside: avoid; }
+.pr-w-main { font-size: 15px; }
+.pr-pos { color: #666; font-size: 12px; }
+.pr-root { font-size: 13px; color: #1d4ed8; margin: 2px 0; }
+.pr-ex { font-size: 13px; margin-top: 2px; }
+.pr-ex-zh { color: #555; }
+.pr-table { width: 100%; border-collapse: collapse; }
+.pr-table th, .pr-table td { border: 1px solid #333; padding: 6px 8px; font-size: 14px; text-align: left; }
+.pr-blank { width: 40%; }
+.pr-answers { page-break-before: always; }
+.pr-answers ol { columns: 2; }
+
 /* L-2 自訂單字本 */
 .cb-form { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
 .cb-entry { display: block; }

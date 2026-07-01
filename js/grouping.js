@@ -64,18 +64,22 @@ export function formDailyGroup(profile, records, n, options = {}) {
     ? profile.settings.levels : [4, 5, 6];
 
   const recMap = new Map(records.map((r) => [r.wordId, r]));
-  const mastered = new Set(records.filter((r) => isMasteredFamily(r.status)).map((r) => r.wordId));
+  // 新字去重鐵則：已答過（attempts>0）或已熟記的字，都不再當「新字」排入
+  // → 同一使用者跨日新字絕不重複；學過的字之後靠 SM-2 複習回來，不會重新當新字。
+  const introduced = new Set(
+    records.filter((r) => (r.attempts || 0) > 0 || isMasteredFamily(r.status)).map((r) => r.wordId)
+  );
 
-  // 候選：有例句、未熟記
+  // 候選：有例句、尚未學過
   const hasEx = (e) => e.example && e.example.trim();
-  const notMastered = (e) => !mastered.has(e.id);
+  const notIntroduced = (e) => !introduced.has(e.id);
 
   const avail = (e) => !excludeWords.has(e.id); // 排除其他日期已排的字（去重）
-  const inRange = allWords().filter((e) => levels.includes(e.level) && hasEx(e) && notMastered(e) && avail(e));
+  const inRange = allWords().filter((e) => levels.includes(e.level) && hasEx(e) && notIntroduced(e) && avail(e));
   // 若級別範圍內有例句的字不足（例如目前只有 L1 有例句），退而用「全部有例句」的字
   let pool = inRange;
   if (pool.length < N) {
-    const anyLevel = allWords().filter((e) => hasEx(e) && notMastered(e) && avail(e));
+    const anyLevel = allWords().filter((e) => hasEx(e) && notIntroduced(e) && avail(e));
     // 合併、去重，範圍內優先在前
     const seen = new Set(pool.map((e) => e.id));
     pool = pool.concat(anyLevel.filter((e) => !seen.has(e.id)));
@@ -139,6 +143,28 @@ export function familyOf(wordId) {
     if (g) g.members.forEach((id) => { if (id !== wordId) fam.add(id); });
   }
   return [...fam];
+}
+
+// L-3：把一批字依「共同記憶點」分群（供月排程表與列印顯示每組的記憶點）。
+// 回傳 [{ key, label, memo, wordIds }]，最後可能有一個「其他單字」桶。
+export function groupsForWords(wordIds) {
+  const idset = new Set(wordIds);
+  const used = new Set();
+  const out = [];
+  const scored = Object.entries(_index || {})
+    .map(([key, g]) => ({ key, g, members: g.members.filter((id) => idset.has(id)) }))
+    .filter((x) => x.members.length >= 2)
+    .sort((a, b) => (PRIORITY[a.g.type] || 9) - (PRIORITY[b.g.type] || 9) || b.members.length - a.members.length);
+  for (const s of scored) {
+    const mem = s.members.filter((id) => !used.has(id));
+    if (mem.length >= 2) {
+      mem.forEach((id) => used.add(id));
+      out.push({ key: s.key, label: s.g.label, memo: s.g.memo, wordIds: mem });
+    }
+  }
+  const rest = wordIds.filter((id) => !used.has(id));
+  if (rest.length) out.push({ key: null, label: '其他單字', memo: '', wordIds: rest });
+  return out;
 }
 
 // 只取「同字根/字首/字尾」家族（給單字卡顯示）。回傳 [{id, label}]

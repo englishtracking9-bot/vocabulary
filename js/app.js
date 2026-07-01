@@ -14,7 +14,9 @@ import { lookupWord, fetchDict, speak, addToReview, createCustomWord, updateCust
 import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard, archiveSnapshot } from './report.js';
 import { getStats, exportProfile, importProfile } from './stats.js';
 import { displayCategory, statusBadge, computeStatus, isMasteredFamily, STATUS_LABEL, STATUS_DESC, dayStart, DAY_MS } from './srs.js';
-import { loadGroupsIndex, loadRoots, allRoots, membersOfAffix, formDailyGroup, familyOf, rootFamilyOf } from './grouping.js';
+import { loadGroupsIndex, loadRoots, allRoots, membersOfAffix, formDailyGroup, familyOf, rootFamilyOf, groupsForWords } from './grouping.js';
+import { encodeWordIds, decodeCode } from './paircode.js';
+import { buildMonthSchedule, regenerateDay, regroupDay, KIND_LABEL } from './schedule.js';
 import {
   getTags, createTag, renameTag, deleteTag, setWordTags, addWordToTag, addWordsToTag,
   wordsInTag, tagsOfWord, tagCounts,
@@ -156,6 +158,7 @@ const ROUTES = {
   '#more': renderMore,
   '#parent': renderParentZone,
   '#custombook': renderCustomBooks,
+  '#scan': renderScan,
   '#settings': renderSettings,
 };
 
@@ -165,7 +168,7 @@ const MORE_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#sett
 function route() {
   const hash = location.hash || '#home';
   const fn = ROUTES[hash] || renderHome;
-  const navHash = MORE_SUBPAGES.has(hash) ? '#more' : hash;
+  const navHash = hash === '#scan' ? '#quiz' : MORE_SUBPAGES.has(hash) ? '#more' : hash;
   document.querySelectorAll('.nav-btn').forEach((b) => {
     b.classList.toggle('active', b.dataset.route === navHash);
   });
@@ -189,8 +192,11 @@ async function renderHome() {
 
   // 今天的單字組進度（若已生成）
   const autoPlan = await getDayPlan(State.profile.id, today);
+  const parentMode = State.profile.settings.dailySource === 'parent';
   let groupLabel = '今天的單字組';
-  if (autoPlan && autoPlan.group.wordIds.length) {
+  if (parentMode) {
+    groupLabel = '📷 掃描家長出的題';
+  } else if (autoPlan && autoPlan.group.wordIds.length) {
     const total = autoPlan.group.wordIds.length;
     const done = autoPlan.group.wordIds.filter((id) => wordDayDone(autoPlan, id)).length;
     groupLabel = (total > 0 && done >= total) ? '今天的單字組（已完成 ✓）'
@@ -218,7 +224,7 @@ async function renderHome() {
         <button class="btn" id="h-mywords">📋 我的單字</button>
       </div>
     </div>`;
-  document.getElementById('h-group').onclick = () => openDay(today);
+  document.getElementById('h-group').onclick = () => parentMode ? go('#scan') : openDay(today);
   document.getElementById('h-review').onclick = () => { State.pendingReview = true; go('#quiz'); };
   document.getElementById('h-tests').onclick = () => go('#quiz');
   document.getElementById('h-lookup').onclick = () => go('#lookup');
@@ -338,6 +344,12 @@ async function renderTestHub() {
       <button class="btn" id="test-custom">🎯 自訂測驗（自選範圍）</button>
     </div>
 
+    <div class="card section-parent">
+      <h3>📷 家長出的題</h3>
+      <p class="hint-area">掃描家長電腦上的出題碼／QR，載入今天要考的字。</p>
+      <button class="btn" id="test-scan">📷 掃描 / 貼出題碼</button>
+    </div>
+
     <div class="card">
       <div class="mw-head"><h3>📈 最近成績</h3>
         ${results.length > 5 ? '<button class="btn" id="test-allhist">看全部</button>' : ''}</div>
@@ -348,6 +360,7 @@ async function renderTestHub() {
   document.getElementById('test-weekly').onclick = () => openTestSetup('weekly');
   document.getElementById('test-monthly').onclick = () => openTestSetup('monthly');
   document.getElementById('test-custom').onclick = () => openTestSetup('custom');
+  document.getElementById('test-scan').onclick = () => go('#scan');
   const allh = document.getElementById('test-allhist');
   if (allh) allh.onclick = openTestHistory;
   $main().querySelectorAll('.row.tap[data-rid]').forEach((row) => {
@@ -1122,6 +1135,16 @@ async function scheduledWordIds(exceptDate) {
 async function ensureDayPlan(dateStr) {
   let plan = await getDayPlan(State.profile.id, dateStr);
   if (!plan) {
+    // L-3d：若「每日單字來源＝家長排程」，手機不自動排新字（避免與家長排定／掃入的重複）
+    if (State.profile.settings.dailySource === 'parent') {
+      plan = {
+        key: dayKey(State.profile.id, dateStr), profileId: State.profile.id, date: dateStr,
+        group: { wordIds: [], memo: '', memos: [], label: '（家長排程模式）', groupKey: null },
+        readDone: false, progress: {}, createdAt: Date.now(), updatedAt: Date.now(), parentMode: true,
+      };
+      await putDayPlan(plan);
+      return plan;
+    }
     const records = await getRecordsByProfile(State.profile.id);
     const excludeWordIds = await scheduledWordIds(dateStr);
     const group = formDailyGroup(State.profile, records, State.profile.settings.dailyNewLimit, { excludeWordIds });
@@ -2621,26 +2644,349 @@ function deviceRoleNoteHTML() {
 }
 
 // ============================================================
-// L-1 家長專區（L-3 會擴充：月排程 / QR / 列印）
+// L-3 家長專區：月排程 + 出題碼(QR) + 列印
+// 排程存在家長裝置（meta: parentSchedule::<pid>），只單向用出題碼把「要考哪些字」帶到孩子手機。
 // ============================================================
-function renderParentZone() {
+const Parent = { sched: null };
+
+async function loadParentSchedule() {
+  Parent.sched = (await getMeta(`parentSchedule::${State.profile.id}`)) || null;
+  return Parent.sched;
+}
+async function saveParentSchedule() {
+  await setMeta(`parentSchedule::${State.profile.id}`, Parent.sched);
+}
+
+// 產生 QR 的 SVG（用離線 vendor window.qrcode，自動選容量）
+function qrSvg(text, cell = 4) {
+  try {
+    if (!window.qrcode) return '<p class="hint-area">QR 產生器尚未載入，請用下方出題碼。</p>';
+    const qr = window.qrcode(0, 'M');
+    qr.addData(text);
+    qr.make();
+    return `<div class="qr-box">${qr.createSvgTag(cell, 2)}</div>`;
+  } catch (e) {
+    return '<p class="hint-area">資料較長，QR 無法產生，請改用下方出題碼。</p>';
+  }
+}
+
+async function renderParentZone() {
+  await loadParentSchedule();
+  const s = State.profile.settings;
+  const today = todayStr();
+  const defEnd = (() => { const d = new Date(); d.setDate(d.getDate() + 29); return todayStr(d); })();
+  const hasSched = Parent.sched && Parent.sched.days && Parent.sched.days.length;
+
   $main().innerHTML = `
     <div class="card">
       <h2>👨‍👩‍👧 家長專區</h2>
-      <p class="hint-area">給家長在電腦上排題、出題、列印。孩子的作答與成績都在手機端。</p>
+      <p class="hint-area">在電腦上為 <b>${esc(State.profile.name)}</b> 排題、出題、列印。孩子作答與成績都在手機端。切換上方使用者可為不同孩子排程。</p>
     </div>
     ${deviceRoleNoteHTML()}
     <div class="card">
+      <h3>🗓 一鍵排整月</h3>
+      <p class="hint-area">從指定級別自動抽字、逐日填入，<b>跨日不重複</b>、依字根／字首記憶法成組。排好後可手動微調。</p>
+      <div>出題級別：</div>
+      <div class="level-checks">
+        ${[1, 2, 3, 4, 5, 6].map((l) => `<label class="chk"><input type="checkbox" class="pz-lv" value="${l}" ${(s.levels || []).includes(l) ? 'checked' : ''}/> Lv${l}</label>`).join('')}
+      </div>
+      <label>每日單字數 <input id="pz-per" class="answer-input ts-num" type="number" min="3" max="30" value="${s.dailyNewLimit || 15}" /></label>
+      <div class="btn-row">
+        <label>起 <input type="date" id="pz-start" class="answer-input" value="${today}" /></label>
+        <label>迄 <input type="date" id="pz-end" class="answer-input" value="${defEnd}" /></label>
+      </div>
+      <label class="chk"><input type="checkbox" id="pz-review" checked /> 新字排完後，接著排「複習輪」</label>
+      <button class="btn primary" id="pz-gen">${hasSched ? '重新排整月（會覆蓋目前排程）' : '產生月排程'}</button>
+    </div>
+    ${hasSched ? `<div class="card">
+      <h3>📋 目前月排程</h3>
+      <p class="hint-area">${prettyDate(Parent.sched.config.startDate)} ~ ${prettyDate(Parent.sched.config.endDate)}，每日 ${Parent.sched.config.perDay} 字，共 ${Parent.sched.days.length} 天。</p>
+      <div class="btn-row">
+        <button class="btn primary" id="pz-view">查看／編輯／出題碼</button>
+        <button class="btn" id="pz-print-all">🖨️ 列印整月</button>
+      </div>
+    </div>` : ''}
+    <div class="card">
       <h3>✋ 手動出題（排字到某天）</h3>
-      <p class="hint-area">自選一批單字排到日曆某天，孩子當天會多一個「手動單字組」。</p>
-      <button class="btn primary" id="pz-manual">開啟手動出題</button>
+      <p class="hint-area">臨時自選一批字排到日曆某天（不走月排程）。</p>
+      <button class="btn" id="pz-manual">開啟手動出題</button>
+    </div>`;
+
+  document.getElementById('pz-gen').onclick = generateSchedule;
+  document.getElementById('pz-manual').onclick = () => go('#manual');
+  const vbtn = document.getElementById('pz-view');
+  if (vbtn) vbtn.onclick = () => renderScheduleView();
+  const pall = document.getElementById('pz-print-all');
+  if (pall) pall.onclick = () => openPrintPicker(Parent.sched.days);
+}
+
+async function generateSchedule() {
+  const levels = [...document.querySelectorAll('.pz-lv:checked')].map((c) => Number(c.value));
+  if (!levels.length) { alert('請至少選一個級別'); return; }
+  const perDay = Math.max(3, Math.min(30, parseInt(document.getElementById('pz-per').value, 10) || 15));
+  const startDate = document.getElementById('pz-start').value;
+  const endDate = document.getElementById('pz-end').value;
+  const includeReview = document.getElementById('pz-review').checked;
+  if (!startDate || !endDate || endDate < startDate) { alert('請確認起迄日期'); return; }
+  const records = await getRecordsByProfile(State.profile.id);
+  Parent.sched = buildMonthSchedule(records, { levels, perDay, startDate, endDate, includeReview });
+  await saveParentSchedule();
+  const newDays = Parent.sched.days.filter((d) => d.kind === 'new').length;
+  alert(`✅ 已排 ${Parent.sched.days.length} 天，其中新字 ${newDays} 天。可查看並微調。`);
+  renderScheduleView();
+}
+
+function renderScheduleView() {
+  const days = Parent.sched.days;
+  $main().innerHTML = `
+    <div class="card">
+      <div class="daily-top"><button class="btn" id="sv-back">‹ 家長專區</button><b>🗓 月排程</b></div>
+      <p class="hint-area">每天一張卡：可換一批、加字、移除字，或產生出題碼／QR 給孩子掃。</p>
+      <div class="btn-row"><button class="btn" id="sv-print">🖨️ 列印整月</button></div>
+    </div>
+    <div id="sv-list">${days.map((d, i) => scheduleDayCard(d, i)).join('')}</div>`;
+  document.getElementById('sv-back').onclick = () => renderParentZone();
+  document.getElementById('sv-print').onclick = () => openPrintPicker(days);
+  bindScheduleDayActions();
+}
+
+function scheduleDayCard(day, idx) {
+  const groups = day.groups.map((g) => `
+    <div class="sched-group">
+      <div class="sched-memo">🔑 ${esc(g.label)}${g.memo ? '：' + esc(g.memo) : ''}</div>
+      <div class="fam-chips">${g.wordIds.map((id) => { const e = getById(id); return e ? `<span class="fam-chip" data-day="${idx}" data-rm="${id}">${esc(e.word)} ✕</span>` : ''; }).join('')}</div>
+    </div>`).join('') || '<p class="hint-area">（這天沒有字）</p>';
+  return `<div class="card sched-day" data-idx="${idx}">
+    <div class="grp-head"><b>${prettyDate(day.date)}　${KIND_LABEL[day.kind] || ''}</b><span class="row-meta">${day.wordIds.length} 字</span></div>
+    ${groups}
+    <div class="btn-row">
+      ${day.kind === 'new' ? `<button class="btn sm" data-regen="${idx}">🔄 換一批</button>` : ''}
+      <button class="btn sm" data-add="${idx}">＋ 加字</button>
+      <button class="btn sm primary" data-code="${idx}">🔳 出題碼／QR</button>
+      <button class="btn sm" data-printday="${idx}">🖨️ 列印當日</button>
+    </div>
+  </div>`;
+}
+
+function bindScheduleDayActions() {
+  const rerender = async () => { await saveParentSchedule(); renderScheduleView(); };
+  document.querySelectorAll('#sv-list [data-rm]').forEach((c) => {
+    c.onclick = async () => {
+      const idx = Number(c.dataset.day); const id = c.dataset.rm;
+      const day = Parent.sched.days[idx];
+      day.wordIds = day.wordIds.filter((w) => w !== id);
+      regroupDay(Parent.sched, day.date);
+      await rerender();
+    };
+  });
+  document.querySelectorAll('#sv-list [data-regen]').forEach((b) => {
+    b.onclick = async () => {
+      const idx = Number(b.dataset.regen);
+      const records = await getRecordsByProfile(State.profile.id);
+      regenerateDay(Parent.sched, records, Parent.sched.days[idx].date);
+      await rerender();
+    };
+  });
+  document.querySelectorAll('#sv-list [data-add]').forEach((b) => {
+    b.onclick = () => openAddWordToDay(Number(b.dataset.add));
+  });
+  document.querySelectorAll('#sv-list [data-code]').forEach((b) => {
+    b.onclick = () => openDayCode(Number(b.dataset.code));
+  });
+  document.querySelectorAll('#sv-list [data-printday]').forEach((b) => {
+    b.onclick = () => openPrintPicker([Parent.sched.days[Number(b.dataset.printday)]]);
+  });
+}
+
+function openAddWordToDay(idx) {
+  const day = Parent.sched.days[idx];
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box">
+      <h3>加字到 ${prettyDate(day.date)}</h3>
+      <input id="aw-search" class="answer-input" placeholder="搜尋單字（英文或中文）" />
+      <div id="aw-results" class="detail-list"></div>
+      <button class="btn" id="aw-close">完成</button>
+    </div>`;
+  m.classList.add('show');
+  const draw = (q) => {
+    const box = document.getElementById('aw-results');
+    if (!q.trim()) { box.innerHTML = ''; return; }
+    const matches = searchWords(q, 15);
+    box.innerHTML = matches.length ? matches.map((e) => {
+      const inDay = day.wordIds.includes(e.id);
+      return `<div class="row tap" data-add="${e.id}"><div class="row-main">
+        <span class="row-word">${esc(e.word)}</span><span class="row-zh">${esc(e.zh)}</span></div>
+        <div class="row-meta"><span>${e.level === 0 ? '自訂' : 'Lv' + e.level}</span><span>${inDay ? '✓ 已在本日' : '＋ 加入'}</span></div></div>`;
+    }).join('') : `<p class="hint-area">查無「${esc(q)}」</p>`;
+    box.querySelectorAll('[data-add]').forEach((r) => {
+      r.onclick = async () => {
+        const id = r.dataset.add;
+        if (!day.wordIds.includes(id)) { day.wordIds.push(id); regroupDay(Parent.sched, day.date); await saveParentSchedule(); }
+        draw(document.getElementById('aw-search').value);
+      };
+    });
+  };
+  document.getElementById('aw-search').oninput = (e) => draw(e.target.value);
+  document.getElementById('aw-close').onclick = () => { m.classList.remove('show'); renderScheduleView(); };
+}
+
+function openDayCode(idx) {
+  const day = Parent.sched.days[idx];
+  const code = encodeWordIds(day.wordIds);
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box center">
+      <h3>🔳 ${prettyDate(day.date)} 出題碼</h3>
+      <p class="hint-area">孩子手機：測驗 → 📷 掃描家長出的題 → 掃這個 QR 或貼下面的碼。</p>
+      ${qrSvg(code)}
+      <textarea class="answer-input code-box" readonly rows="2">${esc(code)}</textarea>
+      <div class="btn-row">
+        <button class="btn primary" id="dc-copy">複製出題碼</button>
+        <button class="btn" id="dc-close">關閉</button>
+      </div>
+    </div>`;
+  m.classList.add('show');
+  document.getElementById('dc-copy').onclick = async () => {
+    const ok = await copyToClipboard(code);
+    document.getElementById('dc-copy').textContent = ok ? '✅ 已複製' : '請長按上方文字複製';
+  };
+  document.getElementById('dc-close').onclick = () => m.classList.remove('show');
+}
+
+// ---- 列印（背誦版／考卷版；A4；可含 QR 與字根記憶輔助） ----
+function openPrintPicker(days) {
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box">
+      <h3>🖨️ 列印（${days.length === 1 ? prettyDate(days[0].date) : `整月 ${days.length} 天`}）</h3>
+      <p class="hint-area">背誦版：含中英、詞性、例句、字根拆解與記憶點。考卷版：只留中文與空格，附答案頁。</p>
+      <button class="btn primary big-copy" id="pp-recite">📖 背誦版（帶記憶方法）</button>
+      <button class="btn big-copy" id="pp-quiz">📝 考卷版（中文→填英文）＋答案頁</button>
+      <button class="btn" id="pp-close">取消</button>
+    </div>`;
+  m.classList.add('show');
+  document.getElementById('pp-recite').onclick = () => { m.classList.remove('show'); doPrint('recite', days); };
+  document.getElementById('pp-quiz').onclick = () => { m.classList.remove('show'); doPrint('quiz', days); };
+  document.getElementById('pp-close').onclick = () => m.classList.remove('show');
+}
+
+function rootBreakdownHTML(entry) {
+  if (!Array.isArray(entry.root) || !entry.root.length) return '';
+  const parts = entry.root.map((p) => `${esc(p.part)}${p.mean ? `(${esc(p.mean)})` : ''}`).join(' + ');
+  const mnem = entry.mnemonic ? `　💡 ${esc(entry.mnemonic)}` : '';
+  return `<div class="pr-root">🔍 ${parts}${mnem}</div>`;
+}
+
+function doPrint(mode, days) {
+  const old = document.getElementById('print-root');
+  if (old) old.remove();
+  const root = document.createElement('div');
+  root.id = 'print-root';
+  root.innerHTML = days.map((day) => printDayHTML(mode, day)).join('');
+  if (mode === 'quiz') {
+    root.innerHTML += `<div class="pr-page pr-answers"><h2>✅ 答案頁</h2>${days.map((day) => `
+      <div class="pr-day-ans"><h3>${prettyDate(day.date)}</h3>
+      <ol>${day.wordIds.map((id) => { const e = getById(id); return e ? `<li>${esc(e.zh)} — <b>${esc(e.word)}</b></li>` : ''; }).join('')}</ol></div>`).join('')}</div>`;
+  }
+  document.body.appendChild(root);
+  document.body.classList.add('printing');
+  const cleanup = () => { document.body.classList.remove('printing'); const r = document.getElementById('print-root'); if (r) r.remove(); window.removeEventListener('afterprint', cleanup); };
+  window.addEventListener('afterprint', cleanup);
+  setTimeout(() => window.print(), 150);
+}
+
+function printDayHTML(mode, day) {
+  const code = encodeWordIds(day.wordIds);
+  const qr = qrSvg(code, 3);
+  const head = `<div class="pr-head"><h2>${prettyDate(day.date)}　${KIND_LABEL[day.kind] || ''}（${day.wordIds.length} 字）</h2>
+    <div class="pr-qr">${qr}<div class="pr-code">${esc(code)}</div></div></div>`;
+
+  if (mode === 'quiz') {
+    const rows = day.wordIds.map((id, i) => { const e = getById(id); return e ? `
+      <tr><td>${i + 1}</td><td>${esc(e.zh)}</td><td class="pr-pos">${esc(e.pos)}</td><td class="pr-blank"></td></tr>` : ''; }).join('');
+    return `<div class="pr-page">${head}
+      <table class="pr-table"><thead><tr><th>#</th><th>中文</th><th>詞性</th><th>寫出英文</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+  // 背誦版：依記憶組列出，每組印共同記憶點；每字印字根拆解與記憶聯想
+  const groups = day.groups.map((g) => {
+    const items = g.wordIds.map((id) => {
+      const e = getById(id); if (!e) return '';
+      return `<div class="pr-word">
+        <div class="pr-w-main"><b>${esc(e.word)}</b> <span class="pr-pos">${esc(e.pos)}</span> — ${esc(e.zh)}</div>
+        ${rootBreakdownHTML(e)}
+        ${e.example ? `<div class="pr-ex">${esc(e.example)}<br><span class="pr-ex-zh">${esc(e.example_zh || '')}</span></div>` : ''}
+      </div>`;
+    }).join('');
+    return `<div class="pr-group"><div class="pr-memo">🔑 ${esc(g.label)}${g.memo ? '：' + esc(g.memo) : ''}</div>${items}</div>`;
+  }).join('');
+  return `<div class="pr-page">${head}${groups}</div>`;
+}
+
+// ============================================================
+// L-3d 孩子手機：掃 QR / 貼出題碼載入「家長出的題」
+// ============================================================
+let _scanStream = null;
+function renderScan() {
+  $main().innerHTML = `
+    <div class="card">
+      <div class="daily-top"><button class="btn" id="sc-back">‹ 測驗</button><b>📷 家長出的題</b></div>
+      <p class="hint-area">用家長電腦上的「出題碼／QR」載入今天要考的字。載入後就地作答，記錄存這支手機。</p>
     </div>
     <div class="card">
-      <h3>🗓 月排程 · 🖨️ 列印 · 🔳 出題碼（QR）</h3>
-      <p class="hint-area">整月自動排字（依字根記憶法分組、跨日不重複）、背誦版／考卷版列印、每天一張出題碼 QR。</p>
-      <p class="role-soon">🚧 這部分正在建置中（L-3），完成後會出現在這裡。</p>
+      <button class="btn primary big-copy" id="sc-cam">📷 開相機掃 QR</button>
+      <div id="sc-video-wrap" class="hidden"><video id="sc-video" playsinline class="sc-video"></video><p class="hint-area">把 QR 對準框內…</p></div>
+      <p id="sc-cam-status" class="hint-area"></p>
+    </div>
+    <div class="card">
+      <p class="hint-area">或直接貼上出題碼：</p>
+      <textarea id="sc-code" class="answer-input code-box" rows="2" placeholder="貼上 V1... 出題碼"></textarea>
+      <button class="btn primary" id="sc-load">載入這批字</button>
+      <p id="sc-status" class="hint-area"></p>
     </div>`;
-  document.getElementById('pz-manual').onclick = () => go('#manual');
+  document.getElementById('sc-back').onclick = () => { stopScan(); go('#quiz'); };
+  document.getElementById('sc-load').onclick = () => scanLoadCode(document.getElementById('sc-code').value);
+  document.getElementById('sc-cam').onclick = startScan;
+}
+
+async function startScan() {
+  const status = document.getElementById('sc-cam-status');
+  if (!window.jsQR) { status.textContent = '⚠️ 掃描元件未載入，請用貼出題碼。'; return; }
+  try {
+    _scanStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+  } catch (e) { status.textContent = '⚠️ 無法開啟相機（權限或裝置不支援），請改用貼出題碼。'; return; }
+  document.getElementById('sc-video-wrap').classList.remove('hidden');
+  const video = document.getElementById('sc-video');
+  video.srcObject = _scanStream;
+  await video.play();
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  const tick = () => {
+    if (!_scanStream) return;
+    if (video.readyState === video.HAVE_ENOUGH_DATA) {
+      canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const found = window.jsQR(img.data, img.width, img.height);
+      if (found && found.data) { stopScan(); return scanLoadCode(found.data); }
+    }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+function stopScan() {
+  if (_scanStream) { _scanStream.getTracks().forEach((t) => t.stop()); _scanStream = null; }
+  const w = document.getElementById('sc-video-wrap'); if (w) w.classList.add('hidden');
+}
+
+async function scanLoadCode(code) {
+  const status = document.getElementById('sc-status');
+  let ids;
+  try { ids = decodeCode(code); } catch (e) { if (status) status.textContent = '⚠️ ' + e.message; else alert(e.message); return; }
+  if (!ids.length) { if (status) status.textContent = '⚠️ 這個碼沒有可載入的字。'; return; }
+  const g = await createManualGroup(todayStr(), '家長出的題', ids);
+  enterGroupStudy(g);
 }
 
 // ============================================================
@@ -2983,6 +3329,12 @@ async function renderSettings() {
         ${[1, 2, 3, 4, 5, 6].map((l) =>
           `<label class="chk"><input type="checkbox" class="lv" value="${l}" ${s.levels.includes(l) ? 'checked' : ''}/> Lv${l}</label>`).join('')}
       </div>
+      <div>每日單字來源：</div>
+      <div class="src-opts">
+        <label class="chk"><input type="radio" name="dsrc" value="auto" ${(s.dailySource || 'auto') === 'auto' ? 'checked' : ''}/> ① 系統自動排（預設）</label>
+        <label class="chk"><input type="radio" name="dsrc" value="parent" ${s.dailySource === 'parent' ? 'checked' : ''}/> ② 家長排程（掃碼／家長出題為準）</label>
+      </div>
+      <p class="hint-area">選「家長排程」後，手機不再自動排每日新字，改以家長排定或掃入的為準，避免兩套打架。</p>
       <button class="btn primary" id="set-save">儲存設定</button>
       <p id="set-status" class="hint-area"></p>
     </div>
@@ -3079,7 +3431,8 @@ async function renderSettings() {
     let limit = parseInt(document.getElementById('set-limit').value, 10) || s.dailyNewLimit;
     limit = Math.max(10, Math.min(20, limit)); // 限制 10–20
     const levels = [...document.querySelectorAll('.lv:checked')].map((c) => parseInt(c.value, 10));
-    p.settings = { ...s, dailyNewLimit: limit, levels: levels.length ? levels : [4, 5, 6] };
+    const dailySource = (document.querySelector('input[name="dsrc"]:checked') || {}).value || 'auto';
+    p.settings = { ...s, dailyNewLimit: limit, levels: levels.length ? levels : [4, 5, 6], dailySource };
     await putProfile(p);
     State.profile = p;
     State.session = null;
