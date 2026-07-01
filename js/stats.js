@@ -3,6 +3,7 @@
 import {
   getRecordsByProfile, getDailyLogsByProfile, getDailyLog,
   putRecords, putDailyLog, clearProfileData, getProfile, putProfile,
+  getCustomBooksByProfile, putCustomBook, getTestResultsByProfile, putTestResult,
 } from './db.js';
 import { displayCategory } from './srs.js';
 import { todayStr, daysBetween } from './util.js';
@@ -86,13 +87,17 @@ export async function exportProfile(profileId) {
   const profile = await getProfile(profileId);
   const records = await getRecordsByProfile(profileId);
   const dailyLogs = await getDailyLogsByProfile(profileId);
+  const customBooks = await getCustomBooksByProfile(profileId);
+  const testResults = await getTestResultsByProfile(profileId);
   return {
     app: 'vocab-memory',
-    version: 1,
+    version: 2,
     exportedAt: new Date().toISOString(),
     profile,
     records,
     dailyLogs,
+    customBooks,
+    testResults,
   };
 }
 
@@ -120,6 +125,13 @@ export async function importProfile(data, targetProfileId = null) {
 
   for (const l of data.dailyLogs || []) {
     await putDailyLog({ ...l, profileId: pid, key: `${pid}::${l.date}` });
+  }
+  // v2 備份：自訂單字本 + 測驗成績（舊備份沒有這些欄位則略過）
+  for (const bk of data.customBooks || []) {
+    await putCustomBook({ ...bk, profileId: pid });
+  }
+  for (const tr of data.testResults || []) {
+    await putTestResult({ ...tr, profileId: pid });
   }
   return recs.length;
 }

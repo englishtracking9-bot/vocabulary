@@ -2,7 +2,7 @@
 // 規格：禁用 localStorage 存學習進度，一律存 IndexedDB。
 
 const DB_NAME = 'vocabApp';
-const DB_VERSION = 5;
+const DB_VERSION = 6;
 
 let _dbPromise = null;
 
@@ -64,11 +64,17 @@ export function openDB() {
         s.createIndex('by_profile_date', ['profileId', 'date'], { unique: false });
       }
 
-      // K-2 測驗成績：{id, profileId, type:'weekly'|'monthly'|'custom', name, date, total, correct, scorePct, wrong[], createdAt}
+      // K-2 測驗成績：{id, profileId, type:'weekly'|'monthly'|'custom'|'book', name, date, total, correct, scorePct, wrong[], createdAt}
       if (!db.objectStoreNames.contains('testResults')) {
         const s = db.createObjectStore('testResults', { keyPath: 'id' });
         s.createIndex('by_profile', 'profileId', { unique: false });
         s.createIndex('by_profile_type', ['profileId', 'type'], { unique: false });
+      }
+
+      // L-2 自訂單字本：{id, profileId, name, createdAt, updatedAt, entries:[{id, prompt, answer, example}]}
+      if (!db.objectStoreNames.contains('customBooks')) {
+        const s = db.createObjectStore('customBooks', { keyPath: 'id' });
+        s.createIndex('by_profile', 'profileId', { unique: false });
       }
     };
 
@@ -191,15 +197,21 @@ export function putRecords(recs) {
   });
 }
 
-// 刪除某身分全部紀錄與每日紀錄（匯入覆蓋用）
+// 刪除某身分全部紀錄與每日紀錄、自訂單字本、測驗成績（匯入覆蓋用）
 export async function clearProfileData(profileId) {
   const recs = await getRecordsByProfile(profileId);
   const logs = await getDailyLogsByProfile(profileId);
-  return tx(['records', 'dailyLog'], 'readwrite', (t) => {
+  const books = await getCustomBooksByProfile(profileId);
+  const results = await getTestResultsByProfile(profileId);
+  return tx(['records', 'dailyLog', 'customBooks', 'testResults'], 'readwrite', (t) => {
     const rs = t.objectStore('records');
     recs.forEach((r) => rs.delete(r.key));
     const ls = t.objectStore('dailyLog');
     logs.forEach((l) => ls.delete(l.key));
+    const bs = t.objectStore('customBooks');
+    books.forEach((b) => bs.delete(b.id));
+    const ts = t.objectStore('testResults');
+    results.forEach((r) => ts.delete(r.id));
   });
 }
 
@@ -331,4 +343,24 @@ export async function getTestResultsByType(profileId, type) {
   const db = await openDB();
   const idx = db.transaction('testResults').objectStore('testResults').index('by_profile_type');
   return reqPromise(idx.getAll(IDBKeyRange.only([profileId, type])));
+}
+
+// ---------- customBooks（L-2 自訂單字本） ----------
+export function putCustomBook(book) {
+  return tx('customBooks', 'readwrite', (t) => { t.objectStore('customBooks').put(book); });
+}
+
+export async function getCustomBook(id) {
+  const db = await openDB();
+  return reqPromise(db.transaction('customBooks').objectStore('customBooks').get(id));
+}
+
+export async function getCustomBooksByProfile(profileId) {
+  const db = await openDB();
+  const idx = db.transaction('customBooks').objectStore('customBooks').index('by_profile');
+  return reqPromise(idx.getAll(IDBKeyRange.only(profileId)));
+}
+
+export function deleteCustomBook(id) {
+  return tx('customBooks', 'readwrite', (t) => { t.objectStore('customBooks').delete(id); });
 }

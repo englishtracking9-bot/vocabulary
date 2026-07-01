@@ -104,6 +104,13 @@ body {
 .section-daily { border-left: 4px solid var(--primary); }
 .section-test { border-left: 4px solid var(--ok); }
 
+/* L-2 自訂單字本 */
+.cb-form { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.cb-entry { display: block; }
+.cb-entry .btn-row { margin-top: 8px; }
+.btn.sm { padding: 6px 12px; font-size: 13px; min-height: 0; flex: 0 0 auto; }
+.cb-card .grp-head, .grp-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+
 /* L-1 更多頁 / 家長專區 */
 .more-row { cursor: pointer; display: flex; align-items: center; gap: 10px; }
 .more-row .row-main { flex-direction: column; align-items: flex-start; gap: 2px; flex: 1; }

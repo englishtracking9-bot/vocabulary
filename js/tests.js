@@ -60,11 +60,11 @@ export async function saveTestResult({ profileId, type, name, total, correct, wr
   return result;
 }
 
-// 取同類測驗的「上一次」成績（排除剛存的這筆 id）
-export async function previousResult(profileId, type, excludeId) {
+// 取同類測驗的「上一次」成績（排除剛存的這筆 id）。可選 name：同名才算同一份（單字本用）。
+export async function previousResult(profileId, type, excludeId, name = null) {
   const all = await getTestResultsByType(profileId, type);
   return all
-    .filter((r) => r.id !== excludeId)
+    .filter((r) => r.id !== excludeId && (name == null || r.name === name))
     .sort((a, b) => b.createdAt - a.createdAt)[0] || null;
 }
 
@@ -74,4 +74,4 @@ export async function allResults(profileId) {
   return all.sort((a, b) => b.createdAt - a.createdAt);
 }
 
-export const TYPE_LABEL = { weekly: '📅 週測', monthly: '🗓 月測', custom: '🎯 自訂測驗' };
+export const TYPE_LABEL = { weekly: '📅 週測', monthly: '🗓 月測', custom: '🎯 自訂測驗', book: '📓 單字本測驗' };
