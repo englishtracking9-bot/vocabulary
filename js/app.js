@@ -152,14 +152,21 @@ const ROUTES = {
   '#manual': renderManualBuilder,
   '#roots': renderRoots,
   '#report': renderReport,
+  '#more': renderMore,
+  '#parent': renderParentZone,
+  '#custombook': renderCustomBooks,
   '#settings': renderSettings,
 };
+
+// 不在底部導覽的子頁，歸屬「更多」分頁高亮
+const MORE_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#settings', '#more', '#parent', '#manual', '#custombook']);
 
 function route() {
   const hash = location.hash || '#home';
   const fn = ROUTES[hash] || renderHome;
+  const navHash = MORE_SUBPAGES.has(hash) ? '#more' : hash;
   document.querySelectorAll('.nav-btn').forEach((b) => {
-    b.classList.toggle('active', b.dataset.route === hash);
+    b.classList.toggle('active', b.dataset.route === navHash);
   });
   fn();
 }
@@ -201,16 +208,18 @@ async function renderHome() {
       <p class="hint-area">點上面任一格看明細</p>
     </div>
     <div class="card home-actions">
-      <p class="hint-area">想去哪就點哪，今天慢慢來 😊</p>
+      <p class="hint-area">接下來做什麼？一步到位 😊</p>
       <button class="btn primary big-copy" id="h-group">▶️ ${esc(groupLabel)}</button>
-      <button class="btn big-copy" id="h-review">🔁 今天該複習的到期字（${dueCount}）</button>
+      <button class="btn big-copy" id="h-review">🔁 複習今天到期的字（${dueCount}）</button>
+      <button class="btn big-copy" id="h-tests">🎯 週測／月測（測驗中心）</button>
       <div class="btn-row">
         <button class="btn" id="h-lookup">🔎 查單字</button>
         <button class="btn" id="h-mywords">📋 我的單字</button>
       </div>
     </div>`;
   document.getElementById('h-group').onclick = () => openDay(today);
-  document.getElementById('h-review').onclick = () => go('#quiz');
+  document.getElementById('h-review').onclick = () => { State.pendingReview = true; go('#quiz'); };
+  document.getElementById('h-tests').onclick = () => go('#quiz');
   document.getElementById('h-lookup').onclick = () => go('#lookup');
   document.getElementById('h-mywords').onclick = () => go('#mywords');
   document.querySelectorAll('.stat-cell.tap').forEach((c) => { c.onclick = () => openStatDetail(c.dataset.stat); });
@@ -283,6 +292,8 @@ async function openStatDetail(kind) {
 // 測驗中心：上半＝平時每日到期複習（SM-2 主力）；下半＝周測/月測/自訂測驗（檢驗查漏）
 // ============================================================
 async function renderQuiz() {
+  // 從首頁「複習今天到期的字」直接進入複習
+  if (State.pendingReview) { State.pendingReview = false; return startReview(); }
   // 進行中的周測/月測/自訂測驗：繼續顯示測驗題
   if (TestRun.active) return testShow();
   // 進行中的複習回合（含「立即測這個字」）：繼續顯示題目，不回到中心頁
@@ -2529,6 +2540,116 @@ function shiftDate(dateStr, delta) {
 // ============================================================
 // 設定
 // ============================================================
+// ============================================================
+// L-1「更多」頁：把次要／管理／家長功能集中，清楚分區、好找
+// ============================================================
+// 產生一列可點的功能入口
+function moreRow(icon, title, desc, onClick, badge = '') {
+  const id = 'mr-' + Math.random().toString(36).slice(2, 8);
+  setTimeout(() => { const el = document.getElementById(id); if (el) el.onclick = onClick; }, 0);
+  return `<div class="row tap more-row" id="${id}"><div class="row-main">
+      <span class="row-word">${icon} ${esc(title)}${badge ? ` <span class="tag-custom sm">${badge}</span>` : ''}</span>
+      <span class="row-zh">${esc(desc)}</span></div>
+      <div class="row-meta"><span>›</span></div></div>`;
+}
+
+function renderMore() {
+  $main().innerHTML = `
+    <div class="card">
+      <h2>⋯ 更多</h2>
+      <p class="hint-area">日常學習在下方導覽列（首頁／學習／測驗／我的字）。這裡放工具、管理與家長功能。</p>
+    </div>
+
+    <div class="card">
+      <h3>🧰 學習工具</h3>
+      <div class="detail-list">
+        ${moreRow('🔎', '查單字', '查 6000 字或上網查新字／片語，自動加入待學', () => go('#lookup'))}
+        ${moreRow('🌱', '字根字首', '用字根字首規律成組記憶', () => go('#roots'))}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🗂 我的內容</h3>
+      <div class="detail-list">
+        ${moreRow('🏷', '群組管理', '把 6000 字貼標籤分組（如「二次段考」），可整組測', () => go('#groups'))}
+        ${moreRow('📓', '自訂單字本', '完全自己打的內容（片語、成語、講義），可轉測驗', () => go('#custombook'))}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📊 記錄</h3>
+      <div class="detail-list">
+        ${moreRow('📊', '每日報告', '複製當天學習成果傳給家長（LINE）', () => go('#report'))}
+      </div>
+    </div>
+
+    <div class="card parent-entry">
+      <h3>👨‍👩‍👧 家長專區</h3>
+      <p class="hint-area">在「家長電腦」排整月進度、出題、列印講義與出題碼／QR。</p>
+      <div class="detail-list">
+        ${moreRow('🖨️', '家長出題／列印', '月排程、出題碼（QR）、背誦版／考卷版列印', () => go('#parent'))}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚙️ 系統</h3>
+      <div class="detail-list">
+        ${moreRow('👤', '身分與設定', '切換／新增使用者、每日字數、級別、外觀', () => go('#settings'))}
+        ${moreRow('💾', '匯出／匯入備份', '換手機或保險用（在設定頁底部）', () => go('#settings'))}
+        ${moreRow('⏰', '每日練習提醒', '設定提醒時間、加入手機行事曆（在設定頁底部）', () => go('#settings'))}
+      </div>
+    </div>`;
+}
+
+// 裝置分工白話說明（家長專區與相關頁共用）
+function deviceRoleNoteHTML() {
+  return `<div class="card role-note">
+      <h3>📱💻 這套系統怎麼分工？</h3>
+      <p>這是純本機 App、<b>沒有雲端</b>。兩台裝置各做各的：</p>
+      <ul class="role-list">
+        <li><b>家長電腦</b>：排整月進度、出題、列印，產生每天的<b>出題碼／QR</b>。這些排程與題目<b>只存在這台電腦</b>。</li>
+        <li><b>孩子手機</b>：掃 QR／貼出題碼載入「要考哪些字」，作答、記錄、複習、週月測都存在手機。</li>
+      </ul>
+      <p class="hint-area">兩邊只用出題碼單向傳「要考哪些字」，<b>不會傳成績</b>。要看成績，請用孩子手機「每日報告 → 複製」傳給家長。</p>
+    </div>`;
+}
+
+// ============================================================
+// L-1 家長專區（L-3 會擴充：月排程 / QR / 列印）
+// ============================================================
+function renderParentZone() {
+  $main().innerHTML = `
+    <div class="card">
+      <h2>👨‍👩‍👧 家長專區</h2>
+      <p class="hint-area">給家長在電腦上排題、出題、列印。孩子的作答與成績都在手機端。</p>
+    </div>
+    ${deviceRoleNoteHTML()}
+    <div class="card">
+      <h3>✋ 手動出題（排字到某天）</h3>
+      <p class="hint-area">自選一批單字排到日曆某天，孩子當天會多一個「手動單字組」。</p>
+      <button class="btn primary" id="pz-manual">開啟手動出題</button>
+    </div>
+    <div class="card">
+      <h3>🗓 月排程 · 🖨️ 列印 · 🔳 出題碼（QR）</h3>
+      <p class="hint-area">整月自動排字（依字根記憶法分組、跨日不重複）、背誦版／考卷版列印、每天一張出題碼 QR。</p>
+      <p class="role-soon">🚧 這部分正在建置中（L-3），完成後會出現在這裡。</p>
+    </div>`;
+  document.getElementById('pz-manual').onclick = () => go('#manual');
+}
+
+// ============================================================
+// 自訂單字本（L-2 會完整實作；此為入口佔位）
+// ============================================================
+function renderCustomBooks() {
+  $main().innerHTML = `
+    <div class="card">
+      <div class="daily-top"><button class="btn" id="cb-back">‹ 更多</button><b>📓 自訂單字本</b></div>
+      <p class="hint-area">完全自己打內容的單字本（片語、成語、講義），可轉測驗。</p>
+      <p class="role-soon">🚧 建置中（L-2），完成後可在這裡新增自己的單字本。</p>
+    </div>`;
+  document.getElementById('cb-back').onclick = () => go('#more');
+}
+
 async function renderSettings() {
   const p = State.profile;
   const s = p.settings;
