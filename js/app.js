@@ -33,6 +33,9 @@ import {
   scheduleForegroundReminder, registerPeriodicReminder, syncReminderMeta, downloadICS,
 } from './notify.js';
 
+// 顯示用版本（與 service-worker.js 的 APP_VERSION 同步更新；讓使用者能確認手機拿到的是哪一版）
+const APP_UI_VERSION = '2026-07-02-M1-scanfix';
+
 // ---------- 預設身分 ----------
 const DEFAULT_PROFILES = [
   { id: 'senior1', name: '升高一', settings: { dailyNewLimit: 20, levels: [4, 5, 6], priorityLevels: [4, 5, 6], reminderTime: '19:30', reminderOn: false } },
@@ -345,16 +348,17 @@ async function renderTestHub() {
     </div>
 
     <div class="card section-parent">
-      <h3>📷 家長出的題</h3>
-      <p class="hint-area">掃描家長電腦上的出題碼／QR，載入今天要考的字。</p>
-      <button class="btn" id="test-scan">📷 掃描 / 貼出題碼</button>
+      <h3>📷 家長出的題（掃 QR）</h3>
+      <p class="hint-area">掃描家長電腦／紙本上的出題碼 QR，或貼上出題碼，載入今天要考的字。</p>
+      <button class="btn primary big-copy" id="test-scan">📷 掃 QR ／ 貼出題碼</button>
     </div>
 
     <div class="card">
       <div class="mw-head"><h3>📈 最近成績</h3>
         ${results.length > 5 ? '<button class="btn" id="test-allhist">看全部</button>' : ''}</div>
       <div class="detail-list">${histRows}</div>
-    </div>`;
+    </div>
+    <p class="ver-tag">版本 ${APP_UI_VERSION}</p>`;
 
   document.getElementById('start-review').onclick = startReview;
   document.getElementById('test-weekly').onclick = () => openTestSetup('weekly');
@@ -2627,7 +2631,8 @@ function renderMore() {
         ${moreRow('💾', '匯出／匯入備份', '換手機或保險用（在設定頁底部）', () => go('#settings'))}
         ${moreRow('⏰', '每日練習提醒', '設定提醒時間、加入手機行事曆（在設定頁底部）', () => go('#settings'))}
       </div>
-    </div>`;
+    </div>
+    <p class="ver-tag">版本 ${APP_UI_VERSION}</p>`;
 }
 
 // 裝置分工白話說明（家長專區與相關頁共用）
@@ -3531,7 +3536,22 @@ function registerServiceWorker() {
   let refreshing = false;
 
   navigator.serviceWorker.register('./service-worker.js')
-    .then((reg) => { reg.update(); })
+    .then((reg) => {
+      reg.update();
+      // iOS/Android PWA 常從記憶體恢復而不重新載入頁面 → 回到前景時主動檢查更新
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update().catch(() => {});
+      });
+      // 若新版 SW 已下載完在等待（舊版卡住的情況），直接請它接管 → 觸發 controllerchange 重整
+      if (reg.waiting) reg.waiting.postMessage('skipWaiting');
+      reg.addEventListener('updatefound', () => {
+        const nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', () => {
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) nw.postMessage('skipWaiting');
+        });
+      });
+    })
     .catch((e) => console.warn('SW 註冊失敗', e));
 
   // 當新版 SW 接管時自動重整一次（首次安裝不重整，避免無謂刷新）

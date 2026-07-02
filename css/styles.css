@@ -106,6 +106,7 @@ body {
 
 /* L-3 家長月排程 / 出題碼 / 掃描 */
 .section-parent { border-left: 4px solid #a855f7; }
+.ver-tag { text-align: center; color: var(--muted); font-size: 11px; margin: 4px 0 10px; }
 .src-opts { display: flex; flex-direction: column; gap: 6px; margin: 6px 0; }
 .sched-day .sched-group { margin: 8px 0; }
 .sched-memo { font-size: 13px; color: var(--primary-d); font-weight: 600; margin-bottom: 4px; }

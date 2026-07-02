@@ -4,7 +4,7 @@
 // ★ 改版方式：每次 push 新版前，把下面的 APP_VERSION 改成新值即可。
 //   （cache 名稱會跟著變 → 舊快取自動清除 → 使用者連網開啟會拿到新版程式與新版 vocab.json）
 
-const APP_VERSION = '2026-06-11-L3-parent';
+const APP_VERSION = '2026-07-02-M1-scanfix'; // ★ 同步更新 js/app.js 的 APP_UI_VERSION
 const CACHE = 'vocab-' + APP_VERSION;
 
 // 預先快取的核心檔案（相對於 SW 所在目錄）
@@ -41,9 +41,14 @@ const PRECACHE = [
 ];
 
 self.addEventListener('install', (e) => {
+  // 逐檔預快取：任何一個檔案失敗都不可阻擋升級（原本 addAll 一敗全敗 → skipWaiting 不執行 → 新版卡在 waiting，手機永遠拿不到新版）
   e.waitUntil(
-    caches.open(CACHE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting())
-      .catch((err) => console.warn('預快取部分失敗（可忽略）', err))
+    caches.open(CACHE)
+      .then((c) => Promise.all(PRECACHE.map((u) =>
+        c.add(u).catch((err) => console.warn('預快取失敗（可忽略）', u, err))
+      )))
+      .catch((err) => console.warn('預快取整批失敗（可忽略）', err))
+      .then(() => self.skipWaiting())
   );
 });
 
