@@ -117,12 +117,15 @@ body {
 
 /* 列印：畫面上隱藏，列印時只顯示 print-root */
 #print-root { display: none; }
+@page { size: A4; margin: 10mm; }
 @media print {
   .app-header, .bottom-nav, #modal, #main { display: none !important; }
   #print-root { display: block !important; }
-  body { background: #fff; color: #000; }
+  body { background: #fff; color: #000; margin: 0; }
 }
 .pr-page { page-break-after: always; padding: 8px 4px; }
+/* 最後一頁不再強制分頁 → 不會多印出空白頁 */
+#print-root .pr-page:last-child { page-break-after: auto; }
 .pr-head { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 8px; }
 .pr-head h2 { font-size: 18px; margin: 0; }
 .pr-qr { text-align: center; }
@@ -139,8 +142,46 @@ body {
 .pr-table { width: 100%; border-collapse: collapse; }
 .pr-table th, .pr-table td { border: 1px solid #333; padding: 6px 8px; font-size: 14px; text-align: left; }
 .pr-blank { width: 40%; }
-.pr-answers { page-break-before: always; }
+/* 答案頁靠前一頁的 page-break-after 換頁即可（避免 before+after 疊加印出空白頁） */
+.pr-answers { page-break-before: auto; }
 .pr-answers ol { columns: 2; }
+
+/* ---- 單日列印：緊湊等級（目標 2 頁 A4、可單張雙面） ---- */
+/* 等級1（≤12字）：略縮 */
+.pr-compact-1 .pr-head h2 { font-size: 16px; }
+.pr-compact-1 .pr-w-main { font-size: 13.5px; }
+.pr-compact-1 .pr-root, .pr-compact-1 .pr-ex { font-size: 12px; }
+.pr-compact-1 .pr-group { padding: 6px; margin-bottom: 6px; }
+.pr-compact-1 .pr-word { margin: 4px 0; }
+/* 等級2（13–20字）：緊湊，例句與翻譯同行 */
+.pr-compact-2 .pr-head h2 { font-size: 15px; }
+.pr-compact-2 .pr-w-main { font-size: 12.5px; }
+.pr-compact-2 .pr-root, .pr-compact-2 .pr-ex { font-size: 11px; }
+.pr-compact-2 .pr-group { padding: 5px 6px; margin-bottom: 5px; border-radius: 5px; }
+.pr-compact-2 .pr-memo { padding: 2px 6px; margin-bottom: 3px; font-size: 12px; }
+.pr-compact-2 .pr-word { margin: 3px 0; padding-left: 5px; }
+.pr-compact-2 .pr-ex br { display: none; }
+.pr-compact-2 .pr-ex-zh::before { content: '　／　'; }
+/* 等級3（21字以上）：最緊湊 */
+.pr-compact-3 .pr-head h2 { font-size: 14px; }
+.pr-compact-3 .pr-w-main { font-size: 11.5px; }
+.pr-compact-3 .pr-root, .pr-compact-3 .pr-ex { font-size: 10px; }
+.pr-compact-3 .pr-group { padding: 4px 5px; margin-bottom: 4px; border-radius: 4px; }
+.pr-compact-3 .pr-memo { padding: 2px 5px; margin-bottom: 2px; font-size: 11px; }
+.pr-compact-3 .pr-word { margin: 2px 0; padding-left: 4px; border-left-width: 2px; }
+/* 最緊湊時允許組內跨頁，避免整組被推到下一頁留下大片空白 */
+.pr-compact-3 .pr-group { break-inside: auto; }
+.pr-compact-3 .pr-ex br { display: none; }
+.pr-compact-3 .pr-ex-zh::before { content: '　／　'; }
+/* 單日：QR 固定在第 1 頁右上、縮小；表頭更省空間 */
+.pr-single .pr-qr .qr-box svg { width: 72px; height: 72px; }
+.pr-single .pr-qr .qr-box { margin: 0; }
+.pr-single .pr-code { font-size: 6px; max-width: 90px; }
+.pr-single .pr-head { padding-bottom: 4px; margin-bottom: 5px; }
+/* 單日考卷版：表格也跟著縮 */
+.pr-compact-2 .pr-table th, .pr-compact-2 .pr-table td { padding: 4px 6px; font-size: 12px; }
+.pr-compact-3 .pr-table th, .pr-compact-3 .pr-table td { padding: 3px 5px; font-size: 11px; }
+.pr-single .pr-answers ol { columns: 2; font-size: 12px; }
 
 /* L-2 自訂單字本 */
 .cb-form { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }

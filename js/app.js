@@ -34,7 +34,7 @@ import {
 } from './notify.js';
 
 // 顯示用版本（與 service-worker.js 的 APP_VERSION 同步更新；讓使用者能確認手機拿到的是哪一版）
-const APP_UI_VERSION = '2026-07-02-M1-scanfix';
+const APP_UI_VERSION = '2026-07-02-M2-print2p';
 
 // ---------- 預設身分 ----------
 const DEFAULT_PROFILES = [
@@ -2888,6 +2888,13 @@ function doPrint(mode, days) {
   if (old) old.remove();
   const root = document.createElement('div');
   root.id = 'print-root';
+  // 單日列印：控制在 2 頁 A4 內（一張紙正反面）。依字數自動選緊湊等級；超過 30 字才提醒減量。
+  if (days.length === 1) {
+    const n = days[0].wordIds.length;
+    const tier = n <= 12 ? 1 : n <= 20 ? 2 : 3;
+    root.classList.add('pr-single', `pr-compact-${tier}`);
+    if (n > 30) alert(`提醒：這天有 ${n} 字，即使最緊湊的版面也可能超過 2 頁。建議把每日字數降到 30 以下再列印。`);
+  }
   root.innerHTML = days.map((day) => printDayHTML(mode, day)).join('');
   if (mode === 'quiz') {
     root.innerHTML += `<div class="pr-page pr-answers"><h2>✅ 答案頁</h2>${days.map((day) => `
