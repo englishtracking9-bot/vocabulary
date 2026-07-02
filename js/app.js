@@ -15,7 +15,7 @@ import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard
 import { getStats, exportProfile, importProfile } from './stats.js';
 import { displayCategory, statusBadge, computeStatus, isMasteredFamily, STATUS_LABEL, STATUS_DESC, dayStart, DAY_MS } from './srs.js';
 import { loadGroupsIndex, loadRoots, allRoots, membersOfAffix, formDailyGroup, familyOf, rootFamilyOf, groupsForWords } from './grouping.js';
-import { encodeWordIds, decodeCode } from './paircode.js';
+import { encodeWordIds, decodeCode, encodableIds } from './paircode.js';
 import { buildMonthSchedule, regenerateDay, regroupDay, KIND_LABEL } from './schedule.js';
 import {
   getTags, createTag, renameTag, deleteTag, setWordTags, addWordToTag, addWordsToTag,
@@ -34,7 +34,7 @@ import {
 } from './notify.js';
 
 // 顯示用版本（與 service-worker.js 的 APP_VERSION 同步更新；讓使用者能確認手機拿到的是哪一版）
-const APP_UI_VERSION = '2026-07-02-M2-print2p';
+const APP_UI_VERSION = '2026-07-02-M3-qtypes';
 
 // ---------- 預設身分 ----------
 const DEFAULT_PROFILES = [
@@ -1264,21 +1264,25 @@ async function renderDayList() {
     </div>`;
   }).join('');
 
+  // 題型文案跟著 plan.testTypes（出題碼可指定「只考拼字」）
+  const tt = plan.testTypes || { spelling: true, sentence: true };
+  const flowText = tt.sentence ? '拼字＋造句' : '拼字';
+
   let actionBtn;
   if (allDone) {
     actionBtn = `<button class="btn primary big-copy" id="day-start">🔁 重新練習這組</button>`;
   } else if (isPast) {
-    actionBtn = `<button class="btn primary big-copy" id="day-start">繼續測驗（先讀→拼字＋造句）</button>`;
+    actionBtn = `<button class="btn primary big-copy" id="day-start">繼續測驗（先讀→${flowText}）</button>`;
   } else {
-    const label = plan.readDone ? '▶️ 繼續測驗' : '▶️ 開始（先讀 → 拼字 ＋ 造句）';
+    const label = plan.readDone ? '▶️ 繼續測驗' : `▶️ 開始（先讀 → ${flowText}）`;
     actionBtn = `<button class="btn primary big-copy" id="day-start">${label}</button>`;
   }
 
   const namePart = isGroup ? esc(plan.groupName)
     : isManual ? `✋ ${esc(plan.name)}` : prettyDate(Daily.date);
   const title = `${namePart}・單字清單（${total} 字）`;
-  const memoText = isGroup ? '群組測驗：先讀一遍，再拼字＋造句'
-    : isManual ? `手動單字組（${prettyDate(plan.date)}）：先讀一遍，再拼字＋造句`
+  const memoText = isGroup ? `群組測驗：先讀一遍，再${flowText}`
+    : isManual ? `手動單字組（${prettyDate(plan.date)}）：先讀一遍，再${flowText}`
       : '本組共同記憶點：' + esc(plan.group.memo);
   $main().innerHTML = `
     <div class="card memo-card">
@@ -1765,13 +1769,14 @@ async function openGroupPicker(wordIds, mode, onDone) {
 // ============================================================
 // 手動出題（把自選單字排到某一天）
 // ============================================================
-async function createManualGroup(date, name, wordIds) {
+async function createManualGroup(date, name, wordIds, testTypes = null) {
   const id = 'mg-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6);
   const g = {
     id, profileId: State.profile.id, date, name: name.trim() || '手動單字組', manual: true,
     group: { wordIds: [...new Set(wordIds)], memo: '', memos: [], label: name, groupKey: null },
     readDone: false, progress: {}, createdAt: Date.now(), updatedAt: Date.now(),
   };
+  if (testTypes) g.testTypes = testTypes; // 題型（拼字／造句）由出題碼指定；未指定＝兩者都測
   await putManualGroup(g);
   return g;
 }
@@ -2836,27 +2841,50 @@ function openAddWordToDay(idx) {
   document.getElementById('aw-close').onclick = () => { m.classList.remove('show'); renderScheduleView(); };
 }
 
+// 某天的題型設定（家長選；出題碼與紙本 QR 都用同一個）
+function dayTypes(day) {
+  return day.qtype === 'spelling' ? { spelling: true, sentence: false } : { spelling: true, sentence: true };
+}
+
 function openDayCode(idx) {
   const day = Parent.sched.days[idx];
-  const code = encodeWordIds(day.wordIds);
+  const skipped = day.wordIds.length - encodableIds(day.wordIds).length;
   const m = document.getElementById('modal');
-  m.innerHTML = `
-    <div class="modal-box center">
-      <h3>🔳 ${prettyDate(day.date)} 出題碼</h3>
-      <p class="hint-area">孩子手機：測驗 → 📷 掃描家長出的題 → 掃這個 QR 或貼下面的碼。</p>
-      ${qrSvg(code)}
-      <textarea class="answer-input code-box" readonly rows="2">${esc(code)}</textarea>
-      <div class="btn-row">
-        <button class="btn primary" id="dc-copy">複製出題碼</button>
-        <button class="btn" id="dc-close">關閉</button>
-      </div>
-    </div>`;
-  m.classList.add('show');
-  document.getElementById('dc-copy').onclick = async () => {
-    const ok = await copyToClipboard(code);
-    document.getElementById('dc-copy').textContent = ok ? '✅ 已複製' : '請長按上方文字複製';
+
+  const draw = () => {
+    const code = encodeWordIds(day.wordIds, dayTypes(day));
+    m.innerHTML = `
+      <div class="modal-box center">
+        <h3>🔳 ${prettyDate(day.date)} 出題碼</h3>
+        <p class="hint-area">孩子手機：測驗 → 📷 家長出的題 → 掃這個 QR 或貼下面的碼。</p>
+        <div class="src-opts" style="text-align:left">
+          <label class="chk"><input type="radio" name="dq" value="both" ${day.qtype !== 'spelling' ? 'checked' : ''}/> 題型：拼字＋造句（有例句的字才考造句）</label>
+          <label class="chk"><input type="radio" name="dq" value="spelling" ${day.qtype === 'spelling' ? 'checked' : ''}/> 題型：只考拼字</label>
+        </div>
+        ${skipped > 0 ? `<p class="hint-area">⚠️ 有 ${skipped} 個「自訂字」無法放入出題碼（自訂字只存在這台裝置），孩子手機不會出現這幾個字。</p>` : ''}
+        ${qrSvg(code)}
+        <textarea class="answer-input code-box" readonly rows="2">${esc(code)}</textarea>
+        <div class="btn-row">
+          <button class="btn primary" id="dc-copy">複製出題碼</button>
+          <button class="btn" id="dc-close">關閉</button>
+        </div>
+      </div>`;
+    m.querySelectorAll('input[name="dq"]').forEach((r) => {
+      r.onchange = async () => {
+        day.qtype = m.querySelector('input[name="dq"]:checked').value;
+        await saveParentSchedule();
+        draw(); // 換題型 → 重新產碼與 QR
+      };
+    });
+    document.getElementById('dc-copy').onclick = async () => {
+      const ok = await copyToClipboard(code);
+      document.getElementById('dc-copy').textContent = ok ? '✅ 已複製' : '請長按上方文字複製';
+    };
+    document.getElementById('dc-close').onclick = () => m.classList.remove('show');
   };
-  document.getElementById('dc-close').onclick = () => m.classList.remove('show');
+
+  draw();
+  m.classList.add('show');
 }
 
 // ---- 列印（背誦版／考卷版；A4；可含 QR 與字根記憶輔助） ----
@@ -2909,9 +2937,12 @@ function doPrint(mode, days) {
 }
 
 function printDayHTML(mode, day) {
-  const code = encodeWordIds(day.wordIds);
+  // 紙本 QR 與螢幕出題碼用同一份「題型」設定 → 手機掃紙本或螢幕，題型一致
+  const types = dayTypes(day);
+  const code = encodeWordIds(day.wordIds, types);
   const qr = qrSvg(code, 3);
-  const head = `<div class="pr-head"><h2>${prettyDate(day.date)}　${KIND_LABEL[day.kind] || ''}（${day.wordIds.length} 字）</h2>
+  const typeLabel = types.sentence ? '拼字＋造句' : '只考拼字';
+  const head = `<div class="pr-head"><h2>${prettyDate(day.date)}　${KIND_LABEL[day.kind] || ''}（${day.wordIds.length} 字・${typeLabel}）</h2>
     <div class="pr-qr">${qr}<div class="pr-code">${esc(code)}</div></div></div>`;
 
   if (mode === 'quiz') {
@@ -2994,10 +3025,11 @@ function stopScan() {
 
 async function scanLoadCode(code) {
   const status = document.getElementById('sc-status');
-  let ids;
-  try { ids = decodeCode(code); } catch (e) { if (status) status.textContent = '⚠️ ' + e.message; else alert(e.message); return; }
+  let decoded;
+  try { decoded = decodeCode(code); } catch (e) { if (status) status.textContent = '⚠️ ' + e.message; else alert(e.message); return; }
+  const { ids, types } = decoded;
   if (!ids.length) { if (status) status.textContent = '⚠️ 這個碼沒有可載入的字。'; return; }
-  const g = await createManualGroup(todayStr(), '家長出的題', ids);
+  const g = await createManualGroup(todayStr(), '家長出的題', ids, types);
   enterGroupStudy(g);
 }
 
