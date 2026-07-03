@@ -174,6 +174,10 @@ body {
 .pr-compact-3 .pr-ex br { display: none; }
 .pr-compact-3 .pr-ex-zh::before { content: '　／　'; }
 /* 單日：QR 固定在第 1 頁右上、縮小；表頭更省空間 */
+/* 單日一律允許組內跨頁：整組不可跨頁時，放不下的大組會被整組推到第 2 頁，
+   第 1 頁只剩 QR＋大片空白、總頁數變 3 頁 */
+.pr-single .pr-group { break-inside: auto; page-break-inside: auto; }
+.pr-single .pr-memo { break-after: avoid; }
 .pr-single .pr-qr .qr-box svg { width: 72px; height: 72px; }
 .pr-single .pr-qr .qr-box { margin: 0; }
 .pr-single .pr-code { font-size: 6px; max-width: 90px; }
