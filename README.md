@@ -32,6 +32,11 @@ python scripts/build_vocab.py
 - `data/vocab.json`：6008 字（六級全載入；同字同級別重複列已合併）。
 - `build_report.txt`：清理報告（中文空值、括號特例、id 衝突等）。
 
+> ⚠️ **鐵則：`vocab.json` 只能在尾端加字，絕不能中間插入、刪除或重排。**
+> 出題碼／QR（`js/paircode.js`）存的是「字在 vocab.json 裡的位置編號」，
+> 順序一變，所有已印出的紙本 QR 會**默默解出錯的字**（不會報錯）。
+> 重跑本腳本前務必 diff 確認既有字順序完全不變。詳見 `CLAUDE.md`。
+
 > 出題預設優先 Level 4–6，但六級全部可被測驗與統計。
 
 ## 二、本機測試（上線前）

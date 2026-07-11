@@ -24,17 +24,17 @@ import {
 import { compareSentence } from './sentence.js';
 import {
   recentWordIds, levelWordIds, groupWordIds, allMyWordIds, sample,
-  saveTestResult, previousResult, allResults, TYPE_LABEL as TEST_TYPE_LABEL,
+  saveTestResult, previousResult, allResults, TEST_TYPE_LABEL,
 } from './tests.js';
 import { getBadges, detectNewBadges } from './badges.js';
-import { esc, todayStr, prettyDate } from './util.js';
+import { esc, todayStr, prettyDate, shuffle } from './util.js';
 import {
   notifySupported, notifyPermission, requestNotifyPermission, showReminderNow,
   scheduleForegroundReminder, registerPeriodicReminder, syncReminderMeta, downloadICS,
 } from './notify.js';
 
 // 顯示用版本（與 service-worker.js 的 APP_VERSION 同步更新；讓使用者能確認手機拿到的是哪一版）
-const APP_UI_VERSION = '2026-07-03-M2b-printfill';
+const APP_UI_VERSION = '2026-07-11-R1-cleanup';
 
 // ---------- 預設身分 ----------
 const DEFAULT_PROFILES = [
@@ -2336,7 +2336,7 @@ async function markKnown(entry) {
 // 字根（Phase 2 佔位）
 // ============================================================
 const RootsFilter = { type: 'all', q: '' };
-const TYPE_LABEL = { prefix: '字首', root: '字根', suffix: '字尾' };
+const AFFIX_TYPE_LABEL = { prefix: '字首', root: '字根', suffix: '字尾' };
 
 function renderRoots() {
   const roots = allRoots();
@@ -2377,7 +2377,7 @@ function drawRoots() {
     const dash = r.type === 'prefix' ? `${esc(r.affix)}-` : (r.type === 'suffix' ? `-${esc(r.affix)}` : esc(r.affix));
     return `<div class="row" data-affix="${esc(r.affix)}" data-type="${r.type}">
       <div class="row-main">
-        <span class="row-word">${dash} <span class="rt-type">${TYPE_LABEL[r.type]}</span></span>
+        <span class="row-word">${dash} <span class="rt-type">${AFFIX_TYPE_LABEL[r.type]}</span></span>
         <span class="row-zh">${esc(r.meaning)}</span>
       </div>
       <div class="row-meta"><span>${n} 個衍生字</span></div>
@@ -2415,7 +2415,7 @@ async function openRootDetail(affix, type) {
   $main().innerHTML = `
     <div class="card memo-card">
       <div class="daily-top"><button class="btn" id="rt-back">‹ 字根列表</button>
-        <b>${dash}（${TYPE_LABEL[type]}）</b></div>
+        <b>${dash}（${AFFIX_TYPE_LABEL[type]}）</b></div>
       <div class="zh" style="font-size:20px">${esc(r.meaning)}</div>
       ${r.note ? `<div class="memo">💡 聯想：${esc(r.note)}</div>` : ''}
     </div>
@@ -3218,13 +3218,12 @@ function openBookTestSetup(book) {
     m.classList.remove('show');
     Object.assign(CBRun, {
       active: true, book, dir, useSrs,
-      items: shuffleArr(book.entries.slice()), idx: 0, correct: 0, wrong: [], answered: false,
+      items: shuffle(book.entries.slice()), idx: 0, correct: 0, wrong: [], answered: false,
     });
     cbShow();
   };
 }
 
-function shuffleArr(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 
 function cbShow() {
   const t = CBRun;

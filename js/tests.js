@@ -74,4 +74,4 @@ export async function allResults(profileId) {
   return all.sort((a, b) => b.createdAt - a.createdAt);
 }
 
-export const TYPE_LABEL = { weekly: '📅 週測', monthly: '🗓 月測', custom: '🎯 自訂測驗', book: '📓 單字本測驗' };
+export const TEST_TYPE_LABEL = { weekly: '📅 週測', monthly: '🗓 月測', custom: '🎯 自訂測驗', book: '📓 單字本測驗' };
