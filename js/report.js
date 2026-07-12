@@ -1,9 +1,12 @@
 // report.js — 每日學習報告（純文字、可一鍵複製貼到 LINE）
 
 import { getStats } from './stats.js';
-import { getDailyLog, putDailyLog, dailyKey } from './db.js';
+import { getDailyLog, putDailyLog, dailyKey, getManualGroupsByDate } from './db.js';
 import { getById } from './vocab.js';
 import { todayStr, prettyDate } from './util.js';
+import { encodeCompletion } from './paircode.js';
+// 與 daily.js 互相引用（daily→report→daily），皆為函式宣告、執行期才呼叫，安全
+import { wordDayDone } from './daily.js';
 
 // 把「當下的整體進度」存檔進當天的 dailyLog（供日後查歷史報告）
 export async function archiveSnapshot(profile, now = Date.now()) {
@@ -64,8 +67,28 @@ export async function buildDailyReport(profile, dateStr = null, now = Date.now()
   lines.push(`🌿 學習中 ${prog.weak} 字`);
   lines.push(`🌱 未學習 ${prog.newCount} 字（${prog.newPct}%）`);
   lines.push(`🔥 連續學習 ${prog.streak} 天`);
+  // N 計畫：這天有做完的「家長出的題」→ 附完成碼，讓家長電腦記錄做過的字
+  const comp = await buildCompletionCode(profile, date);
+  if (comp) {
+    lines.push('✅ 完成碼（請連同報告傳給家長）：');
+    lines.push(comp);
+  }
   lines.push('（由英文單字記憶系統自動產生）');
   return lines.join('\n');
+}
+
+// 這天所有「家長出的題」（帶批次編號）中已完成的字 → 編成 C1 完成碼。
+// 「完成」的定義用 daily.js 的唯一真理來源 wordDayDone；沒有可回報的字回傳 null。
+export async function buildCompletionCode(profile, dateStr) {
+  const groups = await getManualGroupsByDate(profile.id, dateStr);
+  const batches = [];
+  for (const g of groups) {
+    if (g.batchId == null) continue;
+    const done = g.group.wordIds.filter((id) => wordDayDone(g, id));
+    if (done.length) batches.push({ batchId: g.batchId, wordIds: done });
+  }
+  if (!batches.length) return null;
+  return encodeCompletion(profile.id, batches);
 }
 
 // 只複製今日新字清單

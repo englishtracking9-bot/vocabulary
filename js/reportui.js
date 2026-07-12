@@ -2,7 +2,8 @@
 
 import { getBadges } from './badges.js';
 import { getDailyLog, getRecordsByProfile } from './db.js';
-import { archiveSnapshot, buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard } from './report.js';
+import { buildCompletionCode, archiveSnapshot, buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard } from './report.js';
+import { qrSvg } from './parent.js';
 import { statusBadge } from './srs.js';
 import { $main, State } from './state.js';
 import { esc, todayStr } from './util.js';
@@ -36,6 +37,7 @@ async function renderReport() {
       <div class="btn-row">
         <button class="btn" id="copy-new">只複製今日新字</button>
         <button class="btn" id="copy-week">複製本週彙整</button>
+        <button class="btn hidden" id="comp-qr">🔳 完成碼 QR</button>
       </div>
       <p id="copy-status" class="hint-area"></p>
     </div>
@@ -53,6 +55,33 @@ async function renderReport() {
   document.getElementById('copy-main').onclick = () => doCopy(() => buildDailyReport(State.profile, ReportDate));
   document.getElementById('copy-new').onclick = () => doCopy(() => buildNewWordsOnly(State.profile));
   document.getElementById('copy-week').onclick = () => doCopy(() => buildWeeklyReport(State.profile));
+
+  // N 計畫：這天有完成碼 → 顯示 QR 按鈕（家長電腦有相機時可直接掃；平常傳文字即可）
+  buildCompletionCode(State.profile, ReportDate).then((comp) => {
+    const btn = document.getElementById('comp-qr');
+    if (!btn || !comp) return;
+    btn.classList.remove('hidden');
+    btn.onclick = () => {
+      const m = document.getElementById('modal');
+      m.innerHTML = `
+        <div class="modal-box center">
+          <h3>✅ 完成碼</h3>
+          <p class="hint-area">給家長：在電腦「家長專區 → 輸入完成碼」貼上這串碼（或掃這個 QR）。</p>
+          ${qrSvg(comp)}
+          <textarea class="answer-input code-box" readonly rows="2">${esc(comp)}</textarea>
+          <div class="btn-row">
+            <button class="btn primary" id="cq-copy">複製完成碼</button>
+            <button class="btn" id="cq-close">關閉</button>
+          </div>
+        </div>`;
+      m.classList.add('show');
+      document.getElementById('cq-copy').onclick = async () => {
+        const ok = await copyToClipboard(comp);
+        document.getElementById('cq-copy').textContent = ok ? '✅ 已複製' : '請長按上方文字複製';
+      };
+      document.getElementById('cq-close').onclick = () => m.classList.remove('show');
+    };
+  });
 
   // 日期切換
   document.getElementById('rep-date').onchange = (e) => { ReportDate = e.target.value; renderReport(); };

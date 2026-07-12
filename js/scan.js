@@ -2,9 +2,10 @@
 
 import { go } from './app.js';
 import { enterGroupStudy } from './daily.js';
+import { putProfile } from './db.js';
 import { decodeCode } from './paircode.js';
 import { createManualGroup } from './parent.js';
-import { $main } from './state.js';
+import { $main, State } from './state.js';
 import { todayStr } from './util.js';
 
 
@@ -69,9 +70,16 @@ async function scanLoadCode(code) {
   const status = document.getElementById('sc-status');
   let decoded;
   try { decoded = decodeCode(code); } catch (e) { if (status) status.textContent = '⚠️ ' + e.message; else alert(e.message); return; }
-  const { ids, types } = decoded;
+  const { ids, types, batchId } = decoded;
   if (!ids.length) { if (status) status.textContent = '⚠️ 這個碼沒有可載入的字。'; return; }
-  const g = await createManualGroup(todayStr(), '家長出的題', ids, types);
+  const g = await createManualGroup(todayStr(), '家長出的題', ids, types, batchId != null ? batchId : null);
+  // R1 去重打通：掃入家長題＝之後由家長排程出新字。自動切換「每日單字來源」，
+  // 手機不再自動排新字 → 同一個字不會兩邊都出。可在「設定」改回。
+  if (State.profile.settings.dailySource !== 'parent') {
+    State.profile.settings.dailySource = 'parent';
+    await putProfile(State.profile);
+    alert('📌 已自動切換為「家長排程模式」：手機不再自動排新字，避免和家長出的題重複。\n若要改回自動排字，到「更多 → 設定 → 每日單字來源」調整。');
+  }
   enterGroupStudy(g);
 }
 export { _scanStream, renderScan, startScan, stopScan, scanLoadCode };

@@ -2,9 +2,9 @@
 
 import { go } from './app.js';
 import { renderCalendar } from './daily.js';
-import { getMeta, getRecordsByProfile, putManualGroup, setMeta } from './db.js';
+import { getMeta, getProfile, getRecordsByProfile, putManualGroup, setMeta } from './db.js';
 import { deviceRoleNoteHTML } from './more.js';
-import { encodableIds, encodeWordIds } from './paircode.js';
+import { decodeCompletion, encodableIds, encodeWordIds } from './paircode.js';
 import { copyToClipboard } from './report.js';
 import { KIND_LABEL, buildMonthSchedule, regenerateDay, regroupDay } from './schedule.js';
 import { $main, State } from './state.js';
@@ -15,7 +15,7 @@ import { getById, searchWords } from './vocab.js';
 // ============================================================
 // 手動出題（把自選單字排到某一天）
 // ============================================================
-async function createManualGroup(date, name, wordIds, testTypes = null) {
+async function createManualGroup(date, name, wordIds, testTypes = null, batchId = null) {
   const id = 'mg-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6);
   const g = {
     id, profileId: State.profile.id, date, name: name.trim() || '手動單字組', manual: true,
@@ -23,8 +23,40 @@ async function createManualGroup(date, name, wordIds, testTypes = null) {
     readDone: false, progress: {}, createdAt: Date.now(), updatedAt: Date.now(),
   };
   if (testTypes) g.testTypes = testTypes; // 題型（拼字／造句）由出題碼指定；未指定＝兩者都測
+  if (batchId != null) g.batchId = batchId; // 家長出題的批次編號 → 每日報告的完成碼靠它對帳
   await putManualGroup(g);
   return g;
+}
+
+// ---------- 完成碼（N 計畫）：批次編號配發＋家長端記錄 ----------
+// 批次編號：家長裝置全域流水號（1..65535 循環），配過就存在該日排程上，重印/重開同一天不換號
+async function nextBatchId() {
+  const n = ((await getMeta('batchSeq')) || 0) % 65535 + 1;
+  await setMeta('batchSeq', n);
+  return n;
+}
+async function ensureDayBatchId(day) {
+  if (day.batchId == null) {
+    day.batchId = await nextBatchId();
+    await saveParentSchedule();
+  }
+  return day.batchId;
+}
+
+// 家長端「已做過」紀錄：meta doneWords::<pid>（wordId 陣列，各生獨立累積）
+async function getDoneWords(profileId) {
+  return (await getMeta(`doneWords::${profileId}`)) || [];
+}
+async function recordCompletion(code) {
+  const { profileId, batches } = decodeCompletion(code);
+  const done = new Set(await getDoneWords(profileId));
+  let reported = 0;
+  for (const b of batches) for (const id of b.ids) { reported++; done.add(id); }
+  const before = (await getDoneWords(profileId)).length;
+  await setMeta(`doneWords::${profileId}`, [...done]);
+  const prof = await getProfile(profileId);
+  const name = prof ? prof.name : profileId;
+  return { name, reported, added: done.size - before, total: done.size };
 }
 
 // 排程 modal：把一批字排到某天（供「我的單字」批次使用）
@@ -171,6 +203,7 @@ async function renderParentZone() {
   const today = todayStr();
   const defEnd = (() => { const d = new Date(); d.setDate(d.getDate() + 29); return todayStr(d); })();
   const hasSched = Parent.sched && Parent.sched.days && Parent.sched.days.length;
+  const doneCount = (await getDoneWords(State.profile.id)).length;
 
   $main().innerHTML = `
     <div class="card">
@@ -202,11 +235,32 @@ async function renderParentZone() {
       </div>
     </div>` : ''}
     <div class="card">
+      <h3>✅ 輸入完成碼（孩子回報做完的字）</h3>
+      <p class="hint-area">孩子做完當天的題後，手機「每日報告」末尾會有一串 <b>C1 開頭的完成碼</b>（會跟著報告一起複製）。
+      把孩子傳來的文字貼進來（整段報告一起貼也可以），電腦就會記住他做過哪些字。
+      目前已記錄 <b>${esc(State.profile.name)}</b> 完成 <b>${doneCount}</b> 字。</p>
+      <textarea id="pz-comp" class="answer-input code-box" rows="2" placeholder="貼上完成碼（C1…）或整段報告"></textarea>
+      <div class="btn-row">
+        <button class="btn primary" id="pz-comp-ok">記錄完成碼</button>
+      </div>
+      <p id="pz-comp-status" class="hint-area"></p>
+    </div>
+    <div class="card">
       <h3>✋ 手動出題（排字到某天）</h3>
       <p class="hint-area">臨時自選一批字排到日曆某天（不走月排程）。</p>
       <button class="btn" id="pz-manual">開啟手動出題</button>
     </div>`;
 
+  document.getElementById('pz-comp-ok').onclick = async () => {
+    const status = document.getElementById('pz-comp-status');
+    try {
+      const r = await recordCompletion(document.getElementById('pz-comp').value);
+      status.textContent = `✅ 已記錄 ${r.name} 完成 ${r.reported} 字（新增 ${r.added} 字，累計 ${r.total} 字）`;
+      document.getElementById('pz-comp').value = '';
+    } catch (e) {
+      status.textContent = `⚠️ ${e.message}`;
+    }
+  };
   document.getElementById('pz-gen').onclick = generateSchedule;
   document.getElementById('pz-manual').onclick = () => go('#manual');
   const vbtn = document.getElementById('pz-view');
@@ -331,13 +385,14 @@ function dayTypes(day) {
   return day.qtype === 'spelling' ? { spelling: true, sentence: false } : { spelling: true, sentence: true };
 }
 
-function openDayCode(idx) {
+async function openDayCode(idx) {
   const day = Parent.sched.days[idx];
+  await ensureDayBatchId(day); // 出題碼帶批次編號，完成碼回報時對帳用
   const skipped = day.wordIds.length - encodableIds(day.wordIds).length;
   const m = document.getElementById('modal');
 
   const draw = () => {
-    const code = encodeWordIds(day.wordIds, dayTypes(day));
+    const code = encodeWordIds(day.wordIds, dayTypes(day), day.batchId);
     m.innerHTML = `
       <div class="modal-box center">
         <h3>🔳 ${prettyDate(day.date)} 出題碼</h3>
@@ -396,7 +451,9 @@ function rootBreakdownHTML(entry) {
   return `<div class="pr-root">🔍 ${parts}${mnem}</div>`;
 }
 
-function doPrint(mode, days) {
+async function doPrint(mode, days) {
+  // 紙本 QR 也帶批次編號：先為還沒配號的日子配號（配過的不換）
+  for (const day of days) await ensureDayBatchId(day);
   const old = document.getElementById('print-root');
   if (old) old.remove();
   const root = document.createElement('div');
@@ -422,9 +479,9 @@ function doPrint(mode, days) {
 }
 
 function printDayHTML(mode, day) {
-  // 紙本 QR 與螢幕出題碼用同一份「題型」設定 → 手機掃紙本或螢幕，題型一致
+  // 紙本 QR 與螢幕出題碼用同一份「題型」「批次編號」→ 手機掃紙本或螢幕完全一致
   const types = dayTypes(day);
-  const code = encodeWordIds(day.wordIds, types);
+  const code = encodeWordIds(day.wordIds, types, day.batchId != null ? day.batchId : null);
   const qr = qrSvg(code, 3);
   const typeLabel = types.sentence ? '拼字＋造句' : '只考拼字';
   const head = `<div class="pr-head"><h2>${prettyDate(day.date)}　${KIND_LABEL[day.kind] || ''}（${day.wordIds.length} 字・${typeLabel}）</h2>
@@ -450,4 +507,4 @@ function printDayHTML(mode, day) {
   }).join('');
   return `<div class="pr-page">${head}${groups}</div>`;
 }
-export { createManualGroup, openScheduleModal, ManualBuilder, renderManualBuilder, drawManualResults, drawManualSelected, Parent, loadParentSchedule, saveParentSchedule, qrSvg, renderParentZone, generateSchedule, renderScheduleView, scheduleDayCard, bindScheduleDayActions, openAddWordToDay, dayTypes, openDayCode, openPrintPicker, rootBreakdownHTML, doPrint, printDayHTML };
+export { createManualGroup, openScheduleModal, ManualBuilder, renderManualBuilder, drawManualResults, drawManualSelected, Parent, loadParentSchedule, saveParentSchedule, qrSvg, renderParentZone, generateSchedule, renderScheduleView, scheduleDayCard, bindScheduleDayActions, openAddWordToDay, dayTypes, openDayCode, openPrintPicker, rootBreakdownHTML, doPrint, printDayHTML, getDoneWords, recordCompletion };

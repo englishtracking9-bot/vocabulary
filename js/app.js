@@ -13,7 +13,7 @@ import { renderQuiz } from './quizui.js';
 import { renderReport, resetReportDate } from './reportui.js';
 import { renderRoots } from './rootsui.js';
 import { renderScan } from './scan.js';
-import { $main, DEFAULT_PROFILES, State, refreshMastered } from './state.js';
+import { $main, DEFAULT_PROFILES, LEGACY_PROFILE_NAMES, State, refreshMastered } from './state.js';
 import { esc } from './util.js';
 import { loadVocab, registerCustomWord } from './vocab.js';
 
@@ -56,6 +56,15 @@ async function ensureProfiles() {
   const existing = await getAllProfiles();
   if (!existing.length) {
     for (const p of DEFAULT_PROFILES) await putProfile(p);
+    return;
+  }
+  // 一次性遷移：預設名改為 Justin / Sonya。只在名稱仍是舊預設時改，
+  // 使用者在設定裡自訂過的名稱不動；進度資料（records 等）完全不碰。
+  for (const p of existing) {
+    if (LEGACY_PROFILE_NAMES[p.id] && p.name === LEGACY_PROFILE_NAMES[p.id]) {
+      const def = DEFAULT_PROFILES.find((d) => d.id === p.id);
+      if (def) { p.name = def.name; await putProfile(p); }
+    }
   }
 }
 

@@ -5,13 +5,15 @@ import { STATUS_DESC, STATUS_LABEL, isMasteredFamily } from './srs.js';
 
 
 // 顯示用版本（與 service-worker.js 的 APP_VERSION 同步更新；讓使用者能確認手機拿到的是哪一版）
-const APP_UI_VERSION = '2026-07-12-R3b-tweaks';
+const APP_UI_VERSION = '2026-07-12-N1-completion';
 
 // ---------- 預設身分 ----------
 const DEFAULT_PROFILES = [
-  { id: 'senior1', name: '升高一', settings: { dailyNewLimit: 20, levels: [4, 5, 6], priorityLevels: [4, 5, 6], reminderTime: '19:30', reminderOn: false } },
-  { id: 'junior3', name: '升國三-Sonya', settings: { dailyNewLimit: 15, levels: [3, 4, 5], priorityLevels: [4, 5], reminderTime: '19:30', reminderOn: false } },
+  { id: 'senior1', name: 'Justin', settings: { dailyNewLimit: 20, levels: [4, 5, 6], priorityLevels: [4, 5, 6], reminderTime: '19:30', reminderOn: false } },
+  { id: 'junior3', name: 'Sonya', settings: { dailyNewLimit: 15, levels: [3, 4, 5], priorityLevels: [4, 5], reminderTime: '19:30', reminderOn: false } },
 ];
+// 舊版預設名 → 新預設名（一次性遷移用；使用者自訂過的名稱不會被動到）
+const LEGACY_PROFILE_NAMES = { senior1: '升高一', junior3: '升國三-Sonya' };
 
 // ---------- 全域狀態 ----------
 const State = {
@@ -46,4 +48,4 @@ function stageLegendHTML() {
     <span title="${STATUS_DESC.proficient}">${STATUS_LABEL.proficient}</span>
   </div>`;
 }
-export { APP_UI_VERSION, DEFAULT_PROFILES, State, refreshMastered, $main, stageLegendHTML };
+export { APP_UI_VERSION, DEFAULT_PROFILES, LEGACY_PROFILE_NAMES, State, refreshMastered, $main, stageLegendHTML };
