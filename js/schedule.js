@@ -2,6 +2,7 @@
 // 純推導，不寫入孩子的學習日曆；結果存在家長裝置（meta），家長可再手動微調。
 
 import { formDailyGroup, groupsForWords } from './grouping.js';
+import { hasStudied } from './srs.js';
 import { getById } from './vocab.js';
 
 // 產生日期字串陣列（含頭尾）
@@ -30,7 +31,7 @@ export function buildMonthSchedule(records, opts) {
   const days = [];
 
   // 複習池：孩子已學過（answered）的字，之後用來排複習輪
-  const learned = records.filter((r) => (r.attempts || 0) > 0).map((r) => r.wordId).filter((id) => getById(id));
+  const learned = records.filter(hasStudied).map((r) => r.wordId).filter((id) => getById(id));
   let reviewCursor = 0;
   let newExhausted = false;
 

@@ -5,7 +5,7 @@ import { addToReview, deleteCustomWord, fetchDict, updateCustomZh } from './look
 import { quizSingle } from './lookupui.js';
 import { openScheduleModal } from './parent.js';
 import { openTestTypePicker, startGroupTest } from './quizui.js';
-import { DAY_MS, dayStart, displayCategory, statusBadge } from './srs.js';
+import { displayCategory, forceMastered, newRecord, statusBadge } from './srs.js';
 import { $main, State, refreshMastered, stageLegendHTML } from './state.js';
 import { addWordsToTag, createTag, deleteTag, getTags, renameTag, setWordTags, tagCounts, tagsOfWord } from './tags.js';
 import { esc, prettyDate, todayStr } from './util.js';
@@ -324,22 +324,11 @@ async function openWordDetail(wordId) {
   };
 }
 
-// 標記「我已會」：設為已熟記狀態
+// 標記「我已會」：設為已熟記狀態（G4：一律經 srs.js 的正式入口，不手改欄位）
 async function markKnown(entry) {
   let rec = await getRecord(State.profile.id, entry.id);
-  const now = Date.now();
-  if (!rec) {
-    rec = { key: `${State.profile.id}::${entry.id}`, profileId: State.profile.id, wordId: entry.id, level: entry.level, ef: 2.5, addedAt: now };
-  }
-  rec.status = 'mastered';
-  rec.reps = Math.max(rec.reps || 0, 3);
-  rec.interval = Math.max(rec.interval || 0, 7);
-  rec.due = dayStart(now) + rec.interval * DAY_MS;
-  rec.lastResult = 'correct';
-  rec.attempts = Math.max(rec.attempts || 0, 1);
-  rec.correct = Math.max(rec.correct || 0, 1);
-  rec.streak = Math.max(rec.streak || 0, 1);
-  rec.updatedAt = now;
+  if (!rec) rec = newRecord(State.profile.id, entry.id, entry.level);
+  forceMastered(rec);
   await putRecord(rec);
 }
 export { renderGroups, openGroupPicker, MyWordsFilter, MyWordsSel, MyWordsView, renderMyWords, drawMyWords, openWordDetail, markKnown };

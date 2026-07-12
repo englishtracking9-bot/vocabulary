@@ -4,7 +4,7 @@
 //          → confuse(4) → theme(5) → antonym(6)
 
 import { allWords, getById, findByWord } from './vocab.js';
-import { isMasteredFamily } from './srs.js';
+import { isIntroduced } from './srs.js';
 
 let _index = null;
 let _roots = null;
@@ -64,10 +64,9 @@ export function formDailyGroup(profile, records, n, options = {}) {
     ? profile.settings.levels : [4, 5, 6];
 
   const recMap = new Map(records.map((r) => [r.wordId, r]));
-  // 新字去重鐵則：已答過（attempts>0）或已熟記的字，都不再當「新字」排入
-  // → 同一使用者跨日新字絕不重複；學過的字之後靠 SM-2 複習回來，不會重新當新字。
+  // 新字去重鐵則：定義見 srs.js isIntroduced（考過或已熟記的字，不再當「新字」排入）
   const introduced = new Set(
-    records.filter((r) => (r.attempts || 0) > 0 || isMasteredFamily(r.status)).map((r) => r.wordId)
+    records.filter(isIntroduced).map((r) => r.wordId)
   );
 
   // 候選：有例句、尚未學過

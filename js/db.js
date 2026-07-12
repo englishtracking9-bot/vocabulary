@@ -1,6 +1,8 @@
 // db.js — IndexedDB 封裝（以 profileId 區隔多身分進度）
 // 規格：禁用 localStorage 存學習進度，一律存 IndexedDB。
 
+import { hasStudied } from './srs.js';
+
 const DB_NAME = 'vocabApp';
 const DB_VERSION = 6;
 
@@ -173,7 +175,7 @@ export async function getDueRecords(profileId, now = Date.now()) {
   const idx = db.transaction('records').objectStore('records').index('by_profile_due');
   const range = IDBKeyRange.bound([profileId, -Infinity], [profileId, now]);
   const all = await reqPromise(idx.getAll(range));
-  return all.filter((r) => r.attempts > 0);
+  return all.filter(hasStudied);
 }
 
 // 取某身分既有「new（查過但未測）」紀錄

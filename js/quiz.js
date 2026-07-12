@@ -6,7 +6,7 @@ import {
   getRecord, putRecord, getDailyLog, putDailyLog, dailyKey,
 } from './db.js';
 import { wordsByLevels } from './vocab.js';
-import { newRecord, applyAnswer } from './srs.js';
+import { newRecord, applyAnswer, hasStudied } from './srs.js';
 import { shuffle, interleave, todayStr } from './util.js';
 
 // 建立今日出題佇列。回傳 [{wordId, level, kind}]
@@ -119,7 +119,7 @@ export async function recordAnswer(profile, entry, correct, usedHint, secondTry,
 
   let rec = await getRecord(profile.id, entry.id);
   if (!rec) rec = newRecord(profile.id, entry.id, entry.level, now);
-  const wasNew = rec.attempts === 0;
+  const wasNew = !hasStudied(rec);
 
   applyAnswer(rec, quality, now);
   await putRecord(rec);

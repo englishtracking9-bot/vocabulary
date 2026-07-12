@@ -126,3 +126,45 @@ export const STATUS_DESC = {
 export function statusBadge(status) {
   return STATUS_LABEL[displayCategory(status)];
 }
+
+// ============================================================
+// 「學過」的命名定義（Y4）：排程/分組/出題只能用這裡的定義，不得另寫 attempts 判斷。
+// 第三種「近 N 天學過」以每日紀錄(dailyLog)為準：見 tests.js 的 recentWordIds。
+// ============================================================
+// 考過至少一次（複習池、到期過濾用）
+export function hasStudied(rec) {
+  return (rec.attempts || 0) > 0;
+}
+// 已「引入」過（考過、或已熟記家族）——新字排程去重鐵則用：
+// 同一使用者跨日新字絕不重複；學過的字之後靠 SM-2 複習回來，不重新當新字。
+export function isIntroduced(rec) {
+  return hasStudied(rec) || isMasteredFamily(rec.status);
+}
+
+// ============================================================
+// 手動捷徑（G4）：使用者手動改變單字狀態的唯一入口。
+// 紀錄欄位一律由本模組產生/修改，其他模組不得直接手改 status/due/reps。
+// ============================================================
+// 「我已會了」：把紀錄直接拉到已熟記門檻（連對3次、間隔7天、視為答對過）
+export function forceMastered(rec, now = Date.now()) {
+  rec.status = 'mastered';
+  rec.reps = Math.max(rec.reps || 0, 3);
+  rec.interval = Math.max(rec.interval || 0, 7);
+  rec.due = dayStart(now) + rec.interval * DAY_MS;
+  rec.lastResult = 'correct';
+  rec.attempts = Math.max(rec.attempts || 0, 1);
+  rec.correct = Math.max(rec.correct || 0, 1);
+  rec.streak = Math.max(rec.streak || 0, 1);
+  rec.updatedAt = now;
+  return rec;
+}
+// 「加回複習」：退回需加強、今天就到期重練
+// （沿用原行為 due=now；是否對齊當天 00:00 與其他到期規則一致，待使用者確認）
+export function resetToWeak(rec, now = Date.now()) {
+  rec.status = 'weak';
+  rec.due = now;
+  rec.interval = 0;
+  rec.reps = 0;
+  rec.updatedAt = now;
+  return rec;
+}

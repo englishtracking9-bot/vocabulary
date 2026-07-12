@@ -2,7 +2,7 @@
 
 import { findByWord, registerCustomWord, getById } from './vocab.js';
 import { getRecord, putRecord, getDictCache, putDictCache, getMeta, setMeta, deleteRecord } from './db.js';
-import { newRecord } from './srs.js';
+import { newRecord, resetToWeak } from './srs.js';
 
 // ---------- 發音 ----------
 let _voices = [];
@@ -172,11 +172,8 @@ export async function addToReview(profile, entry) {
     await putRecord(rec);
     return rec;
   }
-  // 已熟記 → 退回需加強並設為今天到期
-  rec.status = 'weak';
-  rec.due = Date.now();
-  rec.interval = 0;
-  rec.reps = 0;
+  // 已熟記 → 退回需加強並設為今天到期（G4：一律經 srs.js 的正式入口）
+  resetToWeak(rec);
   await putRecord(rec);
   return rec;
 }
