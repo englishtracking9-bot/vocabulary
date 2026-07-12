@@ -1,8 +1,9 @@
 // wordcard.js — 單字卡渲染（例句、多義、字根拆解、發音）（自 app.js 原樣搬出，G1 拆分）
 
-import { lookupTermNavigate, openWordDetail } from './app.js';
 import { rootFamilyOf } from './grouping.js';
 import { fetchDict, speak } from './lookup.js';
+import { lookupTermNavigate } from './lookupui.js';
+import { openWordDetail } from './mywords.js';
 import { State } from './state.js';
 import { esc } from './util.js';
 import { getById } from './vocab.js';

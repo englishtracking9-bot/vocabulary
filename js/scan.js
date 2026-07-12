@@ -1,6 +1,7 @@
 // scan.js — 掃 QR／貼出題碼載入家長出的題（自 app.js 原樣搬出，G1 拆分）
 
-import { createManualGroup, enterGroupStudy, go } from './app.js';
+import { createManualGroup, go } from './app.js';
+import { enterGroupStudy } from './daily.js';
 import { decodeCode } from './paircode.js';
 import { $main } from './state.js';
 import { todayStr } from './util.js';

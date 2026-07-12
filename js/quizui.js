@@ -1,8 +1,10 @@
 // quizui.js — 測驗頁：複習回合＋週測/月測/自訂測驗引擎（自 app.js 原樣搬出，G1 拆分）
 
-import { Daily, dispatchDaily, go, openDay, openWordDetail, renderDayList, sensesWithExample } from './app.js';
+import { go } from './app.js';
+import { Daily, dispatchDaily, openDay, renderDayList, sensesWithExample } from './daily.js';
 import { getDueRecords } from './db.js';
 import { fetchDict, speak } from './lookup.js';
+import { openWordDetail } from './mywords.js';
 import { Session, buildQueue, recordAnswer } from './quiz.js';
 import { compareSentence } from './sentence.js';
 import { $main, APP_UI_VERSION, State, refreshMastered } from './state.js';

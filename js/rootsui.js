@@ -1,9 +1,9 @@
 // rootsui.js — 字根字首頁（自 app.js 原樣搬出，G1 拆分）
 
-import { openWordDetail } from './app.js';
 import { getRecordsByProfile } from './db.js';
 import { allRoots, membersOfAffix } from './grouping.js';
 import { addToReview, speak } from './lookup.js';
+import { openWordDetail } from './mywords.js';
 import { statusBadge } from './srs.js';
 import { $main, State } from './state.js';
 import { esc } from './util.js';

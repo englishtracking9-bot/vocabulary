@@ -1,8 +1,10 @@
 // home.js — 首頁儀表板（自 app.js 原樣搬出，G1 拆分）
 
-import { go, openDay, openWordDetail, wordDayDone } from './app.js';
+import { go } from './app.js';
 import { detectNewBadges } from './badges.js';
+import { openDay, wordDayDone } from './daily.js';
 import { getDailyLog, getDailyLogsByProfile, getDayPlan, getDueRecords, getRecordsByProfile } from './db.js';
+import { openWordDetail } from './mywords.js';
 import { celebrateBadges } from './reportui.js';
 import { statusBadge } from './srs.js';
 import { $main, State } from './state.js';
