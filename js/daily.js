@@ -104,6 +104,31 @@ function dayStatus(plan) {
   return { cls: 'new', badge: '•' };
 }
 
+// ============================================================
+// 完成定義（G3 完成碼地基）：「一個字還要做什麼／完成了沒」的唯一真理來源。
+// 日曆打勾、進度％、當日流程派工（dispatchDaily）、未來的完成碼，一律用這三個函式，
+// 不得在別處另寫 progress 判斷。
+// ============================================================
+
+// 這個字還需要拼字測驗嗎？（題型不含拼字＝不需要）
+function wordNeedsSpelling(plan, wid) {
+  const types = plan.testTypes || { spelling: true, sentence: true };
+  if (!types.spelling) return false;
+  return (plan.progress[wid] || {}).spelling !== 'correct';
+}
+
+// 這個字還需要造句測驗嗎？（題型不含造句、或無例句＝不需要；已作答過即不再考）
+function wordNeedsSentence(plan, wid) {
+  const types = plan.testTypes || { spelling: true, sentence: true };
+  if (!types.sentence) return false;
+  const e = getById(wid);
+  if (!(e && e.example && e.example.trim())) return false;
+  return !(plan.progress[wid] || {}).sentence;
+}
+
+// 這個字今天「完成」了沒（日曆打勾、進度％都用這個）。
+// 注意：此處沿用歷史行為、尚未納入 plan.testTypes ——「只考拼字」的組，帶例句的字
+// 會因造句未作答而永遠算未完成（與 wordNeedsSentence 不一致）。是否統一待使用者確認。
 function wordDayDone(plan, wid) {
   const p = plan.progress[wid] || {};
   const e = getById(wid);
@@ -354,21 +379,11 @@ function dispatchDaily() {
   }
   if (!plan.readDone) return renderReadList();
 
-  const types = plan.testTypes || { spelling: true, sentence: true };
+  const needSpelling = plan.group.wordIds.filter((id) => wordNeedsSpelling(plan, id));
+  if (needSpelling.length) return startSpelling(needSpelling);
 
-  if (types.spelling) {
-    const needSpelling = plan.group.wordIds.filter((id) => (plan.progress[id] || {}).spelling !== 'correct');
-    if (needSpelling.length) return startSpelling(needSpelling);
-  }
-
-  if (types.sentence) {
-    const needSentence = plan.group.wordIds.filter((id) => {
-      const e = getById(id);
-      const p = plan.progress[id] || {};
-      return e && e.example && e.example.trim() && !p.sentence;
-    });
-    if (needSentence.length) return startSentence(needSentence);
-  }
+  const needSentence = plan.group.wordIds.filter((id) => wordNeedsSentence(plan, id));
+  if (needSentence.length) return startSentence(needSentence);
 
   return renderDayDone();
 }
@@ -689,4 +704,4 @@ function renderDayDone() {
     </div>`;
   document.getElementById('back-cal').onclick = () => dailyBack();
 }
-export { Cal, renderCalendar, shiftMonth, dayStatus, wordDayDone, Daily, persistPlan, dailyBack, backFromDayList, scheduledWordIds, ensureDayPlan, openDay, enterGroupStudy, renderDayMenu, renderDayList, dispatchDaily, renderReadList, startSpelling, dailySpellingShow, dailySpellingSubmit, sensesWithExample, startSentence, dailySentenceShow, dailySentenceSubmit, saveAndExitDaily, renderDayDone };
+export { Cal, renderCalendar, shiftMonth, dayStatus, wordDayDone, wordNeedsSpelling, wordNeedsSentence, Daily, persistPlan, dailyBack, backFromDayList, scheduledWordIds, ensureDayPlan, openDay, enterGroupStudy, renderDayMenu, renderDayList, dispatchDaily, renderReadList, startSpelling, dailySpellingShow, dailySpellingSubmit, sensesWithExample, startSentence, dailySentenceShow, dailySentenceSubmit, saveAndExitDaily, renderDayDone };
