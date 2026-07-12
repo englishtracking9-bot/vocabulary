@@ -11,7 +11,8 @@ QR／出題碼只單向傳「字的編號清單＋題型」，成績不回傳（
    `scripts/build_vocab.py` 重跑前必須先 diff 確認既有字的順序完全不變。
 
 2. **每次 push 前同步升兩處版本號**：`service-worker.js` 的 `APP_VERSION`
-   與 `js/app.js` 的 `APP_UI_VERSION`（字串須相同）。忘了升＝手機拿不到新版。
+   與 `js/state.js` 的 `APP_UI_VERSION`（字串須相同）。忘了升＝手機拿不到新版。
+   新增 js 檔案時要同步加入 `service-worker.js` 的 `PRECACHE` 清單。
 
 3. **學習進度只存 IndexedDB**（`vocabApp` v6），禁用 localStorage 存進度。
    單字熟練度的唯一定義在 `js/srs.js`（`computeStatus`／`applyAnswer`）；

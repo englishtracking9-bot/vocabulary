@@ -1,9 +1,9 @@
 // mywords.js — 我的單字總表與自訂群組（自 app.js 原樣搬出，G1 拆分）
 
-import { openScheduleModal } from './app.js';
 import { getRecord, getRecordsByProfile, putRecord } from './db.js';
 import { addToReview, deleteCustomWord, fetchDict, updateCustomZh } from './lookup.js';
 import { quizSingle } from './lookupui.js';
+import { openScheduleModal } from './parent.js';
 import { openTestTypePicker, startGroupTest } from './quizui.js';
 import { DAY_MS, dayStart, displayCategory, statusBadge } from './srs.js';
 import { $main, State, refreshMastered, stageLegendHTML } from './state.js';
