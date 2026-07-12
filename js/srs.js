@@ -145,9 +145,9 @@ export function isIntroduced(rec) {
 // 手動捷徑（G4）：使用者手動改變單字狀態的唯一入口。
 // 紀錄欄位一律由本模組產生/修改，其他模組不得直接手改 status/due/reps。
 // ============================================================
-// 「我已會了」：把紀錄直接拉到已熟記門檻（連對3次、間隔7天、視為答對過）
+// 「我已會了」：把紀錄拉到已熟記門檻（連對3次、間隔7天、視為答對過），
+// 狀態經 computeStatus 計算 → 原本已是🌲穩固（interval≥21）的字保持穩固、不降級。
 export function forceMastered(rec, now = Date.now()) {
-  rec.status = 'mastered';
   rec.reps = Math.max(rec.reps || 0, 3);
   rec.interval = Math.max(rec.interval || 0, 7);
   rec.due = dayStart(now) + rec.interval * DAY_MS;
@@ -155,14 +155,14 @@ export function forceMastered(rec, now = Date.now()) {
   rec.attempts = Math.max(rec.attempts || 0, 1);
   rec.correct = Math.max(rec.correct || 0, 1);
   rec.streak = Math.max(rec.streak || 0, 1);
+  rec.status = computeStatus(rec);
   rec.updatedAt = now;
   return rec;
 }
-// 「加回複習」：退回需加強、今天就到期重練
-// （沿用原行為 due=now；是否對齊當天 00:00 與其他到期規則一致，待使用者確認）
+// 「加回複習」：退回需加強、今天就到期重練（到期對齊當天 00:00，與全系統規則一致）
 export function resetToWeak(rec, now = Date.now()) {
   rec.status = 'weak';
-  rec.due = now;
+  rec.due = dayStart(now);
   rec.interval = 0;
   rec.reps = 0;
   rec.updatedAt = now;

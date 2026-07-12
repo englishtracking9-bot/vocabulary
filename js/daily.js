@@ -126,17 +126,10 @@ function wordNeedsSentence(plan, wid) {
   return !(plan.progress[wid] || {}).sentence;
 }
 
-// 這個字今天「完成」了沒（日曆打勾、進度％都用這個）。
-// 注意：此處沿用歷史行為、尚未納入 plan.testTypes ——「只考拼字」的組，帶例句的字
-// 會因造句未作答而永遠算未完成（與 wordNeedsSentence 不一致）。是否統一待使用者確認。
+// 這個字今天「完成」了沒（日曆打勾、進度％都用這個）＝該做的都做完了。
+// 與派工共用同一組定義 → 題型「只考拼字」的組，拼字全對即完成（不再卡在造句）。
 function wordDayDone(plan, wid) {
-  const p = plan.progress[wid] || {};
-  const e = getById(wid);
-  const needSentence = e && e.example && e.example.trim();
-  // 拼字答對；造句（若該字有例句）已作答過即算完成該字（正確率另計）
-  const spellingOk = p.spelling === 'correct';
-  const sentenceDone = !needSentence || p.sentence === 'correct' || p.sentence === 'wrong' || p.sentence === 'skip';
-  return spellingOk && sentenceDone;
+  return !wordNeedsSpelling(plan, wid) && !wordNeedsSentence(plan, wid);
 }
 
 // ============================================================
