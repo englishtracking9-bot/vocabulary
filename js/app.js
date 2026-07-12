@@ -1,80 +1,25 @@
-// app.js — 啟動、路由、首頁(落點)＋測驗(到期複習)、身分切換
-import {
-  openDB, getAllProfiles, putProfile, getProfile, setMeta, getMeta,
-  getRecordsByProfile, getRecord, putRecord, deleteRecord, deleteProfileFully, getDueRecords,
-  getDayPlan, putDayPlan, getDaysByProfile, dayKey, getDailyLog, putDailyLog, dailyKey, getDailyLogsByProfile,
-  putManualGroup, deleteManualGroup, getManualGroupsByProfile, getManualGroupsByDate,
-  getCustomBooksByProfile, getCustomBook, putCustomBook, deleteCustomBook,
-} from './db.js';
-import {
-  loadVocab, getById, allWords, registerCustomWord, checkAnswer, searchWords,
-} from './vocab.js';
-import { buildQueue, Session, recordAnswer } from './quiz.js';
-import { lookupWord, fetchDict, speak, addToReview, createCustomWord, updateCustomZh, deleteCustomWord } from './lookup.js';
-import { buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard, archiveSnapshot } from './report.js';
-import { getStats, exportProfile, importProfile } from './stats.js';
-import { displayCategory, statusBadge, computeStatus, isMasteredFamily, STATUS_LABEL, STATUS_DESC, dayStart, DAY_MS } from './srs.js';
-import { loadGroupsIndex, loadRoots, allRoots, membersOfAffix, formDailyGroup, familyOf, rootFamilyOf, groupsForWords } from './grouping.js';
-import { encodeWordIds, decodeCode, encodableIds } from './paircode.js';
-import { buildMonthSchedule, regenerateDay, regroupDay, KIND_LABEL } from './schedule.js';
-import {
-  getTags, createTag, renameTag, deleteTag, setWordTags, addWordToTag, addWordsToTag,
-  wordsInTag, tagsOfWord, tagCounts,
-} from './tags.js';
+// app.js — 入口：啟動、路由、身分切換、SW 註冊（G1 拆分後的常駐核心）
+import { dailyKey, dayKey, deleteCustomBook, deleteManualGroup, deleteProfileFully, deleteRecord, getAllProfiles, getCustomBook, getCustomBooksByProfile, getDailyLog, getDayPlan, getDaysByProfile, getDueRecords, getManualGroupsByDate, getManualGroupsByProfile, getMeta, getProfile, getRecord, getRecordsByProfile, openDB, putCustomBook, putDailyLog, putDayPlan, putManualGroup, putProfile, putRecord, setMeta } from './db.js';
+import { formDailyGroup, loadGroupsIndex, loadRoots } from './grouping.js';
+import { renderHome } from './home.js';
+import { addToReview, createCustomWord, deleteCustomWord, fetchDict, lookupWord, speak, updateCustomZh } from './lookup.js';
+import { downloadICS, notifyPermission, notifySupported, registerPeriodicReminder, requestNotifyPermission, scheduleForegroundReminder, showReminderNow, syncReminderMeta } from './notify.js';
+import { decodeCode, encodableIds, encodeWordIds } from './paircode.js';
+import { Session, buildQueue, recordAnswer } from './quiz.js';
+import { archiveSnapshot, copyToClipboard } from './report.js';
+import { renderReport, resetReportDate } from './reportui.js';
+import { renderRoots } from './rootsui.js';
+import { KIND_LABEL, buildMonthSchedule, regenerateDay, regroupDay } from './schedule.js';
 import { compareSentence } from './sentence.js';
-import {
-  recentWordIds, levelWordIds, groupWordIds, allMyWordIds, sample,
-  saveTestResult, previousResult, allResults, TEST_TYPE_LABEL,
-} from './tests.js';
-import { getBadges, detectNewBadges } from './badges.js';
-import { esc, todayStr, prettyDate, shuffle } from './util.js';
-import {
-  notifySupported, notifyPermission, requestNotifyPermission, showReminderNow,
-  scheduleForegroundReminder, registerPeriodicReminder, syncReminderMeta, downloadICS,
-} from './notify.js';
+import { DAY_MS, dayStart, displayCategory, statusBadge } from './srs.js';
+import { $main, APP_UI_VERSION, DEFAULT_PROFILES, State, refreshMastered, stageLegendHTML } from './state.js';
+import { exportProfile, getStats, importProfile } from './stats.js';
+import { addWordsToTag, createTag, deleteTag, getTags, renameTag, setWordTags, tagCounts, tagsOfWord, wordsInTag } from './tags.js';
+import { TEST_TYPE_LABEL, allMyWordIds, allResults, groupWordIds, levelWordIds, previousResult, recentWordIds, sample, saveTestResult } from './tests.js';
+import { esc, prettyDate, shuffle, todayStr } from './util.js';
+import { checkAnswer, getById, loadVocab, registerCustomWord, searchWords } from './vocab.js';
+import { attachCardHandlers, cardHTML, senseBlockHTML } from './wordcard.js';
 
-// 顯示用版本（與 service-worker.js 的 APP_VERSION 同步更新；讓使用者能確認手機拿到的是哪一版）
-const APP_UI_VERSION = '2026-07-11-R1-cleanup';
-
-// ---------- 預設身分 ----------
-const DEFAULT_PROFILES = [
-  { id: 'senior1', name: '升高一', settings: { dailyNewLimit: 20, levels: [4, 5, 6], priorityLevels: [4, 5, 6], reminderTime: '19:30', reminderOn: false } },
-  { id: 'junior3', name: '升國三-Sonya', settings: { dailyNewLimit: 15, levels: [3, 4, 5], priorityLevels: [4, 5], reminderTime: '19:30', reminderOn: false } },
-];
-
-// ---------- 全域狀態 ----------
-const State = {
-  profile: null,
-  session: null,
-  current: null,      // 當前題目 item {wordId, level, kind}
-  entry: null,        // 當前單字 entry
-  usedHint: false,
-  answered: false,
-  quizMode: null,     // 'active' 表示正在進行複習回合（用於 #quiz 路由判斷顯示題目或測驗中心）
-  masteredIds: new Set(), // 目前身分「已熟記」的字（供同字根家族標記錨點字）
-};
-
-// 重新整理「已熟記」集合（F-2：同字根家族錨點字）
-async function refreshMastered() {
-  try {
-    const recs = await getRecordsByProfile(State.profile.id);
-    State.masteredIds = new Set(
-      recs.filter((r) => isMasteredFamily(r.status)).map((r) => r.wordId)
-    );
-  } catch (e) { State.masteredIds = new Set(); }
-}
-
-const $main = () => document.getElementById('main');
-
-// 四階段精熟標準說明（顯示給孩子看，沿用成長徽章 🌱🌿🌳🌲）
-function stageLegendHTML() {
-  return `<div class="stage-legend">
-    <span title="${STATUS_DESC.new}">${STATUS_LABEL.new}</span>
-    <span title="${STATUS_DESC.weak}">${STATUS_LABEL.weak}</span>
-    <span title="${STATUS_DESC.mastered}">${STATUS_LABEL.mastered}</span>
-    <span title="${STATUS_DESC.proficient}">${STATUS_LABEL.proficient}</span>
-  </div>`;
-}
 
 // ---------- 啟動 ----------
 async function init() {
@@ -136,7 +81,7 @@ function renderHeader() {
         State.profile = await getProfile(b.dataset.pid);
         await setMeta('activeProfile', State.profile.id);
         State.session = null;
-        ReportDate = null; // 報告日期回到今天
+        resetReportDate(); // 報告日期回到今天
         await refreshMastered();
         syncReminderMeta(State.profile);
         scheduleForegroundReminder(State.profile);
@@ -182,120 +127,6 @@ function route() {
 function go(hash) {
   if (location.hash === hash) route();
   else location.hash = hash;
-}
-
-// ============================================================
-// 首頁（預設落點）— 今日進度 + 快捷，不強迫測驗
-// ============================================================
-async function renderHome() {
-  const stats = await getStats(State.profile.id);
-  const today = todayStr();
-  const due = await getDueRecords(State.profile.id, Date.now());
-  const dueCount = due.length;
-
-  // 今天的單字組進度（若已生成）
-  const autoPlan = await getDayPlan(State.profile.id, today);
-  const parentMode = State.profile.settings.dailySource === 'parent';
-  let groupLabel = '今天的單字組';
-  if (parentMode) {
-    groupLabel = '📷 掃描家長出的題';
-  } else if (autoPlan && autoPlan.group.wordIds.length) {
-    const total = autoPlan.group.wordIds.length;
-    const done = autoPlan.group.wordIds.filter((id) => wordDayDone(autoPlan, id)).length;
-    groupLabel = (total > 0 && done >= total) ? '今天的單字組（已完成 ✓）'
-      : `今天的單字組（${done}/${total}）`;
-  }
-
-  $main().innerHTML = `
-    <div class="card">
-      <h2>嗨，${esc(State.profile.name)} 👋</h2>
-      <div class="stat-grid">
-        <div class="stat-cell tap" data-stat="new"><b>${stats.todayNew}</b><span>今日新學</span></div>
-        <div class="stat-cell tap" data-stat="review"><b>${stats.todayReview}</b><span>今日複習</span></div>
-        <div class="stat-cell tap" data-stat="acc"><b>${stats.todayAccuracy}%</b><span>今日答對率</span></div>
-        <div class="stat-cell tap" data-stat="streak"><b>🔥 ${stats.streak}</b><span>連續天數</span></div>
-      </div>
-      <p class="hint-area">點上面任一格看明細</p>
-    </div>
-    <div class="card home-actions">
-      <p class="hint-area">接下來做什麼？一步到位 😊</p>
-      <button class="btn primary big-copy" id="h-group">▶️ ${esc(groupLabel)}</button>
-      <button class="btn big-copy" id="h-review">🔁 複習今天到期的字（${dueCount}）</button>
-      <button class="btn big-copy" id="h-tests">🎯 週測／月測（測驗中心）</button>
-      <div class="btn-row">
-        <button class="btn" id="h-lookup">🔎 查單字</button>
-        <button class="btn" id="h-mywords">📋 我的單字</button>
-      </div>
-    </div>`;
-  document.getElementById('h-group').onclick = () => parentMode ? go('#scan') : openDay(today);
-  document.getElementById('h-review').onclick = () => { State.pendingReview = true; go('#quiz'); };
-  document.getElementById('h-tests').onclick = () => go('#quiz');
-  document.getElementById('h-lookup').onclick = () => go('#lookup');
-  document.getElementById('h-mywords').onclick = () => go('#mywords');
-  document.querySelectorAll('.stat-cell.tap').forEach((c) => { c.onclick = () => openStatDetail(c.dataset.stat); });
-
-  // K-3：偵測並慶祝新解鎖的里程碑徽章
-  try { const fresh = await detectNewBadges(State.profile.id); celebrateBadges(fresh); } catch (e) { /* 不影響首頁 */ }
-}
-
-// G-4：首頁四格點開看明細（今天、目前身分）
-async function openStatDetail(kind) {
-  const today = todayStr();
-  const log = await getDailyLog(State.profile.id, today);
-  const recs = await getRecordsByProfile(State.profile.id);
-  const recMap = new Map(recs.map((r) => [r.wordId, r]));
-
-  const wordLine = (id) => {
-    const e = getById(id); if (!e) return '';
-    const r = recMap.get(id);
-    return `<div class="row tap" data-id="${id}"><div class="row-main">
-      <span class="row-word">${esc(e.word)}</span><span class="row-zh">${esc(e.zh)}</span></div>
-      <div class="row-meta"><span>${r ? statusBadge(r.status) : ''}</span></div></div>`;
-  };
-  const wrongLine = (w) => {
-    const e = getById(w.wordId);
-    return `<div class="row"><div class="row-main">
-      <span class="row-word">${e ? esc(e.word) : esc(w.wordId)}</span>
-      <span class="row-zh">${w.kind === 'sentence' ? '造句' : '拼字'}</span></div>
-      <div class="row-meta"><span>你寫：${esc(w.input) || '(空白)'}</span><span>正解：${esc(w.answer)}</span></div></div>`;
-  };
-
-  let title, body;
-  if (kind === 'new') {
-    const ids = (log && log.newWords) || [];
-    title = '🆕 今日新學';
-    body = ids.length ? ids.map(wordLine).join('') : '<p class="hint-area">今天還沒學新字</p>';
-  } else if (kind === 'review') {
-    const ids = (log && log.reviewWords) || [];
-    title = '🔁 今日複習';
-    body = ids.length ? ids.map(wordLine).join('') : '<p class="hint-area">今天還沒複習</p>';
-  } else if (kind === 'acc') {
-    const ws = (log && log.wrong) || [];
-    const acc = log && log.answerCount ? Math.round(log.correctCount / log.answerCount * 100) : 0;
-    title = `📊 今日答對率 ${acc}%`;
-    body = (log && log.answerCount)
-      ? (ws.length ? `<p class="hint-area">答錯的題目（${ws.length}）：</p>${ws.map(wrongLine).join('')}` : '<p class="hint-area">今天全部答對 🎉</p>')
-      : '<p class="hint-area">今天還沒作答</p>';
-  } else { // streak
-    const logs = await getDailyLogsByProfile(State.profile.id);
-    const days = logs.filter((l) => l.answerCount > 0).sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 14);
-    title = '🔥 最近學習日';
-    body = days.length ? days.map((l) => `<div class="row"><div class="row-main">
-      <span class="row-word">${prettyDate(l.date)}</span></div>
-      <div class="row-meta"><span>答題 ${l.answerCount}</span><span>新學 ${(l.newWords || []).length}</span><span>正確率 ${l.answerCount ? Math.round(l.correctCount / l.answerCount * 100) : 0}%</span></div></div>`).join('')
-      : '<p class="hint-area">還沒有學習紀錄</p>';
-  }
-
-  const m = document.getElementById('modal');
-  m.innerHTML = `<div class="modal-box">
-    <h3>${title}</h3>
-    <div class="detail-list">${body}</div>
-    <button class="btn" id="sd-close">關閉</button>
-  </div>`;
-  m.classList.add('show');
-  document.getElementById('sd-close').onclick = () => m.classList.remove('show');
-  // 明細裡的字可點開單字卡
-  m.querySelectorAll('.row.tap[data-id]').forEach((row) => { row.onclick = () => openWordDetail(row.dataset.id); });
 }
 
 // ============================================================
@@ -830,29 +661,6 @@ function kindLabel(kind) {
   return { 'review': '🔁 複習', 'new-lookup': '🔎 你查過的字', 'new-fresh': '🆕 新字' }[kind] || '';
 }
 
-// ============================================================
-// 單字卡（共用）
-// ============================================================
-// 把英文句子拆成「可點的單字 + 原樣標點空白」。點字會去掉標點與大小寫再查。
-function exampleHTML(sentence) {
-  const s = sentence || '';
-  let out = '';
-  let last = 0;
-  const re = /[A-Za-z][A-Za-z'’-]*/g;
-  let m;
-  while ((m = re.exec(s)) !== null) {
-    out += esc(s.slice(last, m.index)); // 中間的標點／空白原樣保留
-    const word = m[0];
-    const clean = word.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '');
-    out += clean
-      ? `<span class="ex-word" data-look="${esc(clean)}">${esc(word)}</span>`
-      : esc(word);
-    last = m.index + word.length;
-  }
-  out += esc(s.slice(last));
-  return out;
-}
-
 // 點任意文字中的單字 → 導到「查單字」並自動查詢（完全複用查單字流程）
 let PendingLookup = null;
 function lookupTermNavigate(term) {
@@ -861,135 +669,6 @@ function lookupTermNavigate(term) {
   const modal = document.getElementById('modal');
   if (modal) modal.classList.remove('show'); // 若從單字卡 modal 點出，先關閉
   if (location.hash === '#lookup') route(); else location.hash = '#lookup';
-}
-
-// 一個義項的顯示：詞性＋中文＋例句（可點字）＋中文翻譯＋🔊
-function senseBlockHTML(s, idx, multi) {
-  const head = `<div class="sense-head">${multi ? `<span class="sense-no">${idx + 1}</span>` : ''}${s.pos ? `<span class="pos">${esc(s.pos)}</span>` : ''}<span class="sense-zh">${esc(s.zh || '')}</span></div>`;
-  const ex = s.example
-    ? `<div class="ex-en">${exampleHTML(s.example)} <button class="btn icon" data-say="${esc(s.example)}">🔊</button></div>${s.example_zh ? `<div class="ex-zh">${esc(s.example_zh)}</div>` : ''}`
-    : '';
-  return `<div class="sense">${head}${ex}</div>`;
-}
-
-function cardHTML(entry, dict) {
-  const phon = (dict && dict.phonetic) ? `<span class="phon">${esc(dict.phonetic)}</span>` : '';
-  // J-2：多義顯示。本機字用已存的 senses；自訂字/無 senses 退回單一中文＋例句
-  const senses = Array.isArray(entry.senses) ? entry.senses.filter((s) => s && (s.zh || s.example)) : [];
-  let meaningsHTML;
-  if (senses.length) {
-    const multi = senses.length > 1;
-    meaningsHTML = `<div class="senses">${senses.slice(0, 3).map((s, i) => senseBlockHTML(s, i, multi)).join('')}</div>`;
-  } else {
-    let examples = '';
-    if (entry.example && entry.example.trim()) {
-      examples = `<div class="examples"><b>例句</b>
-        <div class="ex-en">${exampleHTML(entry.example)} <button class="btn icon" data-say="${esc(entry.example)}">🔊</button></div>
-        ${entry.example_zh ? `<div class="ex-zh">${esc(entry.example_zh)}</div>` : ''}</div>`;
-    } else if (dict && dict.examples && dict.examples.length) {
-      examples = `<div class="examples"><b>例句</b><ul>${dict.examples.map((x) => `<li>${exampleHTML(x)}</li>`).join('')}</ul></div>`;
-    }
-    meaningsHTML = `<div class="zh">${esc(entry.zh) || '（尚無中文，可在下方補上）'}</div>${examples}`;
-  }
-  const note = entry.note ? `<div class="note">補充（相關詞）：${esc(entry.note)}</div>` : '';
-  const customTag = entry.custom ? `<span class="tag-custom">🔖 我查的字</span>` : '';
-  const definition = (entry.custom && entry.definition)
-    ? `<div class="def">釋義：${esc(entry.definition)}</div>` : '';
-  let root = '';
-  if (Array.isArray(entry.root) && entry.root.length) {
-    const seg = entry.root.map((p) => `<b>${esc(p.part)}</b>(${esc(p.mean)})`).join(' + ');
-    const eq = `<b>${esc(entry.word)}</b>${entry.zh ? '（' + esc(entry.zh) + '）' : ''}`;
-    root = `<div class="root">🔧 字根拆解：${seg} = ${eq}</div>`;
-  } else if (typeof entry.root === 'string' && entry.root) {
-    root = `<div class="root">🔧 字根拆解：${esc(entry.root)}</div>`;
-  }
-  // F-3：可念音節（僅當各部位剛好拼回單字才顯示）
-  const syllable = entry.syllable
-    ? `<div class="syllable">🔡 照音節拼：<b>${esc(entry.syllable)}</b></div>` : '';
-  // F-1：記憶聯想
-  const mnemonic = entry.mnemonic
-    ? `<div class="mnemonic">🧠 記憶聯想：${esc(entry.mnemonic)}</div>` : '';
-  // 同字根家族（最多 8 個，可點）；F-2：已學會的字標成錨點
-  let family = '';
-  const fam = rootFamilyOf(entry.id).slice(0, 8);
-  if (fam.length) {
-    let anyLearned = false;
-    const chips = fam.map((id) => {
-      const fe = getById(id);
-      if (!fe) return '';
-      const learned = State.masteredIds && State.masteredIds.has(id);
-      if (learned) anyLearned = true;
-      return `<span class="fam-chip ${learned ? 'learned' : ''}" data-fam="${id}">${learned ? '✓ ' : ''}${esc(fe.word)}</span>`;
-    }).join('');
-    const hint = anyLearned ? '<div class="fam-hint">✓ 是你已學會的字，用它來記住同字根的新字</div>' : '';
-    family = `<div class="family"><b>同字根家族</b><div class="fam-chips">${chips}</div>${hint}</div>`;
-  }
-  const levelLabel = entry.level === 0 ? '我查的字' : `Level ${entry.level}`;
-  // 多義時上方只顯示級別（詞性已在各義項標出）；單義則沿用「詞性・級別」
-  const posLine = senses.length
-    ? levelLabel
-    : `${esc(entry.pos) || ''}${entry.pos ? '・' : ''}${levelLabel}`;
-  const moreBtn = `<div class="btn-row"><button class="btn" data-more="${esc(entry.word)}">📖 其他意思（上網查）</button></div>`;
-  return `
-    <div class="card word-card">
-      <div class="word-head">
-        <span class="word-en">${esc(entry.word)}</span>
-        <button class="btn icon" data-say="${esc(entry.answerKeys[0])}">🔊</button>
-        ${customTag}
-      </div>
-      ${phon}
-      <div class="pos">${posLine}</div>
-      ${definition}
-      ${note}
-      ${meaningsHTML}
-      ${root}
-      ${syllable}
-      ${mnemonic}
-      ${family}
-      ${moreBtn}
-    </div>`;
-}
-
-function attachCardHandlers(entry) {
-  document.querySelectorAll('[data-say]').forEach((b) => {
-    b.onclick = () => speak(b.dataset.say);
-  });
-  // 同字根家族：點一個字 → 開該字卡
-  document.querySelectorAll('[data-fam]').forEach((c) => {
-    c.onclick = () => openWordDetail(c.dataset.fam);
-  });
-  // 例句裡的單字：點 → 走查單字流程
-  document.querySelectorAll('[data-look]').forEach((w) => {
-    w.onclick = () => lookupTermNavigate(w.dataset.look);
-  });
-  // 📖 其他意思（上網查）
-  document.querySelectorAll('[data-more]').forEach((b) => {
-    b.onclick = () => showMoreSenses(b.dataset.more, b);
-  });
-}
-
-// J-2：點「其他意思」→ 上網查 dictionaryapi.dev 顯示更多義項（不寫進檔案；離線友善提示）
-async function showMoreSenses(word, btn) {
-  btn.disabled = true;
-  const orig = btn.textContent;
-  btn.textContent = '查詢中…';
-  const dict = await fetchDict(word.replace(/\(.*?\)/g, '').trim());
-  const box = document.createElement('div');
-  box.className = 'more-senses';
-  if (!dict || (!(dict.defs && dict.defs.length) && !(dict.examples && dict.examples.length))) {
-    box.innerHTML = navigator.onLine
-      ? '<p class="hint-area">線上字典沒有更多義項。</p>'
-      : '<p class="hint-area">目前離線，無法查更多義項。</p>';
-  } else {
-    const defs = (dict.defs || []).map((d) =>
-      `<div class="sense"><div class="sense-head">${d.pos ? `<span class="pos">${esc(d.pos)}</span>` : ''}<span class="sense-zh">${esc(d.def)}</span></div></div>`).join('');
-    const exs = (dict.examples && dict.examples.length)
-      ? `<div class="hint-area">例句：</div>${dict.examples.map((x) => `<div class="ex-en">${exampleHTML(x)}</div>`).join('')}`
-      : '';
-    box.innerHTML = `<div class="more-title">📖 更多義項（線上字典，英文釋義）</div>${defs}${exs}`;
-  }
-  btn.replaceWith(box);
-  box.querySelectorAll('[data-look]').forEach((w) => { w.onclick = () => lookupTermNavigate(w.dataset.look); });
 }
 
 // ============================================================
@@ -2333,249 +2012,6 @@ async function markKnown(entry) {
 }
 
 // ============================================================
-// 字根（Phase 2 佔位）
-// ============================================================
-const RootsFilter = { type: 'all', q: '' };
-const AFFIX_TYPE_LABEL = { prefix: '字首', root: '字根', suffix: '字尾' };
-
-function renderRoots() {
-  const roots = allRoots();
-  $main().innerHTML = `
-    <div class="card">
-      <h2>字根字首記憶法</h2>
-      <div class="filters">
-        <select id="rt-type">
-          <option value="all">全部</option>
-          <option value="prefix">字首 prefix-</option>
-          <option value="root">字根 root</option>
-          <option value="suffix">字尾 -suffix</option>
-        </select>
-      </div>
-      <input id="rt-q" class="answer-input" placeholder="搜尋字根或中文意思（如 port、運送）" />
-      <p class="hint-area">共 ${roots.length} 個字首／字根／字尾。點一個看意思、聯想與整組衍生字。</p>
-    </div>
-    <div id="rt-list"></div>`;
-  const tEl = document.getElementById('rt-type');
-  const qEl = document.getElementById('rt-q');
-  tEl.value = RootsFilter.type; qEl.value = RootsFilter.q;
-  const update = () => { RootsFilter.type = tEl.value; RootsFilter.q = qEl.value.trim().toLowerCase(); drawRoots(); };
-  tEl.onchange = update; qEl.oninput = update;
-  drawRoots();
-}
-
-function drawRoots() {
-  let list = allRoots();
-  if (RootsFilter.type !== 'all') list = list.filter((r) => r.type === RootsFilter.type);
-  if (RootsFilter.q) {
-    const q = RootsFilter.q;
-    list = list.filter((r) => r.affix.toLowerCase().includes(q) || (r.meaning || '').includes(q));
-  }
-  const box = document.getElementById('rt-list');
-  if (!list.length) { box.innerHTML = `<div class="card center">沒有符合的字根</div>`; return; }
-  box.innerHTML = list.map((r) => {
-    const n = membersOfAffix(r.affix, r.type).length;
-    const dash = r.type === 'prefix' ? `${esc(r.affix)}-` : (r.type === 'suffix' ? `-${esc(r.affix)}` : esc(r.affix));
-    return `<div class="row" data-affix="${esc(r.affix)}" data-type="${r.type}">
-      <div class="row-main">
-        <span class="row-word">${dash} <span class="rt-type">${AFFIX_TYPE_LABEL[r.type]}</span></span>
-        <span class="row-zh">${esc(r.meaning)}</span>
-      </div>
-      <div class="row-meta"><span>${n} 個衍生字</span></div>
-    </div>`;
-  }).join('');
-  box.querySelectorAll('.row').forEach((row) => {
-    row.onclick = () => openRootDetail(row.dataset.affix, row.dataset.type);
-  });
-}
-
-async function openRootDetail(affix, type) {
-  const r = allRoots().find((x) => x.affix === affix && x.type === type);
-  if (!r) return;
-  const memberIds = membersOfAffix(affix, type);
-  const records = await getRecordsByProfile(State.profile.id);
-  const recMap = new Map(records.map((x) => [x.wordId, x]));
-  const dash = type === 'prefix' ? `${esc(affix)}-` : (type === 'suffix' ? `-${esc(affix)}` : esc(affix));
-
-  const wordRows = memberIds.map((id) => {
-    const e = getById(id);
-    if (!e) return '';
-    const rec = recMap.get(id);
-    const badge = rec ? statusBadge(rec.status) : '🆕 未測驗';
-    return `<div class="row" data-id="${id}">
-      <div class="row-main">
-        <span class="row-word">${esc(e.word)}
-          <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button></span>
-        <span class="row-zh">${esc(e.zh)}</span>
-        ${e.mnemonic ? `<span class="row-mnem">🧠 ${esc(e.mnemonic)}</span>` : ''}
-      </div>
-      <div class="row-meta"><span>Lv${e.level}</span><span>${badge}</span></div>
-    </div>`;
-  }).join('');
-
-  $main().innerHTML = `
-    <div class="card memo-card">
-      <div class="daily-top"><button class="btn" id="rt-back">‹ 字根列表</button>
-        <b>${dash}（${AFFIX_TYPE_LABEL[type]}）</b></div>
-      <div class="zh" style="font-size:20px">${esc(r.meaning)}</div>
-      ${r.note ? `<div class="memo">💡 聯想：${esc(r.note)}</div>` : ''}
-    </div>
-    <div class="card">
-      <div class="row-meta">衍生單字（${memberIds.length}）</div>
-    </div>
-    ${wordRows || '<div class="card center">本機字表中沒有對應單字</div>'}
-    ${memberIds.length ? `<div class="card center">
-      <button class="btn primary big-copy" id="rt-add">把這組字加入我的單字</button>
-      <p id="rt-add-status" class="hint-area"></p>
-    </div>` : ''}`;
-
-  document.getElementById('rt-back').onclick = () => renderRoots();
-  document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
-  document.querySelectorAll('#main .row[data-id]').forEach((row) => {
-    row.onclick = (ev) => { if (ev.target.closest('[data-say]')) return; openWordDetail(row.dataset.id); };
-  });
-  const addBtn = document.getElementById('rt-add');
-  if (addBtn) addBtn.onclick = async () => {
-    let added = 0;
-    for (const id of memberIds) {
-      const e = getById(id);
-      if (e) { await addToReview(State.profile, e); added++; }
-    }
-    document.getElementById('rt-add-status').textContent = `✅ 已加入 ${added} 個字到「我的單字」`;
-  };
-}
-
-// ============================================================
-// 每日報告
-// ============================================================
-let ReportDate = null; // 目前檢視的報告日期（null=今天）
-
-async function renderReport() {
-  const today = todayStr();
-  await archiveSnapshot(State.profile); // 更新今天的進度快照
-  if (!ReportDate) ReportDate = today;
-  $main().innerHTML = `<div class="card center">產生報告中…</div>`;
-  const text = await buildDailyReport(State.profile, ReportDate);
-  $main().innerHTML = `
-    <div class="card">
-      <h2>每日報告</h2>
-      <div class="report-datebar">
-        <button class="btn" id="rep-prev">‹ 前一天</button>
-        <input type="date" id="rep-date" value="${ReportDate}" max="${today}" />
-        <button class="btn" id="rep-next" ${ReportDate >= today ? 'disabled' : ''}>後一天 ›</button>
-      </div>
-      <div class="btn-row"><button class="btn" id="rep-today">回到今天</button></div>
-      <pre id="report-text" class="report-text">${esc(text)}</pre>
-      <button class="btn primary big-copy" id="copy-main">📋 複製這天的報告</button>
-      <div class="btn-row">
-        <button class="btn" id="copy-new">只複製今日新字</button>
-        <button class="btn" id="copy-week">複製本週彙整</button>
-      </div>
-      <p id="copy-status" class="hint-area"></p>
-    </div>
-    <div id="report-badges"></div>
-    <div id="report-detail"></div>`;
-  renderBadgesCard();
-  renderReportDetail(ReportDate);
-  const status = document.getElementById('copy-status');
-  const doCopy = async (getter) => {
-    const t = await getter();
-    document.getElementById('report-text').textContent = t;
-    const ok = await copyToClipboard(t);
-    status.textContent = ok ? '✅ 已複製，貼到 LINE 傳給家長吧！' : '⚠️ 複製失敗，請長按上方文字手動複製';
-  };
-  document.getElementById('copy-main').onclick = () => doCopy(() => buildDailyReport(State.profile, ReportDate));
-  document.getElementById('copy-new').onclick = () => doCopy(() => buildNewWordsOnly(State.profile));
-  document.getElementById('copy-week').onclick = () => doCopy(() => buildWeeklyReport(State.profile));
-
-  // 日期切換
-  document.getElementById('rep-date').onchange = (e) => { ReportDate = e.target.value; renderReport(); };
-  document.getElementById('rep-today').onclick = () => { ReportDate = today; renderReport(); };
-  document.getElementById('rep-prev').onclick = () => { ReportDate = shiftDate(ReportDate, -1); renderReport(); };
-  document.getElementById('rep-next').onclick = () => {
-    const n = shiftDate(ReportDate, 1);
-    if (n <= today) { ReportDate = n; renderReport(); }
-  };
-}
-
-// K-3 成就徽章卡（顯示已達成／未達成）
-async function renderBadgesCard() {
-  const box = document.getElementById('report-badges');
-  if (!box) return;
-  const badges = await getBadges(State.profile.id);
-  const earned = badges.filter((b) => b.earned);
-  const locked = badges.filter((b) => !b.earned);
-  const cell = (b) => `<div class="badge-cell ${b.earned ? 'on' : 'off'}" title="${esc(b.desc)}">
-      <span class="badge-ic">${b.earned ? b.icon : '🔒'}</span>
-      <span class="badge-nm">${esc(b.name)}</span>
-      <span class="badge-ds">${esc(b.desc)}</span>
-    </div>`;
-  box.innerHTML = `<div class="card">
-      <div class="mw-head"><h2>🏅 成就徽章</h2><span class="row-meta">${earned.length} / ${badges.length}</span></div>
-      <div class="badge-grid">${earned.map(cell).join('')}${locked.map(cell).join('')}</div>
-    </div>`;
-}
-
-// 慶祝新達成的徽章（首頁載入時偵測）
-function celebrateBadges(fresh) {
-  if (!fresh || !fresh.length) return;
-  const m = document.getElementById('modal');
-  m.innerHTML = `<div class="modal-box center badge-pop">
-      <h3>🎉 解鎖新徽章！</h3>
-      <div class="badge-grid">${fresh.map((b) => `<div class="badge-cell on">
-        <span class="badge-ic">${b.icon}</span><span class="badge-nm">${esc(b.name)}</span>
-        <span class="badge-ds">${esc(b.desc)}</span></div>`).join('')}</div>
-      <button class="btn primary" id="bp-close">太棒了！</button>
-    </div>`;
-  m.classList.add('show');
-  document.getElementById('bp-close').onclick = () => m.classList.remove('show');
-}
-
-// 報告明細：點數字展開清單（新學 / 複習 / 答錯）
-async function renderReportDetail(dateStr) {
-  const box = document.getElementById('report-detail');
-  if (!box) return;
-  const log = await getDailyLog(State.profile.id, dateStr);
-  if (!log) { box.innerHTML = ''; return; }
-  const recs = await getRecordsByProfile(State.profile.id);
-  const recMap = new Map(recs.map((r) => [r.wordId, r]));
-
-  const wordLine = (id) => {
-    const e = getById(id); if (!e) return '';
-    const r = recMap.get(id);
-    return `<div class="row"><div class="row-main">
-      <span class="row-word">${esc(e.word)}</span>
-      <span class="row-zh">${esc(e.zh)}</span></div>
-      <div class="row-meta"><span>${r ? statusBadge(r.status) : ''}</span></div></div>`;
-  };
-  const wrongLine = (w) => {
-    const e = getById(w.wordId);
-    return `<div class="row"><div class="row-main">
-      <span class="row-word">${e ? esc(e.word) : esc(w.wordId)}</span>
-      <span class="row-zh">${w.kind === 'sentence' ? '造句' : '拼字'}</span></div>
-      <div class="row-meta"><span>你寫：${esc(w.input) || '(空白)'}</span><span>正解：${esc(w.answer)}</span></div></div>`;
-  };
-
-  const newList = (log.newWords || []).map(wordLine).join('') || '<p class="hint-area">無</p>';
-  const revList = (log.reviewWords || []).map(wordLine).join('') || '<p class="hint-area">無</p>';
-  const wrongList = (log.wrong || []).map(wrongLine).join('') || '<p class="hint-area">這天沒有答錯 🎉</p>';
-  const acc = log.answerCount ? Math.round(log.correctCount / log.answerCount * 100) : 0;
-
-  box.innerHTML = `
-    <div class="card">
-      <h3>明細（點開看清單）</h3>
-      <details><summary>🆕 新學 ${(log.newWords || []).length} 字</summary><div class="detail-list">${newList}</div></details>
-      <details><summary>🔁 複習 ${(log.reviewWords || []).length} 字</summary><div class="detail-list">${revList}</div></details>
-      <details><summary>📊 答對率 ${acc}%（❌ 答錯 ${(log.wrong || []).length} 題）</summary><div class="detail-list">${wrongList}</div></details>
-    </div>`;
-}
-
-function shiftDate(dateStr, delta) {
-  const d = new Date(dateStr + 'T00:00:00');
-  d.setDate(d.getDate() + delta);
-  return todayStr(d);
-}
-
-// ============================================================
 // 設定
 // ============================================================
 // ============================================================
@@ -3602,3 +3038,5 @@ function registerServiceWorker() {
 }
 
 window.addEventListener('DOMContentLoaded', init);
+
+export { go, lookupTermNavigate, openDay, openWordDetail, wordDayDone };
