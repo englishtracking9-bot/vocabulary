@@ -75,9 +75,11 @@ export function formDailyGroup(profile, records, n, options = {}) {
 
   const avail = (e) => !excludeWords.has(e.id); // 排除其他日期已排的字（去重）
   const inRange = allWords().filter((e) => levels.includes(e.level) && hasEx(e) && notIntroduced(e) && avail(e));
-  // 若級別範圍內有例句的字不足（例如目前只有 L1 有例句），退而用「全部有例句」的字
+  // 若級別範圍內有例句的字不足（例如目前只有 L1 有例句），退而用「全部有例句」的字。
+  // strictLevels（家長月排程用）：只從指定級別抽，抽完就回空 → 排程自然接「複習輪」，
+  // 不會默默跨級別補字。
   let pool = inRange;
-  if (pool.length < N) {
+  if (pool.length < N && !options.strictLevels) {
     const anyLevel = allWords().filter((e) => hasEx(e) && notIntroduced(e) && avail(e));
     // 合併、去重，範圍內優先在前
     const seen = new Set(pool.map((e) => e.id));

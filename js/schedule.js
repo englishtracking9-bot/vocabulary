@@ -22,22 +22,26 @@ function dayGroups(wordIds) {
 }
 
 // 建立月排程。records：孩子既有紀錄（用來跳過學過的字）。
-// opts: { levels, perDay, startDate, endDate, includeReview }
+// opts: { levels, perDay, startDate, endDate, includeReview, doneWordIds }
+// doneWordIds（N 計畫）：孩子透過「完成碼」回報做過的字 —— 不再排入新字、納入複習池。
+// （家長電腦通常沒有孩子的作答紀錄，完成碼是電腦知道「孩子做過什麼」的唯一準確來源）
 export function buildMonthSchedule(records, opts) {
-  const { levels, perDay, startDate, endDate, includeReview = true } = opts;
+  const { levels, perDay, startDate, endDate, includeReview = true, doneWordIds = [] } = opts;
   const dates = dateRange(startDate, endDate);
   const fakeProfile = { settings: { levels, dailyNewLimit: perDay } };
-  const scheduled = new Set(); // 這份排程的「已排清單」（跨整月不重複）
+  const scheduled = new Set(doneWordIds); // 已做過的字視同已排 → 新字絕不重複
   const days = [];
 
-  // 複習池：孩子已學過（answered）的字，之後用來排複習輪
-  const learned = records.filter(hasStudied).map((r) => r.wordId).filter((id) => getById(id));
+  // 複習池：本機紀錄有答過的字 ＋ 完成碼回報做過的字
+  const learned = [...new Set(
+    records.filter(hasStudied).map((r) => r.wordId).concat(doneWordIds)
+  )].filter((id) => getById(id));
   let reviewCursor = 0;
   let newExhausted = false;
 
   for (const date of dates) {
     if (!newExhausted) {
-      const group = formDailyGroup(fakeProfile, records, perDay, { excludeWordIds: scheduled });
+      const group = formDailyGroup(fakeProfile, records, perDay, { excludeWordIds: scheduled, strictLevels: true });
       if (group.wordIds.length) {
         group.wordIds.forEach((id) => scheduled.add(id));
         days.push({ date, kind: 'new', wordIds: group.wordIds, groups: dayGroups(group.wordIds) });
@@ -65,13 +69,13 @@ export function buildMonthSchedule(records, opts) {
   };
 }
 
-// 重排某一天（換一批新字，沿用記憶法分組，避開整份已排的字）
-export function regenerateDay(schedule, records, dateStr) {
+// 重排某一天（換一批新字，沿用記憶法分組，避開整份已排的字＋完成碼回報做過的字）
+export function regenerateDay(schedule, records, dateStr, doneWordIds = []) {
   const { levels, perDay } = schedule.config;
   const fakeProfile = { settings: { levels, dailyNewLimit: perDay } };
-  const scheduled = new Set();
+  const scheduled = new Set(doneWordIds);
   schedule.days.forEach((d) => { if (d.date !== dateStr) d.wordIds.forEach((id) => scheduled.add(id)); });
-  const group = formDailyGroup(fakeProfile, records, perDay, { excludeWordIds: scheduled });
+  const group = formDailyGroup(fakeProfile, records, perDay, { excludeWordIds: scheduled, strictLevels: true });
   const day = schedule.days.find((d) => d.date === dateStr);
   if (day) {
     day.wordIds = group.wordIds;

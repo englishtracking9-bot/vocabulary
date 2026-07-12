@@ -289,6 +289,12 @@ export async function getDaysByProfile(profileId) {
   return reqPromise(idx.getAll(IDBKeyRange.only(profileId)));
 }
 
+export function deleteDayPlan(profileId, dateStr) {
+  return tx('dayPlans', 'readwrite', (t) => {
+    t.objectStore('dayPlans').delete(dayKey(profileId, dateStr));
+  });
+}
+
 // ---------- tags（自訂群組） ----------
 export async function getTagsByProfile(profileId) {
   const db = await openDB();

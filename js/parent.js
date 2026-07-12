@@ -9,7 +9,7 @@ import { copyToClipboard } from './report.js';
 import { KIND_LABEL, buildMonthSchedule, regenerateDay, regroupDay } from './schedule.js';
 import { $main, State } from './state.js';
 import { esc, prettyDate, todayStr } from './util.js';
-import { getById, searchWords } from './vocab.js';
+import { getById, searchWords, wordsByLevels } from './vocab.js';
 
 
 // ============================================================
@@ -203,7 +203,12 @@ async function renderParentZone() {
   const today = todayStr();
   const defEnd = (() => { const d = new Date(); d.setDate(d.getDate() + 29); return todayStr(d); })();
   const hasSched = Parent.sched && Parent.sched.days && Parent.sched.days.length;
-  const doneCount = (await getDoneWords(State.profile.id)).length;
+  // D：已做／剩餘統計（以完成碼回報為準；「剩」＝目前設定級別內未回報做過的字數）
+  const doneList = await getDoneWords(State.profile.id);
+  const doneCount = doneList.length;
+  const doneSet = new Set(doneList);
+  const lvls = (s.levels && s.levels.length) ? s.levels : [4, 5, 6];
+  const remaining = wordsByLevels(lvls).filter((e) => !doneSet.has(e.id)).length;
 
   $main().innerHTML = `
     <div class="card">
@@ -238,7 +243,8 @@ async function renderParentZone() {
       <h3>✅ 輸入完成碼（孩子回報做完的字）</h3>
       <p class="hint-area">孩子做完當天的題後，手機「每日報告」末尾會有一串 <b>C1 開頭的完成碼</b>（會跟著報告一起複製）。
       把孩子傳來的文字貼進來（整段報告一起貼也可以），電腦就會記住他做過哪些字。
-      目前已記錄 <b>${esc(State.profile.name)}</b> 完成 <b>${doneCount}</b> 字。</p>
+      目前已記錄 <b>${esc(State.profile.name)}</b> 完成 <b>${doneCount}</b> 字；
+      設定級別（Lv${lvls.join('/')}）還有 <b>${remaining}</b> 字未做。重排月排程會自動跳過做過的字。</p>
       <textarea id="pz-comp" class="answer-input code-box" rows="2" placeholder="貼上完成碼（C1…）或整段報告"></textarea>
       <div class="btn-row">
         <button class="btn primary" id="pz-comp-ok">記錄完成碼</button>
@@ -278,10 +284,11 @@ async function generateSchedule() {
   const includeReview = document.getElementById('pz-review').checked;
   if (!startDate || !endDate || endDate < startDate) { alert('請確認起迄日期'); return; }
   const records = await getRecordsByProfile(State.profile.id);
-  Parent.sched = buildMonthSchedule(records, { levels, perDay, startDate, endDate, includeReview });
+  const doneWordIds = await getDoneWords(State.profile.id); // 完成碼回報做過的字：不再排入、進複習池
+  Parent.sched = buildMonthSchedule(records, { levels, perDay, startDate, endDate, includeReview, doneWordIds });
   await saveParentSchedule();
   const newDays = Parent.sched.days.filter((d) => d.kind === 'new').length;
-  alert(`✅ 已排 ${Parent.sched.days.length} 天，其中新字 ${newDays} 天。可查看並微調。`);
+  alert(`✅ 已排 ${Parent.sched.days.length} 天，其中新字 ${newDays} 天${doneWordIds.length ? `（已自動跳過完成碼回報做過的 ${doneWordIds.length} 字）` : ''}。可查看並微調。`);
   renderScheduleView();
 }
 
@@ -332,7 +339,8 @@ function bindScheduleDayActions() {
     b.onclick = async () => {
       const idx = Number(b.dataset.regen);
       const records = await getRecordsByProfile(State.profile.id);
-      regenerateDay(Parent.sched, records, Parent.sched.days[idx].date);
+      const doneWordIds = await getDoneWords(State.profile.id);
+      regenerateDay(Parent.sched, records, Parent.sched.days[idx].date, doneWordIds);
       await rerender();
     };
   });

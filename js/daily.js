@@ -1,6 +1,6 @@
 // daily.js — 學習日曆與當日學習流程（先讀→拼字→造句）（自 app.js 原樣搬出，G1 拆分）
 
-import { dayKey, deleteManualGroup, getDayPlan, getDaysByProfile, getManualGroupsByDate, getManualGroupsByProfile, getRecordsByProfile, putDayPlan, putManualGroup } from './db.js';
+import { dayKey, deleteDayPlan, deleteManualGroup, getDayPlan, getDaysByProfile, getManualGroupsByDate, getManualGroupsByProfile, getRecordsByProfile, putDayPlan, putManualGroup } from './db.js';
 import { formDailyGroup } from './grouping.js';
 import { speak } from './lookup.js';
 import { lookupTermNavigate } from './lookupui.js';
@@ -8,12 +8,63 @@ import { openWordDetail, renderGroups, renderMyWords } from './mywords.js';
 import { Session, recordAnswer } from './quiz.js';
 import { archiveSnapshot } from './report.js';
 import { compareSentence } from './sentence.js';
-import { statusBadge } from './srs.js';
+import { isIntroduced, statusBadge } from './srs.js';
 import { $main, State, refreshMastered } from './state.js';
 import { esc, prettyDate, todayStr } from './util.js';
 import { checkAnswer, getById } from './vocab.js';
 import { attachCardHandlers, cardHTML, senseBlockHTML } from './wordcard.js';
 
+
+// ============================================================
+// E：系統自動組「順延」——某天沒做，字不作廢
+// 過去未完成的自動組：還沒做完的字（排除已學過 isIntroduced、已排在今天/未來的）
+// 搬進今天的自動組，部分進度一併帶著；過去那天只留「已做完的字」（一個都沒做就整天清掉）。
+// 只處理系統自動組；家長手動組/QR 組（manualGroups）與家長模式的空殼（parentMode）不順延。
+// ============================================================
+async function rolloverAutoPlans() {
+  if (State.profile.settings.dailySource === 'parent') return 0; // 家長排程模式：手機不自動排字，也不順延
+  const today = todayStr();
+  const days = await getDaysByProfile(State.profile.id);
+  const pastIncomplete = days
+    .filter((d) => d.date < today && !d.parentMode && d.group.wordIds.length
+      && d.group.wordIds.some((id) => !wordDayDone(d, id)))
+    .sort((a, b) => (a.date < b.date ? -1 : 1));
+  if (!pastIncomplete.length) return 0;
+
+  const records = await getRecordsByProfile(State.profile.id);
+  const introduced = new Set(records.filter(isIntroduced).map((r) => r.wordId));
+  // 今天與未來已排的字 → 不重複搬入
+  const upcoming = new Set();
+  days.forEach((d) => { if (d.date >= today) d.group.wordIds.forEach((id) => upcoming.add(id)); });
+
+  const todayPlan = await ensureDayPlan(today);
+  todayPlan.group.wordIds.forEach((id) => upcoming.add(id));
+
+  let moved = 0;
+  for (const plan of pastIncomplete) {
+    const doneIds = plan.group.wordIds.filter((id) => wordDayDone(plan, id));
+    for (const id of plan.group.wordIds) {
+      if (doneIds.includes(id) || introduced.has(id) || upcoming.has(id)) continue;
+      todayPlan.group.wordIds.push(id);
+      upcoming.add(id);
+      if (plan.progress[id]) todayPlan.progress[id] = plan.progress[id]; // 帶著部分進度（如拼字已過）
+      moved++;
+    }
+    if (doneIds.length) {
+      // 過去那天縮成「只剩已做完的字」→ 日曆顯示 ✓，做過的紀錄不消失
+      plan.group.wordIds = doneIds;
+      plan.updatedAt = Date.now();
+      await putDayPlan(plan);
+    } else {
+      await deleteDayPlan(State.profile.id, plan.date); // 整天都沒做 → 清掉
+    }
+  }
+  if (moved) {
+    todayPlan.updatedAt = Date.now();
+    await putDayPlan(todayPlan);
+  }
+  return moved;
+}
 
 // ============================================================
 // 學習日曆
@@ -23,6 +74,7 @@ const Cal = { year: null, month: null }; // month: 0-11
 async function renderCalendar() {
   const now = new Date();
   if (Cal.year == null) { Cal.year = now.getFullYear(); Cal.month = now.getMonth(); }
+  const rolled = await rolloverAutoPlans(); // E：先把過去沒做完的字順延到今天
 
   const days = await getDaysByProfile(State.profile.id);
   const planMap = new Map(days.map((d) => [d.date, d]));
@@ -75,6 +127,7 @@ async function renderCalendar() {
       </div>
     </div>
     <div class="card center">
+      ${rolled ? `<p class="hint-area">⏩ 之前沒做完的 ${rolled} 個字已順延到今天，不會漏掉。</p>` : ''}
       <button class="btn primary" id="cal-today">📚 開始今天的單字組</button>
       <div class="btn-row"><a class="btn" href="#manual" id="cal-manual">✋ 手動出題（排字到某天）</a></div>
       <p class="hint-area">點任一天進入「當日學習」；標 ✋ 的日子有你手動排的單字組。</p>
@@ -205,6 +258,7 @@ async function ensureDayPlan(dateStr) {
 async function openDay(dateStr) {
   if (location.hash !== '#calendar') location.hash = '#calendar';
   const isPast = dateStr < todayStr();
+  if (dateStr === todayStr()) await rolloverAutoPlans(); // E：從首頁等捷徑直接開今天也要先順延
   let autoPlan = await getDayPlan(State.profile.id, dateStr);
   const manuals = await getManualGroupsByDate(State.profile.id, dateStr);
 
@@ -697,4 +751,4 @@ function renderDayDone() {
     </div>`;
   document.getElementById('back-cal').onclick = () => dailyBack();
 }
-export { Cal, renderCalendar, shiftMonth, dayStatus, wordDayDone, wordNeedsSpelling, wordNeedsSentence, Daily, persistPlan, dailyBack, backFromDayList, scheduledWordIds, ensureDayPlan, openDay, enterGroupStudy, renderDayMenu, renderDayList, dispatchDaily, renderReadList, startSpelling, dailySpellingShow, dailySpellingSubmit, sensesWithExample, startSentence, dailySentenceShow, dailySentenceSubmit, saveAndExitDaily, renderDayDone };
+export { Cal, renderCalendar, shiftMonth, dayStatus, wordDayDone, wordNeedsSpelling, wordNeedsSentence, rolloverAutoPlans, Daily, persistPlan, dailyBack, backFromDayList, scheduledWordIds, ensureDayPlan, openDay, enterGroupStudy, renderDayMenu, renderDayList, dispatchDaily, renderReadList, startSpelling, dailySpellingShow, dailySpellingSubmit, sensesWithExample, startSentence, dailySentenceShow, dailySentenceSubmit, saveAndExitDaily, renderDayDone };
