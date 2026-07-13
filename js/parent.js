@@ -2,9 +2,9 @@
 
 import { go } from './app.js';
 import { renderCalendar } from './daily.js';
-import { getMeta, getProfile, getRecordsByProfile, putManualGroup, setMeta } from './db.js';
+import { getAllProfiles, getMeta, getProfile, getRecordsByProfile, putManualGroup, setMeta } from './db.js';
 import { deviceRoleNoteHTML } from './more.js';
-import { decodeCompletion, encodableIds, encodeWordIds } from './paircode.js';
+import { decodeCompletion, decodeSync, encodableIds, encodeWordIds, extractCodes } from './paircode.js';
 import { copyToClipboard } from './report.js';
 import { KIND_LABEL, buildMonthSchedule, regenerateDay, regroupDay } from './schedule.js';
 import { $main, State } from './state.js';
@@ -47,16 +47,42 @@ async function ensureDayBatchId(day) {
 async function getDoneWords(profileId) {
   return (await getMeta(`doneWords::${profileId}`)) || [];
 }
-async function recordCompletion(code) {
-  const { profileId, batches } = decodeCompletion(code);
-  const done = new Set(await getDoneWords(profileId));
-  let reported = 0;
-  for (const b of batches) for (const id of b.ids) { reported++; done.add(id); }
-  const before = (await getDoneWords(profileId)).length;
-  await setMeta(`doneWords::${profileId}`, [...done]);
-  const prof = await getProfile(profileId);
-  const name = prof ? prof.name : profileId;
-  return { name, reported, added: done.size - before, total: done.size };
+// 貼上的文字裡可能有：每日完成碼 C1（增量）、進度同步碼 S1（全量、可多段）——
+// 自動辨識、全部解析、依碼內身分各自累加進該生的已做字庫。
+async function recordCompletion(text) {
+  const { completions, syncs } = extractCodes(text);
+  if (!completions.length && !syncs.length) {
+    throw new Error('找不到完成碼（C1…）或進度同步碼（S1…），請確認貼上的內容。');
+  }
+  // 依身分彙整這次回報的字
+  const incoming = new Map(); // pid -> { ids:Set, sync:boolean, comp:boolean }
+  const bucket = (pid) => {
+    if (!incoming.has(pid)) incoming.set(pid, { ids: new Set(), sync: false, comp: false });
+    return incoming.get(pid);
+  };
+  for (const c of completions) {
+    const { profileId, batches } = decodeCompletion(c);
+    const b = bucket(profileId); b.comp = true;
+    for (const bt of batches) bt.ids.forEach((id) => b.ids.add(id));
+  }
+  for (const s of syncs) {
+    const { profileId, ids } = decodeSync(s);
+    const b = bucket(profileId); b.sync = true;
+    ids.forEach((id) => b.ids.add(id));
+  }
+  // 各生獨立合併進已做字庫
+  const msgs = [];
+  for (const [pid, b] of incoming) {
+    const before = await getDoneWords(pid);
+    const done = new Set(before);
+    b.ids.forEach((id) => done.add(id));
+    await setMeta(`doneWords::${pid}`, [...done]);
+    const prof = await getProfile(pid);
+    const name = prof ? prof.name : pid;
+    const kind = b.sync ? (b.comp ? '同步碼＋完成碼' : '進度同步碼') : '完成碼';
+    msgs.push(`✅ 已記錄 ${name}（${kind}）：本次回報 ${b.ids.size} 字、新增 ${done.size - before.length} 字、累計 ${done.size} 字`);
+  }
+  return msgs.join('\n');
 }
 
 // 排程 modal：把一批字排到某天（供「我的單字」批次使用）
@@ -174,14 +200,26 @@ function drawManualSelected() {
 // L-3 家長專區：月排程 + 出題碼(QR) + 列印
 // 排程存在家長裝置（meta: parentSchedule::<pid>），只單向用出題碼把「要考哪些字」帶到孩子手機。
 // ============================================================
-const Parent = { sched: null };
+const Parent = { sched: null, target: null };
+
+// Q：出題對象——家長專區的排程/出題碼/列印全部以「對象」為準，
+// 與右上角的作答身分脫鉤（兩個孩子進度不同，出題必須指定給誰）。
+function pzTarget() {
+  return Parent.target || State.profile;
+}
+async function loadParentTarget() {
+  if (Parent.target) return Parent.target;
+  const savedId = await getMeta('parentTarget');
+  Parent.target = (savedId && await getProfile(savedId)) || State.profile;
+  return Parent.target;
+}
 
 async function loadParentSchedule() {
-  Parent.sched = (await getMeta(`parentSchedule::${State.profile.id}`)) || null;
+  Parent.sched = (await getMeta(`parentSchedule::${pzTarget().id}`)) || null;
   return Parent.sched;
 }
 async function saveParentSchedule() {
-  await setMeta(`parentSchedule::${State.profile.id}`, Parent.sched);
+  await setMeta(`parentSchedule::${pzTarget().id}`, Parent.sched);
 }
 
 // 產生 QR 的 SVG（用離線 vendor window.qrcode，自動選容量）
@@ -198,13 +236,16 @@ function qrSvg(text, cell = 4) {
 }
 
 async function renderParentZone() {
+  await loadParentTarget();
   await loadParentSchedule();
-  const s = State.profile.settings;
+  const tgt = pzTarget();
+  const profiles = await getAllProfiles();
+  const s = tgt.settings;
   const today = todayStr();
   const defEnd = (() => { const d = new Date(); d.setDate(d.getDate() + 29); return todayStr(d); })();
   const hasSched = Parent.sched && Parent.sched.days && Parent.sched.days.length;
   // D：已做／剩餘統計（以完成碼回報為準；「剩」＝目前設定級別內未回報做過的字數）
-  const doneList = await getDoneWords(State.profile.id);
+  const doneList = await getDoneWords(tgt.id);
   const doneCount = doneList.length;
   const doneSet = new Set(doneList);
   const lvls = (s.levels && s.levels.length) ? s.levels : [4, 5, 6];
@@ -213,7 +254,12 @@ async function renderParentZone() {
   $main().innerHTML = `
     <div class="card">
       <h2>👨‍👩‍👧 家長專區</h2>
-      <p class="hint-area">在電腦上為 <b>${esc(State.profile.name)}</b> 排題、出題、列印。孩子作答與成績都在手機端。切換上方使用者可為不同孩子排程。</p>
+      <div>出題對象：</div>
+      <div class="btn-row">
+        ${profiles.map((p) => `<button class="btn ${p.id === tgt.id ? 'primary' : ''}" data-tg="${p.id}">${esc(p.name)}</button>`).join('')}
+      </div>
+      <p class="hint-area">本頁的排程／出題碼／列印全部出給 <b>${esc(tgt.name)}</b>（跳過的是 <b>${esc(tgt.name)}</b> 做過的字），
+      與畫面右上的作答身分無關。</p>
     </div>
     ${deviceRoleNoteHTML()}
     <div class="card">
@@ -240,12 +286,13 @@ async function renderParentZone() {
       </div>
     </div>` : ''}
     <div class="card">
-      <h3>✅ 輸入完成碼（孩子回報做完的字）</h3>
-      <p class="hint-area">孩子做完當天的題後，手機「每日報告」末尾會有一串 <b>C1 開頭的完成碼</b>（會跟著報告一起複製）。
-      把孩子傳來的文字貼進來（整段報告一起貼也可以），電腦就會記住他做過哪些字。
-      目前已記錄 <b>${esc(State.profile.name)}</b> 完成 <b>${doneCount}</b> 字；
+      <h3>✅ 輸入完成碼／進度同步碼</h3>
+      <p class="hint-area">兩種碼都貼這裡，會自動辨識：<b>每日完成碼（C1…）</b>＝孩子每天報告末尾附的「這次做了哪些字」；
+      <b>進度同步碼（S1…）</b>＝孩子手機「設定」裡產生的「目前為止做過的所有字」（第一次使用時同步一次即可，之後靠每日完成碼累加）。
+      整段報告或多段碼一起貼都可以（碼裡帶著是誰的，會自動歸到正確的孩子）。
+      目前已記錄 <b>${esc(tgt.name)}</b> 完成 <b>${doneCount}</b> 字；
       設定級別（Lv${lvls.join('/')}）還有 <b>${remaining}</b> 字未做。重排月排程會自動跳過做過的字。</p>
-      <textarea id="pz-comp" class="answer-input code-box" rows="2" placeholder="貼上完成碼（C1…）或整段報告"></textarea>
+      <textarea id="pz-comp" class="answer-input code-box" rows="2" placeholder="貼上 C1…／S1…，或整段報告、多段碼"></textarea>
       <div class="btn-row">
         <button class="btn primary" id="pz-comp-ok">記錄完成碼</button>
       </div>
@@ -257,11 +304,20 @@ async function renderParentZone() {
       <button class="btn" id="pz-manual">開啟手動出題</button>
     </div>`;
 
+  // 出題對象切換（persist，下次開家長專區記得上次選誰）
+  document.querySelectorAll('[data-tg]').forEach((b) => {
+    b.onclick = async () => {
+      Parent.target = await getProfile(b.dataset.tg);
+      await setMeta('parentTarget', Parent.target.id);
+      Parent.sched = null; // 換對象 → 載入該生自己的排程
+      renderParentZone();
+    };
+  });
   document.getElementById('pz-comp-ok').onclick = async () => {
     const status = document.getElementById('pz-comp-status');
+    status.style.whiteSpace = 'pre-line'; // 多段/多人回報逐行顯示
     try {
-      const r = await recordCompletion(document.getElementById('pz-comp').value);
-      status.textContent = `✅ 已記錄 ${r.name} 完成 ${r.reported} 字（新增 ${r.added} 字，累計 ${r.total} 字）`;
+      status.textContent = await recordCompletion(document.getElementById('pz-comp').value);
       document.getElementById('pz-comp').value = '';
     } catch (e) {
       status.textContent = `⚠️ ${e.message}`;
@@ -283,12 +339,12 @@ async function generateSchedule() {
   const endDate = document.getElementById('pz-end').value;
   const includeReview = document.getElementById('pz-review').checked;
   if (!startDate || !endDate || endDate < startDate) { alert('請確認起迄日期'); return; }
-  const records = await getRecordsByProfile(State.profile.id);
-  const doneWordIds = await getDoneWords(State.profile.id); // 完成碼回報做過的字：不再排入、進複習池
+  const records = await getRecordsByProfile(pzTarget().id);
+  const doneWordIds = await getDoneWords(pzTarget().id); // 該生完成碼回報做過的字：不再排入、進複習池
   Parent.sched = buildMonthSchedule(records, { levels, perDay, startDate, endDate, includeReview, doneWordIds });
   await saveParentSchedule();
   const newDays = Parent.sched.days.filter((d) => d.kind === 'new').length;
-  alert(`✅ 已排 ${Parent.sched.days.length} 天，其中新字 ${newDays} 天${doneWordIds.length ? `（已自動跳過完成碼回報做過的 ${doneWordIds.length} 字）` : ''}。可查看並微調。`);
+  alert(`✅ 已為 ${pzTarget().name} 排 ${Parent.sched.days.length} 天，其中新字 ${newDays} 天${doneWordIds.length ? `（已自動跳過 ${pzTarget().name} 做過的 ${doneWordIds.length} 字）` : ''}。可查看並微調。`);
   renderScheduleView();
 }
 
@@ -297,7 +353,7 @@ function renderScheduleView() {
   $main().innerHTML = `
     <div class="card">
       <div class="daily-top"><button class="btn" id="sv-back">‹ 家長專區</button><b>🗓 月排程</b></div>
-      <p class="hint-area">每天一張卡：可換一批、加字、移除字，或產生出題碼／QR 給孩子掃。</p>
+      <p class="hint-area"><b>本批出給：${esc(pzTarget().name)}</b>。每天一張卡：可換一批、加字、移除字，或產生出題碼／QR 給孩子掃。</p>
       <div class="btn-row"><button class="btn" id="sv-print">🖨️ 列印整月</button></div>
     </div>
     <div id="sv-list">${days.map((d, i) => scheduleDayCard(d, i)).join('')}</div>`;
@@ -338,8 +394,8 @@ function bindScheduleDayActions() {
   document.querySelectorAll('#sv-list [data-regen]').forEach((b) => {
     b.onclick = async () => {
       const idx = Number(b.dataset.regen);
-      const records = await getRecordsByProfile(State.profile.id);
-      const doneWordIds = await getDoneWords(State.profile.id);
+      const records = await getRecordsByProfile(pzTarget().id);
+      const doneWordIds = await getDoneWords(pzTarget().id);
       regenerateDay(Parent.sched, records, Parent.sched.days[idx].date, doneWordIds);
       await rerender();
     };
@@ -400,11 +456,11 @@ async function openDayCode(idx) {
   const m = document.getElementById('modal');
 
   const draw = () => {
-    const code = encodeWordIds(day.wordIds, dayTypes(day), day.batchId);
+    const code = encodeWordIds(day.wordIds, dayTypes(day), day.batchId, pzTarget().id);
     m.innerHTML = `
       <div class="modal-box center">
         <h3>🔳 ${prettyDate(day.date)} 出題碼</h3>
-        <p class="hint-area">孩子手機：測驗 → 📷 家長出的題 → 掃這個 QR 或貼下面的碼。</p>
+        <p class="hint-area"><b>出給：${esc(pzTarget().name)}</b>（掃碼時會核對身分）。孩子手機：測驗 → 📷 家長出的題 → 掃這個 QR 或貼下面的碼。</p>
         <div class="src-opts" style="text-align:left">
           <label class="chk"><input type="radio" name="dq" value="both" ${day.qtype !== 'spelling' ? 'checked' : ''}/> 題型：拼字＋造句（有例句的字才考造句）</label>
           <label class="chk"><input type="radio" name="dq" value="spelling" ${day.qtype === 'spelling' ? 'checked' : ''}/> 題型：只考拼字</label>
@@ -487,12 +543,12 @@ async function doPrint(mode, days) {
 }
 
 function printDayHTML(mode, day) {
-  // 紙本 QR 與螢幕出題碼用同一份「題型」「批次編號」→ 手機掃紙本或螢幕完全一致
+  // 紙本 QR 與螢幕出題碼用同一份「題型」「批次編號」「出題對象」→ 手機掃紙本或螢幕完全一致
   const types = dayTypes(day);
-  const code = encodeWordIds(day.wordIds, types, day.batchId != null ? day.batchId : null);
+  const code = encodeWordIds(day.wordIds, types, day.batchId != null ? day.batchId : null, pzTarget().id);
   const qr = qrSvg(code, 3);
   const typeLabel = types.sentence ? '拼字＋造句' : '只考拼字';
-  const head = `<div class="pr-head"><h2>${prettyDate(day.date)}　${KIND_LABEL[day.kind] || ''}（${day.wordIds.length} 字・${typeLabel}）</h2>
+  const head = `<div class="pr-head"><h2>${esc(pzTarget().name)}・${prettyDate(day.date)}　${KIND_LABEL[day.kind] || ''}（${day.wordIds.length} 字・${typeLabel}）</h2>
     <div class="pr-qr">${qr}<div class="pr-code">${esc(code)}</div></div></div>`;
 
   if (mode === 'quiz') {

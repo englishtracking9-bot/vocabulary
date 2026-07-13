@@ -74,6 +74,18 @@ async function loadCustomWords() {
 }
 
 // ---------- 身分切換 ----------
+// 切換作答身分（頂部按鈕與「掃到別人的題」的一鍵切換共用這一個入口）
+async function switchProfile(pid) {
+  State.profile = await getProfile(pid);
+  await setMeta('activeProfile', State.profile.id);
+  State.session = null;
+  resetReportDate(); // 報告日期回到今天
+  await refreshMastered();
+  syncReminderMeta(State.profile);
+  scheduleForegroundReminder(State.profile);
+  renderHeader();
+}
+
 function renderHeader() {
   const el = document.getElementById('profile-switch');
   el.innerHTML = '';
@@ -84,14 +96,7 @@ function renderHeader() {
     ).join('');
     el.querySelectorAll('.pf-btn').forEach((b) => {
       b.addEventListener('click', async () => {
-        State.profile = await getProfile(b.dataset.pid);
-        await setMeta('activeProfile', State.profile.id);
-        State.session = null;
-        resetReportDate(); // 報告日期回到今天
-        await refreshMastered();
-        syncReminderMeta(State.profile);
-        scheduleForegroundReminder(State.profile);
-        renderHeader();
+        await switchProfile(b.dataset.pid);
         route();
       });
     });
@@ -172,4 +177,4 @@ function registerServiceWorker() {
 
 window.addEventListener('DOMContentLoaded', init);
 
-export { go, renderHeader, route };
+export { go, renderHeader, route, switchProfile };

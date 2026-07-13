@@ -1,8 +1,12 @@
 // more.js — 更多頁與設定頁（自 app.js 原樣搬出，G1 拆分）
 
 import { go, renderHeader } from './app.js';
-import { deleteProfileFully, getAllProfiles, getProfile, putProfile, setMeta } from './db.js';
+import { deleteProfileFully, getAllProfiles, getProfile, getRecordsByProfile, putProfile, setMeta } from './db.js';
 import { downloadICS, notifyPermission, notifySupported, registerPeriodicReminder, requestNotifyPermission, scheduleForegroundReminder, showReminderNow, syncReminderMeta } from './notify.js';
+import { encodeSyncCodes } from './paircode.js';
+import { qrSvg } from './parent.js';
+import { copyToClipboard } from './report.js';
+import { isIntroduced } from './srs.js';
 import { $main, APP_UI_VERSION, State } from './state.js';
 import { exportProfile, getStats, importProfile } from './stats.js';
 import { esc, todayStr } from './util.js';
@@ -165,6 +169,15 @@ async function renderSettings() {
     </div>
 
     <div class="card">
+      <h2>📤 進度同步碼（給家長，一次性）</h2>
+      <p class="hint-area">把 <b>${esc(State.profile.name)} 目前為止做過的所有字</b>做成一串碼，傳給家長貼進電腦
+      「家長專區 → 輸入完成碼」，家長排程就會跳過這些字。<b>第一次使用時同步一次即可</b>；
+      之後每天的進度由「每日報告」末尾的完成碼自動累加，不用再產生這個。</p>
+      <button class="btn primary" id="sync-gen">產生進度同步碼</button>
+      <p id="sync-status" class="hint-area"></p>
+    </div>
+
+    <div class="card">
       <h2>每日練習提醒</h2>
       <label class="chk"><input type="checkbox" id="rm-on" ${s.reminderOn ? 'checked' : ''}/> 開啟每日提醒</label>
       <label>提醒時間
@@ -193,6 +206,35 @@ async function renderSettings() {
       document.querySelectorAll('.theme-opt').forEach((x) => x.classList.toggle('primary', x.dataset.theme === t));
     };
   });
+
+  // P：進度同步碼（全量、一次性；「做過」的定義＝srs.js isIntroduced）
+  document.getElementById('sync-gen').onclick = async () => {
+    const st = document.getElementById('sync-status');
+    const recs = await getRecordsByProfile(State.profile.id);
+    const doneIds = recs.filter(isIntroduced).map((r) => r.wordId);
+    if (!doneIds.length) { st.textContent = '目前還沒有做過的字，不需要同步。'; return; }
+    const codes = encodeSyncCodes(State.profile.id, doneIds);
+    const all = codes.join('\n\n');
+    const m = document.getElementById('modal');
+    m.innerHTML = `
+      <div class="modal-box center">
+        <h3>📤 進度同步碼</h3>
+        <p class="hint-area">${esc(State.profile.name)} 做過 ${doneIds.length} 字${codes.length > 1 ? `（分 ${codes.length} 段，一起複製、一起貼即可）` : ''}。
+        傳給家長貼進電腦「家長專區 → 輸入完成碼」。</p>
+        ${codes.length === 1 && codes[0].length <= 800 ? qrSvg(codes[0]) : ''}
+        <textarea class="answer-input code-box" readonly rows="4">${esc(all)}</textarea>
+        <div class="btn-row">
+          <button class="btn primary" id="sy-copy">複製同步碼</button>
+          <button class="btn" id="sy-close">關閉</button>
+        </div>
+      </div>`;
+    m.classList.add('show');
+    document.getElementById('sy-copy').onclick = async () => {
+      const ok = await copyToClipboard(all);
+      document.getElementById('sy-copy').textContent = ok ? '✅ 已複製' : '請長按上方文字複製';
+    };
+    document.getElementById('sy-close').onclick = () => m.classList.remove('show');
+  };
 
   // 每日提醒控制
   const rmStatus = document.getElementById('rm-status');

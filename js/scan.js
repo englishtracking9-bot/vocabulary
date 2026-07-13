@@ -1,8 +1,8 @@
 // scan.js — 掃 QR／貼出題碼載入家長出的題（自 app.js 原樣搬出，G1 拆分）
 
-import { go } from './app.js';
+import { go, switchProfile } from './app.js';
 import { enterGroupStudy } from './daily.js';
-import { putProfile } from './db.js';
+import { getProfile, putProfile } from './db.js';
 import { decodeCode } from './paircode.js';
 import { createManualGroup } from './parent.js';
 import { $main, State } from './state.js';
@@ -70,8 +70,19 @@ async function scanLoadCode(code) {
   const status = document.getElementById('sc-status');
   let decoded;
   try { decoded = decodeCode(code); } catch (e) { if (status) status.textContent = '⚠️ ' + e.message; else alert(e.message); return; }
-  const { ids, types, batchId } = decoded;
+  const { ids, types, batchId, forProfile } = decoded;
   if (!ids.length) { if (status) status.textContent = '⚠️ 這個碼沒有可載入的字。'; return; }
+  // Q：出題碼帶「出給誰」→ 身分不符時提示並可一鍵切換，避免 Justin 做到 Sonya 的題
+  if (forProfile && forProfile !== State.profile.id) {
+    const prof = await getProfile(forProfile);
+    if (!prof) { if (status) status.textContent = '⚠️ 這份題的出題對象不在這支手機上，無法載入。'; return; }
+    if (confirm(`📌 這份題是出給「${prof.name}」的。\n要切換到 ${prof.name} 並載入嗎？`)) {
+      await switchProfile(prof.id);
+    } else {
+      if (status) status.textContent = `⚠️ 這份題是出給「${prof.name}」的，請先切換身分再載入。`;
+      return;
+    }
+  }
   const g = await createManualGroup(todayStr(), '家長出的題', ids, types, batchId != null ? batchId : null);
   // R1 去重打通：掃入家長題＝之後由家長排程出新字。自動切換「每日單字來源」，
   // 手機不再自動排新字 → 同一個字不會兩邊都出。可在「設定」改回。
