@@ -2,7 +2,7 @@
 
 import { go } from './app.js';
 import { Daily, dispatchDaily, openDay, renderDayList, sensesWithExample } from './daily.js';
-import { getDueRecords } from './db.js';
+import { getDueRecords, getMeta, setMeta } from './db.js';
 import { fetchDict, speak } from './lookup.js';
 import { openWordDetail } from './mywords.js';
 import { Session, buildQueue, recordAnswer } from './quiz.js';
@@ -34,6 +34,7 @@ async function renderQuiz() {
 
 async function renderTestHub() {
   const due = await getDueRecords(State.profile.id, Date.now());
+  const paused = await getMeta(`pausedTest::${State.profile.id}`); // G：上次「儲存並離開」的測驗
   const results = await allResults(State.profile.id);
   const recent = results.slice(0, 5);
   const histRows = recent.length ? recent.map((r) => `
@@ -49,9 +50,19 @@ async function renderTestHub() {
       <p class="hint-area">平時每天的「到期複習」是主力；週測／月測是定期檢驗、找出忘記的字。</p>
     </div>
 
+    ${paused ? `<div class="card section-test">
+      <h3>⏸ 未完成的測驗</h3>
+      <p class="hint-area">${TEST_TYPE_LABEL[paused.type] || ''}「${esc(paused.name)}」，做到第 ${paused.idx + 1} / ${paused.items.length} 題。</p>
+      <div class="btn-row">
+        <button class="btn primary" id="test-resume">▶️ 繼續這次測驗</button>
+        <button class="btn" id="test-discard">🗑 放棄</button>
+      </div>
+    </div>` : ''}
+
     <div class="card section-daily">
       <h3>🔁 平時複習（每日到期）</h3>
-      <p class="hint-area">SM-2 自動排程，今天該回來複習的字。</p>
+      <p class="hint-area">這些是你以前學過、依記憶規律時間到了該回來複習的字：
+      答對會隔更久再出現，答錯很快再考，直到記熟為止。</p>
       <button class="btn primary big-copy" id="start-review">▶️ 開始複習（今天到期 ${due.length} 字）</button>
     </div>
 
@@ -79,6 +90,19 @@ async function renderTestHub() {
     <p class="ver-tag">版本 ${APP_UI_VERSION}</p>`;
 
   document.getElementById('start-review').onclick = startReview;
+  const resumeBtn = document.getElementById('test-resume');
+  if (resumeBtn) {
+    resumeBtn.onclick = async () => {
+      await setMeta(`pausedTest::${State.profile.id}`, null);
+      Object.assign(TestRun, paused, { active: true });
+      testShow();
+    };
+    document.getElementById('test-discard').onclick = async () => {
+      if (!confirm('放棄這次未完成的測驗？（已作答的字仍已回寫複習進度）')) return;
+      await setMeta(`pausedTest::${State.profile.id}`, null);
+      renderTestHub();
+    };
+  }
   document.getElementById('test-weekly').onclick = () => openTestSetup('weekly');
   document.getElementById('test-monthly').onclick = () => openTestSetup('monthly');
   document.getElementById('test-custom').onclick = () => openTestSetup('custom');
@@ -90,13 +114,44 @@ async function renderTestHub() {
   });
 }
 
-// 開始「平時到期複習」回合
+// F：測驗前先「預覽單字」再開始（週/月/自訂、平時複習共用；家長出的題本來就有「先讀」）
+function renderTestPreview(title, wordIds, onStart, onBack) {
+  const rows = wordIds.map((id) => {
+    const e = getById(id);
+    if (!e) return '';
+    return `<div class="read-card">
+      <div class="word-head">
+        <span class="word-en">${esc(e.word)}</span>
+        <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button>
+      </div>
+      <div class="pos">${esc(e.pos)}・Lv${e.level}　${esc(e.zh)}</div>
+      ${e.example ? `<div class="examples"><div class="ex-en">${esc(e.example)}</div>${e.example_zh ? `<div class="ex-zh">${esc(e.example_zh)}</div>` : ''}</div>` : ''}
+    </div>`;
+  }).join('');
+  $main().innerHTML = `
+    <div class="card memo-card">
+      <div class="daily-top"><button class="btn" id="tp-back">‹ 返回</button><b>${esc(title)}・先讀一遍（${wordIds.length} 字）</b></div>
+      <div class="memo">💡 先把單字讀過一遍（可點 🔊 聽發音），準備好了再開始測驗。</div>
+    </div>
+    ${rows}
+    <div class="card center">
+      <button class="btn primary big-copy" id="tp-start">▶️ 開始測驗</button>
+    </div>`;
+  document.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speak(b.dataset.say); });
+  document.getElementById('tp-start').onclick = onStart;
+  document.getElementById('tp-back').onclick = onBack || renderTestHub;
+}
+
+// 開始「平時到期複習」回合（先預覽今天到期的字，再進測驗）
 async function startReview() {
-  State.quizMode = 'active';
   const items = await buildQueue(State.profile, Date.now(), { reviewOnly: true });
-  State.session = new Session(items);
-  if (State.session.remaining === 0) return renderReviewEmpty();
-  showQuestion();
+  if (!items.length) return renderReviewEmpty();
+  const previewIds = [...new Set(items.map((it) => it.wordId))];
+  renderTestPreview('🔁 平時複習', previewIds, () => {
+    State.quizMode = 'active';
+    State.session = new Session(items);
+    showQuestion();
+  });
 }
 
 // 沒有到期複習字時的友善畫面
@@ -202,7 +257,9 @@ async function openTestSetup(type) {
       return;
     }
     m.classList.remove('show');
-    startTest(type, name, sample(ids, count), withSentence, gauntlet);
+    // F：先預覽這批要考的字，按「開始測驗」才進題目
+    const picked = sample(ids, count);
+    renderTestPreview(name, picked, () => startTest(type, name, picked, withSentence, gauntlet));
   };
 }
 
@@ -255,7 +312,7 @@ function testShow() {
         <div class="pos">${esc(e.pos)}</div>
         <input id="ans" class="answer-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="輸入英文拼字…" />
         <div class="btn-row"><button class="btn primary" id="submit">送出</button></div>
-        <button class="btn save-exit" id="t-quit">✕ 結束測驗</button>
+        <button class="btn save-exit" id="t-quit">💾 儲存並離開</button>
       </div>`;
     const input = document.getElementById('ans');
     input.focus();
@@ -272,12 +329,12 @@ function testShow() {
         <div class="pos">關鍵字：${esc(e.word)}</div>
         <textarea id="sent" class="answer-input sent-input" rows="2" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="輸入完整英文句子…"></textarea>
         <div class="btn-row"><button class="btn primary" id="submit">送出</button></div>
-        <button class="btn save-exit" id="t-quit">✕ 結束測驗</button>
+        <button class="btn save-exit" id="t-quit">💾 儲存並離開</button>
       </div>`;
     document.getElementById('sent').focus();
     document.getElementById('submit').onclick = testSubmit;
   }
-  document.getElementById('t-quit').onclick = testQuit;
+  document.getElementById('t-quit').onclick = testSaveExit;
 }
 
 async function testSubmit() {
@@ -356,6 +413,19 @@ function testStageBreak() {
 
 function testQuit() {
   if (!confirm('結束這次測驗？（已作答的字仍會回寫複習進度，但不會計分存檔）')) return;
+  TestRun.active = false;
+  State.session = null;
+  renderTestHub();
+}
+
+// G：儲存並離開——把進行中的測驗存起來，回測驗中心可「繼續」
+async function testSaveExit() {
+  const t = TestRun;
+  const snapshot = {
+    type: t.type, name: t.name, items: t.items, idx: t.idx,
+    correct: t.correct, wrong: t.wrong, gauntlet: t.gauntlet, qResults: t.qResults,
+  };
+  await setMeta(`pausedTest::${State.profile.id}`, snapshot);
   TestRun.active = false;
   State.session = null;
   renderTestHub();
@@ -601,10 +671,10 @@ function startWordsTest(wordIds, name, types, backTo) {
   Daily.plan = {
     isGroup: true, groupName: name, backTo: backTo || 'mywords', testTypes: types,
     group: { wordIds: wordIds.slice(), memo: '', memos: [], label: name, groupKey: null },
-    readDone: true, progress: {}, // 跳過先讀，直接測
+    readDone: false, progress: {}, // F：先讀（預覽）一遍再測
   };
   Daily.date = todayStr();
   Daily.spellSession = null; Daily.sentQueue = null; Daily.sentIdx = 0;
   dispatchDaily();
 }
-export { renderQuiz, renderTestHub, startReview, renderReviewEmpty, renderQuizDone, TestRun, openTestSetup, STAGE_SIZE, startTest, gauntletStars, testShow, testSubmit, testStageBreak, testQuit, testDone, testWrongRow, showTestResultDetail, openTestHistory, showQuestion, doSubmit, showAnswerCard, kindLabel, startGroupTest, openTestTypePicker, startWordsTest };
+export { renderQuiz, renderTestHub, renderTestPreview, startReview, renderReviewEmpty, renderQuizDone, TestRun, openTestSetup, STAGE_SIZE, startTest, gauntletStars, testShow, testSubmit, testStageBreak, testQuit, testSaveExit, testDone, testWrongRow, showTestResultDetail, openTestHistory, showQuestion, doSubmit, showAnswerCard, kindLabel, startGroupTest, openTestTypePicker, startWordsTest };

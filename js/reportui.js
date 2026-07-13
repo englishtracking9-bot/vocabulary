@@ -3,6 +3,7 @@
 import { getBadges } from './badges.js';
 import { getDailyLog, getRecordsByProfile } from './db.js';
 import { buildCompletionCode, archiveSnapshot, buildDailyReport, buildNewWordsOnly, buildWeeklyReport, copyToClipboard } from './report.js';
+import { openWordDetail } from './mywords.js';
 import { qrSvg } from './parent.js';
 import { statusBadge } from './srs.js';
 import { $main, State } from './state.js';
@@ -16,6 +17,8 @@ import { getById } from './vocab.js';
 let ReportDate = null; // 目前檢視的報告日期（null=今天）
 // G1 拆分：跨模組不能直接對 import 的變數賦值，身分切換時經此 setter 重設
 function resetReportDate() { ReportDate = null; }
+// K：讓其他頁（首頁「最近學習日」）能直接跳到某天的報告
+function setReportDate(dateStr) { ReportDate = dateStr; }
 
 async function renderReport() {
   const today = todayStr();
@@ -135,17 +138,18 @@ async function renderReportDetail(dateStr) {
   const recs = await getRecordsByProfile(State.profile.id);
   const recMap = new Map(recs.map((r) => [r.wordId, r]));
 
+  // K：明細裡的單字都可點開單字卡
   const wordLine = (id) => {
     const e = getById(id); if (!e) return '';
     const r = recMap.get(id);
-    return `<div class="row"><div class="row-main">
+    return `<div class="row tap" data-id="${id}"><div class="row-main">
       <span class="row-word">${esc(e.word)}</span>
       <span class="row-zh">${esc(e.zh)}</span></div>
       <div class="row-meta"><span>${r ? statusBadge(r.status) : ''}</span></div></div>`;
   };
   const wrongLine = (w) => {
     const e = getById(w.wordId);
-    return `<div class="row"><div class="row-main">
+    return `<div class="row ${e ? 'tap' : ''}" ${e ? `data-id="${w.wordId}"` : ''}><div class="row-main">
       <span class="row-word">${e ? esc(e.word) : esc(w.wordId)}</span>
       <span class="row-zh">${w.kind === 'sentence' ? '造句' : '拼字'}</span></div>
       <div class="row-meta"><span>你寫：${esc(w.input) || '(空白)'}</span><span>正解：${esc(w.answer)}</span></div></div>`;
@@ -163,6 +167,7 @@ async function renderReportDetail(dateStr) {
       <details><summary>🔁 複習 ${(log.reviewWords || []).length} 字</summary><div class="detail-list">${revList}</div></details>
       <details><summary>📊 答對率 ${acc}%（❌ 答錯 ${(log.wrong || []).length} 題）</summary><div class="detail-list">${wrongList}</div></details>
     </div>`;
+  box.querySelectorAll('.row.tap[data-id]').forEach((row) => { row.onclick = () => openWordDetail(row.dataset.id); });
 }
 
 function shiftDate(dateStr, delta) {
@@ -170,4 +175,4 @@ function shiftDate(dateStr, delta) {
   d.setDate(d.getDate() + delta);
   return todayStr(d);
 }
-export { ReportDate, resetReportDate, renderReport, renderBadgesCard, celebrateBadges, renderReportDetail, shiftDate };
+export { ReportDate, resetReportDate, setReportDate, renderReport, renderBadgesCard, celebrateBadges, renderReportDetail, shiftDate };

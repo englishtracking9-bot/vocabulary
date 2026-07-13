@@ -3,6 +3,8 @@
 import { go, renderHeader } from './app.js';
 import { deleteProfileFully, getAllProfiles, getProfile, getRecordsByProfile, putProfile, setMeta } from './db.js';
 import { downloadICS, notifyPermission, notifySupported, registerPeriodicReminder, requestNotifyPermission, scheduleForegroundReminder, showReminderNow, syncReminderMeta } from './notify.js';
+import { openStatDetail } from './home.js';
+import { MyWordsFilter } from './mywords.js';
 import { encodeSyncCodes } from './paircode.js';
 import { qrSvg } from './parent.js';
 import { copyToClipboard } from './report.js';
@@ -147,16 +149,16 @@ async function renderSettings() {
     <div class="card">
       <h2>學習統計</h2>
       <div class="stat-grid">
-        <div><b>${stats.masteredCore}</b><span>🌳 已熟記</span></div>
-        <div><b>${stats.proficient}</b><span>🌲 穩固</span></div>
-        <div><b>${stats.weak}</b><span>🌿 學習中</span></div>
-        <div><b>${stats.newCount}</b><span>🌱 未測驗</span></div>
-        <div><b>${stats.tracked}</b><span>已納入學習</span></div>
-        <div><b>🔥 ${stats.streak}</b><span>連續天數</span></div>
-        <div><b>${stats.recentAccuracy}%</b><span>近7日答對率</span></div>
+        <div class="stat-cell tap" data-mw="mastered"><b>${stats.masteredCore}</b><span>🌳 已熟記</span></div>
+        <div class="stat-cell tap" data-mw="proficient"><b>${stats.proficient}</b><span>🌲 穩固</span></div>
+        <div class="stat-cell tap" data-mw="weak"><b>${stats.weak}</b><span>🌿 學習中</span></div>
+        <div class="stat-cell tap" data-mw="new"><b>${stats.newCount}</b><span>🌱 未測驗</span></div>
+        <div class="stat-cell tap" data-mw="all"><b>${stats.tracked}</b><span>已納入學習</span></div>
+        <div class="stat-cell tap" data-strk="1"><b>🔥 ${stats.streak}</b><span>連續天數</span></div>
+        <div class="stat-cell tap" data-rep="1"><b>${stats.recentAccuracy}%</b><span>近7日答對率</span></div>
         <div><b>${stats.totalVocab}</b><span>全六級總字數</span></div>
       </div>
-      <p class="hint-area">🌳 已熟記＝連續多天答對；🌲 穩固＝隔很多天仍答對。已熟記比例＝🌳＋🌲＝${stats.masteredPct}%。</p>
+      <p class="hint-area">🌳 已熟記＝連續多天答對；🌲 穩固＝隔很多天仍答對。已熟記比例＝🌳＋🌲＝${stats.masteredPct}%。點任一格看明細。</p>
     </div>
 
     <div class="card">
@@ -206,6 +208,15 @@ async function renderSettings() {
       document.querySelectorAll('.theme-opt').forEach((x) => x.classList.toggle('primary', x.dataset.theme === t));
     };
   });
+
+  // K：學習統計格可點看明細
+  document.querySelectorAll('[data-mw]').forEach((c) => {
+    c.onclick = () => { MyWordsFilter.status = c.dataset.mw; go('#mywords'); };
+  });
+  const strk = document.querySelector('[data-strk]');
+  if (strk) strk.onclick = () => openStatDetail('streak');
+  const rep = document.querySelector('[data-rep]');
+  if (rep) rep.onclick = () => go('#report');
 
   // P：進度同步碼（全量、一次性；「做過」的定義＝srs.js isIntroduced）
   document.getElementById('sync-gen').onclick = async () => {

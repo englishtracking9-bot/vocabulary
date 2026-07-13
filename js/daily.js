@@ -303,7 +303,8 @@ async function renderDayMenu(dateStr, groups) {
     return `<div class="card grp-card daymenu" data-idx="${idx}">
       <div class="grp-head"><b>${title}</b><span class="row-meta">${done}/${total} 完成</span></div>
       <div class="row-meta">${esc(preview)}${total > 5 ? '…' : ''}</div>
-      ${isManual ? `<div class="btn-row"><button class="btn danger" data-del="${g.id}">🗑 刪除此手動組</button></div>` : ''}
+      ${(isManual && g.batchId == null) ? `<div class="btn-row"><button class="btn danger" data-del="${g.id}">🗑 刪除此手動組</button></div>`
+        : (isManual ? '<div class="row-meta">📷 家長出的題（永久記錄，點開可看答題狀況）</div>' : '')}
     </div>`;
   };
   $main().innerHTML = `
@@ -344,24 +345,35 @@ async function renderDayList() {
   const doneCount = plan.group.wordIds.filter((id) => wordDayDone(plan, id)).length;
   const allDone = total > 0 && doneCount >= total;
 
+  // 題型文案跟著 plan.testTypes（出題碼可指定「只考拼字」）
+  const tt = plan.testTypes || { spelling: true, sentence: true };
+  const flowText = tt.sentence ? '拼字＋造句' : '拼字';
+
   const rows = plan.group.wordIds.map((id) => {
     const e = getById(id);
     if (!e) return '';
     const rec = recMap.get(id);
     const badge = rec ? statusBadge(rec.status) : '🆕 未測驗';
+    // I：本組作答狀況（✏️ 拼字／🧩 造句，✅ 對 ❌ 錯；沒作答不顯示）
+    const p = plan.progress[id] || {};
+    const marks = [];
+    if (tt.spelling && p.spelling) marks.push(`✏️${p.spelling === 'correct' ? '✅' : '❌'}`);
+    if (tt.sentence && p.sentence) marks.push(`🧩${p.sentence === 'correct' ? '✅' : '❌'}`);
     return `<div class="row tap" data-id="${id}">
       <div class="row-main">
         <span class="row-word">${esc(e.word)}
           <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button></span>
         <span class="row-zh">${esc(e.zh)}</span>
       </div>
-      <div class="row-meta"><span>${esc(e.pos)}・Lv${e.level}</span><span>${badge}</span></div>
+      <div class="row-meta"><span>${esc(e.pos)}・Lv${e.level}</span>${marks.length ? `<span>${marks.join(' ')}</span>` : ''}<span>${badge}</span></div>
     </div>`;
   }).join('');
 
-  // 題型文案跟著 plan.testTypes（出題碼可指定「只考拼字」）
-  const tt = plan.testTypes || { spelling: true, sentence: true };
-  const flowText = tt.sentence ? '拼字＋造句' : '拼字';
+  // I：本組答對率（以拼字為準；作答過才顯示）
+  const spAnswered = plan.group.wordIds.filter((id) => (plan.progress[id] || {}).spelling).length;
+  const spCorrect = plan.group.wordIds.filter((id) => (plan.progress[id] || {}).spelling === 'correct').length;
+  const rateLine = spAnswered
+    ? `　拼字答對 ${spCorrect}/${spAnswered}（${Math.round(spCorrect / spAnswered * 100)}%）` : '';
 
   let actionBtn;
   if (allDone) {
@@ -386,7 +398,7 @@ async function renderDayList() {
         <b>${title}</b>
       </div>
       <div class="memo">💡 ${memoText}</div>
-      <div class="row-meta">進度：${doneCount}/${total} 字完成${isPast ? '（純查看，可重練）' : ''}</div>
+      <div class="row-meta">進度：${doneCount}/${total} 字完成${rateLine}${isPast ? '（純查看，可重練）' : ''}</div>
     </div>
     ${rows || '<div class="card center">這組沒有單字</div>'}
     <div class="card center">
@@ -452,7 +464,7 @@ function renderReadList() {
         <div class="word-head">
           <span class="word-en">${esc(e.word)}</span>
           <button class="btn icon" data-say="${esc(e.answerKeys[0])}">🔊</button>
-          ${browse ? '' : `<button class="btn icon remove-word" data-rm="${e.id}" title="從今天移除">✕</button>`}
+          ${(browse || plan.batchId != null) ? '' : `<button class="btn icon remove-word" data-rm="${e.id}" title="從今天移除">✕</button>`}
         </div>
         <div class="pos">${esc(e.pos)}・Lv${e.level}</div>
         ${Array.isArray(e.root) && e.root.length ? `<div class="root">🔧 ${e.root.map((p) => `${esc(p.part)}(${esc(p.mean)})`).join(' + ')}</div>` : ''}

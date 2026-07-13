@@ -5,7 +5,7 @@ import { detectNewBadges } from './badges.js';
 import { openDay, wordDayDone } from './daily.js';
 import { getDailyLog, getDailyLogsByProfile, getDayPlan, getDueRecords, getRecordsByProfile } from './db.js';
 import { openWordDetail } from './mywords.js';
-import { celebrateBadges } from './reportui.js';
+import { celebrateBadges, setReportDate } from './reportui.js';
 import { statusBadge } from './srs.js';
 import { $main, State } from './state.js';
 import { getStats } from './stats.js';
@@ -83,7 +83,7 @@ async function openStatDetail(kind) {
   };
   const wrongLine = (w) => {
     const e = getById(w.wordId);
-    return `<div class="row"><div class="row-main">
+    return `<div class="row ${e ? 'tap' : ''}" ${e ? `data-id="${w.wordId}"` : ''}><div class="row-main">
       <span class="row-word">${e ? esc(e.word) : esc(w.wordId)}</span>
       <span class="row-zh">${w.kind === 'sentence' ? '造句' : '拼字'}</span></div>
       <div class="row-meta"><span>你寫：${esc(w.input) || '(空白)'}</span><span>正解：${esc(w.answer)}</span></div></div>`;
@@ -108,8 +108,9 @@ async function openStatDetail(kind) {
   } else { // streak
     const logs = await getDailyLogsByProfile(State.profile.id);
     const days = logs.filter((l) => l.answerCount > 0).sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 14);
-    title = '🔥 最近學習日';
-    body = days.length ? days.map((l) => `<div class="row"><div class="row-main">
+    title = '🔥 最近學習日（點一天看當天明細）';
+    // K：每天可點 → 跳到那天的報告（含學了/複習哪些字、對錯、答對率）
+    body = days.length ? days.map((l) => `<div class="row tap" data-date="${l.date}"><div class="row-main">
       <span class="row-word">${prettyDate(l.date)}</span></div>
       <div class="row-meta"><span>答題 ${l.answerCount}</span><span>新學 ${(l.newWords || []).length}</span><span>正確率 ${l.answerCount ? Math.round(l.correctCount / l.answerCount * 100) : 0}%</span></div></div>`).join('')
       : '<p class="hint-area">還沒有學習紀錄</p>';
@@ -125,5 +126,9 @@ async function openStatDetail(kind) {
   document.getElementById('sd-close').onclick = () => m.classList.remove('show');
   // 明細裡的字可點開單字卡
   m.querySelectorAll('.row.tap[data-id]').forEach((row) => { row.onclick = () => openWordDetail(row.dataset.id); });
+  // 最近學習日：點一天 → 該日報告
+  m.querySelectorAll('.row.tap[data-date]').forEach((row) => {
+    row.onclick = () => { m.classList.remove('show'); setReportDate(row.dataset.date); go('#report'); };
+  });
 }
 export { renderHome, openStatDetail };
