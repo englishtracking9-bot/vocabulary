@@ -133,6 +133,18 @@ body {
 .block-btn.soon { opacity: .6; }
 .block-btn.learn    { --blk: var(--c-learn); }
 .block-btn.mywords  { --blk: var(--c-mywords); }
+
+/* S：YP 專區 */
+.yp-grid { margin-top: 0; }
+.yp-badges { display: flex; gap: 6px; margin: 8px 0 4px; flex-wrap: wrap; }
+.yp-badge { font-size: 12px; font-weight: 600; color: var(--muted); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+.yp-badge.on { color: #fff; background: var(--c-yp); border-color: var(--c-yp); }
+.yp-card .word-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.yp-card .word-en { font-size: 22px; font-weight: 800; }
+.yp-sense { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+.yp-sense:first-of-type { border-top: none; padding-top: 0; }
+.btn.icon.sm { min-height: 0; padding: 2px 6px; font-size: 13px; vertical-align: middle; }
 .block-btn.yp       { --blk: var(--c-yp); }
 .block-btn.six      { --blk: var(--c-six); }
 .block-btn.test     { --blk: var(--c-test); }

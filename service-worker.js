@@ -4,7 +4,7 @@
 // ★ 改版方式：每次 push 新版前，把下面的 APP_VERSION 改成新值即可。
 //   （cache 名稱會跟著變 → 舊快取自動清除 → 使用者連網開啟會拿到新版程式與新版 vocab.json）
 
-const APP_VERSION = '2026-07-21-T1b-tweaks'; // ★ 同步更新 js/state.js 的 APP_UI_VERSION
+const APP_VERSION = '2026-07-21-S1-ypbrowse'; // ★ 同步更新 js/state.js 的 APP_UI_VERSION
 const CACHE = 'vocab-' + APP_VERSION;
 
 // 預先快取的核心檔案（相對於 SW 所在目錄）
@@ -27,6 +27,7 @@ const PRECACHE = [
   './js/more.js',
   './js/scan.js',
   './js/books.js',
+  './js/ypbook.js',
   './js/db.js',
   './js/srs.js',
   './js/quiz.js',
@@ -46,6 +47,7 @@ const PRECACHE = [
   './js/vendor/jsQR.js',
   './js/notify.js',
   './data/vocab.json',
+  './data/books.json',
   './data/roots.json',
   './data/groups.json',
   './data/groups_index.json',

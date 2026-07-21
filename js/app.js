@@ -13,6 +13,7 @@ import { renderQuiz } from './quizui.js';
 import { renderReport, resetReportDate } from './reportui.js';
 import { renderRoots } from './rootsui.js';
 import { renderScan } from './scan.js';
+import { renderYp } from './ypbook.js';
 import { $main, DEFAULT_PROFILES, LEGACY_PROFILE_NAMES, State, refreshMastered } from './state.js';
 import { esc } from './util.js';
 import { loadVocab, registerCustomWord } from './vocab.js';
@@ -116,6 +117,7 @@ const ROUTES = {
   '#report': renderReport,
   '#more': renderHome,   // 舊「更多」頁併入新首頁大按鈕；保留路由避免舊書籤/返回失效
   '#six': renderSixHub,  // 📚 學測6000 專區入口
+  '#yp': renderYp,       // 📖 YP 單字書獨立專區
   '#parent': renderParentZone,
   '#custombook': renderCustomBooks,
   '#scan': renderScan,
@@ -123,7 +125,7 @@ const ROUTES = {
 };
 
 // 不在底部導覽的子頁：一律歸「首頁」分頁高亮（都從首頁大按鈕進出）
-const HOME_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#settings', '#more', '#six', '#parent', '#manual', '#custombook']);
+const HOME_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#settings', '#more', '#six', '#yp', '#parent', '#manual', '#custombook']);
 
 function route() {
   const hash = location.hash || '#home';

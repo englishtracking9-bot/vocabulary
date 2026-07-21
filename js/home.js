@@ -67,7 +67,7 @@ async function renderHome() {
     <div class="home-sec">
       <h3>單字來源</h3>
       <div class="block-grid">
-        ${blk('yp', '', '📖', 'YP 單字書', '即將推出', ' soon')}
+        ${blk('yp', '#yp', '📖', 'YP 單字書', '獨立專區・Level 3')}
         ${blk('six', '#six', '📚', '學測6000', '字根字首等工具')}
         ${blk('custom', '#custombook', '📓', '自訂單字本', '片語・講義')}
         ${blk('lookup', '#lookup', '🔎', '查單字', '查6000或上網查')}
@@ -83,10 +83,7 @@ async function renderHome() {
       </div>
     </div>`;
 
-  // YP 尚未啟用（S 階段），沒有 data-go：需要一個 id 才能掛提示
-  const ypBtn = [...$main().querySelectorAll('.block-btn')].find((b) => b.querySelector('.blk-tt').textContent.startsWith('YP'));
   $main().querySelectorAll('.block-btn[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
-  if (ypBtn) ypBtn.onclick = () => alert('📖 YP 單字書即將在下一階段推出，敬請期待！');
   $main().querySelectorAll('.tb-cell[data-stat]').forEach((c) => { c.onclick = () => openStatDetail(c.dataset.stat); });
 
   // K-3：偵測並慶祝新解鎖的里程碑徽章
