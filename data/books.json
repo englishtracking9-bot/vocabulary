@@ -1,0 +1,3744 @@
+{
+ "book": "YP",
+ "generatedAt": "2026-07-21T09:39:07Z",
+ "source": [
+  "YP_level3_vocabulary.xlsx"
+ ],
+ "levels": [
+  {
+   "level": 3,
+   "unitCount": 6,
+   "wordCount": 231,
+   "units": [
+    {
+     "unit": 1,
+     "count": 74,
+     "entries": [
+      {
+       "id": "yp3-u1-1-cinema",
+       "seq": 1,
+       "word": "cinema",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "電影院 (= movie theater 美式)",
+         "example": "We went to the cinema to watch Star Wars.",
+         "example_zh": "我們去電影院看《星際大戰》。"
+        },
+        {
+         "pos": "n.",
+         "zh": "電影 (= the movies 美式)",
+         "example": "Avatar is a significant landmark in Hollywood cinema.",
+         "example_zh": "《阿凡達》是好萊塢電影的重要標竿。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-1-film",
+       "seq": 1,
+       "word": "film",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "影片、電影",
+         "example": "Have you seen any good films recently?",
+         "example_zh": "你最近看了什麼好電影嗎？"
+        },
+        {
+         "pos": "vi. / vt.",
+         "zh": "拍攝（電影）",
+         "example": "We will be filming in Australia for a month.",
+         "example_zh": "我們會在澳洲拍攝一個月。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-2-county",
+       "seq": 2,
+       "word": "county",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "縣、郡",
+         "example": "About half a million people live in Nantou County.",
+         "example_zh": "南投縣有五十萬居民。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-3-element",
+       "seq": 3,
+       "word": "element",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "（化學）元素",
+         "example": "A compound is made up of two or more elements.",
+         "example_zh": "化合物是由兩個或以上的元素組成的。"
+        },
+        {
+         "pos": "n.",
+         "zh": "要素",
+         "example": "Let's list the elements that make up a perfect dinner party",
+         "example_zh": "我們來列出舉辦一場完美晚宴的要素吧！"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-4-citizen",
+       "seq": 4,
+       "word": "citizen",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "市民",
+         "example": "The mayor urged citizens to begin preparing for the typhoon.",
+         "example_zh": "市長督促市民們開始做防颱準備。"
+        },
+        {
+         "pos": "n.",
+         "zh": "公民",
+         "example": "He got a green card by marrying a U.S. citizen.",
+         "example_zh": "他與美國公民結婚而取得綠卡。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-5-hang",
+       "seq": 5,
+       "word": "hang",
+       "senses": [
+        {
+         "pos": "vi.",
+         "zh": "懸掛",
+         "example": "A huge chandelier hung from the center of the ceiling.",
+         "example_zh": "天花板中央懸掛著一個大吊燈。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "掛上",
+         "example": "I hung a poster on the wall.",
+         "example_zh": "我在牆上掛了一幅海報。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-5-hang-up",
+       "seq": 5,
+       "word": "hang up",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "掛斷電話",
+         "example": "I said goodbye to Sarah on the phone and hung up.",
+         "example_zh": "我和莎拉在電話中說再見後就掛斷電話。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-5-hang-2",
+       "seq": 5,
+       "word": "hang",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "吊死",
+         "example": "The murderer hanged himself in his cell.",
+         "example_zh": "那名凶手在牢房裡上吊自殺了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-5-hanger",
+       "seq": 5,
+       "word": "hanger",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "衣架",
+         "example": "The hanger is too small for this coat.",
+         "example_zh": "這個衣架對這件大衣來說太小了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-6-weapon",
+       "seq": 6,
+       "word": "weapon",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "武器",
+         "example": "Tom is helping the police look for the murder weapon.",
+         "example_zh": "湯姆幫助警方找尋凶器。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-7-organize",
+       "seq": 7,
+       "word": "organize",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "組織",
+         "example": "They organized a meeting between teachers and students.",
+         "example_zh": "他們組織一個老師與學生之間的會議。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-7-organized",
+       "seq": 7,
+       "word": "organized",
+       "senses": [
+        {
+         "pos": "延伸 a.",
+         "zh": "有組織的",
+         "example": "Your composition is well-organized.",
+         "example_zh": "你的作文很有條理。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-7-organization",
+       "seq": 7,
+       "word": "organization",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "組織",
+         "example": "The essay lacks organization.",
+         "example_zh": "這篇文章缺乏組織。"
+        },
+        {
+         "pos": "n.",
+         "zh": "機構",
+         "example": "The Red Cross is an international organization.",
+         "example_zh": "紅十字會是一個國際性的機構。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-8-present",
+       "seq": 8,
+       "word": "present",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "贈予",
+         "example": "The university presented an honorary doctorate to him.",
+         "example_zh": "他獲頒這所大學的榮譽博士學位。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "呈現",
+         "example": "The case presents some facts that need further investigation.",
+         "example_zh": "這個案例顯現一些需要深入研究的現象。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "提出、表達、發表",
+         "example": "I'm going to present my paper at the conference.",
+         "example_zh": "我將在研討會上發表論文。"
+        },
+        {
+         "pos": "a.",
+         "zh": "出席的",
+         "example": "Were you present at the meeting?",
+         "example_zh": "你有出席會議嗎？"
+        },
+        {
+         "pos": "a.",
+         "zh": "目前的、現在的",
+         "example": "What is your present job?",
+         "example_zh": "你目前的工作是什麼？"
+        },
+        {
+         "pos": "n.",
+         "zh": "禮物",
+         "example": "He gave me a dog as a present.",
+         "example_zh": "他送我一隻狗當禮物。"
+        },
+        {
+         "pos": "n.",
+         "zh": "目前、現在",
+         "example": "We should live in the present.",
+         "example_zh": "我們應活在當下。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-8-at-present",
+       "seq": 8,
+       "word": "at present",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "目前",
+         "example": "At present I live in Hsinchu.",
+         "example_zh": "我目前住在新竹。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-8-presence",
+       "seq": 8,
+       "word": "presence",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "在場、出席",
+         "example": "He is not aware of my presence.",
+         "example_zh": "他沒有察覺我的存在。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-8-in-the-presence-of",
+       "seq": 8,
+       "word": "in the presence of",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "在~面前",
+         "example": "The little boy is shy in the presence of strangers.",
+         "example_zh": "這個小男孩在陌生人面前會害羞。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-9-captain",
+       "seq": 9,
+       "word": "captain",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "隊長",
+         "example": "It is unusual to have a goalkeeper as (the) captain of a soccer team.",
+         "example_zh": "守門員擔任足球隊隊長很少見。"
+        },
+        {
+         "pos": "n.",
+         "zh": "船長",
+         "example": "The captain ordered the crew to abandon the ship.",
+         "example_zh": "船長下令船員棄船。"
+        },
+        {
+         "pos": "n.",
+         "zh": "上尉",
+         "example": "He was promoted to captain from lieutenant.",
+         "example_zh": "他從中尉受到拔擢成為上尉。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-10-talent",
+       "seq": 10,
+       "word": "talent",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "才能、天分",
+         "example": "She has shown a talent for music since she was young.",
+         "example_zh": "她從小就嶄露音樂天分。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-10-talented",
+       "seq": 10,
+       "word": "talented",
+       "senses": [
+        {
+         "pos": "延伸 a.",
+         "zh": "有天分的、有才華的",
+         "example": "Mozart is a talented musician.",
+         "example_zh": "莫札特是個很有天分的音樂家。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-11-sour",
+       "seq": 11,
+       "word": "sour",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "味道酸的",
+         "example": "Rachel sampled the wine. It was sour.",
+         "example_zh": "瑞秋試了一口酒，它是酸的。"
+        },
+        {
+         "pos": "n.",
+         "zh": "酸味、酸的東西",
+         "example": "Sour is an unpleasant taste for me, but my sister has a preference for it.",
+         "example_zh": "我不喜歡酸味，但我妹妹喜歡。"
+        },
+        {
+         "pos": "vi. / vt.",
+         "zh": "變酸、變質",
+         "example": "If not preserved well, foods sour easily.",
+         "example_zh": "食物沒妥善保存容易變質。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-11-bitter",
+       "seq": 11,
+       "word": "bitter",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "苦的",
+         "example": "Good medicine tastes bitter.",
+         "example_zh": "良藥苦口。"
+        },
+        {
+         "pos": "a.",
+         "zh": "痛苦的",
+         "example": "I have a bitter memory about my childhood.",
+         "example_zh": "我有一段悲苦的童年回憶。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-11-bitterness",
+       "seq": 11,
+       "word": "bitterness",
+       "senses": [
+        {
+         "pos": "延伸 n.",
+         "zh": "苦味",
+         "example": "Because of the bitterness, we don't like to eat this vegetable.",
+         "example_zh": "我們不愛吃這種蔬菜是因為它的苦味。"
+        },
+        {
+         "pos": "延伸 n.",
+         "zh": "艱苦、苦悶",
+         "example": "He was full of bitterness after losing his job.",
+         "example_zh": "他失業後內心充滿苦悶。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-11-salty",
+       "seq": 11,
+       "word": "salty",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "鹹的",
+         "example": "I don't like to eat out, because the food is always too salty.",
+         "example_zh": "我不喜歡外食，因為食物都太鹹了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-12-bind",
+       "seq": 12,
+       "word": "bind",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "綁",
+         "example": "Bind the pile of newspapers with string.",
+         "example_zh": "用繩子把這疊報紙綁好。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "束縛",
+         "example": "I hate to be bound to marriage.",
+         "example_zh": "我討厭受婚姻束縛。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-13-bomb",
+       "seq": 13,
+       "word": "bomb",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "炸彈",
+         "example": "The city of Hiroshima was destroyed by an atomic bomb in 1945.",
+         "example_zh": "廣島在一九四五年遭到原子彈摧毀。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "爆炸/轟炸",
+         "example": "This is one of the few cities that were not bombed in WWII.",
+         "example_zh": "這是二次大戰中少數沒被轟炸的城市之一。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-13-bombard",
+       "seq": 13,
+       "word": "bombard",
+       "senses": [
+        {
+         "pos": "補充 vt.",
+         "zh": "猛烈轟炸、砲擊",
+         "example": "The enemy forces bombarded several of our towns.",
+         "example_zh": "敵軍轟炸了我們好幾個城鎮。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-14-jazz",
+       "seq": 14,
+       "word": "jazz",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "爵士樂",
+         "example": "Many people enjoy jazz music.",
+         "example_zh": "許多人喜歡爵士樂。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-15-scientist",
+       "seq": 15,
+       "word": "scientist",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "科學家",
+         "example": "I have made up my mind to be a scientist.",
+         "example_zh": "我立志成為一名科學家。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-15-scientific",
+       "seq": 15,
+       "word": "scientific",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "科學的",
+         "example": "This theory has no scientific basis at all.",
+         "example_zh": "這個理論完全沒有科學根據。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-16-frighten",
+       "seq": 16,
+       "word": "frighten",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "驚嚇",
+         "example": "He frightened me when he drove at the speed of 150 km/hr.",
+         "example_zh": "他開車時速高達一百五十公里，嚇壞我了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-16-fright",
+       "seq": 16,
+       "word": "fright",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "恐懼",
+         "example": "I got such a fright when I heard the shots.",
+         "example_zh": "我聽到那幾聲槍響嚇了一大跳。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-16-stage-fright",
+       "seq": 16,
+       "word": "stage fright",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "怯場、舞台恐懼症",
+         "example": "It is not unusual to have stage fright when speaking before a group.",
+         "example_zh": "在一群人面前說話怯場是很尋常的事。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-17-freeze",
+       "seq": 17,
+       "word": "freeze",
+       "senses": [
+        {
+         "pos": "vi. / vt.",
+         "zh": "(使)結冰",
+         "example": "Water freezes to ice under the temperature of 0°C.",
+         "example_zh": "水在零度以下會結冰。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "感到寒冷",
+         "example": "I am freezing to death.",
+         "example_zh": "我快要冷死了。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "不動、楞住",
+         "example": "“Freeze, or I will shoot,” shouted the bank robber.",
+         "example_zh": "銀行搶匪大喊「不准動，否則我就開槍。」"
+        },
+        {
+         "pos": "n.",
+         "zh": "（薪資、價格等）凍結、停滯【~on】",
+         "example": "Our company has put a freeze on raises for years.",
+         "example_zh": "我們公司的薪資已經凍漲好幾年了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-17-frozen",
+       "seq": 17,
+       "word": "frozen",
+       "senses": [
+        {
+         "pos": "延伸 a.",
+         "zh": "結凍的、冷凍的",
+         "example": "There are some people skating on the frozen river.",
+         "example_zh": "有些人在結凍的河面溜冰。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-17-freezer",
+       "seq": 17,
+       "word": "freezer",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "冰箱的冷凍庫",
+         "example": "Karen took some ice cubes from the freezer and put them in the soda.",
+         "example_zh": "凱倫從冰箱冷凍庫裡拿出一點冰塊，放入汽水中。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-18-hire",
+       "seq": 18,
+       "word": "hire",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "僱用",
+         "example": "I was hired as a sailor on a merchant ship.",
+         "example_zh": "我受僱於一艘商船上擔任水手。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "租用",
+         "example": "How much does it cost to hire a car for one day in the United States?",
+         "example_zh": "在美國租車一天需要多少錢？"
+        },
+        {
+         "pos": "n.",
+         "zh": "僱用",
+         "example": "We need to make some new hires.",
+         "example_zh": "我們必須增聘一些人。"
+        },
+        {
+         "pos": "n.",
+         "zh": "租用",
+         "example": "There are bicycles for hire nearby.",
+         "example_zh": "附近有腳踏車提供出租。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-18-fire",
+       "seq": 18,
+       "word": "fire",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "解僱",
+         "example": "The boss told me that I was fired.",
+         "example_zh": "老闆告訴我，我被開除了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-19-aircraft",
+       "seq": 19,
+       "word": "aircraft",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "飛機",
+         "example": "Smoking is banned in all aircraft.",
+         "example_zh": "所有的飛機都禁菸。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-19-airline",
+       "seq": 19,
+       "word": "airline",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "航空公司",
+         "example": "China Airlines has direct flights to Vietnam.",
+         "example_zh": "中華航空有直飛越南的班機。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-20-vote",
+       "seq": 20,
+       "word": "vote",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "投票表決",
+         "example": "If we can't reach an agreement, then we have to decide by vote.",
+         "example_zh": "若我們不能達成協議，那只好投票表決。"
+        },
+        {
+         "pos": "n.",
+         "zh": "選票",
+         "example": "Only one percent of the vote is invalid.",
+         "example_zh": "這些選票中只有百分之一是無效票。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "投票",
+         "example": "Will people vote for or against independence?",
+         "example_zh": "人們對於獨立會投支持還是反對票？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-21-soil",
+       "seq": 21,
+       "word": "soil",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "土壤",
+         "example": "Bee balm can grow in poor soil.",
+         "example_zh": "蜂香薄荷能在土壤貧瘠的環境生長。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-22-confirm",
+       "seq": 22,
+       "word": "confirm",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "確認、證實",
+         "example": "Six people have called to confirm that they will attend the meeting.",
+         "example_zh": "有六個人致電確認他們將參加會議。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-22-deny",
+       "seq": 22,
+       "word": "deny",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "否認",
+         "example": "He denied all the accusations.",
+         "example_zh": "他否認所有的指控。"
+        },
+        {
+         "pos": "用法",
+         "zh": "deny V-ing / that 子句 (否認做了~)",
+         "example": "He denied being involved in the case. = He denied that he was involved in the case.",
+         "example_zh": "他否認涉案。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "拒絕給【~sb. sth.】",
+         "example": "He denied the students a chance (to speak).",
+         "example_zh": "他拒絕讓學生有發言的機會。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-22-undeniably",
+       "seq": 22,
+       "word": "undeniably",
+       "senses": [
+        {
+         "pos": "延伸 adv.",
+         "zh": "無可否認地",
+         "example": "It is undeniably the best bakery in town.",
+         "example_zh": "它無疑是城裡最棒的麵包店。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-23-painter",
+       "seq": 23,
+       "word": "painter",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "畫家",
+         "example": "She is a young but talented painter.",
+         "example_zh": "她是位年輕但有才華的畫家。"
+        },
+        {
+         "pos": "n.",
+         "zh": "油漆匠",
+         "example": "My father worked as a painter for twenty years.",
+         "example_zh": "我父親從事油漆匠的工作長達二十年。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-24-fence",
+       "seq": 24,
+       "word": "fence",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "圍牆",
+         "example": "A cat was walking on top of the fence briskly.",
+         "example_zh": "一隻貓輕快地走在籬笆上。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "圍以柵欄",
+         "example": "They have fenced the pond with barbed wire.",
+         "example_zh": "他們用有刺鐵絲將池塘圍住。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-25-steal",
+       "seq": 25,
+       "word": "steal",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "偷竊",
+         "example": "My scooter was stolen.",
+         "example_zh": "我的機車被偷了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-25-thief",
+       "seq": 25,
+       "word": "thief",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "小偷",
+         "example": "The thief took all the cash in the safe.",
+         "example_zh": "小偷拿走保險箱裡所有的現金。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-26-elect",
+       "seq": 26,
+       "word": "elect",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "選舉【elect sb. (as) ~】",
+         "example": "We elected him (as) class leader.",
+         "example_zh": "我們選他當班長。"
+        },
+        {
+         "pos": "",
+         "zh": "補充 N(官職)-elect (N當選人(尚未就任))",
+         "example": "The president-elect is busy appointing positions of his administration.",
+         "example_zh": "總統當選人正忙著安排政務官。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-26-election",
+       "seq": 26,
+       "word": "election",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "選舉",
+         "example": "Local government elections will take place in May.",
+         "example_zh": "地方政府選舉將於五月舉行。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-27-downtown",
+       "seq": 27,
+       "word": "downtown",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "市區的",
+         "example": "Our company is located in downtown Taipei.",
+         "example_zh": "我們公司位於臺北市中心。"
+        },
+        {
+         "pos": "adv.",
+         "zh": "在市區",
+         "example": "I went downtown to buy an evening dress.",
+         "example_zh": "我到市中心去買一件晚禮服。"
+        },
+        {
+         "pos": "n.",
+         "zh": "市中心",
+         "example": "My friends and I went to the downtown of London.",
+         "example_zh": "我跟朋友們去倫敦的市中心。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-28-passenger",
+       "seq": 28,
+       "word": "passenger",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "乘客",
+         "example": "All the passengers have to buy a ticket before getting on the train.",
+         "example_zh": "所有乘客在上火車前都必須購票。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-29-besides",
+       "seq": 29,
+       "word": "besides",
+       "senses": [
+        {
+         "pos": "adv.",
+         "zh": "此外、而且",
+         "example": "She won't mind your being late. Besides, it's hardly your fault.",
+         "example_zh": "她不會介意你遲到而且這也不算你的錯。"
+        },
+        {
+         "pos": "prep.",
+         "zh": "除了~之外(還~)",
+         "example": "Do you play any other sports besides basketball?",
+         "example_zh": "你除了籃球之外還會其他的運動嗎？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-30-invitation",
+       "seq": 30,
+       "word": "invitation",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "邀請",
+         "example": "He sent me an invitation to his concert.",
+         "example_zh": "他寄給我一張他的演奏會邀請函。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-31-tank",
+       "seq": 31,
+       "word": "tank",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "水缸、魚缸、油箱",
+         "example": "I filled the tank before getting on the highway.",
+         "example_zh": "我在上高速公路之前把油箱加滿。"
+        },
+        {
+         "pos": "n.",
+         "zh": "坦克車",
+         "example": "She has never seen a tank close up.",
+         "example_zh": "她從來沒有近距離看過坦克車。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-32-produce",
+       "seq": 32,
+       "word": "produce",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "生產",
+         "example": "We must produce more food by ourselves and import less.",
+         "example_zh": "我們必須生產更多食物並減少進口。"
+        },
+        {
+         "pos": "n.",
+         "zh": "農產品",
+         "example": "The chef buys fresh produce at the market every morning.",
+         "example_zh": "這位大廚每天早晨到市場買新鮮的農產品。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-32-producer",
+       "seq": 32,
+       "word": "producer",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "生產者、生產國",
+         "example": "France is a major wine producer.",
+         "example_zh": "法國是主要的葡萄酒生產國。"
+        },
+        {
+         "pos": "n.",
+         "zh": "製作人、製片家",
+         "example": "The producer of Hulk is very proud of this movie.",
+         "example_zh": "《綠巨人浩克》的製片人很以這部電影為榮。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-32-product",
+       "seq": 32,
+       "word": "product",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "產品",
+         "example": "Our products are exported to all over the world.",
+         "example_zh": "我們的產品外銷到全世界。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-32-production",
+       "seq": 32,
+       "word": "production",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "生產",
+         "example": "We need to improve our production efficiency.",
+         "example_zh": "我們需要改善生產效能。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-33-crop",
+       "seq": 33,
+       "word": "crop",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "農作物",
+         "example": "The main crops of Taiwan are rice and tea.",
+         "example_zh": "臺灣的主要作物是稻米與茶葉。"
+        },
+        {
+         "pos": "n.",
+         "zh": "收成",
+         "example": "We had a good crop of rice.",
+         "example_zh": "我們的稻米大豐收。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "剪短、剪掉",
+         "example": "She cropped her hair short.",
+         "example_zh": "她把頭髮剪短了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-34-arrest",
+       "seq": 34,
+       "word": "arrest",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "逮捕",
+         "example": "He was arrested at once after the police found drugs in his car.",
+         "example_zh": "警方在他車上發現毒品後，立刻逮捕他。"
+        },
+        {
+         "pos": "n.",
+         "zh": "逮捕、拘捕",
+         "example": "The police made several arrests in the riot.",
+         "example_zh": "警方在這場暴動中逮捕數人。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-34-under-arrest",
+       "seq": 34,
+       "word": "under arrest",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "被拘禁、被逮捕",
+         "example": "The suspect is now under arrest.",
+         "example_zh": "嫌犯已遭逮捕。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-35-detect",
+       "seq": 35,
+       "word": "detect",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "察覺、發現（不容易發現的事物）",
+         "example": "Women are better at detecting subtle emotional changes.",
+         "example_zh": "女性較擅長察覺微妙的情緒變化。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "探測、偵測（須使用特殊設備）",
+         "example": "Another black hole was detected by scientists last month.",
+         "example_zh": "科學家上個月又偵測到一個黑洞。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-35-detector",
+       "seq": 35,
+       "word": "detector",
+       "senses": [
+        {
+         "pos": "延伸 n.",
+         "zh": "偵測器",
+         "example": "Smoke detectors and metal detectors are very useful devices.",
+         "example_zh": "煙霧偵測器及金屬探測器是很好用的裝置。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-35-detection",
+       "seq": 35,
+       "word": "detection",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "探知、察覺",
+         "example": "The detection of cancer at the early stage is very important.",
+         "example_zh": "癌症早期發現是非常重要的。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-36-lover",
+       "seq": 36,
+       "word": "lover",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "情人、戀人",
+         "example": "We are not lovers; we are just friends.",
+         "example_zh": "我們不是戀人只是朋友。"
+        },
+        {
+         "pos": "n.",
+         "zh": "愛好者",
+         "example": "Camping gear makes a great gift for nature lovers.",
+         "example_zh": "露營用具對熱愛大自然的人而言是很棒的禮物。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-37-golf",
+       "seq": 37,
+       "word": "golf",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "高爾夫球",
+         "example": "Tiger Woods is a famous professional golf player.",
+         "example_zh": "老虎・伍茲是鼎鼎有名的職業高爾夫球手。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "打高爾夫 (= play golf)",
+         "example": "Let's go golfing this weekend.",
+         "example_zh": "這週末去打高爾夫吧。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-37-bowling",
+       "seq": 37,
+       "word": "bowling",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "保齡球",
+         "example": "Do you want to go bowling with us on Friday?",
+         "example_zh": "你禮拜五要和我們一起去打保齡球嗎？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-38-jet",
+       "seq": 38,
+       "word": "jet",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "（水、瓦斯）噴射（物）",
+         "example": "Many jets of water aimed at the burning house.",
+         "example_zh": "大量水柱噴向失火的房子。"
+        },
+        {
+         "pos": "n.",
+         "zh": "噴射機 (= jet plane)",
+         "example": "I am leaving on a jet (plane).",
+         "example_zh": "我要搭噴射機離開。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "噴射、射出",
+         "example": "In the water therapy, the water jetted on his back helping him relax.",
+         "example_zh": "水療時，水柱射在他的背上幫助放鬆。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-38-fighter",
+       "seq": 38,
+       "word": "fighter",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "鬥士",
+         "example": "Henry is a fighter of life—he never gives up.",
+         "example_zh": "亨利是位生命的鬥士，他從不放棄。"
+        },
+        {
+         "pos": "n.",
+         "zh": "戰鬥機",
+         "example": "He was shot down by an enemy's fighter.",
+         "example_zh": "他被敵軍的戰鬥機射下來。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-39-naked",
+       "seq": 39,
+       "word": "naked",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "裸體的",
+         "example": "I saw a young woman sunbathing naked on the beach.",
+         "example_zh": "我看到一名年輕女子裸體躺在沙灘上做日光浴。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-39-see-with-the-naked-eye",
+       "seq": 39,
+       "word": "see ~ with the naked eye",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "用肉眼看",
+         "example": "Viruses are too small to see with the naked eye.",
+         "example_zh": "病毒太小肉眼無法看見。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u1-40-brick",
+       "seq": 40,
+       "word": "brick",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "磚頭",
+         "example": "The house is made of brick, not wood.",
+         "example_zh": "這棟房子是磚造的不是木造。"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "unit": 2,
+     "count": 1,
+     "entries": [
+      {
+       "id": "yp3-u2-1-base",
+       "seq": 1,
+       "word": "base",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "底、基部",
+         "example": "The base of the pillar is decorated with the images of bats.",
+         "example_zh": "柱子底部飾以蝙蝠的圖案。"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "unit": 3,
+     "count": 74,
+     "entries": [
+      {
+       "id": "yp3-u3-1-bleed",
+       "seq": 1,
+       "word": "bleed",
+       "senses": [
+        {
+         "pos": "v.",
+         "zh": "流血",
+         "example": "I scraped my knee and it is bleeding.",
+         "example_zh": "我膝蓋擦傷正在流血。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-1-bleed-sb-for",
+       "seq": 1,
+       "word": "bleed sb. for $",
+       "senses": [
+        {
+         "pos": "phr.",
+         "zh": "長期榨取某人的錢財",
+         "example": "His ex-wife intends to bleed him for every cent he has.",
+         "example_zh": "他的前妻打算榨乾他的每一分錢。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-1-bleed-sb-dry",
+       "seq": 1,
+       "word": "bleed sb. dry",
+       "senses": [
+        {
+         "pos": "phr.",
+         "zh": "將某人的錢榨光",
+         "example": "Endless civil war has bled the country dry.",
+         "example_zh": "無止盡的內戰導致該國財困潦倒。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-1-bloody",
+       "seq": 1,
+       "word": "bloody",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "流血的",
+         "example": "His clothes were torn and bloody.",
+         "example_zh": "他的衣服破了，而且見血。"
+        },
+        {
+         "pos": "adj.",
+         "zh": "血腥殘殺的",
+         "example": "Normandy was a bloody battle.",
+         "example_zh": "諾曼地是一場傷亡慘重的戰役。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-2-steam",
+       "seq": 2,
+       "word": "steam",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "蒸汽",
+         "example": "The invention of steam engines is a milestone in human history.",
+         "example_zh": "蒸汽機的發明是人類史上的一個里程碑。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "冒出蒸氣",
+         "example": "The lake seems to be steaming in the scorching sun.",
+         "example_zh": "湖面在強烈的日照下彷彿散發著蒸氣。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "蒸煮",
+         "example": "I steamed some buns.",
+         "example_zh": "我蒸了一些饅頭。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-3-stream",
+       "seq": 3,
+       "word": "stream",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "小河",
+         "example": "A small stream runs in front of our garden.",
+         "example_zh": "我們的花園前面有一條小河。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "流出",
+         "example": "Tears streamed down from his mother's eyes.",
+         "example_zh": "眼淚從他母親的雙眼流下。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-3-streaming",
+       "seq": 3,
+       "word": "streaming",
+       "senses": [
+        {
+         "pos": "",
+         "zh": "串流",
+         "example": "Streaming music is the most popular way of listening to music.",
+         "example_zh": "串流音樂是最流行的聽音樂方式。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-4-pump",
+       "seq": 4,
+       "word": "pump",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "抽水機；幫浦",
+         "example": "We use pumps to pump out water.",
+         "example_zh": "我們用抽水機抽水。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "(用抽水機)抽出",
+         "example": "The residents are still pumping floodwater out of the basement.",
+         "example_zh": "住戶仍在用抽水機抽出地下室裡的洪水。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-5-elevator",
+       "seq": 5,
+       "word": "elevator",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "電梯；升降機",
+         "example": "We’ll have to take the elevator to the 43rd floor.",
+         "example_zh": "我們必須搭電梯到四十三樓。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-6-length",
+       "seq": 6,
+       "word": "length",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "長度",
+         "example": "The desk is 1.2 meters in length.",
+         "example_zh": "這張書桌長一點二米。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-6-height",
+       "seq": 6,
+       "word": "height",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "高度",
+         "example": "Can you measure the height of the wall?",
+         "example_zh": "你可以量一下牆的高度嗎？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-6-width",
+       "seq": 6,
+       "word": "width",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "寬度",
+         "example": "The table is one meter in width.",
+         "example_zh": "這張桌子寬一公尺。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-6-widen",
+       "seq": 6,
+       "word": "widen",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "擴展；增加",
+         "example": "He reads a lot, eager to widen his knowledge.",
+         "example_zh": "他大量閱讀，急欲增廣知識。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "拓寬",
+         "example": "Due to heavy traffic, they plan to widen the road.",
+         "example_zh": "因為交通繁忙，他們計畫拓寬道路。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-7-tower",
+       "seq": 7,
+       "word": "tower",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "塔；高樓",
+         "example": "There is a clock on the church tower.",
+         "example_zh": "教堂的高塔上有一座鐘。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "高聳；矗立",
+         "example": "Mountains tower in back of my house.",
+         "example_zh": "我家後方群山聳立。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-7-tower-over-above-n",
+       "seq": 7,
+       "word": "tower over / above N",
+       "senses": [
+        {
+         "pos": "",
+         "zh": "傲視~、高聳於~",
+         "example": "The Twin Towers used to tower over New York.",
+         "example_zh": "雙子星大樓曾高聳於紐約。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-8-tunnel",
+       "seq": 8,
+       "word": "tunnel",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "隧道",
+         "example": "The Channel Tunnel connects England and France.",
+         "example_zh": "英吉利海峽隧道連接英國與法國。"
+        },
+        {
+         "pos": "vi / vt.",
+         "zh": "挖隧道、鑿地道",
+         "example": "Should we tunnel under the channel or build a bridge across it?",
+         "example_zh": "我們該挖掘海底隧道還是建造跨海橋梁?"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-9-controller",
+       "seq": 9,
+       "word": "controller",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "主管；操縱者",
+         "example": "Every aircraft must wait until the air traffic controller gives permission for it to take off.",
+         "example_zh": "每架飛機都須等待飛航管制員許可後才能起飛。"
+        },
+        {
+         "pos": "n.",
+         "zh": "控制器",
+         "example": "Museums are equipped with temperature and humidity controllers.",
+         "example_zh": "博物館裝有溫、濕度調節器。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-10-thumb",
+       "seq": 10,
+       "word": "thumb",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "大拇指",
+         "example": "She held the note carefully between the index finger and the thumb.",
+         "example_zh": "她小心地用食指與拇指捏著那張紙。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "以拇指翻閱 (~through)",
+         "example": "She thumbed through the book.",
+         "example_zh": "她用拇指翻閱那本書。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "翹起大拇指向路過的汽車要求搭便車",
+         "example": "My car broke down, so I had to thumb a ride.",
+         "example_zh": "我的車子拋錨了，所以我只好搭便車了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-10-give-a-thumbs-up-down",
+       "seq": 10,
+       "word": "give~a thumbs up / down",
+       "senses": [
+        {
+         "pos": "",
+         "zh": "讚許/不滿",
+         "example": "Dad gave me a thumbs up after I performed.",
+         "example_zh": "父親在我表演完後豎起大拇指表示讚許。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-10-be-all-thumbs",
+       "seq": 10,
+       "word": "be all thumbs",
+       "senses": [
+        {
+         "pos": "",
+         "zh": "笨拙",
+         "example": "When it comes to cooking, I am all thumbs.",
+         "example_zh": "說到烹飪，我實在很笨拙。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-11-alphabet",
+       "seq": 11,
+       "word": "alphabet",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "字母表",
+         "example": "There are twenty-six letters in the English alphabet.",
+         "example_zh": "英文共有二十六個字母。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-11-alphabetical",
+       "seq": 11,
+       "word": "alphabetical",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "按字母排序的",
+         "example": "The names are listed in alphabetical order.",
+         "example_zh": "這些名字按字母順序排序。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-12-bamboo",
+       "seq": 12,
+       "word": "bamboo",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "竹子",
+         "example": "Ann hit Tommy on the head with a bamboo stick.",
+         "example_zh": "安用竹棍打湯米的頭。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-13-cable",
+       "seq": 13,
+       "word": "cable",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "電纜",
+         "example": "Why not using underground cables instead of overhead wires?",
+         "example_zh": "為什麼不用地下電纜取代高價電線呢?"
+        },
+        {
+         "pos": "n.",
+         "zh": "巨纜、鋼索",
+         "example": "The suspension bridge is hung by cables fixed to towers.",
+         "example_zh": "吊橋由固定在塔上的鋼纜懸吊。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-13-cable-tv",
+       "seq": 13,
+       "word": "cable TV",
+       "senses": [
+        {
+         "pos": "",
+         "zh": "有線電視",
+         "example": "I live in an apartment with cable TV.",
+         "example_zh": "我住在一間裝有有線電視的公寓。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-13-cable-car",
+       "seq": 13,
+       "word": "cable car",
+       "senses": [
+        {
+         "pos": "",
+         "zh": "纜車",
+         "example": "We went up the mountain by cable car.",
+         "example_zh": "我們搭乘纜車上山。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-13-cable-2",
+       "seq": 13,
+       "word": "cable",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "鋪設電纜",
+         "example": "Many remote villages have not been cabled yet.",
+         "example_zh": "許多偏遠村莊尚未批設電纜。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-14-cough",
+       "seq": 14,
+       "word": "cough",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "咳嗽",
+         "example": "I had a bad cough last night.",
+         "example_zh": "昨晚我咳得很厲害。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "咳嗽",
+         "example": "The smoke made me cough.",
+         "example_zh": "煙使我咳嗽。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-15-crane",
+       "seq": 15,
+       "word": "crane",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "鶴",
+         "example": "A little way off, I could see cranes flying.",
+         "example_zh": "我可以看到不遠處有鶴在飛。"
+        },
+        {
+         "pos": "n.",
+         "zh": "起重機、吊車",
+         "example": "The crane lifted the container off the ship.",
+         "example_zh": "起重機從船上吊起貨櫃。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "引頸、伸長脖子",
+         "example": "Everyone craned forward to see what was happening.",
+         "example_zh": "大家都向前伸長脖子看發生甚麼事。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-16-data",
+       "seq": 16,
+       "word": "data",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "資料",
+         "example": "It’s possible to store a lot more data on a hard disk.",
+         "example_zh": "硬碟可以儲存更多資料。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-16-database",
+       "seq": 16,
+       "word": "database",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "資料庫",
+         "example": "We store all the information of our customers in the database.",
+         "example_zh": "我們將所有顧客資訊存於電腦資料庫裡。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-17-delicious",
+       "seq": 17,
+       "word": "delicious",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "美味的",
+         "example": "The salad was so delicious that I asked the chef for the recipe.",
+         "example_zh": "那道沙拉如此的美味，我還向主廚要了食譜。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-17-tasty",
+       "seq": 17,
+       "word": "tasty",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "好吃的",
+         "example": "The crackers were so tasty that I ate them all myself.",
+         "example_zh": "這些餅乾太好吃，我一個人把它們都吃光了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-18-dinosaur",
+       "seq": 18,
+       "word": "dinosaur",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "恐龍",
+         "example": "The dinosaur lived a very long time ago but is now extinct.",
+         "example_zh": "恐龍早已滅絕。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-18-dragon",
+       "seq": 18,
+       "word": "dragon",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "龍",
+         "example": "The dragon spits fire at people.",
+         "example_zh": "那條龍會噴火。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-19-dizzy",
+       "seq": 19,
+       "word": "dizzy",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "暈眩的",
+         "example": "I felt dizzy after riding the roller-coaster.",
+         "example_zh": "我坐完雲霄飛車後覺得暈眩。"
+        },
+        {
+         "pos": "adj.",
+         "zh": "令人昏眩的",
+         "example": "A UFO flew at a dizzy speed in the sky.",
+         "example_zh": "幽浮在空中以令人昏眩的速度飛行。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-20-donkey",
+       "seq": 20,
+       "word": "donkey",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "驢子",
+         "example": "Rafael’s donkey was stolen.",
+         "example_zh": "拉斐爾的驢子被偷了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-20-camel",
+       "seq": 20,
+       "word": "camel",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "駱駝",
+         "example": "The sheik is riding on a camel.",
+         "example_zh": "酋長正騎著駱駝。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-21-drug",
+       "seq": 21,
+       "word": "drug",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "藥品",
+         "example": "I object to testing new drugs on animals.",
+         "example_zh": "我反對利用動物試驗新藥。"
+        },
+        {
+         "pos": "n.",
+         "zh": "毒品",
+         "example": "Taking drugs is illegal and harmful.",
+         "example_zh": "吸毒是違法且有害的。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "對~下麻藥、施打麻醉劑",
+         "example": "The patient had to be heavily drugged to ease his pain.",
+         "example_zh": "那位病人需要高劑量的麻藥才能止痛。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "在~下藥",
+         "example": "The madman believed people would drug his food and drings.",
+         "example_zh": "這個瘋子覺得別人會在他的食物及用水裡下藥。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-21-drugstore",
+       "seq": 21,
+       "word": "drugstore",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "藥妝店",
+         "example": "He was in charge of the drugstore.",
+         "example_zh": "他負責管理這家藥妝店。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-22-dumb",
+       "seq": 22,
+       "word": "dumb",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "啞的",
+         "example": "He's been deaf and dumb since birth.",
+         "example_zh": "他天生就又聾又啞。"
+        },
+        {
+         "pos": "adj.",
+         "zh": "笨的",
+         "example": "Are they brave or just dumb?",
+         "example_zh": "他們算勇敢還是愚蠢？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-22-deaf",
+       "seq": 22,
+       "word": "deaf",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "聾的",
+         "example": "He’s been totally deaf since birth.",
+         "example_zh": "他一出生就全聾。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-22-turn-a-deaf-ear-to-n",
+       "seq": 22,
+       "word": "turn a deaf ear to N",
+       "senses": [
+        {
+         "pos": "",
+         "zh": "對~置之不理、置若罔顧",
+         "example": "He turns a deaf ear to his parents' advice.",
+         "example_zh": "他對父母的勸告置之不理。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-23-powder",
+       "seq": 23,
+       "word": "powder",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "粉狀物",
+         "example": "To make coffee, first you have to grind coffee beans into powder.",
+         "example_zh": "煮咖啡前必須先將咖啡豆磨成粉。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "撲、抹粉",
+         "example": "When I walked in, she was powdering her face.",
+         "example_zh": "我進去時，她正往臉上撲粉。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-23-flour",
+       "seq": 23,
+       "word": "flour",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "麵粉",
+         "example": "Flour is the main ingredient in a cake.",
+         "example_zh": "麵粉是蛋糕的主要成分。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-24-geography",
+       "seq": 24,
+       "word": "geography",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "地理",
+         "example": "She got very high marks in geography exam.",
+         "example_zh": "她在地理考試中得到非常高的分數。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-25-nail",
+       "seq": 25,
+       "word": "nail",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "釘子",
+         "example": "I need some boards, a hammer and some nails.",
+         "example_zh": "我需要幾塊木板、一支鐵鎚和一些釘子。"
+        },
+        {
+         "pos": "n.",
+         "zh": "指甲(=fingernail)",
+         "example": "Be careful not to break your nails.",
+         "example_zh": "小心別把指甲弄斷了。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "釘住",
+         "example": "She nailed a mailbox on the door.",
+         "example_zh": "她在門上釘了一個信箱。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-25-hammer",
+       "seq": 25,
+       "word": "hammer",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "鐵鎚",
+         "example": "She took a hammer and knocked a hole in the wall.",
+         "example_zh": "她拿著鐵鎚在牆上敲了一個洞。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "鎚打、敲",
+         "example": "They hammered the nails into the wooden walls.",
+         "example_zh": "他們把釘子敲進木牆裡。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "強迫灌輸、嘮叨不停 (~sth. into sb. / sth.)",
+         "example": "He tries to hammer the anti-drug message into his son.",
+         "example_zh": "他試著將反毒訊息灌輸給兒子。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-26-handkerchief",
+       "seq": 26,
+       "word": "handkerchief",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "手帕",
+         "example": "She took out her handkerchief and blew her nose loudly.",
+         "example_zh": "她拿出手帕並大聲擤鼻涕。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-27-melon",
+       "seq": 27,
+       "word": "melon",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "瓜；甜瓜",
+         "example": "He cut the honeydew melon into twelve slices.",
+         "example_zh": "他把哈密瓜切成十二片。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-27-watermelon",
+       "seq": 27,
+       "word": "watermelon",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "西瓜",
+         "example": "Watermelons are juicy.",
+         "example_zh": "西瓜是很多汁的。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-28-mosquito",
+       "seq": 28,
+       "word": "mosquito",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "蚊子",
+         "example": "I was bitten by mosquitoes.",
+         "example_zh": "我被蚊子咬。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-28-moth",
+       "seq": 28,
+       "word": "moth",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "蛾",
+         "example": "Moths are not so beautiful as butterflies.",
+         "example_zh": "蛾不像蝴蝶那樣漂亮。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-29-napkin",
+       "seq": 29,
+       "word": "napkin",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "餐巾",
+         "example": "You should put the napkin on your lap.",
+         "example_zh": "應將餐巾放在大腿上。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-29-tissue",
+       "seq": 29,
+       "word": "tissue",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "衛生紙",
+         "example": "Many gas stations give customers boxes of tissues for free.",
+         "example_zh": "許多加油站免費贈送顧客盒裝面紙。"
+        },
+        {
+         "pos": "n.",
+         "zh": "肌肉等生理組織",
+         "example": "Smoking can severely damage your lung tissue.",
+         "example_zh": "吸煙會嚴重破壞肺部組織。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-30-scissors",
+       "seq": 30,
+       "word": "scissors",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "剪刀",
+         "example": "Could you pass me the pair of scissors?",
+         "example_zh": "可以把剪刀遞給我嗎？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-31-semester",
+       "seq": 31,
+       "word": "semester",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "學期",
+         "example": "The first semester starts on the 29th of August.",
+         "example_zh": "第一學期於八月二十九日開始。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-32-cotton",
+       "seq": 32,
+       "word": "cotton",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "棉花",
+         "example": "The T-shirts are made of 100% cotton.",
+         "example_zh": "這些T恤是百分百純棉。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-32-silk",
+       "seq": 32,
+       "word": "silk",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "絲",
+         "example": "The dress is made of silk.",
+         "example_zh": "這件洋裝是絲製的。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-32-wool",
+       "seq": 32,
+       "word": "wool",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "羊毛",
+         "example": "The blankets are made of wool.",
+         "example_zh": "這些毯子為羊毛製。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-32-woolen",
+       "seq": 32,
+       "word": "woolen",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "羊毛製的",
+         "example": "They produce woolen products.",
+         "example_zh": "他們生產羊毛製品。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-33-skilled",
+       "seq": 33,
+       "word": "skilled",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "熟練的、技巧純熟的",
+         "example": "My mother is very skilled in cooking.",
+         "example_zh": "我媽媽很擅長烹飪。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-33-skillful",
+       "seq": 33,
+       "word": "skillful",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "技巧高超或精湛的",
+         "example": "He is a skillful and experienced negotiator.",
+         "example_zh": "他是位極富經驗的談判專家。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-34-squirrel",
+       "seq": 34,
+       "word": "squirrel",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "松鼠",
+         "example": "Several squirrels make this pine tree home.",
+         "example_zh": "好幾隻松鼠以這棵松樹為家。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-35-subtract",
+       "seq": 35,
+       "word": "subtract",
+       "senses": [
+        {
+         "pos": "v.",
+         "zh": "減去",
+         "example": "If you subtract 30 from 45, you get 15.",
+         "example_zh": "45減30等於15。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-35-add",
+       "seq": 35,
+       "word": "add",
+       "senses": [
+        {
+         "pos": "v",
+         "zh": "加上",
+         "example": "",
+         "example_zh": ""
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-36-goose",
+       "seq": 36,
+       "word": "goose",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "鵝、野雁",
+         "example": "It’s easy to spot flocks of geese as they migrate.",
+         "example_zh": "當成群的野雁遷徙時，十分醒目。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-36-swan",
+       "seq": 36,
+       "word": "swan",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "天鵝",
+         "example": "Two white swans were swimming in the lake.",
+         "example_zh": "兩隻白天鵝在湖裡游泳。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-37-talkative",
+       "seq": 37,
+       "word": "talkative",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "健談的、喜歡說話的",
+         "example": "They are so talkative that others don't have the chance to speak.",
+         "example_zh": "他們話多到其他人沒機會開口。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-38-tangerine",
+       "seq": 38,
+       "word": "tangerine",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "橘子",
+         "example": "Tangerines are easier to peel than oranges.",
+         "example_zh": "橘子的皮比柳橙更容易剝。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-38-orange",
+       "seq": 38,
+       "word": "orange",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "柳丁、橙、橙色",
+         "example": "",
+         "example_zh": ""
+        },
+        {
+         "pos": "adj.",
+         "zh": "橘色的",
+         "example": "",
+         "example_zh": ""
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-39-terrific",
+       "seq": 39,
+       "word": "terrific",
+       "senses": [
+        {
+         "pos": "adj.",
+         "zh": "非常好的",
+         "example": "The Korean drama I watched last week was terrific!",
+         "example_zh": "我上週看的韓劇棒極了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-40-underwear",
+       "seq": 40,
+       "word": "underwear",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "內衣",
+         "example": "You just need to change your underwear.",
+         "example_zh": "你只需要更換內衣。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u3-40-underpants",
+       "seq": 40,
+       "word": "underpants",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "內褲",
+         "example": "He is wearing shorts, not underpants.",
+         "example_zh": "他穿的是短褲，不是內褲。"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "unit": 15,
+     "count": 1,
+     "entries": [
+      {
+       "id": "yp3-u15-40-transport",
+       "seq": 40,
+       "word": "transport",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "運送",
+         "example": "Ambulances are used for the transport of patients.",
+         "example_zh": "救護車是用來運送病人的。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "運送",
+         "example": "The company transports meat in refrigerated containers.",
+         "example_zh": "這家公司用冷凍貨櫃運送肉品。"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "unit": 16,
+     "count": 80,
+     "entries": [
+      {
+       "id": "yp3-u16-1-horror",
+       "seq": 1,
+       "word": "horror",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "恐怖、害怕",
+         "example": "I don't know how to overcome my horror of cockroaches.",
+         "example_zh": "我不知道如何克服對蟑螂的恐懼。"
+        },
+        {
+         "pos": "n.",
+         "zh": "令人害怕或戰慄的人或事",
+         "example": "Cockroaches are a horror to my sister.",
+         "example_zh": "蟑螂是我妹妹很怕的東西。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-1-in-horror",
+       "seq": 1,
+       "word": "in horror",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "害怕地",
+         "example": "Seeing the sight, he drew back in horror.",
+         "example_zh": "看到這個景象就害怕地往後退。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-1-horror-film",
+       "seq": 1,
+       "word": "horror film",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "恐怖片",
+         "example": "A lot of girls scream when watching the horror film.",
+         "example_zh": "許多女孩子看恐怖片時會尖叫。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-1-horrible",
+       "seq": 1,
+       "word": "horrible",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "可怕的",
+         "example": "Her parents were killed in a horrible accident.",
+         "example_zh": "她的父母死於一場可怕的意外。"
+        },
+        {
+         "pos": "a.",
+         "zh": "可憎的、糟糕的",
+         "example": "The food looked horrible, but it tasted OK.",
+         "example_zh": "這個食物看起來很糟，但嚐起來還不錯。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-2-salary",
+       "seq": 2,
+       "word": "salary",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "薪水（月薪或年薪）",
+         "example": "The designer's monthly salary is around fifty thousand dollars.",
+         "example_zh": "這位設計師的月薪大約五萬元。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-2-wage",
+       "seq": 2,
+       "word": "wage",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "薪資（時薪或週薪）",
+         "example": "He gets a good wage.",
+         "example_zh": "他的薪資優渥。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "進行、發動（戰爭、運動）",
+         "example": "The police are waging war on drug dealers.",
+         "example_zh": "警察向毒販開戰。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-3-gum",
+       "seq": 3,
+       "word": "gum",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "牙齦",
+         "example": "Vitamin C is important for healthy gums.",
+         "example_zh": "維他命C對牙齦健康很重要。"
+        },
+        {
+         "pos": "n.",
+         "zh": "口香糖 (= chewing gum)",
+         "example": "Many people don't like to chew gum.",
+         "example_zh": "很多人不喜歡吃口香糖。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-4-grin",
+       "seq": 4,
+       "word": "grin",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "露齒的笑容",
+         "example": "From her grin, I guess she knows something I don't know.",
+         "example_zh": "我從她的笑容猜想，她知道一些我不知道的事。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "露齒而笑",
+         "example": "Learning about our victory, our coach grinned from ear to ear.",
+         "example_zh": "教練得知我們贏得勝利笑得合不攏嘴。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-5-pile",
+       "seq": 5,
+       "word": "pile",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "一堆、一疊",
+         "example": "He gave me a pile of books to read during the summer vacation.",
+         "example_zh": "他給我一堆書要我暑假時研讀。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "堆置【~A with B】",
+         "example": "The desk was piled high with books.",
+         "example_zh": "桌上堆著高高的書。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-5-pile-up",
+       "seq": 5,
+       "word": "pile up",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "堆積、累積",
+         "example": "When my work piles up, my anxiety increases.",
+         "example_zh": "當我的工作愈積愈多時，焦慮就會增加。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-5-heap",
+       "seq": 5,
+       "word": "heap",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "（凌亂的）一堆",
+         "example": "The heap of stones is where the building used to be.",
+         "example_zh": "這堆石頭就是這棟建築物曾經的所在地。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-5-in-heaps",
+       "seq": 5,
+       "word": "in heaps",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "成堆地",
+         "example": "Books are scattered in heaps on the floor.",
+         "example_zh": "書籍一堆一堆地散落在地上。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-5-heap-2",
+       "seq": 5,
+       "word": "heap",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "堆積",
+         "example": "We have to rake the leaves and heap them on the compost pile.",
+         "example_zh": "我們必須把葉子耙起來堆在堆肥上。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-6-zone",
+       "seq": 6,
+       "word": "zone",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "（有特殊特徵、用途的）地帶",
+         "example": "The penalty for speeding in school zones will increase.",
+         "example_zh": "在學區超速的罰金將提高。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "規劃~為特定用途區【~for】",
+         "example": "Is this district zoned for residential or commercial use?",
+         "example_zh": "這個區域是被劃分為住宅區還是商業區？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-6-time-zone",
+       "seq": 6,
+       "word": "time zone",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "時區",
+         "example": "Taipei and Tokyo lie in different time zones.",
+         "example_zh": "臺北和東京位於不同時區。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-7-ivory",
+       "seq": 7,
+       "word": "ivory",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "象牙",
+         "example": "In the past, wealthy families loved to use ivory chopsticks.",
+         "example_zh": "早期有錢人家喜歡使用象牙筷子。"
+        },
+        {
+         "pos": "a.",
+         "zh": "象牙製的、象牙白的",
+         "example": "May chose an ivory wedding dress instead of a pure white one.",
+         "example_zh": "梅選擇象牙白的婚紗而非純白的。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-7-ivory-tower",
+       "seq": 7,
+       "word": "ivory tower",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "象牙塔",
+         "example": "Sometimes scholars should step out of their ivory tower and take a good look at the real world.",
+         "example_zh": "有時學者應走出象牙塔，好好觀察真實的世界。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-8-wealth",
+       "seq": 8,
+       "word": "wealth",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "財富",
+         "example": "People long for wealth and fame.",
+         "example_zh": "人們渴求名利。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-8-wealthy",
+       "seq": 8,
+       "word": "wealthy",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "富有的",
+         "example": "He comes from a wealthy family.",
+         "example_zh": "他出身富裕。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-8-riches",
+       "seq": 8,
+       "word": "riches",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "財富",
+         "example": "Without health, riches are meaningless.",
+         "example_zh": "沒有了健康，財富就失去意義。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-9-stubborn",
+       "seq": 9,
+       "word": "stubborn",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "固執的",
+         "example": "Sometimes, Paul can be as stubborn as a mule.",
+         "example_zh": "保羅有時就和騾子一樣頑固。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-10-rid",
+       "seq": 10,
+       "word": "rid",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "去除【~A of B】",
+         "example": "Can the government rid our homeland of terrorist threats?",
+         "example_zh": "政府能使我們的家園免受恐怖分子威脅嗎？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-10-get-rid-of",
+       "seq": 10,
+       "word": "get rid of",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "去除",
+         "example": "It's time to get rid of all these old toys.",
+         "example_zh": "是時候把這些舊玩具丟掉了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-11-mighty",
+       "seq": 11,
+       "word": "mighty",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "強大的",
+         "example": "He struck the robber with a mighty blow.",
+         "example_zh": "他給了搶匪猛烈的一擊。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-11-might",
+       "seq": 11,
+       "word": "might",
+       "senses": [
+        {
+         "pos": "延伸 n.",
+         "zh": "力量",
+         "example": "Eric was tugging at the rope with all his might.",
+         "example_zh": "艾瑞克用盡全力拉繩子。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-12-amaze",
+       "seq": 12,
+       "word": "amaze",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "使驚奇",
+         "example": "David amazed his friends by suddenly getting married.",
+         "example_zh": "大衛的閃婚讓朋友們嚇了一跳。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-12-amazed-amazing",
+       "seq": 12,
+       "word": "amazed / amazing",
+       "senses": [
+        {
+         "pos": "延伸 a.",
+         "zh": "感到吃驚／令人吃驚的",
+         "example": "We were all amazed at her sudden change; it is definitely amazing.",
+         "example_zh": "我們對她突然的轉變感到吃驚，實在令人驚訝。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-12-amazement",
+       "seq": 12,
+       "word": "amazement",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "吃驚",
+         "example": "After I told him my adventure, he looked at me in amazement.",
+         "example_zh": "我向他述說我的冒險後，他吃驚地看著我。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-12-to-one-s-amazement",
+       "seq": 12,
+       "word": "to one's amazement",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "令~吃驚的是",
+         "example": "To my amazement, my best friend refused to help me.",
+         "example_zh": "令我吃驚的是我最好的朋友竟然拒絕幫我。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-13-humid",
+       "seq": 13,
+       "word": "humid",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "潮濕的",
+         "example": "It was so humid that my cotton shirt would not dry even a little.",
+         "example_zh": "天氣太潮濕，我的棉襯衫完全沒有乾。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-13-moist",
+       "seq": 13,
+       "word": "moist",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "溼潤的",
+         "example": "Her eyes were moist with tears.",
+         "example_zh": "她熱淚盈眶。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-13-moisture",
+       "seq": 13,
+       "word": "moisture",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "溼氣、潮溼",
+         "example": "Too much moisture in the air can cause the growth of mold.",
+         "example_zh": "空氣中的溼氣太重就會長黴。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-14-chill",
+       "seq": 14,
+       "word": "chill",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "寒冷",
+         "example": "The chill of the wind makes me shiver.",
+         "example_zh": "寒風令我發抖。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "使~變冷",
+         "example": "Put the coke in the refrigerator to chill it.",
+         "example_zh": "把可樂放在冰箱裡冷藏。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-14-chilly",
+       "seq": 14,
+       "word": "chilly",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "寒冷的",
+         "example": "It was so chilly this morning.",
+         "example_zh": "今天早上好冷啊！"
+        },
+        {
+         "pos": "a.",
+         "zh": "冷淡的",
+         "example": "The writer got a chilly welcome at the university.",
+         "example_zh": "這位作家在這所大學受到漠視。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-15-comfort",
+       "seq": 15,
+       "word": "comfort",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "安慰",
+         "example": "He was upset and needed our comfort.",
+         "example_zh": "他心情不好，需要我們的安慰。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "安慰、使~舒適",
+         "example": "The nurse is good at comforting those in great anxiety.",
+         "example_zh": "這位護士擅長安撫極度焦躁不安的人。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-15-comforting",
+       "seq": 15,
+       "word": "comforting",
+       "senses": [
+        {
+         "pos": "延伸 a.",
+         "zh": "安慰的、慰勉的",
+         "example": "The news was comforting.",
+         "example_zh": "這個消息令人欣慰。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-16-dash",
+       "seq": 16,
+       "word": "dash",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "急衝",
+         "example": "Students make a dash for the cafeteria as soon as the bell rang.",
+         "example_zh": "鐘聲一響，學生們都衝往自助餐廳。"
+        },
+        {
+         "pos": "n.",
+         "zh": "短跑",
+         "example": "He holds the record for the 100-meter dash.",
+         "example_zh": "他是一百公尺短跑紀錄的保持人。"
+        },
+        {
+         "pos": "n.",
+         "zh": "破折號",
+         "example": "We usually expect an explanation after a dash.",
+         "example_zh": "通常在破折號之後會有一個解釋。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "猛衝",
+         "example": "The horse dashed madly into the bush.",
+         "example_zh": "那匹馬發狂似地衝進樹叢。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-17-vacant",
+       "seq": 17,
+       "word": "vacant",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "空的、未被占用的",
+         "example": "In our apartment building, only a few apartments are still vacant.",
+         "example_zh": "我們居住的公寓大樓只有幾戶還空著。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-18-sum",
+       "seq": 18,
+       "word": "sum",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "總金額",
+         "example": "The sum of my monthly expenses is about ten thousand NT dollars.",
+         "example_zh": "我每個月的支出總額約新臺幣一萬元。"
+        },
+        {
+         "pos": "n.",
+         "zh": "總和",
+         "example": "The sum of 13 and 8 is 21.",
+         "example_zh": "13和8的總和是21。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "總計【~up】",
+         "example": "I am summing up all the figures to see how much I have spent.",
+         "example_zh": "我正在加總所有花費金額。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "總結【~up】",
+         "example": "Jimmy will open the debate and I will sum up.",
+         "example_zh": "吉米為辯論賽開場而我做總結。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-18-to-sum-up",
+       "seq": 18,
+       "word": "to sum up",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "總之",
+         "example": "To sum up, the police should crack down on drunk driving.",
+         "example_zh": "總之，警方應嚴加取締酒駕。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-19-robe",
+       "seq": 19,
+       "word": "robe",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "寬鬆的長袍",
+         "example": "Why do judges wear black robes?",
+         "example_zh": "為什麼法官要穿黑袍呢？"
+        },
+        {
+         "pos": "n.",
+         "zh": "浴袍",
+         "example": "Do you wear a robe after a shower?",
+         "example_zh": "你淋浴後會穿浴袍嗎？"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-20-crash",
+       "seq": 20,
+       "word": "crash",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "（飛機）墜毀、（車輛相撞的）嚴重事故",
+         "example": "Forty-one people were killed in the plane crash.",
+         "example_zh": "四十一個人在這場飛機失事中喪生。"
+        },
+        {
+         "pos": "n.",
+         "zh": "撞擊聲、碎裂聲",
+         "example": "The ball flew over, and then we heard the crash of glass.",
+         "example_zh": "球飛過來，接著我們聽到玻璃碎裂聲。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "墜毀",
+         "example": "The plane crashed into a mountain and all the passengers were killed.",
+         "example_zh": "飛機墜毀在山裡，乘客全數罹難。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "粉碎",
+         "example": "The valuable vase crashed into pieces in the earthquake.",
+         "example_zh": "這個貴重地花瓶在地震中摔成碎片。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "當機",
+         "example": "My computer crashed three times yesterday.",
+         "example_zh": "我的電腦昨天當機三次。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-21-icy",
+       "seq": 21,
+       "word": "icy",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "冰冷的",
+         "example": "He fell into the icy river and caught a bad cold.",
+         "example_zh": "他跌進冰冷的河裡罹患了重感冒。"
+        },
+        {
+         "pos": "a.",
+         "zh": "冷淡的",
+         "example": "Her question got an icy response from the chairman.",
+         "example_zh": "主席對她的問題給予冷淡的回應。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-22-screw",
+       "seq": 22,
+       "word": "screw",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "用螺絲釘固定",
+         "example": "He screwed the board into the wall.",
+         "example_zh": "他用螺絲釘將板子固定在牆上。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-22-screw-up",
+       "seq": 22,
+       "word": "screw up",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "搞砸了（口語）",
+         "example": "I think I screwed up my interview.",
+         "example_zh": "我想我的面試搞砸了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-22-screw-2",
+       "seq": 22,
+       "word": "screw",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "螺絲釘",
+         "example": "You just need to tighten these two screws here.",
+         "example_zh": "你只需要把這兩個螺絲釘鎖緊就行了。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-23-pottery",
+       "seq": 23,
+       "word": "pottery",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "陶器 (= ceramics)",
+         "example": "They sell pottery and other handmade goods.",
+         "example_zh": "他們販售陶器與其他手工製品。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-23-clay",
+       "seq": 23,
+       "word": "clay",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "陶土",
+         "example": "The artist formed the clay into a beautiful plate.",
+         "example_zh": "這名藝術家將陶土塑造成漂亮的盤子。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-24-vitamin",
+       "seq": 24,
+       "word": "vitamin",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "維他命",
+         "example": "Oranges are rich in vitamin C.",
+         "example_zh": "柳橙富含維他命C。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-25-ache",
+       "seq": 25,
+       "word": "ache",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "疼痛",
+         "example": "I have an ache in my chest.",
+         "example_zh": "我的胸口疼痛。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "疼痛",
+         "example": "Her head ached badly and her body felt like it had been set on fire.",
+         "example_zh": "她頭痛欲裂，身體好像有火在燒。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-26-someday",
+       "seq": 26,
+       "word": "someday",
+       "senses": [
+        {
+         "pos": "adv.",
+         "zh": "將來有一天、有朝一日",
+         "example": "As long as you work hard, your dream will come true someday.",
+         "example_zh": "只要努力終有一日夢想會成真。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-26-sometime",
+       "seq": 26,
+       "word": "sometime",
+       "senses": [
+        {
+         "pos": "adv.",
+         "zh": "某時",
+         "example": "We should meet sometime soon.",
+         "example_zh": "我們應該儘快找時間見面。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-27-somehow",
+       "seq": 27,
+       "word": "somehow",
+       "senses": [
+        {
+         "pos": "adv.",
+         "zh": "不知怎麼地",
+         "example": "I know this is legal, but somehow it doesn't feel right.",
+         "example_zh": "我知道這是合法的，但不知怎麼地總覺得有些不對勁。"
+        },
+        {
+         "pos": "adv.",
+         "zh": "以某種方法、總歸是要~",
+         "example": "We will get the money back somehow.",
+         "example_zh": "我們總歸是要把錢拿回來的（以某種方式拿回來）。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-27-anyhow",
+       "seq": 27,
+       "word": "anyhow",
+       "senses": [
+        {
+         "pos": "adv.",
+         "zh": "無論如何 (= anyway)",
+         "example": "She may not answer me, but I will ask anyhow.",
+         "example_zh": "她可能不會回答我，但無論如何我還是要問。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-28-heal",
+       "seq": 28,
+       "word": "heal",
+       "senses": [
+        {
+         "pos": "vi.",
+         "zh": "痊癒",
+         "example": "The wounds are healing gradually.",
+         "example_zh": "傷口逐漸癒合中。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "治癒",
+         "example": "Throughout his life he healed thousands of patients.",
+         "example_zh": "他一生治癒了成千上萬的病人。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-29-flame",
+       "seq": 29,
+       "word": "flame",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "火焰",
+         "example": "The flames grew larger as the wind blew harder.",
+         "example_zh": "風吹得愈大，火就燒得愈旺。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "發出火焰、焚燒",
+         "example": "The candles flame brightly.",
+         "example_zh": "燭火燒得明亮。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-30-jungle",
+       "seq": 30,
+       "word": "jungle",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "叢林",
+         "example": "The expedition successfully subdued the tropical jungle.",
+         "example_zh": "探險隊成功征服了熱帶叢林。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-30-concrete-jungle",
+       "seq": 30,
+       "word": "concrete jungle",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "水泥叢林、都市叢林",
+         "example": "Living in a concrete jungle, we feel nature is so far away.",
+         "example_zh": "我們住在水泥叢林裡，感覺離大自然好遙遠。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-31-pave",
+       "seq": 31,
+       "word": "pave",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "鋪（路）",
+         "example": "Bricks are used to pave the sidewalks throughout the city.",
+         "example_zh": "整個市區的人行道都鋪設地磚。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-31-pave-the-way-for-to-n",
+       "seq": 31,
+       "word": "pave the way for / to N",
+       "senses": [
+        {
+         "pos": "片語",
+         "zh": "為~鋪路",
+         "example": "The meeting will pave the way for our cooperation.",
+         "example_zh": "這次會議將為我們的合作鋪路。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-31-pavement",
+       "seq": 31,
+       "word": "pavement",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "人行道（英式）",
+         "example": "It's against the traffic regulations to ride a scooter on the pavement.",
+         "example_zh": "在人行道上騎機車是違反交通規則的。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-31-sidewalk",
+       "seq": 31,
+       "word": "sidewalk",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "人行道（美式）",
+         "example": "Vendors are not allowed on the sidewalks here.",
+         "example_zh": "這裡的人行道上禁止攤販設攤。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-32-solid",
+       "seq": 32,
+       "word": "solid",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "固體的",
+         "example": "When water freezes and becomes solid, it's called ice.",
+         "example_zh": "水結冰變成固體時稱為冰。"
+        },
+        {
+         "pos": "a.",
+         "zh": "堅固的",
+         "example": "The company is proud of the solid furniture they make.",
+         "example_zh": "這家公司以生產堅固的傢俱為傲。"
+        },
+        {
+         "pos": "a.",
+         "zh": "紮實的",
+         "example": "His essay has solid arguments.",
+         "example_zh": "他的文章論點紮實。"
+        },
+        {
+         "pos": "n.",
+         "zh": "固體",
+         "example": "Solids are hard substances, like glass, wood and metal.",
+         "example_zh": "固體是硬的物質，像是玻璃、木頭與金屬。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-33-liquid",
+       "seq": 33,
+       "word": "liquid",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "液態的、液體的",
+         "example": "You can only feed those kittens liquid food.",
+         "example_zh": "你只能餵這些小貓流質食物。"
+        },
+        {
+         "pos": "n.",
+         "zh": "液體",
+         "example": "Brown liquid is flowing out of the bucket.",
+         "example_zh": "褐色的液體從桶子裡流出來。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-33-sword",
+       "seq": 33,
+       "word": "sword",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "劍",
+         "example": "The pen is mightier than the sword.",
+         "example_zh": "筆墨勝於刀劍。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-34-canyon",
+       "seq": 34,
+       "word": "canyon",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "峽谷",
+         "example": "There is a river at the bottom of the canyon.",
+         "example_zh": "峽谷底部有條河流。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-34-the-grand-canyon",
+       "seq": 34,
+       "word": "the Grand Canyon",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "(美國) 大峽谷",
+         "example": "The Grand Canyon is the deepest canyon on earth.",
+         "example_zh": "大峽谷是地上最深的峽谷。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-35-dive",
+       "seq": 35,
+       "word": "dive",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "跳水",
+         "example": "He made a graceful dive into the river.",
+         "example_zh": "他優雅地跳入河中。"
+        },
+        {
+         "pos": "n.",
+         "zh": "潛水",
+         "example": "We have made several great dives in Bali.",
+         "example_zh": "我們在峇里島有過多次美好的潛水體驗。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "跳水【~off / from A into B】",
+         "example": "He dived from the bridge into the river to save the girl.",
+         "example_zh": "他為了救那名女孩，從橋上跳進河裡。"
+        },
+        {
+         "pos": "vi.",
+         "zh": "潛水",
+         "example": "The submarine can dive up to 1100 meters.",
+         "example_zh": "這艘潛艇可潛深至一千一百公尺。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-35-surf",
+       "seq": 35,
+       "word": "surf",
+       "senses": [
+        {
+         "pos": "vi.",
+         "zh": "衝浪",
+         "example": "He likes to go surfing in the summer.",
+         "example_zh": "他喜歡在夏天去衝浪。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-35-surf-on-the-internet",
+       "seq": 35,
+       "word": "surf (on) the internet",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "上網",
+         "example": "Teenagers surf the internet more often than their parents.",
+         "example_zh": "青少年比父母更常上網。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-36-feather",
+       "seq": 36,
+       "word": "feather",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "羽毛",
+         "example": "The cushion is filled with feathers.",
+         "example_zh": "這個墊子是以羽毛填充。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-36-fur",
+       "seq": 36,
+       "word": "fur",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "毛皮",
+         "example": "Many foxes have been killed for their furs.",
+         "example_zh": "許多狐狸因毛皮而喪生。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-36-furry",
+       "seq": 36,
+       "word": "furry",
+       "senses": [
+        {
+         "pos": "延伸 a.",
+         "zh": "毛茸茸的",
+         "example": "Furry slippers are extremely comfortable on such cold days.",
+         "example_zh": "毛茸茸的拖鞋在這種寒冷的天氣非常舒適。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-37-drunk",
+       "seq": 37,
+       "word": "drunk",
+       "senses": [
+        {
+         "pos": "a.",
+         "zh": "酒醉的",
+         "example": "After drinking a whole bottle of wine, he was dead drunk.",
+         "example_zh": "他喝完一整瓶酒後，爛醉如泥。"
+        },
+        {
+         "pos": "n.",
+         "zh": "酒醉者",
+         "example": "A couple of drunks passed out on the sidewalk.",
+         "example_zh": "幾個喝得酩酊大醉的人昏睡在人行道上。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-37-drunk-drunken-driving",
+       "seq": 37,
+       "word": "drunk / drunken driving",
+       "senses": [
+        {
+         "pos": "補充",
+         "zh": "酒駕",
+         "example": "Drunk / Drunken driving is very dangerous.",
+         "example_zh": "酒駕很危險。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-38-luggage",
+       "seq": 38,
+       "word": "luggage",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "行李（英式）",
+         "example": "Never leave your luggage unattended.",
+         "example_zh": "時時注意你的隨身行李。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-38-baggage",
+       "seq": 38,
+       "word": "baggage",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "行李（美式）",
+         "example": "I put my baggage into my closet.",
+         "example_zh": "我將行李箱放進衣櫥。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-38-piece-s-of-luggage-baggage",
+       "seq": 38,
+       "word": "piece (s) of luggage / baggage",
+       "senses": [
+        {
+         "pos": "用法",
+         "zh": "（幾）件行李",
+         "example": "I stuffed six big pieces of luggage into the trunk.",
+         "example_zh": "我把六件大行李塞進後車廂。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-39-excellence",
+       "seq": 39,
+       "word": "excellence",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "傑出",
+         "example": "The school is noted for its academic excellence.",
+         "example_zh": "這所學校以傑出的學術表現聞名。"
+        }
+       ]
+      },
+      {
+       "id": "yp3-u16-40-whip",
+       "seq": 40,
+       "word": "whip",
+       "senses": [
+        {
+         "pos": "n.",
+         "zh": "鞭子",
+         "example": "The lion-tamer cracked his whip.",
+         "example_zh": "馴獸員大力揮動鞭子。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "鞭打",
+         "example": "I don't like the way the jockey whips his horse.",
+         "example_zh": "我不喜歡這名騎師鞭打馬的方式。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "攪打（成糊狀）",
+         "example": "He whipped eggs and butter to make a cake.",
+         "example_zh": "他將雞蛋和奶油攪拌做成蛋糕。"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "unit": 17,
+     "count": 1,
+     "entries": [
+      {
+       "id": "yp3-u17-1-spoil",
+       "seq": 1,
+       "word": "spoil",
+       "senses": [
+        {
+         "pos": "vt.",
+         "zh": "破壞",
+         "example": "He tried not to let the bad news spoil his party.",
+         "example_zh": "他儘量不讓那個壞消息毀了他的派對。"
+        },
+        {
+         "pos": "vt.",
+         "zh": "寵壞、溺愛",
+         "example": "Parents spoil their children by doing everything for them.",
+         "example_zh": "父母若什麼事都親力親為會寵壞孩子。"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "totals": {
+  "units": 6,
+  "entries": 231,
+  "senses": 345
+ }
+}
