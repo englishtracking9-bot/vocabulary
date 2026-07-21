@@ -3,9 +3,9 @@ import { renderCustomBooks } from './books.js';
 import { renderCalendar } from './daily.js';
 import { getAllProfiles, getMeta, getProfile, openDB, putProfile, setMeta } from './db.js';
 import { loadGroupsIndex, loadRoots } from './grouping.js';
-import { renderHome } from './home.js';
+import { renderHome, renderSixHub } from './home.js';
 import { renderLookup } from './lookupui.js';
-import { renderMore, renderSettings } from './more.js';
+import { renderSettings } from './more.js';
 import { renderGroups, renderMyWords } from './mywords.js';
 import { scheduleForegroundReminder, syncReminderMeta } from './notify.js';
 import { renderManualBuilder, renderParentZone } from './parent.js';
@@ -114,20 +114,21 @@ const ROUTES = {
   '#manual': renderManualBuilder,
   '#roots': renderRoots,
   '#report': renderReport,
-  '#more': renderMore,
+  '#more': renderHome,   // 舊「更多」頁併入新首頁大按鈕；保留路由避免舊書籤/返回失效
+  '#six': renderSixHub,  // 📚 學測6000 專區入口
   '#parent': renderParentZone,
   '#custombook': renderCustomBooks,
   '#scan': renderScan,
   '#settings': renderSettings,
 };
 
-// 不在底部導覽的子頁，歸屬「更多」分頁高亮
-const MORE_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#settings', '#more', '#parent', '#manual', '#custombook']);
+// 不在底部導覽的子頁：一律歸「首頁」分頁高亮（都從首頁大按鈕進出）
+const HOME_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#settings', '#more', '#six', '#parent', '#manual', '#custombook']);
 
 function route() {
   const hash = location.hash || '#home';
   const fn = ROUTES[hash] || renderHome;
-  const navHash = hash === '#scan' ? '#quiz' : MORE_SUBPAGES.has(hash) ? '#more' : hash;
+  const navHash = hash === '#scan' ? '#quiz' : HOME_SUBPAGES.has(hash) ? '#home' : hash;
   document.querySelectorAll('.nav-btn').forEach((b) => {
     b.classList.toggle('active', b.dataset.route === navHash);
   });

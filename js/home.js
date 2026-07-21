@@ -2,8 +2,7 @@
 
 import { go } from './app.js';
 import { detectNewBadges } from './badges.js';
-import { openDay, wordDayDone } from './daily.js';
-import { getDailyLog, getDailyLogsByProfile, getDayPlan, getDueRecords, getRecordsByProfile } from './db.js';
+import { getDailyLog, getDailyLogsByProfile, getRecordsByProfile } from './db.js';
 import { openWordDetail } from './mywords.js';
 import { celebrateBadges, setReportDate } from './reportui.js';
 import { statusBadge } from './srs.js';
@@ -14,26 +13,11 @@ import { getById } from './vocab.js';
 
 
 // ============================================================
-// 首頁（預設落點）— 今日進度 + 快捷，不強迫測驗
+// 首頁（預設落點）— 頂部今日進度小條 + 三區大按鈕分層（R：界面重組）
+// 大按鈕只負責「帶到該區清爽的下一層」，首頁本身不再塞細節。
 // ============================================================
 async function renderHome() {
   const stats = await getStats(State.profile.id);
-  const today = todayStr();
-  const due = await getDueRecords(State.profile.id, Date.now());
-  const dueCount = due.length;
-
-  // 今天的單字組進度（若已生成）
-  const autoPlan = await getDayPlan(State.profile.id, today);
-  const parentMode = State.profile.settings.dailySource === 'parent';
-  let groupLabel = '今天的單字組';
-  if (parentMode) {
-    groupLabel = '📷 掃描家長出的題';
-  } else if (autoPlan && autoPlan.group.wordIds.length) {
-    const total = autoPlan.group.wordIds.length;
-    const done = autoPlan.group.wordIds.filter((id) => wordDayDone(autoPlan, id)).length;
-    groupLabel = (total > 0 && done >= total) ? '今天的單字組（已完成 ✓）'
-      : `今天的單字組（${done}/${total}）`;
-  }
 
   $main().innerHTML = `
     <div class="card">
@@ -46,25 +30,62 @@ async function renderHome() {
       </div>
       <p class="hint-area">點上面任一格看明細</p>
     </div>
-    <div class="card home-actions">
-      <p class="hint-area">接下來做什麼？一步到位 😊</p>
-      <button class="btn primary big-copy" id="h-group">▶️ ${esc(groupLabel)}</button>
-      <button class="btn big-copy" id="h-review">🔁 複習今天到期的字（${dueCount}）</button>
-      <button class="btn big-copy" id="h-tests">🎯 週測／月測（測驗中心）</button>
-      <div class="btn-row">
-        <button class="btn" id="h-lookup">🔎 查單字</button>
-        <button class="btn" id="h-mywords">📋 我的單字</button>
-      </div>
+
+    <div class="card home-hub">
+      <h3>🟦 每天學習</h3>
+      <button class="btn primary big-copy hub-btn" data-go="#calendar">📅 今天要學<small>日曆／當日單字組</small></button>
+      <button class="btn big-copy hub-btn" data-go="#quiz">📝 測驗複習<small>平時複習・週測／月測・掃 QR</small></button>
+      <button class="btn big-copy hub-btn" data-go="#mywords">📋 我的字<small>看進度、群組、挑字測驗</small></button>
+    </div>
+
+    <div class="card home-hub">
+      <h3>📚 單字來源</h3>
+      <button class="btn big-copy hub-btn soon" id="hub-yp">📖 YP 單字書<small>即將推出</small></button>
+      <button class="btn big-copy hub-btn" data-go="#six">📚 學測6000<small>字根字首等 6000 字工具</small></button>
+      <button class="btn big-copy hub-btn" data-go="#custombook">📓 自訂單字本<small>自己打的片語、講義</small></button>
+      <button class="btn big-copy hub-btn" data-go="#lookup">🔎 查單字<small>查 6000 字或上網查新字</small></button>
+    </div>
+
+    <div class="card home-hub">
+      <h3>🗂 記錄設定</h3>
+      <button class="btn big-copy hub-btn" data-go="#report">📊 每日報告<small>複製成果傳家長（LINE）</small></button>
+      <button class="btn big-copy hub-btn" data-go="#parent">👨‍👩‍👧 家長專區<small>排程、出題碼／QR、列印、完成碼</small></button>
+      <button class="btn big-copy hub-btn" data-go="#settings">⚙️ 設定<small>身分、字數級別、外觀、備份、提醒</small></button>
     </div>`;
-  document.getElementById('h-group').onclick = () => parentMode ? go('#scan') : openDay(today);
-  document.getElementById('h-review').onclick = () => { State.pendingReview = true; go('#quiz'); };
-  document.getElementById('h-tests').onclick = () => go('#quiz');
-  document.getElementById('h-lookup').onclick = () => go('#lookup');
-  document.getElementById('h-mywords').onclick = () => go('#mywords');
+
+  $main().querySelectorAll('.hub-btn[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
+  document.getElementById('hub-yp').onclick = () => alert('📖 YP 單字書即將在下一階段推出，敬請期待！');
   document.querySelectorAll('.stat-cell.tap').forEach((c) => { c.onclick = () => openStatDetail(c.dataset.stat); });
 
   // K-3：偵測並慶祝新解鎖的里程碑徽章
   try { const fresh = await detectNewBadges(State.profile.id); celebrateBadges(fresh); } catch (e) { /* 不影響首頁 */ }
+}
+
+// ============================================================
+// 📚 學測6000 專區入口（R：現有 6000 字工具的集合；S 階段可再擴充瀏覽）
+// YP 單字書是另一個完全獨立的專區（S 階段），不與此混用。
+// ============================================================
+function renderSixHub() {
+  $main().innerHTML = `
+    <div class="card">
+      <div class="daily-top"><button class="btn" id="six-back">‹ 首頁</button><b>📚 學測6000</b></div>
+      <p class="hint-area">學測必考 6000 單字的工具都在這裡。（YP 單字書是另一個獨立專區，在首頁「單字來源」裡）</p>
+    </div>
+    <div class="card">
+      <div class="detail-list">
+        <div class="row tap" id="six-roots"><div class="row-main">
+          <span class="row-word">🌱 字根字首</span>
+          <span class="row-zh">用字根字首規律，一次記一整組相關的字</span></div>
+          <div class="row-meta"><span>›</span></div></div>
+        <div class="row tap" id="six-lookup"><div class="row-main">
+          <span class="row-word">🔎 在 6000 字裡查單字</span>
+          <span class="row-zh">查字義、加入待學</span></div>
+          <div class="row-meta"><span>›</span></div></div>
+      </div>
+    </div>`;
+  document.getElementById('six-back').onclick = () => go('#home');
+  document.getElementById('six-roots').onclick = () => go('#roots');
+  document.getElementById('six-lookup').onclick = () => go('#lookup');
 }
 
 // G-4：首頁四格點開看明細（今天、目前身分）
@@ -131,4 +152,4 @@ async function openStatDetail(kind) {
     row.onclick = () => { m.classList.remove('show'); setReportDate(row.dataset.date); go('#report'); };
   });
 }
-export { renderHome, openStatDetail };
+export { renderHome, renderSixHub, openStatDetail };

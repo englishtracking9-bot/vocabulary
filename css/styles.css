@@ -79,6 +79,12 @@ body {
 .btn-row .btn { flex: 1 1 auto; }
 .big-copy { width: 100%; font-size: 19px; padding: 16px; margin-top: 12px; }
 
+/* 首頁大按鈕分層（R：界面重組） */
+.home-hub h3 { margin: 2px 0 4px; }
+.hub-btn { text-align: left; line-height: 1.3; }
+.hub-btn small { display: block; font-weight: 400; font-size: 13px; opacity: .8; margin-top: 3px; }
+.hub-btn.soon { opacity: .55; }
+
 /* Quiz */
 .quiz-progress {
   display: flex; justify-content: space-between; gap: 8px;

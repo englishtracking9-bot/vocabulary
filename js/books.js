@@ -39,7 +39,7 @@ async function renderCustomBooks() {
     </div>
     <div id="cb-list">${books.length ? list : '<div class="card center">還沒有單字本，先新增一個吧</div>'}</div>`;
 
-  document.getElementById('cb-back').onclick = () => go('#more');
+  document.getElementById('cb-back').onclick = () => go('#home');
   document.getElementById('cb-add').onclick = async () => {
     const name = document.getElementById('cb-new').value.trim();
     if (!name) return;
