@@ -19,43 +19,56 @@ import { getById } from './vocab.js';
 async function renderHome() {
   const stats = await getStats(State.profile.id);
 
+  const blk = (cls, go, ic, tt, sub, extra = '') =>
+    `<button class="block-btn ${cls}${extra}" ${go ? `data-go="${go}"` : ''}>
+      <span class="blk-ic">${ic}</span>
+      <span class="blk-txt"><span class="blk-tt">${tt}</span><span class="blk-sub">${sub}</span></span>
+    </button>`;
+
   $main().innerHTML = `
-    <div class="card">
-      <h2>嗨，${esc(State.profile.name)} 👋</h2>
-      <div class="stat-grid">
-        <div class="stat-cell tap" data-stat="new"><b>${stats.todayNew}</b><span>今日新學</span></div>
-        <div class="stat-cell tap" data-stat="review"><b>${stats.todayReview}</b><span>今日複習</span></div>
-        <div class="stat-cell tap" data-stat="acc"><b>${stats.todayAccuracy}%</b><span>今日答對率</span></div>
-        <div class="stat-cell tap" data-stat="streak"><b>🔥 ${stats.streak}</b><span>連續天數</span></div>
+    <div class="today-bar">
+      <div class="tb-top"><h2>嗨，${esc(State.profile.name)} 👋</h2><span class="tb-hint">點下方看明細</span></div>
+      <div class="tb-grid">
+        <div class="tb-cell" data-stat="new"><b>${stats.todayNew}</b><span>今日新學</span></div>
+        <div class="tb-cell" data-stat="review"><b>${stats.todayReview}</b><span>今日複習</span></div>
+        <div class="tb-cell" data-stat="acc"><b>${stats.todayAccuracy}%</b><span>今日答對率</span></div>
+        <div class="tb-cell" data-stat="streak"><b>🔥${stats.streak}</b><span>連續天數</span></div>
       </div>
-      <p class="hint-area">點上面任一格看明細</p>
     </div>
 
-    <div class="card home-hub">
-      <h3>🟦 每天學習</h3>
-      <button class="btn primary big-copy hub-btn" data-go="#calendar">📅 今天要學<small>日曆／當日單字組</small></button>
-      <button class="btn big-copy hub-btn" data-go="#quiz">📝 測驗複習<small>平時複習・週測／月測・掃 QR</small></button>
-      <button class="btn big-copy hub-btn" data-go="#mywords">📋 我的字<small>看進度、群組、挑字測驗</small></button>
+    <div class="home-sec">
+      <h3>每天學習</h3>
+      <div class="block-grid">
+        ${blk('learn', '#calendar', '📅', '今天要學', '日曆／當日單字組', ' full')}
+        ${blk('test', '#quiz', '📝', '測驗複習', '複習・週月測・掃QR')}
+        ${blk('learn', '#mywords', '📋', '我的字', '進度・群組')}
+      </div>
     </div>
 
-    <div class="card home-hub">
-      <h3>📚 單字來源</h3>
-      <button class="btn big-copy hub-btn soon" id="hub-yp">📖 YP 單字書<small>即將推出</small></button>
-      <button class="btn big-copy hub-btn" data-go="#six">📚 學測6000<small>字根字首等 6000 字工具</small></button>
-      <button class="btn big-copy hub-btn" data-go="#custombook">📓 自訂單字本<small>自己打的片語、講義</small></button>
-      <button class="btn big-copy hub-btn" data-go="#lookup">🔎 查單字<small>查 6000 字或上網查新字</small></button>
+    <div class="home-sec">
+      <h3>單字來源</h3>
+      <div class="block-grid">
+        ${blk('yp', '', '📖', 'YP 單字書', '即將推出', ' soon')}
+        ${blk('six', '#six', '📚', '學測6000', '字根字首等工具')}
+        ${blk('custom', '#custombook', '📓', '自訂單字本', '片語・講義')}
+        ${blk('lookup', '#lookup', '🔎', '查單字', '查6000或上網查')}
+      </div>
     </div>
 
-    <div class="card home-hub">
-      <h3>🗂 記錄設定</h3>
-      <button class="btn big-copy hub-btn" data-go="#report">📊 每日報告<small>複製成果傳家長（LINE）</small></button>
-      <button class="btn big-copy hub-btn" data-go="#parent">👨‍👩‍👧 家長專區<small>排程、出題碼／QR、列印、完成碼</small></button>
-      <button class="btn big-copy hub-btn" data-go="#settings">⚙️ 設定<small>身分、字數級別、外觀、備份、提醒</small></button>
+    <div class="home-sec">
+      <h3>記錄設定</h3>
+      <div class="block-grid">
+        ${blk('report', '#report', '📊', '每日報告', '複製傳家長')}
+        ${blk('parent', '#parent', '👨‍👩‍👧', '家長專區', '排程・出題・列印')}
+        ${blk('settings', '#settings', '⚙️', '設定', '身分・級別・外觀・備份・提醒', ' full')}
+      </div>
     </div>`;
 
-  $main().querySelectorAll('.hub-btn[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
-  document.getElementById('hub-yp').onclick = () => alert('📖 YP 單字書即將在下一階段推出，敬請期待！');
-  document.querySelectorAll('.stat-cell.tap').forEach((c) => { c.onclick = () => openStatDetail(c.dataset.stat); });
+  // YP 尚未啟用（S 階段），沒有 data-go：需要一個 id 才能掛提示
+  const ypBtn = [...$main().querySelectorAll('.block-btn')].find((b) => b.querySelector('.blk-tt').textContent.startsWith('YP'));
+  $main().querySelectorAll('.block-btn[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
+  if (ypBtn) ypBtn.onclick = () => alert('📖 YP 單字書即將在下一階段推出，敬請期待！');
+  $main().querySelectorAll('.tb-cell[data-stat]').forEach((c) => { c.onclick = () => openStatDetail(c.dataset.stat); });
 
   // K-3：偵測並慶祝新解鎖的里程碑徽章
   try { const fresh = await detectNewBadges(State.profile.id); celebrateBadges(fresh); } catch (e) { /* 不影響首頁 */ }
