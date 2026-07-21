@@ -16,7 +16,8 @@
   --gap: 12px;
   --shadow-block: 0 4px 12px rgba(0, 0, 0, .14);
   /* 功能語意色 */
-  --c-learn: #2f6bff;    /* 學習類＝藍 */
+  --c-learn: #2f6bff;    /* 學習類（今天要學）＝藍 */
+  --c-mywords: #16a34a;  /* 我的字＝綠（與今天要學的藍區隔） */
   --c-yp: #f97316;       /* YP＝橘 */
   --c-six: #4f46e5;      /* 學測6000＝靛 */
   --c-test: #f43f5e;     /* 測驗類＝珊瑚紅 */
@@ -107,6 +108,8 @@ body {
 .tb-cell:active { background: rgba(255, 255, 255, .30); }
 .tb-cell b { display: block; font-size: 20px; font-weight: 800; line-height: 1.2; }
 .tb-cell span { font-size: 11px; opacity: .95; }
+.tb-bar { height: 4px; background: rgba(255, 255, 255, .25); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+.tb-bar i { display: block; height: 100%; background: #fff; border-radius: 3px; transition: width .3s ease; }
 
 /* T：首頁彩色大色塊分層 */
 .home-sec { margin: 4px 0 16px; }
@@ -129,6 +132,7 @@ body {
 .blk-sub { font-size: 12px; font-weight: 500; opacity: .92; }
 .block-btn.soon { opacity: .6; }
 .block-btn.learn    { --blk: var(--c-learn); }
+.block-btn.mywords  { --blk: var(--c-mywords); }
 .block-btn.yp       { --blk: var(--c-yp); }
 .block-btn.six      { --blk: var(--c-six); }
 .block-btn.test     { --blk: var(--c-test); }

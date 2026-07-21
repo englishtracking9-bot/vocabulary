@@ -2,7 +2,8 @@
 
 import { go } from './app.js';
 import { detectNewBadges } from './badges.js';
-import { getDailyLog, getDailyLogsByProfile, getRecordsByProfile } from './db.js';
+import { wordDayDone } from './daily.js';
+import { getDailyLog, getDailyLogsByProfile, getDayPlan, getDueRecords, getManualGroupsByProfile, getRecordsByProfile } from './db.js';
 import { openWordDetail } from './mywords.js';
 import { celebrateBadges, setReportDate } from './reportui.js';
 import { statusBadge } from './srs.js';
@@ -18,7 +19,25 @@ import { getById } from './vocab.js';
 // ============================================================
 async function renderHome() {
   const stats = await getStats(State.profile.id);
+  const today = todayStr();
 
+  // 頂部完成度小條（EngKing 風）：
+  //  今日學習 x/y ＝ 當天所有計畫（自動組＋家長手動組）已完成／總字數
+  //  今日複習 x/y ＝ 今天已複習／（已複習＋尚未到期剩餘）
+  const plans = [];
+  const auto = await getDayPlan(State.profile.id, today);
+  if (auto && auto.group.wordIds.length) plans.push(auto);
+  const manualsToday = (await getManualGroupsByProfile(State.profile.id))
+    .filter((g) => g.date === today && g.group.wordIds.length);
+  plans.push(...manualsToday);
+  let learnTotal = 0, learnDone = 0;
+  for (const p of plans) for (const id of p.group.wordIds) { learnTotal++; if (wordDayDone(p, id)) learnDone++; }
+  const due = await getDueRecords(State.profile.id, Date.now());
+  const log = await getDailyLog(State.profile.id, today);
+  const reviewedToday = (log && log.reviewWords ? log.reviewWords.length : 0);
+  const reviewTotal = due.length + reviewedToday;
+
+  const bar = (x, y) => `<div class="tb-bar"><i style="width:${y ? Math.round(x / y * 100) : 0}%"></i></div>`;
   const blk = (cls, go, ic, tt, sub, extra = '') =>
     `<button class="block-btn ${cls}${extra}" ${go ? `data-go="${go}"` : ''}>
       <span class="blk-ic">${ic}</span>
@@ -29,8 +48,8 @@ async function renderHome() {
     <div class="today-bar">
       <div class="tb-top"><h2>嗨，${esc(State.profile.name)} 👋</h2><span class="tb-hint">點下方看明細</span></div>
       <div class="tb-grid">
-        <div class="tb-cell" data-stat="new"><b>${stats.todayNew}</b><span>今日新學</span></div>
-        <div class="tb-cell" data-stat="review"><b>${stats.todayReview}</b><span>今日複習</span></div>
+        <div class="tb-cell" data-stat="new"><b>${learnDone}/${learnTotal}</b><span>今日學習</span>${bar(learnDone, learnTotal)}</div>
+        <div class="tb-cell" data-stat="review"><b>${reviewedToday}/${reviewTotal}</b><span>今日複習</span>${bar(reviewedToday, reviewTotal)}</div>
         <div class="tb-cell" data-stat="acc"><b>${stats.todayAccuracy}%</b><span>今日答對率</span></div>
         <div class="tb-cell" data-stat="streak"><b>🔥${stats.streak}</b><span>連續天數</span></div>
       </div>
@@ -41,7 +60,7 @@ async function renderHome() {
       <div class="block-grid">
         ${blk('learn', '#calendar', '📅', '今天要學', '日曆／當日單字組', ' full')}
         ${blk('test', '#quiz', '📝', '測驗複習', '複習・週月測・掃QR')}
-        ${blk('learn', '#mywords', '📋', '我的字', '進度・群組')}
+        ${blk('mywords', '#mywords', '📋', '我的字', '進度・群組')}
       </div>
     </div>
 
