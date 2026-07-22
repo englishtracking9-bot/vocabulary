@@ -10,7 +10,7 @@ import { KIND_LABEL, buildMonthSchedule, regenerateDay, regroupDay } from './sch
 import { $main, State } from './state.js';
 import { esc, prettyDate, todayStr } from './util.js';
 import { findByWord, getById, searchWords, wordsByLevels } from './vocab.js';
-import { decodeYpCompletion, extractYpCompletions } from './ypbook.js';
+import { decodeYpCompletion, encodeYpQuiz, extractYpCompletions, levelEntries, loadBook, printYpEntries, unitEntries } from './ypbook.js';
 
 
 // ============================================================
@@ -306,6 +306,11 @@ async function renderParentZone() {
       <label class="chk"><input type="checkbox" id="pz-review" checked /> 新字排完後，接著排「複習輪」</label>
       <button class="btn primary" id="pz-gen">${hasSched ? '重新排整月（會覆蓋目前排程）' : '產生月排程'}</button>
     </div>
+    <div class="card">
+      <h3>📖 從 YP 單字書出題</h3>
+      <p class="hint-area">選 YP 的 Level／Unit 出一份題給 <b>${esc(tgt.name)}</b>，產生 YP 出題碼／QR 或列印背誦表；孩子掃碼即做，測完用「YP 完成碼」回報。</p>
+      <button class="btn primary" id="pz-yp">📖 選 YP 範圍出題</button>
+    </div>
     ${hasSched ? `<div class="card">
       <h3>📋 目前月排程</h3>
       <p class="hint-area">${prettyDate(Parent.sched.config.startDate)} ~ ${prettyDate(Parent.sched.config.endDate)}，每日 ${Parent.sched.config.perDay} 字，共 ${Parent.sched.days.length} 天。</p>
@@ -354,11 +359,75 @@ async function renderParentZone() {
     }
   };
   document.getElementById('pz-gen').onclick = generateSchedule;
+  document.getElementById('pz-yp').onclick = openYpQuizModal;
   document.getElementById('pz-manual').onclick = () => go('#manual');
   const vbtn = document.getElementById('pz-view');
   if (vbtn) vbtn.onclick = () => renderScheduleView();
   const pall = document.getElementById('pz-print-all');
   if (pall) pall.onclick = () => openPrintPicker(Parent.sched.days);
+}
+
+// S-4：家長從 YP 某 Level/Unit 出題 → YP 出題碼（YQ1）/QR/列印
+async function openYpQuizModal() {
+  let book;
+  try { book = await loadBook(); } catch (e) { alert('尚未匯入 YP 單字書資料（請先在電腦執行 build_books.py）'); return; }
+  const tgt = pzTarget();
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box">
+      <h3>📖 從 YP 出題給 ${esc(tgt.name)}</h3>
+      <label class="ts-row">Level
+        <select id="yq-level" class="answer-input">${book.levels.map((l) => `<option value="${l.level}">Level ${l.level}（${l.wordCount} 字）</option>`).join('')}</select></label>
+      <label class="ts-row">範圍
+        <select id="yq-unit" class="answer-input"></select></label>
+      <div>題型：</div>
+      <div class="src-opts">
+        <label class="chk"><input type="radio" name="yqt" value="both" checked/> 拼字＋造句</label>
+        <label class="chk"><input type="radio" name="yqt" value="spelling"/> 只拼字</label>
+        <label class="chk"><input type="radio" name="yqt" value="sentence"/> 只造句</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn primary" id="yq-gen">產生出題碼／QR</button>
+        <button class="btn" id="yq-cancel">取消</button>
+      </div>
+      <div id="yq-out"></div>
+    </div>`;
+  m.classList.add('show');
+  const levelSel = document.getElementById('yq-level');
+  const unitSel = document.getElementById('yq-unit');
+  const fillUnits = () => {
+    const lv = book.levels.find((l) => l.level === +levelSel.value);
+    unitSel.innerHTML = `<option value="all">整個 Level（${lv.wordCount} 字）</option>`
+      + lv.units.map((u) => `<option value="${u.unit}">Unit ${u.unit}（${u.count} 字）</option>`).join('');
+  };
+  fillUnits();
+  levelSel.onchange = fillUnits;
+  document.getElementById('yq-cancel').onclick = () => m.classList.remove('show');
+  document.getElementById('yq-gen').onclick = () => {
+    const level = +levelSel.value;
+    const unitVal = unitSel.value;
+    const entries = unitVal === 'all' ? levelEntries(level) : unitEntries(level, +unitVal);
+    if (!entries.length) { alert('這個範圍沒有字'); return; }
+    const type = (document.querySelector('input[name="yqt"]:checked') || {}).value || 'both';
+    const types = { spelling: type !== 'sentence', sentence: type !== 'spelling' };
+    const code = encodeYpQuiz(tgt.id, entries.map((e) => e.id), types);
+    const name = `YP Lv${level}${unitVal === 'all' ? '' : ' Unit ' + unitVal}`;
+    const typeLabel = type === 'both' ? '拼字＋造句' : type === 'spelling' ? '只拼字' : '只造句';
+    const out = document.getElementById('yq-out');
+    out.innerHTML = `
+      <p class="hint-area">出給 <b>${esc(tgt.name)}</b>・${esc(name)}・${entries.length} 字・${typeLabel}</p>
+      ${code.length <= 800 ? qrSvg(code) : '<p class="hint-area">字數較多，建議用列印或下方出題碼傳給孩子。</p>'}
+      <textarea class="answer-input code-box" readonly rows="3">${esc(code)}</textarea>
+      <div class="btn-row">
+        <button class="btn primary" id="yq-copy">複製出題碼</button>
+        <button class="btn" id="yq-print">🖨️ 列印單字表</button>
+      </div>`;
+    document.getElementById('yq-copy').onclick = async () => {
+      const ok = await copyToClipboard(code);
+      document.getElementById('yq-copy').textContent = ok ? '✅ 已複製' : '請長按上方文字複製';
+    };
+    document.getElementById('yq-print').onclick = () => printYpEntries(`${tgt.name}・${name}（${entries.length} 字）`, entries);
+  };
 }
 
 async function generateSchedule() {

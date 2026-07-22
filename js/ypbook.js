@@ -82,6 +82,72 @@ function decodeYpCompletion(code) {
 
 // 從貼上的文字抓出所有 YP 完成碼
 function extractYpCompletions(text) { return String(text || '').match(/YC1[A-Za-z0-9\-_]{2,}/g) || []; }
+
+// ---------- YP 出題碼（家長 → 孩子；沿用出題碼/QR/列印機制）----------
+// 格式 YQ1：學生代號(1，0=自訂後接 len+utf8) + 題型旗標(1) + [ypIdx(2)]×字
+function encodeYpQuiz(profileId, entryIds, types = { spelling: true, sentence: true }) {
+  const tag = YP_TAG[profileId] || 0;
+  const parts = [tag];
+  if (tag === 0) { const b = new TextEncoder().encode(String(profileId)); parts.push(b.length, ...b); }
+  parts.push((types.spelling !== false ? 1 : 0) | (types.sentence !== false ? 2 : 0));
+  for (const id of entryIds) { const idx = _ypIndex.get(id); if (idx != null) parts.push((idx >> 8) & 0xff, idx & 0xff); }
+  return 'YQ1' + b64u(new Uint8Array(parts));
+}
+
+// YP 出題碼 → { profileId, types, ids }
+function decodeYpQuiz(code) {
+  const m = String(code || '').trim().match(/YQ1([A-Za-z0-9\-_]+)/);
+  if (!m) throw new Error('YP 出題碼格式不符（應以 YQ1 開頭）');
+  const bytes = unb64u(m[1]);
+  let p = 0; const tag = bytes[p++]; let profileId;
+  if (tag === 0) { const len = bytes[p++]; profileId = new TextDecoder().decode(bytes.slice(p, p + len)); p += len; }
+  else { profileId = YP_TAG_REV[tag] || null; }
+  const flags = bytes[p++];
+  let types = { spelling: !!(flags & 1), sentence: !!(flags & 2) };
+  if (!types.spelling && !types.sentence) types = { spelling: true, sentence: true };
+  const ids = [];
+  for (; p + 1 < bytes.length; p += 2) { const id = _ypFlat[(bytes[p] << 8) | bytes[p + 1]]; if (id) ids.push(id); }
+  return { profileId, types, ids };
+}
+
+function extractYpQuizzes(text) { return String(text || '').match(/YQ1[A-Za-z0-9\-_]{2,}/g) || []; }
+
+// 供家長端取用書本結構與工具
+function getBook() { return _book; }
+function entriesByIds(ids) { return ids.map((id) => _ypById.get(id)).filter(Boolean); }
+function levelEntries(level) { const lv = _book && _book.levels.find((l) => l.level === level); return lv ? lv.units.flatMap((u) => u.entries) : []; }
+function unitEntries(level, unit) { const lv = _book && _book.levels.find((l) => l.level === level); const u = lv && lv.units.find((x) => x.unit === unit); return u ? u.entries.slice() : []; }
+
+// 掃到 YP 出題碼 → 直接載入 YP 測驗（沿用完成碼 YC1 回報）
+async function startYpTestByIds(ids, name, types) {
+  await loadBook();
+  const entries = entriesByIds(ids);
+  if (!entries.length) { alert('這個 YP 出題碼沒有可載入的字'); return; }
+  const type = types.spelling && types.sentence ? 'both' : types.sentence ? 'sentence' : 'spelling';
+  Yp.level = null; Yp.unit = null; Yp.progress = false;
+  if (location.hash !== '#yp') location.hash = '#yp';
+  startYpTest(entries, name, type);
+}
+
+// 列印 YP 單字表（背誦版）
+function printYpEntries(title, entries) {
+  const rows = entries.map((e, i) => {
+    const zh = e.senses.map((s) => s.zh).filter(Boolean).join('；');
+    const ex = e.senses.find((s) => s.example) || {};
+    return `<tr><td>${i + 1}</td><td>${esc(e.word)}</td><td>${esc(zh)}</td><td>${esc(ex.example || '')}</td></tr>`;
+  }).join('');
+  const html = `<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)}</title>
+    <style>body{font-family:-apple-system,"Microsoft JhengHei",sans-serif;padding:16px;color:#111}
+    h2{margin:0 0 10px} table{border-collapse:collapse;width:100%}
+    td,th{border:1px solid #999;padding:6px 8px;font-size:14px;vertical-align:top} th{background:#f0f0f0}</style>
+    </head><body><h2>${esc(title)}</h2>
+    <table><thead><tr><th>#</th><th>單字</th><th>中文</th><th>例句</th></tr></thead><tbody>${rows}</tbody></table>
+    </body></html>`;
+  const w = window.open('', '_blank');
+  if (!w) { alert('請允許開啟列印視窗'); return; }
+  w.document.write(html); w.document.close(); w.focus();
+  setTimeout(() => { try { w.print(); } catch (e) { /* ignore */ } }, 300);
+}
 // 供 app 啟動時預先載入（讓報告/統計即使沒開 YP 也能顯示 YP 專屬字）
 async function ensureBooksLoaded() { try { await loadBook(); } catch (e) { /* 忽略 */ } }
 
@@ -550,4 +616,4 @@ async function markYpTested(pid, id, kind) {
   await setMeta(`ypTested::${pid}`, m);
 }
 
-export { renderYp, Yp, loadBook, ensureBooksLoaded, recordIdOf, recordTarget, vocabMatch, getYpTested, encodeYpCompletion, decodeYpCompletion, extractYpCompletions };
+export { renderYp, Yp, loadBook, ensureBooksLoaded, recordIdOf, recordTarget, vocabMatch, getYpTested, encodeYpCompletion, decodeYpCompletion, extractYpCompletions, encodeYpQuiz, decodeYpQuiz, extractYpQuizzes, startYpTestByIds, getBook, levelEntries, unitEntries, printYpEntries };

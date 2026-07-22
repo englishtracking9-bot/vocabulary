@@ -7,6 +7,7 @@ import { decodeCode } from './paircode.js';
 import { createManualGroup } from './parent.js';
 import { $main, State } from './state.js';
 import { todayStr } from './util.js';
+import { decodeYpQuiz, extractYpQuizzes, startYpTestByIds } from './ypbook.js';
 
 
 // ============================================================
@@ -26,7 +27,7 @@ function renderScan() {
     </div>
     <div class="card">
       <p class="hint-area">或直接貼上出題碼：</p>
-      <textarea id="sc-code" class="answer-input code-box" rows="2" placeholder="貼上 V1... 出題碼"></textarea>
+      <textarea id="sc-code" class="answer-input code-box" rows="2" placeholder="貼上 V1…出題碼，或 YQ1…（YP 出題碼）"></textarea>
       <button class="btn primary" id="sc-load">載入這批字</button>
       <p id="sc-status" class="hint-area"></p>
     </div>`;
@@ -68,6 +69,9 @@ function stopScan() {
 
 async function scanLoadCode(code) {
   const status = document.getElementById('sc-status');
+  // YP 出題碼（YQ1）：走 YP 專屬測驗，與 6000 出題碼分流
+  const yq = extractYpQuizzes(code);
+  if (yq.length) return scanLoadYpQuiz(yq[0], status);
   let decoded;
   try { decoded = decodeCode(code); } catch (e) { if (status) status.textContent = '⚠️ ' + e.message; else alert(e.message); return; }
   const { ids, types, batchId, forProfile } = decoded;
@@ -92,5 +96,25 @@ async function scanLoadCode(code) {
     alert('📌 已自動切換為「家長排程模式」：手機不再自動排新字，避免和家長出的題重複。\n若要改回自動排字，到「更多 → 設定 → 每日單字來源」調整。');
   }
   enterGroupStudy(g);
+}
+
+// 掃到 YP 出題碼 → 身分核對後直接進 YP 測驗（測完用 YC1 回報）
+async function scanLoadYpQuiz(code, status) {
+  let decoded;
+  try { decoded = decodeYpQuiz(code); } catch (e) { if (status) status.textContent = '⚠️ ' + e.message; else alert(e.message); return; }
+  const { profileId, types, ids } = decoded;
+  if (!ids.length) { if (status) status.textContent = '⚠️ 這個 YP 出題碼沒有可載入的字。'; return; }
+  if (profileId && profileId !== State.profile.id) {
+    const prof = await getProfile(profileId);
+    if (!prof) { if (status) status.textContent = '⚠️ 這份 YP 題的出題對象不在這支手機上。'; return; }
+    if (confirm(`📌 這份 YP 題是出給「${prof.name}」的。\n要切換到 ${prof.name} 並載入嗎？`)) {
+      await switchProfile(prof.id);
+    } else {
+      if (status) status.textContent = `⚠️ 這份題是出給「${prof.name}」的，請先切換身分再載入。`;
+      return;
+    }
+  }
+  stopScan();
+  await startYpTestByIds(ids, '家長出的 YP 題', types);
 }
 export { _scanStream, renderScan, startScan, stopScan, scanLoadCode };
