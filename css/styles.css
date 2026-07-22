@@ -4,7 +4,7 @@
   --card: #ffffff;
   --text: #1a2230;
   --muted: #5b6675;
-  --primary: #2563eb;
+  --primary: #2f6bff;
   --primary-d: #1d4ed8;
   --ok: #16a34a;
   --no: #dc2626;
@@ -72,7 +72,7 @@ body {
 }
 
 .card {
-  background: var(--card); border-radius: 16px; padding: 18px;
+  background: var(--card); border-radius: var(--radius-lg); padding: 18px;
   box-shadow: var(--shadow); margin-bottom: 14px;
 }
 .card.center { text-align: center; }
@@ -83,12 +83,15 @@ body {
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 4px;
   border: 1px solid var(--border); background: var(--card); color: var(--text);
-  border-radius: 12px; padding: 12px 16px; font-size: 16px; font-weight: 600;
+  border-radius: var(--radius); padding: 12px 16px; font-size: 16px; font-weight: 600;
   cursor: pointer; text-decoration: none; min-height: 48px;
+  transition: transform .06s ease, filter .06s ease;
 }
+.btn:active { filter: brightness(.97); }
 .btn small { font-weight: 400; font-size: 11px; opacity: .8; }
-.btn.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
-.btn.primary:active { background: var(--primary-d); }
+.btn.primary { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 2px 7px rgba(47, 107, 255, .30); }
+.btn.primary:active { background: var(--primary-d); transform: translateY(1px); filter: brightness(.96); }
+.big-copy.primary { box-shadow: var(--shadow-block); }
 .btn.danger { color: var(--no); border-color: var(--no); }
 .btn.icon { padding: 8px 12px; min-height: 0; }
 .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
@@ -181,11 +184,11 @@ body {
 .ts-num { width: 100px; }
 .ts-check { display: flex; align-items: center; gap: 8px; font-weight: 500; }
 .ts-check input { width: 18px; height: 18px; }
-.section-daily { border-left: 4px solid var(--primary); }
-.section-test { border-left: 4px solid var(--ok); }
+.section-daily { border-left: 5px solid var(--c-learn); }
+.section-test { border-left: 5px solid var(--c-test); }
 
 /* L-3 家長月排程 / 出題碼 / 掃描 */
-.section-parent { border-left: 4px solid #a855f7; }
+.section-parent { border-left: 5px solid var(--c-parent); }
 .ver-tag { text-align: center; color: var(--muted); font-size: 11px; margin: 4px 0 10px; }
 .src-opts { display: flex; flex-direction: column; gap: 6px; margin: 6px 0; }
 .sched-day .sched-group { margin: 8px 0; }
@@ -286,7 +289,7 @@ body {
 .role-list { margin: 8px 0; padding-left: 20px; }
 .role-list li { margin: 6px 0; line-height: 1.5; }
 .role-soon { color: var(--muted); background: var(--bg); border-radius: 10px; padding: 10px; margin-top: 8px; }
-.parent-entry { border-left: 4px solid var(--primary); }
+.parent-entry { border-left: 5px solid var(--c-parent); }
 
 /* K-3 闖關星數 */
 .gauntlet-stars { font-size: 18px; margin: 8px 0; letter-spacing: 2px; }
@@ -411,7 +414,7 @@ details[open] summary::before { content: '▾ '; }
   display: none; align-items: center; justify-content: center; padding: 16px; z-index: 50;
 }
 .modal.show { display: flex; }
-.modal-box { background: var(--card); border-radius: 16px; padding: 16px; max-width: 480px; width: 100%; max-height: 86vh; overflow: auto; }
+.modal-box { background: var(--card); border-radius: var(--radius-lg); padding: 16px; max-width: 480px; width: 100%; max-height: 86vh; overflow: auto; }
 
 /* Calendar */
 .cal-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
@@ -442,7 +445,7 @@ details[open] summary::before { content: '▾ '; }
 
 /* Daily study */
 .daily-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.daily-top b { font-size: 15px; }
+.daily-top b { font-size: 16px; font-weight: 700; }
 .memo-card { background: linear-gradient(180deg, rgba(37,99,235,.10), var(--card)); }
 .memo { font-size: 16px; line-height: 1.6; }
 .read-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 10px; box-shadow: var(--shadow); }
@@ -452,6 +455,7 @@ details[open] summary::before { content: '▾ '; }
 .ex-word { cursor: pointer; border-bottom: 1px dotted var(--border); border-radius: 3px; }
 .ex-word:active { background: var(--primary); color: #fff; }
 .row.tap { cursor: pointer; }
+.row.tap:active { border-color: var(--primary); filter: brightness(.98); }
 /* 多義 senses */
 .senses { margin: 6px 0; }
 .sense { padding: 8px 0; border-top: 1px dashed var(--border); }
