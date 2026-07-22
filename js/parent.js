@@ -386,6 +386,7 @@ async function openYpQuizModal() {
         <label class="chk"><input type="radio" name="yqt" value="spelling"/> 只拼字</label>
         <label class="chk"><input type="radio" name="yqt" value="sentence"/> 只造句</label>
       </div>
+      <label class="chk"><input type="checkbox" id="yq-skip" checked/> 跳過 ${esc(tgt.name)} 已做過的字（依完成碼／同步碼）</label>
       <div class="btn-row">
         <button class="btn primary" id="yq-gen">產生出題碼／QR</button>
         <button class="btn" id="yq-cancel">取消</button>
@@ -393,6 +394,10 @@ async function openYpQuizModal() {
       <div id="yq-out"></div>
     </div>`;
   m.classList.add('show');
+  // 該生「已做過」的字：doneWords（6000，含 YP 對到 6000 的字）＋ ypDone（YP 專屬）
+  const doneSet = new Set(await getDoneWords(tgt.id));
+  const ypDone = (await getMeta(`ypDone::${tgt.id}`)) || {};
+  const isDoneEntry = (e) => (ypDone[e.id] != null) || (() => { const mm = findByWord(e.word); return mm && doneSet.has(mm.id); })();
   const levelSel = document.getElementById('yq-level');
   const unitSel = document.getElementById('yq-unit');
   const fillUnits = () => {
@@ -406,8 +411,12 @@ async function openYpQuizModal() {
   document.getElementById('yq-gen').onclick = () => {
     const level = +levelSel.value;
     const unitVal = unitSel.value;
-    const entries = unitVal === 'all' ? levelEntries(level) : unitEntries(level, +unitVal);
-    if (!entries.length) { alert('這個範圍沒有字'); return; }
+    const allEntries = unitVal === 'all' ? levelEntries(level) : unitEntries(level, +unitVal);
+    if (!allEntries.length) { alert('這個範圍沒有字'); return; }
+    const skip = document.getElementById('yq-skip').checked;
+    const doneN = allEntries.filter(isDoneEntry).length;
+    const entries = skip ? allEntries.filter((e) => !isDoneEntry(e)) : allEntries;
+    if (!entries.length) { alert(`這個範圍 ${allEntries.length} 字都已做過，沒有要出的字。可取消勾選「跳過已做過」再出。`); return; }
     const type = (document.querySelector('input[name="yqt"]:checked') || {}).value || 'both';
     const types = { spelling: type !== 'sentence', sentence: type !== 'spelling' };
     const code = encodeYpQuiz(tgt.id, entries.map((e) => e.id), types);
@@ -415,7 +424,7 @@ async function openYpQuizModal() {
     const typeLabel = type === 'both' ? '拼字＋造句' : type === 'spelling' ? '只拼字' : '只造句';
     const out = document.getElementById('yq-out');
     out.innerHTML = `
-      <p class="hint-area">出給 <b>${esc(tgt.name)}</b>・${esc(name)}・${entries.length} 字・${typeLabel}</p>
+      <p class="hint-area">出給 <b>${esc(tgt.name)}</b>・${esc(name)}・共 ${allEntries.length} 字${skip ? `，已做過 ${doneN}、` : '，'}實際出 <b>${entries.length}</b> 字・${typeLabel}</p>
       ${code.length <= 800 ? qrSvg(code) : '<p class="hint-area">字數較多，建議用列印或下方出題碼傳給孩子。</p>'}
       <textarea class="answer-input code-box" readonly rows="3">${esc(code)}</textarea>
       <div class="btn-row">

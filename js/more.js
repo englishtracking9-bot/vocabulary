@@ -12,6 +12,8 @@ import { isIntroduced } from './srs.js';
 import { $main, APP_UI_VERSION, State } from './state.js';
 import { exportProfile, getStats, importProfile } from './stats.js';
 import { esc, todayStr } from './util.js';
+import { getById } from './vocab.js';
+import { encodeYpCompletion, getBook, getYpTested, loadBook, recordIdOf } from './ypbook.js';
 
 
 // ============================================================
@@ -172,9 +174,10 @@ async function renderSettings() {
 
     <div class="card">
       <h2>📤 進度同步碼（給家長，一次性）</h2>
-      <p class="hint-area">把 <b>${esc(State.profile.name)} 目前為止做過的所有字</b>做成一串碼，傳給家長貼進電腦
-      「家長專區 → 輸入完成碼」，家長排程就會跳過這些字。<b>第一次使用時同步一次即可</b>；
-      之後每天的進度由「每日報告」末尾的完成碼自動累加，不用再產生這個。</p>
+      <p class="hint-area">把 <b>${esc(State.profile.name)} 目前為止做過的字</b>做成一串碼，傳給家長貼進電腦
+      「家長專區 → 輸入完成碼」，家長排程就會跳過這些字。涵蓋 <b>學測6000</b> 與 <b>YP 單字書</b>；
+      自己查的字／自訂單字本無法納入（只存這支手機），產碼時會標明數量。<b>第一次使用時同步一次即可</b>，
+      之後每天靠報告末尾的完成碼累加。</p>
       <button class="btn primary" id="sync-gen">產生進度同步碼</button>
       <p id="sync-status" class="hint-area"></p>
     </div>
@@ -219,21 +222,54 @@ async function renderSettings() {
   if (rep) rep.onclick = () => go('#report');
 
   // P：進度同步碼（全量、一次性；「做過」的定義＝srs.js isIntroduced）
+  //   涵蓋 學測6000（S1）＋ YP 單字書（YC1 全量），並明確標示無法納入的自訂字
   document.getElementById('sync-gen').onclick = async () => {
     const st = document.getElementById('sync-status');
-    const recs = await getRecordsByProfile(State.profile.id);
-    const doneIds = recs.filter(isIntroduced).map((r) => r.wordId);
-    if (!doneIds.length) { st.textContent = '目前還沒有做過的字，不需要同步。'; return; }
-    const codes = encodeSyncCodes(State.profile.id, doneIds);
-    const all = codes.join('\n\n');
+    const pid = State.profile.id;
+    const recs = await getRecordsByProfile(pid);
+    const introduced = recs.filter(isIntroduced);
+    // 依來源分類「做過」的字
+    const six = [], customOnly = [];
+    for (const r of introduced) {
+      const e = getById(r.wordId);
+      if (!e) continue;
+      if (e.yp) { /* YP 專屬字：由下方 YP 全量處理 */ }
+      else if (e.custom) customOnly.push(r.wordId); // 查詢字／單字本(SRS) → 跨裝置無法同步
+      else six.push(r.wordId);                       // 6000
+    }
+    // YP 全量：掃 books.json，凡「做過」（對應記錄 isIntroduced 或曾在 YP 測過）都納入
+    await loadBook();
+    const book = getBook();
+    const ypTested = await getYpTested(pid);
+    const recMap = new Map(recs.map((r) => [r.wordId, r]));
+    const ypResults = {};
+    let ypCount = 0;
+    if (book) {
+      for (const lv of book.levels) for (const u of lv.units) for (const e of u.entries) {
+        const rr = recMap.get(recordIdOf(e));
+        if ((rr && isIntroduced(rr)) || ypTested[e.id] != null) { ypResults[e.id] = ypTested[e.id] || 0; ypCount++; }
+      }
+    }
+    const sixCodes = six.length ? encodeSyncCodes(pid, six) : [];
+    const ypCode = ypCount ? encodeYpCompletion(pid, ypResults) : '';
+    if (!six.length && !ypCount && !customOnly.length) { st.textContent = '目前還沒有做過的字，不需要同步。'; return; }
+
+    const coverage = `【進度同步碼｜${State.profile.name}】\n`
+      + `✅ 學測6000：${six.length} 字\n`
+      + `✅ YP 單字書：${ypCount} 字\n`
+      + (customOnly.length
+        ? `⚠️ 無法納入：自訂字（自己查的／自訂單字本）共 ${customOnly.length} 字\n（這些只存在這支手機、跨裝置沒有共同編號，無法用同步碼傳給家長。）\n`
+        : `（沒有無法納入的自訂字）\n`);
+    const codeBlock = [...sixCodes, ypCode].filter(Boolean).join('\n\n');
+    const all = coverage + '\n' + codeBlock;
+
     const m = document.getElementById('modal');
     m.innerHTML = `
       <div class="modal-box center">
         <h3>📤 進度同步碼</h3>
-        <p class="hint-area">${esc(State.profile.name)} 做過 ${doneIds.length} 字${codes.length > 1 ? `（分 ${codes.length} 段，一起複製、一起貼即可）` : ''}。
-        傳給家長貼進電腦「家長專區 → 輸入完成碼」。</p>
-        ${codes.length === 1 && codes[0].length <= 800 ? qrSvg(codes[0]) : ''}
-        <textarea class="answer-input code-box" readonly rows="4">${esc(all)}</textarea>
+        <p class="hint-area" style="white-space:pre-line;text-align:left">${esc(coverage)}整段複製、貼進電腦「家長專區 → 輸入完成碼」即可（6000 與 YP 會分別記錄）。</p>
+        ${sixCodes.length === 1 && !ypCode && sixCodes[0].length <= 800 ? qrSvg(sixCodes[0]) : ''}
+        <textarea class="answer-input code-box" readonly rows="5">${esc(all)}</textarea>
         <div class="btn-row">
           <button class="btn primary" id="sy-copy">複製同步碼</button>
           <button class="btn" id="sy-close">關閉</button>
