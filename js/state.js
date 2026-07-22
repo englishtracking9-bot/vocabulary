@@ -5,7 +5,7 @@ import { STATUS_DESC, STATUS_LABEL, isMasteredFamily } from './srs.js';
 
 
 // 顯示用版本（與 service-worker.js 的 APP_VERSION 同步更新；讓使用者能確認手機拿到的是哪一版）
-const APP_UI_VERSION = '2026-07-21-S1-ypbrowse';
+const APP_UI_VERSION = '2026-07-22-S2-yptest';
 
 // ---------- 預設身分 ----------
 const DEFAULT_PROFILES = [

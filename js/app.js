@@ -13,7 +13,7 @@ import { renderQuiz } from './quizui.js';
 import { renderReport, resetReportDate } from './reportui.js';
 import { renderRoots } from './rootsui.js';
 import { renderScan } from './scan.js';
-import { renderYp } from './ypbook.js';
+import { ensureBooksLoaded, renderYp } from './ypbook.js';
 import { $main, DEFAULT_PROFILES, LEGACY_PROFILE_NAMES, State, refreshMastered } from './state.js';
 import { esc } from './util.js';
 import { loadVocab, registerCustomWord } from './vocab.js';
@@ -27,6 +27,7 @@ async function init() {
     await loadGroupsIndex();
     await loadRoots();
     await loadCustomWords();
+    await ensureBooksLoaded(); // 預載 YP 單字書＋註冊 YP 專屬字（供報告/統計顯示）
     await ensureProfiles();
 
     const activeId = (await getMeta('activeProfile')) || DEFAULT_PROFILES[0].id;
