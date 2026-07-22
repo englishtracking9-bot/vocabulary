@@ -9,7 +9,8 @@ import { copyToClipboard } from './report.js';
 import { KIND_LABEL, buildMonthSchedule, regenerateDay, regroupDay } from './schedule.js';
 import { $main, State } from './state.js';
 import { esc, prettyDate, todayStr } from './util.js';
-import { getById, searchWords, wordsByLevels } from './vocab.js';
+import { findByWord, getById, searchWords, wordsByLevels } from './vocab.js';
+import { decodeYpCompletion, extractYpCompletions } from './ypbook.js';
 
 
 // ============================================================
@@ -50,14 +51,17 @@ async function getDoneWords(profileId) {
 // 貼上的文字裡可能有：每日完成碼 C1（增量）、進度同步碼 S1（全量、可多段）——
 // 自動辨識、全部解析、依碼內身分各自累加進該生的已做字庫。
 async function recordCompletion(text) {
-  const { completions, syncs } = extractCodes(text);
-  if (!completions.length && !syncs.length) {
-    throw new Error('找不到完成碼（C1…）或進度同步碼（S1…），請確認貼上的內容。');
+  const ypCodes = extractYpCompletions(text); // YP 完成碼 YC1（測驗回報）
+  // 先移除 YC1（內含 "C1" 子字串，否則會被 C1 完成碼誤抓）再抓 C1／S1
+  const rest = String(text || '').replace(/YC1[A-Za-z0-9\-_]{2,}/g, ' ');
+  const { completions, syncs } = extractCodes(rest);
+  if (!completions.length && !syncs.length && !ypCodes.length) {
+    throw new Error('找不到完成碼（C1…）、進度同步碼（S1…）或 YP 完成碼（YC1…），請確認貼上的內容。');
   }
   // 依身分彙整這次回報的字
-  const incoming = new Map(); // pid -> { ids:Set, sync:boolean, comp:boolean }
+  const incoming = new Map(); // pid -> { ids:Set, sync, comp, yp, ypRes:Map(entryId->flags) }
   const bucket = (pid) => {
-    if (!incoming.has(pid)) incoming.set(pid, { ids: new Set(), sync: false, comp: false });
+    if (!incoming.has(pid)) incoming.set(pid, { ids: new Set(), sync: false, comp: false, yp: false, ypRes: new Map() });
     return incoming.get(pid);
   };
   for (const c of completions) {
@@ -70,17 +74,42 @@ async function recordCompletion(text) {
     const b = bucket(profileId); b.sync = true;
     ids.forEach((id) => b.ids.add(id));
   }
-  // 各生獨立合併進已做字庫
+  for (const y of ypCodes) {
+    const { profileId, results } = decodeYpCompletion(y);
+    const b = bucket(profileId); b.yp = true;
+    for (const r of results) {
+      b.ypRes.set(r.id, (b.ypRes.get(r.id) || 0) | r.flags);
+      // YP 字若也在 6000 → 一併記入 doneWords，未來排程也跳過（共用記憶）
+      const m = r.entry && findByWord(r.entry.word);
+      if (m) b.ids.add(m.id);
+    }
+  }
+  // 各生獨立合併進已做字庫（＋ YP 專屬完成紀錄）
   const msgs = [];
   for (const [pid, b] of incoming) {
-    const before = await getDoneWords(pid);
-    const done = new Set(before);
-    b.ids.forEach((id) => done.add(id));
-    await setMeta(`doneWords::${pid}`, [...done]);
     const prof = await getProfile(pid);
     const name = prof ? prof.name : pid;
-    const kind = b.sync ? (b.comp ? '同步碼＋完成碼' : '進度同步碼') : '完成碼';
-    msgs.push(`✅ 已記錄 ${name}（${kind}）：本次回報 ${b.ids.size} 字、新增 ${done.size - before.length} 字、累計 ${done.size} 字`);
+    if (b.ids.size) {
+      const before = await getDoneWords(pid);
+      const done = new Set(before);
+      b.ids.forEach((id) => done.add(id));
+      await setMeta(`doneWords::${pid}`, [...done]);
+      const kind = b.sync ? (b.comp || b.yp ? '同步碼＋完成碼' : '進度同步碼') : (b.yp && !b.comp ? 'YP 完成碼' : '完成碼');
+      msgs.push(`✅ 已記錄 ${name}（${kind}）：本次回報 ${b.ids.size} 字、累計已做 ${done.size} 字`);
+    }
+    if (b.yp) {
+      const prev = (await getMeta(`ypDone::${pid}`)) || {};
+      let spOk = 0, spT = 0, seOk = 0, seT = 0;
+      for (const [id, f] of b.ypRes) {
+        prev[id] = (prev[id] || 0) | f;
+        if (f & 1) { spT++; if (f & 2) spOk++; }
+        if (f & 4) { seT++; if (f & 8) seOk++; }
+      }
+      await setMeta(`ypDone::${pid}`, prev);
+      msgs.push(`  📖 ${name} 的 YP 測驗：${b.ypRes.size} 字`
+        + (spT ? `　拼字 ${spOk}/${spT}` : '') + (seT ? `　造句 ${seOk}/${seT}` : '')
+        + `（YP 累計 ${Object.keys(prev).length} 字）`);
+    }
   }
   return msgs.join('\n');
 }
@@ -287,12 +316,13 @@ async function renderParentZone() {
     </div>` : ''}
     <div class="card">
       <h3>✅ 輸入完成碼／進度同步碼</h3>
-      <p class="hint-area">兩種碼都貼這裡，會自動辨識：<b>每日完成碼（C1…）</b>＝孩子每天報告末尾附的「這次做了哪些字」；
-      <b>進度同步碼（S1…）</b>＝孩子手機「設定」裡產生的「目前為止做過的所有字」（第一次使用時同步一次即可，之後靠每日完成碼累加）。
+      <p class="hint-area">三種碼都貼這裡，會自動辨識：<b>每日完成碼（C1…）</b>＝孩子每天報告末尾附的「這次做了哪些字」；
+      <b>進度同步碼（S1…）</b>＝孩子手機「設定」裡產生的「目前為止做過的所有字」（第一次使用時同步一次即可，之後靠每日完成碼累加）；
+      <b>YP 完成碼（YC1…）</b>＝孩子在 YP 單字書測驗完，按「傳完成碼給家長」產生的。
       整段報告或多段碼一起貼都可以（碼裡帶著是誰的，會自動歸到正確的孩子）。
       目前已記錄 <b>${esc(tgt.name)}</b> 完成 <b>${doneCount}</b> 字；
       設定級別（Lv${lvls.join('/')}）還有 <b>${remaining}</b> 字未做。重排月排程會自動跳過做過的字。</p>
-      <textarea id="pz-comp" class="answer-input code-box" rows="2" placeholder="貼上 C1…／S1…，或整段報告、多段碼"></textarea>
+      <textarea id="pz-comp" class="answer-input code-box" rows="2" placeholder="貼上 C1…／S1…／YC1…，或整段報告、多段碼"></textarea>
       <div class="btn-row">
         <button class="btn primary" id="pz-comp-ok">記錄完成碼</button>
       </div>

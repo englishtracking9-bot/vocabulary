@@ -5,15 +5,23 @@
 import { go } from './app.js';
 import { getMeta, getRecordsByProfile, setMeta } from './db.js';
 import { speak } from './lookup.js';
+import { qrSvg } from './parent.js';
 import { recordAnswer } from './quiz.js';
+import { copyToClipboard } from './report.js';
 import { compareSentence } from './sentence.js';
-import { statusBadge } from './srs.js';
+import { displayCategory, statusBadge } from './srs.js';
 import { $main, State, refreshMastered } from './state.js';
 import { esc, shuffle } from './util.js';
 import { findByWord, getById, registerCustomWord } from './vocab.js';
 
 let _book = null;                 // books.json（載入一次）
-const Yp = { level: null, unit: null }; // 導覽狀態：null=在上一層
+// 扁平化 YP 索引（依 books.json 順序，供 YP 完成碼跨裝置對位）
+let _ypFlat = [];                 // idx -> entry id
+const _ypById = new Map();        // id -> entry(含 level/unit)
+const _ypIndex = new Map();       // id -> idx
+const YP_TAG = { senior1: 1, junior3: 2 };
+const YP_TAG_REV = { 1: 'senior1', 2: 'junior3' };
+const Yp = { level: null, unit: null, progress: false }; // 導覽狀態：null=在上一層
 const YpSel = { on: false, unit: null, ids: new Set() }; // 單元頁「挑字測驗」選取
 const YpTest = { active: false, name: '', items: [], idx: 0, correct: 0, wrong: [], answered: false, backLv: null, backU: null };
 
@@ -23,8 +31,57 @@ async function loadBook() {
   if (!res.ok) throw new Error('無法載入 books.json：' + res.status);
   _book = await res.json();
   registerYpOnlyWords(_book); // YP 專屬字（不在 6000）註冊成 level-0 條目，供顯示與作答
+  buildYpIndex(_book);
   return _book;
 }
+
+// 扁平化索引：child 與 parent 用同一份 books.json → 相同 idx，YP 完成碼才能對位
+function buildYpIndex(book) {
+  _ypFlat = []; _ypById.clear(); _ypIndex.clear();
+  for (const lv of book.levels) for (const u of lv.units) for (const e of u.entries) {
+    _ypIndex.set(e.id, _ypFlat.length);
+    _ypById.set(e.id, { ...e, level: lv.level, unit: u.unit });
+    _ypFlat.push(e.id);
+  }
+}
+
+// ---------- YP 完成碼（孩子測完 → 傳給家長紀錄）----------
+// 格式 YC1：學生代號(1，0=自訂後接 len+utf8) + [ypIdx(2) + flags(1)]×字
+//   flags bit0 拼字測過 / bit1 拼字對 / bit2 造句測過 / bit3 造句對
+function b64u(bytes) { let s = ''; for (let i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i]); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
+function unb64u(s) { const b = atob(s.replace(/-/g, '+').replace(/_/g, '/')); const o = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) o[i] = b.charCodeAt(i); return o; }
+
+function encodeYpCompletion(profileId, results) {
+  const tag = YP_TAG[profileId] || 0;
+  const parts = [tag];
+  if (tag === 0) { const b = new TextEncoder().encode(String(profileId)); parts.push(b.length, ...b); }
+  for (const id in results) {
+    const idx = _ypIndex.get(id);
+    if (idx == null) continue;
+    parts.push((idx >> 8) & 0xff, idx & 0xff, results[id] & 0xff);
+  }
+  return 'YC1' + b64u(new Uint8Array(parts));
+}
+
+// YP 完成碼 → { profileId, results:[{id, flags, entry}] }（供家長端）
+function decodeYpCompletion(code) {
+  const m = String(code || '').trim().match(/YC1([A-Za-z0-9\-_]+)/);
+  if (!m) throw new Error('YP 完成碼格式不符（應以 YC1 開頭）');
+  const bytes = unb64u(m[1]);
+  let p = 0; const tag = bytes[p++]; let profileId;
+  if (tag === 0) { const len = bytes[p++]; profileId = new TextDecoder().decode(bytes.slice(p, p + len)); p += len; }
+  else { profileId = YP_TAG_REV[tag]; if (!profileId) throw new Error('YP 完成碼內的學生代號無法辨識'); }
+  const results = [];
+  for (; p + 2 < bytes.length; p += 3) {
+    const idx = (bytes[p] << 8) | bytes[p + 1];
+    const id = _ypFlat[idx];
+    if (id) results.push({ id, flags: bytes[p + 2], entry: _ypById.get(id) });
+  }
+  return { profileId, results };
+}
+
+// 從貼上的文字抓出所有 YP 完成碼
+function extractYpCompletions(text) { return String(text || '').match(/YC1[A-Za-z0-9\-_]{2,}/g) || []; }
 // 供 app 啟動時預先載入（讓報告/統計即使沒開 YP 也能顯示 YP 專屬字）
 async function ensureBooksLoaded() { try { await loadBook(); } catch (e) { /* 忽略 */ } }
 
@@ -68,6 +125,7 @@ async function renderYp() {
     return;
   }
   if (YpTest.active) return ypShow(); // 測驗進行中：繼續顯示題目
+  if (Yp.progress) return renderYpProgress(book);
   if (Yp.level == null) return renderLevels(book);
   const lv = book.levels.find((l) => l.level === Yp.level);
   if (!lv) { Yp.level = null; return renderLevels(book); }
@@ -89,12 +147,71 @@ function renderLevels(book) {
     <div class="card">
       <div class="daily-top"><button class="btn" id="yp-home">‹ 首頁</button><b>📖 YP 單字書</b></div>
       <p class="hint-area">YP 單字書是獨立專區，進度與 6000 字相通（同一個字不用背兩次）。選一個 Level 開始。</p>
+      <div class="btn-row"><button class="btn" id="yp-progress">📊 看 YP 學習進度</button></div>
     </div>
     <div class="home-sec"><div class="block-grid yp-grid">${tiles || '<p class="hint-area">還沒有資料</p>'}</div></div>`;
   document.getElementById('yp-home').onclick = () => go('#home');
+  document.getElementById('yp-progress').onclick = () => { Yp.progress = true; renderYp(); };
   $main().querySelectorAll('.yp-tile[data-level]').forEach((b) => {
     b.onclick = () => { Yp.level = +b.dataset.level; Yp.unit = null; renderYp(); };
   });
+}
+
+// ---------- S-3：YP 專屬進度（各生獨立；已熟記/需加強/未測驗＋讀過/測過比例）----------
+async function renderYpProgress(book) {
+  const recs = await getRecordsByProfile(State.profile.id);
+  const recMap = new Map(recs.map((r) => [r.wordId, r]));
+  const read = await getReadSet(State.profile.id);
+
+  // 統計一組 entries：{tot, mastered, weak, untested, readN, testedN}
+  const tally = (entries) => {
+    const t = { tot: 0, mastered: 0, weak: 0, untested: 0, readN: 0, testedN: 0 };
+    for (const e of entries) {
+      t.tot++;
+      if (read.has(e.id)) t.readN++;
+      const r = recMap.get(recordIdOf(e));
+      if (r && r.attempts > 0) {
+        t.testedN++;
+        const c = displayCategory(r.status);
+        if (c === 'mastered' || c === 'proficient') t.mastered++;
+        else t.weak++;
+      } else t.untested++;
+    }
+    return t;
+  };
+  const bar = (t) => {
+    const pct = (n) => t.tot ? Math.round(n / t.tot * 100) : 0;
+    return `<div class="yp-prog-bar">
+      <i class="seg mastered" style="width:${pct(t.mastered)}%"></i>
+      <i class="seg weak" style="width:${pct(t.weak)}%"></i>
+      <i class="seg untested" style="width:${pct(t.untested)}%"></i></div>`;
+  };
+
+  let body = '';
+  for (const lv of book.levels) {
+    const lt = tally(lv.units.flatMap((u) => u.entries));
+    const unitRows = lv.units.map((u) => {
+      const t = tally(u.entries);
+      return `<div class="row"><div class="row-main">
+          <span class="row-word">Unit ${u.unit}</span>${bar(t)}</div>
+        <div class="row-meta"><span>🌳${t.mastered}</span><span>🌿${t.weak}</span><span>未測${t.untested}</span>
+          <span>讀${t.readN}/${t.tot}</span></div></div>`;
+    }).join('');
+    body += `<div class="card">
+        <div class="mw-head"><h3>Level ${lv.level}</h3>
+          <span class="row-meta">熟 ${lt.mastered}・加強 ${lt.weak}・未測 ${lt.untested}（共 ${lt.tot} 字）</span></div>
+        ${bar(lt)}
+        <div class="detail-list">${unitRows}</div>
+      </div>`;
+  }
+
+  $main().innerHTML = `
+    <div class="card">
+      <div class="daily-top"><button class="btn" id="yp-back">‹ 返回</button><b>📊 YP 學習進度・${esc(State.profile.name)}</b></div>
+      <p class="hint-area">🌳 已熟記（含穩固）　🌿 需加強　未測＝還沒考過。與 6000 共用的字，這裡與平常進度同步。</p>
+    </div>
+    ${body}`;
+  document.getElementById('yp-back').onclick = () => { Yp.progress = false; renderYp(); };
 }
 
 // ---------- 第二層：選 Unit（顯示每單元 讀X／測Y）----------
@@ -271,7 +388,7 @@ function startYpTest(entries, name, type) {
   if (!items.length) { alert('這些字目前沒有可測的題目（造句需要有例句）'); return; }
   Object.assign(YpTest, {
     active: true, name, items: shuffle(items), idx: 0, correct: 0, wrong: [], answered: false,
-    backLv: Yp.level, backU: Yp.unit,
+    backLv: Yp.level, backU: Yp.unit, results: {},
   });
   if (location.hash !== '#yp') location.hash = '#yp';
   ypShow();
@@ -347,6 +464,9 @@ async function ypSubmit() {
   await recordAnswer(State.profile, recordTarget(e), correct, false, false, Date.now(), { input: val, answer, kind: it.kind });
   await markYpTested(State.profile.id, e.id, it.kind);
   await refreshMastered();
+  // 累積本次測驗結果（供 YP 完成碼）：flags bit0 拼字測/1 拼字對/2 造句測/3 造句對
+  const add = it.kind === 'spelling' ? (1 | (correct ? 2 : 0)) : (4 | (correct ? 8 : 0));
+  t.results[e.id] = (t.results[e.id] || 0) | add;
   if (correct) t.correct++;
   else t.wrong.push({ word: e.word, zh: e.senses.map((s) => s.zh).filter(Boolean).join('；'), input: val, answer, kind: it.kind });
 
@@ -370,16 +490,55 @@ async function ypDone() {
       <div class="row-meta"><span>${w.kind === 'sentence' ? '造句' : '拼字'}</span>
         <span>你寫：${esc(w.input) || '(空白)'}</span></div></div>`).join('')
     : '<p class="hint-area">全部答對，太強了！🎉</p>';
+  const wordN = Object.keys(t.results).length;
   $main().innerHTML = `
     <div class="card center">
       <h2>YP 測驗完成 🎉</h2>
       <p class="big">${pct} 分</p>
       <p>${t.correct} / ${total} 題答對</p>
-      <div class="btn-row" style="justify-content:center"><button class="btn primary" id="yp-back-unit">回單元</button></div>
+      <div class="btn-row" style="justify-content:center">
+        <button class="btn primary" id="yp-sendcode">📤 傳完成碼給家長</button>
+        <button class="btn" id="yp-back-unit">回單元</button>
+      </div>
     </div>
     <div class="card"><h3>❌ 答錯的字（${t.wrong.length}）— 已回寫進度、排入複習</h3>
       <div class="detail-list">${wrongRows}</div></div>`;
   document.getElementById('yp-back-unit').onclick = () => { Yp.level = t.backLv; Yp.unit = t.backU; renderYp(); };
+  document.getElementById('yp-sendcode').onclick = () => showYpCompletionCode(t.name, t.results, pct, t.correct, total);
+}
+
+// 測完 → 產生 YP 完成碼給家長（含 QR、可複製，附一行白話摘要）
+function showYpCompletionCode(name, results, pct, correct, total) {
+  const code = encodeYpCompletion(State.profile.id, results);
+  const wordN = Object.keys(results).length;
+  let spT = 0, spOk = 0, seT = 0, seOk = 0;
+  for (const id in results) {
+    const f = results[id];
+    if (f & 1) { spT++; if (f & 2) spOk++; }
+    if (f & 4) { seT++; if (f & 8) seOk++; }
+  }
+  const summary = `【YP 測驗】${esc(State.profile.name)}・${esc(name)}\n`
+    + `做了 ${wordN} 字，得分 ${pct} 分（${correct}/${total}）\n`
+    + (spT ? `拼字 ${spOk}/${spT}　` : '') + (seT ? `造句 ${seOk}/${seT}` : '') + '\n'
+    + `YP完成碼（請貼到家長電腦「家長專區→輸入完成碼」）：\n${code}`;
+  const m = document.getElementById('modal');
+  m.innerHTML = `
+    <div class="modal-box center">
+      <h3>📤 YP 完成碼</h3>
+      <p class="hint-area">傳給家長貼進電腦「家長專區 → 輸入完成碼」，就會記錄 ${esc(State.profile.name)} 做過的 YP 字。</p>
+      ${code.length <= 800 ? qrSvg(code) : '<p class="hint-area">字數較多，請用下方文字複製傳送。</p>'}
+      <textarea class="answer-input code-box" readonly rows="5">${esc(summary)}</textarea>
+      <div class="btn-row">
+        <button class="btn primary" id="ypc-copy">複製完成碼</button>
+        <button class="btn" id="ypc-close">關閉</button>
+      </div>
+    </div>`;
+  m.classList.add('show');
+  document.getElementById('ypc-copy').onclick = async () => {
+    const ok = await copyToClipboard(summary);
+    document.getElementById('ypc-copy').textContent = ok ? '✅ 已複製' : '請長按上方文字複製';
+  };
+  document.getElementById('ypc-close').onclick = () => m.classList.remove('show');
 }
 
 // YP 測驗類型追蹤（哪些字測過拼字/造句），供 S-3 進度用
@@ -391,4 +550,4 @@ async function markYpTested(pid, id, kind) {
   await setMeta(`ypTested::${pid}`, m);
 }
 
-export { renderYp, Yp, loadBook, ensureBooksLoaded, recordIdOf, recordTarget, vocabMatch, getYpTested };
+export { renderYp, Yp, loadBook, ensureBooksLoaded, recordIdOf, recordTarget, vocabMatch, getYpTested, encodeYpCompletion, decodeYpCompletion, extractYpCompletions };
