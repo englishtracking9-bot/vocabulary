@@ -53,8 +53,8 @@ def norm_seq(v):
     return int(s) if s.isdigit() else s
 
 
-def parse_sheet(ws, level, unit, seen_ids):
-    """回傳這張工作表的 entries（已合併一字多義）。"""
+def parse_sheet(ws, level, unit, seen_ids, skipped):
+    """回傳這張工作表的 entries（已合併一字多義）；skipped 收集未匯入的列。"""
     entries = []
     cur = None
     for ri, row in enumerate(ws.iter_rows(values_only=True)):
@@ -62,7 +62,12 @@ def parse_sheet(ws, level, unit, seen_ids):
             continue  # 表頭
         seq_raw, word_raw, pos_raw, zh_raw, ex_raw, exzh_raw = (list(row) + [None] * 6)[:6]
         word = clean(word_raw)
-        if not word or word in HEADER_WORDS:
+        if word in HEADER_WORDS:
+            continue
+        if not word:
+            # 整列空白＝正常留白，不算失敗；有其他內容卻沒英文單字＝需要提醒
+            if any(clean(v) for v in (seq_raw, pos_raw, zh_raw, ex_raw, exzh_raw)):
+                skipped.append((unit, ri + 1, "沒有英文單字", clean(zh_raw) or clean(ex_raw)))
             continue
         seq = norm_seq(seq_raw)
         sense = {
@@ -71,8 +76,9 @@ def parse_sheet(ws, level, unit, seen_ids):
             "example": clean(ex_raw),
             "example_zh": clean(exzh_raw),
         }
-        # 完全空白的列略過（容忍不完整，但別產生空 sense）
+        # 有單字但詞性/中文/例句全空 → 無內容可用，記錄下來提醒
         if not sense["zh"] and not sense["example"] and not sense["pos"]:
+            skipped.append((unit, ri + 1, "只有單字、沒有詞性/中文/例句", word))
             continue
         # 同 (序號, 字) 連續列 → 併入上一個 entry 的 senses
         if cur is not None and cur["_key"] == (seq, word):
@@ -103,6 +109,7 @@ def main():
     levels = {}   # level -> {unit -> entries}
     seen_ids = set()
     sources = []
+    skipped = []  # (unit, excel列號, 原因, 內容)
     for path in files:
         fname = os.path.basename(path)
         sources.append(fname)
@@ -117,7 +124,7 @@ def main():
             if not um:
                 continue
             unit = int(um.group(1))
-            entries = parse_sheet(wb[sheet], level, unit, seen_ids)
+            entries = parse_sheet(wb[sheet], level, unit, seen_ids, skipped)
             if entries:
                 levels.setdefault(level, {})[unit] = entries
         wb.close()
@@ -158,6 +165,18 @@ def main():
         units = ", ".join(f"U{u['unit']}({u['count']})" for u in lv["units"])
         print(f"   Level {lv['level']}：{lv['unitCount']} 單元、{lv['wordCount']} 字 → {units}")
     print(f"   合計：{tot_units} 單元、{tot_entries} 個字、{tot_senses} 個義項")
+    # 供一鍵更新批次檔在結束時顯示
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".last_import.txt"), "w", encoding="utf-8") as f:
+        f.write(f"本次匯入：{tot_units} 單元、{tot_entries} 個字、{tot_senses} 個義項，"
+                f"{len(skipped)} 列未匯入\n")
+    if skipped:
+        print(f"   ⚠️ 有 {len(skipped)} 列未匯入：")
+        for unit, rowno, why, what in skipped[:20]:
+            print(f"      Unit{unit} 第{rowno}列：{why}　{what}")
+        if len(skipped) > 20:
+            print(f"      …還有 {len(skipped) - 20} 列")
+    else:
+        print("   ✅ 沒有匯入失敗的列")
 
 
 if __name__ == "__main__":

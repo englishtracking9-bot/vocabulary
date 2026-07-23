@@ -2,6 +2,7 @@
 學測6000字.xlsx
 
 # 建置報告
+scripts/.last_import.txt
 build_report.txt
 tag_roots_report.txt
 gen_examples_report.txt
