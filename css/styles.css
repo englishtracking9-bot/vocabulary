@@ -153,6 +153,16 @@ body {
 .yp-prog-bar .seg.mastered { background: var(--c-mywords); }
 .yp-prog-bar .seg.weak { background: var(--c-yp); }
 .yp-prog-bar .seg.untested { background: var(--border); }
+/* 看英文答中文：填答格與自評 */
+.mn-box { text-align: left; margin: 10px 0; }
+.mn-label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 2px; font-weight: 600; }
+.mn-pos { color: var(--c-six); font-weight: 700; }
+.mn-input { text-align: left; margin: 2px 0; }
+.mn-result { border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; margin: 8px 0; text-align: left; font-size: 16px; }
+.mn-result .row-meta { display: block; margin-top: 4px; }
+.mn-result.ok { background: rgba(22, 163, 74, .10); border-color: var(--ok); }
+.mn-result.no { background: rgba(220, 38, 38, .10); border-color: var(--no); }
+.mn-result.unsure { background: var(--bg); }
 .block-btn.yp       { --blk: var(--c-yp); }
 .block-btn.six      { --blk: var(--c-six); }
 .block-btn.test     { --blk: var(--c-test); }

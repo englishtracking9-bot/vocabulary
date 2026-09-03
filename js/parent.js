@@ -99,15 +99,16 @@ async function recordCompletion(text) {
     }
     if (b.yp) {
       const prev = (await getMeta(`ypDone::${pid}`)) || {};
-      let spOk = 0, spT = 0, seOk = 0, seT = 0;
+      let spOk = 0, spT = 0, seOk = 0, seT = 0, mnOk = 0, mnT = 0;
       for (const [id, f] of b.ypRes) {
         prev[id] = (prev[id] || 0) | f;
         if (f & 1) { spT++; if (f & 2) spOk++; }
         if (f & 4) { seT++; if (f & 8) seOk++; }
+        if (f & 16) { mnT++; if (f & 32) mnOk++; }
       }
       await setMeta(`ypDone::${pid}`, prev);
       msgs.push(`  📖 ${name} 的 YP 測驗：${b.ypRes.size} 字`
-        + (spT ? `　拼字 ${spOk}/${spT}` : '') + (seT ? `　造句 ${seOk}/${seT}` : '')
+        + (spT ? `　拼字 ${spOk}/${spT}` : '') + (mnT ? `　意思 ${mnOk}/${mnT}` : '') + (seT ? `　造句 ${seOk}/${seT}` : '')
         + `（YP 累計 ${Object.keys(prev).length} 字）`);
     }
   }
@@ -382,9 +383,10 @@ async function openYpQuizModal() {
         <select id="yq-unit" class="answer-input"></select></label>
       <div>題型：</div>
       <div class="src-opts">
-        <label class="chk"><input type="radio" name="yqt" value="both" checked/> 拼字＋造句</label>
-        <label class="chk"><input type="radio" name="yqt" value="spelling"/> 只拼字</label>
-        <label class="chk"><input type="radio" name="yqt" value="sentence"/> 只造句</label>
+        <label class="chk"><input type="radio" name="yqt" value="all" checked/> 全部（拼字＋意思＋造句）</label>
+        <label class="chk"><input type="radio" name="yqt" value="spelling"/> 只拼字（看中文拼英文）</label>
+        <label class="chk"><input type="radio" name="yqt" value="meaning"/> 只意思（看英文答中文）</label>
+        <label class="chk"><input type="radio" name="yqt" value="sentence"/> 只造句（默寫例句）</label>
       </div>
       <label class="chk"><input type="checkbox" id="yq-skip" checked/> 跳過 ${esc(tgt.name)} 已做過的字（依完成碼／同步碼）</label>
       <div class="btn-row">
@@ -417,11 +419,15 @@ async function openYpQuizModal() {
     const doneN = allEntries.filter(isDoneEntry).length;
     const entries = skip ? allEntries.filter((e) => !isDoneEntry(e)) : allEntries;
     if (!entries.length) { alert(`這個範圍 ${allEntries.length} 字都已做過，沒有要出的字。可取消勾選「跳過已做過」再出。`); return; }
-    const type = (document.querySelector('input[name="yqt"]:checked') || {}).value || 'both';
-    const types = { spelling: type !== 'sentence', sentence: type !== 'spelling' };
+    const type = (document.querySelector('input[name="yqt"]:checked') || {}).value || 'all';
+    const types = {
+      spelling: type === 'all' || type === 'spelling',
+      meaning: type === 'all' || type === 'meaning',
+      sentence: type === 'all' || type === 'sentence',
+    };
     const code = encodeYpQuiz(tgt.id, entries.map((e) => e.id), types);
     const name = `YP Lv${level}${unitVal === 'all' ? '' : ' Unit ' + unitVal}`;
-    const typeLabel = type === 'both' ? '拼字＋造句' : type === 'spelling' ? '只拼字' : '只造句';
+    const typeLabel = { all: '拼字＋意思＋造句', spelling: '只拼字', meaning: '只意思', sentence: '只造句' }[type] || type;
     const out = document.getElementById('yq-out');
     out.innerHTML = `
       <p class="hint-area">出給 <b>${esc(tgt.name)}</b>・${esc(name)}・共 ${allEntries.length} 字${skip ? `，已做過 ${doneN}、` : '，'}實際出 <b>${entries.length}</b> 字・${typeLabel}</p>

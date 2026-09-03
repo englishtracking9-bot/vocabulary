@@ -244,10 +244,15 @@ async function renderSettings() {
     const recMap = new Map(recs.map((r) => [r.wordId, r]));
     const ypResults = {};
     let ypCount = 0;
+    // ypTested::<pid> 存的是 {spelling,sentence,meaning} 物件 → 轉成數字旗標（bit0/2/4＝各題型測過）
+    const flagsFromTested = (o) => {
+      if (typeof o === 'number') return o; // 相容
+      let f = 0; if (o) { if (o.spelling) f |= 1; if (o.sentence) f |= 4; if (o.meaning) f |= 16; } return f;
+    };
     if (book) {
       for (const lv of book.levels) for (const u of lv.units) for (const e of u.entries) {
         const rr = recMap.get(recordIdOf(e));
-        if ((rr && isIntroduced(rr)) || ypTested[e.id] != null) { ypResults[e.id] = ypTested[e.id] || 0; ypCount++; }
+        if ((rr && isIntroduced(rr)) || ypTested[e.id] != null) { ypResults[e.id] = flagsFromTested(ypTested[e.id]); ypCount++; }
       }
     }
     const sixCodes = six.length ? encodeSyncCodes(pid, six) : [];
