@@ -508,7 +508,7 @@ function openYpTypePicker(entries, name, origin) {
         <button class="btn" data-k="meaning">📖 看英文答中文<small>引導式（給詞性/格數）</small></button>
       </div>
       <div class="btn-row">
-        <button class="btn" data-k="free">✍️ 看英文自由作答<small>自己寫詞性＋意思</small></button>
+        <button class="btn" data-k="free">✍️ 看英文自由作答<small>自己判斷有幾個意思</small></button>
         <button class="btn" data-k="sentence">🧩 只測造句<small>默寫例句</small></button>
       </div>
       <button class="btn" id="ypt-close">取消</button>
@@ -529,7 +529,7 @@ function startYpTest(entries, name, kinds, origin = 'yp') {
     if (!e || !e.senses) continue;
     if (K.includes('spelling')) items.push({ e, kind: 'spelling' });
     if (K.includes('meaning')) { const boxes = meaningBoxes(e); if (boxes.length) items.push({ e, kind: 'meaning', boxes }); }
-    if (K.includes('free')) { if (e.senses.some((s) => s.zh)) items.push({ e, kind: 'free' }); }
+    if (K.includes('free')) { const boxes = meaningBoxes(e); if (boxes.length) items.push({ e, kind: 'free', boxes }); }
     if (K.includes('sentence')) { const sense = e.senses.find((s) => s.example); if (sense) items.push({ e, kind: 'sentence', sense }); }
   }
   if (!items.length) { alert('這些字目前沒有可測的題目'); return; }
@@ -590,27 +590,7 @@ function ypShow() {
       document.getElementById('yp-hint-area').innerHTML = exs || '（這個字沒有例句可提示）';
     };
   } else if (it.kind === 'free') {
-    $main().innerHTML = `${head}
-      <div class="card quiz-card">
-        <div class="zh-prompt">${esc(e.word)}</div>
-        <div class="btn-row" style="justify-content:center"><button class="btn icon" id="yp-say">🔊 發音</button></div>
-        <p class="hint-area">自己寫出這個字的<b>詞性</b>和<b>一個</b>中文意思（像考試那樣，沒有提示）。</p>
-        <div class="mn-box"><label class="mn-label">詞性（如 n. / v. / adj.）</label>
-          <input id="yp-free-pos" class="answer-input mn-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" placeholder="詞性…" /></div>
-        <div class="mn-box"><label class="mn-label">中文意思（寫一個就好）</label>
-          <input id="yp-free-zh" class="answer-input mn-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" placeholder="中文意思…" /></div>
-        <div class="btn-row"><button class="btn primary" id="yp-submit">送出</button><button class="btn" id="yp-hint">💡 提示<small>看例句(算提示)</small></button></div>
-        <div id="yp-hint-area" class="hint-area"></div>
-        <button class="btn save-exit" id="yp-quit">結束測驗</button>
-      </div>`;
-    document.getElementById('yp-free-pos').focus();
-    $main().querySelectorAll('.mn-input').forEach((el) => el.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') ypSubmit(); }));
-    document.getElementById('yp-say').onclick = () => speak(e.word);
-    document.getElementById('yp-hint').onclick = () => {
-      t.hintUsed = true;
-      const exs = e.senses.filter((s) => s.example).map((s) => `<div class="ex-en">${esc(s.example)}</div>`).join('');
-      document.getElementById('yp-hint-area').innerHTML = exs || '（這個字沒有例句可提示）';
-    };
+    return renderFreeCount(); // 自由作答走自己的兩步流程（先問幾個意思→填答）
   } else {
     const s = it.sense;
     $main().innerHTML = `${head}
@@ -625,9 +605,18 @@ function ypShow() {
     document.getElementById('yp-sent').focus();
   }
   document.getElementById('yp-submit').onclick = ypSubmit;
-  document.getElementById('yp-quit').onclick = () => {
-    if (!confirm('結束這次 YP 測驗？（已作答的字已回寫進度）')) return;
-    YpTest.active = false; Yp.level = t.backLv; Yp.unit = t.backU; renderYp();
+  bindQuit();
+}
+
+// 「結束測驗」共用：依 origin 回單元或回錯題本
+function bindQuit() {
+  const q = document.getElementById('yp-quit');
+  if (!q) return;
+  q.onclick = () => {
+    if (!confirm('結束這次測驗？（已作答的字已回寫進度）')) return;
+    const t = YpTest; t.active = false;
+    if (t.origin === 'mistakes') { go('#mistakes'); return; }
+    Yp.level = t.backLv; Yp.unit = t.backU; renderYp();
   };
 }
 
@@ -750,34 +739,142 @@ async function finalizeMeaning(boxState) {
   document.getElementById('yp-next').onclick = () => { t.idx++; ypShow(); };
 }
 
-// 看英文自由作答：學生自己寫詞性＋一個中文意思；命中任一義項即算對；再攤開所有義項自評
+// 看英文自由作答（學生自己決定幾個意思）——步驟1：問「有幾個意思」
+function renderFreeCount() {
+  const t = YpTest; const e = t.items[t.idx].e;
+  const head = `<div class="quiz-progress"><span>${t.origin === 'mistakes' ? '重考錯題' : 'YP 測驗'}</span><span>第 ${t.idx + 1} / ${t.items.length} 題</span><span>✍️ 自由作答</span></div>`;
+  $main().innerHTML = `${head}
+    <div class="card quiz-card">
+      <div class="zh-prompt">${esc(e.word)}</div>
+      <div class="btn-row" style="justify-content:center"><button class="btn icon" id="yp-say">🔊 發音</button></div>
+      <p class="hint-area">像考試一樣：先想這個字<b>有幾個不同意思</b>，再分別寫出（沒有提示格數）。</p>
+      <div class="mn-box"><label class="mn-label">你覺得這個字有幾個意思？</label>
+        <input id="yp-free-n" class="answer-input" type="number" min="1" max="9" value="1" inputmode="numeric" /></div>
+      <div class="btn-row"><button class="btn primary" id="yp-free-next">下一步：填答案 →</button><button class="btn" id="yp-hint">💡 提示<small>看例句(算提示)</small></button></div>
+      <div id="yp-hint-area" class="hint-area"></div>
+      <button class="btn save-exit" id="yp-quit">結束測驗</button>
+    </div>`;
+  const nInput = document.getElementById('yp-free-n'); nInput.focus(); try { nInput.select(); } catch (e2) { /* ignore */ }
+  nInput.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') document.getElementById('yp-free-next').click(); });
+  document.getElementById('yp-say').onclick = () => speak(e.word);
+  document.getElementById('yp-hint').onclick = showFreeHint;
+  document.getElementById('yp-free-next').onclick = () => {
+    let n = parseInt(document.getElementById('yp-free-n').value, 10) || 1;
+    n = Math.max(1, Math.min(9, n));
+    renderFreeGroups(n);
+  };
+  bindQuit();
+}
+
+function showFreeHint() {
+  YpTest.hintUsed = true;
+  const e = YpTest.items[YpTest.idx].e;
+  const exs = e.senses.filter((s) => s.example).map((s) => `<div class="ex-en">${esc(s.example)}</div>`).join('');
+  const area = document.getElementById('yp-hint-area');
+  if (area) area.innerHTML = exs || '（這個字沒有例句可提示）';
+}
+
+// 步驟2：依 N 出現 N 組（詞性＋中文）填答格
+function renderFreeGroups(n) {
+  const t = YpTest; const e = t.items[t.idx].e;
+  const head = `<div class="quiz-progress"><span>${t.origin === 'mistakes' ? '重考錯題' : 'YP 測驗'}</span><span>第 ${t.idx + 1} / ${t.items.length} 題</span><span>✍️ 自由作答</span></div>`;
+  const rows = Array.from({ length: n }, (_, i) => `
+    <div class="fr-group"><div class="mn-label">第 ${i + 1} 組</div>
+      <div class="fr-inputs">
+        <input class="answer-input fr-pos" data-gi="${i}" autocapitalize="off" autocorrect="off" placeholder="詞性 n./v./adj." />
+        <input class="answer-input fr-zh" data-gi="${i}" autocapitalize="off" autocorrect="off" placeholder="中文意思" />
+      </div></div>`).join('');
+  $main().innerHTML = `${head}
+    <div class="card quiz-card">
+      <div class="zh-prompt">${esc(e.word)}</div>
+      <div class="btn-row" style="justify-content:center"><button class="btn icon" id="yp-say">🔊 發音</button></div>
+      <p class="hint-area">你說有 <b>${n}</b> 個意思，請分別寫「詞性＋中文」（不用照順序）。</p>
+      ${rows}
+      <div class="btn-row"><button class="btn primary" id="yp-submit">送出</button><button class="btn" id="yp-hint">💡 提示<small>看例句(算提示)</small></button></div>
+      <div id="yp-hint-area" class="hint-area"></div>
+      <div class="btn-row"><button class="btn" id="yp-free-back">‹ 改個數</button><button class="btn save-exit" id="yp-quit">結束測驗</button></div>
+    </div>`;
+  const first = $main().querySelector('.fr-pos'); if (first) first.focus();
+  document.getElementById('yp-say').onclick = () => speak(e.word);
+  document.getElementById('yp-hint').onclick = showFreeHint;
+  document.getElementById('yp-submit').onclick = ypSubmit;
+  document.getElementById('yp-free-back').onclick = () => renderFreeCount();
+  bindQuit();
+}
+
+// 一組答案對一個意思格的相符強度：0 不符、1 共享2字、2 互相包含、3 完全相同（詞性不符＝0）
+function scoreMatch(g, box) {
+  if (!(g.pos.trim() || g.zh.trim())) return 0;
+  if (!posMatch(g.pos, box.pos)) return 0;
+  const clean = (s) => String(s || '').replace(/[\s，,。.、;；:：!！?？「」『』"'`（）()/／]/g, '');
+  const I = clean(g.zh);
+  if (!I) return 0;
+  let best = 0;
+  for (const t of box.accept) {
+    const T = clean(t);
+    if (!T) continue;
+    if (I === T) { best = Math.max(best, 3); continue; }
+    if (I.includes(T) || T.includes(I)) { best = Math.max(best, 2); continue; }
+    for (let i = 0; i + 1 < T.length; i++) { if (I.includes(T.slice(i, i + 2))) { best = Math.max(best, 1); break; } }
+  }
+  return best;
+}
+
+// 最大二分匹配：每組只認領它「最相符」等級的意思格（避免 電影院 去對到 電影 那格）；一格只認領一次
+function maxMatchGroups(groups, boxes) {
+  const score = groups.map((g) => boxes.map((b) => scoreMatch(g, b)));
+  const best = score.map((row) => row.reduce((a, b) => Math.max(a, b), 0));
+  const boxToGroup = new Array(boxes.length).fill(-1);
+  const matched = new Array(groups.length).fill(false);
+  const can = (gi, bi) => best[gi] > 0 && score[gi][bi] === best[gi];
+  const aug = (gi, seen) => {
+    for (let bi = 0; bi < boxes.length; bi++) {
+      if (seen[bi] || !can(gi, bi)) continue;
+      seen[bi] = true;
+      if (boxToGroup[bi] === -1 || aug(boxToGroup[bi], seen)) { boxToGroup[bi] = gi; return true; }
+    }
+    return false;
+  };
+  for (let gi = 0; gi < groups.length; gi++) if (aug(gi, new Array(boxes.length).fill(false))) matched[gi] = true;
+  return matched;
+}
+
+// 送出：逐組比對（不照順序、一個意思只認領一次）；全部命中＝算對
 function ypSubmitFree() {
   const t = YpTest;
   if (t.answered) return;
-  const it = t.items[t.idx]; const e = it.e;
-  const posIn = document.getElementById('yp-free-pos').value;
-  const zhIn = document.getElementById('yp-free-zh').value;
-  if (!posIn.trim() && !zhIn.trim()) { document.getElementById('yp-free-pos').focus(); return; }
+  const it = t.items[t.idx]; const boxes = it.boxes;
+  const posEls = [...$main().querySelectorAll('.fr-pos')];
+  const zhEls = [...$main().querySelectorAll('.fr-zh')];
+  const groups = posEls.map((el, i) => ({ pos: el.value, zh: (zhEls[i] || {}).value || '' }));
+  if (groups.every((g) => !g.pos.trim() && !g.zh.trim())) { if (posEls[0]) posEls[0].focus(); return; }
   t.answered = true;
-  // 電腦判：命中「任一」義項（詞性相符 且 中文寬鬆命中）即算對
-  const autoHit = e.senses.some((s) => posMatch(posIn, s.pos) && zhLoose(zhIn, zhTerms(s.zh)));
-  renderFreeReveal({ posIn, zhIn, autoHit });
+  const matched = maxMatchGroups(groups, boxes);
+  const autoAllHit = groups.length > 0 && matched.every(Boolean);
+  renderFreeReveal({ groups, matched, autoAllHit, boxes });
 }
 
-// 攤開所有正解義項（詞性＋中文＋例句），讓學生最終自評（自評優先）
+// 判定 → 攤開完整義項（並告知實際有幾個意思、漏了哪些）→ 學生自評（優先）
 function renderFreeReveal(st) {
-  const t = YpTest; const e = t.items[t.idx].e;
-  const senseRows = e.senses.map((s) => `
-    <div class="fr-sense">
-      <div><span class="mn-pos">${esc(s.pos) || '—'}</span>　${esc(s.zh)}</div>
-      ${s.example ? `<div class="ex-en">${esc(s.example)}${s.example_zh ? `　<span class="ex-zh">${esc(s.example_zh)}</span>` : ''}</div>` : ''}
-    </div>`).join('');
-  $main().innerHTML = `
-    <div class="${st.autoHit ? 'result ok' : 'result no'}">${st.autoHit ? '✅ 電腦判：對（可自己再確認）' : '🤔 電腦判：不確定，看完整解答再自評'}</div>
+  const t = YpTest; const e = t.items[t.idx].e; const boxes = st.boxes;
+  const hitN = st.matched.filter(Boolean).length;
+  const groupN = st.groups.length;
+  const verdict = st.autoAllHit
+    ? `<div class="result ok">✅ 你填的 ${groupN} 個都對！</div>`
+    : `<div class="result no">🤔 有 ${groupN - hitN} 組沒對上（看完整解答再自評）</div>`;
+  const yourRows = st.groups.map((g, i) => `<div class="row-meta">第 ${i + 1} 組：${esc(g.pos) || '(空)'}　${esc(g.zh) || '(空)'}　${st.matched[i] ? '✅' : '❌'}</div>`).join('');
+  const senseRows = boxes.map((b) => `
+    <div class="fr-sense"><div><span class="mn-pos">${esc(b.pos) || '—'}</span>　${esc(b.display)}</div>
+      ${b.example ? `<div class="ex-en">${esc(b.example)}</div>` : ''}</div>`).join('');
+  const missNote = groupN < boxes.length
+    ? `<p class="hint-area">💡 你只寫了 ${groupN} 個，這個字其實有 <b>${boxes.length}</b> 個意思——順便把其他的也記起來！</p>`
+    : `<p class="hint-area">這個字其實有 <b>${boxes.length}</b> 個意思。</p>`;
+  $main().innerHTML = `${verdict}
     <div class="card">
       <div class="word-head"><span class="word-en">${esc(e.word)}</span><button class="btn icon" id="yp-say3">🔊</button></div>
-      <div class="row-meta">你寫：${esc(st.posIn) || '(空白)'}　${esc(st.zhIn) || '(空白)'}</div>
-      <p class="hint-area">這個字的所有意思：</p>
+      <div class="detail-list">${yourRows}</div>
+      ${missNote}
+      <p class="hint-area">完整的意思：</p>
       ${senseRows}
       <p class="hint-area">你答對了嗎？（自己認定為準）</p>
       <div class="btn-row">
@@ -792,19 +889,19 @@ function renderFreeReveal(st) {
 
 async function finalizeFree(st, correct) {
   const t = YpTest; const e = t.items[t.idx].e;
-  const answerStr = e.senses.map((s) => `${s.pos || ''}${s.zh}`).filter(Boolean).join('；');
-  const inputStr = `${st.posIn || ''} ${st.zhIn || ''}`.trim();
+  const answerStr = st.boxes.map((b) => `${b.pos || ''}${b.display}`).filter(Boolean).join('；');
+  const inputStr = st.groups.map((g) => `${g.pos || ''} ${g.zh || ''}`.trim()).filter(Boolean).join('；') || '(空白)';
   await recordAnswer(State.profile, recordTarget(e), correct, !!t.hintUsed, false, Date.now(), { input: inputStr, answer: answerStr, kind: 'free' });
   await markYpTested(State.profile.id, e.id, 'free');
   await refreshMastered();
   t.results[e.id] = (t.results[e.id] || 0) | (64 | (correct ? 128 : 0)); // bit6 自由測 / bit7 自由對
   if (correct) t.correct++;
-  else t.wrong.push({ word: e.word, zh: e.senses.map((s) => s.zh).filter(Boolean).join('；'), input: inputStr, answer: answerStr, kind: 'free' });
+  else t.wrong.push({ word: e.word, zh: st.boxes.map((b) => b.display).filter(Boolean).join('；'), input: inputStr, answer: answerStr, kind: 'free' });
   const last = t.idx + 1 >= t.items.length;
   const banner = correct ? `<div class="result ok">✅ 答對了！</div>` : `<div class="result no">❌ 這個字會再複習</div>`;
   $main().innerHTML = `${banner}
     <div class="card"><div class="word-head"><span class="word-en">${esc(e.word)}</span><button class="btn icon" id="yp-say2">🔊</button></div>
-      <div class="pos">${esc(e.senses.map((s) => `${s.pos || ''}${s.zh}`).filter(Boolean).join('；'))}</div></div>
+      <div class="pos">${esc(answerStr)}</div></div>
     <div class="btn-row"><button class="btn primary" id="yp-next">${last ? '看成績 →' : '下一題 →'}</button></div>`;
   document.getElementById('yp-say2').onclick = () => speak(e.word);
   document.getElementById('yp-next').onclick = () => { t.idx++; ypShow(); };

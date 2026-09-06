@@ -167,6 +167,10 @@ body {
 .fr-sense { border-top: 1px dashed var(--border); padding: 8px 0; font-size: 16px; }
 .fr-sense:first-of-type { border-top: none; }
 .fr-sense .ex-en { font-size: 14px; margin-top: 3px; }
+.fr-group { text-align: left; margin: 10px 0; }
+.fr-inputs { display: flex; gap: 8px; }
+.fr-inputs .fr-pos { flex: 0 0 34%; text-align: left; margin: 2px 0; }
+.fr-inputs .fr-zh { flex: 1 1 auto; text-align: left; margin: 2px 0; }
 /* 錯題本 */
 .section-mistakes { border-left: 5px solid var(--c-test); }
 .mk-row .btn-row { margin-top: 8px; }
