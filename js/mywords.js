@@ -126,7 +126,10 @@ async function renderMyWords() {
     <div class="card">
       <div class="mw-head">
         <h2>我的單字（${recs.length}）</h2>
-        <a class="btn" href="#groups" id="mw-groups">🏷 群組</a>
+        <div class="btn-row" style="margin-top:0">
+          <a class="btn sm" href="#mistakes">❌ 錯題本</a>
+          <a class="btn sm" href="#groups" id="mw-groups">🏷 群組</a>
+        </div>
       </div>
       <div class="filters">
         <select id="f-status">

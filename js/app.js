@@ -8,6 +8,7 @@ import { renderLookup } from './lookupui.js';
 import { renderSettings } from './more.js';
 import { renderGroups, renderMyWords } from './mywords.js';
 import { scheduleForegroundReminder, syncReminderMeta } from './notify.js';
+import { renderMistakes } from './mistakes.js';
 import { renderManualBuilder, renderParentZone } from './parent.js';
 import { renderQuiz } from './quizui.js';
 import { renderReport, resetReportDate } from './reportui.js';
@@ -122,6 +123,7 @@ const ROUTES = {
   '#parent': renderParentZone,
   '#custombook': renderCustomBooks,
   '#scan': renderScan,
+  '#mistakes': renderMistakes,
   '#settings': renderSettings,
 };
 
@@ -131,7 +133,7 @@ const HOME_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#sett
 function route() {
   const hash = location.hash || '#home';
   const fn = ROUTES[hash] || renderHome;
-  const navHash = hash === '#scan' ? '#quiz' : HOME_SUBPAGES.has(hash) ? '#home' : hash;
+  const navHash = (hash === '#scan' || hash === '#mistakes') ? '#quiz' : HOME_SUBPAGES.has(hash) ? '#home' : hash;
   document.querySelectorAll('.nav-btn').forEach((b) => {
     b.classList.toggle('active', b.dataset.route === navHash);
   });

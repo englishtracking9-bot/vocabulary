@@ -89,7 +89,7 @@ function encodeYpQuiz(profileId, entryIds, types = { spelling: true, sentence: t
   const tag = YP_TAG[profileId] || 0;
   const parts = [tag];
   if (tag === 0) { const b = new TextEncoder().encode(String(profileId)); parts.push(b.length, ...b); }
-  parts.push((types.spelling !== false ? 1 : 0) | (types.sentence !== false ? 2 : 0) | (types.meaning ? 4 : 0));
+  parts.push((types.spelling !== false ? 1 : 0) | (types.sentence !== false ? 2 : 0) | (types.meaning ? 4 : 0) | (types.free ? 8 : 0));
   for (const id of entryIds) { const idx = _ypIndex.get(id); if (idx != null) parts.push((idx >> 8) & 0xff, idx & 0xff); }
   return 'YQ1' + b64u(new Uint8Array(parts));
 }
@@ -103,8 +103,8 @@ function decodeYpQuiz(code) {
   if (tag === 0) { const len = bytes[p++]; profileId = new TextDecoder().decode(bytes.slice(p, p + len)); p += len; }
   else { profileId = YP_TAG_REV[tag] || null; }
   const flags = bytes[p++];
-  let types = { spelling: !!(flags & 1), sentence: !!(flags & 2), meaning: !!(flags & 4) };
-  if (!types.spelling && !types.sentence && !types.meaning) types = { spelling: true, sentence: true, meaning: false };
+  let types = { spelling: !!(flags & 1), sentence: !!(flags & 2), meaning: !!(flags & 4), free: !!(flags & 8) };
+  if (!types.spelling && !types.sentence && !types.meaning && !types.free) types = { spelling: true, sentence: true, meaning: false, free: false };
   const ids = [];
   for (; p + 1 < bytes.length; p += 2) { const id = _ypFlat[(bytes[p] << 8) | bytes[p + 1]]; if (id) ids.push(id); }
   return { profileId, types, ids };
@@ -126,6 +126,7 @@ async function startYpTestByIds(ids, name, types) {
   const kinds = [];
   if (types.spelling) kinds.push('spelling');
   if (types.meaning) kinds.push('meaning');
+  if (types.free) kinds.push('free');
   if (types.sentence) kinds.push('sentence');
   if (!kinds.length) kinds.push('spelling');
   Yp.level = null; Yp.unit = null; Yp.progress = false;
@@ -470,42 +471,70 @@ function zhLoose(input, accept) {
   return false;
 }
 
-function openYpTypePicker(entries, name) {
+// 詞性歸類：把各種寫法（n./名詞、vt./vi./v./動詞、a./adj./形容詞…）收斂成同一家族
+function posFamilies(str) {
+  const map = [
+    [/(^|[^a-z])(n|noun)([^a-z]|$)|名詞|名$/i, 'noun'],
+    [/(^|[^a-z])(v|vt|vi|verb)([^a-z]|$)|動詞|動$/i, 'verb'],
+    [/(^|[^a-z])(adj|a)([^a-z]|$)|形容詞|形$/i, 'adj'],
+    [/(^|[^a-z])(adv|ad)([^a-z]|$)|副詞|副$/i, 'adv'],
+    [/(^|[^a-z])(prep)([^a-z]|$)|介係詞|介詞|介$/i, 'prep'],
+    [/(^|[^a-z])(conj)([^a-z]|$)|連接詞|連$/i, 'conj'],
+    [/(^|[^a-z])(pron)([^a-z]|$)|代名詞|代$/i, 'pron'],
+    [/片語|詞組|phr/i, 'phr'],
+  ];
+  const s = String(str || '');
+  const fam = new Set();
+  for (const [re, f] of map) if (re.test(s)) fam.add(f);
+  return fam;
+}
+function posMatch(studentPos, sensePos) {
+  const a = posFamilies(studentPos), b = posFamilies(sensePos);
+  if (!a.size || !b.size) return false;
+  for (const f of a) if (b.has(f)) return true;
+  return false;
+}
+
+function openYpTypePicker(entries, name, origin) {
   const list = entries.slice();
   if (!list.length) { alert('沒有可測的字'); return; }
   const m = document.getElementById('modal');
   m.innerHTML = `<div class="modal-box">
-      <h3>YP 測驗：${esc(name)}（${list.length} 字）</h3>
+      <h3>${origin === 'mistakes' ? '重考錯題' : 'YP 測驗'}：${esc(name)}（${list.length} 字）</h3>
       <p class="hint-area">要測什麼？（造句只測有例句的字）</p>
       <div class="btn-row"><button class="btn primary big-copy" data-k="spelling,meaning,sentence">📝 全部都測（拼字＋意思＋造句）</button></div>
       <div class="btn-row">
         <button class="btn" data-k="spelling">✏️ 只測拼字<small>看中文拼英文</small></button>
-        <button class="btn" data-k="meaning">📖 只測意思<small>看英文答中文</small></button>
+        <button class="btn" data-k="meaning">📖 看英文答中文<small>引導式（給詞性/格數）</small></button>
       </div>
       <div class="btn-row">
+        <button class="btn" data-k="free">✍️ 看英文自由作答<small>自己寫詞性＋意思</small></button>
         <button class="btn" data-k="sentence">🧩 只測造句<small>默寫例句</small></button>
       </div>
       <button class="btn" id="ypt-close">取消</button>
     </div>`;
   m.classList.add('show');
   m.querySelectorAll('[data-k]').forEach((b) => {
-    b.onclick = () => { m.classList.remove('show'); startYpTest(list, name, b.dataset.k.split(',')); };
+    b.onclick = () => { m.classList.remove('show'); startYpTest(list, name, b.dataset.k.split(','), origin); };
   });
   document.getElementById('ypt-close').onclick = () => m.classList.remove('show');
 }
 
-// kinds：['spelling','meaning','sentence'] 的子集（也接受逗號字串）
-function startYpTest(entries, name, kinds) {
+// kinds：['spelling','meaning','free','sentence'] 的子集（也接受逗號字串）
+// origin：'yp'（預設，測完可傳完成碼）或 'mistakes'（重考錯題，測完回錯題本）
+function startYpTest(entries, name, kinds, origin = 'yp') {
   const K = Array.isArray(kinds) ? kinds : String(kinds).split(',');
   const items = [];
   for (const e of entries) {
+    if (!e || !e.senses) continue;
     if (K.includes('spelling')) items.push({ e, kind: 'spelling' });
     if (K.includes('meaning')) { const boxes = meaningBoxes(e); if (boxes.length) items.push({ e, kind: 'meaning', boxes }); }
+    if (K.includes('free')) { if (e.senses.some((s) => s.zh)) items.push({ e, kind: 'free' }); }
     if (K.includes('sentence')) { const sense = e.senses.find((s) => s.example); if (sense) items.push({ e, kind: 'sentence', sense }); }
   }
   if (!items.length) { alert('這些字目前沒有可測的題目'); return; }
   Object.assign(YpTest, {
-    active: true, name, items: shuffle(items), idx: 0, correct: 0, wrong: [], answered: false,
+    active: true, name, origin, items: shuffle(items), idx: 0, correct: 0, wrong: [], answered: false,
     backLv: Yp.level, backU: Yp.unit, results: {},
   });
   if (location.hash !== '#yp') location.hash = '#yp';
@@ -519,8 +548,8 @@ function ypShow() {
   t.hintUsed = false;
   const it = t.items[t.idx];
   const e = it.e;
-  const kindLabel = it.kind === 'spelling' ? '✏️ 拼字' : it.kind === 'meaning' ? '📖 意思' : '🧩 造句';
-  const head = `<div class="quiz-progress"><span>YP 測驗</span><span>第 ${t.idx + 1} / ${t.items.length} 題</span><span>${kindLabel}</span></div>`;
+  const kindLabel = it.kind === 'spelling' ? '✏️ 拼字' : it.kind === 'meaning' ? '📖 意思' : it.kind === 'free' ? '✍️ 自由作答' : '🧩 造句';
+  const head = `<div class="quiz-progress"><span>${t.origin === 'mistakes' ? '重考錯題' : 'YP 測驗'}</span><span>第 ${t.idx + 1} / ${t.items.length} 題</span><span>${kindLabel}</span></div>`;
   const zhAll = e.senses.map((s) => s.zh).filter(Boolean).join('；');
   if (it.kind === 'spelling') {
     $main().innerHTML = `${head}
@@ -560,6 +589,28 @@ function ypShow() {
       const exs = boxes.filter((b) => b.example).map((b) => `<div class="ex-en">${esc(b.example)}</div>`).join('');
       document.getElementById('yp-hint-area').innerHTML = exs || '（這個字沒有例句可提示）';
     };
+  } else if (it.kind === 'free') {
+    $main().innerHTML = `${head}
+      <div class="card quiz-card">
+        <div class="zh-prompt">${esc(e.word)}</div>
+        <div class="btn-row" style="justify-content:center"><button class="btn icon" id="yp-say">🔊 發音</button></div>
+        <p class="hint-area">自己寫出這個字的<b>詞性</b>和<b>一個</b>中文意思（像考試那樣，沒有提示）。</p>
+        <div class="mn-box"><label class="mn-label">詞性（如 n. / v. / adj.）</label>
+          <input id="yp-free-pos" class="answer-input mn-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" placeholder="詞性…" /></div>
+        <div class="mn-box"><label class="mn-label">中文意思（寫一個就好）</label>
+          <input id="yp-free-zh" class="answer-input mn-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" placeholder="中文意思…" /></div>
+        <div class="btn-row"><button class="btn primary" id="yp-submit">送出</button><button class="btn" id="yp-hint">💡 提示<small>看例句(算提示)</small></button></div>
+        <div id="yp-hint-area" class="hint-area"></div>
+        <button class="btn save-exit" id="yp-quit">結束測驗</button>
+      </div>`;
+    document.getElementById('yp-free-pos').focus();
+    $main().querySelectorAll('.mn-input').forEach((el) => el.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') ypSubmit(); }));
+    document.getElementById('yp-say').onclick = () => speak(e.word);
+    document.getElementById('yp-hint').onclick = () => {
+      t.hintUsed = true;
+      const exs = e.senses.filter((s) => s.example).map((s) => `<div class="ex-en">${esc(s.example)}</div>`).join('');
+      document.getElementById('yp-hint-area').innerHTML = exs || '（這個字沒有例句可提示）';
+    };
   } else {
     const s = it.sense;
     $main().innerHTML = `${head}
@@ -585,6 +636,7 @@ async function ypSubmit() {
   if (t.answered) return;
   const it = t.items[t.idx];
   if (it.kind === 'meaning') return ypSubmitMeaning();
+  if (it.kind === 'free') return ypSubmitFree();
   const e = it.e;
   let correct, val, answer, banner, detail = '';
   if (it.kind === 'spelling') {
@@ -698,48 +750,113 @@ async function finalizeMeaning(boxState) {
   document.getElementById('yp-next').onclick = () => { t.idx++; ypShow(); };
 }
 
+// 看英文自由作答：學生自己寫詞性＋一個中文意思；命中任一義項即算對；再攤開所有義項自評
+function ypSubmitFree() {
+  const t = YpTest;
+  if (t.answered) return;
+  const it = t.items[t.idx]; const e = it.e;
+  const posIn = document.getElementById('yp-free-pos').value;
+  const zhIn = document.getElementById('yp-free-zh').value;
+  if (!posIn.trim() && !zhIn.trim()) { document.getElementById('yp-free-pos').focus(); return; }
+  t.answered = true;
+  // 電腦判：命中「任一」義項（詞性相符 且 中文寬鬆命中）即算對
+  const autoHit = e.senses.some((s) => posMatch(posIn, s.pos) && zhLoose(zhIn, zhTerms(s.zh)));
+  renderFreeReveal({ posIn, zhIn, autoHit });
+}
+
+// 攤開所有正解義項（詞性＋中文＋例句），讓學生最終自評（自評優先）
+function renderFreeReveal(st) {
+  const t = YpTest; const e = t.items[t.idx].e;
+  const senseRows = e.senses.map((s) => `
+    <div class="fr-sense">
+      <div><span class="mn-pos">${esc(s.pos) || '—'}</span>　${esc(s.zh)}</div>
+      ${s.example ? `<div class="ex-en">${esc(s.example)}${s.example_zh ? `　<span class="ex-zh">${esc(s.example_zh)}</span>` : ''}</div>` : ''}
+    </div>`).join('');
+  $main().innerHTML = `
+    <div class="${st.autoHit ? 'result ok' : 'result no'}">${st.autoHit ? '✅ 電腦判：對（可自己再確認）' : '🤔 電腦判：不確定，看完整解答再自評'}</div>
+    <div class="card">
+      <div class="word-head"><span class="word-en">${esc(e.word)}</span><button class="btn icon" id="yp-say3">🔊</button></div>
+      <div class="row-meta">你寫：${esc(st.posIn) || '(空白)'}　${esc(st.zhIn) || '(空白)'}</div>
+      <p class="hint-area">這個字的所有意思：</p>
+      ${senseRows}
+      <p class="hint-area">你答對了嗎？（自己認定為準）</p>
+      <div class="btn-row">
+        <button class="btn primary" id="yp-free-ok">✅ 我答對</button>
+        <button class="btn danger" id="yp-free-no">❌ 我答錯</button>
+      </div>
+    </div>`;
+  document.getElementById('yp-say3').onclick = () => speak(e.word);
+  document.getElementById('yp-free-ok').onclick = () => finalizeFree(st, true);
+  document.getElementById('yp-free-no').onclick = () => finalizeFree(st, false);
+}
+
+async function finalizeFree(st, correct) {
+  const t = YpTest; const e = t.items[t.idx].e;
+  const answerStr = e.senses.map((s) => `${s.pos || ''}${s.zh}`).filter(Boolean).join('；');
+  const inputStr = `${st.posIn || ''} ${st.zhIn || ''}`.trim();
+  await recordAnswer(State.profile, recordTarget(e), correct, !!t.hintUsed, false, Date.now(), { input: inputStr, answer: answerStr, kind: 'free' });
+  await markYpTested(State.profile.id, e.id, 'free');
+  await refreshMastered();
+  t.results[e.id] = (t.results[e.id] || 0) | (64 | (correct ? 128 : 0)); // bit6 自由測 / bit7 自由對
+  if (correct) t.correct++;
+  else t.wrong.push({ word: e.word, zh: e.senses.map((s) => s.zh).filter(Boolean).join('；'), input: inputStr, answer: answerStr, kind: 'free' });
+  const last = t.idx + 1 >= t.items.length;
+  const banner = correct ? `<div class="result ok">✅ 答對了！</div>` : `<div class="result no">❌ 這個字會再複習</div>`;
+  $main().innerHTML = `${banner}
+    <div class="card"><div class="word-head"><span class="word-en">${esc(e.word)}</span><button class="btn icon" id="yp-say2">🔊</button></div>
+      <div class="pos">${esc(e.senses.map((s) => `${s.pos || ''}${s.zh}`).filter(Boolean).join('；'))}</div></div>
+    <div class="btn-row"><button class="btn primary" id="yp-next">${last ? '看成績 →' : '下一題 →'}</button></div>`;
+  document.getElementById('yp-say2').onclick = () => speak(e.word);
+  document.getElementById('yp-next').onclick = () => { t.idx++; ypShow(); };
+}
+
 async function ypDone() {
   const t = YpTest; t.active = false;
   const total = t.items.length;
   const pct = total ? Math.round(t.correct / total * 100) : 0;
-  const kindZh = (k) => k === 'sentence' ? '造句' : k === 'meaning' ? '意思' : '拼字';
+  const kindZh = (k) => k === 'sentence' ? '造句' : k === 'meaning' ? '意思' : k === 'free' ? '自由' : '拼字';
   const wrongRows = t.wrong.length
     ? t.wrong.map((w) => `<div class="row"><div class="row-main">
         <span class="row-word">${esc(w.word)}</span><span class="row-zh">${esc(w.zh)}</span></div>
       <div class="row-meta"><span>${kindZh(w.kind)}</span>
         <span>你寫：${esc(w.input) || '(空白)'}</span>${w.answer ? `<span>正解：${esc(w.answer)}</span>` : ''}</div></div>`).join('')
     : '<p class="hint-area">全部答對，太強了！🎉</p>';
-  const wordN = Object.keys(t.results).length;
+  const isMistakes = t.origin === 'mistakes';
   $main().innerHTML = `
     <div class="card center">
-      <h2>YP 測驗完成 🎉</h2>
+      <h2>${isMistakes ? '重考完成 🎯' : 'YP 測驗完成 🎉'}</h2>
       <p class="big">${pct} 分</p>
       <p>${t.correct} / ${total} 題答對</p>
       <div class="btn-row" style="justify-content:center">
-        <button class="btn primary" id="yp-sendcode">📤 傳完成碼給家長</button>
-        <button class="btn" id="yp-back-unit">回單元</button>
+        ${isMistakes ? '' : '<button class="btn primary" id="yp-sendcode">📤 傳完成碼給家長</button>'}
+        <button class="btn ${isMistakes ? 'primary' : ''}" id="yp-back-unit">${isMistakes ? '回錯題本' : '回單元'}</button>
       </div>
     </div>
     <div class="card"><h3>❌ 答錯的字（${t.wrong.length}）— 已回寫進度、排入複習</h3>
       <div class="detail-list">${wrongRows}</div></div>`;
-  document.getElementById('yp-back-unit').onclick = () => { Yp.level = t.backLv; Yp.unit = t.backU; renderYp(); };
-  document.getElementById('yp-sendcode').onclick = () => showYpCompletionCode(t.name, t.results, pct, t.correct, total);
+  document.getElementById('yp-back-unit').onclick = () => {
+    if (isMistakes) { YpTest.origin = 'yp'; go('#mistakes'); return; }
+    Yp.level = t.backLv; Yp.unit = t.backU; renderYp();
+  };
+  const sc = document.getElementById('yp-sendcode');
+  if (sc) sc.onclick = () => showYpCompletionCode(t.name, t.results, pct, t.correct, total);
 }
 
 // 測完 → 產生 YP 完成碼給家長（含 QR、可複製，附一行白話摘要）
 function showYpCompletionCode(name, results, pct, correct, total) {
   const code = encodeYpCompletion(State.profile.id, results);
   const wordN = Object.keys(results).length;
-  let spT = 0, spOk = 0, seT = 0, seOk = 0, mnT = 0, mnOk = 0;
+  let spT = 0, spOk = 0, seT = 0, seOk = 0, mnT = 0, mnOk = 0, frT = 0, frOk = 0;
   for (const id in results) {
     const f = results[id];
     if (f & 1) { spT++; if (f & 2) spOk++; }
     if (f & 4) { seT++; if (f & 8) seOk++; }
     if (f & 16) { mnT++; if (f & 32) mnOk++; }
+    if (f & 64) { frT++; if (f & 128) frOk++; }
   }
   const summary = `【YP 測驗】${esc(State.profile.name)}・${esc(name)}\n`
     + `做了 ${wordN} 字，得分 ${pct} 分（${correct}/${total}）\n`
-    + (spT ? `拼字 ${spOk}/${spT}　` : '') + (mnT ? `意思 ${mnOk}/${mnT}　` : '') + (seT ? `造句 ${seOk}/${seT}` : '') + '\n'
+    + (spT ? `拼字 ${spOk}/${spT}　` : '') + (mnT ? `意思 ${mnOk}/${mnT}　` : '') + (frT ? `自由 ${frOk}/${frT}　` : '') + (seT ? `造句 ${seOk}/${seT}` : '') + '\n'
     + `YP完成碼（請貼到家長電腦「家長專區→輸入完成碼」）：\n${code}`;
   const m = document.getElementById('modal');
   m.innerHTML = `
@@ -770,4 +887,4 @@ async function markYpTested(pid, id, kind) {
   await setMeta(`ypTested::${pid}`, m);
 }
 
-export { renderYp, Yp, loadBook, ensureBooksLoaded, recordIdOf, recordTarget, vocabMatch, getYpTested, encodeYpCompletion, decodeYpCompletion, extractYpCompletions, encodeYpQuiz, decodeYpQuiz, extractYpQuizzes, startYpTestByIds, getBook, levelEntries, unitEntries, printYpEntries };
+export { renderYp, Yp, loadBook, ensureBooksLoaded, recordIdOf, recordTarget, vocabMatch, getYpTested, encodeYpCompletion, decodeYpCompletion, extractYpCompletions, encodeYpQuiz, decodeYpQuiz, extractYpQuizzes, startYpTestByIds, getBook, levelEntries, unitEntries, printYpEntries, openYpTypePicker, startYpTest };

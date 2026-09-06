@@ -247,7 +247,7 @@ async function renderSettings() {
     // ypTested::<pid> 存的是 {spelling,sentence,meaning} 物件 → 轉成數字旗標（bit0/2/4＝各題型測過）
     const flagsFromTested = (o) => {
       if (typeof o === 'number') return o; // 相容
-      let f = 0; if (o) { if (o.spelling) f |= 1; if (o.sentence) f |= 4; if (o.meaning) f |= 16; } return f;
+      let f = 0; if (o) { if (o.spelling) f |= 1; if (o.sentence) f |= 4; if (o.meaning) f |= 16; if (o.free) f |= 64; } return f;
     };
     if (book) {
       for (const lv of book.levels) for (const u of lv.units) for (const e of u.entries) {

@@ -99,16 +99,17 @@ async function recordCompletion(text) {
     }
     if (b.yp) {
       const prev = (await getMeta(`ypDone::${pid}`)) || {};
-      let spOk = 0, spT = 0, seOk = 0, seT = 0, mnOk = 0, mnT = 0;
+      let spOk = 0, spT = 0, seOk = 0, seT = 0, mnOk = 0, mnT = 0, frOk = 0, frT = 0;
       for (const [id, f] of b.ypRes) {
         prev[id] = (prev[id] || 0) | f;
         if (f & 1) { spT++; if (f & 2) spOk++; }
         if (f & 4) { seT++; if (f & 8) seOk++; }
         if (f & 16) { mnT++; if (f & 32) mnOk++; }
+        if (f & 64) { frT++; if (f & 128) frOk++; }
       }
       await setMeta(`ypDone::${pid}`, prev);
       msgs.push(`  📖 ${name} 的 YP 測驗：${b.ypRes.size} 字`
-        + (spT ? `　拼字 ${spOk}/${spT}` : '') + (mnT ? `　意思 ${mnOk}/${mnT}` : '') + (seT ? `　造句 ${seOk}/${seT}` : '')
+        + (spT ? `　拼字 ${spOk}/${spT}` : '') + (mnT ? `　意思 ${mnOk}/${mnT}` : '') + (frT ? `　自由 ${frOk}/${frT}` : '') + (seT ? `　造句 ${seOk}/${seT}` : '')
         + `（YP 累計 ${Object.keys(prev).length} 字）`);
     }
   }
@@ -385,7 +386,8 @@ async function openYpQuizModal() {
       <div class="src-opts">
         <label class="chk"><input type="radio" name="yqt" value="all" checked/> 全部（拼字＋意思＋造句）</label>
         <label class="chk"><input type="radio" name="yqt" value="spelling"/> 只拼字（看中文拼英文）</label>
-        <label class="chk"><input type="radio" name="yqt" value="meaning"/> 只意思（看英文答中文）</label>
+        <label class="chk"><input type="radio" name="yqt" value="meaning"/> 只意思（看英文答中文・引導式）</label>
+        <label class="chk"><input type="radio" name="yqt" value="free"/> 只自由作答（自己寫詞性＋意思）</label>
         <label class="chk"><input type="radio" name="yqt" value="sentence"/> 只造句（默寫例句）</label>
       </div>
       <label class="chk"><input type="checkbox" id="yq-skip" checked/> 跳過 ${esc(tgt.name)} 已做過的字（依完成碼／同步碼）</label>
@@ -423,11 +425,12 @@ async function openYpQuizModal() {
     const types = {
       spelling: type === 'all' || type === 'spelling',
       meaning: type === 'all' || type === 'meaning',
+      free: type === 'free',
       sentence: type === 'all' || type === 'sentence',
     };
     const code = encodeYpQuiz(tgt.id, entries.map((e) => e.id), types);
     const name = `YP Lv${level}${unitVal === 'all' ? '' : ' Unit ' + unitVal}`;
-    const typeLabel = { all: '拼字＋意思＋造句', spelling: '只拼字', meaning: '只意思', sentence: '只造句' }[type] || type;
+    const typeLabel = { all: '拼字＋意思＋造句', spelling: '只拼字', meaning: '只意思', free: '只自由作答', sentence: '只造句' }[type] || type;
     const out = document.getElementById('yq-out');
     out.innerHTML = `
       <p class="hint-area">出給 <b>${esc(tgt.name)}</b>・${esc(name)}・共 ${allEntries.length} 字${skip ? `，已做過 ${doneN}、` : '，'}實際出 <b>${entries.length}</b> 字・${typeLabel}</p>

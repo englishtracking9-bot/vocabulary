@@ -76,6 +76,12 @@ async function renderTestHub() {
       <button class="btn" id="test-custom">🎯 自訂測驗（自選範圍）</button>
     </div>
 
+    <div class="card section-mistakes">
+      <h3>❌ 錯題本</h3>
+      <p class="hint-area">所有測驗答錯的字都自動收在這裡，可隨機重考、專攻不會的字。</p>
+      <button class="btn big-copy" id="test-mistakes">❌ 打開錯題本 ／ 重考錯題</button>
+    </div>
+
     <div class="card section-parent">
       <h3>📷 家長出的題（掃 QR）</h3>
       <p class="hint-area">掃描家長電腦／紙本上的出題碼 QR，或貼上出題碼，載入今天要考的字。</p>
@@ -107,6 +113,7 @@ async function renderTestHub() {
   document.getElementById('test-monthly').onclick = () => openTestSetup('monthly');
   document.getElementById('test-custom').onclick = () => openTestSetup('custom');
   document.getElementById('test-scan').onclick = () => go('#scan');
+  document.getElementById('test-mistakes').onclick = () => go('#mistakes');
   const allh = document.getElementById('test-allhist');
   if (allh) allh.onclick = openTestHistory;
   $main().querySelectorAll('.row.tap[data-rid]').forEach((row) => {

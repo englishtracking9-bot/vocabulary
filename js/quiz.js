@@ -3,10 +3,10 @@
 
 import {
   getDueRecords, getNewRecords, getRecordsByProfile,
-  getRecord, putRecord, getDailyLog, putDailyLog, dailyKey,
+  getRecord, putRecord, getDailyLog, putDailyLog, dailyKey, getMeta, setMeta,
 } from './db.js';
 import { wordsByLevels } from './vocab.js';
-import { newRecord, applyAnswer, hasStudied } from './srs.js';
+import { newRecord, applyAnswer, hasStudied, isMasteredFamily } from './srs.js';
 import { shuffle, interleave, todayStr } from './util.js';
 
 // 建立今日出題佇列。回傳 [{wordId, level, kind}]
@@ -125,7 +125,32 @@ export async function recordAnswer(profile, entry, correct, usedHint, secondTry,
   await putRecord(rec);
 
   await updateDailyLog(profile.id, entry.id, wasNew, correct, now, logMeta);
+  await updateMistakeBook(profile.id, entry.id, entry.level, correct, rec.status, logMeta, now);
   return rec;
+}
+
+// V-1：錯題本（各身分獨立，存 meta mistakes::<pid>）。答錯自動收集；達「已熟記」自動畢業移出。
+async function updateMistakeBook(pid, wordId, level, correct, status, logMeta, now) {
+  try {
+    const key = `mistakes::${pid}`;
+    const book = (await getMeta(key)) || {};
+    const kind = (logMeta && logMeta.kind) || 'spelling';
+    if (!correct) {
+      const m = book[wordId] || { kinds: {}, count: 0, level: level || 0 };
+      m.kinds[kind] = (m.kinds[kind] || 0) + 1;
+      m.count = (m.count || 0) + 1;
+      m.lastWrong = now;
+      m.lastKind = kind;
+      m.lastInput = (logMeta && logMeta.input) || '';
+      m.lastAnswer = (logMeta && logMeta.answer) || '';
+      if (level != null) m.level = level;
+      book[wordId] = m;
+      await setMeta(key, book);
+    } else if (isMasteredFamily(status) && book[wordId]) {
+      delete book[wordId]; // 達已熟記 → 畢業
+      await setMeta(key, book);
+    }
+  } catch (e) { /* 錯題本失敗不可影響作答 */ }
 }
 
 async function updateDailyLog(pid, wordId, wasNew, correct, now, logMeta) {
