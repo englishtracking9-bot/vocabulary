@@ -8,7 +8,7 @@ import { statusBadge } from './srs.js';
 import { $main, State } from './state.js';
 import { esc, prettyDate, todayStr } from './util.js';
 import { getById } from './vocab.js';
-import { openYpTypePicker } from './ypbook.js';
+import { openYpTypePicker, startYpTest } from './ypbook.js';
 
 const MistakeFilter = { kind: 'all', level: 'all' };
 const KIND_ZH = { spelling: '拼字', meaning: '看英文答中文', free: '自由作答', sentence: '造句', book: '單字本' };
@@ -63,7 +63,8 @@ async function renderMistakes() {
           <option value="0">我查的字</option>
         </select>
       </div>
-      <button class="btn primary big-copy" id="mk-retest" ${rows.length ? '' : 'disabled'}>▶️ 重考錯題（隨機出題・${rows.length} 字）</button>
+      <button class="btn primary big-copy" id="mk-retest" ${rows.length ? '' : 'disabled'}>▶️ ${MistakeFilter.kind === 'all' ? `重考錯題（隨機・${rows.length} 字）` : `重考「${KIND_ZH[MistakeFilter.kind]}」錯題（${rows.length} 字）`}</button>
+      <p class="hint-area">上面「題型」選一種，就只重考那一類的錯字（用同一種題型出題）；選「全部題型」則可自選要考的題型。</p>
     </div>
     <div id="mk-list">${list}</div>`;
 
@@ -77,7 +78,12 @@ async function renderMistakes() {
   if (retestBtn) retestBtn.onclick = () => {
     const entries = rows.map((x) => x.entry);
     if (!entries.length) { alert('沒有可重考的字'); return; }
-    openYpTypePicker(entries, `錯題 ${entries.length} 字`, 'mistakes');
+    if (MistakeFilter.kind !== 'all') {
+      // 已篩到某題型 → 只重考這一類、直接用同一種題型出題（不用再選）
+      startYpTest(entries, `${KIND_ZH[MistakeFilter.kind]}錯題 ${entries.length} 字`, [MistakeFilter.kind], 'mistakes');
+    } else {
+      openYpTypePicker(entries, `錯題 ${entries.length} 字`, 'mistakes');
+    }
   };
   $main().querySelectorAll('[data-retest]').forEach((b) => {
     b.onclick = (ev) => {
