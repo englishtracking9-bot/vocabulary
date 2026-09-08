@@ -9,6 +9,7 @@ import { qrSvg } from './parent.js';
 import { recordAnswer } from './quiz.js';
 import { copyToClipboard } from './report.js';
 import { compareSentence } from './sentence.js';
+import { startFlashcards } from './flashcards.js';
 import { displayCategory, statusBadge } from './srs.js';
 import { $main, State, refreshMastered } from './state.js';
 import { esc, shuffle } from './util.js';
@@ -376,11 +377,13 @@ async function renderWords(lv, u) {
       <div class="memo">💡 ${sel ? '勾選要考的字，再按「測選取的字」。' : '點卡片＝標記「讀過」；🔊 聽發音。'}</div>
       <div class="btn-row">
         <button class="btn primary" id="yp-test">📝 測這個單元</button>
+        <button class="btn" id="yp-flash">🎴 閃卡</button>
         <button class="btn" id="yp-select">${sel ? '✕ 取消挑字' : '☑ 挑字測驗'}</button>
         <button class="btn" id="yp-readall">✅ 全部已讀</button>
       </div>
       ${sel ? `<div class="btn-row"><span class="row-meta">已選 <b id="yp-selcount">${YpSel.ids.size}</b> 字</span>
-        <button class="btn primary" id="yp-testsel">測選取的字</button></div>` : ''}
+        <button class="btn primary" id="yp-testsel">測選取的字</button>
+        <button class="btn" id="yp-flashsel">🎴 閃卡選取</button></div>` : ''}
     </div>
     ${u.entries.map(cardHTML).join('')}`;
 
@@ -408,12 +411,19 @@ async function renderWords(lv, u) {
     };
   });
   document.getElementById('yp-test').onclick = () => openYpTypePicker(u.entries, `Lv${lv.level} Unit ${u.unit}`);
+  document.getElementById('yp-flash').onclick = () => startFlashcards(u.entries, '#yp', `YP Lv${lv.level} Unit ${u.unit}`);
   document.getElementById('yp-select').onclick = () => { YpSel.on = !YpSel.on; YpSel.ids.clear(); renderWords(lv, u); };
   const testSel = document.getElementById('yp-testsel');
   if (testSel) testSel.onclick = () => {
     const picked = u.entries.filter((e) => YpSel.ids.has(e.id));
     if (!picked.length) { alert('請先勾選要考的字'); return; }
     openYpTypePicker(picked, `Lv${lv.level} Unit ${u.unit}・選取 ${picked.length} 字`);
+  };
+  const flashSel = document.getElementById('yp-flashsel');
+  if (flashSel) flashSel.onclick = () => {
+    const picked = u.entries.filter((e) => YpSel.ids.has(e.id));
+    if (!picked.length) { alert('請先勾選要看的字'); return; }
+    startFlashcards(picked, '#yp', `YP Lv${lv.level} Unit ${u.unit}・選取 ${picked.length} 字`);
   };
   document.getElementById('yp-readall').onclick = async () => {
     const set = await getReadSet(State.profile.id);

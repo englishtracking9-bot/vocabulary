@@ -173,6 +173,15 @@ body {
 .fr-inputs .fr-zh { flex: 1 1 auto; text-align: left; margin: 2px 0; }
 /* 錯題本 */
 .section-mistakes { border-left: 5px solid var(--c-test); }
+/* 🎴 閃卡 */
+.flash-card { text-align: center; padding: 26px 18px; }
+.flash-card .center-word { justify-content: center; }
+.flash-card .fl-word { font-size: 34px; }
+.flash-card .pos { margin-top: 6px; }
+.fl-zh { font-size: 22px; font-weight: 600; margin: 12px 0; }
+.flash-card .examples { text-align: left; margin-top: 14px; }
+.flash-card .root { text-align: left; }
+.fl-ctrl .btn { flex: 1 1 auto; }
 .mk-row .btn-row { margin-top: 8px; }
 .block-btn.yp       { --blk: var(--c-yp); }
 .block-btn.six      { --blk: var(--c-six); }

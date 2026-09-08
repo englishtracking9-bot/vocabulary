@@ -3,6 +3,7 @@
 import { getRecord, getRecordsByProfile, putRecord } from './db.js';
 import { addToReview, deleteCustomWord, fetchDict, updateCustomZh } from './lookup.js';
 import { quizSingle } from './lookupui.js';
+import { startFlashcards } from './flashcards.js';
 import { openScheduleModal } from './parent.js';
 import { openTestTypePicker, startGroupTest } from './quizui.js';
 import { displayCategory, forceMastered, newRecord, statusBadge } from './srs.js';
@@ -157,6 +158,7 @@ async function renderMyWords() {
       <input id="f-q" class="answer-input" placeholder="關鍵字搜尋（英文或中文）" />
       <div class="btn-row">
         <button class="btn primary" id="mw-test">▶️ 測這些字</button>
+        <button class="btn" id="mw-flash">🎴 閃卡</button>
         <button class="btn" id="mw-select">${MyWordsSel.on ? '✕ 取消多選' : '☑ 多選'}</button>
       </div>
       <div id="mw-selbar" class="${MyWordsSel.on ? '' : 'hidden'}">
@@ -203,6 +205,12 @@ async function renderMyWords() {
       name = (tagSel.options[tagSel.selectedIndex].text || '群組').replace('🏷 ', '');
     } else name = `我的單字（${ids.length}）`;
     openTestTypePicker(ids, name, 'mywords');
+  };
+  document.getElementById('mw-flash').onclick = () => {
+    const useSel = MyWordsSel.on && MyWordsSel.ids.size > 0;
+    const ids = useSel ? [...MyWordsSel.ids] : MyWordsView.ids.slice();
+    if (!ids.length) { alert('沒有可看的字'); return; }
+    startFlashcards(ids.map((id) => getById(id)).filter(Boolean), '#mywords', useSel ? `選取 ${ids.length} 字` : `我的單字（${ids.length}）`);
   };
   const batchBtn = document.getElementById('mw-batch');
   if (batchBtn) batchBtn.onclick = () => {

@@ -1,6 +1,7 @@
 // app.js — 入口：啟動、路由、身分切換、SW 註冊（G1 拆分後的常駐核心）
 import { renderCustomBooks } from './books.js';
 import { renderCalendar } from './daily.js';
+import { renderFlash } from './flashcards.js';
 import { getAllProfiles, getMeta, getProfile, openDB, putProfile, setMeta } from './db.js';
 import { loadGroupsIndex, loadRoots } from './grouping.js';
 import { renderHome, renderSixHub } from './home.js';
@@ -124,6 +125,7 @@ const ROUTES = {
   '#custombook': renderCustomBooks,
   '#scan': renderScan,
   '#mistakes': renderMistakes,
+  '#flash': renderFlash,
   '#settings': renderSettings,
 };
 
