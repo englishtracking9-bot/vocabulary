@@ -33,6 +33,8 @@
   <!-- L-3 出題碼／掃描（離線 vendor，非模組，設全域 window.qrcode / window.jsQR） -->
   <script src="./js/vendor/qrcode.js"></script>
   <script src="./js/vendor/jsQR.js"></script>
+  <!-- 雲端同步 vendor（離線，設全域 window.supabase）。載入失敗不影響 App：cloud.js 會靜默退回純本機 -->
+  <script src="./js/vendor/supabase.js"></script>
   <script type="module" src="./js/app.js"></script>
 </body>
 </html>

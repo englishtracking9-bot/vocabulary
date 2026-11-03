@@ -1,5 +1,6 @@
 // app.js — 入口：啟動、路由、身分切換、SW 註冊（G1 拆分後的常駐核心）
 import { renderCustomBooks } from './books.js';
+import { initCloud } from './cloud.js';
 import { renderCalendar } from './daily.js';
 import { renderFlash } from './flashcards.js';
 import { getAllProfiles, getMeta, getProfile, openDB, putProfile, setMeta } from './db.js';
@@ -49,6 +50,8 @@ async function init() {
     // 每日提醒：同步設定到 meta 供 SW 背景讀取，並在前景排程
     syncReminderMeta(State.profile);
     scheduleForegroundReminder(State.profile);
+    // 雲端同步地基（階段 A）：只做一次安全探測，不改 UI、不阻塞、永不丟例外
+    initCloud();
   } catch (e) {
     console.error(e);
     $main().innerHTML = `<div class="card"><p>⚠️ 啟動失敗：${esc(e.message)}</p>
