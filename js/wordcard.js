@@ -4,6 +4,7 @@ import { rootFamilyOf } from './grouping.js';
 import { fetchDict, speak } from './lookup.js';
 import { lookupTermNavigate } from './lookupui.js';
 import { openWordDetail } from './mywords.js';
+import { attachPicHandlers, picCardBlockHTML } from './piccards.js';
 import { State } from './state.js';
 import { esc } from './util.js';
 import { getById } from './vocab.js';
@@ -114,6 +115,7 @@ function cardHTML(entry, dict) {
       ${root}
       ${syllable}
       ${mnemonic}
+      ${picCardBlockHTML(entry)}
       ${family}
       ${moreBtn}
     </div>`;
@@ -135,6 +137,8 @@ function attachCardHandlers(entry) {
   document.querySelectorAll('[data-more]').forEach((b) => {
     b.onclick = () => showMoreSenses(b.dataset.more, b);
   });
+  // 🖼️ 圖解記憶卡：點開才載入圖片
+  attachPicHandlers();
 }
 
 // J-2：點「其他意思」→ 上網查 dictionaryapi.dev 顯示更多義項（不寫進檔案；離線友善提示）

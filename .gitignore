@@ -16,3 +16,6 @@ __pycache__/
 # 注意：data/vocab.json 必須保留上傳，故「不」忽略 data/
 
 data/_L*_list.txt
+
+# 圖解記憶卡建置暫存（預覽 PNG/SVG）
+scripts/_cards_build/

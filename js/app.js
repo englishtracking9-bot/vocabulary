@@ -12,6 +12,7 @@ import { renderGroups, renderMyWords } from './mywords.js';
 import { scheduleForegroundReminder, syncReminderMeta } from './notify.js';
 import { renderMistakes } from './mistakes.js';
 import { renderManualBuilder, renderParentZone } from './parent.js';
+import { loadPicCards, renderPicCards } from './piccards.js';
 import { renderQuiz } from './quizui.js';
 import { renderReport, resetReportDate } from './reportui.js';
 import { renderRoots } from './rootsui.js';
@@ -30,6 +31,7 @@ async function init() {
     await loadGroupsIndex();
     await loadRoots();
     await loadCustomWords();
+    await loadPicCards(); // 🖼️ 圖解記憶卡（失敗不影響啟動）
     await ensureBooksLoaded(); // 預載 YP 單字書＋註冊 YP 專屬字（供報告/統計顯示）
     await ensureProfiles();
 
@@ -130,10 +132,11 @@ const ROUTES = {
   '#mistakes': renderMistakes,
   '#flash': renderFlash,
   '#settings': renderSettings,
+  '#pics': renderPicCards, // 🖼️ 圖解記憶卡
 };
 
 // 不在底部導覽的子頁：一律歸「首頁」分頁高亮（都從首頁大按鈕進出）
-const HOME_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#settings', '#more', '#six', '#yp', '#parent', '#manual', '#custombook']);
+const HOME_SUBPAGES = new Set(['#lookup', '#roots', '#groups', '#report', '#settings', '#more', '#six', '#yp', '#parent', '#manual', '#custombook', '#pics']);
 
 function route() {
   const hash = location.hash || '#home';

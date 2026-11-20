@@ -1,0 +1,392 @@
+{
+ "version": 1,
+ "title": "圖解記憶卡",
+ "days": [
+  {
+   "day": 1,
+   "label": "第1天",
+   "wordIds": [
+    "arrogant",
+    "naive",
+    "eccentric"
+   ]
+  },
+  {
+   "day": 2,
+   "label": "第2天",
+   "wordIds": [
+    "obstinate",
+    "skeptical",
+    "versatile"
+   ]
+  },
+  {
+   "day": 3,
+   "label": "第3天",
+   "wordIds": [
+    "eloquent",
+    "vague",
+    "compassion"
+   ]
+  },
+  {
+   "day": 4,
+   "label": "第4天",
+   "wordIds": [
+    "predator",
+    "lethal",
+    "vulnerable"
+   ]
+  },
+  {
+   "day": 5,
+   "label": "第5天",
+   "wordIds": [
+    "kidnap",
+    "notorious",
+    "bizarre"
+   ]
+  },
+  {
+   "day": 6,
+   "label": "第6天",
+   "wordIds": [
+    "pedestrian",
+    "tedious",
+    "coincidence"
+   ]
+  },
+  {
+   "day": 7,
+   "label": "第7天",
+   "wordIds": [
+    "persevere",
+    "spontaneous",
+    "abundant"
+   ]
+  },
+  {
+   "day": 0,
+   "label": "範例",
+   "wordIds": [
+    "ponder",
+    "dilemma",
+    "hypocrite"
+   ]
+  }
+ ],
+ "cards": {
+  "arrogant": {
+   "img": "./images/cards/arrogant.webp",
+   "method": "趣味拆字",
+   "mnemonic": "arrog + ant（螞蟻）一隻戴著皇冠、鼻孔朝天的螞蟻，什麼都要別人服侍 → 傲慢的、自大的！",
+   "lines": [
+    "arrog + ant（螞蟻）",
+    "一隻戴著皇冠、鼻孔朝天的螞蟻，",
+    "什麼都要別人服侍 → 傲慢的、自大的！"
+   ],
+   "tip": "口訣：鼻孔朝天的螞蟻 ant → arrogant",
+   "example": "The arrogant player never passes the ball to his teammates.",
+   "example_zh": "那個傲慢的球員從不把球傳給隊友。"
+  },
+  "naive": {
+   "img": "./images/cards/naive.webp",
+   "method": "字源記憶",
+   "mnemonic": "naive 和 native 是親戚：nat = 出生像「剛出生」的寶寶一樣，別人說什麼都相信 → 天真的！",
+   "lines": [
+    "naive 和 native 是親戚：nat = 出生",
+    "像「剛出生」的寶寶一樣，",
+    "別人說什麼都相信 → 天真的！"
+   ],
+   "tip": "口訣：剛出生 (nat) 的寶寶最天真",
+   "example": "It is naive to believe everything you read online.",
+   "example_zh": "相信網路上看到的每件事是很天真的。"
+  },
+  "eccentric": {
+   "img": "./images/cards/eccentric.webp",
+   "method": "字根拆解",
+   "mnemonic": "ec- = 出去　centr = 中心（center）跑「出中心」以外，和大家都不一樣→ 古怪的、行為異常的！",
+   "lines": [
+    "ec- = 出去　centr = 中心（center）",
+    "跑「出中心」以外，和大家都不一樣",
+    "→ 古怪的、行為異常的！"
+   ],
+   "tip": "口訣：跑出 (ec) 中心 (center) → 怪怪的",
+   "example": "My eccentric uncle wears sunglasses even at night.",
+   "example_zh": "我那個古怪的叔叔連晚上都戴太陽眼鏡。"
+  },
+  "obstinate": {
+   "img": "./images/cards/obstinate.webp",
+   "method": "字根拆解",
+   "mnemonic": "ob- = 對著、反抗　stin = 站（stand）擋在你面前「站著」怎麼拉都不動，→ 固執的、頑固的！",
+   "lines": [
+    "ob- = 對著、反抗　stin = 站（stand）",
+    "擋在你面前「站著」怎麼拉都不動，",
+    "→ 固執的、頑固的！"
+   ],
+   "tip": "口訣：對著 (ob) 站 (stin) 死不動",
+   "example": "The obstinate boy refused to apologize, even though he was wrong.",
+   "example_zh": "那個固執的男孩明明錯了卻拒絕道歉。"
+  },
+  "skeptical": {
+   "img": "./images/cards/skeptical.webp",
+   "method": "字源記憶",
+   "mnemonic": "skept 源自希臘文「仔細看」（和 scope 鏡同源）拿著放大鏡一看再看，不肯輕易相信 → 懷疑的！",
+   "lines": [
+    "skept 源自希臘文「仔細看」（和 scope 鏡同源）",
+    "拿著放大鏡一看再看，",
+    "不肯輕易相信 → 懷疑的！"
+   ],
+   "tip": "口訣：skept = 拿放大鏡一直看 → 懷疑",
+   "example": "Mom was skeptical when I said I finished all my homework in ten minutes.",
+   "example_zh": "我說十分鐘就寫完功課時，媽媽一臉懷疑。"
+  },
+  "versatile": {
+   "img": "./images/cards/versatile.webp",
+   "method": "字根拆解",
+   "mnemonic": "vers = 轉（reverse 反轉、universe）-ile = 能…的 → 能轉向各種方向，什麼都會 → 多才多藝的！",
+   "lines": [
+    "vers = 轉（reverse 反轉、universe）",
+    "-ile = 能…的 → 能轉向各種方向，",
+    "什麼都會 → 多才多藝的！"
+   ],
+   "tip": "口訣：轉 (vers) 一轉就換一種本領",
+   "example": "A smartphone is a versatile tool: it is a camera, a map, and a dictionary.",
+   "example_zh": "智慧型手機用途很廣：它是相機、地圖，也是字典。"
+  },
+  "eloquent": {
+   "img": "./images/cards/eloquent.webp",
+   "method": "字根拆解",
+   "mnemonic": "e- = 出來　loqu = 說話（dialogue 也有 log）話一句句流暢地「說出來」，→ 有口才的、雄辯的！",
+   "lines": [
+    "e- = 出來　loqu = 說話（dialogue 也有 log）",
+    "話一句句流暢地「說出來」，",
+    "→ 有口才的、雄辯的！"
+   ],
+   "tip": "口訣：e (出) + loqu (說) → 說出好口才",
+   "example": "Her eloquent speech won first prize in the English contest.",
+   "example_zh": "她那場有說服力的演講拿下英文比賽第一名。"
+  },
+  "vague": {
+   "img": "./images/cards/vague.webp",
+   "method": "字源記憶",
+   "mnemonic": "vag = 遊蕩（vagabond 流浪漢）說話飄來飄去、到處流浪不落地，→ 含糊的、模糊的！",
+   "lines": [
+    "vag = 遊蕩（vagabond 流浪漢）",
+    "說話飄來飄去、到處流浪不落地，",
+    "→ 含糊的、模糊的！"
+   ],
+   "tip": "口訣：話在霧裡流浪 (vag) → 模糊",
+   "example": "His answer was so vague that nobody knew whether he agreed or not.",
+   "example_zh": "他的回答太含糊，沒人知道他到底同不同意。"
+  },
+  "compassion": {
+   "img": "./images/cards/compassion.webp",
+   "method": "字根拆解",
+   "mnemonic": "com- = 一起　passion = 感受、受苦和別人「一起」感受他的痛，→ 同情、憐憫！",
+   "lines": [
+    "com- = 一起　passion = 感受、受苦",
+    "和別人「一起」感受他的痛，",
+    "→ 同情、憐憫！"
+   ],
+   "tip": "口訣：一起 (com) 感受 (passion) 痛",
+   "example": "The nurse treated every patient with compassion.",
+   "example_zh": "那位護理師用同理心對待每一位病人。"
+  },
+  "predator": {
+   "img": "./images/cards/predator.webp",
+   "method": "諧音記憶",
+   "mnemonic": "predator 念起來像「撲來的」突然「撲」過來、把小動物抓走的，→ 掠食者！",
+   "lines": [
+    "predator 念起來像「撲來的」",
+    "突然「撲」過來、把小動物抓走的，",
+    "→ 掠食者！"
+   ],
+   "tip": "口訣：撲來的 (predator) 就是掠食者",
+   "example": "The eagle is a predator that hunts small animals from the sky.",
+   "example_zh": "老鷹是從空中獵捕小動物的掠食者。"
+  },
+  "lethal": {
+   "img": "./images/cards/lethal.webp",
+   "method": "諧音記憶",
+   "mnemonic": "lethal 念起來像「立死喔」碰到就「立刻死掉」的東西，→ 致命的！",
+   "lines": [
+    "lethal 念起來像「立死喔」",
+    "碰到就「立刻死掉」的東西，",
+    "→ 致命的！"
+   ],
+   "tip": "口訣：立死喔 (lethal) → 致命的",
+   "example": "Some mushrooms in the forest are lethal, so never eat wild ones.",
+   "example_zh": "森林裡有些蘑菇是致命的，所以絕對別吃野生的。"
+  },
+  "vulnerable": {
+   "img": "./images/cards/vulnerable.webp",
+   "method": "字根拆解",
+   "mnemonic": "vulner = 傷口（拉丁文 vulnus）-able = 能…的 → 「能被弄傷」的，→ 易受傷害的、脆弱的！",
+   "lines": [
+    "vulner = 傷口（拉丁文 vulnus）",
+    "-able = 能…的 → 「能被弄傷」的，",
+    "→ 易受傷害的、脆弱的！"
+   ],
+   "tip": "口訣：能 (able) 被弄出傷口 (vulner)",
+   "example": "Without its shell, a turtle is vulnerable to attack.",
+   "example_zh": "沒有殼的話，烏龜很容易受到攻擊。"
+  },
+  "kidnap": {
+   "img": "./images/cards/kidnap.webp",
+   "method": "拆字記憶",
+   "mnemonic": "kid = 小孩　nap = 小睡、午覺小孩在「睡午覺」時被人抱走，→ 綁架！",
+   "lines": [
+    "kid = 小孩　nap = 小睡、午覺",
+    "小孩在「睡午覺」時被人抱走，",
+    "→ 綁架！"
+   ],
+   "tip": "口訣：kid 睡 nap 時被抓走 → kidnap",
+   "example": "In the movie, the bad guys kidnap the scientist's daughter.",
+   "example_zh": "電影裡，壞人綁架了科學家的女兒。"
+  },
+  "notorious": {
+   "img": "./images/cards/notorious.webp",
+   "method": "字根拆解",
+   "mnemonic": "not = 知道（notice 注意、note 筆記）壞事做太多，大家「都知道」他，→ 惡名昭彰的！",
+   "lines": [
+    "not = 知道（notice 注意、note 筆記）",
+    "壞事做太多，大家「都知道」他，",
+    "→ 惡名昭彰的！"
+   ],
+   "tip": "口訣：人人都知道 (not) 的壞名聲",
+   "example": "This corner is notorious for traffic jams during rush hour.",
+   "example_zh": "這個路口以尖峰時段塞車出名（惡名昭彰）。"
+  },
+  "bizarre": {
+   "img": "./images/cards/bizarre.webp",
+   "method": "諧音記憶",
+   "mnemonic": "bizarre 念起來像「比薩」比薩上放珍珠、香蕉、巧克力…怪到不行 → 奇異的、怪誕的！",
+   "lines": [
+    "bizarre 念起來像「比薩」",
+    "比薩上放珍珠、香蕉、巧克力…",
+    "怪到不行 → 奇異的、怪誕的！"
+   ],
+   "tip": "口訣：怪怪的比薩 (bizarre)",
+   "example": "Putting bananas on pizza sounds bizarre, but some people love it.",
+   "example_zh": "在比薩上放香蕉聽起來很怪，但有些人很愛。"
+  },
+  "pedestrian": {
+   "img": "./images/cards/pedestrian.webp",
+   "method": "字根拆解",
+   "mnemonic": "ped = 腳（pedal 腳踏板）　-ian = 人用「腳」走路的「人」，→ 行人！",
+   "lines": [
+    "ped = 腳（pedal 腳踏板）　-ian = 人",
+    "用「腳」走路的「人」，",
+    "→ 行人！"
+   ],
+   "tip": "口訣：用腳 (ped) 走路的人 (ian)",
+   "example": "Drivers must stop and let pedestrians cross the street.",
+   "example_zh": "駕駛必須停車，讓行人過馬路。"
+  },
+  "tedious": {
+   "img": "./images/cards/tedious.webp",
+   "method": "諧音記憶",
+   "mnemonic": "tedious 念起來像「踢地兒死」一直踢地板踢到快無聊死，→ 冗長乏味的！",
+   "lines": [
+    "tedious 念起來像「踢地兒死」",
+    "一直踢地板踢到快無聊死，",
+    "→ 冗長乏味的！"
+   ],
+   "tip": "口訣：踢地兒死 (tedious) → 無聊死了",
+   "example": "Copying the same word fifty times is really tedious.",
+   "example_zh": "同一個字抄五十遍真的很無聊。"
+  },
+  "coincidence": {
+   "img": "./images/cards/coincidence.webp",
+   "method": "字根拆解",
+   "mnemonic": "co- = 一起　in = 在上　cid = 落下兩件事剛好「一起落下」、同時發生，→ 巧合！",
+   "lines": [
+    "co- = 一起　in = 在上　cid = 落下",
+    "兩件事剛好「一起落下」、同時發生，",
+    "→ 巧合！"
+   ],
+   "tip": "口訣：一起 (co) 掉下來 (cid) → 巧合",
+   "example": "What a coincidence! We are wearing the same T-shirt today.",
+   "example_zh": "真巧！我們今天穿了一樣的 T 恤。"
+  },
+  "persevere": {
+   "img": "./images/cards/persevere.webp",
+   "method": "拆字記憶",
+   "mnemonic": "per- = 徹底、一路到底　severe = 嚴厲、艱難再「艱難」也「一路撐到底」，→ 堅持不懈！",
+   "lines": [
+    "per- = 徹底、一路到底　severe = 嚴厲、艱難",
+    "再「艱難」也「一路撐到底」，",
+    "→ 堅持不懈！"
+   ],
+   "tip": "口訣：per (到底) + severe (艱難) 也不放棄",
+   "example": "If you persevere, your English will improve step by step.",
+   "example_zh": "只要你堅持下去，英文會一步一步進步。"
+  },
+  "spontaneous": {
+   "img": "./images/cards/spontaneous.webp",
+   "method": "字源記憶",
+   "mnemonic": "spont 源自拉丁文 sponte「自己願意」沒有人叫，自己就主動做了，→ 自發的、自然而然的！",
+   "lines": [
+    "spont 源自拉丁文 sponte「自己願意」",
+    "沒有人叫，自己就主動做了，",
+    "→ 自發的、自然而然的！"
+   ],
+   "tip": "口訣：spont = 自己願意 → 自發的",
+   "example": "When the singer finished, the crowd broke into spontaneous applause.",
+   "example_zh": "歌手一唱完，觀眾自然而然地響起掌聲。"
+  },
+  "abundant": {
+   "img": "./images/cards/abundant.webp",
+   "method": "趣味拆字",
+   "mnemonic": "a + bun（小圓麵包）+ dant一籃滿到「溢出來」的小圓麵包，→ 豐富的、大量的！",
+   "lines": [
+    "a + bun（小圓麵包）+ dant",
+    "一籃滿到「溢出來」的小圓麵包，",
+    "→ 豐富的、大量的！"
+   ],
+   "tip": "口訣：滿滿的 bun 麵包 → abundant",
+   "example": "Taiwan has abundant fruit, especially in summer.",
+   "example_zh": "台灣水果很豐富，尤其是在夏天。"
+  },
+  "ponder": {
+   "img": "./images/cards/ponder.webp",
+   "method": "諧音記憶",
+   "mnemonic": "ponder 念起來像「胖的」胖的人坐在椅子上一動也不動，托著下巴「沉思」：要不要吃宵夜？",
+   "lines": [
+    "ponder 念起來像「胖的」",
+    "胖的人坐在椅子上一動也不動，",
+    "托著下巴「沉思」：要不要吃宵夜？"
+   ],
+   "tip": "口訣：胖的 (ponder) 人最愛沉思",
+   "example": "She sat by the window to ponder whether she should study abroad.",
+   "example_zh": "她坐在窗邊，仔細考慮要不要出國唸書。"
+  },
+  "dilemma": {
+   "img": "./images/cards/dilemma.webp",
+   "method": "拆解＋諧音",
+   "mnemonic": "di- = 二（two，像 dioxide 二氧化物）dilemma 念起來像「地雷嘛」兩條路都可能踩「地雷嘛」→ 兩難！",
+   "lines": [
+    "di- = 二（two，像 dioxide 二氧化物）",
+    "dilemma 念起來像「地雷嘛」",
+    "兩條路都可能踩「地雷嘛」→ 兩難！"
+   ],
+   "tip": "口訣：二條路都是地雷嘛 → dilemma",
+   "example": "Choosing between the two universities put Amy in a real dilemma.",
+   "example_zh": "要在兩所大學中做選擇，讓 Amy 陷入兩難。"
+  },
+  "hypocrite": {
+   "img": "./images/cards/hypocrite.webp",
+   "method": "字根拆解",
+   "mnemonic": "hypo- = 在…下面（hypodermic 皮下的）-crite ← 希臘文 hypokritēs「舞台演員」躲在「面具下面」演戲的人 → 偽君子！",
+   "lines": [
+    "hypo- = 在…下面（hypodermic 皮下的）",
+    "-crite ← 希臘文 hypokritēs「舞台演員」",
+    "躲在「面具下面」演戲的人 → 偽君子！"
+   ],
+   "tip": "口訣：面具下 (hypo) 在演戲 (crite)",
+   "example": "He tells us not to use phones in class, but he is always on his own—what a hypocrite!",
+   "example_zh": "他叫我們上課別滑手機，自己卻一直滑——真是偽君子！"
+  }
+ }
+}

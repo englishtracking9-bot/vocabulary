@@ -26,6 +26,7 @@
   --c-report: #3f6fa3;   /* 記錄＝灰藍 */
   --c-parent: #4b5563;   /* 家長＝深灰 */
   --c-settings: #374151; /* 設定＝深灰 */
+  --c-pics: #db2777;     /* 圖解記憶卡＝桃紅 */
 }
 :root[data-theme="dark"] {
   --bg: #0f141c;
@@ -191,6 +192,7 @@ body {
 .block-btn.report   { --blk: var(--c-report); }
 .block-btn.parent   { --blk: var(--c-parent); }
 .block-btn.settings { --blk: var(--c-settings); }
+.block-btn.pics     { --blk: var(--c-pics); }
 
 /* Quiz */
 .quiz-progress {
@@ -519,3 +521,17 @@ details[open] summary::before { content: '▾ '; }
 }
 .nav-btn span { font-size: 10px; white-space: nowrap; }
 .nav-btn.active { color: var(--primary); }
+
+/* 🖼️ 圖解記憶卡（piccards.js） */
+.pc-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.pc-tab { border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 999px; padding: 6px 12px; font-size: 15px; cursor: pointer; }
+.pc-tab.on { background: var(--c-pics); border-color: var(--c-pics); color: #fff; font-weight: 700; }
+.pc-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 12px; }
+.pc-item { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.pc-img { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); cursor: pointer; }
+.pc-item .pc-img { border-radius: 0; }
+.pc-cap { display: flex; align-items: center; gap: 8px; padding: 10px 12px; font-size: 15px; }
+.pc-cap .btn { margin-left: auto; }
+.pc-in-card { margin-top: 10px; }
+.pc-in-card .pc-img { margin-top: 6px; }
+.pc-tip { font-size: 14px; color: var(--c-pics); font-weight: 700; margin-top: 6px; }

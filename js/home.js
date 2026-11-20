@@ -71,6 +71,7 @@ async function renderHome() {
         ${blk('six', '#six', '📚', '學測6000', '字根字首等工具')}
         ${blk('custom', '#custombook', '📓', '自訂單字本', '片語・講義')}
         ${blk('lookup', '#lookup', '🔎', '查單字', '查6000或上網查')}
+        ${blk('pics', '#pics', '🖼️', '圖解記憶卡', '每天3個難字・諧音／字根圖卡', ' full')}
       </div>
     </div>
 

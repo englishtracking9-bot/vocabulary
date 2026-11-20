@@ -4,7 +4,7 @@
 // ★ 改版方式：每次 push 新版前，把下面的 APP_VERSION 改成新值即可。
 //   （cache 名稱會跟著變 → 舊快取自動清除 → 使用者連網開啟會拿到新版程式與新版 vocab.json）
 
-const APP_VERSION = '2026-11-03-cloud-a'; // ★ 同步更新 js/state.js 的 APP_UI_VERSION
+const APP_VERSION = '2026-11-20-pics'; // ★ 同步更新 js/state.js 的 APP_UI_VERSION
 const CACHE = 'vocab-' + APP_VERSION;
 
 // 預先快取的核心檔案（相對於 SW 所在目錄）
@@ -46,6 +46,7 @@ const PRECACHE = [
   './js/badges.js',
   './js/paircode.js',
   './js/schedule.js',
+  './js/piccards.js',
   './js/vendor/qrcode.js',
   './js/vendor/jsQR.js',
   './js/vendor/supabase.js',
@@ -55,8 +56,34 @@ const PRECACHE = [
   './data/roots.json',
   './data/groups.json',
   './data/groups_index.json',
+  './data/picture_cards.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
+  // 🖼️ 圖解記憶卡圖片（離線可看）
+  './images/cards/abundant.webp',
+  './images/cards/arrogant.webp',
+  './images/cards/bizarre.webp',
+  './images/cards/coincidence.webp',
+  './images/cards/compassion.webp',
+  './images/cards/dilemma.webp',
+  './images/cards/eccentric.webp',
+  './images/cards/eloquent.webp',
+  './images/cards/hypocrite.webp',
+  './images/cards/kidnap.webp',
+  './images/cards/lethal.webp',
+  './images/cards/naive.webp',
+  './images/cards/notorious.webp',
+  './images/cards/obstinate.webp',
+  './images/cards/pedestrian.webp',
+  './images/cards/persevere.webp',
+  './images/cards/ponder.webp',
+  './images/cards/predator.webp',
+  './images/cards/skeptical.webp',
+  './images/cards/spontaneous.webp',
+  './images/cards/tedious.webp',
+  './images/cards/vague.webp',
+  './images/cards/versatile.webp',
+  './images/cards/vulnerable.webp',
 ];
 
 self.addEventListener('install', (e) => {
