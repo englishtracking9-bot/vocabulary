@@ -4,7 +4,7 @@
 // ★ 改版方式：每次 push 新版前，把下面的 APP_VERSION 改成新值即可。
 //   （cache 名稱會跟著變 → 舊快取自動清除 → 使用者連網開啟會拿到新版程式與新版 vocab.json）
 
-const APP_VERSION = '2026-11-20-pics'; // ★ 同步更新 js/state.js 的 APP_UI_VERSION
+const APP_VERSION = '2026-11-20-pics2'; // ★ 同步更新 js/state.js 的 APP_UI_VERSION
 const CACHE = 'vocab-' + APP_VERSION;
 
 // 預先快取的核心檔案（相對於 SW 所在目錄）
@@ -186,7 +186,8 @@ self.addEventListener('notificationclick', (e) => {
 
 function isContent(url) {
   // 程式與資料：要「連網優先」確保拿到新版
-  return /\.(?:js|json|html)$/.test(url.pathname) || url.pathname.endsWith('/');
+  // css 也走連網優先：否則改版後手機可能拿到「新程式＋舊樣式」而跑版
+  return /\.(?:js|json|html|css)$/.test(url.pathname) || url.pathname.endsWith('/');
 }
 
 self.addEventListener('fetch', (e) => {

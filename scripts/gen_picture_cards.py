@@ -687,7 +687,7 @@ def main():
         open(sp, "w", encoding="utf-8").write(svg)
         subprocess.run(["rsvg-convert", "-o", pp, sp], check=True)
         im = Image.open(pp).convert("RGB")
-        im.resize((720, int(720 * H / W)), Image.LANCZOS).save(f"{ROOT}/images/cards/{k['id']}.webp", "WEBP", quality=82, method=6)
+        im.save(f"{ROOT}/images/cards/{k['id']}.webp", "WEBP", quality=82, method=6)
     # App 資料
     days = {}
     for k in CARDS:
