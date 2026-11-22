@@ -677,7 +677,30 @@ def card_svg(k):
 </svg>'''
 
 
+def wrap_en(s, width=44):
+    words, lines, cur = s.split(), [], ''
+    for w in words:
+        if cur and len(cur) + 1 + len(w) > width:
+            lines.append(cur); cur = w
+        else:
+            cur = (cur + ' ' + w).strip()
+    if cur: lines.append(cur)
+    return lines
+
+
+def use_vocab_examples():
+    """例句以 data/vocab.json 為準（單字卡上的原例句，孩子已熟背），不用另寫的句子。"""
+    vocab = json.load(open(os.path.join(ROOT, 'data', 'vocab.json'), encoding='utf-8'))
+    by = {e['id']: e for e in vocab}
+    for k in CARDS:
+        e = by[k['id']]
+        k['en'] = wrap_en(e['example'])
+        k['zh_sent'] = e.get('example_zh', '')
+        k['example_full'] = e['example']
+
+
 def main():
+    use_vocab_examples()
     os.makedirs(f"{OUT}/png", exist_ok=True)
     os.makedirs(f"{ROOT}/images/cards", exist_ok=True)
     os.makedirs(f"{OUT}/svg", exist_ok=True)
@@ -703,7 +726,7 @@ def main():
             "mnemonic": "".join(k["lines"]),
             "lines": k["lines"],
             "tip": k["tip"],
-            "example": " ".join(k["en"]),
+            "example": k["example_full"],
             "example_zh": k["zh_sent"],
         } for k in CARDS},
     }

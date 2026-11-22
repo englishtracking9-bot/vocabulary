@@ -6,44 +6,36 @@ import { speak } from './lookup.js';
 import { $main, State } from './state.js';
 import { saveTestResult } from './tests.js';
 import { esc, shuffle } from './util.js';
-import { getById } from './vocab.js';
+import { checkAnswer, getById } from './vocab.js';
+import { compareSentence } from './sentence.js';
 import { scoreComment, scoreSpeech, scoreTips } from './speakscore.js';
 
 const card = (h) => `<div class="card">${h}</div>`;
 const backTo = () => go('#pics');
 
 // ---------- 題目產生 ----------
-function sentenceTokens(s) { return String(s).trim().split(/\s+/); }
-const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z'\- ]/g, '').trim();
-
-// 在例句中找到目標字（含字尾變化，例如 pedestrians）
-function findWordInSentence(sentence, word) {
-  const toks = sentenceTokens(sentence);
-  const w = word.toLowerCase();
-  for (let i = 0; i < toks.length; i++) {
-    const t = norm(toks[i]);
-    if (t === w || (t.startsWith(w.slice(0, Math.max(4, w.length - 2))) && Math.abs(t.length - w.length) <= 3)) {
-      const m = toks[i].match(/^([^A-Za-z]*)([A-Za-z'\-]+)(.*)$/);
-      return m ? { index: i, form: m[2], pre: m[1], post: m[3] } : null;
-    }
-  }
-  return null;
+// 例句一律用單字卡上的原例句（vocab.json），孩子背的就是這一句
+function exampleOf(id, cards) {
+  const e = getById(id), c = cards[id] || {};
+  return { en: (e && e.example) || c.example || '', zh: (e && e.example_zh) || c.example_zh || '' };
 }
 
+// 題型跟其他測驗一樣：
+//  ① 單字：只給「中文意思＋詞性」→ 拼出英文（不給字母提示）
+//  ② 句子：只給「中文句子」→ 寫出完整英文例句（比對規則同測驗中心的造句題）
 function buildQuestions(day, cards) {
-  const spell = [], cloze = [], order = [];
+  const spell = [], sent = [];
   for (const id of day.wordIds) {
-    const e = getById(id), c = cards[id];
-    if (!e || !c) continue;
-    spell.push({ kind: 'spell', id, word: e.word, zh: e.zh, pos: e.pos, answer: e.word });
-    const f = findWordInSentence(c.example, e.word);
-    if (f) cloze.push({ kind: 'cloze', id, word: e.word, sentence: c.example, zh: c.example_zh, found: f, answer: f.form });
-    order.push({ kind: 'order', id, word: e.word, sentence: c.example, zh: c.example_zh, answer: c.example });
+    const e = getById(id);
+    if (!e) continue;
+    spell.push({ kind: 'spell', id, e });
+    const ex = exampleOf(id, cards);
+    if (ex.en) sent.push({ kind: 'sentence', id, e, en: ex.en, zh: ex.zh });
   }
-  return [...shuffle(spell), ...shuffle(cloze), ...shuffle(order)];
+  return [...shuffle(spell), ...shuffle(sent)];
 }
 
-const PART = { spell: '① 單字拼寫', cloze: '② 例句填空', order: '③ 句子重組' };
+const PART = { spell: '① 單字', sentence: '② 句子' };
 
 // ---------- 當天測驗 ----------
 export function startPicTest(day, cards) {
@@ -52,83 +44,62 @@ export function startPicTest(day, cards) {
   renderQ(t);
 }
 
-function hintPattern(w) { return w[0] + ' ' + w.slice(1).replace(/[a-z]/gi, '_ ').trim(); }
-
 function renderQ(t) {
   const q = t.qs[t.idx];
   if (!q) return renderTestResult(t);
   t.answered = false;
-  const progress = `<div class="daily-top"><button class="btn" id="pq-quit">‹ 離開</button><b>${PART[q.kind]}</b><span>${t.idx + 1} / ${t.qs.length}</span></div>`;
-  let body = '';
+  const head = `<div class="daily-top"><button class="btn" id="pq-quit">‹ 離開</button><b>${PART[q.kind]}</b><span>${t.idx + 1} / ${t.qs.length}</span></div>`;
+  let body;
   if (q.kind === 'spell') {
-    body = `<p class="pq-zh">${esc(q.pos)} ${esc(q.zh)}</p>
-      <p class="hint-area">提示：${esc(hintPattern(q.word))}（${q.word.length} 個字母）</p>
-      <input id="pq-in" class="answer-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="拼出英文單字" />`;
-  } else if (q.kind === 'cloze') {
-    const toks = sentenceTokens(q.sentence);
-    toks[q.found.index] = `${esc(q.found.pre)}<span class="pq-blank">______</span>${esc(q.found.post)}`;
-    const varied = q.found.form.toLowerCase() !== q.word.toLowerCase();
-    body = `<p class="pq-sent">${toks.map((x, i) => (i === q.found.index ? x : esc(x))).join(' ')}</p>
-      <p class="hint-area">${esc(q.zh)}</p>
-      ${varied ? '<p class="hint-area">提示：注意字尾變化（例如加 s）</p>' : ''}
-      <input id="pq-in" class="answer-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="填入空格的單字" />`;
+    body = `<div class="zh-prompt">${esc(q.e.zh) || '（無中文）'}</div>
+      <div class="pos">${esc(q.e.pos)}</div>
+      <input id="pq-in" class="answer-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="輸入英文拼字…" />`;
   } else {
-    const chips = shuffle(sentenceTokens(q.sentence).map((w, i) => ({ w, i })));
-    // 避免剛好洗成原句
-    if (chips.map((c) => c.i).join() === chips.map((_, i) => i).join() && chips.length > 1) chips.reverse();
-    t.chips = chips; t.picked = [];
-    body = `<p class="hint-area">${esc(q.zh)}</p>
-      <div class="pq-built" id="pq-built"><span class="hint-area">依序點下面的字，組成正確的句子</span></div>
-      <div class="pq-chips" id="pq-chips">${chips.map((c, k) => `<button class="pq-chip" data-k="${k}">${esc(c.w)}</button>`).join('')}</div>
-      <div class="btn-row"><button class="btn" id="pq-undo">↩ 退一個</button><button class="btn" id="pq-clear">清除</button></div>`;
+    body = `<p class="hint-area">把這句中文的英文例句完整寫出來：</p>
+      <div class="zh-prompt sent-zh">${esc(q.zh)}</div>
+      <textarea id="pq-in" class="answer-input sent-input" rows="2" autocapitalize="sentences" autocorrect="off" spellcheck="false" placeholder="輸入完整英文句子…"></textarea>`;
   }
-  $main().innerHTML = card(`${progress}${body}
-    <div id="pq-fb"></div>
-    <div class="btn-row"><button class="btn primary" id="pq-go">確定</button></div>`);
+  $main().innerHTML = `${card(`${head}${body}
+    <div class="btn-row"><button class="btn primary" id="pq-go">送出</button></div>`)}
+    <div id="pq-fb"></div>`;
   document.getElementById('pq-quit').onclick = () => { if (confirm('離開測驗？這次的作答不會存。')) backTo(); };
   const goBtn = document.getElementById('pq-go');
   goBtn.onclick = () => (t.answered ? next(t) : check(t));
   const inp = document.getElementById('pq-in');
-  if (inp) { inp.focus(); inp.onkeydown = (e) => { if (e.key === 'Enter') goBtn.click(); }; }
-  if (q.kind === 'order') wireChips(t);
-}
-
-function wireChips(t) {
-  const draw = () => {
-    const built = document.getElementById('pq-built');
-    built.innerHTML = t.picked.length
-      ? t.picked.map((k) => `<span class="pq-word">${esc(t.chips[k].w)}</span>`).join(' ')
-      : '<span class="hint-area">依序點下面的字，組成正確的句子</span>';
-    document.querySelectorAll('.pq-chip').forEach((b) => { b.disabled = t.picked.includes(Number(b.dataset.k)); });
-  };
-  document.querySelectorAll('.pq-chip').forEach((b) => {
-    b.onclick = () => { if (t.answered) return; t.picked.push(Number(b.dataset.k)); draw(); };
-  });
-  document.getElementById('pq-undo').onclick = () => { if (!t.answered) { t.picked.pop(); draw(); } };
-  document.getElementById('pq-clear').onclick = () => { if (!t.answered) { t.picked = []; draw(); } };
+  inp.focus();
+  if (q.kind === 'spell') inp.onkeydown = (e) => { if (e.key === 'Enter') goBtn.click(); };
 }
 
 function check(t) {
   const q = t.qs[t.idx];
-  let input, ok;
-  if (q.kind === 'order') {
-    if (t.picked.length < t.chips.length) { alert('還有字沒排完喔'); return; }
-    input = t.picked.map((k) => t.chips[k].w).join(' ');
-    ok = norm(input) === norm(q.answer);
-  } else {
-    input = document.getElementById('pq-in').value.trim();
-    if (!input) { alert('請先作答'); return; }
-    ok = input.toLowerCase() === q.answer.toLowerCase();
-  }
-  t.answered = true;
-  if (ok) t.correct++;
-  else t.wrong.push({ wordId: q.id, kind: q.kind === 'spell' ? 'spell' : 'sentence', input, answer: q.answer });
-  const fb = document.getElementById('pq-fb');
-  fb.innerHTML = `<div class="pq-fb ${ok ? 'ok' : 'ng'}">${ok ? '✅ 答對了！' : '❌ 正確答案：'}${ok ? '' : `<b>${esc(q.answer)}</b>`}
-    <button class="btn" id="pq-say">🔊</button></div>`;
-  document.getElementById('pq-say').onclick = () => speak(q.kind === 'spell' ? q.word : q.sentence);
   const inp = document.getElementById('pq-in');
-  if (inp) inp.disabled = true;
+  const val = inp.value;
+  if (!val.trim()) { inp.focus(); return; }
+  t.answered = true;
+  let ok, answer, detail = '';
+  if (q.kind === 'spell') {
+    ok = checkAnswer(q.e, val);
+    answer = q.e.answerKeys[0];
+  } else {
+    const res = compareSentence(val, q.en);
+    ok = res.correct;
+    answer = q.en;
+    detail = `<div class="card">
+      <div class="sent-block"><b>你的句子</b><div class="sent-line">${res.userHtml}</div></div>
+      <div class="sent-block"><b>正確例句</b><div class="sent-line">${res.standardHtml}</div></div>
+    </div>`;
+  }
+  if (ok) t.correct++;
+  else t.wrong.push({ wordId: q.id, kind: q.kind === 'spell' ? 'spell' : 'sentence', input: val, answer });
+  const banner = ok
+    ? `<div class="result ok">✅ ${q.kind === 'spell' ? '答對了！' : '完全正確！'}</div>`
+    : (q.kind === 'spell'
+      ? `<div class="result no">❌ 答錯，你寫「${esc(val)}」，正解：<b>${esc(answer)}</b></div>`
+      : '<div class="result no">❌ 有些地方不一樣</div>');
+  document.getElementById('pq-fb').innerHTML = `${card(`${banner}
+    <div class="btn-row"><button class="btn" id="pq-say">🔊 聽${q.kind === 'spell' ? '單字' : '例句'}</button></div>`)}${detail}`;
+  document.getElementById('pq-say').onclick = () => speak(q.kind === 'spell' ? answer : q.en);
+  inp.disabled = true;
   document.getElementById('pq-go').textContent = t.idx + 1 < t.qs.length ? '下一題 ›' : '看成績';
 }
 
@@ -147,7 +118,7 @@ async function renderTestResult(t) {
   const rows = t.wrong.length ? t.wrong.map((w) => {
     const e = getById(w.wordId);
     return `<div class="row"><div class="row-main"><span class="row-word">${esc(e ? e.word : w.wordId)}</span>
-      <span class="row-zh">${w.kind === 'spell' ? '拼字' : '句子'}</span></div>
+      <span class="row-zh">${w.kind === 'spell' ? '單字' : '句子'}</span></div>
       <div class="row-meta"><span>你寫：${esc(w.input)}</span><span>正解：${esc(w.answer)}</span></div></div>`;
   }).join('') : '<p class="hint-area">全部答對 🎉</p>';
   $main().innerHTML = card(`
@@ -164,10 +135,17 @@ async function renderTestResult(t) {
 
 // ---------- 🎤 口說測驗 ----------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-let pitchDisabled = false; // 若同時開麥克風分析會干擾辨識，之後就不再開
+// 手機（Android／iPhone）同時開「音高分析」和「語音辨識」兩個麥克風，辨識常常收不到聲音
+// → 手機上只開語音辨識（語調改以語速估計）；電腦上才加開音高分析
+const IS_MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+  || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform || ''));
+let pitchDisabled = IS_MOBILE;
 
 export function startSpeakTest(day, cards) {
-  const items = day.wordIds.map((id) => ({ id, e: getById(id), c: cards[id] })).filter((x) => x.e && x.c);
+  const items = day.wordIds.map((id) => {
+    const ex = exampleOf(id, cards);
+    return { id, e: getById(id), c: { example: ex.en, example_zh: ex.zh } };
+  }).filter((x) => x.e && x.c.example);
   const s = { day, cards, items, idx: 0, scores: [], wrong: [] };
   renderSpeak(s);
 }
@@ -178,9 +156,9 @@ function renderSpeak(s) {
   const supported = !!SR;
   $main().innerHTML = card(`
     <div class="daily-top"><button class="btn" id="sp-quit">‹ 離開</button><b>🎤 口說測驗</b><span>${s.idx + 1} / ${s.items.length}</span></div>
-    <p class="hint-area">把下面這句話完整唸出來，系統會依發音、語調、完整度打分數（滿分 100）。</p>
-    <p class="pq-sent sp-target">${esc(it.c.example)}</p>
-    <p class="hint-area">${esc(it.c.example_zh)}</p>
+    <p class="hint-area">看中文，把背好的英文例句<b>不看句子</b>唸出來，系統會依發音、語調、完整度打分數（滿分 100）。忘記了可以先聽示範。</p>
+    <div class="zh-prompt sent-zh">${esc(it.c.example_zh)}</div>
+    <p class="pq-sent sp-target" id="sp-target" style="display:none">${esc(it.c.example)}</p>
     <div class="btn-row"><button class="btn" id="sp-demo">🔊 聽示範</button><button class="btn" id="sp-slow">🐢 慢速示範</button></div>
     ${supported ? `<button class="sp-mic" id="sp-mic"><span class="sp-mic-ico">🎤</span><span id="sp-mic-txt">按一下開始唸</span></button>
       <p class="sp-live" id="sp-live"></p>` :
@@ -191,8 +169,10 @@ function renderSpeak(s) {
       <button class="btn primary" id="sp-next">${s.idx + 1 < s.items.length ? '下一句 ›' : '看總成績'}</button>
     </div>`);
   document.getElementById('sp-quit').onclick = () => { stopAll(); backTo(); };
-  document.getElementById('sp-demo').onclick = () => speak(it.c.example);
-  document.getElementById('sp-slow').onclick = () => speakSlow(it.c.example);
+  // 聽示範時才顯示英文句子；開始錄音就藏起來（要背，不是照著唸）
+  const reveal = () => { document.getElementById('sp-target').style.display = ''; };
+  document.getElementById('sp-demo').onclick = () => { reveal(); speak(it.c.example); };
+  document.getElementById('sp-slow').onclick = () => { reveal(); speakSlow(it.c.example); };
   if (!supported) return;
   document.getElementById('sp-mic').onclick = () => (active ? active.stop() : listen(s, it));
   document.getElementById('sp-retry').onclick = () => { s.pending = null; renderSpeak(s); };
@@ -265,6 +245,8 @@ async function listen(s, it) {
   const live = document.getElementById('sp-live');
   document.getElementById('sp-result').innerHTML = '';
   document.getElementById('sp-nav').style.display = 'none';
+  document.getElementById('sp-target').style.display = 'none'; // 錄音時不顯示句子
+  live.textContent = '';
 
   const rec = new SR();
   rec.lang = 'en-US';
@@ -275,7 +257,9 @@ async function listen(s, it) {
 
   const pitch = await startPitch();
   let t0 = 0, t1 = 0, finalAlts = null, errored = null;
-  btn.classList.add('on'); txt.textContent = '正在聽…唸完會自動停止（再按一下也能停）';
+  txt.textContent = '準備中…';
+  // 真的開始收音（onaudiostart）才變紅，孩子看到紅色再開口
+  rec.onaudiostart = () => { btn.classList.add('on'); txt.textContent = '🔴 開始唸！唸完會自動停止（再按一下也能停）'; };
 
   rec.onspeechstart = () => { t0 = performance.now(); };
   rec.onspeechend = () => { t1 = performance.now(); };
@@ -308,6 +292,13 @@ async function listen(s, it) {
       return;
     }
     const alts = finalAlts || (live.textContent ? [{ transcript: live.textContent, confidence: 0 }] : []);
+    if (!alts.length || !String(alts[0].transcript || '').trim()) {
+      if (pitch) pitchDisabled = true; // 可能是兩個麥克風互搶，下次只開辨識
+      document.getElementById('sp-result').innerHTML = `<div class="pq-fb ng">沒有收到聲音${errored ? `（${esc(errored)}）` : ''}。<br>
+        請按麥克風、等按鈕<b>變紅色</b>後再開始唸，嘴巴離手機約一個手掌遠、唸大聲一點。</div>
+        <p class="hint-area">還是不行：確認瀏覽器已允許「麥克風」，且沒有其他 App（例如 Gemini、通話）正在使用麥克風。</p>`;
+      return;
+    }
     const seconds = t0 && t1 && t1 > t0 ? (t1 - t0) / 1000 : 0;
     const res = scoreSpeech(it.c.example, alts, { seconds, pitches: pitch ? pitch.pitches : null });
     s.pending = res;

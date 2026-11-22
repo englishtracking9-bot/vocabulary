@@ -86,8 +86,8 @@
     "什麼都要別人服侍 → 傲慢的、自大的！"
    ],
    "tip": "口訣：鼻孔朝天的螞蟻 ant → arrogant",
-   "example": "The arrogant player never passes the ball to his teammates.",
-   "example_zh": "那個傲慢的球員從不把球傳給隊友。"
+   "example": "His arrogant attitude annoyed everyone.",
+   "example_zh": "他傲慢的態度惹惱了大家。"
   },
   "naive": {
    "img": "./images/cards/naive.webp",
@@ -99,8 +99,8 @@
     "別人說什麼都相信 → 天真的！"
    ],
    "tip": "口訣：剛出生 (nat) 的寶寶最天真",
-   "example": "It is naive to believe everything you read online.",
-   "example_zh": "相信網路上看到的每件事是很天真的。"
+   "example": "It was naive of him to trust a stranger.",
+   "example_zh": "他輕信陌生人實在太天真了。"
   },
   "eccentric": {
    "img": "./images/cards/eccentric.webp",
@@ -112,8 +112,8 @@
     "→ 古怪的、行為異常的！"
    ],
    "tip": "口訣：跑出 (ec) 中心 (center) → 怪怪的",
-   "example": "My eccentric uncle wears sunglasses even at night.",
-   "example_zh": "我那個古怪的叔叔連晚上都戴太陽眼鏡。"
+   "example": "The eccentric artist wore odd clothes.",
+   "example_zh": "那位古怪的藝術家穿著奇裝異服。"
   },
   "obstinate": {
    "img": "./images/cards/obstinate.webp",
@@ -125,8 +125,8 @@
     "→ 固執的、頑固的！"
    ],
    "tip": "口訣：對著 (ob) 站 (stin) 死不動",
-   "example": "The obstinate boy refused to apologize, even though he was wrong.",
-   "example_zh": "那個固執的男孩明明錯了卻拒絕道歉。"
+   "example": "The obstinate child refused to move.",
+   "example_zh": "那個固執的孩子就是不肯走。"
   },
   "skeptical": {
    "img": "./images/cards/skeptical.webp",
@@ -138,8 +138,8 @@
     "不肯輕易相信 → 懷疑的！"
    ],
    "tip": "口訣：skept = 拿放大鏡一直看 → 懷疑",
-   "example": "Mom was skeptical when I said I finished all my homework in ten minutes.",
-   "example_zh": "我說十分鐘就寫完功課時，媽媽一臉懷疑。"
+   "example": "She was skeptical about his promise.",
+   "example_zh": "她對他的承諾抱持懷疑。"
   },
   "versatile": {
    "img": "./images/cards/versatile.webp",
@@ -151,8 +151,8 @@
     "什麼都會 → 多才多藝的！"
    ],
    "tip": "口訣：轉 (vers) 一轉就換一種本領",
-   "example": "A smartphone is a versatile tool: it is a camera, a map, and a dictionary.",
-   "example_zh": "智慧型手機用途很廣：它是相機、地圖，也是字典。"
+   "example": "She is a versatile player who can play any position.",
+   "example_zh": "她是個能勝任任何位置的全能球員。"
   },
   "eloquent": {
    "img": "./images/cards/eloquent.webp",
@@ -164,8 +164,8 @@
     "→ 有口才的、雄辯的！"
    ],
    "tip": "口訣：e (出) + loqu (說) → 說出好口才",
-   "example": "Her eloquent speech won first prize in the English contest.",
-   "example_zh": "她那場有說服力的演講拿下英文比賽第一名。"
+   "example": "She gave an eloquent speech.",
+   "example_zh": "她發表了一場雄辯的演說。"
   },
   "vague": {
    "img": "./images/cards/vague.webp",
@@ -177,8 +177,8 @@
     "→ 含糊的、模糊的！"
    ],
    "tip": "口訣：話在霧裡流浪 (vag) → 模糊",
-   "example": "His answer was so vague that nobody knew whether he agreed or not.",
-   "example_zh": "他的回答太含糊，沒人知道他到底同不同意。"
+   "example": "His directions were too vague to follow.",
+   "example_zh": "他的指示太含糊，難以照著走。"
   },
   "compassion": {
    "img": "./images/cards/compassion.webp",
@@ -190,8 +190,8 @@
     "→ 同情、憐憫！"
    ],
    "tip": "口訣：一起 (com) 感受 (passion) 痛",
-   "example": "The nurse treated every patient with compassion.",
-   "example_zh": "那位護理師用同理心對待每一位病人。"
+   "example": "She treats the sick with compassion.",
+   "example_zh": "她以同情心對待病人。"
   },
   "predator": {
    "img": "./images/cards/predator.webp",
@@ -203,8 +203,8 @@
     "→ 掠食者！"
    ],
    "tip": "口訣：撲來的 (predator) 就是掠食者",
-   "example": "The eagle is a predator that hunts small animals from the sky.",
-   "example_zh": "老鷹是從空中獵捕小動物的掠食者。"
+   "example": "The lion is a powerful predator.",
+   "example_zh": "獅子是強大的掠食者。"
   },
   "lethal": {
    "img": "./images/cards/lethal.webp",
@@ -216,8 +216,8 @@
     "→ 致命的！"
    ],
    "tip": "口訣：立死喔 (lethal) → 致命的",
-   "example": "Some mushrooms in the forest are lethal, so never eat wild ones.",
-   "example_zh": "森林裡有些蘑菇是致命的，所以絕對別吃野生的。"
+   "example": "The snake's venom is lethal.",
+   "example_zh": "這種蛇的毒液是致命的。"
   },
   "vulnerable": {
    "img": "./images/cards/vulnerable.webp",
@@ -229,8 +229,8 @@
     "→ 易受傷害的、脆弱的！"
    ],
    "tip": "口訣：能 (able) 被弄出傷口 (vulner)",
-   "example": "Without its shell, a turtle is vulnerable to attack.",
-   "example_zh": "沒有殼的話，烏龜很容易受到攻擊。"
+   "example": "Young animals are vulnerable to danger.",
+   "example_zh": "幼小的動物容易受到危險威脅。"
   },
   "kidnap": {
    "img": "./images/cards/kidnap.webp",
@@ -242,8 +242,8 @@
     "→ 綁架！"
    ],
    "tip": "口訣：kid 睡 nap 時被抓走 → kidnap",
-   "example": "In the movie, the bad guys kidnap the scientist's daughter.",
-   "example_zh": "電影裡，壞人綁架了科學家的女兒。"
+   "example": "In the story, robbers kidnap the prince.",
+   "example_zh": "在故事裡，盜匪綁架了王子。"
   },
   "notorious": {
    "img": "./images/cards/notorious.webp",
@@ -255,8 +255,8 @@
     "→ 惡名昭彰的！"
    ],
    "tip": "口訣：人人都知道 (not) 的壞名聲",
-   "example": "This corner is notorious for traffic jams during rush hour.",
-   "example_zh": "這個路口以尖峰時段塞車出名（惡名昭彰）。"
+   "example": "The road is notorious for accidents.",
+   "example_zh": "這條路因事故頻傳而惡名昭彰。"
   },
   "bizarre": {
    "img": "./images/cards/bizarre.webp",
@@ -268,8 +268,8 @@
     "怪到不行 → 奇異的、怪誕的！"
    ],
    "tip": "口訣：怪怪的比薩 (bizarre)",
-   "example": "Putting bananas on pizza sounds bizarre, but some people love it.",
-   "example_zh": "在比薩上放香蕉聽起來很怪，但有些人很愛。"
+   "example": "She told a bizarre story about a ghost.",
+   "example_zh": "她講了一個離奇的鬼故事。"
   },
   "pedestrian": {
    "img": "./images/cards/pedestrian.webp",
@@ -281,8 +281,8 @@
     "→ 行人！"
    ],
    "tip": "口訣：用腳 (ped) 走路的人 (ian)",
-   "example": "Drivers must stop and let pedestrians cross the street.",
-   "example_zh": "駕駛必須停車，讓行人過馬路。"
+   "example": "Pedestrians should use the crosswalk.",
+   "example_zh": "行人應該走斑馬線。"
   },
   "tedious": {
    "img": "./images/cards/tedious.webp",
@@ -294,8 +294,8 @@
     "→ 冗長乏味的！"
    ],
    "tip": "口訣：踢地兒死 (tedious) → 無聊死了",
-   "example": "Copying the same word fifty times is really tedious.",
-   "example_zh": "同一個字抄五十遍真的很無聊。"
+   "example": "Copying the list was a tedious task.",
+   "example_zh": "抄寫這份清單是件枯燥的工作。"
   },
   "coincidence": {
    "img": "./images/cards/coincidence.webp",
@@ -307,8 +307,8 @@
     "→ 巧合！"
    ],
    "tip": "口訣：一起 (co) 掉下來 (cid) → 巧合",
-   "example": "What a coincidence! We are wearing the same T-shirt today.",
-   "example_zh": "真巧！我們今天穿了一樣的 T 恤。"
+   "example": "Meeting you here is a happy coincidence.",
+   "example_zh": "在這裡遇見你真是個美好的巧合。"
   },
   "persevere": {
    "img": "./images/cards/persevere.webp",
@@ -320,8 +320,8 @@
     "→ 堅持不懈！"
    ],
    "tip": "口訣：per (到底) + severe (艱難) 也不放棄",
-   "example": "If you persevere, your English will improve step by step.",
-   "example_zh": "只要你堅持下去，英文會一步一步進步。"
+   "example": "She persevered despite many failures.",
+   "example_zh": "儘管屢次失敗，她仍堅持不懈。"
   },
   "spontaneous": {
    "img": "./images/cards/spontaneous.webp",
@@ -333,8 +333,8 @@
     "→ 自發的、自然而然的！"
    ],
    "tip": "口訣：spont = 自己願意 → 自發的",
-   "example": "When the singer finished, the crowd broke into spontaneous applause.",
-   "example_zh": "歌手一唱完，觀眾自然而然地響起掌聲。"
+   "example": "The crowd broke into spontaneous applause.",
+   "example_zh": "群眾自發地鼓起掌來。"
   },
   "abundant": {
    "img": "./images/cards/abundant.webp",
@@ -346,8 +346,8 @@
     "→ 豐富的、大量的！"
    ],
    "tip": "口訣：滿滿的 bun 麵包 → abundant",
-   "example": "Taiwan has abundant fruit, especially in summer.",
-   "example_zh": "台灣水果很豐富，尤其是在夏天。"
+   "example": "The region has abundant water resources.",
+   "example_zh": "這個地區有豐富的水資源。"
   },
   "ponder": {
    "img": "./images/cards/ponder.webp",
@@ -359,8 +359,8 @@
     "托著下巴「沉思」：要不要吃宵夜？"
    ],
    "tip": "口訣：胖的 (ponder) 人最愛沉思",
-   "example": "She sat by the window to ponder whether she should study abroad.",
-   "example_zh": "她坐在窗邊，仔細考慮要不要出國唸書。"
+   "example": "She pondered the difficult question.",
+   "example_zh": "她仔細思索這個難題。"
   },
   "dilemma": {
    "img": "./images/cards/dilemma.webp",
@@ -372,8 +372,8 @@
     "兩條路都可能踩「地雷嘛」→ 兩難！"
    ],
    "tip": "口訣：二條路都是地雷嘛 → dilemma",
-   "example": "Choosing between the two universities put Amy in a real dilemma.",
-   "example_zh": "要在兩所大學中做選擇，讓 Amy 陷入兩難。"
+   "example": "She faced a difficult dilemma.",
+   "example_zh": "她面臨一個難以抉擇的困境。"
   },
   "hypocrite": {
    "img": "./images/cards/hypocrite.webp",
@@ -385,8 +385,8 @@
     "躲在「面具下面」演戲的人 → 偽君子！"
    ],
    "tip": "口訣：面具下 (hypo) 在演戲 (crite)",
-   "example": "He tells us not to use phones in class, but he is always on his own—what a hypocrite!",
-   "example_zh": "他叫我們上課別滑手機，自己卻一直滑——真是偽君子！"
+   "example": "He is a hypocrite who says one thing and does another.",
+   "example_zh": "他是個言行不一的偽君子。"
   }
  }
 }

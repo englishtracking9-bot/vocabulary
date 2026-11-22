@@ -69,9 +69,9 @@ async function renderPicCards() {
         <button class="btn primary" id="pc-test">✏️ 當天測驗（單字＋句子）</button>
       </div>
       <div class="btn-row">
-        <button class="btn primary" id="pc-speak">🎤 口說測驗（唸句子打分數）</button>
+        <button class="btn primary" id="pc-speak">🎤 口說測驗（背句子打分數）</button>
       </div>
-      <p class="hint-area">測驗：拼字 → 例句填空 → 句子重組，共 ${cur.wordIds.length * 3} 題。口說：唸出 ${cur.wordIds.length} 個例句，依發音、語調、完整度打分（滿分 100）。成績會存到「測驗」頁的成績紀錄。</p>
+      <p class="hint-area">測驗：看中文拼單字 → 看中文寫出整句英文例句，共 ${cur.wordIds.length * 2} 題。口說：看中文、不看英文，把 ${cur.wordIds.length} 個例句背出來唸，依發音、語調、完整度打分（滿分 100）。成績會存到「測驗」頁的成績紀錄。</p>
     </div>` : ''}
     <div class="card">
       <div class="btn-row">
