@@ -4,6 +4,7 @@
 
 import { go } from './app.js';
 import { openWordDetail } from './mywords.js';
+import { startPicTest, startSpeakTest } from './picquiz.js';
 import { createManualGroup, openScheduleModal } from './parent.js';
 import { $main } from './state.js';
 import { esc, prettyDate, todayStr } from './util.js';
@@ -62,6 +63,16 @@ async function renderPicCards() {
       <div class="pc-tabs">${tabs}</div>
     </div>
     <div class="pc-list">${cards}</div>
+    ${cur && cur.wordIds.length ? `<div class="card">
+      <h3>📝 ${esc(cur.label)}練習</h3>
+      <div class="btn-row">
+        <button class="btn primary" id="pc-test">✏️ 當天測驗（單字＋句子）</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn primary" id="pc-speak">🎤 口說測驗（唸句子打分數）</button>
+      </div>
+      <p class="hint-area">測驗：拼字 → 例句填空 → 句子重組，共 ${cur.wordIds.length * 3} 題。口說：唸出 ${cur.wordIds.length} 個例句，依發音、語調、完整度打分（滿分 100）。成績會存到「測驗」頁的成績紀錄。</p>
+    </div>` : ''}
     <div class="card">
       <div class="btn-row">
         <button class="btn primary" id="pc-sched-day">📅 把這 ${cur ? cur.wordIds.length : 0} 個字排到某天</button>
@@ -82,6 +93,10 @@ async function renderPicCards() {
   $main().querySelectorAll('[data-zoom]').forEach((el) => {
     el.onclick = () => openZoom(el.dataset.zoom);
   });
+  const pt = document.getElementById('pc-test');
+  if (pt) pt.onclick = () => { startPicTest(cur, data.cards); window.scrollTo(0, 0); };
+  const ps = document.getElementById('pc-speak');
+  if (ps) ps.onclick = () => { startSpeakTest(cur, data.cards); window.scrollTo(0, 0); };
   const sd = document.getElementById('pc-sched-day');
   if (sd && cur) sd.onclick = () => openScheduleModal(cur.wordIds);
   const sw = document.getElementById('pc-sched-week');
