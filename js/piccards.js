@@ -4,7 +4,7 @@
 
 import { go } from './app.js';
 import { openWordDetail } from './mywords.js';
-import { startPicTest, startSpeakTest } from './picquiz.js';
+import { SPEAK_PASS, loadPicScores, startPicTest, startSpeakTest } from './picquiz.js';
 import { createManualGroup, openScheduleModal } from './parent.js';
 import { $main } from './state.js';
 import { esc, prettyDate, todayStr } from './util.js';
@@ -41,9 +41,37 @@ async function renderPicCards() {
   const days = data.days || [];
   if (_day == null && days.length) _day = days[0].day;
   const cur = days.find((d) => d.day === _day) || days[0];
+  const scores = await loadPicScores();
+  const passed = (id) => {
+    const w = scores[id] || {};
+    return !!(w.spell && w.spell.ok && w.sentence && w.sentence.ok && w.speak && w.speak.total >= SPEAK_PASS);
+  };
+  const dayDone = (d) => d.wordIds.length && d.wordIds.every(passed);
 
   const tabs = days.map((d) =>
-    `<button class="pc-tab ${cur && d.day === cur.day ? 'on' : ''}" data-day="${d.day}">${esc(d.label)}</button>`).join('');
+    `<button class="pc-tab ${cur && d.day === cur.day ? 'on' : ''}" data-day="${d.day}">${esc(d.label)}${dayDone(d) ? ' ✅' : ''}</button>`).join('');
+
+  // 📊 成績表：每個字的 單字／句子／口說 最新結果，點格子只重測那一題
+  const cell = (id, kind) => {
+    const r = (scores[id] || {})[kind];
+    let txt, cls;
+    if (!r) { txt = '未測'; cls = 'none'; }
+    else if (kind === 'speak') { txt = `${r.total}`; cls = r.total >= SPEAK_PASS ? 'ok' : 'ng'; }
+    else { txt = r.ok ? '✔' : '✘'; cls = r.ok ? 'ok' : 'ng'; }
+    const best = kind === 'speak' && r && r.best > r.total ? `<small>最高 ${r.best}</small>` : '';
+    return `<button class="ps-cell ${cls}" data-rt="${esc(id)}|${kind}">${txt}${best}<small>${r ? '重測' : '去測'}</small></button>`;
+  };
+  const board = cur && cur.wordIds.length ? `
+    <div class="ps-grid">
+      <div class="ps-h">單字</div><div class="ps-h">拼字</div><div class="ps-h">句子</div><div class="ps-h">口說</div>
+      ${cur.wordIds.map((id) => `<div class="ps-word">${esc(getById(id).word)}</div>${cell(id, 'spell')}${cell(id, 'sentence')}${cell(id, 'speak')}`).join('')}
+    </div>
+    <p class="hint-area">點任一格只重測那一題。口說 ${SPEAK_PASS} 分以上算過關；三項都過關，上面的天數會打 ✅。</p>` : '';
+  const toRedo = cur ? cur.wordIds.flatMap((id) => {
+    const w = scores[id] || {};
+    return ['spell', 'sentence'].filter((k) => !(w[k] && w[k].ok)).map((k) => ({ id, kind: k }));
+  }) : [];
+  const speakRedo = cur ? cur.wordIds.filter((id) => !((scores[id] || {}).speak && scores[id].speak.total >= SPEAK_PASS)) : [];
 
   const cards = cur ? cur.wordIds.map((id) => {
     const e = getById(id);
@@ -62,17 +90,20 @@ async function renderPicCards() {
       <p class="hint-area">學測 Level 5–6 難字，用諧音或字根拆解畫成圖卡。一天 3 張；點圖片可全螢幕放大（雙指縮放、點兩下放大），長按圖片可以存到手機。</p>
       <div class="pc-tabs">${tabs}</div>
     </div>
-    <div class="pc-list">${cards}</div>
     ${cur && cur.wordIds.length ? `<div class="card">
-      <h3>📝 ${esc(cur.label)}練習</h3>
+      <h3>📊 ${esc(cur.label)}成績</h3>
+      ${board}
       <div class="btn-row">
-        <button class="btn primary" id="pc-test">✏️ 當天測驗（單字＋句子）</button>
+        <button class="btn primary" id="pc-test">✏️ 整份測驗（單字＋句子）</button>
+        <button class="btn primary" id="pc-speak">🎤 整份口說</button>
       </div>
-      <div class="btn-row">
-        <button class="btn primary" id="pc-speak">🎤 口說測驗（背句子打分數）</button>
-      </div>
-      <p class="hint-area">測驗：看中文拼單字 → 看中文寫出整句英文例句，共 ${cur.wordIds.length * 2} 題。口說：看中文、不看英文，把 ${cur.wordIds.length} 個例句背出來唸，依發音、語調、完整度打分（滿分 100）。成績會存到「測驗」頁的成績紀錄。</p>
+      ${toRedo.length || speakRedo.length ? `<div class="btn-row">
+        ${toRedo.length ? `<button class="btn" id="pc-redo">🔁 只測沒過的（${toRedo.length} 題）</button>` : ''}
+        ${speakRedo.length ? `<button class="btn" id="pc-redo-sp">🎤 只唸沒過的（${speakRedo.length} 句）</button>` : ''}
+      </div>` : ''}
+      <p class="hint-area">測驗：看中文拼單字、看中文寫出整句英文例句。口說：看中文、不看英文，把例句背出來唸，依發音、語調、完整度打分（滿分 100）。整份測驗的成績也會存到「測驗」頁的成績紀錄。</p>
     </div>` : ''}
+    <div class="pc-list">${cards}</div>
     <div class="card">
       <div class="btn-row">
         <button class="btn primary" id="pc-sched-day">📅 把這 ${cur ? cur.wordIds.length : 0} 個字排到某天</button>
@@ -97,6 +128,18 @@ async function renderPicCards() {
   if (pt) pt.onclick = () => { startPicTest(cur, data.cards); window.scrollTo(0, 0); };
   const ps = document.getElementById('pc-speak');
   if (ps) ps.onclick = () => { startSpeakTest(cur, data.cards); window.scrollTo(0, 0); };
+  $main().querySelectorAll('[data-rt]').forEach((b) => {
+    b.onclick = () => {
+      const [id, kind] = b.dataset.rt.split('|');
+      if (kind === 'speak') startSpeakTest(cur, data.cards, [id]);
+      else startPicTest(cur, data.cards, [{ id, kind }]);
+      window.scrollTo(0, 0);
+    };
+  });
+  const rd = document.getElementById('pc-redo');
+  if (rd) rd.onclick = () => { startPicTest(cur, data.cards, toRedo); window.scrollTo(0, 0); };
+  const rs = document.getElementById('pc-redo-sp');
+  if (rs) rs.onclick = () => { startSpeakTest(cur, data.cards, speakRedo); window.scrollTo(0, 0); };
   const sd = document.getElementById('pc-sched-day');
   if (sd && cur) sd.onclick = () => openScheduleModal(cur.wordIds);
   const sw = document.getElementById('pc-sched-week');

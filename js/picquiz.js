@@ -1,5 +1,7 @@
 // picquiz.js — 🖼️ 圖解記憶卡的「當天測驗」與「🎤 口說測驗」
-// 成績存進既有的 testResults（測驗中心的「成績紀錄」看得到），不改 SM-2 熟練度紀錄。
+// 整份測驗的成績存進既有的 testResults（測驗中心的「成績紀錄」看得到）；
+// 每個字的單字／句子／口說「最新結果」另存在 IndexedDB 的 meta（key：picScores::<profileId>），
+// 圖卡頁的成績表用它，可以只重測某一題。都不改 SM-2 熟練度紀錄。
 
 import { go } from './app.js';
 import { speak } from './lookup.js';
@@ -8,10 +10,29 @@ import { saveTestResult } from './tests.js';
 import { esc, shuffle } from './util.js';
 import { checkAnswer, getById } from './vocab.js';
 import { compareSentence } from './sentence.js';
+import { getMeta, setMeta } from './db.js';
 import { scoreComment, scoreSpeech, scoreTips } from './speakscore.js';
 
 const card = (h) => `<div class="card">${h}</div>`;
 const backTo = () => go('#pics');
+export const SPEAK_PASS = 80; // 口說幾分算過關
+
+// ---------- 每題成績（單字 spell／句子 sentence／口說 speak）----------
+const scoreKey = () => `picScores::${State.profile.id}`;
+export async function loadPicScores() {
+  try { return (await getMeta(scoreKey(), {})) || {}; } catch (e) { return {}; }
+}
+async function savePicItem(wordId, kind, data) {
+  try {
+    const all = await loadPicScores();
+    const w = all[wordId] || (all[wordId] = {});
+    const prev = w[kind] || {};
+    const rec = { ...data, at: Date.now(), tries: (prev.tries || 0) + 1 };
+    if (kind === 'speak') rec.best = Math.max(prev.best || 0, data.total || 0);
+    w[kind] = rec;
+    await setMeta(scoreKey(), all);
+  } catch (e) { console.warn('圖卡成績存檔失敗', e); }
+}
 
 // ---------- 題目產生 ----------
 // 例句一律用單字卡上的原例句（vocab.json），孩子背的就是這一句
@@ -23,14 +44,15 @@ function exampleOf(id, cards) {
 // 題型跟其他測驗一樣：
 //  ① 單字：只給「中文意思＋詞性」→ 拼出英文（不給字母提示）
 //  ② 句子：只給「中文句子」→ 寫出完整英文例句（比對規則同測驗中心的造句題）
-function buildQuestions(day, cards) {
+function buildQuestions(day, cards, only) {
+  const want = only ? new Set(only.map((o) => `${o.id}|${o.kind}`)) : null;
   const spell = [], sent = [];
   for (const id of day.wordIds) {
     const e = getById(id);
     if (!e) continue;
-    spell.push({ kind: 'spell', id, e });
+    if (!want || want.has(`${id}|spell`)) spell.push({ kind: 'spell', id, e });
     const ex = exampleOf(id, cards);
-    if (ex.en) sent.push({ kind: 'sentence', id, e, en: ex.en, zh: ex.zh });
+    if (ex.en && (!want || want.has(`${id}|sentence`))) sent.push({ kind: 'sentence', id, e, en: ex.en, zh: ex.zh });
   }
   return [...shuffle(spell), ...shuffle(sent)];
 }
@@ -38,9 +60,10 @@ function buildQuestions(day, cards) {
 const PART = { spell: '① 單字', sentence: '② 句子' };
 
 // ---------- 當天測驗 ----------
-export function startPicTest(day, cards) {
-  const qs = buildQuestions(day, cards);
-  const t = { day, cards, qs, idx: 0, correct: 0, wrong: [], answered: false };
+// only：只測這幾題（[{id, kind:'spell'|'sentence'}]），用於成績表上的「重測」
+export function startPicTest(day, cards, only = null) {
+  const qs = buildQuestions(day, cards, only);
+  const t = { day, cards, qs, idx: 0, correct: 0, wrong: [], answered: false, partial: !!only };
   renderQ(t);
 }
 
@@ -91,6 +114,7 @@ function check(t) {
   }
   if (ok) t.correct++;
   else t.wrong.push({ wordId: q.id, kind: q.kind === 'spell' ? 'spell' : 'sentence', input: val, answer });
+  savePicItem(q.id, q.kind, { ok, input: val });
   const banner = ok
     ? `<div class="result ok">✅ ${q.kind === 'spell' ? '答對了！' : '完全正確！'}</div>`
     : (q.kind === 'spell'
@@ -108,12 +132,15 @@ function next(t) { t.idx++; renderQ(t); window.scrollTo(0, 0); }
 async function renderTestResult(t) {
   const total = t.qs.length;
   let saved = null;
-  try {
-    saved = await saveTestResult({
-      profileId: State.profile.id, type: 'pics', name: `圖解記憶卡 ${t.day.label}`,
-      total, correct: t.correct, wrong: t.wrong,
-    });
-  } catch (e) { console.warn('成績存檔失敗', e); }
+  // 整份測驗才存進測驗中心的成績紀錄；只重測幾題時，結果已逐題更新到成績表
+  if (!t.partial) {
+    try {
+      saved = await saveTestResult({
+        profileId: State.profile.id, type: 'pics', name: `圖解記憶卡 ${t.day.label}`,
+        total, correct: t.correct, wrong: t.wrong,
+      });
+    } catch (e) { console.warn('成績存檔失敗', e); }
+  }
   const pct = total ? Math.round((t.correct / total) * 100) : 0;
   const rows = t.wrong.length ? t.wrong.map((w) => {
     const e = getById(w.wordId);
@@ -122,14 +149,16 @@ async function renderTestResult(t) {
       <div class="row-meta"><span>你寫：${esc(w.input)}</span><span>正解：${esc(w.answer)}</span></div></div>`;
   }).join('') : '<p class="hint-area">全部答對 🎉</p>';
   $main().innerHTML = card(`
-    <h2>${esc(t.day.label)} 測驗完成</h2>
+    <h2>${esc(t.day.label)} ${t.partial ? '重測完成' : '測驗完成'}</h2>
     <p class="pq-big">${pct} 分</p>
-    <p class="hint-area">答對 ${t.correct} / ${total} 題${saved ? '・已存到測驗中心的「成績紀錄」' : ''}</p>
+    <p class="hint-area">答對 ${t.correct} / ${total} 題${saved ? '・已存到測驗中心的「成績紀錄」' : ''}・圖卡頁的成績表已更新</p>
     <div class="detail-list">${rows}</div>
-    <div class="btn-row"><button class="btn primary" id="pr-speak">🎤 接著口說測驗</button></div>
-    <div class="btn-row"><button class="btn" id="pr-again">🔁 再測一次</button><button class="btn" id="pr-back">回圖解記憶卡</button></div>`);
-  document.getElementById('pr-again').onclick = () => startPicTest(t.day, t.cards);
-  document.getElementById('pr-speak').onclick = () => startSpeakTest(t.day, t.cards);
+    ${t.partial ? '' : '<div class="btn-row"><button class="btn primary" id="pr-speak">🎤 接著口說測驗</button></div>'}
+    <div class="btn-row">${t.wrong.length ? '<button class="btn" id="pr-wrong">🔁 只重測錯的</button>' : ''}<button class="btn${t.partial ? ' primary' : ''}" id="pr-back">📊 回成績表</button></div>`);
+  const sp = document.getElementById('pr-speak');
+  if (sp) sp.onclick = () => startSpeakTest(t.day, t.cards);
+  const pw = document.getElementById('pr-wrong');
+  if (pw) pw.onclick = () => startPicTest(t.day, t.cards, t.wrong.map((w) => ({ id: w.wordId, kind: w.kind === 'spell' ? 'spell' : 'sentence' })));
   document.getElementById('pr-back').onclick = backTo;
 }
 
@@ -141,12 +170,13 @@ const IS_MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
   || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform || ''));
 let pitchDisabled = IS_MOBILE;
 
-export function startSpeakTest(day, cards) {
-  const items = day.wordIds.map((id) => {
+// onlyIds：只唸這幾句（成績表上的「重唸」）
+export function startSpeakTest(day, cards, onlyIds = null) {
+  const items = (onlyIds || day.wordIds).map((id) => {
     const ex = exampleOf(id, cards);
     return { id, e: getById(id), c: { example: ex.en, example_zh: ex.zh } };
   }).filter((x) => x.e && x.c.example);
-  const s = { day, cards, items, idx: 0, scores: [], wrong: [] };
+  const s = { day, cards, items, idx: 0, scores: [], wrong: [], partial: !!onlyIds };
   renderSpeak(s);
 }
 
@@ -166,7 +196,7 @@ function renderSpeak(s) {
     <div id="sp-result"></div>
     <div class="btn-row" id="sp-nav" style="display:none">
       <button class="btn" id="sp-retry">🔁 再唸一次</button>
-      <button class="btn primary" id="sp-next">${s.idx + 1 < s.items.length ? '下一句 ›' : '看總成績'}</button>
+      <button class="btn primary" id="sp-next">${s.idx + 1 < s.items.length ? '下一句 ›' : (s.partial ? '完成' : '看總成績')}</button>
     </div>`);
   document.getElementById('sp-quit').onclick = () => { stopAll(); backTo(); };
   // 聽示範時才顯示英文句子；開始錄音就藏起來（要背，不是照著唸）
@@ -177,7 +207,12 @@ function renderSpeak(s) {
   document.getElementById('sp-mic').onclick = () => (active ? active.stop() : listen(s, it));
   document.getElementById('sp-retry').onclick = () => { s.pending = null; renderSpeak(s); };
   document.getElementById('sp-next').onclick = () => {
-    if (s.pending) { s.scores.push(s.pending); if (s.pending.total < 80) s.wrong.push({ wordId: it.id, kind: 'sentence', input: s.pending.transcript || '(沒有聽到)', answer: it.c.example }); }
+    if (s.pending) {
+      const r = s.pending;
+      s.scores.push(r);
+      if (r.total < SPEAK_PASS) s.wrong.push({ wordId: it.id, kind: 'sentence', input: r.transcript || '(沒有聽到)', answer: it.c.example });
+      savePicItem(it.id, 'speak', { total: r.total, pronunciation: r.pronunciation, completeness: r.completeness, prosody: r.prosody, transcript: r.transcript });
+    }
     s.pending = null; s.idx++; renderSpeak(s); window.scrollTo(0, 0);
   };
 }
@@ -255,7 +290,10 @@ async function listen(s, it) {
   rec.maxAlternatives = 5;
   active = rec;
 
-  const pitch = await startPitch();
+  // 手機上不開音高分析，而且要在「按下按鈕的同一瞬間」就啟動辨識（中間不能 await），
+  // 部分 Android（例如 Pixel）晚一步啟動會被拒絕
+  let pitch = null;
+  if (!pitchDisabled) startPitch().then((p) => { if (active === rec) pitch = p; else if (p) p.stop(); });
   let t0 = 0, t1 = 0, finalAlts = null, errored = null;
   txt.textContent = '準備中…';
   // 真的開始收音（onaudiostart）才變紅，孩子看到紅色再開口
@@ -276,9 +314,9 @@ async function listen(s, it) {
     active = null;
     if (pitch) pitch.stop();
     btn.classList.remove('on'); txt.textContent = '按一下重新唸';
-    if (errored === 'not-allowed' || errored === 'service-not-allowed') {
+    if (errored && errored !== 'no-speech' && errored !== 'aborted' && errored !== 'audio-capture' && errored !== 'network') {
       live.textContent = '';
-      document.getElementById('sp-result').innerHTML = '<p class="pq-fb ng">麥克風沒有權限。請到瀏覽器的網站設定允許使用麥克風，再重新整理。</p>';
+      document.getElementById('sp-result').innerHTML = micErrorHTML(errored);
       return;
     }
     if (errored === 'audio-capture' && pitch) {
@@ -305,7 +343,23 @@ async function listen(s, it) {
     showSpeakScore(res);
     document.getElementById('sp-nav').style.display = '';
   };
-  try { rec.start(); } catch (e) { if (pitch) pitch.stop(); active = null; btn.classList.remove('on'); }
+  try { rec.start(); } catch (e) {
+    if (pitch) pitch.stop();
+    active = null; btn.classList.remove('on'); txt.textContent = '按一下開始唸';
+    document.getElementById('sp-result').innerHTML = micErrorHTML(e && (e.name || e.message) || 'start-failed');
+  }
+}
+
+// 辨識失敗的說明（附錯誤代碼，方便家長截圖回報）
+function micErrorHTML(code) {
+  const tips = {
+    'not-allowed': '這個網站還沒被允許使用麥克風：Chrome 網址列左邊的「⚙／鎖頭」→ 權限 → 麥克風 → 允許，再重新整理。',
+    'service-not-allowed': 'Android 的語音辨識服務沒有麥克風權限或被停用：手機「設定 → 應用程式 → Google」→ 權限 → 麥克風 → 允許；並確認「Google」App 沒有被停用、已更新到最新版。',
+    'language-not-supported': '手機缺少英文語音辨識：手機「設定 → 系統 → 語言 → 語音輸入（或 Google 語音辨識）」→ 加入「English (US)」，或下載英文離線語音辨識。',
+    'bad-grammar': '語音辨識服務出錯，請重新整理再試。',
+  };
+  const tip = tips[code] || '請重新整理頁面再試；若仍失敗，請確認 Chrome 與「Google」App 都已更新到最新版。';
+  return `<div class="pq-fb ng">無法啟動語音辨識（錯誤代碼：${esc(String(code))}）</div><p class="hint-area">${esc(tip)}</p>`;
 }
 
 function bar(label, v, note = '') {
@@ -333,7 +387,7 @@ async function renderSpeakResult(s) {
   const n = s.scores.length;
   const avg = n ? Math.round(s.scores.reduce((a, r) => a + r.total, 0) / n) : 0;
   let saved = null;
-  if (n) {
+  if (n && !s.partial) {
     try {
       saved = await saveTestResult({
         profileId: State.profile.id, type: 'speak', name: `口說・${s.day.label}`,
@@ -350,10 +404,11 @@ async function renderSpeakResult(s) {
   $main().innerHTML = card(`
     <h2>🎤 口說測驗完成</h2>
     <p class="pq-big">${avg} 分</p>
-    <p class="hint-area">${esc(s.day.label)}・${n} 句平均${saved ? '・已存到測驗中心的「成績紀錄」' : ''}</p>
+    <p class="hint-area">${esc(s.day.label)}・${n} 句平均${saved ? '・已存到測驗中心的「成績紀錄」' : ''}・圖卡頁的成績表已更新</p>
     <div class="detail-list">${rows}</div>
     <p class="hint-area">分數由手機的語音辨識與音高分析估算，適合拿來練習與比較進步；不是正式考試的發音評分。</p>
-    <div class="btn-row"><button class="btn" id="sr-again">🔁 再練一次</button><button class="btn primary" id="sr-back">回圖解記憶卡</button></div>`);
-  document.getElementById('sr-again').onclick = () => startSpeakTest(s.day, s.cards);
+    <div class="btn-row">${s.wrong.length ? `<button class="btn" id="sr-low">🔁 只重唸未達 ${SPEAK_PASS} 分的</button>` : ''}<button class="btn primary" id="sr-back">📊 回成績表</button></div>`);
+  const low = document.getElementById('sr-low');
+  if (low) low.onclick = () => startSpeakTest(s.day, s.cards, [...new Set(s.wrong.map((w) => w.wordId))]);
   document.getElementById('sr-back').onclick = backTo;
 }
