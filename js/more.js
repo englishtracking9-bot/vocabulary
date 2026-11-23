@@ -11,6 +11,7 @@ import { copyToClipboard } from './report.js';
 import { isIntroduced } from './srs.js';
 import { $main, APP_UI_VERSION, State } from './state.js';
 import { exportProfile, getStats, importProfile } from './stats.js';
+import { accountCardHTML, wireAccountCard } from './account.js';
 import { esc, todayStr } from './util.js';
 import { getById } from './vocab.js';
 import { encodeYpCompletion, getBook, getYpTested, loadBook, recordIdOf } from './ypbook.js';
@@ -99,7 +100,9 @@ async function renderSettings() {
   const s = p.settings;
   const stats = await getStats(p.id);
   const profiles = await getAllProfiles();
+  const acctCard = await accountCardHTML();
   $main().innerHTML = `
+    ${acctCard}
     <div class="card">
       <h2>使用者管理</h2>
       <div id="user-list">
@@ -376,6 +379,7 @@ async function renderSettings() {
     };
   });
 
+  wireAccountCard(() => renderSettings());
   document.getElementById('add-user').onclick = async () => {
     const name = prompt('輸入新使用者的名稱：', '');
     if (!name || !name.trim()) return;

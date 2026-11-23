@@ -1,4 +1,5 @@
 // app.js — 入口：啟動、路由、身分切換、SW 註冊（G1 拆分後的常駐核心）
+import { ensureAccount } from './account.js';
 import { renderCustomBooks } from './books.js';
 import { initCloud } from './cloud.js';
 import { renderCalendar } from './daily.js';
@@ -34,6 +35,9 @@ async function init() {
     await loadPicCards(); // 🖼️ 圖解記憶卡（失敗不影響啟動）
     await ensureBooksLoaded(); // 預載 YP 單字書＋註冊 YP 專屬字（供報告/統計顯示）
     await ensureProfiles();
+
+    // ☁️ 階段 B：家庭帳號登入＋這台裝置的身分對應（雲端連不上時可「先離線使用」，絕不擋住學習）
+    await ensureAccount();
 
     const activeId = (await getMeta('activeProfile')) || DEFAULT_PROFILES[0].id;
     State.profile = (await getProfile(activeId)) || (await getProfile(DEFAULT_PROFILES[0].id));

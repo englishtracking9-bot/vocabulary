@@ -579,3 +579,9 @@ details[open] summary::before { content: '▾ '; }
 .ps-cell.ok { background: #dcfce7; border-color: #86efac; color: #166534; }
 .ps-cell.ng { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
 .ps-cell.none { color: var(--muted); font-size: 14px; font-weight: 600; }
+
+/* ☁️ 家庭帳號登入／裝置對應（account.js）：登入前隱藏頂部身分列與底部導覽 */
+body.gate .bottom-nav, body.gate #profile-switch { display: none; }
+.acct-card label { display: block; margin: 10px 0; }
+.acct-link { display: block; margin: 12px 0; }
+.acct-link b { display: block; margin-bottom: 4px; font-size: 17px; }
